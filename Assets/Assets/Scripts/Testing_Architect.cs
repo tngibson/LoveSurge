@@ -42,7 +42,7 @@ namespace TESTING
                 architect.Stop();
 
             string longLine = "This is a very long line that makes no sense but I am just populating it with stuff because, you know, stuff is good right? I like stuff, you like stuff, we all like stuff and the turkey gets stuffed.";
-            if (Input.GetKeyDown(KeyCode.Space))
+            if ((Input.GetKeyDown(KeyCode.Space)) || Input.GetMouseButtonDown(0))
             {
                 if (architect.isBuilding)
                 {
