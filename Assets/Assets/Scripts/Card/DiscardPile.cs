@@ -4,15 +4,25 @@ using UnityEngine;
 
 public class DiscardPile
 {
-    // Start is called before the first frame update
-    void Start()
+    List<CardInfo> DiscardedCards;
+
+    
+    public void AddToDiscard(CardInfo card)
     {
-        
+        DiscardedCards.Add(card);
     }
 
-    // Update is called once per frame
-    void Update()
+    public CardInfo GetFromDiscard(CardInfo card)
     {
-        
+        foreach(CardInfo cardi in DiscardedCards)
+        {
+            if (cardi.value == card.value & cardi.attribute == card.attribute)
+            {
+                DiscardedCards.Remove(cardi);
+            }
+        }
+
+        return card;
     }
+
 }

@@ -4,15 +4,15 @@ using UnityEngine;
 
 public class Deck
 {
-    // Start is called before the first frame update
-    void Start()
+    Stack<CardInfo> deck;
+
+    public CardInfo DrawFromDeck()
     {
-        
+        return deck.Pop();
     }
 
-    // Update is called once per frame
-    void Update()
+    public void ShuffleDeck()
     {
-        
+        Debug.Log("shufflelupagus");
     }
 }
