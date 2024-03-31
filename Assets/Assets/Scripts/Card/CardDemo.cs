@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
 
-public enum Cards
+public enum CardAttribute
 {
     Charisma,
     Courage,
@@ -13,16 +13,13 @@ public enum Cards
 public struct CardInfo
 {
     public int value;
-    public Cards cards;
+    public CardAttribute attribute;
 
-    public CardInfo(Cards cards, int value)
+    public CardInfo(CardAttribute attribute, int value)
     {
         this.value = value;
-        this.cards = cards;
+        this.attribute = attribute;
     }
-
-    
-
 }
 
 public class CardDemo : MonoBehaviour
