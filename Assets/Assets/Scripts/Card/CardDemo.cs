@@ -11,6 +11,7 @@ public enum CardAttribute
     Creativity
 }
 
+
 public struct CardInfo
 {
     public int value;
@@ -22,6 +23,7 @@ public struct CardInfo
         this.attribute = attribute;
     }
 }
+
 
 public class CardDemo : MonoBehaviour
 {

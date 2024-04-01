@@ -20,7 +20,6 @@ public class Hand
                 cardsInHand.Remove(cardi);
             }
         }
-
         return card;
     }
 }

@@ -12,7 +12,6 @@ public class PlayField
 
     //create a fillhand function and figure out how hand sizes work
 
-    List<CardInfo> playedCards = new List<CardInfo>();
     List<DialogueOption> dialogueOptions;
 
     public void DrawDeckToHand()
@@ -20,9 +19,9 @@ public class PlayField
         playerHand.AddToHand(deck.DrawFromDeck());
     }
 
-    public void PlayCard(CardInfo card)
+    public void PlayCard(CardInfo card, DialogueOption dialogueOption)
     {
-        playedCards.Add(playerHand.DiscardFromHand(card));
+        dialogueOption.AddToStack(playerHand.DiscardFromHand(card));
     }
 
     public void GenerateDialogueOption(List<string> Topics)
@@ -44,6 +43,7 @@ public class DialogueOption
     string topic;
     public int smallNum;
     public int bigNum;
+    public bool isLocked;
 
     List<CardInfo> stackedCards;
 
@@ -57,6 +57,11 @@ public class DialogueOption
     public void AddToStack(CardInfo card)
     {
         stackedCards.Add(card);
+        
+        if (CheckTurnSum() >= smallNum)
+        {
+            isLocked = true;
+        }
     }
 
     public int CheckTurnSum()
