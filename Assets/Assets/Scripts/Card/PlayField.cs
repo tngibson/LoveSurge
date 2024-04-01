@@ -4,15 +4,20 @@ using UnityEngine;
 
 public class PlayField
 {
-    // Start is called before the first frame update
-    void Start()
+    public Hand playerHand;
+    public DiscardPile discardPile;
+    public Deck deck;
+
+    List<CardInfo> playedCards = new List<CardInfo>();
+
+    public void DrawDeckToHand()
     {
-        
+        playerHand.AddToHand(deck.DrawFromDeck());
     }
 
-    // Update is called once per frame
-    void Update()
+    public void PlayCard(CardInfo card)
     {
-        
+        playedCards.Add(playerHand.DiscardFromHand(card));
     }
+
 }

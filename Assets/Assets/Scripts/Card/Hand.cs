@@ -4,20 +4,20 @@ using UnityEngine;
 
 public class Hand
 {
-    List<CardInfo> CardsInHand;
+    List<CardInfo> cardsInHand;
 
-    public void DrawToHand(CardInfo card)
+    public void AddToHand(CardInfo card)
     {
-        CardsInHand.Add(card);
+        cardsInHand.Add(card);
     }
 
     public CardInfo DiscardFromHand(CardInfo card)
     {
-        foreach(CardInfo cardi in CardsInHand)
+        foreach(CardInfo cardi in cardsInHand)
         {
             if (cardi.value == card.value & cardi.attribute == card.attribute)
             {
-                CardsInHand.Remove(cardi);
+                cardsInHand.Remove(cardi);
             }
         }
 

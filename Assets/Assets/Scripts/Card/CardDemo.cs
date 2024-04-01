@@ -7,7 +7,8 @@ public enum CardAttribute
 {
     Charisma,
     Courage,
-    Clever
+    Cleverness, 
+    Creativity
 }
 
 public struct CardInfo
