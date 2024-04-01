@@ -26,5 +26,5 @@ public struct CardInfo
 
 public class CardDemo : MonoBehaviour
 {
-    
+    // handles player input and displays the board information
 }

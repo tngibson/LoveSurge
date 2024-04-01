@@ -33,6 +33,14 @@ public class PlayField
             dialogueOptions.Add(new DialogueOption(Topics[i], 3, 6));
         }
     }
+
+    public void ReplaceDialogueOption(DialogueOption dialogueOption, List<string> Topics)
+    {
+        dialogueOptions.Remove(dialogueOption);
+
+        //hard coded, but will not be later
+        dialogueOptions.Add(new DialogueOption(Topics[0], 3, 6));
+    }
 }
 
 
@@ -41,7 +49,7 @@ public class DialogueOption
     string topic;
     public int smallNum;
     public int bigNum;
-    public bool isLocked;
+    public bool isUnlocked;
 
     List<CardInfo> stackedCards;
 
@@ -58,7 +66,7 @@ public class DialogueOption
         
         if (CheckTurnSum() >= smallNum)
         {
-            isLocked = true;
+            isUnlocked = true;
         }
     }
 
