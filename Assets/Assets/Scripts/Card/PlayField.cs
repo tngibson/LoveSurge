@@ -10,7 +10,22 @@ public class PlayField
 
     //create a fillhand function and figure out how hand sizes work
 
-    List<DialogueOption> dialogueOptions;
+    public List<DialogueOption> dialogueOptions;
+
+    public PlayField(List<CardInfo> newDeck, List<string> Topics)
+    {
+        playerHand = new Hand();
+        discardPile = new DiscardPile();
+        deck = new Deck(newDeck);
+
+        //for now four cards are put into the hand, this is not determined yet
+        DrawDeckToHand();
+        DrawDeckToHand();
+        DrawDeckToHand();
+        DrawDeckToHand();
+
+        GenerateDialogueOption(Topics);
+    }
 
     public void DrawDeckToHand()
     {
@@ -20,6 +35,16 @@ public class PlayField
     public void PlayCard(CardInfo card, DialogueOption dialogueOption)
     {
         dialogueOption.AddToStack(playerHand.DiscardFromHand(card));
+    }
+
+    public void PlayCard(int cardIndex, DialogueOption dialogueOption)
+    {
+        dialogueOption.AddToStack(playerHand.DiscardFromHand(cardIndex));
+    }
+
+    public void PlayCard(int cardIndex, int dialogueOption)
+    {
+        dialogueOptions[dialogueOption].AddToStack(playerHand.DiscardFromHand(cardIndex));
     }
 
     public void GenerateDialogueOption(List<string> Topics)
@@ -41,12 +66,34 @@ public class PlayField
         //hard coded, but will not be later
         dialogueOptions.Add(new DialogueOption(Topics[0], 3, 6));
     }
+
+    public int GetHandSize()
+    {
+        return playerHand.cardsInHand.Count;
+    }
+
+    public string toString()
+    {
+        string text = "";
+
+        foreach(DialogueOption dialogueOption in dialogueOptions)
+        {
+            text += "DIALOGUEOPTION: " + dialogueOption.topic + " " + dialogueOption.smallNum + " " + dialogueOption.bigNum + " total value: " + dialogueOption.CheckTurnSum() + "\n";
+        }
+        text += "\n\n\n";
+
+        foreach(CardInfo card in playerHand.cardsInHand)
+        {
+            text += "HAND: " + card.value + " " + card.attribute + "\n";
+        }
+        return text;
+    }
 }
 
 
 public class DialogueOption
 {
-    string topic;
+    public string topic;
     public int smallNum;
     public int bigNum;
     public bool isUnlocked;

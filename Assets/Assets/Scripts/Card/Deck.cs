@@ -15,4 +15,13 @@ public class Deck
     {
         Debug.Log("shufflelupagus");
     }
+
+    public Deck(List<CardInfo> newDeck)
+    {
+        foreach(CardInfo card in newDeck)
+        {
+            deck.Push(card);
+        }
+        ShuffleDeck();
+    }
 }
