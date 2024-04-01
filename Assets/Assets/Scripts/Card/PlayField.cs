@@ -7,6 +7,7 @@ public class PlayField
     public Hand playerHand;
     public DiscardPile discardPile;
     public Deck deck;
+    public List<string> topics;
 
     //create a fillhand function and figure out how hand sizes work
 
@@ -17,6 +18,7 @@ public class PlayField
         playerHand = new Hand();
         discardPile = new DiscardPile();
         deck = new Deck(newDeck);
+        topics = Topics;
 
         //for now four cards are put into the hand, this is not determined yet
         DrawDeckToHand();
@@ -58,6 +60,14 @@ public class PlayField
             //smallNum & bigNum are hard coded here, but will not be later on
             //topics hard coded here, but will be randomly selected from list of topics later on
             dialogueOptions.Add(new DialogueOption(Topics[i], 3, 6));
+        }
+    }
+
+    public void SelectDialogueOption(int dialogueIndex)
+    {
+        if (dialogueOptions[dialogueIndex].isUnlocked)
+        {
+            ReplaceDialogueOption(dialogueOptions[dialogueIndex], topics);
         }
     }
 

@@ -42,14 +42,22 @@ public class CardDemo : MonoBehaviour
         List<string> dummyTopics = new List<string>();
         List<CardInfo> dummyDeck = new List<CardInfo>();
 
-        dummyTopics.Add("supercalifragilisticexpialidocius");
+        dummyTopics.Add("char1");
         dummyDeck.Add(new CardInfo(CardAttribute.Charisma, 1));
-        dummyTopics.Add("supercalifragilisticexpialidocius");
-        dummyDeck.Add(new CardInfo(CardAttribute.Charisma, 2));
-        dummyTopics.Add("supercalifragilisticexpialidocius");
-        dummyDeck.Add(new CardInfo(CardAttribute.Charisma, 3));
-        dummyTopics.Add("supercalifragilisticexpialidocius");
-        dummyDeck.Add(new CardInfo(CardAttribute.Charisma, 4));
+        dummyTopics.Add("cour2");
+        dummyDeck.Add(new CardInfo(CardAttribute.Courage, 2));
+        dummyTopics.Add("clev3");
+        dummyDeck.Add(new CardInfo(CardAttribute.Cleverness, 3));
+        dummyTopics.Add("crea4");
+        dummyDeck.Add(new CardInfo(CardAttribute.Creativity, 4));
+        dummyTopics.Add("char5");
+        dummyDeck.Add(new CardInfo(CardAttribute.Charisma, 5));
+        dummyTopics.Add("cour6");
+        dummyDeck.Add(new CardInfo(CardAttribute.Courage, 6));
+        dummyTopics.Add("clev7");
+        dummyDeck.Add(new CardInfo(CardAttribute.Cleverness, 7));
+        dummyTopics.Add("crea8");
+        dummyDeck.Add(new CardInfo(CardAttribute.Creativity, 8));
 
         play = new PlayField(dummyDeck, dummyTopics);
 
@@ -106,9 +114,15 @@ public class CardDemo : MonoBehaviour
             }
         }
 
+        if (Input.GetKeyDown(KeyCode.RightShift))
+        {
+            play.SelectDialogueOption(dialogueIndex);
+            play.DrawDeckToHand();
+        }
+
         if (debugActive == true)
         {
-            debugText.text = play.toString();
+            debugText.text = play.toString() + "\n handIndex " + handIndex + "\n dialogueIndex " + dialogueIndex;
         }
     }
 }
