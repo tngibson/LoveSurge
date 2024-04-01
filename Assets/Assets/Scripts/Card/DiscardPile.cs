@@ -6,7 +6,6 @@ public class DiscardPile
 {
     List<CardInfo> discardedCards;
 
-    
     public void AddToDiscard(CardInfo card)
     {
         discardedCards.Add(card);
