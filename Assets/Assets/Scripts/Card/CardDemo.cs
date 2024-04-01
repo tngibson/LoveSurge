@@ -34,6 +34,7 @@ public class CardDemo : MonoBehaviour
     public int handIndex; //temp variable to represent selected card in hand
     public int dialogueIndex; //temp also
     public TextMeshProUGUI debugText;
+    public bool debugActive;
 
     //temp dummy convo info for testing purposes
     public void Start()
@@ -51,6 +52,8 @@ public class CardDemo : MonoBehaviour
         dummyDeck.Add(new CardInfo(CardAttribute.Charisma, 4));
 
         play = new PlayField(dummyDeck, dummyTopics);
+
+        debugActive = true;
     }
 
     //function to handles player input and display the board information
@@ -102,6 +105,10 @@ public class CardDemo : MonoBehaviour
                 dialogueIndex = play.dialogueOptions.Count - 1;
             }
         }
-        debugText.text = play.toString();
+
+        if (debugActive == true)
+        {
+            debugText.text = play.toString();
+        }
     }
 }

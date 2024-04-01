@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Hand
 {
-    public List<CardInfo> cardsInHand;
+    public List<CardInfo> cardsInHand = new List<CardInfo>();
 
     public void AddToHand(CardInfo card)
     {
@@ -25,6 +25,8 @@ public class Hand
 
     public CardInfo DiscardFromHand(int cardIndex)
     {
-        return cardsInHand[cardIndex];
+        CardInfo cardInfo = cardsInHand[cardIndex];
+        cardsInHand.RemoveAt(cardIndex);
+        return cardInfo;
     }
 }

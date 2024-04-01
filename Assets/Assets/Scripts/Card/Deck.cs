@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Deck
 {
-    Stack<CardInfo> deck;
+    Stack<CardInfo> deck = new Stack<CardInfo>();
 
     public CardInfo DrawFromDeck()
     {

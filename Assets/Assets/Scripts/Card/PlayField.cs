@@ -29,6 +29,8 @@ public class PlayField
 
     public void DrawDeckToHand()
     {
+        Debug.Log(playerHand);
+        Debug.Log(deck);
         playerHand.AddToHand(deck.DrawFromDeck());
     }
 
@@ -98,7 +100,7 @@ public class DialogueOption
     public int bigNum;
     public bool isUnlocked;
 
-    List<CardInfo> stackedCards;
+    List<CardInfo> stackedCards = new List<CardInfo>();
 
      public DialogueOption(string topic, int smallNum, int bigNum)
     {
