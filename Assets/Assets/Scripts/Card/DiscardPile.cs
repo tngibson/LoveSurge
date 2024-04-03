@@ -20,7 +20,6 @@ public class DiscardPile
                 discardedCards.Remove(cardi);
             }
         }
-
         return card;
     }
 }

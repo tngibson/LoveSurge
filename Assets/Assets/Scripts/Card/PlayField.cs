@@ -4,27 +4,22 @@ using UnityEngine;
 
 public class PlayField
 {
+    public CardDemo gameManager;
     public Hand playerHand;
     public DiscardPile discardPile;
     public Deck deck;
     public List<string> topics;
-
-    //create a fillhand function and figure out how hand sizes work
-
     public List<DialogueOption> dialogueOptions;
 
-    public PlayField(List<CardInfo> newDeck, List<string> Topics)
+    public PlayField(List<CardInfo> newDeck, List<string> Topics, CardDemo cardDemo)
     {
         playerHand = new Hand();
         discardPile = new DiscardPile();
         deck = new Deck(newDeck);
         topics = Topics;
+        gameManager = cardDemo;
 
-        //for now four cards are put into the hand, this is not determined yet
-        DrawDeckToHand();
-        DrawDeckToHand();
-        DrawDeckToHand();
-        DrawDeckToHand();
+        FillHand();
 
         GenerateDialogueOption(Topics);
     }
@@ -34,6 +29,14 @@ public class PlayField
         Debug.Log(playerHand);
         Debug.Log(deck);
         playerHand.AddToHand(deck.DrawFromDeck());
+    }
+
+    public void FillHand()
+    {
+        while (GetHandSize() < gameManager.FullHand)
+        {
+            DrawDeckToHand();
+        }
     }
 
     public void PlayCard(CardInfo card, DialogueOption dialogueOption)
@@ -63,12 +66,18 @@ public class PlayField
         }
     }
 
+    public void EndTurn()
+    {
+        FillHand();
+    }
+
     public void SelectDialogueOption(int dialogueIndex)
     {
         if (dialogueOptions[dialogueIndex].isUnlocked)
         {
             ReplaceDialogueOption(dialogueOptions[dialogueIndex], topics);
         }
+        EndTurn();
     }
 
     public void ReplaceDialogueOption(DialogueOption dialogueOption, List<string> Topics)
@@ -102,7 +111,7 @@ public class PlayField
     }
 }
 
-
+//connection needs to be added; smallNum is now value added to connection upon choosing dialogue option; bigNum takes smallNum definition; 
 public class DialogueOption
 {
     public string topic;

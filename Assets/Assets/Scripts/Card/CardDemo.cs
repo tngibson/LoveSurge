@@ -1,7 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
-using System.Security.Cryptography;
-using JetBrains.Annotations;
+using System.Security.Cryptography; 
+using JetBrains.Annotations; 
 using UnityEngine;
 using TMPro; 
 using UnityEngine.UI;
@@ -31,10 +31,14 @@ public struct CardInfo
 public class CardDemo : MonoBehaviour
 {
     public PlayField play;
+
+    [Header("Object Refs")]
     public int handIndex; //temp variable to represent selected card in hand
     public int dialogueIndex; //temp also
     public TextMeshProUGUI debugText;
     public bool debugActive;
+    public int FullHand;
+    public int MaxStress;
 
     //temp dummy convo info for testing purposes
     public void Start()
@@ -59,12 +63,11 @@ public class CardDemo : MonoBehaviour
         dummyTopics.Add("crea8");
         dummyDeck.Add(new CardInfo(CardAttribute.Creativity, 8));
 
-        play = new PlayField(dummyDeck, dummyTopics);
+        play = new PlayField(dummyDeck, dummyTopics, this);
 
         debugActive = true;
     }
 
-    //function to handles player input and display the board information
     public void Update()
     {
         if (Input.GetKeyDown(KeyCode.LeftArrow))
@@ -117,7 +120,6 @@ public class CardDemo : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.RightShift))
         {
             play.SelectDialogueOption(dialogueIndex);
-            play.DrawDeckToHand();
         }
 
         if (debugActive == true)
