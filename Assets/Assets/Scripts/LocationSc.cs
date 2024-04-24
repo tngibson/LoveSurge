@@ -2,12 +2,8 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class MapScript : MonoBehaviour
+public class LocationScene : MonoBehaviour
 {
-    public string locInfo;
-    public string locName;
-    public MapLocationsManager manager;
-
     // Start is called before the first frame update
     void Start()
     {
@@ -20,9 +16,10 @@ public class MapScript : MonoBehaviour
         
     }
 
-    public void OnSelect()
+    public void ChangeScene(string sceneName)
     {
-        manager.LocationSelect(locInfo, locName);
-    }
+        GameObject sceneObject = transform.Find(sceneName).gameObject;
 
+        sceneObject.SetActive(true);
+    }
 }
