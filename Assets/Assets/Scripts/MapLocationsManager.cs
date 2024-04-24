@@ -9,17 +9,7 @@ public class MapLocationsManager : MonoBehaviour
     public TextMeshProUGUI infoDisplay;
     public LocationWindowManager windowObject;
 
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
+    
 
     public void LocationSelect(string text, string location)
     {

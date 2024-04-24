@@ -10,17 +10,7 @@ public class LocationWindowManager : MonoBehaviour
     public LocationScene locationScene;
 
 
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
 
     public void OnClose()
     {
@@ -30,5 +20,6 @@ public class LocationWindowManager : MonoBehaviour
     public void OnEnter()
     {
         locationScene.ChangeScene(activeName);
+        OnClose();
     }
 }
