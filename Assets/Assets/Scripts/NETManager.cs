@@ -23,6 +23,8 @@ public class NETManager : MonoBehaviour
     {
         gameObject.SetActive(false);
         GlobalInformation.instance.ProgressTimeOfDay();
+
+        dialogueText.text = "Lorem Ipsum! Ja?";
     }
 
     public void Op1()
