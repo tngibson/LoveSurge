@@ -9,7 +9,10 @@ public class MapLocationsManager : MonoBehaviour
     public TextMeshProUGUI infoDisplay;
     public LocationWindowManager windowObject;
 
-    
+    public void Start()
+    {
+        infoDisplay.text = "Stats: \n ";
+    }
 
     public void LocationSelect(string text, string location)
     {

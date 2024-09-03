@@ -9,7 +9,11 @@ public class MapScript : MonoBehaviour
     public MapLocationsManager manager;
 
 
-
+public void Start()
+    {
+        
+    }
+    
     public void OnSelect()
     {
         manager.LocationSelect(locInfo, locName);
