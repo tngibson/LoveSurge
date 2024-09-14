@@ -39,8 +39,8 @@ public class Dropzone : MonoBehaviour
     void Start()
     {
         // Initialize the StreamReader objects using the current session's playerReader and dateReader
-        playerReader = currentSession.playerReader;
-        dateReader = currentSession.reader;
+        playerReader = currentSession.GetPlayerReader();
+        dateReader = currentSession.GetReader();
     }
 
     // Adds a card to the played cards list and removes it from the player's area
@@ -106,8 +106,8 @@ public class Dropzone : MonoBehaviour
         }
 
         // Read the next date and player info from the session and update the UI
-        currentSession.readText(dateText, dateReader);
-        currentSession.readText(playerText, playerReader);
+        currentSession.ReadText(dateText, dateReader);
+        currentSession.ReadText(playerText, playerReader);
     }
 
     // Swaps two cards in the played cards list by index

@@ -4,15 +4,9 @@ using UnityEngine;
 
 public class CreCard : Card
 {
-    // Start is called before the first frame update
-    private void Awake()
+    // Set the type of this card to "Cre"
+    protected override void SetType()
     {
-        base.Type = "Cre";
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
+        Type = "Cre";
     }
 }

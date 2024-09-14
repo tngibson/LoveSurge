@@ -16,12 +16,12 @@ public class PlayerArea : MonoBehaviour
     // Add a card to the player's hand
     public void AddCards(Card card)
     {
-        cardsInHand.Add(card);  // Use the backing field directly, no need for property access here
+        cardsInHand.Add(card); 
     }
 
     // Remove a card from the player's hand
     public void RemoveCards(Card card)
     {
-        cardsInHand.Remove(card);  // Use the backing field directly
+        cardsInHand.Remove(card); 
     }
 }

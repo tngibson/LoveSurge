@@ -4,14 +4,9 @@ using UnityEngine;
 
 public class CouCard : Card
 {
-    private void Awake()
+    // Set the type of this card to "Cou"
+    protected override void SetType()
     {
-        base.Type = "Cou";
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
+        Type = "Cou";
     }
 }

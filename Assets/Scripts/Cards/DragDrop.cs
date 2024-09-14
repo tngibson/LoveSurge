@@ -4,79 +4,92 @@ using UnityEngine;
 
 public class DragDrop : MonoBehaviour
 {
-    [SerializeField] Dropzone DropZone;
-    [SerializeField] Card card;
-    [SerializeField] PlayerArea playerArea;
-    private bool isDragging = false;
-    private GameObject startParent;
-    private Vector2 startPos;
-    private GameObject dropZone;
-    private bool isOverDropZone;
-    
+    [SerializeField] private Dropzone dropZone;  // Reference to the Dropzone component
+    [SerializeField] private Card card;  // Reference to the Card component
+    [SerializeField] private PlayerArea playerArea;  // Reference to the PlayerArea component
+
+    private bool isDragging = false;  // Flag to check if the object is being dragged
+    private Transform startParent;  // To store the original parent of the dragged object
+    private Vector2 startPos;  // To store the original position of the dragged object
+    private GameObject currentDropZone;  // To keep track of the current drop zone
+    private bool isOverDropZone = false;  // Flag to check if the object is over a drop zone
+
     void Start()
     {
-        dropZone = GameObject.Find("Dropzone");
-        DropZone = dropZone.GetComponent<Dropzone>();
-        playerArea = GameObject.Find("PlayerArea").GetComponent<PlayerArea>();
+        // Initialize references to Dropzone and PlayerArea components
+        GameObject dropZoneObject = GameObject.Find("Dropzone");
+        dropZone = dropZoneObject?.GetComponent<Dropzone>();
+
+        GameObject playerAreaObject = GameObject.Find("PlayerArea");
+        playerArea = playerAreaObject?.GetComponent<PlayerArea>();
+
+        if (dropZone == null || playerArea == null)
+        {
+            Debug.LogError("Dropzone or PlayerArea not found in the scene.");
+        }
     }
 
     void Update()
     {
-     if (isDragging)
+        if (isDragging)
         {
-            transform.position = new Vector3(Input.mousePosition.x, Input.mousePosition.y,0);
-        }   
+            // Update the position of the dragged object to follow the mouse
+            Vector3 mousePosition = Input.mousePosition;
+            mousePosition.z = 0; // Ensure the object is in the correct Z plane
+            transform.position = mousePosition;
+        }
     }
-    public void startDrag()
+
+    public void StartDrag()
     {
-        //Debug.Log("startdrag");
+        // Start dragging the object
         isDragging = true;
-        startParent = transform.parent.gameObject;
+        startParent = transform.parent;
         startPos = transform.position;
-
-
     }
-    public void endDrag() 
+
+    public void EndDrag()
     {
+        // End dragging the object
         isDragging = false;
-        if (isOverDropZone)
+
+        if (isOverDropZone && dropZone != null)
         {
-            if (DropZone == null) { print("DropZone is null"); }
-            transform.SetParent(dropZone.transform, false);
-            DropZone.AddCard(GetComponent<Card>());
-            this.GetComponent<GridElementSwapper>().setFirstSelectedElement(null);
+            // Drop the object in the drop zone
+            transform.SetParent(currentDropZone.transform, false);
+            dropZone.AddCard(card);
+            GetComponent<GridElementSwapper>()?.SetFirstSelectedElement(null);
             playerArea = null;
         }
         else
         {
+            // Return the object to its original position and parent
             transform.position = startPos;
-            transform.SetParent(startParent.transform, false);
+            transform.SetParent(startParent, false);
         }
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
+        // Set the drop zone flag and reference when the object enters a collider
         isOverDropZone = true;
-        dropZone = collision.gameObject;
+        currentDropZone = collision.gameObject;
     }
+
     private void OnTriggerExit2D(Collider2D collision)
     {
-        isOverDropZone= false;
-        dropZone = null;
+        // Reset the drop zone flag and reference when the object exits a collider
+        if (collision.gameObject == currentDropZone)
+        {
+            isOverDropZone = false;
+            currentDropZone = null;
+        }
     }
 
-    public bool getIsDragging()
-    {
-        return isDragging;
-    }
+    // Public getters for various properties
+    public bool IsDragging() => isDragging;
 
-    public PlayerArea getPlayerArea()
-    {
-        return playerArea;
-    }
+    public PlayerArea GetPlayerArea() => playerArea;
 
-    public Dropzone getDropzone()
-    {
-        return DropZone;
-    }
+    public Dropzone GetDropzone() => dropZone;
 }

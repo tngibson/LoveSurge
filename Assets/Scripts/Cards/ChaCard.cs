@@ -1,17 +1,10 @@
-using System.Collections;
-using System.Collections.Generic;
-using UnityEditor;
 using UnityEngine;
 
-public class ChaCard : Card {
-    void Awake()
+public class ChaCard : Card
+{
+    // Set the type of this card to "Cha"
+    protected override void SetType()
     {
-        base.Type = "Cha";    
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
+        Type = "Cha";
     }
 }

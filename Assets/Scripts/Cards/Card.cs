@@ -4,40 +4,69 @@ using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class Card : MonoBehaviour
+public abstract class Card : MonoBehaviour
 {
+    // Serialized fields for card attributes and UI elements
     [SerializeField] public int cost = 0;
     [SerializeField] public TextMeshProUGUI numText;
-    private string type;
-    public string Type { get { return type;} set { type = value;} }
-    [SerializeField] private int power;
-    public int Power { get { return power; } set { power = value; } }
     [SerializeField] public GameObject container;
     [SerializeField] public Image background;
-    void Start()
+
+    // Private backing fields with public properties for type and power
+    private string type;
+    public string Type
     {
-        numText.text = Power.ToString();
+        get => type;
+        set => type = value;
     }
 
-    // Update is called once per frame
-    void Update()
+    [SerializeField] private int power;
+    public int Power
     {
-        
+        get => power;
+        set
+        {
+            power = value;
+            UpdatePowerDisplay();  // Automatically update the UI when power is set
+        }
     }
-    void upgradeCard()
+
+    // Start is called before the first frame update
+    protected virtual void Start()
     {
-        this.power += 1;
+        UpdatePowerDisplay();  // Initialize the power display on start
+        SetType();             // Set the type of card in derived classes
+    }
+
+    // Abstract method to set the card type, which will be implemented in derived classes
+    protected abstract void SetType();
+
+    // Updates the UI text to display the current power
+    private void UpdatePowerDisplay()
+    {
+        if (numText != null)
+        {
+            numText.text = power.ToString();
+        }
+    }
+
+    // Upgrades the card by increasing its power
+    public void UpgradeCard()
+    {
+        Power += 1;
     }
 
     public void SetImageAlpha(float alpha)
     {
-        // Get the current color of the Image
-        Color color = background.color;
-
-        // Set the alpha value (range 0 to 1)
-        color.a = Mathf.Clamp01(alpha); // Clamp01 ensures alpha is between 0 and 1
-
-        // Apply the new color with the modified alpha
-        background.color = color;
+        if (background != null)
+        {
+            Color color = background.color;
+            color.a = Mathf.Clamp01(alpha);  // Clamps alpha between 0 and 1
+            background.color = color;
+        }
+        else
+        {
+            Debug.LogWarning("Background image is not assigned.");
+        }
     }
 }

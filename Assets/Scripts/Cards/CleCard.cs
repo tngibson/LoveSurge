@@ -4,15 +4,9 @@ using UnityEngine;
 
 public class CleCard : Card
 {
-   
-    void Awake()
+    // Set the type of this card to "Cle"
+    protected override void SetType()
     {
-        base.Type = "Cle";
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
+        Type = "Cle";
     }
 }

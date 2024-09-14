@@ -12,7 +12,7 @@ public class GridElementSwapper : MonoBehaviour, IPointerClickHandler
     public void OnPointerClick(PointerEventData eventData)
     {
         // If the element is being dragged, ignore the click
-        if (GetComponent<DragDrop>().getIsDragging()) return;
+        if (GetComponent<DragDrop>().IsDragging()) return;
 
         // If no element has been selected yet, select this one
         if (firstSelectedElement == null)
@@ -64,7 +64,7 @@ public class GridElementSwapper : MonoBehaviour, IPointerClickHandler
     // Checks if two elements are in the same area (using DragDrop component)
     private bool AreInSameArea(Transform elementA, Transform elementB)
     {
-        return elementA.GetComponent<DragDrop>().getPlayerArea() == elementB.GetComponent<DragDrop>().getPlayerArea();
+        return elementA.GetComponent<DragDrop>().GetPlayerArea() == elementB.GetComponent<DragDrop>().GetPlayerArea();
     }
 
     // Coroutine to animate the swap of two elements
@@ -96,16 +96,16 @@ public class GridElementSwapper : MonoBehaviour, IPointerClickHandler
     {
         int indexA = elementA.GetSiblingIndex();
         int indexB = elementB.GetSiblingIndex();
-        if (elementA.GetComponent<DragDrop>().getPlayerArea() == null)
+        if (elementA.GetComponent<DragDrop>().GetPlayerArea() == null)
         {
-            elementA.GetComponent<DragDrop>().getDropzone().SwapCards(indexA, indexB);
+            elementA.GetComponent<DragDrop>().GetDropzone().SwapCards(indexA, indexB);
         }
         elementA.SetSiblingIndex(indexB);
         elementB.SetSiblingIndex(indexA);
     }
 
     // Setter method used for DragDrop script
-    public void setFirstSelectedElement(Transform newElement)
+    public void SetFirstSelectedElement(Transform newElement)
     {
         firstSelectedElement = newElement;
     }
