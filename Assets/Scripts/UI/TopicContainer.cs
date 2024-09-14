@@ -5,8 +5,8 @@ using UnityEngine.UI;
 public class TopicContainer : MonoBehaviour
 {
     // List of conversation topics and completed topics
-    [SerializeField] private List<ConvoTopic> convoTopics;
-    [SerializeField] private List<ConvoTopic> doneConvos;
+    [SerializeField] public List<ConvoTopic> convoTopics;
+    [SerializeField] public List<ConvoTopic> doneConvos;
 
     // Update is called once per frame
     void Update()

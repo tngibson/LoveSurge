@@ -95,7 +95,7 @@ public class Dropzone : MonoBehaviour
         if (selectedConvoTopic.PowerNum <= 0)
         {
             selectedConvoTopic.isClicked = false;
-            topicContainer.enableButtons(); // Re-enable topic buttons
+            topicContainer.EnableButtons(); // Re-enable topic buttons
             selectedConvoTopic.gameObject.SetActive(false); // Hide the completed topic
 
             // Move the completed topic to the 'done' list and remove it from the active list
