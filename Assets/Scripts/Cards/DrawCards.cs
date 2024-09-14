@@ -17,8 +17,8 @@ public class DrawCards : MonoBehaviour
     {
         for (int i = 0; i < 5 ; i++)
         {
-            Card card = deckContainer.draw();
-            deckContainer.removeCard(card);
+            Card card = deckContainer.Draw();
+            deckContainer.RemoveCard(card);
             card.transform.SetParent(playerArea.transform);
             playerArea.AddCards(card);
 

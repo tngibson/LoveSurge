@@ -1,28 +1,38 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
 public class MenuManager : MonoBehaviour
 {
-    [SerializeField] GameObject instructions;
+    // Instructions panel
+    [SerializeField] private GameObject instructions;
+
+    // Awake is called when the script instance is being loaded
     private void Awake()
     {
+        // Ensure the instructions panel is hidden on startup
         instructions.SetActive(false);
     }
-    public void onCelciClick()
+
+    // Loads the CelciTest scene when their button is clicked
+    public void OnCelciClick()
     {
         SceneManager.LoadScene("CelciTest");
     }
-    public void onLotteClick()
+
+    // Loads the LotteTest scene when their button is clicked
+    public void OnLotteClick()
     {
         SceneManager.LoadScene("LotteTest");
     }
-    public void onInstructionClick()
+
+    // Displays the instructions panel
+    public void OnInstructionClick()
     {
         instructions.SetActive(true);
     }
-    public void onBackClick()
+
+    // Hides the instructions panel
+    public void OnBackClick()
     {
         instructions.SetActive(false);
     }

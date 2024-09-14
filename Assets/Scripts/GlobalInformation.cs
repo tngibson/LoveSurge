@@ -5,50 +5,56 @@ using UnityEngine;
 
 public class GlobalInformation : MonoBehaviour
 {
-    public static GlobalInformation instance;
-    public TimeOfDay timeOfDay;
+    public static GlobalInformation instance; // Singleton instance to allow global access to this class
 
-    public List<int> statlist = new List<int>();
+    public TimeOfDay timeOfDay; // Holds the current time of day, represented by the TimeOfDay enum
+
+    public List<int> statlist = new List<int>(); // List of stats, where each index corresponds to a stat (e.g., Charisma, Courage)
+
+    [SerializeField] private int numStats = 4; // The number of stats used in the game
 
     void Awake()
     {
+        // Ensure only one instance of GlobalInformation exists
         if (instance != null)
         {
             Destroy(this);
+            return;
         }
-        else
-        {
-            instance = this;
-        }
+        instance = this;
 
-        statlist.Add(0);
-        statlist.Add(0);
-        statlist.Add(0);
-        statlist.Add(0);
+        // Initialize stats to 0
+        for (int i = 0; i < numStats; i++)
+        {
+            statlist.Add(0);
+        }
     }
 
+    // Resets the time of day to Morning
     public void NextDay()
     {
         timeOfDay = TimeOfDay.Morning;
     }
 
+    // Progresses through time (Morning -> Afternoon -> Night -> Morning)
     public void ProgressTimeOfDay()
     {
-        if (timeOfDay == TimeOfDay.Morning)
+        switch (timeOfDay)
         {
-            timeOfDay = TimeOfDay.Afternoon;
-        }
-        else if (timeOfDay == TimeOfDay.Afternoon)
-        {
-            timeOfDay = TimeOfDay.Night;
-        }
-        else if (timeOfDay == TimeOfDay.Night)
-        {
-            timeOfDay = TimeOfDay.Morning;
+            case TimeOfDay.Morning:
+                timeOfDay = TimeOfDay.Afternoon;
+                break;
+            case TimeOfDay.Afternoon:
+                timeOfDay = TimeOfDay.Night;
+                break;
+            case TimeOfDay.Night:
+                timeOfDay = TimeOfDay.Morning;
+                break;
         }
     }
 }
 
+// Enum representing the different times of day
 public enum TimeOfDay
 {
     Morning,
@@ -56,6 +62,7 @@ public enum TimeOfDay
     Night
 }
 
+// Enum representing different stats (though it's not currently used in this script)
 public enum Stats
 {
     Charisma,
@@ -63,3 +70,4 @@ public enum Stats
     Cleverness,
     Creativity
 }
+

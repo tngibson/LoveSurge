@@ -1,120 +1,82 @@
-using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 public class PlayerDeckScript : MonoBehaviour
 {
-    [SerializeField] List<Card> deck = new List<Card>();
-    public List<Card> Deck { get { return deck; } private set { } }
-    [SerializeField] ChaCard chaCard;
-    [SerializeField] CleCard cleCard;
-    [SerializeField] CreCard creCard;
-    [SerializeField] CouCard couCard;
-    [SerializeField] GameObject container;
-    [SerializeField] int cardCount;
+    // The deck of cards managed by this script
+    [SerializeField] private List<Card> deck = new List<Card>();
+    public List<Card> Deck => deck;
+
+    // Serialized references to the different card prefabs
+    [SerializeField] private ChaCard chaCard;
+    [SerializeField] private CleCard cleCard;
+    [SerializeField] private CreCard creCard;
+    [SerializeField] private CouCard couCard;
+
+    // The container where cards are instantiated
+    [SerializeField] private GameObject container;
+
+    // Number of cards per type and power level
+    [SerializeField] private int cardCount;
+
+    // Initialize the deck on Awake
     private void Awake()
     {
-        fillDeck();
+        FillDeck();
     }
 
-    // Start is called before the first frame update
-    void Start()
-    {
-
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-
-    }
-
-    void addCard(Card card)
+    // Adds a card to the deck
+    private void AddCard(Card card)
     {
         deck.Add(card);
     }
 
-    void makeCard(Card prefab, int power)
+    // Instantiates a card, assigns its power, and adds it to the deck
+    private void MakeCard(Card prefab, int power)
     {
-        Card finishedCard = Instantiate(prefab);
+        Card finishedCard = Instantiate(prefab, container.transform);
         finishedCard.Power = power;
-        finishedCard.transform.SetParent(container.transform);
-        addCard(finishedCard);
+        AddCard(finishedCard);
     }
-    public void removeCard(Card card)
+
+    // Removes a card from the deck
+    public void RemoveCard(Card card)
     {
         deck.Remove(card);
     }
-    void fillDeck()
+
+    // Fills the deck with cards of each type and power level
+    private void FillDeck()
     {
-        // fills deck with 3 charisma cards each of powers 1,2,3 (9 total)
-        for (int i = 0; i < cardCount; i++)
+        // Loop through the cards and create the deck based on `cardCount` for each power level
+        for (int i = 1; i <= 3; i++) // Powers 1, 2, 3
         {
-            makeCard(chaCard, 1);
-        }
-        for (int i = 0; i < cardCount; i++)
-        {
-            makeCard(chaCard, 2);
-        }
-        for (int i = 0; i < cardCount; i++)
-        {
-            makeCard(chaCard, 3);
-        }
-        // fills deck with 3 cleverness cards each of powers 1,2,3 (9 total)
-        for (int i = 0; i < cardCount; i++)
-        {
-            makeCard(cleCard, 1);
-        }
-        for (int i = 0; i < cardCount; i++)
-        {
-            makeCard(cleCard, 2);
-        }
-        for (int i = 0; i < cardCount; i++)
-        {
-            makeCard(cleCard, 3);
-        }
-        // fills deck with 3 creativity cards each of powers 1,2,3 (9 total)
-        for (int i = 0; i < cardCount; i++)
-        {   
-            makeCard(creCard, 1);
-        }
-        for (int i = 0; i < cardCount; i++)
-        {
-            makeCard(creCard, 2);
-        }
-        for (int i = 0; i < cardCount; i++)
-        {
-            makeCard(creCard, 3);
-        }
-        // fills deck with 3 courage cards each of powers 1,2,3 (9 total)
-        for (int i = 0; i < cardCount; i++)
-        {
-            makeCard(couCard, 1);
-        }
-        for (int i = 0; i < cardCount; i++)
-        {
-            makeCard(couCard, 2);
-        }
-        for (int i = 0; i < cardCount; i++)
-        {
-            makeCard(couCard, 3);
+            for (int j = 0; j < cardCount; j++)
+            {
+                MakeCard(chaCard, i);
+                MakeCard(cleCard, i);
+                MakeCard(creCard, i);
+                MakeCard(couCard, i);
+            }
         }
     }
 
-    public Card draw()
+    // Draw a random card from the deck
+    public Card Draw()
     {
         if (deck.Count > 0)
         {
-            int length = deck.Count;
-            int CardChosen = Random.Range(0, length--);
-            return deck[CardChosen];
+            // Randomly select a card and remove it from the deck
+            int cardChosen = Random.Range(0, deck.Count);
+            Card drawnCard = deck[cardChosen];
+            RemoveCard(drawnCard);
+            return drawnCard;
         }
         else
         {
-            print("deck is empty");
+            Debug.LogWarning("Deck is empty");
             return null;
         }
-
-
     }
 }
+

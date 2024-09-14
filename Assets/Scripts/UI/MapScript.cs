@@ -1,22 +1,24 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class MapScript : MonoBehaviour
 {
+    // Information and name for the map location
     public string locInfo;
     public string locName;
-    public MapLocationsManager manager;
 
+    public MapLocationsManager manager; // Reference to the MapLocationsManager
 
-public void Start()
-    {
-        
-    }
-    
+    // OnSelect is triggered when the map location is selected
     public void OnSelect()
     {
-        manager.LocationSelect(locInfo, locName);
+        // Delegate the selection logic to the manager, passing location info and name
+        if (manager != null)  // Check if the manager reference is assigned
+        {
+            manager.LocationSelect(locInfo, locName);
+        }
+        else
+        {
+            Debug.LogWarning("MapLocationsManager reference is missing on " + gameObject.name);
+        }
     }
-
 }

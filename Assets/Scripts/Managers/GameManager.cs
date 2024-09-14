@@ -48,7 +48,7 @@ public class GameManager : MonoBehaviour
     }
     public void setTopicGM(string type, ConvoTopic topic)
     {
-        topic.setTopic(type);
+        topic.SetTopic(type);
     }
 
     public void OnEndTurn()
@@ -62,8 +62,8 @@ public class GameManager : MonoBehaviour
             fullHandText.enabled = false;
             for (int i = 0; i < missingCards; i++)
             {
-                Card card = deckContainer.draw();
-                deckContainer.removeCard(card);
+                Card card = deckContainer.Draw();
+                deckContainer.RemoveCard(card);
                 card.transform.SetParent(playerArea.transform);
                 playerArea.AddCards(card);
             }           
@@ -72,7 +72,7 @@ public class GameManager : MonoBehaviour
         {
             fullHandText.enabled = true;
         }
-        if (currentConvoTopic != null) { dropzone.scoreCard(); } 
+        if (currentConvoTopic != null) { dropzone.ScoreCards(); } 
         
      }
 

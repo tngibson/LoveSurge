@@ -98,7 +98,7 @@ public class GridElementSwapper : MonoBehaviour, IPointerClickHandler
         int indexB = elementB.GetSiblingIndex();
         if (elementA.GetComponent<DragDrop>().getPlayerArea() == null)
         {
-            elementA.GetComponent<DragDrop>().getDropzone().swapCards(indexA, indexB);
+            elementA.GetComponent<DragDrop>().getDropzone().SwapCards(indexA, indexB);
         }
         elementA.SetSiblingIndex(indexB);
         elementB.SetSiblingIndex(indexA);

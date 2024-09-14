@@ -1,28 +1,27 @@
-using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 public class PlayerArea : MonoBehaviour
 {
-    [SerializeField] List<Card> cardsInHand;
-    public List<Card> CardsInHand { get { return cardsInHand; }  }
+    // List to store the player's hand of cards
+    [SerializeField] private List<Card> cardsInHand;
+    public List<Card> CardsInHand { get { return cardsInHand; } }
+
+    // Initialize the cardsInHand list
     private void Awake()
     {
         cardsInHand = new List<Card>();
     }
 
-    // Update is called once per frame
-    void Update()
+    // Add a card to the player's hand
+    public void AddCards(Card card)
     {
-        
+        cardsInHand.Add(card);  // Use the backing field directly, no need for property access here
     }
 
-    public void AddCards(Card value)
+    // Remove a card from the player's hand
+    public void RemoveCards(Card card)
     {
-        CardsInHand.Add(value);
-    }
-    public void RemoveCards(Card value)
-    {
-        CardsInHand.Remove(value);
+        cardsInHand.Remove(card);  // Use the backing field directly
     }
 }

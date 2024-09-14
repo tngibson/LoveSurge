@@ -1,52 +1,52 @@
-using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
 public class TopicContainer : MonoBehaviour
 {
-    [SerializeField] public List<ConvoTopic> convoTopics;
-    [SerializeField] public List<ConvoTopic> doneConvos;
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
+    // List of conversation topics and completed topics
+    [SerializeField] private List<ConvoTopic> convoTopics;
+    [SerializeField] private List<ConvoTopic> doneConvos;
 
     // Update is called once per frame
     void Update()
     {
-        disableButtons();
+        DisableButtons();
     }
-    public void disableButtons()
+
+    // Disables all buttons except the clicked topic
+    public void DisableButtons()
     {
-        
-        for (int i = 0; i < convoTopics.Count; i++) 
+        // Loop through each conversation topic to check if any are clicked
+        foreach (var topic in convoTopics)
         {
-            if (convoTopics[i] != null)
+            if (topic == null) continue;
+
+            if (topic.GetIsClicked())
             {
-                if (convoTopics[i].getIsClicked())
+                // Disable buttons for all non-clicked topics
+                foreach (var otherTopic in convoTopics)
                 {
-                    for (int j = 0; j < convoTopics.Count; j++)
+                    if (otherTopic != null && !otherTopic.GetIsClicked())
                     {
-                        if (convoTopics[j].getIsClicked() == false)
-                        {
-                            convoTopics[j].gameObject.GetComponentInChildren<Button>().enabled = false;
-                        }
+                        otherTopic.gameObject.GetComponentInChildren<Button>().enabled = false;
                     }
-                    return;
                 }
+                return;  // Exit once a clicked topic is found and others are disabled
             }
         }
     }
-    public void enableButtons()
+
+    // Enables all buttons for the topics
+    public void EnableButtons()
     {
-        for (int i = 0; i < convoTopics.Count; i++)
+        // Enable buttons for all conversation topics
+        foreach (var topic in convoTopics)
         {
-            if (convoTopics[i] == null){continue;}
-            convoTopics[i].gameObject.GetComponentInChildren<Button>().enabled = true;
+            if (topic != null)
+            {
+                topic.gameObject.GetComponentInChildren<Button>().enabled = true;
+            }
         }
     }
-  
 }
-

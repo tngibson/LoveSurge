@@ -44,14 +44,14 @@ public class Playtest : MonoBehaviour
     }
     protected void setTopics(int num1,string topic1, int num2, string topic2, int num3, string topic3)
     {
-        convoTopic1.setNum(num1);
-        convoTopic1.setTopic(topic1);
+        convoTopic1.SetNum(num1);
+        convoTopic1.SetTopic(topic1);
         //convoTopics.Add(convoTopic1);
-        convoTopic2.setNum(num2);
-        convoTopic2.setTopic(topic2);
+        convoTopic2.SetNum(num2);
+        convoTopic2.SetTopic(topic2);
         //convoTopics.Add(convoTopic2);
-        convoTopic3.setNum(num3);
-        convoTopic3.setTopic(topic3);
+        convoTopic3.SetNum(num3);
+        convoTopic3.SetTopic(topic3);
     }
 
     void showTopics()

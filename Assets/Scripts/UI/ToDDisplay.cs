@@ -1,24 +1,41 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.UI;
 using TMPro;
 
 public class ToDDisplay : MonoBehaviour
 {
+    // References to UI text components
     public TextMeshProUGUI timeText;
     public TextMeshProUGUI charismaText;
     public TextMeshProUGUI courageText;
     public TextMeshProUGUI clevernessText;
     public TextMeshProUGUI creativityText;
 
-    // Update is called once per frame
-    void Update()
+    // Cache reference to the global stats to avoid repeated access
+    private GlobalInformation globalInfo;
+
+    // Called when the script instance is being loaded
+    private void Start()
     {
-        timeText.text = "Time Of Day: " + GlobalInformation.instance.timeOfDay.ToString();
-        charismaText.text = "Charisma: " + GlobalInformation.instance.statlist[(int)Stats.Charisma];
-        courageText.text = "Courage: " + GlobalInformation.instance.statlist[(int)Stats.Courage];
-        clevernessText.text = "Cleverness: " + GlobalInformation.instance.statlist[(int)Stats.Cleverness];
-        creativityText.text = "Creativity: " + GlobalInformation.instance.statlist[(int)Stats.Creativity];
+        // Cache the reference to GlobalInformation instance for better performance
+        globalInfo = GlobalInformation.instance;
+
+        // Initial UI update to set values right from the start
+        UpdateUI();
+    }
+
+    // Update the text elements based on the current state
+    private void Update()
+    {
+        UpdateUI();
+    }
+
+    // Method to update the displayed text for time of day and stats
+    private void UpdateUI()
+    {
+        timeText.text = "Time Of Day: " + globalInfo.timeOfDay.ToString();
+        charismaText.text = "Charisma: " + globalInfo.statlist[(int)Stats.Charisma];
+        courageText.text = "Courage: " + globalInfo.statlist[(int)Stats.Courage];
+        clevernessText.text = "Cleverness: " + globalInfo.statlist[(int)Stats.Cleverness];
+        creativityText.text = "Creativity: " + globalInfo.statlist[(int)Stats.Creativity];
     }
 }

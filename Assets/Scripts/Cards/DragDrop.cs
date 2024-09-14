@@ -43,7 +43,7 @@ public class DragDrop : MonoBehaviour
         {
             if (DropZone == null) { print("DropZone is null"); }
             transform.SetParent(dropZone.transform, false);
-            DropZone.addCard(GetComponent<Card>());
+            DropZone.AddCard(GetComponent<Card>());
             this.GetComponent<GridElementSwapper>().setFirstSelectedElement(null);
             playerArea = null;
         }

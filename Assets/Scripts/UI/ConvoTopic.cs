@@ -1,92 +1,127 @@
 using System.Collections;
-using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
 public class ConvoTopic : MonoBehaviour
 {
+    // Serialized fields for attribute and power number
     [SerializeField] private string convoAttribute;
     public string ConvoAttribute { get { return convoAttribute; } set { convoAttribute = value; } }
+
     [SerializeField] private int powerNum;
     public int PowerNum { get { return powerNum; } set { powerNum = value; } }
-    [SerializeField] TextMeshProUGUI attributeText;
+
+    // UI components for displaying attribute and power number
+    [SerializeField] private TextMeshProUGUI attributeText;
     [SerializeField] public TextMeshProUGUI numText;
-    [SerializeField] Image Background;
-    [SerializeField] GameObject AttrIconContainer;
-    SpriteRenderer iconRenderer;
-    Sprite AttrIcon;
+    [SerializeField] private Image background;
 
-    [SerializeField] GameObject dropZone;
-    [SerializeField] Dropzone DropZone;
-    [SerializeField] GameManager gameManager;
+    // Icon-related fields
+    [SerializeField] private GameObject attrIconContainer;
+    private SpriteRenderer iconRenderer;
 
-    [SerializeField] Sprite chaIcon;
-    [SerializeField] Sprite cleIcon;
-    [SerializeField] Sprite couIcon;
-    [SerializeField] Sprite creIcon;
+    // Icon sprites for different attributes
+    [SerializeField] private Sprite chaIcon;
+    [SerializeField] private Sprite cleIcon;
+    [SerializeField] private Sprite couIcon;
+    [SerializeField] private Sprite creIcon;
 
+    // Drop zone and game manager references
+    [SerializeField] private GameObject dropZone;
+    [SerializeField] private Dropzone dropZoneScript;
+    [SerializeField] private GameManager gameManager;
+
+    // To track if this convo topic has been clicked
     public bool isClicked = false;
+
+    // Called when the script instance is being loaded
     void Awake()
     {
-        iconRenderer = AttrIconContainer.GetComponentInChildren<SpriteRenderer>();
+        // Cache references to the SpriteRenderer and GameManager
+        iconRenderer = attrIconContainer.GetComponentInChildren<SpriteRenderer>();
         gameManager = FindAnyObjectByType<GameManager>();
     }
+
+    // Start is called before the first frame update
     void Start()
     {
+        // Initialize drop zone and set the appropriate icon based on the convoAttribute
         dropZone = GameObject.Find("Dropzone");
-        DropZone = dropZone.GetComponent<Dropzone>();
-        setIcon();
-    }
-    // Update is called once per frame
-    void Update()
-    {
-        
+        dropZoneScript = dropZone.GetComponent<Dropzone>();
+        SetIcon();
     }
 
-    public void setTopic(string topic)
+    // Set the conversation topic and update the UI
+    public void SetTopic(string topic)
     {
         convoAttribute = topic;
         attributeText.text = topic;
-        setIcon();
+        SetIcon(); // Update the icon based on the new topic
     }
-    public void setNum(int numInput)
+
+    // Set the power number and update the UI
+    public void SetNum(int numInput)
     {
         powerNum = numInput;
         numText.text = numInput.ToString();
     }
-    public void setIcon()
+
+    // Set the appropriate icon based on the conversation attribute
+    public void SetIcon()
     {
-        if (convoAttribute.ToLower() == "cha")
+        switch (convoAttribute.ToLower())
         {
-            iconRenderer.sprite = chaIcon;
-            iconRenderer.GetComponent<SpriteRenderer>().color = Color.black;
-        }
-        else if (convoAttribute.ToLower() == "cre")
-        {
-            iconRenderer.sprite = creIcon;
-        }
-        else if (convoAttribute.ToLower() == "cou")
-        {
-            iconRenderer.sprite = couIcon;
-        }
-        else if (convoAttribute.ToLower() == "cle")
-        {
-            iconRenderer.sprite = cleIcon;
+            case "cha":
+                iconRenderer.sprite = chaIcon;
+                iconRenderer.color = Color.black;
+                break;
+            case "cre":
+                iconRenderer.sprite = creIcon;
+                break;
+            case "cou":
+                iconRenderer.sprite = couIcon;
+                break;
+            case "cle":
+                iconRenderer.sprite = cleIcon;
+                break;
+            default:
+                Debug.LogWarning("Unknown convoAttribute: " + convoAttribute);
+                break;
         }
     }
 
-    public int getPowerNum()
+    // Return the power number
+    public int GetPowerNum()
     {
         return powerNum;
     }
-    public string getTopic()
+
+    // Return the conversation topic
+    public string GetTopic()
     {
         return convoAttribute;
     }
-    public void onButtonPress()
+
+    // Called when the button is pressed, changes background color and updates state
+    public void OnButtonPress()
     {
-        if (!isClicked) { Background.color = new Color(1, 0.92f, 0.016f, 1); isClicked = true; DropZone.selectedConvoTopic = this; gameManager.currentConvoTopic = this; }
+        if (!isClicked)
+        {
+            // Highlight the background color when clicked
+            background.color = new Color(1, 0.92f, 0.016f, 1);
+            isClicked = true;
+
+            // Set this as the selected convo topic in the drop zone and game manager
+            dropZoneScript.selectedConvoTopic = this;
+            gameManager.currentConvoTopic = this;
+        }
     }
-    public bool getIsClicked() { return isClicked; }
+
+    // Return whether this topic has been clicked
+    public bool GetIsClicked()
+    {
+        return isClicked;
+    }
 }
+

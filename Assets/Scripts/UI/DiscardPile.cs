@@ -1,31 +1,47 @@
-using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.UI;
 
 public class DiscardPile : MonoBehaviour
 {
-    List<Card> pile;
+    // A list to store the discarded cards
+    private List<Card> pile;
+
+    // Property to access the discard pile
     public List<Card> Pile { get { return pile; } }
+
     // Start is called before the first frame update
     void Start()
     {
+        // Initialize the pile as an empty list
         pile = new List<Card>();
     }
 
-    // Update is called once per frame
-    void Update()
+    // Adds a card to the discard pile
+    public void AddToDiscard(Card played)
     {
-        
-    }
-    public void addToDiscard(Card played)
-    {
+        // Add the card to the pile
         pile.Add(played);
 
-        // This makes it so that the card containers are no longer see-through
+        // Set the card's image to fully opaque
         played.SetImageAlpha(1f);
-        // This makes it so that the cards can no longer be moved or swapped when they've been discarded
-        Destroy(played.GetComponent<DragDrop>());
-        Destroy(played.GetComponent<GridElementSwapper>());
+
+        // Remove components to prevent the card from being moved or swapped
+        RemoveCardInteractions(played);
+    }
+
+    // Method to remove DragDrop and GridElementSwapper components from the card
+    private void RemoveCardInteractions(Card played)
+    {
+        var dragDrop = played.GetComponent<DragDrop>();
+        if (dragDrop != null)
+        {
+            Destroy(dragDrop);
+        }
+
+        var gridSwapper = played.GetComponent<GridElementSwapper>();
+        if (gridSwapper != null)
+        {
+            Destroy(gridSwapper);
+        }
     }
 }
