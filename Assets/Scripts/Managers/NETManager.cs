@@ -13,7 +13,7 @@ public class NETManager : MonoBehaviour
     {
         gameObject.SetActive(false);
         GlobalInformation.instance.ProgressTimeOfDay();
-        UpdateDialogue("Lorem Ipsum! Ja?");
+        dialogueText.text = "Lorem Ipsum! Ja?";
     }
 
     // Dialog Option 1
