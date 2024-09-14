@@ -10,8 +10,7 @@ public class ToDDisplay : MonoBehaviour
     public TextMeshProUGUI clevernessText;
     public TextMeshProUGUI creativityText;
 
-    // Cache reference to the global stats to avoid repeated access
-    private GlobalInformation globalInfo;
+    private GlobalInformation globalInfo; // Cache reference to the global stats to avoid repeated access
 
     // Called when the script instance is being loaded
     private void Start()
