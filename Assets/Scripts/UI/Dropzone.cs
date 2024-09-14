@@ -46,8 +46,15 @@ public class Dropzone : MonoBehaviour
     // Adds a card to the played cards list and removes it from the player's area
     public void AddCard(Card card)
     {
-        playedCards.Add(card);
-        playerArea.RemoveCards(card);
+        if (card != null)
+        {
+            playedCards.Add(card);
+            playerArea.RemoveCards(card);
+        }
+        else
+        {
+            Debug.LogError("There is no card to add.");
+        }
     }
 
     // Scores the played cards, moves them to the discard pile, and updates the UI
