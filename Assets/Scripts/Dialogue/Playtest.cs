@@ -52,9 +52,9 @@ public class Playtest : MonoBehaviour
     // Initialize file sources for reading text
     private void InitializeFileSources()
     {
-        source = new FileInfo("Assets/Assets/CelciText.txt");
+        source = new FileInfo("Assets/Assets/DialogueResources/Dialogue Files/CelciText.txt");
         reader = source.OpenText();
-        playerSource = new FileInfo("Assets/Assets/playerText.txt");
+        playerSource = new FileInfo("Assets/Assets/DialogueResources/Dialogue Files/playerText.txt");
         playerReader = playerSource.OpenText();
     }
 
