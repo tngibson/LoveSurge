@@ -10,9 +10,10 @@ public class DrawCards : MonoBehaviour
     [SerializeField] private GameObject card4;
     [SerializeField] private PlayerDeckScript deckContainer;  // Reference to the deck containing cards
     [SerializeField] private PlayerArea playerArea;  // Reference to the player's area where cards will be added
-
+    [SerializeField] private AudioSource cardShuffle; // Reference to the Card Shuffle sfx
     public void OnClick()
     {
+        cardShuffle.Play();
         // Draw 5 cards from the deck and add them to the player's area
         for (int i = 0; i < 5; i++)
         {

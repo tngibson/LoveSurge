@@ -7,6 +7,8 @@ public class DragDrop : MonoBehaviour
     [SerializeField] private Dropzone dropZone;  // Reference to the Dropzone component
     [SerializeField] private Card card;  // Reference to the Card component
     [SerializeField] private PlayerArea playerArea;  // Reference to the PlayerArea component
+    [SerializeField] private AudioSource cardHover; // Reference to the Card Hover Sound effect
+    [SerializeField] private AudioSource cardPlacedSFX; // Reference to the Card Played SFX
 
     private bool isDragging = false;  // Flag to check if the object is being dragged
     private Transform startParent;  // To store the original parent of the dragged object
@@ -19,7 +21,7 @@ public class DragDrop : MonoBehaviour
         // Initialize references to Dropzone and PlayerArea components
         GameObject dropZoneObject = GameObject.Find("Dropzone");
         dropZone = dropZoneObject?.GetComponent<Dropzone>();
-
+        
         GameObject playerAreaObject = GameObject.Find("PlayerArea");
         playerArea = playerAreaObject?.GetComponent<PlayerArea>();
 
@@ -55,11 +57,16 @@ public class DragDrop : MonoBehaviour
 
         if (isOverDropZone && dropZone != null)
         {
+            print(transform.name);
+            print(cardPlacedSFX);
+            cardPlacedSFX.Play();
+            
             // Drop the object in the drop zone
             transform.SetParent(currentDropZone.transform, false);
             dropZone.AddCard(card);
             GetComponent<GridElementSwapper>()?.SetFirstSelectedElement(null);
             playerArea = null;
+            
         }
         else
         {
@@ -92,4 +99,10 @@ public class DragDrop : MonoBehaviour
     public PlayerArea GetPlayerArea() => playerArea;
 
     public Dropzone GetDropzone() => dropZone;
+
+    public void OnMouseOver()
+    {
+        cardHover.Play();
+        print("hover");
+    }
 }
