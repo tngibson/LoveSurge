@@ -21,7 +21,6 @@ public class RandEventHandler : MonoBehaviour
     int activeChoiceIndex = 0;
     protected StreamReader textReader;
     private FileInfo source1;
-    private float timer = 0f;
     [SerializeField] private AudioSource textSFX;
     protected string text = " ";
     int nextLineStr;
