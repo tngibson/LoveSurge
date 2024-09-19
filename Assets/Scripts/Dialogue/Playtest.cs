@@ -42,6 +42,7 @@ public class Playtest : MonoBehaviour
     // Timer
     private float timer = 3f;
 
+    [SerializeField] private AudioSource textSFX;
     // Start is called before the first frame update
     protected void Start()
     {
@@ -83,6 +84,7 @@ public class Playtest : MonoBehaviour
         if (stream != null)
         {
             text = stream.ReadLine();
+            textSFX.Play();
             convoTextOutput.text = text ?? ""; // If the text is null, set it to an empty string
         }
     }

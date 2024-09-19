@@ -1,4 +1,7 @@
 using UnityEngine;
+using System.Collections;
+using System.Collections.Generic;
+using UnityEngine.SceneManagement;
 
 public class MapScript : MonoBehaviour
 {
@@ -14,6 +17,8 @@ public class MapScript : MonoBehaviour
         // Delegate the selection logic to the manager, passing location info and name
         if (manager != null)  // Check if the manager reference is assigned
         {
+            SceneManager.LoadScene(sceneName:locName);
+            this.gameObject.SetActive(false);
             manager.LocationSelect(locInfo, locName);
         }
         else

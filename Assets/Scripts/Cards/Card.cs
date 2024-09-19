@@ -11,6 +11,7 @@ public abstract class Card : MonoBehaviour
     [SerializeField] public TextMeshProUGUI numText;
     [SerializeField] public GameObject container;
     [SerializeField] public Image background;
+    [SerializeField] private AudioSource cardHover; // Reference to the Card Hover Sound effect
 
     // Private backing fields with public properties for type and power
     private string type;
@@ -36,6 +37,7 @@ public abstract class Card : MonoBehaviour
     {
         UpdatePowerDisplay();  // Initialize the power display on start
         SetType();             // Set the type of card in derived classes
+        
     }
 
     // Abstract method to set the card type, which will be implemented in derived classes
