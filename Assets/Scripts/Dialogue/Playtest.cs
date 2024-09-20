@@ -44,7 +44,9 @@ public class Playtest : MonoBehaviour
 
     // Serialized fields for UI output
     [SerializeField] private TextMeshProUGUI dateTextOutput;
+    [SerializeField] public TextMeshProUGUI dateNameText;
     [SerializeField] private TextMeshProUGUI playerTextOutput;
+    [SerializeField] public TextMeshProUGUI playerNameText;
 
     // File handling variables
     /*
@@ -65,7 +67,7 @@ public class Playtest : MonoBehaviour
     protected string playerText = " ";
 
     // Field for the date character so we can change their sprites
-    [SerializeField] private Image dateCharacter;
+    [SerializeField] public Image dateCharacter;
 
     [SerializeField] private AudioSource textSFX;
     // Start is called before the first frame update
@@ -73,6 +75,8 @@ public class Playtest : MonoBehaviour
     {
         //InitializeFileSources();
         ShowTopics();
+        playerNameText.text = "Player"; // For now, since we are not taking player's name, this is just set to Player. Later, it will be set a different way
+        dateNameText.text = dateCharacter.gameObject.ToString();
     }
 
     // Initialize file sources for reading text

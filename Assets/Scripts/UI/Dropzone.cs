@@ -31,6 +31,10 @@ public class Dropzone : MonoBehaviour
     // Typewriter settings
     [SerializeField] private float typewriterSpeed = 0.05f;  // Speed of the typewriter effect
 
+    // Flag to indicate if the typewriter effect is running
+    private bool isTypewriting = false;
+    private bool skipRequested = false;
+
     // Awake is called when the script instance is being loaded
     void Awake()
     {
@@ -156,6 +160,10 @@ public class Dropzone : MonoBehaviour
         List<string> lines;
         List<Sprite> sprites;
 
+        //Clear the text
+        playerText.text = "";
+        dateText.text = "";
+
         // Depending on which convo topic we have selected, we change which lines and sprites we use
         switch (selectedConvoTopic.ConvoAttribute)
         {
@@ -188,14 +196,33 @@ public class Dropzone : MonoBehaviour
         lineNum++;
     }
 
-    // Coroutine that writes the dialog with a typewriter effect
     private IEnumerator TypewriteDialog(TextMeshProUGUI textComponent, string message, Sprite sprite)
     {
-        textComponent.text = "";  // Clear text before typing
+        isTypewriting = true;     // Typewriting is now active
+        skipRequested = false;    // Reset the skip request
+
         foreach (char letter in message.ToCharArray())
         {
+            if (skipRequested)
+            {
+                // If skip is requested, instantly complete the dialog
+                textComponent.text = message;
+                break;
+            }
+
             textComponent.text += letter;
-            yield return new WaitForSeconds(typewriterSpeed);  // Delay for each character
+            yield return new WaitForSeconds(typewriterSpeed);  // Control typing speed
+        }
+
+        isTypewriting = false;  // Typewriting is complete
+    }
+
+    void Update()
+    {
+        // Check for skip input only when typewriting is active
+        if (isTypewriting && Input.GetButtonDown("Skip"))
+        {
+            skipRequested = true;
         }
     }
 
