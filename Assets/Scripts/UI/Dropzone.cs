@@ -131,25 +131,22 @@ public class Dropzone : MonoBehaviour
     // Checks if Dialog should be played
     private void CheckDialogTriggers()
     {
-        // If we have not played any dialog, play the first bit
-        if (!dialogPlayedAtFullPower)
+        //If we complete the topic, play the final bit
+        if (!dialogPlayedAtZeroPower && dialogPlayedAtHalfPower && selectedConvoTopic.PowerNum <= 0)
         {
             StartCoroutine(PlayDialog());
-            dialogPlayedAtFullPower = true;
+            dialogPlayedAtZeroPower = true;
         }
-
         // If we have played the first bit but not the second, and the current convo topic's power is below half, play the second bit
-        if (!dialogPlayedAtHalfPower && dialogPlayedAtFullPower && selectedConvoTopic.PowerNum <= initialPower / 2)
+        else if (!dialogPlayedAtHalfPower && dialogPlayedAtFullPower && selectedConvoTopic.PowerNum <= initialPower / 2)
         {
             StartCoroutine(PlayDialog());
             dialogPlayedAtHalfPower = true;
         }
-
-        //If we complete the topic, play the final bit
-        if (!dialogPlayedAtZeroPower && selectedConvoTopic.PowerNum <= 0)
+        else
         {
             StartCoroutine(PlayDialog());
-            dialogPlayedAtZeroPower = true;
+            dialogPlayedAtFullPower = true;
         }
     }
 

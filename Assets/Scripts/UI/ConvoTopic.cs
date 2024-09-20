@@ -85,6 +85,8 @@ public class ConvoTopic : MonoBehaviour
             case "cle":
                 iconRenderer.sprite = cleIcon;
                 break;
+            case "":
+                break;
             default:
                 Debug.LogWarning("Unknown convoAttribute: " + convoAttribute);
                 break;
