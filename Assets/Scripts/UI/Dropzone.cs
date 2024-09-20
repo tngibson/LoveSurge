@@ -1,3 +1,4 @@
+using System.Collections;
 using System.Collections.Generic;
 using System.IO;
 using TMPro;
@@ -5,29 +6,30 @@ using UnityEngine;
 
 public class Dropzone : MonoBehaviour
 {
-    // UI elements for displaying score, player, and date
     [SerializeField] private TextMeshProUGUI scoreText;
     [SerializeField] private TextMeshProUGUI playerText;
     [SerializeField] private TextMeshProUGUI dateText;
-
-    // List to store the cards played in the dropzone
     [SerializeField] private List<Card> playedCards;
-
-    // References to other gameplay objects
     [SerializeField] private DiscardPile discard;
     [SerializeField] private PlayerArea playerArea;
     [SerializeField] private TopicContainer topicContainer;
     [SerializeField] private Playtest currentSession;
-
-    // The currently selected conversation topic and its associated card
     [SerializeField] public ConvoTopic selectedConvoTopic;
 
-    // Stream readers for reading player and date information
+    /*
     private StreamReader playerReader;
     private StreamReader dateReader;
+    */ 
 
-    // Keeps track of the score for the current round
     private int score = 0;
+    private int lineNum = 0;
+    private int initialPower;
+    private bool dialogPlayedAtFullPower = false;
+    private bool dialogPlayedAtHalfPower = false;
+    private bool dialogPlayedAtZeroPower = false;
+
+    // Typewriter settings
+    [SerializeField] private float typewriterSpeed = 0.05f;  // Speed of the typewriter effect
 
     // Awake is called when the script instance is being loaded
     void Awake()
@@ -39,8 +41,10 @@ public class Dropzone : MonoBehaviour
     void Start()
     {
         // Initialize the StreamReader objects using the current session's playerReader and dateReader
+        /*
         playerReader = currentSession.GetPlayerReader();
         dateReader = currentSession.GetReader();
+        */
     }
 
     // Adds a card to the played cards list and removes it from the player's area
@@ -60,6 +64,12 @@ public class Dropzone : MonoBehaviour
     // Scores the played cards, moves them to the discard pile, and updates the UI
     public void ScoreCards()
     {
+        // Sets the initial power of the convo topic that is selected
+        if (!dialogPlayedAtFullPower)
+        {
+            initialPower = selectedConvoTopic.PowerNum;
+        }
+
         // Iterate through all played cards to calculate the score
         for (int i = 0; i < playedCards.Count; i++)
         {
@@ -83,6 +93,8 @@ public class Dropzone : MonoBehaviour
 
             // Move the card to the discard pile and update its position
             discard.AddToDiscard(playedCards[i]);
+
+
             playedCards[i].transform.SetParent(discard.transform, false);
             playedCards[i].transform.position = discard.transform.position;
         }
@@ -98,7 +110,10 @@ public class Dropzone : MonoBehaviour
         playedCards.Clear();
         score = 0;
 
-        // If the conversation topic has been completed (PowerNum is <= 0)
+        // Checks if Dialog should be played
+        CheckDialogTriggers();
+
+        // If the conversation topic has been completed 
         if (selectedConvoTopic.PowerNum <= 0)
         {
             selectedConvoTopic.isClicked = false;
@@ -107,14 +122,84 @@ public class Dropzone : MonoBehaviour
 
             // Move the completed topic to the 'done' list and remove it from the active list
             topicContainer.doneConvos.Add(selectedConvoTopic);
-            topicContainer.convoTopics.Remove(selectedConvoTopic);
 
+            topicContainer.convoTopics.Remove(selectedConvoTopic); 
             selectedConvoTopic = null; // Clear the selected topic
         }
+    }
 
-        // Read the next date and player info from the session and update the UI
-        currentSession.ReadText(dateText, dateReader);
-        currentSession.ReadText(playerText, playerReader);
+    // Checks if Dialog should be played
+    private void CheckDialogTriggers()
+    {
+        // If we have not played any dialog, play the first bit
+        if (!dialogPlayedAtFullPower)
+        {
+            StartCoroutine(PlayDialog());
+            dialogPlayedAtFullPower = true;
+        }
+
+        // If we have played the first bit but not the second, and the current convo topic's power is below half, play the second bit
+        if (!dialogPlayedAtHalfPower && dialogPlayedAtFullPower && selectedConvoTopic.PowerNum <= initialPower / 2)
+        {
+            StartCoroutine(PlayDialog());
+            dialogPlayedAtHalfPower = true;
+        }
+
+        //If we complete the topic, play the final bit
+        if (!dialogPlayedAtZeroPower && selectedConvoTopic.PowerNum <= 0)
+        {
+            StartCoroutine(PlayDialog());
+            dialogPlayedAtZeroPower = true;
+        }
+    }
+
+    // Coroutine to play the dialog 
+    private IEnumerator PlayDialog()
+    {
+        List<string> lines;
+        List<Sprite> sprites;
+
+        // Depending on which convo topic we have selected, we change which lines and sprites we use
+        switch (selectedConvoTopic.ConvoAttribute)
+        {
+            case "Cha":
+                lines = currentSession.chaLines;
+                sprites = currentSession.chaSprites;
+                break;
+            case "Cou":
+                lines = currentSession.couLines;
+                sprites = currentSession.couSprites;
+                break;
+            case "Cle":
+                lines = currentSession.cleLines;
+                sprites = currentSession.cleSprites;
+                break;
+            default:
+                lines = currentSession.creLines;
+                sprites = currentSession.creSprites;
+                break;
+        }
+
+        // Reads the first line (either PC or Date)
+        currentSession.ReadText(sprites[lineNum]);
+        yield return StartCoroutine(TypewriteDialog(playerText, lines[lineNum], sprites[lineNum]));
+        lineNum++;
+
+        // Reads the second line (whichever didn't go)
+        currentSession.ReadText(sprites[lineNum]);
+        yield return StartCoroutine(TypewriteDialog(dateText, lines[lineNum], sprites[lineNum]));
+        lineNum++;
+    }
+
+    // Coroutine that writes the dialog with a typewriter effect
+    private IEnumerator TypewriteDialog(TextMeshProUGUI textComponent, string message, Sprite sprite)
+    {
+        textComponent.text = "";  // Clear text before typing
+        foreach (char letter in message.ToCharArray())
+        {
+            textComponent.text += letter;
+            yield return new WaitForSeconds(typewriterSpeed);  // Delay for each character
+        }
     }
 
     // Swaps two cards in the played cards list by index

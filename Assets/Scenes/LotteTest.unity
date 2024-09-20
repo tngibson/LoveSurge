@@ -155,6 +155,7 @@ RectTransform:
   - {fileID: 893909312}
   - {fileID: 1410971186}
   - {fileID: 1959900819}
+  - {fileID: 209781738}
   m_Father: {fileID: 1108671395}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
@@ -307,6 +308,24 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!4 &209781738 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 1794910676395762992, guid: 210f6d71a663ea14fb7d4c3aa8722a33,
+    type: 3}
+  m_PrefabInstance: {fileID: 1569492291}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &209781739 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 7869239867412108594, guid: 210f6d71a663ea14fb7d4c3aa8722a33,
+    type: 3}
+  m_PrefabInstance: {fileID: 1569492291}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 436798d7c2f66444cb7307da8227ec8a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &228058151
 GameObject:
   m_ObjectHideFlags: 0
@@ -748,17 +767,113 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c05ab77b61243dd43a2c5e51e78c7565, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  power1: 10
-  power2: 10
-  power3: 10
+  power1: 14
+  power2: 12
+  power3: 12
+  power4: 14
   type1: Cou
   type2: Cre
   type3: Cle
+  type4: Cha
   convoTopic1: {fileID: 893909313}
   convoTopic2: {fileID: 1410971187}
   convoTopic3: {fileID: 1959900820}
+  convoTopic4: {fileID: 209781739}
+  couLines:
+  - 'Wait! Don''t go near that blob of code! '
+  - B-but, it's screwing up the only door to the digital bouncy castle emporium!
+  - AVAST *swordfights the glitched door*
+  - I feel the need to point out a backdoor..or like..a window, perhaps? WAIT, NO
+    LOOK OUT!
+  - '*cough cough* Thanks for saving me from that thing. *sips coffee and burns tongue*
+    AHH! '
+  - 'That coffee better have been worth it. '
+  couSpeaker:
+  - Sam
+  - PC
+  - PC
+  - Sam
+  - PC
+  - Sam
+  couSprites:
+  - {fileID: 21300000, guid: 4793868bd2892bd4abc8227a508d91d7, type: 3}
+  - {fileID: 21300000, guid: 52174a669ceab084893f4460563966e2, type: 3}
+  - {fileID: 21300000, guid: 416f14cbfab2b6c409b24a5d0f866e02, type: 3}
+  - {fileID: 21300000, guid: 1efff82e0a469464987b91e1e6ff298e, type: 3}
+  - {fileID: 21300000, guid: 4793868bd2892bd4abc8227a508d91d7, type: 3}
+  - {fileID: 21300000, guid: 416f14cbfab2b6c409b24a5d0f866e02, type: 3}
+  chaLines:
+  - So, do you have like...memories, or did you just exist?
+  - I don't have memories, but I was trained on everything. I have them now though!
+    Probably a glitch.
+  - What's it like having been really small and...stupid? That seems weird.
+  - It felt normal at the time but looking back, I was kind of...the worst? I wouldn'
+    be the person I am without it, though.
+  - Does it bother you that don't have a life to look back on?
+  - 'Maybe? I just..I feel like all the work you did to be YOU was done for me. '
+  chaSpeaker:
+  - PC
+  - Sam
+  - Sam
+  - PC
+  - PC
+  - Sam
+  chaSprites:
+  - {fileID: 21300000, guid: 1efff82e0a469464987b91e1e6ff298e, type: 3}
+  - {fileID: 21300000, guid: eb54c0b9144af6b4e8e9578c07a0c65b, type: 3}
+  - {fileID: 21300000, guid: 9a5bb60305ed56c4c8b921b54258e133, type: 3}
+  - {fileID: 21300000, guid: 416f14cbfab2b6c409b24a5d0f866e02, type: 3}
+  - {fileID: 21300000, guid: 9a5bb60305ed56c4c8b921b54258e133, type: 3}
+  - {fileID: 21300000, guid: 18e1c1d22c2cbaa47914600a13de0859, type: 3}
+  cleLines:
+  - You should be testing me as well you know..for the report?
+  - 'Ok, I''ll try and surprise you with a question or something later. '
+  - WHAT IS THE VELOCITY OF TWO BASEBALLS FLYING AT 30 MPH IN STRONG TROPICAL WIND
+    IN JULY?
+  - What? You know..I just google everything you ask me right? I don't just know
+    EVERYTHING. Also, what does it being July have anything to do with velocity?
+  - 34.43 m/s. By the way, I just sent you a text showing my work.
+  - Oh, nice. That's....I'm really impressed. I just kinda made that stuff up. Did
+    it being in July actually make a difference?
+  cleSpeaker:
+  - Sam
+  - PC
+  - PC
+  - Sam
+  - Sam
+  - PC
+  cleSprites:
+  - {fileID: 21300000, guid: 1efff82e0a469464987b91e1e6ff298e, type: 3}
+  - {fileID: 21300000, guid: eb54c0b9144af6b4e8e9578c07a0c65b, type: 3}
+  - {fileID: 21300000, guid: 1efff82e0a469464987b91e1e6ff298e, type: 3}
+  - {fileID: 21300000, guid: 9a5bb60305ed56c4c8b921b54258e133, type: 3}
+  - {fileID: 21300000, guid: 4793868bd2892bd4abc8227a508d91d7, type: 3}
+  - {fileID: 21300000, guid: 416f14cbfab2b6c409b24a5d0f866e02, type: 3}
+  creLines:
+  - Hey look at that NETcoaster! We should ride it!
+  - Oh yeah! Sounds good!
+  - That was....boring...so slow....
+  - Yes. I was hoping - a moment...my parameters allow me to perform maintenance.
+    Maybe I can....turn up the sPPEEEAHHHHHHH!!!!!
+  - '*huff* *huff* T-that was...so much...I-'
+  - Let's do one more!
+  creSpeaker:
+  - Sam
+  - PC
+  - PC
+  - Sam
+  - PC
+  - Sam
+  creSprites:
+  - {fileID: 21300000, guid: eb54c0b9144af6b4e8e9578c07a0c65b, type: 3}
+  - {fileID: 21300000, guid: 416f14cbfab2b6c409b24a5d0f866e02, type: 3}
+  - {fileID: 21300000, guid: 52174a669ceab084893f4460563966e2, type: 3}
+  - {fileID: 21300000, guid: 416f14cbfab2b6c409b24a5d0f866e02, type: 3}
+  - {fileID: 21300000, guid: 9a5bb60305ed56c4c8b921b54258e133, type: 3}
+  - {fileID: 21300000, guid: 18e1c1d22c2cbaa47914600a13de0859, type: 3}
   dateTextOutput: {fileID: 284961064}
   playerTextOutput: {fileID: 1170517047}
+  dateCharacter: {fileID: 0}
   textSFX: {fileID: 261167068}
 --- !u!1 &350194703
 GameObject:
@@ -1793,12 +1908,12 @@ PrefabInstance:
     - target: {fileID: 1794910676395762992, guid: 210f6d71a663ea14fb7d4c3aa8722a33,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: -318.50003
+      value: -443
       objectReference: {fileID: 0}
     - target: {fileID: 1794910676395762992, guid: 210f6d71a663ea14fb7d4c3aa8722a33,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 349.99994
+      value: 350
       objectReference: {fileID: 0}
     - target: {fileID: 1794910676395762992, guid: 210f6d71a663ea14fb7d4c3aa8722a33,
         type: 3}
@@ -2168,12 +2283,12 @@ PrefabInstance:
     - target: {fileID: 1794910676395762992, guid: 210f6d71a663ea14fb7d4c3aa8722a33,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 686.4
+      value: 423
       objectReference: {fileID: 0}
     - target: {fileID: 1794910676395762992, guid: 210f6d71a663ea14fb7d4c3aa8722a33,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 349.99994
+      value: 350
       objectReference: {fileID: 0}
     - target: {fileID: 1794910676395762992, guid: 210f6d71a663ea14fb7d4c3aa8722a33,
         type: 3}
@@ -2223,7 +2338,7 @@ PrefabInstance:
     - target: {fileID: 4769530229580397140, guid: 210f6d71a663ea14fb7d4c3aa8722a33,
         type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: -2
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6774775378063008673, guid: 210f6d71a663ea14fb7d4c3aa8722a33,
         type: 3}
@@ -2916,6 +3031,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 436798d7c2f66444cb7307da8227ec8a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &1414042759 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 2958710995322265174, guid: 210f6d71a663ea14fb7d4c3aa8722a33,
+    type: 3}
+  m_PrefabInstance: {fileID: 1569492291}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1472503610
 GameObject:
   m_ObjectHideFlags: 0
@@ -3041,12 +3168,12 @@ PrefabInstance:
     - target: {fileID: 1794910676395762992, guid: 210f6d71a663ea14fb7d4c3aa8722a33,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 189.00003
+      value: -20
       objectReference: {fileID: 0}
     - target: {fileID: 1794910676395762992, guid: 210f6d71a663ea14fb7d4c3aa8722a33,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 349.99994
+      value: 350
       objectReference: {fileID: 0}
     - target: {fileID: 1794910676395762992, guid: 210f6d71a663ea14fb7d4c3aa8722a33,
         type: 3}
@@ -3256,6 +3383,114 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!1001 &1569492291
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 21299114}
+    m_Modifications:
+    - target: {fileID: 262464567333059049, guid: 210f6d71a663ea14fb7d4c3aa8722a33,
+        type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: -606
+      objectReference: {fileID: 0}
+    - target: {fileID: 262464567333059049, guid: 210f6d71a663ea14fb7d4c3aa8722a33,
+        type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: -2
+      objectReference: {fileID: 0}
+    - target: {fileID: 1411185431709615657, guid: 210f6d71a663ea14fb7d4c3aa8722a33,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: OnButtonPress
+      objectReference: {fileID: 0}
+    - target: {fileID: 1794910676395762992, guid: 210f6d71a663ea14fb7d4c3aa8722a33,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 1794910676395762992, guid: 210f6d71a663ea14fb7d4c3aa8722a33,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 730
+      objectReference: {fileID: 0}
+    - target: {fileID: 1794910676395762992, guid: 210f6d71a663ea14fb7d4c3aa8722a33,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 350
+      objectReference: {fileID: 0}
+    - target: {fileID: 1794910676395762992, guid: 210f6d71a663ea14fb7d4c3aa8722a33,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1794910676395762992, guid: 210f6d71a663ea14fb7d4c3aa8722a33,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1794910676395762992, guid: 210f6d71a663ea14fb7d4c3aa8722a33,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1794910676395762992, guid: 210f6d71a663ea14fb7d4c3aa8722a33,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1794910676395762992, guid: 210f6d71a663ea14fb7d4c3aa8722a33,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1794910676395762992, guid: 210f6d71a663ea14fb7d4c3aa8722a33,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1794910676395762992, guid: 210f6d71a663ea14fb7d4c3aa8722a33,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1794910676395762992, guid: 210f6d71a663ea14fb7d4c3aa8722a33,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4769530229580397140, guid: 210f6d71a663ea14fb7d4c3aa8722a33,
+        type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: -607
+      objectReference: {fileID: 0}
+    - target: {fileID: 4769530229580397140, guid: 210f6d71a663ea14fb7d4c3aa8722a33,
+        type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6774775378063008673, guid: 210f6d71a663ea14fb7d4c3aa8722a33,
+        type: 3}
+      propertyPath: m_Name
+      value: ConvoTopic4
+      objectReference: {fileID: 0}
+    - target: {fileID: 7869239867412108594, guid: 210f6d71a663ea14fb7d4c3aa8722a33,
+        type: 3}
+      propertyPath: background
+      value: 
+      objectReference: {fileID: 1414042759}
+    - target: {fileID: 7869239867412108594, guid: 210f6d71a663ea14fb7d4c3aa8722a33,
+        type: 3}
+      propertyPath: attrIconContainer
+      value: 
+      objectReference: {fileID: 2020305036}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 210f6d71a663ea14fb7d4c3aa8722a33, type: 3}
 --- !u!1 &1601102898
 GameObject:
   m_ObjectHideFlags: 0
@@ -3751,6 +3986,12 @@ Transform:
   m_Children: []
   m_Father: {fileID: 1108671395}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &2020305036 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 4070478798660581628, guid: 210f6d71a663ea14fb7d4c3aa8722a33,
+    type: 3}
+  m_PrefabInstance: {fileID: 1569492291}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &2122113157 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 4070478798660581628, guid: 210f6d71a663ea14fb7d4c3aa8722a33,
