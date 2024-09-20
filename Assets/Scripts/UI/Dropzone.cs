@@ -120,6 +120,25 @@ public class Dropzone : MonoBehaviour
         // If the conversation topic has been completed 
         if (selectedConvoTopic.PowerNum <= 0)
         {
+            // These 3 if statements make sure that you get to read all dialog, regardless of how fast you finish the topic
+            if (!dialogPlayedAtZeroPower)
+            {
+                StartCoroutine(PlayDialog());
+                dialogPlayedAtZeroPower = true;
+            }
+
+            if (!dialogPlayedAtHalfPower)
+            {
+                StartCoroutine(PlayDialog());
+                dialogPlayedAtHalfPower = true;
+            }
+
+            if (!dialogPlayedAtFullPower)
+            {
+                StartCoroutine(PlayDialog());
+                dialogPlayedAtZeroPower = true;
+            }
+
             selectedConvoTopic.isClicked = false;
             topicContainer.EnableButtons(); // Re-enable topic buttons
             selectedConvoTopic.gameObject.SetActive(false); // Hide the completed topic
