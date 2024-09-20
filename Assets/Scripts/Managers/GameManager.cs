@@ -1,6 +1,7 @@
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class GameManager : MonoBehaviour
 {
@@ -31,6 +32,11 @@ public class GameManager : MonoBehaviour
     private int turnCount = 0;
 
     public List<string> categories = new List<string> { "Cha", "Cou", "Cle", "Cre" }; // List of categories for conversation topics
+
+    // Buttons 
+    [SerializeField] private GameObject drawCardsButton;
+    [SerializeField] private GameObject endTurnButton;
+    [SerializeField] private GameObject mapButton;
 
     // Initial game setup
     private void Awake()
@@ -93,6 +99,13 @@ public class GameManager : MonoBehaviour
         if (currentConvoTopic != null)
         {
             dropzone.ScoreCards();
+        }
+
+        if (topicContainer.convoTopics.Count == 0)
+        {
+            drawCardsButton.SetActive(false);
+            endTurnButton.SetActive(false);
+            mapButton.SetActive(true);
         }
     }
 

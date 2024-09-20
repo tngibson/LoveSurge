@@ -8,6 +8,6 @@ public class datebutton : MonoBehaviour
     // Start is called before the first frame update
     public void onPress()
     {
-        SceneManager.LoadScene(sceneName: "LotteTest");
+        SceneManager.LoadScene(sceneName: "SamDate");
     }
 }

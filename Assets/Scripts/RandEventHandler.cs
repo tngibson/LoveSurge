@@ -8,7 +8,7 @@ using UnityEngine.UI;
 
 public class RandEventHandler : MonoBehaviour
 {
-    [SerializeField] int ChoiceCounter; // Reference to how many choices the text has
+    [SerializeField] int ChoiceCounter;
     [SerializeField] string eventName;
     [SerializeField] GameObject mapButton;
     [SerializeField] GameObject button1;
@@ -27,60 +27,87 @@ public class RandEventHandler : MonoBehaviour
     int lineNum = 0;
     Choices activeChoiseInfo;
     FileInfo choiceDialogue;
-    // Start is called before the first frame update
+
+    // Typewriter variables
+    [SerializeField] private float typewriterSpeed = 0.05f;
+    private bool isTypewriting = false;
+    private bool skipRequested = false;
+
     void Start()
     {
         InitializeFileSources();
-        ReadText(textOutput, textReader);
+        StartCoroutine(TypewriteText(textOutput, textReader));  // Start with typewriter effect
         button1.SetActive(false);
         button2.SetActive(false);
         mapButton.SetActive(false);
     }
+
     private void InitializeFileSources()
     {
-        source1 = new FileInfo("Assets/Assets/DialogueResources/Dialogue Files/" + eventName +".txt");
-
+        source1 = new FileInfo("Assets/Assets/DialogueResources/Dialogue Files/" + eventName + ".txt");
         textReader = source1.OpenText();
     }
-    // Update is called once per frame
+
     void Update()
     {
-        
-
+        // Check for skip input
+        if (isTypewriting && Input.GetButtonDown("Skip"))
+        {
+            skipRequested = true;  // Skip request triggered
+        }
     }
-    public void ReadText(TextMeshProUGUI convoTextOutput, StreamReader stream)
+
+    public IEnumerator TypewriteText(TextMeshProUGUI convoTextOutput, StreamReader stream)
     {
         if (stream != null)
         {
             lineNum++;
             text = stream.ReadLine();
-            textSFX.Play();
+            textSFX.Play();  // Play sound effect when new text appears
             nextLineStr = stream.Peek();
+
             if (text.Contains("CHOICE"))
             {
                 playChoice();
-                return;
+                yield break;  // Exit the coroutine when it's a choice
             }
-            else
+
+            // Clear the text before typewriting begins
+            convoTextOutput.text = "";
+            isTypewriting = true;
+            skipRequested = false;
+
+            // Typewrite each character
+            foreach (char letter in text.ToCharArray())
             {
-                convoTextOutput.text = text ?? ""; // If the text is null, set it to an empty string
+                if (skipRequested)
+                {
+                    // If skip is requested, show the full text immediately
+                    convoTextOutput.text = text;
+                    break;
+                }
+                convoTextOutput.text += letter;
+                yield return new WaitForSeconds(typewriterSpeed);  // Control typing speed
             }
+
+            isTypewriting = false;
+
             if (nextLineStr == -1)
             {
                 textReader = null;
-                if (activeChoiseInfo != null) 
+                if (activeChoiseInfo != null)
                 {
-                    if (activeChoiseInfo.afterChoiceFilePath == "") 
-                    { 
+                    if (activeChoiseInfo.afterChoiceFilePath == "")
+                    {
                         nextlineButton.SetActive(false);
                         mapButton.SetActive(true);
-                        return;
+                        yield break;
                     }
                     FileInfo returnDia = new FileInfo(activeChoiseInfo.afterChoiceFilePath);
                     textReader = returnDia.OpenText();
                     activeChoiseInfo = null;
                     activeChoiceIndex++;
-                    ReadText(convoTextOutput, textReader);
+                    StartCoroutine(TypewriteText(convoTextOutput, textReader));
                 }
                 else
                 {
@@ -90,6 +117,7 @@ public class RandEventHandler : MonoBehaviour
             }
         }
     }
+
     public void playChoice()
     {
         nextlineButton.SetActive(false);
@@ -99,6 +127,7 @@ public class RandEventHandler : MonoBehaviour
         button1Text.SetText(activeChoiseInfo.choiceOptions[0]);
         button2Text.SetText(activeChoiseInfo.choiceOptions[1]);
     }
+
     public void onChoice1()
     {
         nextlineButton.SetActive(true);
@@ -106,23 +135,27 @@ public class RandEventHandler : MonoBehaviour
         button2.SetActive(false);
         choiceDialogue = activeChoiseInfo.InitFileInfo(0);
         textReader = choiceDialogue.OpenText();
-        ReadText(textOutput, textReader); 
+        StartCoroutine(TypewriteText(textOutput, textReader));  // Start typewriting for choice 1
     }
-    public void onChoice2() 
+
+    public void onChoice2()
     {
         nextlineButton.SetActive(true);
         button1.SetActive(false);
         button2.SetActive(false);
         choiceDialogue = activeChoiseInfo.InitFileInfo(1);
         textReader = choiceDialogue.OpenText();
-        ReadText(textOutput, textReader);
+        StartCoroutine(TypewriteText(textOutput, textReader));  // Start typewriting for choice 2
     }
+
     public void onNextLine()
     {
-        ReadText(textOutput, textReader);
+        StartCoroutine(TypewriteText(textOutput, textReader));  // Start typewriting for the next line
     }
+
     public void onMap()
     {
         SceneManager.LoadScene(sceneName: "Map");
     }
 }
+

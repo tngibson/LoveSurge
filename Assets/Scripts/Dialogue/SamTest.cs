@@ -1,7 +1,7 @@
 using System.IO;
 using UnityEngine;
 
-public class LotteTest : Playtest
+public class SamTest : Playtest
 {
     // Start is called before the first frame update
     protected new void Start()
@@ -18,7 +18,7 @@ public class LotteTest : Playtest
         // Show the topics at the start
         ShowTopics();
         playerNameText.text = "Player"; // For now, since we are not taking player's name, this is just set to Player. Later, it will be set a different way
-        dateNameText.text = "Lotte"; // Sets the Date's Name to Lotte
+        dateNameText.text = "Sam"; // Sets the Date's Name to Lotte
     }
 
     // Sets the conversation topics with provided power and topic names

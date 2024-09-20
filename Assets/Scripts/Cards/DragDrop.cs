@@ -57,8 +57,6 @@ public class DragDrop : MonoBehaviour
 
         if (isOverDropZone && dropZone != null)
         {
-            print(transform.name);
-            print(cardPlacedSFX);
             cardPlacedSFX.Play();
             
             // Drop the object in the drop zone
@@ -103,6 +101,5 @@ public class DragDrop : MonoBehaviour
     public void OnMouseOver()
     {
         cardHover.Play();
-        print("hover");
     }
 }

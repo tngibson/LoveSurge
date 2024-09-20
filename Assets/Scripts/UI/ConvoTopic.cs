@@ -15,7 +15,8 @@ public class ConvoTopic : MonoBehaviour
     // UI components for displaying attribute and power number
     [SerializeField] private TextMeshProUGUI attributeText;
     [SerializeField] public TextMeshProUGUI numText;
-    [SerializeField] private Image background;
+    [SerializeField] public GameObject finishedText;
+    [SerializeField] public Image background;
 
     // Icon-related fields
     [SerializeField] private GameObject attrIconContainer;
@@ -108,10 +109,10 @@ public class ConvoTopic : MonoBehaviour
     // Called when the button is pressed, changes background color and updates state
     public void OnButtonPress()
     {
-        if (!isClicked)
+        if (!isClicked && powerNum > 0)
         {
             // Highlight the background color when clicked
-            background.color = new Color(1, 0.92f, 0.016f, 1);
+            background.color = new Color(1, 0.95f, 0.5f, 1); // Pastel yellow
             isClicked = true;
 
             // Set this as the selected convo topic in the drop zone and game manager

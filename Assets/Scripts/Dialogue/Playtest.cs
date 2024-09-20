@@ -69,7 +69,8 @@ public class Playtest : MonoBehaviour
     // Field for the date character so we can change their sprites
     [SerializeField] public Image dateCharacter;
 
-    [SerializeField] private AudioSource textSFX;
+    [SerializeField] private AudioSource dateTextSFX;
+    [SerializeField] private AudioSource playerTextSFX;
     // Start is called before the first frame update
     protected void Start()
     {
@@ -125,10 +126,16 @@ public class Playtest : MonoBehaviour
     }
     */
 
+    // Plays player text sounds
+    public void ReadPlayerText()
+    {
+        playerTextSFX.Play();
+    }
+
     // Changes the character pose and plays sounds
-    public void ReadText(Sprite characterPose)
+    public void ReadDateText(Sprite characterPose)
     {
         dateCharacter.sprite = characterPose;
-        textSFX.Play();
+        dateTextSFX.Play();
     }
 }

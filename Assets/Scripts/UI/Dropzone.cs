@@ -35,6 +35,10 @@ public class Dropzone : MonoBehaviour
     private bool isTypewriting = false;
     private bool skipRequested = false;
 
+    // Coroutine reference for CountDownPower
+    private int targetPowerNum;
+    private Coroutine countDownPowerCoroutine;
+
     // Awake is called when the script instance is being loaded
     void Awake()
     {
@@ -68,10 +72,11 @@ public class Dropzone : MonoBehaviour
     // Scores the played cards, moves them to the discard pile, and updates the UI
     public void ScoreCards()
     {
-        // Sets the initial power of the convo topic that is selected
+        // Sets the initial power and line number of the convo topic that is selected
         if (!dialogPlayedAtFullPower)
         {
             initialPower = selectedConvoTopic.PowerNum;
+            lineNum = 0;
         }
 
         // Iterate through all played cards to calculate the score
@@ -103,16 +108,19 @@ public class Dropzone : MonoBehaviour
             playedCards[i].transform.position = discard.transform.position;
         }
 
-        // Update the selected conversation topic's power and the associated UI
+        // Target PowerNum after subtracting the score
+        targetPowerNum = selectedConvoTopic.PowerNum - score;
         selectedConvoTopic.PowerNum -= score;
-        selectedConvoTopic.numText.text = selectedConvoTopic.PowerNum.ToString();
+
+        // Start the CountDownPower coroutine (store reference)
+        if (countDownPowerCoroutine != null)
+        {
+            StopCoroutine(countDownPowerCoroutine);  // Stop any existing CountDownPower coroutine
+        }
+        countDownPowerCoroutine = StartCoroutine(CountDownPower(selectedConvoTopic.PowerNum + score, targetPowerNum));
 
         // Update the score display in the UI
         scoreText.text = "Round Score: " + score.ToString();
-
-        // Clear the played cards and reset the score for the next round
-        playedCards.Clear();
-        score = 0;
 
         // Checks if Dialog should be played
         CheckDialogTriggers();
@@ -120,35 +128,26 @@ public class Dropzone : MonoBehaviour
         // If the conversation topic has been completed 
         if (selectedConvoTopic.PowerNum <= 0)
         {
-            // These 3 if statements make sure that you get to read all dialog, regardless of how fast you finish the topic
-            if (!dialogPlayedAtZeroPower)
-            {
-                StartCoroutine(PlayDialog());
-                dialogPlayedAtZeroPower = true;
-            }
-
-            if (!dialogPlayedAtHalfPower)
-            {
-                StartCoroutine(PlayDialog());
-                dialogPlayedAtHalfPower = true;
-            }
-
-            if (!dialogPlayedAtFullPower)
-            {
-                StartCoroutine(PlayDialog());
-                dialogPlayedAtZeroPower = true;
-            }
+            StopAllCoroutinesExceptCountDownPower();  // Stop all except CountDownPower
+            StartCoroutine(PlayAllDialogsSequentially());
 
             selectedConvoTopic.isClicked = false;
             topicContainer.EnableButtons(); // Re-enable topic buttons
-            selectedConvoTopic.gameObject.SetActive(false); // Hide the completed topic
 
             // Move the completed topic to the 'done' list and remove it from the active list
             topicContainer.doneConvos.Add(selectedConvoTopic);
 
             topicContainer.convoTopics.Remove(selectedConvoTopic); 
-            selectedConvoTopic = null; // Clear the selected topic
+
+            // Makes the dialog available for the next topic
+            dialogPlayedAtZeroPower = false;
+            dialogPlayedAtHalfPower = false;
+            dialogPlayedAtFullPower = false;
         }
+
+        // Clear the played cards and reset the score for the next round
+        playedCards.Clear();
+        score = 0;
     }
 
     // Checks if Dialog should be played
@@ -166,7 +165,7 @@ public class Dropzone : MonoBehaviour
             StartCoroutine(PlayDialog());
             dialogPlayedAtHalfPower = true;
         }
-        else
+        else if (!dialogPlayedAtFullPower)
         {
             StartCoroutine(PlayDialog());
             dialogPlayedAtFullPower = true;
@@ -176,8 +175,11 @@ public class Dropzone : MonoBehaviour
     // Coroutine to play the dialog 
     private IEnumerator PlayDialog()
     {
+        Cursor.lockState = CursorLockMode.Locked;
+
         List<string> lines;
         List<Sprite> sprites;
+        List<string> speaker;
 
         //Clear the text
         playerText.text = "";
@@ -189,30 +191,59 @@ public class Dropzone : MonoBehaviour
             case "Cha":
                 lines = currentSession.chaLines;
                 sprites = currentSession.chaSprites;
+                speaker = currentSession.chaSpeaker;
                 break;
             case "Cou":
                 lines = currentSession.couLines;
                 sprites = currentSession.couSprites;
+                speaker = currentSession.couSpeaker;
                 break;
             case "Cle":
                 lines = currentSession.cleLines;
                 sprites = currentSession.cleSprites;
+                speaker = currentSession.cleSpeaker;
                 break;
             default:
                 lines = currentSession.creLines;
                 sprites = currentSession.creSprites;
+                speaker = currentSession.creSpeaker;
                 break;
         }
 
-        // Reads the first line (either PC or Date)
-        currentSession.ReadText(sprites[lineNum]);
-        yield return StartCoroutine(TypewriteDialog(playerText, lines[lineNum], sprites[lineNum]));
+        // Determine the order of speakers based on whether "PC" is the speaker
+        bool isPCSpeaker = speaker[lineNum] == "PC";
+
+        // First speaker (either PC or Date)
+        TextMeshProUGUI firstText = isPCSpeaker ? playerText : dateText;
+        TextMeshProUGUI secondText = isPCSpeaker ? dateText : playerText;
+
+        // Read and typewrite the first speaker's line
+        if (isPCSpeaker)
+        {
+            currentSession.ReadPlayerText(); // Call the method for PC speaker
+        }
+        else
+        {
+            currentSession.ReadDateText(sprites[lineNum]); // Call the method for Date speaker
+        }
+        // Read and typewrite the first speaker's line
+        yield return StartCoroutine(TypewriteDialog(firstText, lines[lineNum], sprites[lineNum]));
         lineNum++;
 
-        // Reads the second line (whichever didn't go)
-        currentSession.ReadText(sprites[lineNum]);
-        yield return StartCoroutine(TypewriteDialog(dateText, lines[lineNum], sprites[lineNum]));
+        // Read and typewrite the second speaker's line
+        if (isPCSpeaker)
+        {
+            currentSession.ReadDateText(sprites[lineNum]); // Call the method for Date speaker
+        }
+        else
+        {
+            currentSession.ReadPlayerText(); // Call the method for PC speaker
+        }
+        // Read and typewrite the second speaker's line
+        yield return StartCoroutine(TypewriteDialog(secondText, lines[lineNum], sprites[lineNum]));
         lineNum++;
+
+        Cursor.lockState = CursorLockMode.None;
     }
 
     private IEnumerator TypewriteDialog(TextMeshProUGUI textComponent, string message, Sprite sprite)
@@ -238,10 +269,100 @@ public class Dropzone : MonoBehaviour
 
     void Update()
     {
-        // Check for skip input only when typewriting is active
+        // Allow only skip input when dialog is playing
         if (isTypewriting && Input.GetButtonDown("Skip"))
         {
             skipRequested = true;
+        }
+    }
+
+    // Coroutine that plays all dialogs sequentially
+    private IEnumerator PlayAllDialogsSequentially()
+    {
+        // Play the dialog for full power if not yet played
+        if (!dialogPlayedAtFullPower || lineNum == 0)
+        {
+            yield return StartCoroutine(PlayDialog());
+            dialogPlayedAtFullPower = true;
+
+            // Wait for the player to press the skip button before continuing
+            yield return StartCoroutine(WaitForSkipButton());
+        }
+
+        // Play the dialog for half power if not yet played
+        if (!dialogPlayedAtHalfPower || lineNum == 2)
+        {
+            yield return StartCoroutine(PlayDialog());
+            dialogPlayedAtHalfPower = true;
+
+            // Wait for the player to press the skip button before continuing
+            yield return StartCoroutine(WaitForSkipButton());
+        }
+
+        // Play the dialog for zero power if not yet played
+        if (!dialogPlayedAtZeroPower || lineNum == 4)
+        {
+            yield return StartCoroutine(PlayDialog());
+            dialogPlayedAtZeroPower = true;
+
+            // Wait for the player to press the skip button before continuing
+            yield return StartCoroutine(WaitForSkipButton());
+        }
+
+        // Makes the dialog available for the next topic
+        dialogPlayedAtZeroPower = false;
+        dialogPlayedAtHalfPower = false;
+        dialogPlayedAtFullPower = false;
+    }
+
+    // Coroutine to count down PowerNum smoothly
+    private IEnumerator CountDownPower(int startValue, int endValue)
+    {
+        while (startValue > endValue)
+        {
+            startValue--;  // Decrement the power by 1
+            selectedConvoTopic.numText.text = startValue.ToString();  // Update the UI
+            yield return new WaitForSeconds(0.05f);  // Small delay for the countdown effect
+        }
+
+        // Ensure the final value is set correctly
+        selectedConvoTopic.PowerNum = endValue;
+        selectedConvoTopic.numText.text = endValue.ToString();
+
+        if (selectedConvoTopic.PowerNum <= 0)
+        {
+            selectedConvoTopic.numText.text = ""; // Hide the num text
+            selectedConvoTopic.finishedText.SetActive(true); // Show the finished text
+            selectedConvoTopic.background.color = new Color(0.68f, 0.85f, 0.90f, 1); // Pastel blue
+        }
+    }
+
+    // Method to stop all coroutines except CountDownPower
+    private void StopAllCoroutinesExceptCountDownPower()
+    {
+        // Store the CountDownPower coroutine
+        Coroutine savedCoroutine = countDownPowerCoroutine;
+
+        // Stop all coroutines
+        StopAllCoroutines();
+
+        // Restart the CountDownPower coroutine if it's still valid
+        if (savedCoroutine != null)
+        {
+            countDownPowerCoroutine = StartCoroutine(CountDownPower(selectedConvoTopic.PowerNum + score, targetPowerNum));
+        }
+    }
+
+    private IEnumerator WaitForSkipButton()
+    {
+        skipRequested = false;
+        while (!skipRequested)
+        {
+            if (Input.GetButtonDown("Skip"))
+            {
+                skipRequested = true;
+            }
+            yield return null; // Wait until the next frame before checking again
         }
     }
 
