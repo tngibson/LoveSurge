@@ -6,7 +6,8 @@ using UnityEngine;
 
 public class Dropzone : MonoBehaviour
 {
-    [SerializeField] private TextMeshProUGUI scoreText;
+    [SerializeField] private TextMeshProUGUI currentScoreText;
+    [SerializeField] private TextMeshProUGUI totalScoreText;
     [SerializeField] private TextMeshProUGUI playerText;
     [SerializeField] private TextMeshProUGUI dateText;
     [SerializeField] private List<Card> playedCards;
@@ -22,6 +23,7 @@ public class Dropzone : MonoBehaviour
     */ 
 
     private int score = 0;
+    private int totalScore = 0;
     private int lineNum = 0;
     private int initialPower;
     private bool dialogPlayedAtFullPower = false;
@@ -38,6 +40,10 @@ public class Dropzone : MonoBehaviour
     // Coroutine reference for CountDownPower
     private int targetPowerNum;
     private Coroutine countDownPowerCoroutine;
+
+    // Boolean for if a topic has been selected or not
+    private bool isTopicSelected = false;
+    public bool IsTopicSelected { get; set; }
 
     // Awake is called when the script instance is being loaded
     void Awake()
@@ -58,10 +64,11 @@ public class Dropzone : MonoBehaviour
     // Adds a card to the played cards list and removes it from the player's area
     public void AddCard(Card card)
     {
-        if (card != null)
+        if (card != null && !isTopicSelected)
         {
             playedCards.Add(card);
             playerArea.RemoveCards(card);
+            CalculateScore();
         }
         else
         {
@@ -79,34 +86,11 @@ public class Dropzone : MonoBehaviour
             lineNum = 0;
         }
 
-        // Iterate through all played cards to calculate the score
-        for (int i = 0; i < playedCards.Count; i++)
-        {
-            // Add the card's power to the score
-            score += playedCards[i].Power;
+        // Calculates our current score
+        CalculateScore();
 
-            // If there's a next card, apply bonuses based on matching attributes
-            if (i + 1 < playedCards.Count)
-            {
-                Card card1 = playedCards[i];
-                Card card2 = playedCards[i + 1];
-
-                // Bonus points for matching types or similar power levels
-                if (card1.Type == card2.Type) { score++; }
-                if (card1.Power == card2.Power) { score++; }
-                if (card1.Power == card2.Power - 1) { score++; }
-            }
-
-            // Bonus points for matching the selected conversation topic
-            if (playedCards[i].Type == selectedConvoTopic.ConvoAttribute) { score++; }
-
-            // Move the card to the discard pile and update its position
-            discard.AddToDiscard(playedCards[i]);
-
-
-            playedCards[i].transform.SetParent(discard.transform, false);
-            playedCards[i].transform.position = discard.transform.position;
-        }
+        // Moves all played cards to the discard pile
+        DiscardCards();
 
         // Target PowerNum after subtracting the score
         targetPowerNum = selectedConvoTopic.PowerNum - score;
@@ -118,9 +102,6 @@ public class Dropzone : MonoBehaviour
             StopCoroutine(countDownPowerCoroutine);  // Stop any existing CountDownPower coroutine
         }
         countDownPowerCoroutine = StartCoroutine(CountDownPower(selectedConvoTopic.PowerNum + score, targetPowerNum));
-
-        // Update the score display in the UI
-        scoreText.text = "Round Score: " + score.ToString();
 
         // Checks if Dialog should be played
         CheckDialogTriggers();
@@ -143,10 +124,15 @@ public class Dropzone : MonoBehaviour
             dialogPlayedAtZeroPower = false;
             dialogPlayedAtHalfPower = false;
             dialogPlayedAtFullPower = false;
+
+            // Resets the bool for whether a topic is selected or not
+            isTopicSelected = false;
         }
 
-        // Clear the played cards and reset the score for the next round
+        // Clear the played cards, reset the score for the next round, and updates the total score
         playedCards.Clear();
+        totalScore += score;
+        totalScoreText.text = "Total Score: " + totalScore.ToString();
         score = 0;
     }
 
@@ -372,5 +358,56 @@ public class Dropzone : MonoBehaviour
         Card temp = playedCards[cardIndex1];
         playedCards[cardIndex1] = playedCards[cardIndex2];
         playedCards[cardIndex2] = temp;
+        CalculateScore();
+    }
+
+    // Method to calculate score (call anytime score may be changed)
+    public void CalculateScore()
+    {
+        // Reset score to recalculate
+        score = 0;
+
+        // Iterate through all played cards to calculate the score
+        for (int i = 0; i < playedCards.Count; i++)
+        {
+            // Add the card's power to the score
+            score += playedCards[i].Power;
+
+            // If there's a next card, apply bonuses based on matching attributes
+            if (i + 1 < playedCards.Count)
+            {
+                Card card1 = playedCards[i];
+                Card card2 = playedCards[i + 1];
+
+                // Bonus points for matching types or similar power levels
+                if (card1.Type == card2.Type) { score++; }
+                if (card1.Power == card2.Power) { score++; }
+                if (card1.Power == card2.Power - 1) { score++; }
+            }
+
+            // Bonus points for matching the selected conversation topic
+            if (playedCards[i].Type == selectedConvoTopic.ConvoAttribute) { score++; }
+
+            // Sets the current score text field to what the current score would be after recalculating
+            currentScoreText.text = "Current Score: " + score.ToString();
+        }
+    }
+
+    public void DiscardCards()
+    {
+        for (int i = 0; i < playedCards.Count; i++)
+        {
+            // Move the card to the discard pile and update its position
+            discard.AddToDiscard(playedCards[i]);
+
+
+            playedCards[i].transform.SetParent(discard.transform, false);
+            playedCards[i].transform.position = discard.transform.position;
+        }
+    }
+
+    public bool HasCard(Card card)
+    {
+        return playedCards.Contains(card);
     }
 }

@@ -117,6 +117,7 @@ public class ConvoTopic : MonoBehaviour
 
             // Set this as the selected convo topic in the drop zone and game manager
             dropZoneScript.selectedConvoTopic = this;
+            dropZoneScript.IsTopicSelected = true;
             gameManager.currentConvoTopic = this;
         }
     }

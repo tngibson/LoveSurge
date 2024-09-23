@@ -55,16 +55,22 @@ public class DragDrop : MonoBehaviour
         // End dragging the object
         isDragging = false;
 
-        if (isOverDropZone && dropZone != null)
+        if (isOverDropZone && dropZone != null && dropZone.IsTopicSelected)
         {
             cardPlacedSFX.Play();
-            
+
             // Drop the object in the drop zone
             transform.SetParent(currentDropZone.transform, false);
-            dropZone.AddCard(card);
+
+            // Check if the card is already in the drop zone's list to avoid duplication
+            if (!dropZone.HasCard(card))  // New method to check if card is already present
+            {
+                dropZone.AddCard(card);
+                transform.position = startPos;
+            }
+
             GetComponent<GridElementSwapper>()?.SetFirstSelectedElement(null);
             playerArea = null;
-            
         }
         else
         {
