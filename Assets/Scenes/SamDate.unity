@@ -2860,10 +2860,11 @@ RectTransform:
   - {fileID: 2001940043}
   - {fileID: 6411112955390847964}
   - {fileID: 293364312}
-  - {fileID: 8832624841497814459}
   - {fileID: 1412521592}
   - {fileID: 387500589}
   - {fileID: 3757400996838666744}
+  - {fileID: 1472503611}
+  - {fileID: 8832624841497814459}
   - {fileID: 468860082}
   - {fileID: 9112380309607825406}
   - {fileID: 228058152}
@@ -2871,7 +2872,6 @@ RectTransform:
   - {fileID: 77707987}
   - {fileID: 2146807643}
   - {fileID: 1601102899}
-  - {fileID: 1472503611}
   - {fileID: 1009903354}
   - {fileID: 21299114}
   - {fileID: 1661069646}
@@ -5874,6 +5874,11 @@ PrefabInstance:
       propertyPath: totalScoreText
       value: 
       objectReference: {fileID: 77707988}
+    - target: {fileID: 8832624841497814469, guid: 42c8ac5f651191b4396847b82ee71bf5,
+        type: 3}
+      propertyPath: discardDuration
+      value: 0.5
+      objectReference: {fileID: 0}
     - target: {fileID: 8832624841497814469, guid: 42c8ac5f651191b4396847b82ee71bf5,
         type: 3}
       propertyPath: currentScoreText

@@ -45,6 +45,8 @@ public class Dropzone : MonoBehaviour
     private bool isTopicSelected = false;
     public bool IsTopicSelected { get; set; }
 
+    [SerializeField] private float discardDuration = 1.0f; // Duration of the discard animation
+
     // Awake is called when the script instance is being loaded
     void Awake()
     {
@@ -90,7 +92,7 @@ public class Dropzone : MonoBehaviour
         CalculateScore();
 
         // Moves all played cards to the discard pile
-        DiscardCards();
+        StartCoroutine(DiscardCards());
 
         // Target PowerNum after subtracting the score
         targetPowerNum = selectedConvoTopic.PowerNum - score;
@@ -393,18 +395,67 @@ public class Dropzone : MonoBehaviour
         }
     }
 
-    public void DiscardCards()
+    public IEnumerator DiscardCards()
     {
-        for (int i = 0; i < playedCards.Count; i++)
+        // Get the world position of the discard pile directly
+        Vector3 discardPilePosition = discard.transform.position;
+
+        // Create a copy of the playedCards list to avoid modification errors
+        List<Card> cardsToDiscard = new List<Card>(playedCards);
+
+        // Start moving all cards simultaneously
+        List<Coroutine> moveCoroutines = new List<Coroutine>();
+        foreach (var card in cardsToDiscard)
         {
-            // Move the card to the discard pile and update its position
-            discard.AddToDiscard(playedCards[i]);
+            // Ensure the card is in front of other UI elements
+            card.transform.SetSiblingIndex(discard.transform.GetSiblingIndex() - 1);
 
-
-            playedCards[i].transform.SetParent(discard.transform, false);
-            playedCards[i].transform.position = discard.transform.position;
+            // Start a coroutine to move each card, and store the coroutine
+            Coroutine moveCoroutine = StartCoroutine(MoveCardToDiscardPile(card, discardPilePosition, discardDuration));
+            moveCoroutines.Add(moveCoroutine);
         }
+
+        // Wait for all card move coroutines to complete
+        foreach (var moveCoroutine in moveCoroutines)
+        {
+            yield return moveCoroutine;
+        }
+
+        // After all cards have been discarded, clear the playedCards list
+        playedCards.Clear();
     }
+
+    private IEnumerator MoveCardToDiscardPile(Card card, Vector3 targetPosition, float duration)
+    {
+        Vector3 startPosition = card.transform.position; // Starting position of the card
+        float elapsedTime = 0f;
+
+        // Move the card over time to the discard pile
+        while (elapsedTime < duration)
+        {
+            float normalizedTime = elapsedTime / duration;
+            float exponentialFactor = Mathf.Pow(normalizedTime, 3); // Exponential movement factor (cubic easing)
+
+            // Apply the exponential factor to the movement
+            card.transform.position = Vector3.Lerp(startPosition, targetPosition, exponentialFactor);
+
+            elapsedTime += Time.deltaTime;
+            yield return null; // Wait for the next frame
+        }
+
+        // Ensure the card is exactly at the discard pile's position after the animation
+        card.transform.position = targetPosition;
+
+        // Parent the card to the discard pile AFTER the movement without affecting its position
+        card.transform.SetParent(discard.transform, true); // 'true' ensures the world position stays the same
+
+        // Optionally: Add to the discard pile in your logic
+        discard.AddToDiscard(card);
+    }
+
+
+
+
 
     public bool HasCard(Card card)
     {
