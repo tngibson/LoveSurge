@@ -354,7 +354,7 @@ public class Dropzone : MonoBehaviour
         {
             selectedConvoTopic.numText.text = ""; // Hide the num text
             selectedConvoTopic.bustedText.SetActive(true); // Show the busted text
-            selectedConvoTopic.background.color = new Color(1f, 0.7f, 0.7f, 1f); // Pastel red
+            selectedConvoTopic.background.color = new Color(1f, 0.5f, 0.5f, 1f); // Pastel red
             selectedConvoTopic = null;
         }
     }
