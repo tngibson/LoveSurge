@@ -16,6 +16,7 @@ public class Dropzone : MonoBehaviour
     [SerializeField] private TopicContainer topicContainer;
     [SerializeField] private Playtest currentSession;
     [SerializeField] public ConvoTopic selectedConvoTopic;
+    [SerializeField] private GameManager gameManager;
 
     /*
     private StreamReader playerReader;
@@ -119,6 +120,29 @@ public class Dropzone : MonoBehaviour
             topicContainer.doneConvos.Add(selectedConvoTopic);
 
             topicContainer.convoTopics.Remove(selectedConvoTopic); 
+
+            // Makes the dialog available for the next topic
+            dialogPlayedAtZeroPower = false;
+            dialogPlayedAtHalfPower = false;
+            dialogPlayedAtFullPower = false;
+
+            // Resets the bool for whether a topic is selected or not
+            isTopicSelected = false;
+        }
+
+        // If the conversation topic has not been completed in time
+        if (gameManager.turnCount >= gameManager.maxTurnCount && selectedConvoTopic.PowerNum > 0)
+        {
+            StopAllCoroutinesExceptCountDownPower();  // Stop all except CountDownPower
+
+            // Make the convo topic unclicked
+            selectedConvoTopic.isClicked = false;
+            topicContainer.EnableButtons(); // Re-enable topic buttons
+
+            // Add the current convo topic to failed convos and remove it from the list of topics
+            topicContainer.failedConvos.Add(selectedConvoTopic);
+            topicContainer.convoTopics.Remove(selectedConvoTopic);
+            selectedConvoTopic.isFailed = true;
 
             // Makes the dialog available for the next topic
             dialogPlayedAtZeroPower = false;
@@ -320,6 +344,14 @@ public class Dropzone : MonoBehaviour
             selectedConvoTopic.numText.text = ""; // Hide the num text
             selectedConvoTopic.finishedText.SetActive(true); // Show the finished text
             selectedConvoTopic.background.color = new Color(0.68f, 0.85f, 0.90f, 1); // Pastel blue
+        }
+
+        if (gameManager.turnCount >= gameManager.maxTurnCount && selectedConvoTopic.PowerNum > 0)
+        {
+            selectedConvoTopic.numText.text = ""; // Hide the num text
+            selectedConvoTopic.bustedText.SetActive(true); // Show the busted text
+            selectedConvoTopic.background.color = new Color(1f, 0.7f, 0.7f, 1f); // Pastel red
+            gameManager.turnCount = 0; // Resets the turn count
         }
     }
 

@@ -7,6 +7,7 @@ public class TopicContainer : MonoBehaviour
     // List of conversation topics and completed topics
     [SerializeField] public List<ConvoTopic> convoTopics;
     [SerializeField] public List<ConvoTopic> doneConvos;
+    [SerializeField] public List<ConvoTopic> failedConvos;
 
     // Update is called once per frame
     void Update()

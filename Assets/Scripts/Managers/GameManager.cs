@@ -29,7 +29,8 @@ public class GameManager : MonoBehaviour
     // Player health and turn tracking
     [SerializeField] public int health = 3;
     private int missingCards;
-    private int turnCount = 0;
+    public int turnCount = 0;
+    [SerializeField] public int maxTurnCount = 3; // The max turn count you can go on for each conversation topic
 
     public List<string> categories = new List<string> { "Cha", "Cou", "Cle", "Cre" }; // List of categories for conversation topics
 
@@ -69,7 +70,7 @@ public class GameManager : MonoBehaviour
     {
         // Increment the turn counter and update the UI
         turnCount++;
-        turnText.SetText("Round: " + turnCount.ToString());
+        turnText.SetText("Turns Passed: " + turnCount.ToString());
 
         // Draw cards if the player has fewer than 5 cards in hand and the deck is not empty
         if (playerArea.CardsInHand.Count < 5 && deckContainer.Deck.Count > 0)

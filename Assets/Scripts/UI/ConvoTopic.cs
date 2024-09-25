@@ -16,6 +16,7 @@ public class ConvoTopic : MonoBehaviour
     [SerializeField] private TextMeshProUGUI attributeText;
     [SerializeField] public TextMeshProUGUI numText;
     [SerializeField] public GameObject finishedText;
+    [SerializeField] public GameObject bustedText;
     [SerializeField] public Image background;
 
     // Icon-related fields
@@ -35,6 +36,9 @@ public class ConvoTopic : MonoBehaviour
 
     // To track if this convo topic has been clicked
     public bool isClicked = false;
+
+    // Tracks if the convo topic is failed
+    public bool isFailed = false;
 
     // Called when the script instance is being loaded
     void Awake()
@@ -109,7 +113,7 @@ public class ConvoTopic : MonoBehaviour
     // Called when the button is pressed, changes background color and updates state
     public void OnButtonPress()
     {
-        if (!isClicked && powerNum > 0)
+        if (!isClicked && !isFailed && powerNum > 0)
         {
             // Highlight the background color when clicked
             background.color = new Color(1, 0.95f, 0.5f, 1); // Pastel yellow

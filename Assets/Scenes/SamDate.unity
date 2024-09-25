@@ -181,6 +181,7 @@ MonoBehaviour:
   - {fileID: 1959900820}
   - {fileID: 209781739}
   doneConvos: []
+  failedConvos: []
 --- !u!1 &77707986
 GameObject:
   m_ObjectHideFlags: 0
@@ -2317,6 +2318,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7869239867412108594, guid: 210f6d71a663ea14fb7d4c3aa8722a33,
         type: 3}
+      propertyPath: bustedText
+      value: 
+      objectReference: {fileID: 893909314}
+    - target: {fileID: 7869239867412108594, guid: 210f6d71a663ea14fb7d4c3aa8722a33,
+        type: 3}
       propertyPath: finishedText
       value: 
       objectReference: {fileID: 1812036920}
@@ -2343,6 +2349,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 436798d7c2f66444cb7307da8227ec8a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!1 &893909314 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 3304238139306890278, guid: 210f6d71a663ea14fb7d4c3aa8722a33,
+    type: 3}
+  m_PrefabInstance: {fileID: 893909311}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1009903353
 GameObject:
   m_ObjectHideFlags: 0
@@ -2744,6 +2756,11 @@ PrefabInstance:
       objectReference: {fileID: 584613302}
     - target: {fileID: 7869239867412108594, guid: 210f6d71a663ea14fb7d4c3aa8722a33,
         type: 3}
+      propertyPath: bustedText
+      value: 
+      objectReference: {fileID: 1087463284}
+    - target: {fileID: 7869239867412108594, guid: 210f6d71a663ea14fb7d4c3aa8722a33,
+        type: 3}
       propertyPath: finishedText
       value: 
       objectReference: {fileID: 693851534}
@@ -2757,6 +2774,12 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 210f6d71a663ea14fb7d4c3aa8722a33, type: 3}
+--- !u!1 &1087463284 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 3304238139306890278, guid: 210f6d71a663ea14fb7d4c3aa8722a33,
+    type: 3}
+  m_PrefabInstance: {fileID: 1087463283}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1106248348 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 1746943226734212087, guid: 9cf95e50df30941479d48e7b083a01e3,
@@ -4172,6 +4195,11 @@ PrefabInstance:
       objectReference: {fileID: 1835846296}
     - target: {fileID: 7869239867412108594, guid: 210f6d71a663ea14fb7d4c3aa8722a33,
         type: 3}
+      propertyPath: bustedText
+      value: 
+      objectReference: {fileID: 1503493096}
+    - target: {fileID: 7869239867412108594, guid: 210f6d71a663ea14fb7d4c3aa8722a33,
+        type: 3}
       propertyPath: finishedText
       value: 
       objectReference: {fileID: 1071565766}
@@ -4185,6 +4213,12 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 210f6d71a663ea14fb7d4c3aa8722a33, type: 3}
+--- !u!1 &1503493096 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 3304238139306890278, guid: 210f6d71a663ea14fb7d4c3aa8722a33,
+    type: 3}
+  m_PrefabInstance: {fileID: 1503493095}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1530936665
 GameObject:
   m_ObjectHideFlags: 0
@@ -4492,6 +4526,11 @@ PrefabInstance:
       objectReference: {fileID: 1414042759}
     - target: {fileID: 7869239867412108594, guid: 210f6d71a663ea14fb7d4c3aa8722a33,
         type: 3}
+      propertyPath: bustedText
+      value: 
+      objectReference: {fileID: 1569492292}
+    - target: {fileID: 7869239867412108594, guid: 210f6d71a663ea14fb7d4c3aa8722a33,
+        type: 3}
       propertyPath: finishedText
       value: 
       objectReference: {fileID: 1991952470}
@@ -4505,6 +4544,12 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 210f6d71a663ea14fb7d4c3aa8722a33, type: 3}
+--- !u!1 &1569492292 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 3304238139306890278, guid: 210f6d71a663ea14fb7d4c3aa8722a33,
+    type: 3}
+  m_PrefabInstance: {fileID: 1569492291}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1601102898
 GameObject:
   m_ObjectHideFlags: 0
@@ -4967,6 +5012,8 @@ MonoBehaviour:
   dropzone: {fileID: 8832624841497814469}
   discard: {fileID: 1472503614}
   health: 3
+  turnCount: 0
+  maxTurnCount: 3
   categories: []
   drawCardsButton: {fileID: 754469668}
   endTurnButton: {fileID: 468860081}
@@ -5859,6 +5906,11 @@ PrefabInstance:
       propertyPath: playerText
       value: 
       objectReference: {fileID: 1170517047}
+    - target: {fileID: 8832624841497814469, guid: 42c8ac5f651191b4396847b82ee71bf5,
+        type: 3}
+      propertyPath: gameManager
+      value: 
+      objectReference: {fileID: 2001940042}
     - target: {fileID: 8832624841497814469, guid: 42c8ac5f651191b4396847b82ee71bf5,
         type: 3}
       propertyPath: currentSession
