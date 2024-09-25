@@ -2543,12 +2543,12 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1048351435}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 636.4105, y: 226.06335, z: -6.9115005}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -1121, y: -742, z: -6.9115005}
   m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
+  m_ConstrainProportionsScale: 1
   m_Children: []
-  m_Father: {fileID: 0}
+  m_Father: {fileID: 1108671395}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1048351437
 MonoBehaviour:
@@ -2883,10 +2883,11 @@ RectTransform:
   - {fileID: 2001940043}
   - {fileID: 6411112955390847964}
   - {fileID: 293364312}
-  - {fileID: 8832624841497814459}
   - {fileID: 1412521592}
   - {fileID: 387500589}
   - {fileID: 3757400996838666744}
+  - {fileID: 1472503611}
+  - {fileID: 8832624841497814459}
   - {fileID: 468860082}
   - {fileID: 9112380309607825406}
   - {fileID: 228058152}
@@ -2894,10 +2895,10 @@ RectTransform:
   - {fileID: 77707987}
   - {fileID: 2146807643}
   - {fileID: 1601102899}
-  - {fileID: 1472503611}
   - {fileID: 1009903354}
   - {fileID: 21299114}
   - {fileID: 1661069646}
+  - {fileID: 1048351436}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
@@ -3941,10 +3942,10 @@ RectTransform:
   - {fileID: 822517020}
   m_Father: {fileID: 1108671395}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.65000004, y: 0.5972796}
-  m_AnchorMax: {x: 0.7454792, y: 0.8313011}
-  m_AnchoredPosition: {x: 0, y: 0.29992676}
-  m_SizeDelta: {x: -2, y: 2.5927124}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: 379.5, y: 257.29996}
+  m_SizeDelta: {x: 181, y: 282.5927}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1472503612
 MonoBehaviour:
@@ -5928,6 +5929,11 @@ PrefabInstance:
       objectReference: {fileID: 77707988}
     - target: {fileID: 8832624841497814469, guid: 42c8ac5f651191b4396847b82ee71bf5,
         type: 3}
+      propertyPath: discardDuration
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 8832624841497814469, guid: 42c8ac5f651191b4396847b82ee71bf5,
+        type: 3}
       propertyPath: currentScoreText
       value: 
       objectReference: {fileID: 1250064017}
@@ -6128,5 +6134,4 @@ SceneRoots:
   - {fileID: 1108671395}
   - {fileID: 619394802}
   - {fileID: 379998687}
-  - {fileID: 1048351436}
   - {fileID: 1808817374}
