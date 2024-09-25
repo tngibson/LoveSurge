@@ -87,6 +87,7 @@ public class Dropzone : MonoBehaviour
         {
             initialPower = selectedConvoTopic.PowerNum;
             lineNum = 0;
+            gameManager.turnCount = 1; // Resets the turn count
         }
 
         // Calculates our current score
@@ -135,7 +136,7 @@ public class Dropzone : MonoBehaviour
         // If the conversation topic has not been completed in time
         if (gameManager.turnCount >= gameManager.maxTurnCount && selectedConvoTopic.PowerNum > 0)
         {
-            StopAllCoroutinesExceptCountDownPower();  // Stop all except CountDownPower
+            //StopAllCoroutinesExceptCountDownPower();  // Stop all except CountDownPower
 
             // Make the convo topic unclicked
             selectedConvoTopic.isClicked = false;
@@ -159,6 +160,7 @@ public class Dropzone : MonoBehaviour
         playedCards.Clear();
         totalScore += score;
         totalScoreText.text = "Total Score: " + totalScore.ToString();
+        currentScoreText.text = "Current Score: 0";
         score = 0;
     }
 
@@ -168,19 +170,19 @@ public class Dropzone : MonoBehaviour
         //If we complete the topic, play the final bit
         if (!dialogPlayedAtZeroPower && dialogPlayedAtHalfPower && selectedConvoTopic.PowerNum <= 0)
         {
-            StartCoroutine(PlayDialog());
             dialogPlayedAtZeroPower = true;
+            StartCoroutine(PlayDialog());
         }
         // If we have played the first bit but not the second, and the current convo topic's power is below half, play the second bit
         else if (!dialogPlayedAtHalfPower && dialogPlayedAtFullPower && selectedConvoTopic.PowerNum <= initialPower / 2)
         {
-            StartCoroutine(PlayDialog());
             dialogPlayedAtHalfPower = true;
+            StartCoroutine(PlayDialog());
         }
         else if (!dialogPlayedAtFullPower)
         {
-            StartCoroutine(PlayDialog());
             dialogPlayedAtFullPower = true;
+            StartCoroutine(PlayDialog());
         }
     }
 
@@ -353,7 +355,7 @@ public class Dropzone : MonoBehaviour
             selectedConvoTopic.numText.text = ""; // Hide the num text
             selectedConvoTopic.bustedText.SetActive(true); // Show the busted text
             selectedConvoTopic.background.color = new Color(1f, 0.7f, 0.7f, 1f); // Pastel red
-            gameManager.turnCount = 0; // Resets the turn count
+            selectedConvoTopic = null;
         }
     }
 
