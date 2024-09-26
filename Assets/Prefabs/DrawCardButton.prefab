@@ -35,7 +35,6 @@ RectTransform:
   m_Children:
   - {fileID: 8434249713329815654}
   m_Father: {fileID: 0}
-  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -148,9 +147,23 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5c8a2329bd1237547b064a80e730fbad, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  DropZone: {fileID: 0}
-  player: {fileID: 0}
+  dropZone: {fileID: 0}
   card: {fileID: 0}
+  playerArea: {fileID: 0}
+  cardPlace:
+    Guid:
+      Data1: 0
+      Data2: 0
+      Data3: 0
+      Data4: 0
+    Path: 
+  cardHovering:
+    Guid:
+      Data1: 0
+      Data2: 0
+      Data3: 0
+      Data4: 0
+    Path: 
 --- !u!114 &7514585345013282848
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -166,7 +179,16 @@ MonoBehaviour:
   card1: {fileID: 8735099101450537059, guid: 203c4c17c2b50164893a45a4a2cc38d3, type: 3}
   card2: {fileID: 6277624742853866791, guid: 74ea239226339db4f8c306acd816a89d, type: 3}
   card3: {fileID: 6241785902665795683, guid: ffbcf9a0bc3a62d41b4d8d50734eb533, type: 3}
+  card4: {fileID: 0}
+  deckContainer: {fileID: 0}
   playerArea: {fileID: 0}
+  drawCards:
+    Guid:
+      Data1: -1750858678
+      Data2: 1122528362
+      Data3: 1372038299
+      Data4: -415212389
+    Path: event:/SFX/Cards/cardShuffle
 --- !u!1 &8434249713329815655
 GameObject:
   m_ObjectHideFlags: 0
@@ -198,7 +220,6 @@ RectTransform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 8434249712324134770}
-  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}

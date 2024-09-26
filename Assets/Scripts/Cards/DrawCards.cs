@@ -1,6 +1,8 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using FMOD;
+using FMODUnity;
 
 public class DrawCards : MonoBehaviour
 {
@@ -10,17 +12,18 @@ public class DrawCards : MonoBehaviour
     [SerializeField] private GameObject card4;
     [SerializeField] private PlayerDeckScript deckContainer;  // Reference to the deck containing cards
     [SerializeField] private PlayerArea playerArea;  // Reference to the player's area where cards will be added
-    [SerializeField] private AudioSource cardShuffle; // Reference to the Card Shuffle sfx
+    public FMODUnity.EventReference drawCards;
+
     public void OnClick()
     {
-        cardShuffle.Play();
+        FMODUnity.RuntimeManager.PlayOneShot(drawCards);
         // Draw 5 cards from the deck and add them to the player's area
         for (int i = 0; i < 5; i++)
         {
             Card card = deckContainer.Draw();
             if (card == null)
             {
-                Debug.LogWarning("No more cards to draw.");
+                //Debug.LogWarning("No more cards to draw.");
                 break; // Exit the loop if no more cards are available
             }
 

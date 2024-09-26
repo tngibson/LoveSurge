@@ -61,7 +61,6 @@ public class DragDrop : MonoBehaviour
         if (isOverDropZone && dropZone != null && dropZone.IsTopicSelected)
         {
             FMODUnity.RuntimeManager.PlayOneShot(cardPlace);
-            print("HELP");
             // Drop the object in the drop zone
             transform.SetParent(currentDropZone.transform, false);
 
