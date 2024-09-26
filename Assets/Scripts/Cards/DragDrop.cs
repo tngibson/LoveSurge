@@ -1,20 +1,22 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using FMODUnity;
+using FMOD;
 
 public class DragDrop : MonoBehaviour
 {
     [SerializeField] private Dropzone dropZone;  // Reference to the Dropzone component
     [SerializeField] private Card card;  // Reference to the Card component
     [SerializeField] private PlayerArea playerArea;  // Reference to the PlayerArea component
-    [SerializeField] private AudioSource cardHover; // Reference to the Card Hover Sound effect
-    [SerializeField] private AudioSource cardPlacedSFX; // Reference to the Card Played SFX
-
     private bool isDragging = false;  // Flag to check if the object is being dragged
     private Transform startParent;  // To store the original parent of the dragged object
     private Vector2 startPos;  // To store the original position of the dragged object
     private GameObject currentDropZone;  // To keep track of the current drop zone
     private bool isOverDropZone = false;  // Flag to check if the object is over a drop zone
+    public FMODUnity.EventReference cardPlace;
+    public FMODUnity.EventReference cardHovering;
+
 
     void Start()
     {
@@ -27,8 +29,9 @@ public class DragDrop : MonoBehaviour
 
         if (dropZone == null || playerArea == null)
         {
-            Debug.LogError("Dropzone or PlayerArea not found in the scene.");
+            //Debug.LogError("Dropzone or PlayerArea not found in the scene.");
         }
+
     }
 
     void Update()
@@ -57,8 +60,8 @@ public class DragDrop : MonoBehaviour
 
         if (isOverDropZone && dropZone != null && dropZone.IsTopicSelected)
         {
-            cardPlacedSFX.Play();
-
+            FMODUnity.RuntimeManager.PlayOneShot(cardPlace);
+            print("HELP");
             // Drop the object in the drop zone
             transform.SetParent(currentDropZone.transform, false);
 
@@ -106,6 +109,6 @@ public class DragDrop : MonoBehaviour
 
     public void OnMouseOver()
     {
-        cardHover.Play();
+        FMODUnity.RuntimeManager.PlayOneShot(cardHovering);
     }
 }

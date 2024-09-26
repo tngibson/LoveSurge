@@ -88,18 +88,18 @@ MonoBehaviour:
   switchSettingsMigration: 1
   HasSourceProject: 1
   HasPlatforms: 1
-  sourceProjectPath: ../../OneDrive/Documents/FMOD Studio/LoveSurge/LoveSurge.fspro
-  sourceBankPath: ../../OneDrive/Documents/FMOD Studio/LoveSurge/Build
+  sourceProjectPath: LSFMOD/LSFMOD.fspro
+  sourceBankPath: LSFMOD/Build
   sourceBankPathUnformatted: 
   BankRefreshCooldown: 5
   ShowBankRefreshWindow: 1
-  AutomaticEventLoading: 1
-  BankLoadType: 0
+  AutomaticEventLoading: 0
+  BankLoadType: 1
   AutomaticSampleLoading: 0
   EncryptionKey: 
   ImportType: 0
   TargetAssetPath: FMODBanks
-  TargetBankFolder: 
+  TargetBankFolder: LoveSurgeFMOD\Build\Desktop
   EventLinkage: 0
   LoggingLevel: 2
   SpeakerModeSettings: []
@@ -113,7 +113,8 @@ MonoBehaviour:
   MasterBanks:
   - Master
   Banks: []
-  BanksToLoad: []
+  BanksToLoad:
+  - Master
   LiveUpdatePort: 9264
   EnableMemoryTracking: 0
   AndroidUseOBB: 0
