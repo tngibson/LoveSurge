@@ -19,7 +19,7 @@ public class DrawCards : MonoBehaviour
             Card card = deckContainer.Draw();
             if (card == null)
             {
-                //Debug.LogWarning("No more cards to draw.");
+                Debug.LogWarning("No more cards to draw.");
                 break; // Exit the loop if no more cards are available
             }
 
