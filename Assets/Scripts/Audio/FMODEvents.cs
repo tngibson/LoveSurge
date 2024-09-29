@@ -17,7 +17,25 @@ public class FMODEvents : MonoBehaviour
     [field: SerializeField] public EventReference cardShuffle { get; private set; }
     [field: SerializeField] public EventReference cardClicked { get; private set; }
 
+    [field: Header("Voices")]
+    [field: SerializeField] public EventReference samVoice { get; private set; }
+    [field: SerializeField] public EventReference lotteVoice { get; private set; }
+    [field: SerializeField] public EventReference playerVoice { get; private set; }
+
+    [field: Header("UI SFX")]
+    [field: SerializeField] public EventReference uiClick { get; private set; }
+    [field: SerializeField] public EventReference goodResponse { get; private set; }
+    [field: SerializeField] public EventReference badResponse { get; private set; }
+
+    [field: Header("Vocal SFX")]
+    [field: SerializeField] public EventReference busted { get; private set; }
+    [field: SerializeField] public EventReference datingStart { get; private set; }
+
     public static FMODEvents instance { get; private set; }
+   
+
+
+
 
 
     public void Awake()
