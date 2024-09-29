@@ -571,9 +571,6 @@ GameObject:
   - component: {fileID: 5127878525038528506}
   - component: {fileID: 8016433446528297258}
   - component: {fileID: 4659647164469052664}
-  - component: {fileID: 6519911407148141893}
-  - component: {fileID: 4242102448004597818}
-  - component: {fileID: 5679094771429548191}
   m_Layer: 6
   m_Name: CardPrefab
   m_TagString: Untagged
@@ -624,20 +621,6 @@ MonoBehaviour:
   dropZone: {fileID: 0}
   card: {fileID: 0}
   playerArea: {fileID: 0}
-  cardPlace:
-    Guid:
-      Data1: 785571725
-      Data2: 1260154379
-      Data3: 2033152178
-      Data4: -586214260
-    Path: event:/SFX/Cards/cardPlace
-  cardHovering:
-    Guid:
-      Data1: -133241259
-      Data2: 1138179849
-      Data3: 1671777685
-      Data4: 137671589
-    Path: event:/SFX/Cards/cardHover
 --- !u!114 &756694908417076189
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -769,78 +752,3 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   slideDuration: 0.5
   clickedOffset: 5
---- !u!114 &6519911407148141893
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7210089657204452481}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9a6610d2e704f1648819acc8d7460285, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  CollisionTag: 
-  EventReference:
-    Guid:
-      Data1: -133241259
-      Data2: 1138179849
-      Data3: 1671777685
-      Data4: 137671589
-    Path: event:/SFX/Cards/cardHover
-  Event: 
-  PlayEvent: 0
-  StopEvent: 0
-  AllowFadeout: 1
-  TriggerOnce: 0
-  Preload: 0
-  AllowNonRigidbodyDoppler: 0
-  Params: []
-  OverrideAttenuation: 0
-  OverrideMinDistance: 1
-  OverrideMaxDistance: 20
---- !u!114 &4242102448004597818
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7210089657204452481}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9a6610d2e704f1648819acc8d7460285, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  CollisionTag: 
-  EventReference:
-    Guid:
-      Data1: 785571725
-      Data2: 1260154379
-      Data3: 2033152178
-      Data4: -586214260
-    Path: event:/SFX/Cards/cardPlace
-  Event: 
-  PlayEvent: 0
-  StopEvent: 0
-  AllowFadeout: 1
-  TriggerOnce: 0
-  Preload: 0
-  AllowNonRigidbodyDoppler: 0
-  Params: []
-  OverrideAttenuation: 0
-  OverrideMinDistance: 1
-  OverrideMaxDistance: 20
---- !u!114 &5679094771429548191
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7210089657204452481}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 86c6556701af9e04380698b89f691b6e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  attenuationObject: {fileID: 0}
