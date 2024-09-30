@@ -35,7 +35,7 @@ public class Dropzone : MonoBehaviour
     [SerializeField] private float typewriterSpeed = 0.05f;  // Speed of the typewriter effect
 
     // Flag to indicate if the typewriter effect is running
-    private bool isTypewriting = false;
+    public bool isTypewriting = false;
     private bool skipRequested = false;
 
     // Coroutine reference for CountDownPower
@@ -264,6 +264,7 @@ public class Dropzone : MonoBehaviour
     {
         isTypewriting = true;     // Typewriting is now active
         skipRequested = false;    // Reset the skip request
+        currentSession.isWriting = true;
 
         foreach (char letter in message.ToCharArray())
         {
@@ -279,6 +280,7 @@ public class Dropzone : MonoBehaviour
         }
 
         isTypewriting = false;  // Typewriting is complete
+        currentSession.isWriting = false; 
     }
 
     void Update()

@@ -24,6 +24,7 @@ public class MapLocationsManager : MonoBehaviour
             windowObject.gameObject.SetActive(true);
             infoDisplay.text = text;
             windowObject.activeName = location;
+            //AudioManager.instance.PlayOneShot(FMODEvents.instance.uiClick, this.transform.position);
         }
         else
         {

@@ -1040,6 +1040,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c05ab77b61243dd43a2c5e51e78c7565, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  isWriting: 0
   power1: 14
   power2: 12
   power3: 12
@@ -1149,8 +1150,6 @@ MonoBehaviour:
   playerTextOutput: {fileID: 1170517047}
   playerNameText: {fileID: 192076590}
   dateCharacter: {fileID: 1661069647}
-  dateTextSFX: {fileID: 261167068}
-  playerTextSFX: {fileID: 1223119345}
 --- !u!1 &350194703
 GameObject:
   m_ObjectHideFlags: 0
@@ -3647,6 +3646,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 9087966427139456051, guid: a021c6d3c1a46724ca869d9fa4244f20,
         type: 3}
+      propertyPath: <dateVoice>k__BackingField.Path
+      value: event:/SFX/Voices/samVoice
+      objectReference: {fileID: 0}
+    - target: {fileID: 9087966427139456051, guid: a021c6d3c1a46724ca869d9fa4244f20,
+        type: 3}
       propertyPath: <music>k__BackingField.Guid.Data1
       value: 1300156995
       objectReference: {fileID: 0}
@@ -3685,13 +3689,29 @@ PrefabInstance:
       propertyPath: <samTheme>k__BackingField.Guid.Data4
       value: -127509072
       objectReference: {fileID: 0}
+    - target: {fileID: 9087966427139456051, guid: a021c6d3c1a46724ca869d9fa4244f20,
+        type: 3}
+      propertyPath: <dateVoice>k__BackingField.Guid.Data1
+      value: -153891535
+      objectReference: {fileID: 0}
+    - target: {fileID: 9087966427139456051, guid: a021c6d3c1a46724ca869d9fa4244f20,
+        type: 3}
+      propertyPath: <dateVoice>k__BackingField.Guid.Data2
+      value: 1124538250
+      objectReference: {fileID: 0}
+    - target: {fileID: 9087966427139456051, guid: a021c6d3c1a46724ca869d9fa4244f20,
+        type: 3}
+      propertyPath: <dateVoice>k__BackingField.Guid.Data3
+      value: 214067122
+      objectReference: {fileID: 0}
+    - target: {fileID: 9087966427139456051, guid: a021c6d3c1a46724ca869d9fa4244f20,
+        type: 3}
+      propertyPath: <dateVoice>k__BackingField.Guid.Data4
+      value: 573354995
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
-    m_AddedGameObjects:
-    - targetCorrespondingSourceObject: {fileID: 2940753333971068076, guid: a021c6d3c1a46724ca869d9fa4244f20,
-        type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 1808817374}
+    m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a021c6d3c1a46724ca869d9fa4244f20, type: 3}
 --- !u!4 &1410971186 stripped
@@ -4822,12 +4842,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1661069645}
   m_CullTransparentMesh: 1
---- !u!4 &1730168115 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 2940753333971068076, guid: a021c6d3c1a46724ca869d9fa4244f20,
-    type: 3}
-  m_PrefabInstance: {fileID: 1365369316}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1808817373
 GameObject:
   m_ObjectHideFlags: 0
@@ -4867,7 +4881,7 @@ Transform:
   - {fileID: 1223119344}
   - {fileID: 1189540142}
   - {fileID: 379998687}
-  m_Father: {fileID: 1730168115}
+  m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1812036920 stripped
 GameObject:
@@ -6137,4 +6151,5 @@ SceneRoots:
   - {fileID: 519420032}
   - {fileID: 1108671395}
   - {fileID: 619394802}
+  - {fileID: 1808817374}
   - {fileID: 1365369316}

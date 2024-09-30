@@ -18,8 +18,7 @@ public class FMODEvents : MonoBehaviour
     [field: SerializeField] public EventReference cardClicked { get; private set; }
 
     [field: Header("Voices")]
-    [field: SerializeField] public EventReference samVoice { get; private set; }
-    [field: SerializeField] public EventReference lotteVoice { get; private set; }
+    [field: SerializeField] public EventReference dateVoice { get; private set; }
     [field: SerializeField] public EventReference playerVoice { get; private set; }
 
     [field: Header("UI SFX")]
