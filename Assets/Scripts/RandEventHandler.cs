@@ -1,6 +1,8 @@
 using System.Collections;
 using System.Collections.Generic;
 using System.IO;
+using FMOD.Studio;
+using FMODUnity;
 using TMPro;
 using UnityEngine;
 using UnityEngine.SceneManagement;
@@ -21,7 +23,7 @@ public class RandEventHandler : MonoBehaviour
     int activeChoiceIndex = 0;
     protected StreamReader textReader;
     private FileInfo source1;
-    [SerializeField] private AudioSource textSFX;
+    //[SerializeField] private AudioSource textSFX;
     protected string text = " ";
     int nextLineStr;
     int lineNum = 0;
@@ -33,6 +35,9 @@ public class RandEventHandler : MonoBehaviour
     private bool isTypewriting = false;
     private bool skipRequested = false;
 
+    // Audio
+    private EventInstance levelMusic;
+
     void Start()
     {
         InitializeFileSources();
@@ -40,6 +45,7 @@ public class RandEventHandler : MonoBehaviour
         button1.SetActive(false);
         button2.SetActive(false);
         mapButton.SetActive(false);
+        levelMusic = AudioManager.instance.CreateEventInstance(FMODEvents.instance.music);
     }
 
     private void InitializeFileSources()
@@ -63,7 +69,7 @@ public class RandEventHandler : MonoBehaviour
         {
             lineNum++;
             text = stream.ReadLine();
-            textSFX.Play();  // Play sound effect when new text appears
+            AudioManager.instance.PlayOneShot(FMODEvents.instance.playerVoice, this.transform.position);  // Play sound effect when new text appears
             nextLineStr = stream.Peek();
 
             if (text.Contains("CHOICE"))
@@ -136,6 +142,8 @@ public class RandEventHandler : MonoBehaviour
         choiceDialogue = activeChoiseInfo.InitFileInfo(0);
         textReader = choiceDialogue.OpenText();
         StartCoroutine(TypewriteText(textOutput, textReader));  // Start typewriting for choice 1
+        AudioManager.instance.PlayOneShot(FMODEvents.instance.uiClick, this.transform.position);
+
     }
 
     public void onChoice2()
@@ -146,15 +154,19 @@ public class RandEventHandler : MonoBehaviour
         choiceDialogue = activeChoiseInfo.InitFileInfo(1);
         textReader = choiceDialogue.OpenText();
         StartCoroutine(TypewriteText(textOutput, textReader));  // Start typewriting for choice 2
+        AudioManager.instance.PlayOneShot(FMODEvents.instance.uiClick, this.transform.position);
+
     }
 
     public void onNextLine()
     {
         StartCoroutine(TypewriteText(textOutput, textReader));  // Start typewriting for the next line
+        AudioManager.instance.PlayOneShot(FMODEvents.instance.uiClick, this.transform.position);
     }
 
     public void onMap()
     {
+        levelMusic.stop(FMOD.Studio.STOP_MODE.IMMEDIATE);
         SceneManager.LoadScene(sceneName: "Map");
     }
 }
