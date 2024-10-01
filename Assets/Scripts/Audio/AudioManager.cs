@@ -14,6 +14,8 @@ public class AudioManager : MonoBehaviour
    public static AudioManager instance { get; private set;}
    
    private EventInstance musicEventInstance;
+   private EventInstance dialougeEventInstance;
+   private List<EventInstance> eventInstances;
 
    private void Awake()
    {
@@ -21,27 +23,52 @@ public class AudioManager : MonoBehaviour
     {
         Debug.LogError("Found more than one Audio Manager in the scene.");
     }
-    instance = this;
+        instance = this;
+        eventInstances = new List<EventInstance>();
+   
    }
    
    private void Start()
    {
         InitializeMusic(FMODEvents.instance.music);
-   }
-   public void PlayOneShot(EventReference sound, Vector3 worldPos)
+        InitializeVoices(FMODEvents.instance.playerVoice);
+
+    }
+    public void PlayOneShot(EventReference sound, Vector3 worldPos)
     {
         RuntimeManager.PlayOneShot(sound, worldPos);
     }
 
-    public EventInstance CreateEventInstance(EventReference eventReference)
+    public EventInstance CreateInstance (EventReference eventReference)
     {
         EventInstance eventInstance = RuntimeManager.CreateInstance(eventReference);
+        eventInstances.Add(eventInstance);
         return eventInstance;
     }
     
     private void InitializeMusic(EventReference musicEventReference)
     {
-        musicEventInstance = CreateEventInstance(musicEventReference);
+        musicEventInstance = CreateInstance(musicEventReference);
         musicEventInstance.start();
+    }
+
+    private void InitializeVoices(EventReference eventReference)
+    {
+        dialougeEventInstance = CreateInstance(eventReference);
+    }
+
+    private void CleanUp()
+    {
+        //stop and release created instances
+        foreach (EventInstance eventInstance in eventInstances)
+        {
+            eventInstance.stop(FMOD.Studio.STOP_MODE.ALLOWFADEOUT);
+            eventInstance.release();
+        }
+    }
+
+    private void OnDestroy()
+    {
+        CleanUp();
     }
 }

@@ -1,12 +1,13 @@
 using System.Collections;
 using System.Collections.Generic;
 using System.IO;
-using FMOD.Studio;
-using FMODUnity;
 using TMPro;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
+using static UnityEngine.ParticleSystem;
+using FMOD.Studio;
+using FMODUnity;
 
 public class RandEventHandler : MonoBehaviour
 {
@@ -37,6 +38,7 @@ public class RandEventHandler : MonoBehaviour
 
     // Audio
     private EventInstance levelMusic;
+    private EventInstance dialougeVoice;
 
     void Start()
     {
@@ -45,7 +47,15 @@ public class RandEventHandler : MonoBehaviour
         button1.SetActive(false);
         button2.SetActive(false);
         mapButton.SetActive(false);
-        levelMusic = AudioManager.instance.CreateEventInstance(FMODEvents.instance.music);
+    }
+
+    private void start()
+    {
+        levelMusic = AudioManager.instance.CreateInstance(FMODEvents.instance.music);
+        dialougeVoice = AudioManager.instance.CreateInstance(FMODEvents.instance.playerVoice);
+        updateSound();
+        updateVoice();
+
     }
 
     private void InitializeFileSources()
@@ -69,7 +79,7 @@ public class RandEventHandler : MonoBehaviour
         {
             lineNum++;
             text = stream.ReadLine();
-            AudioManager.instance.PlayOneShot(FMODEvents.instance.playerVoice, this.transform.position);  // Play sound effect when new text appears
+            AudioManager.instance.PlayOneShot(FMODEvents.instance.dateVoice, this.transform.position);  // Play sound effect when new text appears
             nextLineStr = stream.Peek();
 
             if (text.Contains("CHOICE"))
@@ -82,6 +92,8 @@ public class RandEventHandler : MonoBehaviour
             convoTextOutput.text = "";
             isTypewriting = true;
             skipRequested = false;
+            updateVoice();
+
 
             // Typewrite each character
             foreach (char letter in text.ToCharArray())
@@ -97,6 +109,9 @@ public class RandEventHandler : MonoBehaviour
             }
 
             isTypewriting = false;
+            updateVoice();
+       
+
 
             if (nextLineStr == -1)
             {
@@ -166,8 +181,44 @@ public class RandEventHandler : MonoBehaviour
 
     public void onMap()
     {
-        levelMusic.stop(FMOD.Studio.STOP_MODE.IMMEDIATE);
         SceneManager.LoadScene(sceneName: "Map");
     }
+    // Level Music Audio
+    private void updateSound()
+    {
+        PLAYBACK_STATE playbackState;
+        levelMusic.getPlaybackState(out playbackState);
+        if (playbackState.Equals(PLAYBACK_STATE.STOPPED))
+        {
+            levelMusic.start();
+        }
+        else
+        {
+            levelMusic.stop(FMOD.Studio.STOP_MODE.ALLOWFADEOUT);
+        }
+    }
+
+    // Voice Audio
+    public void updateVoice()
+    {
+        if (isTypewriting == true)
+        {
+            PLAYBACK_STATE playbackState;
+            dialougeVoice.getPlaybackState(out playbackState);
+            if (playbackState.Equals(PLAYBACK_STATE.STOPPED))
+            {
+                Debug.Log("Typing");
+                dialougeVoice.start();
+            }
+        }
+        else
+        {
+            Debug.Log("Not typing");
+            dialougeVoice.stop(FMOD.Studio.STOP_MODE.ALLOWFADEOUT);
+        }
+
+    }
 }
+
+
 
