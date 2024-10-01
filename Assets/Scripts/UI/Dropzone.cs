@@ -47,6 +47,7 @@ public class Dropzone : MonoBehaviour
     public bool IsTopicSelected { get; set; }
 
     [SerializeField] private float discardDuration = 1.0f; // Duration of the discard animation
+    private Coroutine discardCardsCoroutine;
 
     // Awake is called when the script instance is being loaded
     void Awake()
@@ -94,7 +95,7 @@ public class Dropzone : MonoBehaviour
         CalculateScore();
 
         // Moves all played cards to the discard pile
-        StartCoroutine(DiscardCards());
+        discardCardsCoroutine = StartCoroutine(DiscardCards());
 
         // Target PowerNum after subtracting the score
         targetPowerNum = selectedConvoTopic.PowerNum - score;
@@ -113,7 +114,7 @@ public class Dropzone : MonoBehaviour
         // If the conversation topic has been completed 
         if (selectedConvoTopic.PowerNum <= 0)
         {
-            StopAllCoroutinesExceptCountDownPower();  // Stop all except CountDownPower
+            StopMultipleCoroutines();  // Stop all except CountDownPower
             StartCoroutine(PlayAllDialogsSequentially());
 
             selectedConvoTopic.isClicked = false;
@@ -362,18 +363,23 @@ public class Dropzone : MonoBehaviour
     }
 
     // Method to stop all coroutines except CountDownPower
-    private void StopAllCoroutinesExceptCountDownPower()
+    private void StopMultipleCoroutines()
     {
         // Store the CountDownPower coroutine
-        Coroutine savedCoroutine = countDownPowerCoroutine;
+        Coroutine countdownCoroutine = countDownPowerCoroutine;
+        Coroutine discardCoroutine = discardCardsCoroutine;
 
         // Stop all coroutines
         StopAllCoroutines();
 
-        // Restart the CountDownPower coroutine if it's still valid
-        if (savedCoroutine != null)
+        // Restart the coroutines if it's still valid
+        if (countdownCoroutine != null)
         {
             countDownPowerCoroutine = StartCoroutine(CountDownPower(selectedConvoTopic.PowerNum + score, targetPowerNum));
+        }
+        if (discardCoroutine != null)
+        {
+            countDownPowerCoroutine = StartCoroutine(DiscardCards());
         }
     }
 
@@ -488,10 +494,6 @@ public class Dropzone : MonoBehaviour
         // Optionally: Add to the discard pile in your logic
         discard.AddToDiscard(card);
     }
-
-
-
-
 
     public bool HasCard(Card card)
     {
