@@ -5,6 +5,9 @@ using TMPro;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
+using static UnityEngine.ParticleSystem;
+using FMOD.Studio;
+using FMODUnity;
 
 public class RandEventHandler : MonoBehaviour
 {
@@ -21,7 +24,7 @@ public class RandEventHandler : MonoBehaviour
     int activeChoiceIndex = 0;
     protected StreamReader textReader;
     private FileInfo source1;
-    [SerializeField] private AudioSource textSFX;
+    //[SerializeField] private AudioSource textSFX;
     protected string text = " ";
     int nextLineStr;
     int lineNum = 0;
@@ -33,6 +36,10 @@ public class RandEventHandler : MonoBehaviour
     private bool isTypewriting = false;
     private bool skipRequested = false;
 
+    // Audio
+    private EventInstance levelMusic;
+    private EventInstance dialougeVoice;
+
     void Start()
     {
         InitializeFileSources();
@@ -40,6 +47,15 @@ public class RandEventHandler : MonoBehaviour
         button1.SetActive(false);
         button2.SetActive(false);
         mapButton.SetActive(false);
+    }
+
+    private void start()
+    {
+        levelMusic = AudioManager.instance.CreateInstance(FMODEvents.instance.music);
+        dialougeVoice = AudioManager.instance.CreateInstance(FMODEvents.instance.playerVoice);
+        updateSound();
+        updateVoice();
+
     }
 
     private void InitializeFileSources()
@@ -63,7 +79,7 @@ public class RandEventHandler : MonoBehaviour
         {
             lineNum++;
             text = stream.ReadLine();
-            textSFX.Play();  // Play sound effect when new text appears
+            AudioManager.instance.PlayOneShot(FMODEvents.instance.dateVoice, this.transform.position);  // Play sound effect when new text appears
             nextLineStr = stream.Peek();
 
             if (text.Contains("CHOICE"))
@@ -76,6 +92,8 @@ public class RandEventHandler : MonoBehaviour
             convoTextOutput.text = "";
             isTypewriting = true;
             skipRequested = false;
+            updateVoice();
+
 
             // Typewrite each character
             foreach (char letter in text.ToCharArray())
@@ -91,6 +109,9 @@ public class RandEventHandler : MonoBehaviour
             }
 
             isTypewriting = false;
+            updateVoice();
+       
+
 
             if (nextLineStr == -1)
             {
@@ -136,6 +157,8 @@ public class RandEventHandler : MonoBehaviour
         choiceDialogue = activeChoiseInfo.InitFileInfo(0);
         textReader = choiceDialogue.OpenText();
         StartCoroutine(TypewriteText(textOutput, textReader));  // Start typewriting for choice 1
+        AudioManager.instance.PlayOneShot(FMODEvents.instance.uiClick, this.transform.position);
+
     }
 
     public void onChoice2()
@@ -146,16 +169,56 @@ public class RandEventHandler : MonoBehaviour
         choiceDialogue = activeChoiseInfo.InitFileInfo(1);
         textReader = choiceDialogue.OpenText();
         StartCoroutine(TypewriteText(textOutput, textReader));  // Start typewriting for choice 2
+        AudioManager.instance.PlayOneShot(FMODEvents.instance.uiClick, this.transform.position);
+
     }
 
     public void onNextLine()
     {
         StartCoroutine(TypewriteText(textOutput, textReader));  // Start typewriting for the next line
+        AudioManager.instance.PlayOneShot(FMODEvents.instance.uiClick, this.transform.position);
     }
 
     public void onMap()
     {
         SceneManager.LoadScene(sceneName: "Map");
     }
+    // Level Music Audio
+    private void updateSound()
+    {
+        PLAYBACK_STATE playbackState;
+        levelMusic.getPlaybackState(out playbackState);
+        if (playbackState.Equals(PLAYBACK_STATE.STOPPED))
+        {
+            levelMusic.start();
+        }
+        else
+        {
+            levelMusic.stop(FMOD.Studio.STOP_MODE.ALLOWFADEOUT);
+        }
+    }
+
+    // Voice Audio
+    public void updateVoice()
+    {
+        if (isTypewriting == true)
+        {
+            PLAYBACK_STATE playbackState;
+            dialougeVoice.getPlaybackState(out playbackState);
+            if (playbackState.Equals(PLAYBACK_STATE.STOPPED))
+            {
+                Debug.Log("Typing");
+                dialougeVoice.start();
+            }
+        }
+        else
+        {
+            Debug.Log("Not typing");
+            dialougeVoice.stop(FMOD.Studio.STOP_MODE.ALLOWFADEOUT);
+        }
+
+    }
 }
+
+
 

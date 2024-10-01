@@ -3,9 +3,18 @@ using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 using System.Collections.Generic;
+//using FMOD.Studio;
+
 
 public class Playtest : MonoBehaviour
 {
+    // Text is typing
+    public bool isWriting = false;
+
+    // Audio
+    // private EventInstance playerVoice;
+    // private EventInstance dateVoice;
+
     // Serialized fields for conversation topics, power levels, and types
     [SerializeField] public int power1;
     [SerializeField] public int power2;
@@ -69,8 +78,8 @@ public class Playtest : MonoBehaviour
     // Field for the date character so we can change their sprites
     [SerializeField] public Image dateCharacter;
 
-    [SerializeField] private AudioSource dateTextSFX;
-    [SerializeField] private AudioSource playerTextSFX;
+    //[SerializeField] private AudioSource dateTextSFX;
+    //[SerializeField] private AudioSource playerTextSFX;
     // Start is called before the first frame update
     protected void Start()
     {
@@ -78,6 +87,12 @@ public class Playtest : MonoBehaviour
         ShowTopics();
         playerNameText.text = "Player"; // For now, since we are not taking player's name, this is just set to Player. Later, it will be set a different way
         dateNameText.text = dateCharacter.gameObject.ToString();
+    }
+
+    private void start()
+    {
+        //playerVoice = AudioManager.instance.CreateEventInstance(FMODEvents.instance.playerVoice);
+        //dateVoice = AudioManager.instance.CreateEventInstance(FMODEvents.instance.dateVoice);
     }
 
     // Initialize file sources for reading text
@@ -129,13 +144,27 @@ public class Playtest : MonoBehaviour
     // Plays player text sounds
     public void ReadPlayerText()
     {
-        playerTextSFX.Play();
+        //playerVoice.start();
+        //if (isWriting)
+        //{
+            AudioManager.instance.PlayOneShot(FMODEvents.instance.playerVoice, this.transform.position);
+        //}
+        //Debug.Log("AHHHHHHHHHHHHH");
+        //playerVoice.stop(STOP_MODE.IMMEDIATE); 
+        //playerTextSFX.Play();
     }
 
     // Changes the character pose and plays sounds
     public void ReadDateText(Sprite characterPose)
     {
         dateCharacter.sprite = characterPose;
-        dateTextSFX.Play();
+        //dateVoice.start();
+        //if (isWriting)
+        //{
+            AudioManager.instance.PlayOneShot(FMODEvents.instance.dateVoice, this.transform.position);
+        //}
+        //Debug.Log("AHHHHHHHHHHHHH");
+        //dateVoice.stop(STOP_MODE.IMMEDIATE);         
+        //dateTextSFX.Play();
     }
 }
