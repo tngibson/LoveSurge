@@ -110,9 +110,7 @@ public class RandEventHandler : MonoBehaviour
 
             isTypewriting = false;
             updateVoice();
-       
-
-
+  
             if (nextLineStr == -1)
             {
                 textReader = null;
