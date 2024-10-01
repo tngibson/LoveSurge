@@ -28,7 +28,11 @@ public class ConvoTopic : MonoBehaviour
     [SerializeField] private Sprite cleIcon;
     [SerializeField] private Sprite couIcon;
     [SerializeField] private Sprite creIcon;
-
+    // Colors for different attributes CHANGE THEM ASAP
+    [SerializeField] private Color chaColor;
+    [SerializeField] private Color cleColor;
+    [SerializeField] private Color couColor;
+    [SerializeField] private Color creColor;
     // Drop zone and game manager references
     [SerializeField] private GameObject dropZone;
     [SerializeField] private Dropzone dropZoneScript;
@@ -55,6 +59,7 @@ public class ConvoTopic : MonoBehaviour
         dropZone = GameObject.Find("Dropzone");
         dropZoneScript = dropZone.GetComponent<Dropzone>();
         SetIcon();
+        changeBGColor();
     }
 
     // Set the conversation topic and update the UI
@@ -97,7 +102,31 @@ public class ConvoTopic : MonoBehaviour
                 break;
         }
     }
-
+    
+    //changes topic color
+    void changeBGColor()
+    {
+        switch (convoAttribute.ToLower())
+        {
+            case "cha":
+                background.color = chaColor;
+                break;
+            case "cre":
+                background.color = creColor;
+                break;
+            case "cou":
+                background.color = couColor;
+                break;
+            case "cle":
+                background.color = cleColor;
+                break;
+            case "":
+                break;
+            default:
+                Debug.LogWarning("Unknown convoAttribute: " + convoAttribute);
+                break;
+        }
+    }
     // Return the power number
     public int GetPowerNum()
     {
@@ -123,6 +152,16 @@ public class ConvoTopic : MonoBehaviour
             dropZoneScript.selectedConvoTopic = this;
             dropZoneScript.IsTopicSelected = true;
             gameManager.currentConvoTopic = this;
+        }
+        else if (isClicked && !isFailed && powerNum > 0)
+        {
+            gameManager.currentConvoTopic = this;
+            changeBGColor();
+            isClicked = false;
+            //Deselects current convo topic when clicked
+            dropZoneScript.selectedConvoTopic = null;
+            dropZoneScript.IsTopicSelected = false;
+            gameManager.ResetConvoTopic();
         }
     }
 

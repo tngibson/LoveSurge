@@ -109,5 +109,9 @@ public class GameManager : MonoBehaviour
             mapButton.SetActive(true);
         }
     }
-
+    public void ResetConvoTopic()
+    {
+        currentConvoTopic = null;
+        topicContainer.EnableButtons();
+    }
 }
