@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using FMOD.Studio;
 using Unity.VisualScripting;
 using UnityEngine;
 
@@ -15,6 +16,9 @@ public class DragDrop : MonoBehaviour
     private GameObject currentDropZone;  // To keep track of the current drop zone
     private bool isOverDropZone = false;  // Flag to check if the object is over a drop zone
 
+    // Audio
+    private EventInstance levelMusic;
+
 
 
     void Start()
@@ -22,7 +26,7 @@ public class DragDrop : MonoBehaviour
         // Initialize references to Dropzone and PlayerArea components
         GameObject dropZoneObject = GameObject.Find("Dropzone");
         dropZone = dropZoneObject?.GetComponent<Dropzone>();
-        
+
         GameObject playerAreaObject = GameObject.Find("PlayerArea");
         playerArea = playerAreaObject?.GetComponent<PlayerArea>();
 
@@ -30,6 +34,8 @@ public class DragDrop : MonoBehaviour
         {
             Debug.LogError("Dropzone or PlayerArea not found in the scene.");
         }
+        InitializeAudio();
+        AudioManager.instance.PlayOneShot(FMODEvents.instance.datingStart, this.transform.position);
 
     }
 
@@ -59,7 +65,7 @@ public class DragDrop : MonoBehaviour
 
         if (isOverDropZone && dropZone != null && dropZone.IsTopicSelected)
         {
-           AudioManager.instance.PlayOneShot(FMODEvents.instance.cardPlaced, this.transform.position);
+            AudioManager.instance.PlayOneShot(FMODEvents.instance.cardPlaced, this.transform.position);
             // Drop the object in the drop zone
             transform.SetParent(currentDropZone.transform, false);
 
@@ -107,6 +113,21 @@ public class DragDrop : MonoBehaviour
 
     public void OnMouseOver()
     {
-       AudioManager.instance.PlayOneShot(FMODEvents.instance.cardHovering, this.transform.position);
+        AudioManager.instance.PlayOneShot(FMODEvents.instance.cardHovering, this.transform.position);
+    }
+    private void InitializeAudio()
+    {
+        PlayBackgroundMusic();
+    }
+    private void PlayBackgroundMusic()
+    {
+        levelMusic.getPlaybackState(out PLAYBACK_STATE playbackState);
+        if (playbackState == PLAYBACK_STATE.STOPPED)
+        {
+            levelMusic.start();
+        }
+
     }
 }
+
+
