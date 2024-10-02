@@ -3,18 +3,19 @@ using System.Collections.Generic;
 using System.IO;
 using TMPro;
 using UnityEngine;
-[CreateAssetMenu()]
+/*[CreateAssetMenu()]
 
 public class Choices : ScriptableObject
 {
-    [SerializeField] public string[] choiceOptions;
-    [SerializeField] public string[] choiceFilePath;
-    [SerializeField] public string afterChoiceFilePath;
-    private FileInfo source1;
-    public FileInfo InitFileInfo(int choiceIndex)
-    {
-        source1 = new FileInfo(choiceFilePath[choiceIndex]);
-        return source1;
-    }
-    
+    public List<string> choiceOptions = new List<string>();  // The text of the choices
+    public List<ChoicePath> choicePaths = new List<ChoicePath>();  // Stores dialog and speakers for each choice path
 }
+
+
+[System.Serializable]
+public class ChoicePath
+{
+    public List<string> afterChoiceDialogLines = new List<string>();
+    public List<string> afterChoiceSpeakersPerLine = new List<string>();
+}
+*/

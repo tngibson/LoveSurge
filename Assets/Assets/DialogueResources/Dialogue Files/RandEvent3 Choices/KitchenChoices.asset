@@ -10,12 +10,21 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 2de807345bdd09646bb1f755bf64c760, type: 3}
-  m_Name: RandEvent3Choice
+  m_Name: KitchenChoices
   m_EditorClassIdentifier: 
   choiceOptions:
-  - Yea, you did.
-  - "Maybe you shouldn\u2019t have pushed her."
-  choiceFilePath:
-  - Assets/Assets/DialogueResources/Dialogue Files/RandEvent3 Choices/RandEvent3Choice11.txt
-  - Assets/Assets/DialogueResources/Dialogue Files/RandEvent3 Choices/RandEvent3Choice12.txt
-  afterChoiceFilePath: Assets/Assets/DialogueResources/Dialogue Files/RandEvent3Return.txt
+  - Go to the bathroom...
+  - Don't go to the bathroom.
+  choicePaths:
+  - afterChoiceDialogLines:
+    - Hehe hoohoo
+    - Poo
+    afterChoiceSpeakersPerLine:
+    - Player
+    - Player
+  - afterChoiceDialogLines:
+    - Hehe hoohoo
+    - No Poo
+    afterChoiceSpeakersPerLine:
+    - Sam
+    - Lotte

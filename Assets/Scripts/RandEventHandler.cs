@@ -1,224 +1,282 @@
 using System.Collections;
 using System.Collections.Generic;
-using System.IO;
 using TMPro;
 using UnityEngine;
-using UnityEngine.SceneManagement;
 using UnityEngine.UI;
-using static UnityEngine.ParticleSystem;
-using FMOD.Studio;
+using UnityEngine.SceneManagement;
 using FMODUnity;
+using FMOD.Studio;
 
 public class RandEventHandler : MonoBehaviour
 {
-    [SerializeField] int ChoiceCounter;
-    [SerializeField] string eventName;
-    [SerializeField] GameObject mapButton;
-    [SerializeField] GameObject button1;
-    [SerializeField] GameObject button2;
-    [SerializeField] TextMeshProUGUI button1Text;
-    [SerializeField] TextMeshProUGUI button2Text;
-    [SerializeField] GameObject nextlineButton;
-    [SerializeField] private TextMeshProUGUI textOutput;
-    [SerializeField] Choices[] choices;
-    int activeChoiceIndex = 0;
-    protected StreamReader textReader;
-    private FileInfo source1;
-    //[SerializeField] private AudioSource textSFX;
-    protected string text = " ";
-    int nextLineStr;
-    int lineNum = 0;
-    Choices activeChoiseInfo;
-    FileInfo choiceDialogue;
+    [SerializeField] private List<string> dialogLines = new List<string>();  // Holds the main dialog lines
+    [SerializeField] private List<string> speakersPerLine = new List<string>(); // Holds the speaker names per line
+    [SerializeField] private List<SpriteOptions> characterSprites = new List<SpriteOptions>(); // Holds sprite options for each character
+    [SerializeField] private List<Image> characterPortraits = new List<Image>(); // Holds references to character portrait Images
+
+    [SerializeField] private TextMeshProUGUI textOutput; // Where dialog will be output
+    [SerializeField] private TextMeshProUGUI speakerNameText; // Where the name of the current speaker will be output
+    [SerializeField] private GameObject choicePanel; // Panel that holds choice buttons
+    [SerializeField] private List<Button> choiceButtons = new List<Button>(); // Buttons to display the choices
+    [SerializeField] private List<TextMeshProUGUI> choiceButtonTexts = new List<TextMeshProUGUI>(); // Text fields for the buttons
+    [SerializeField] private GameObject mapButton;  // Map button to go back to the map
+
+    [SerializeField] private List<Choices> choices = new List<Choices>(); // List holding all choice objects
+
+    private int currentLineIndex = 0; // Current index for dialog
+    private bool isTypewriting = false; // Whether the typewriter coroutine is going
+    private bool skipRequested = false; // If the skip button is pressed
+    private bool isChoiceTime = false; // If there is a choice to be made
+    private bool isChoiceDialog = false; // If we are reading choice dialog
+
+    // Backup the original dialog and speakers to restore after choices
+    private List<string> originalDialogLines;
+    private List<string> originalSpeakersPerLine;
+    private int originalLineIndex;  // Store the current index before the choice
 
     // Typewriter variables
     [SerializeField] private float typewriterSpeed = 0.05f;
-    private bool isTypewriting = false;
-    private bool skipRequested = false;
 
-    // Audio
+    // FMOD Audio
     private EventInstance levelMusic;
-    private EventInstance dialougeVoice;
+    private EventInstance dialogueVoice;
 
     void Start()
     {
-        InitializeFileSources();
-        StartCoroutine(TypewriteText(textOutput, textReader));  // Start with typewriter effect
-        button1.SetActive(false);
-        button2.SetActive(false);
-        mapButton.SetActive(false);
-    }
-
-    private void start()
-    {
-        levelMusic = AudioManager.instance.CreateInstance(FMODEvents.instance.music);
-        dialougeVoice = AudioManager.instance.CreateInstance(FMODEvents.instance.playerVoice);
-        updateSound();
-        updateVoice();
-
-    }
-
-    private void InitializeFileSources()
-    {
-        source1 = new FileInfo("Assets/Assets/DialogueResources/Dialogue Files/" + eventName + ".txt");
-        textReader = source1.OpenText();
+        choicePanel.SetActive(false); // Hide choice panel at start
+        mapButton.SetActive(false);   // Hide the map buttonW at start
+        InitializeAudio(); // Starts FMOD audio
+        DisplayLine(); // Display the first line
     }
 
     void Update()
     {
         // Check for skip input
-        if (isTypewriting && Input.GetButtonDown("Skip"))
+        if (Input.GetButtonDown("Skip"))
         {
-            skipRequested = true;  // Skip request triggered
+            if (isTypewriting)
+            {
+                // Skip typewriter effect
+                skipRequested = true;
+            }
+            else if (!isChoiceTime)
+            {
+                // Move to the next line
+                NextLine();
+            }
         }
     }
 
-    public IEnumerator TypewriteText(TextMeshProUGUI convoTextOutput, StreamReader stream)
+    private void DisplayLine()
     {
-        if (stream != null)
+        // Check if we reached the end of the current dialog (main or choice)
+        if (currentLineIndex >= dialogLines.Count)
         {
-            lineNum++;
-            text = stream.ReadLine();
-            AudioManager.instance.PlayOneShot(FMODEvents.instance.dateVoice, this.transform.position);  // Play sound effect when new text appears
-            nextLineStr = stream.Peek();
-
-            if (text.Contains("CHOICE"))
+            if (isChoiceDialog)
             {
-                playChoice();
-                yield break;  // Exit the coroutine when it's a choice
+                // If we're at the end of the choice dialog, go back to the main dialog
+                EndChoicePath();
+                return;
             }
-
-            // Clear the text before typewriting begins
-            convoTextOutput.text = "";
-            isTypewriting = true;
-            skipRequested = false;
-            updateVoice();
-
-
-            // Typewrite each character
-            foreach (char letter in text.ToCharArray())
+            else
             {
-                if (skipRequested)
-                {
-                    // If skip is requested, show the full text immediately
-                    convoTextOutput.text = text;
-                    break;
-                }
-                convoTextOutput.text += letter;
-                yield return new WaitForSeconds(typewriterSpeed);  // Control typing speed
+                // End of the main dialog
+                mapButton.SetActive(true);  // Show the map button when dialog is done
+                return;
             }
+        }
 
-            isTypewriting = false;
-            updateVoice();
-       
-
-
-            if (nextLineStr == -1)
+        // Checks if we find a CHOICE
+        if (currentLineIndex < dialogLines.Count)
+        {
+            if (dialogLines[currentLineIndex] == "CHOICE")
             {
-                textReader = null;
-                if (activeChoiseInfo != null)
+                ShowChoices();
+                return;
+            }
+        }
+
+        // Set the speaker name based on the current line's speaker
+        string currentSpeaker = speakersPerLine[currentLineIndex];
+        speakerNameText.text = currentSpeaker;
+
+        // Update all portraits based on the current line
+        UpdateAllPortraits(currentSpeaker);
+
+        // Play the speaker's dialogue sound
+        PlayDialogueSound();
+
+        // Start the typewriter effect
+        StartCoroutine(TypewriteText(dialogLines[currentLineIndex]));
+    }
+
+    // This method updates all portraits on each dialog line.
+    private void UpdateAllPortraits(string currentSpeaker)
+    {
+        for (int i = 0; i < characterPortraits.Count; i++)
+        {
+            if (i < characterSprites.Count && characterSprites[i].spriteOptions.Count > 0)
+            {
+                // Update sprite for all characters based on the current line index
+                characterPortraits[i].sprite = characterSprites[i].spriteOptions[currentLineIndex];
+
+                // Dim all non-speaking characters and undim only the current speaker
+                if (characterPortraits[i].name == currentSpeaker)
                 {
-                    if (activeChoiseInfo.afterChoiceFilePath == "")
-                    {
-                        nextlineButton.SetActive(false);
-                        mapButton.SetActive(true);
-                        yield break;
-                    }
-                    FileInfo returnDia = new FileInfo(activeChoiseInfo.afterChoiceFilePath);
-                    textReader = returnDia.OpenText();
-                    activeChoiseInfo = null;
-                    activeChoiceIndex++;
-                    StartCoroutine(TypewriteText(convoTextOutput, textReader));
+                    characterPortraits[i].color = Color.white;  // Undim the speaker
                 }
                 else
                 {
-                    nextlineButton.SetActive(false);
-                    mapButton.SetActive(true);
+                    characterPortraits[i].color = Color.gray;  // Dim other characters
                 }
             }
         }
     }
 
-    public void playChoice()
+    private IEnumerator TypewriteText(string line)
     {
-        nextlineButton.SetActive(false);
-        button1.SetActive(true);
-        button2.SetActive(true);
-        activeChoiseInfo = choices[activeChoiceIndex];
-        button1Text.SetText(activeChoiseInfo.choiceOptions[0]);
-        button2Text.SetText(activeChoiseInfo.choiceOptions[1]);
+        textOutput.text = "";
+        isTypewriting = true;
+        skipRequested = false;
+
+        foreach (char letter in line.ToCharArray())
+        {
+            if (skipRequested)
+            {
+                // If skip is requested, display the full line immediately
+                textOutput.text = line;
+                break;
+            }
+            textOutput.text += letter;
+            yield return new WaitForSeconds(typewriterSpeed);
+        }
+
+        isTypewriting = false;
+        UpdateVoice();  // Stop the dialogue voice after typewriting is done
     }
 
-    public void onChoice1()
+    public void NextLine()
     {
-        nextlineButton.SetActive(true);
-        button1.SetActive(false);
-        button2.SetActive(false);
-        choiceDialogue = activeChoiseInfo.InitFileInfo(0);
-        textReader = choiceDialogue.OpenText();
-        StartCoroutine(TypewriteText(textOutput, textReader));  // Start typewriting for choice 1
-        AudioManager.instance.PlayOneShot(FMODEvents.instance.uiClick, this.transform.position);
-
+        AudioManager.instance.PlayOneShot(FMODEvents.instance.uiClick, this.transform.position); // Play click sound
+        currentLineIndex++;
+        DisplayLine();
     }
 
-    public void onChoice2()
+    private void ShowChoices()
     {
-        nextlineButton.SetActive(true);
-        button1.SetActive(false);
-        button2.SetActive(false);
-        choiceDialogue = activeChoiseInfo.InitFileInfo(1);
-        textReader = choiceDialogue.OpenText();
-        StartCoroutine(TypewriteText(textOutput, textReader));  // Start typewriting for choice 2
-        AudioManager.instance.PlayOneShot(FMODEvents.instance.uiClick, this.transform.position);
+        isChoiceTime = true;
+        isChoiceDialog = true;
+        choicePanel.SetActive(true);
 
+        // Fetch the current set of choices
+        Choices currentChoices = choices[currentLineIndex];
+
+        for (int i = 0; i < currentChoices.choiceOptions.Count; i++)
+        {
+            // Show button and set text
+            choiceButtons[i].gameObject.SetActive(true);
+            choiceButtonTexts[i].text = currentChoices.choiceOptions[i];
+        }
+
+        // Hide any unused buttons
+        for (int i = currentChoices.choiceOptions.Count; i < choiceButtons.Count; i++)
+        {
+            choiceButtons[i].gameObject.SetActive(false);
+        }
     }
 
-    public void onNextLine()
+    public void OnChoiceSelected(int choiceIndex)
     {
-        StartCoroutine(TypewriteText(textOutput, textReader));  // Start typewriting for the next line
-        AudioManager.instance.PlayOneShot(FMODEvents.instance.uiClick, this.transform.position);
+        AudioManager.instance.PlayOneShot(FMODEvents.instance.uiClick, this.transform.position); // Play click sound
+        isChoiceTime = false;
+        choicePanel.SetActive(false);
+
+        // Store the original dialog and index before branching to the choice dialog
+        originalDialogLines = new List<string>(dialogLines);
+        originalSpeakersPerLine = new List<string>(speakersPerLine);
+        originalLineIndex = currentLineIndex + 1;  // Index to resume after choice
+
+        // Retrieve the choice paths
+        Choices currentChoices = choices[currentLineIndex];
+        dialogLines = currentChoices.choicePaths[choiceIndex].afterChoiceDialogLines;
+        speakersPerLine = currentChoices.choicePaths[choiceIndex].afterChoiceSpeakersPerLine;
+
+        // Start the choice dialog from the beginning
+        currentLineIndex = 0;
+        DisplayLine();
     }
 
-    public void onMap()
+    private void EndChoicePath()
     {
-        SceneManager.LoadScene(sceneName: "Map");
+        // After a choice is completed, restore the original dialog flow
+        dialogLines = originalDialogLines;
+        speakersPerLine = originalSpeakersPerLine;
+        currentLineIndex = originalLineIndex;  // Resume from the saved line index
+        isChoiceDialog = false;  // We're no longer in a choice
+        DisplayLine();  // Continue the main dialog
     }
-    // Level Music Audio
-    private void updateSound()
+
+    // FMOD Sound Functions
+    private void PlayDialogueSound()
     {
-        PLAYBACK_STATE playbackState;
-        levelMusic.getPlaybackState(out playbackState);
-        if (playbackState.Equals(PLAYBACK_STATE.STOPPED))
+        // Play the dialogue sound when a new line is shown
+        AudioManager.instance.PlayOneShot(FMODEvents.instance.dateVoice, this.transform.position);
+    }
+
+    private void InitializeAudio()
+    {
+        levelMusic = AudioManager.instance.CreateInstance(FMODEvents.instance.music);
+        dialogueVoice = AudioManager.instance.CreateInstance(FMODEvents.instance.playerVoice);
+        PlayBackgroundMusic();
+    }
+
+    private void PlayBackgroundMusic()
+    {
+        levelMusic.getPlaybackState(out PLAYBACK_STATE playbackState);
+        if (playbackState == PLAYBACK_STATE.STOPPED)
         {
             levelMusic.start();
         }
+    }
+
+    private void UpdateVoice()
+    {
+        // Start or stop the dialogue voice based on typewriting state
+        if (isTypewriting)
+        {
+            dialogueVoice.start();
+        }
         else
         {
-            levelMusic.stop(FMOD.Studio.STOP_MODE.ALLOWFADEOUT);
+            dialogueVoice.stop(FMOD.Studio.STOP_MODE.ALLOWFADEOUT);
         }
     }
 
-    // Voice Audio
-    public void updateVoice()
+    // Button Event: Return to Map
+    public void OnMap()
     {
-        if (isTypewriting == true)
-        {
-            PLAYBACK_STATE playbackState;
-            dialougeVoice.getPlaybackState(out playbackState);
-            if (playbackState.Equals(PLAYBACK_STATE.STOPPED))
-            {
-                Debug.Log("Typing");
-                dialougeVoice.start();
-            }
-        }
-        else
-        {
-            Debug.Log("Not typing");
-            dialougeVoice.stop(FMOD.Studio.STOP_MODE.ALLOWFADEOUT);
-        }
-
+        AudioManager.instance.PlayOneShot(FMODEvents.instance.uiClick, this.transform.position); // Play click sound
+        levelMusic.stop(FMOD.Studio.STOP_MODE.ALLOWFADEOUT);  // Stop the background music
+        SceneManager.LoadScene("Map"); // Load the "Map" scene
     }
 }
 
+[System.Serializable]
+public class SpriteOptions
+{
+    public List<Sprite> spriteOptions = new List<Sprite>();
+}
 
+[System.Serializable]
+public class ChoicePath
+{
+    public List<string> afterChoiceDialogLines = new List<string>();
+    public List<string> afterChoiceSpeakersPerLine = new List<string>();
+}
 
+[CreateAssetMenu()]
+public class Choices : ScriptableObject
+{
+    public List<string> choiceOptions = new List<string>();  // The text of the choices
+    public List<ChoicePath> choicePaths = new List<ChoicePath>();  // Stores dialog and speakers for each choice path
+}
