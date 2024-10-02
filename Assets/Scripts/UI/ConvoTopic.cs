@@ -15,6 +15,7 @@ public class ConvoTopic : MonoBehaviour
     // UI components for displaying attribute and power number
     [SerializeField] private TextMeshProUGUI attributeText;
     [SerializeField] public TextMeshProUGUI numText;
+    [SerializeField] public TextMeshProUGUI topicLabelText;
     [SerializeField] public GameObject finishedText;
     [SerializeField] public GameObject bustedText;
     [SerializeField] public Image background;
@@ -63,10 +64,11 @@ public class ConvoTopic : MonoBehaviour
     }
 
     // Set the conversation topic and update the UI
-    public void SetTopic(string topic)
+    public void SetTopic(string topic, string topicLabel)
     {
         convoAttribute = topic;
         attributeText.text = topic;
+        topicLabelText.text = topicLabel;
         SetIcon(); // Update the icon based on the new topic
     }
 
