@@ -40,7 +40,8 @@ public class RandEventHandler : MonoBehaviour
 
     // FMOD Audio
     private EventInstance levelMusic;
-    private EventInstance dialogueVoice;
+    private EventInstance dateDialogueVoice;
+    private EventInstance playerDialogueVoice;
 
     void Start()
     {
@@ -104,11 +105,8 @@ public class RandEventHandler : MonoBehaviour
         // Update all portraits based on the current line
         UpdateAllPortraits(currentSpeaker);
 
-        // Play the speaker's dialogue sound
-        PlayDialogueSound();
-
         // Start the typewriter effect
-        StartCoroutine(TypewriteText(dialogLines[currentLineIndex]));
+        StartCoroutine(TypewriteText(dialogLines[currentLineIndex], currentSpeaker));
     }
 
     // Coroutine to smoothly transition the character color
@@ -152,11 +150,13 @@ public class RandEventHandler : MonoBehaviour
         }
     }
 
-    private IEnumerator TypewriteText(string line)
+    private IEnumerator TypewriteText(string line, string speaker)
     {
         textOutput.text = "";
         isTypewriting = true;
         skipRequested = false;
+
+        UpdateVoice(speaker);
 
         foreach (char letter in line.ToCharArray())
         {
@@ -171,7 +171,8 @@ public class RandEventHandler : MonoBehaviour
         }
 
         isTypewriting = false;
-        UpdateVoice();  // Stop the dialogue voice after typewriting is done
+
+        UpdateVoice(speaker);
     }
 
     public void NextLine()
@@ -239,16 +240,25 @@ public class RandEventHandler : MonoBehaviour
     }
 
     // FMOD Sound Functions
-    private void PlayDialogueSound()
+    private void UpdateVoice(string speaker)
     {
-        // Play the dialogue sound when a new line is shown
-        AudioManager.instance.PlayOneShot(FMODEvents.instance.dateVoice, this.transform.position);
+        var voiceInstance = (speaker == "You" || string.IsNullOrEmpty(speaker)) ? playerDialogueVoice : dateDialogueVoice;
+
+        if (isTypewriting)
+        {
+            voiceInstance.start();
+        }
+        else
+        {
+            voiceInstance.stop(FMOD.Studio.STOP_MODE.ALLOWFADEOUT);
+        }
     }
 
     private void InitializeAudio()
     {
         levelMusic = AudioManager.instance.CreateInstance(FMODEvents.instance.music);
-        dialogueVoice = AudioManager.instance.CreateInstance(FMODEvents.instance.playerVoice);
+        playerDialogueVoice = AudioManager.instance.CreateInstance(FMODEvents.instance.playerVoice);
+        dateDialogueVoice = AudioManager.instance.CreateInstance(FMODEvents.instance.dateVoice);
         PlayBackgroundMusic();
     }
 
@@ -258,19 +268,6 @@ public class RandEventHandler : MonoBehaviour
         if (playbackState == PLAYBACK_STATE.STOPPED)
         {
             levelMusic.start();
-        }
-    }
-
-    private void UpdateVoice()
-    {
-        // Start or stop the dialogue voice based on typewriting state
-        if (isTypewriting)
-        {
-            dialogueVoice.start();
-        }
-        else
-        {
-            dialogueVoice.stop(FMOD.Studio.STOP_MODE.ALLOWFADEOUT);
         }
     }
 
