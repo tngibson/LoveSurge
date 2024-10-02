@@ -111,6 +111,22 @@ public class RandEventHandler : MonoBehaviour
         StartCoroutine(TypewriteText(dialogLines[currentLineIndex]));
     }
 
+    // Coroutine to smoothly transition the character color
+    private IEnumerator FadeCharacter(Image portrait, Color startColor, Color endColor, float duration)
+    {
+        float elapsedTime = 0f;
+
+        while (elapsedTime < duration)
+        {
+            portrait.color = Color.Lerp(startColor, endColor, elapsedTime / duration);
+            elapsedTime += Time.deltaTime;
+            yield return null;
+        }
+
+        // Ensure final color is set exactly
+        portrait.color = endColor;
+    }
+
     // This method updates all portraits on each dialog line.
     private void UpdateAllPortraits(string currentSpeaker)
     {
@@ -121,14 +137,16 @@ public class RandEventHandler : MonoBehaviour
                 // Update sprite for all characters based on the current line index
                 characterPortraits[i].sprite = characterSprites[i].spriteOptions[currentLineIndex];
 
-                // Dim all non-speaking characters and undim only the current speaker
+                // Determine if the character is speaking or not
                 if (characterPortraits[i].name == currentSpeaker)
                 {
-                    characterPortraits[i].color = Color.white;  // Undim the speaker
+                    // Undim the speaker with a smooth transition to full opacity (Color.white)
+                    StartCoroutine(FadeCharacter(characterPortraits[i], characterPortraits[i].color, Color.white, 0.5f));
                 }
                 else
                 {
-                    characterPortraits[i].color = Color.gray;  // Dim other characters
+                    // Dim non-speaking characters with a smooth transition to gray
+                    StartCoroutine(FadeCharacter(characterPortraits[i], characterPortraits[i].color, Color.gray, 0.5f));
                 }
             }
         }
