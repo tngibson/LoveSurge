@@ -72,7 +72,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 425.11, y: 503.07}
+  m_SizeDelta: {x: 503.07, y: 503.07}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &3611590745761920789
 CanvasRenderer:
@@ -102,7 +102,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: You
+  m_text: 
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 37e6f01393fdd914a9dc677042f11af3, type: 2}
   m_sharedMaterial: {fileID: 518837333957051346, guid: 37e6f01393fdd914a9dc677042f11af3,
@@ -130,8 +130,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 150
-  m_fontSizeBase: 150
+  m_fontSize: 135
+  m_fontSizeBase: 135
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
@@ -695,7 +695,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 8427216516346150109}
         m_TargetAssemblyTypeName: RandEventHandler, Assembly-CSharp
-        m_MethodName: OnChoiceSelected
+        m_MethodName: onChoice2
         m_Mode: 3
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -1009,7 +1009,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 86.199, y: 0}
+  m_AnchoredPosition: {x: 78.07507, y: 0}
   m_SizeDelta: {x: 1650, y: 503.07}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &6038331762281277175
@@ -1247,6 +1247,138 @@ MonoBehaviour:
   m_hasFontAssetChanged: 0
   m_baseMaterial: {fileID: 0}
   m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
+--- !u!1 &5273911675167795290
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1871617697427999734}
+  - component: {fileID: 7380855968196316746}
+  m_Layer: 5
+  m_Name: TextSFX
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &1871617697427999734
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5273911675167795290}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 3932021884715458363}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 100, y: 100}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!82 &7380855968196316746
+AudioSource:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5273911675167795290}
+  m_Enabled: 0
+  serializedVersion: 4
+  OutputAudioMixerGroup: {fileID: 0}
+  m_audioClip: {fileID: 8300000, guid: c80a0dbc8a1324341acdd0bc94690f78, type: 3}
+  m_PlayOnAwake: 0
+  m_Volume: 1
+  m_Pitch: 1
+  Loop: 0
+  Mute: 0
+  Spatialize: 0
+  SpatializePostEffects: 0
+  Priority: 128
+  DopplerLevel: 1
+  MinDistance: 1
+  MaxDistance: 500
+  Pan2D: 0
+  rolloffMode: 0
+  BypassEffects: 0
+  BypassListenerEffects: 0
+  BypassReverbZones: 0
+  rolloffCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 1
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  panLevelCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  spreadCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  reverbZoneMixCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
 --- !u!1 &6940135994936192850
 GameObject:
   m_ObjectHideFlags: 0
@@ -1370,7 +1502,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 8427216516346150109}
         m_TargetAssemblyTypeName: RandEventHandler, Assembly-CSharp
-        m_MethodName: OnMap
+        m_MethodName: onMap
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -1417,6 +1549,7 @@ RectTransform:
   - {fileID: 1589527554075471085}
   - {fileID: 2230736889217098452}
   - {fileID: 7856950899987577378}
+  - {fileID: 1871617697427999734}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
@@ -1475,177 +1608,20 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   dialogLines:
-  - Lotte is doing the dishes in the kitchen, bags under her eyes as she lets out
-    a soft yawn. Her movements are sluggish as she sets another plate down on the
-    dry rack, rubbing her eyes afterwards.
-  - "Noki notices Lotte\u2019s head starting to bob."
-  - "Then Lotte\u2019s eyes flutter shut, her grip loosening on the plate she\u2019s
-    holding. Noki calmly speed walks over as she stops the dish that\u2019s about
-    to slip out of Lotte\u2019s hand just in time. "
-  - Lotte jolts awake
-  - 'Oh- Clumsy me. '
-  - "Lotte shakes her head as she gives Noki a tired smile. She grabs the dish from
-    Noki\u2019s hand, and puts it right back on the dish rack. "
-  - No need to apologize. Are you feeling well? You look like you need rest.
-  - "Yea, I\u2019m fine i think. Just gotta finish the dishes. There\u2019s a mountain
-    of these stupid things."
-  - You feel yourself sweat. Did your laziness cause this?
-  - That makes you feel bad. Really bad.
-  - 'I can see that. Let me help! No need to do it alone! '
-  - "Aww, Noki. Very kind of you. I\u2019m fine, really. "
-  - "Noki\u2019s eyebrows furrow, a look of concern written on her face. She lets
-    out a small sigh before her gaze softens. "
-  - Lotte, please let me help? I just want to make su-.
-  - 'Lotte lets out an annoyed sigh, gripping the sponge in her hand. '
-  - "Could you stop? I\u2019ve already told you no and I got it from here, Noki."
-  - Lotte-.
-  - 'Lotte squeezes her eyes closed, her voice pitching up slightly. '
-  - "Thank you! I\u2019m good!"
-  - When Lotte opens her eyes again, Noki is walking away.
-  - 'Lotte tries to reach out for Noki, but she is already halfway out the door.
-    Turning back to the dishes, Lotte lets out a melancholy sigh. '
-  - "Noki turns the corner and sees you. She\u2019s startled at first, but approaches
-    you. She looks afraid."
-  - 'I did that right, right? '
-  - CHOICE
-  - 'You return your gaze to the kitchen. You wonder if you should go talk to her,
-    but maybe you should leave her be. You could see that Lotte has a look of regret
-    on her face, and you walk over to her. '
-  - "Hey, just know that you can lean on us, alright? That\u2019s all I\u2019ll say
-    as I don\u2019t want to push you more. "
-  - You give her a soft smile as you stand back a bit, giving her space. Lotte glances
-    over her shoulder, a soft smile forms on her lips.
-  - Thank you...
+  - "Here you are again with one of your numerous side jobs. Today you\u2019re working
+    for \u201CCatTrash FishTeck!\u201D The cheapest and most poorly branded thrift
+    techstore in town. "
   speakersPerLine:
-  - You
-  - You
-  - You
-  - You
-  - Lotte
-  - You
-  - Noki
-  - Lotte
-  - You
-  - You
-  - Noki
-  - Lotte
-  - You
-  - Noki
-  - You
-  - Lotte
-  - Noki
-  - You
-  - Lotte
-  - You
-  - You
-  - You
-  - Noki
-  - You
-  - You
-  - You
-  - You
-  - Lotte
-  characterSprites:
-  - spriteOptions:
-    - {fileID: 21300000, guid: 1445cc08c50e4c04f98d43d40e7b6180, type: 3}
-    - {fileID: 21300000, guid: 1445cc08c50e4c04f98d43d40e7b6180, type: 3}
-    - {fileID: 21300000, guid: 1445cc08c50e4c04f98d43d40e7b6180, type: 3}
-    - {fileID: 21300000, guid: 1445cc08c50e4c04f98d43d40e7b6180, type: 3}
-    - {fileID: 21300000, guid: f87102bd0d1966b4ebda9beb54d52a99, type: 3}
-    - {fileID: 21300000, guid: cc7f7e31a4c7364449b6850c0da39bf8, type: 3}
-    - {fileID: 21300000, guid: cc7f7e31a4c7364449b6850c0da39bf8, type: 3}
-    - {fileID: 21300000, guid: cc7f7e31a4c7364449b6850c0da39bf8, type: 3}
-    - {fileID: 21300000, guid: cc7f7e31a4c7364449b6850c0da39bf8, type: 3}
-    - {fileID: 21300000, guid: cc7f7e31a4c7364449b6850c0da39bf8, type: 3}
-    - {fileID: 21300000, guid: cc7f7e31a4c7364449b6850c0da39bf8, type: 3}
-    - {fileID: 21300000, guid: cc7f7e31a4c7364449b6850c0da39bf8, type: 3}
-    - {fileID: 21300000, guid: cc7f7e31a4c7364449b6850c0da39bf8, type: 3}
-    - {fileID: 21300000, guid: cc7f7e31a4c7364449b6850c0da39bf8, type: 3}
-    - {fileID: 21300000, guid: f15e4a3f0d01fc949aa4b8b993c40694, type: 3}
-    - {fileID: 21300000, guid: f15e4a3f0d01fc949aa4b8b993c40694, type: 3}
-    - {fileID: 21300000, guid: f15e4a3f0d01fc949aa4b8b993c40694, type: 3}
-    - {fileID: 21300000, guid: f15e4a3f0d01fc949aa4b8b993c40694, type: 3}
-    - {fileID: 21300000, guid: f15e4a3f0d01fc949aa4b8b993c40694, type: 3}
-    - {fileID: 21300000, guid: f15e4a3f0d01fc949aa4b8b993c40694, type: 3}
-    - {fileID: 21300000, guid: 06661028b270a5b45aae600c253c8cdd, type: 3}
-    - {fileID: 21300000, guid: 06661028b270a5b45aae600c253c8cdd, type: 3}
-    - {fileID: 21300000, guid: 06661028b270a5b45aae600c253c8cdd, type: 3}
-    - {fileID: 21300000, guid: 06661028b270a5b45aae600c253c8cdd, type: 3}
-    - {fileID: 21300000, guid: 06661028b270a5b45aae600c253c8cdd, type: 3}
-    - {fileID: 21300000, guid: 06661028b270a5b45aae600c253c8cdd, type: 3}
-    - {fileID: 21300000, guid: cc7f7e31a4c7364449b6850c0da39bf8, type: 3}
-    - {fileID: 21300000, guid: cc7f7e31a4c7364449b6850c0da39bf8, type: 3}
-  - spriteOptions:
-    - {fileID: 21300000, guid: 1efff82e0a469464987b91e1e6ff298e, type: 3}
-    - {fileID: 21300000, guid: 1efff82e0a469464987b91e1e6ff298e, type: 3}
-    - {fileID: 21300000, guid: 1efff82e0a469464987b91e1e6ff298e, type: 3}
-    - {fileID: 21300000, guid: 1efff82e0a469464987b91e1e6ff298e, type: 3}
-    - {fileID: 21300000, guid: 1efff82e0a469464987b91e1e6ff298e, type: 3}
-    - {fileID: 21300000, guid: 1efff82e0a469464987b91e1e6ff298e, type: 3}
-    - {fileID: 21300000, guid: 52174a669ceab084893f4460563966e2, type: 3}
-    - {fileID: 21300000, guid: 52174a669ceab084893f4460563966e2, type: 3}
-    - {fileID: 21300000, guid: 52174a669ceab084893f4460563966e2, type: 3}
-    - {fileID: 21300000, guid: 52174a669ceab084893f4460563966e2, type: 3}
-    - {fileID: 21300000, guid: eb54c0b9144af6b4e8e9578c07a0c65b, type: 3}
-    - {fileID: 21300000, guid: eb54c0b9144af6b4e8e9578c07a0c65b, type: 3}
-    - {fileID: 21300000, guid: 52174a669ceab084893f4460563966e2, type: 3}
-    - {fileID: 21300000, guid: 52174a669ceab084893f4460563966e2, type: 3}
-    - {fileID: 21300000, guid: 52174a669ceab084893f4460563966e2, type: 3}
-    - {fileID: 21300000, guid: 52174a669ceab084893f4460563966e2, type: 3}
-    - {fileID: 21300000, guid: 52174a669ceab084893f4460563966e2, type: 3}
-    - {fileID: 21300000, guid: 52174a669ceab084893f4460563966e2, type: 3}
-    - {fileID: 21300000, guid: 52174a669ceab084893f4460563966e2, type: 3}
-    - {fileID: 21300000, guid: 9a5bb60305ed56c4c8b921b54258e133, type: 3}
-    - {fileID: 21300000, guid: 9a5bb60305ed56c4c8b921b54258e133, type: 3}
-    - {fileID: 21300000, guid: 9a5bb60305ed56c4c8b921b54258e133, type: 3}
-    - {fileID: 21300000, guid: 9a5bb60305ed56c4c8b921b54258e133, type: 3}
-    - {fileID: 21300000, guid: 9a5bb60305ed56c4c8b921b54258e133, type: 3}
-    - {fileID: 21300000, guid: 9a5bb60305ed56c4c8b921b54258e133, type: 3}
-    - {fileID: 21300000, guid: 9a5bb60305ed56c4c8b921b54258e133, type: 3}
-    - {fileID: 21300000, guid: 9a5bb60305ed56c4c8b921b54258e133, type: 3}
-    - {fileID: 21300000, guid: 9a5bb60305ed56c4c8b921b54258e133, type: 3}
-  characterPortraits:
-  - {fileID: 0}
-  - {fileID: 0}
+  - 
+  characterSprites: []
+  characterPortraits: []
   textOutput: {fileID: 2797055304395627853}
   speakerNameText: {fileID: 1595007432675615240}
   choicePanel: {fileID: 385961023137732381}
-  choiceButtons:
-  - {fileID: 2740171576187235147}
-  - {fileID: 1973627283655489652}
-  choiceButtonTexts:
-  - {fileID: 4208926536864803687}
-  - {fileID: 693052549704968935}
+  choiceButtons: []
+  choiceButtonTexts: []
   mapButton: {fileID: 6940135994936192850}
-  choices:
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 11400000, guid: d700f49cf82bfd04ba4b82c4ad172a55, type: 2}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
+  choices: []
   typewriterSpeed: 0.01
 --- !u!1 &7770531277950400213
 GameObject:
@@ -1770,7 +1746,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 8427216516346150109}
         m_TargetAssemblyTypeName: RandEventHandler, Assembly-CSharp
-        m_MethodName: OnChoiceSelected
+        m_MethodName: onChoice1
         m_Mode: 3
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
