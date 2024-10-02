@@ -19,6 +19,7 @@ public class FMODEvents : MonoBehaviour
 
     [field: Header("Voices")]
     [field: SerializeField] public EventReference dateVoice { get; private set; }
+    [field: SerializeField] public EventReference dateVoice2 { get; private set; }
     [field: SerializeField] public EventReference playerVoice { get; private set; }
 
     [field: Header("UI SFX")]

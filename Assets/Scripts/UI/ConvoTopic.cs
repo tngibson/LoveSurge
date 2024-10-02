@@ -83,16 +83,19 @@ public class ConvoTopic : MonoBehaviour
         switch (convoAttribute.ToLower())
         {
             case "cha":
+            case "charisma":
                 iconRenderer.sprite = chaIcon;
-                iconRenderer.color = Color.black;
                 break;
             case "cre":
+            case "creativity":
                 iconRenderer.sprite = creIcon;
                 break;
             case "cou":
+            case "courage":
                 iconRenderer.sprite = couIcon;
                 break;
             case "cle":
+            case "cleverness":
                 iconRenderer.sprite = cleIcon;
                 break;
             case "":
@@ -102,22 +105,27 @@ public class ConvoTopic : MonoBehaviour
                 break;
         }
     }
-    
+
+
     //changes topic color
     void changeBGColor()
     {
         switch (convoAttribute.ToLower())
         {
             case "cha":
+            case "charisma":
                 background.color = chaColor;
                 break;
             case "cre":
+            case "creativity":
                 background.color = creColor;
                 break;
             case "cou":
+            case "courage":
                 background.color = couColor;
                 break;
             case "cle":
+            case "cleverness":
                 background.color = cleColor;
                 break;
             case "":
