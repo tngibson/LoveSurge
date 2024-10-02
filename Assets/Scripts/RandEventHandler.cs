@@ -190,7 +190,6 @@ public class RandEventHandler : MonoBehaviour
 
         // Fetch the current set of choices
         Choices currentChoices = choices[currentLineIndex];
-
         for (int i = 0; i < currentChoices.choiceOptions.Count; i++)
         {
             // Show button and set text
