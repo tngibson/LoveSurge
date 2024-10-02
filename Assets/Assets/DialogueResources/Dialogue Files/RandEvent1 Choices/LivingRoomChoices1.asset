@@ -1,0 +1,80 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2de807345bdd09646bb1f755bf64c760, type: 3}
+  m_Name: LivingRoomChoices1
+  m_EditorClassIdentifier: 
+  choiceOptions:
+  - I guess we could explore together? Perhaps, discover horrible glitches?
+  - "I don\u2019t know\u2026do we really have to test out new features in The Net?
+    Can\u2019t we just\u2026 hang out or something?"
+  choicePaths:
+  - afterChoiceDialogLines:
+    - "Aww, come on, The Net can\u2019t be that bad! It\u2019s an omnispark original
+      like me! No bugs! All fun! Besides, it'll be better since you have me."
+    - You suddenly get flashbacks to your coworker, C0D3-W1ZARD (she makes you spell
+      it that way) panicking to you over the phone as the deadline approached and
+      so little was actually finished.
+    - "Uh\u2026Yeah!"
+    - She gives you a reassuring smile, you try and match it but fail horribly. You
+      are a terrible liar, even in expression.
+    - She starts to frown.
+    - "You\u2019re right! It will be good! Because you\u2019re there!"
+    - "When you say that, she smiles with relief and closes her eyes. That worked.
+      You know the way she\u2019s programmed. Your happiness is her top priority."
+    - You rub the back of your neck awkwardly. It feels weird to talk about Noki
+      that way.
+    afterChoiceSpeakersPerLine:
+    - Noki
+    - 
+    - You
+    - 
+    - 
+    - You
+    - 
+    - 
+    afterChoiceSpriteOptions:
+    - spriteOptions:
+      - {fileID: 21300000, guid: 9a5bb60305ed56c4c8b921b54258e133, type: 3}
+      - {fileID: 21300000, guid: 9a5bb60305ed56c4c8b921b54258e133, type: 3}
+      - {fileID: 21300000, guid: 9a5bb60305ed56c4c8b921b54258e133, type: 3}
+      - {fileID: 21300000, guid: 1efff82e0a469464987b91e1e6ff298e, type: 3}
+      - {fileID: 21300000, guid: 4793868bd2892bd4abc8227a508d91d7, type: 3}
+      - {fileID: 21300000, guid: 4793868bd2892bd4abc8227a508d91d7, type: 3}
+      - {fileID: 21300000, guid: eb54c0b9144af6b4e8e9578c07a0c65b, type: 3}
+      - {fileID: 21300000, guid: eb54c0b9144af6b4e8e9578c07a0c65b, type: 3}
+  - afterChoiceDialogLines:
+    - Noki squints at you and crosses her arms as she raises a brow at you, giving
+      you a knowing look.
+    - "That\u2019s really irresponsible of you. Of course you have to! You are contractually
+      obligated to!"
+    - "Wait\u2026are you being serious?"
+    - "Then you notice that twinkle return to Noki\u2019s eye. It\u2019s a little
+      more mischievous this time."
+    - I am messing with you. I think. I hope? Anyway, either way you are ACTUALLY
+      contractually obligated to, I just figured it would be more digestible to hear
+      it in the form of a quip!
+    - You let out a laugh as Noki mimics your pout.
+    afterChoiceSpeakersPerLine:
+    - 
+    - Noki
+    - You
+    - 
+    - Noki
+    - 
+    afterChoiceSpriteOptions:
+    - spriteOptions:
+      - {fileID: 21300000, guid: 4793868bd2892bd4abc8227a508d91d7, type: 3}
+      - {fileID: 21300000, guid: 4793868bd2892bd4abc8227a508d91d7, type: 3}
+      - {fileID: 21300000, guid: 4793868bd2892bd4abc8227a508d91d7, type: 3}
+      - {fileID: 21300000, guid: 416f14cbfab2b6c409b24a5d0f866e02, type: 3}
+      - {fileID: 21300000, guid: 416f14cbfab2b6c409b24a5d0f866e02, type: 3}
+      - {fileID: 21300000, guid: 730ee9a125f1e6949a7533b22645379e, type: 3}

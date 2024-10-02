@@ -8,7 +8,7 @@ public class TempMapChange : MonoBehaviour
     // Start is called before the first frame update
     public void ToMapScene()
     {
-        SceneManager.LoadScene("Map");
+        SceneManager.LoadScene("WakeUp");
     }
 
     void Start()
