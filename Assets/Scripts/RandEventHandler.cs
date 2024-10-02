@@ -32,6 +32,7 @@ public class RandEventHandler : MonoBehaviour
     // Backup the original dialog and speakers to restore after choices
     private List<string> originalDialogLines;
     private List<string> originalSpeakersPerLine;
+    private List<SpriteOptions> originalSpriteOptions;
     private int originalLineIndex;  // Store the current index before the choice
 
     // Typewriter variables
@@ -194,12 +195,14 @@ public class RandEventHandler : MonoBehaviour
         // Store the original dialog and index before branching to the choice dialog
         originalDialogLines = new List<string>(dialogLines);
         originalSpeakersPerLine = new List<string>(speakersPerLine);
+        originalSpriteOptions = new List<SpriteOptions>(characterSprites);
         originalLineIndex = currentLineIndex + 1;  // Index to resume after choice
 
         // Retrieve the choice paths
         Choices currentChoices = choices[currentLineIndex];
         dialogLines = currentChoices.choicePaths[choiceIndex].afterChoiceDialogLines;
         speakersPerLine = currentChoices.choicePaths[choiceIndex].afterChoiceSpeakersPerLine;
+        characterSprites = currentChoices.choicePaths[choiceIndex].afterChoiceSpriteOptions;
 
         // Start the choice dialog from the beginning
         currentLineIndex = 0;
@@ -211,6 +214,7 @@ public class RandEventHandler : MonoBehaviour
         // After a choice is completed, restore the original dialog flow
         dialogLines = originalDialogLines;
         speakersPerLine = originalSpeakersPerLine;
+        characterSprites = originalSpriteOptions;
         currentLineIndex = originalLineIndex;  // Resume from the saved line index
         isChoiceDialog = false;  // We're no longer in a choice
         DisplayLine();  // Continue the main dialog
@@ -265,18 +269,4 @@ public class RandEventHandler : MonoBehaviour
 public class SpriteOptions
 {
     public List<Sprite> spriteOptions = new List<Sprite>();
-}
-
-[System.Serializable]
-public class ChoicePath
-{
-    public List<string> afterChoiceDialogLines = new List<string>();
-    public List<string> afterChoiceSpeakersPerLine = new List<string>();
-}
-
-[CreateAssetMenu()]
-public class Choices : ScriptableObject
-{
-    public List<string> choiceOptions = new List<string>();  // The text of the choices
-    public List<ChoicePath> choicePaths = new List<ChoicePath>();  // Stores dialog and speakers for each choice path
 }

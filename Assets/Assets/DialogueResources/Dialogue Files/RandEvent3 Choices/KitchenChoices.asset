@@ -13,18 +13,69 @@ MonoBehaviour:
   m_Name: KitchenChoices
   m_EditorClassIdentifier: 
   choiceOptions:
-  - Go to the bathroom...
-  - Don't go to the bathroom.
+  - Yea, you did.
+  - Maybe you shouldn't have pushed her.
   choicePaths:
   - afterChoiceDialogLines:
-    - Hehe hoohoo
-    - Poo
+    - Thank you.
+    - She pauses, thinking over her next words carefully.
+    - 'All I wanted to do was to help. '
+    - You did your best. Besides, maybe all she needs is some time.
+    - "You\u2019re right, I\u2019m glad you\u2019re at least happy with my actions. "
+    - 'Noki takes a moment to recollect herself, resuming her usual smile. She walks
+      back to your room. '
     afterChoiceSpeakersPerLine:
-    - Player
-    - Player
+    - Noki
+    - You
+    - Noki
+    - You
+    - Noki
+    - You
+    afterChoiceSpriteOptions:
+    - spriteOptions:
+      - {fileID: 21300000, guid: 06661028b270a5b45aae600c253c8cdd, type: 3}
+      - {fileID: 21300000, guid: 06661028b270a5b45aae600c253c8cdd, type: 3}
+      - {fileID: 21300000, guid: 06661028b270a5b45aae600c253c8cdd, type: 3}
+      - {fileID: 21300000, guid: 06661028b270a5b45aae600c253c8cdd, type: 3}
+      - {fileID: 21300000, guid: 06661028b270a5b45aae600c253c8cdd, type: 3}
+      - {fileID: 21300000, guid: 06661028b270a5b45aae600c253c8cdd, type: 3}
+    - spriteOptions:
+      - {fileID: 21300000, guid: 1efff82e0a469464987b91e1e6ff298e, type: 3}
+      - {fileID: 21300000, guid: 1efff82e0a469464987b91e1e6ff298e, type: 3}
+      - {fileID: 21300000, guid: 1efff82e0a469464987b91e1e6ff298e, type: 3}
+      - {fileID: 21300000, guid: 1efff82e0a469464987b91e1e6ff298e, type: 3}
+      - {fileID: 21300000, guid: 1efff82e0a469464987b91e1e6ff298e, type: 3}
+      - {fileID: 21300000, guid: eb54c0b9144af6b4e8e9578c07a0c65b, type: 3}
   - afterChoiceDialogLines:
-    - Hehe hoohoo
-    - No Poo
+    - Oh, did I disappoint you?
+    - "Noki\u2019s eyes glaze over. "
+    - "No, no! You didn\u2019t disappoint me. It\u2019s just that some people don\u2019t
+      want to ask for help, and pushing them when they\u2019ve declined tends not
+      to end well. "
+    - Noki nods before she looks down at the ground. She walks away, not meeting
+      your eyes again. You try to call out to her.
+    - "Hey, don\u2019t be hard on yourself. You were being a good friend by trying
+      to look out for Lotte. "
+    - "She\u2019s already gone."
     afterChoiceSpeakersPerLine:
-    - Sam
-    - Lotte
+    - Noki
+    - You
+    - You
+    - You
+    - You
+    - You
+    afterChoiceSpriteOptions:
+    - spriteOptions:
+      - {fileID: 21300000, guid: 06661028b270a5b45aae600c253c8cdd, type: 3}
+      - {fileID: 21300000, guid: 06661028b270a5b45aae600c253c8cdd, type: 3}
+      - {fileID: 21300000, guid: 06661028b270a5b45aae600c253c8cdd, type: 3}
+      - {fileID: 21300000, guid: 06661028b270a5b45aae600c253c8cdd, type: 3}
+      - {fileID: 21300000, guid: 06661028b270a5b45aae600c253c8cdd, type: 3}
+      - {fileID: 21300000, guid: 06661028b270a5b45aae600c253c8cdd, type: 3}
+    - spriteOptions:
+      - {fileID: 21300000, guid: 4793868bd2892bd4abc8227a508d91d7, type: 3}
+      - {fileID: 21300000, guid: 52174a669ceab084893f4460563966e2, type: 3}
+      - {fileID: 21300000, guid: 52174a669ceab084893f4460563966e2, type: 3}
+      - {fileID: 21300000, guid: 52174a669ceab084893f4460563966e2, type: 3}
+      - {fileID: 21300000, guid: 52174a669ceab084893f4460563966e2, type: 3}
+      - {fileID: 21300000, guid: 52174a669ceab084893f4460563966e2, type: 3}

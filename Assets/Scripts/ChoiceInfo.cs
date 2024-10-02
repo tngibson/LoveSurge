@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.IO;
 using TMPro;
 using UnityEngine;
-/*[CreateAssetMenu()]
+[CreateAssetMenu()]
 
 public class Choices : ScriptableObject
 {
@@ -15,7 +15,7 @@ public class Choices : ScriptableObject
 [System.Serializable]
 public class ChoicePath
 {
-    public List<string> afterChoiceDialogLines = new List<string>();
-    public List<string> afterChoiceSpeakersPerLine = new List<string>();
+    public List<string> afterChoiceDialogLines = new List<string>(); // Dialog lines after each choice
+    public List<string> afterChoiceSpeakersPerLine = new List<string>(); // Speakers after each choice
+    public List<SpriteOptions> afterChoiceSpriteOptions = new List<SpriteOptions>(); // Sprites after each choice
 }
-*/
