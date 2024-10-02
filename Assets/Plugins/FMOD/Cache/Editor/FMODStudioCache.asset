@@ -231,10 +231,10 @@ MonoBehaviour:
   Path: LSFMOD/Build/Desktop/Master.strings.bank
   Name: Master.strings
   StudioPath: bank:/Master.strings
-  lastModified: 638633261671449295
+  lastModified: 638634776467535023
   FileSizes:
   - Name: Desktop
-    Value: 1482
+    Value: 1524
   Exists: 1
 --- !u!114 &-62025236325886557
 MonoBehaviour:
@@ -295,12 +295,13 @@ MonoBehaviour:
   - {fileID: -2111950618178967441}
   - {fileID: -646641886318731699}
   - {fileID: -62025236325886557}
+  - {fileID: 4095552953021601933}
   EditorParameters: []
   MasterBanks:
   - {fileID: 3830891757910060433}
   StringsBanks:
   - {fileID: -233124731061743878}
-  cacheTime: 638633261671449295
+  cacheTime: 638634776467535023
   cacheVersion: 131616
 --- !u!114 &2588951006968363903
 MonoBehaviour:
@@ -398,11 +399,38 @@ MonoBehaviour:
   Path: LSFMOD/Build/Desktop/Master.bank
   Name: Master
   StudioPath: bank:/Master
-  lastModified: 638633261671436901
+  lastModified: 638634776467514876
   FileSizes:
   - Name: Desktop
-    Value: 8088544
+    Value: 9966784
   Exists: 1
+--- !u!114 &4095552953021601933
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/Music/titleTheme
+  m_EditorClassIdentifier: 
+  Path: event:/Music/titleTheme
+  Guid:
+    Data1: 1587278420
+    Data2: 1256190478
+    Data3: 2125243015
+    Data4: 204900698
+  Banks:
+  - {fileID: 3830891757910060433}
+  IsStream: 1
+  Is3D: 0
+  IsOneShot: 0
+  Parameters: []
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 135836
 --- !u!114 &5578982307358916007
 MonoBehaviour:
   m_ObjectHideFlags: 0
