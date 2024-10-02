@@ -60,9 +60,9 @@ public class GameManager : MonoBehaviour
     }
 
     // Sets the topic for the current game manager
-    public void SetTopicGM(string type, ConvoTopic topic)
+    public void SetTopicGM(string type, string label, ConvoTopic topic)
     {
-        topic.SetTopic(type);
+        topic.SetTopic(type, label);
     }
 
     // Handles end of turn logic

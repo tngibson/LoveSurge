@@ -24,6 +24,10 @@ public class Playtest : MonoBehaviour
     [SerializeField] public string type2;
     [SerializeField] public string type3;
     [SerializeField] public string type4;
+    [SerializeField] public string label1;
+    [SerializeField] public string label2;
+    [SerializeField] public string label3;
+    [SerializeField] public string label4;
 
     // List to hold conversation topics
     private List<ConvoTopic> convoTopics;
@@ -107,25 +111,25 @@ public class Playtest : MonoBehaviour
     */
 
     // Sets the conversation topics with power and topic names
-    protected void SetTopics(int num1, string topic1, int num2, string topic2, int num3, string topic3, int num4, string topic4)
+    protected void SetTopics(int num1, string topic1, int num2, string topic2, int num3, string topic3, int num4, string topic4, string label1, string label2, string label3, string label4)
     {
         convoTopic1.SetNum(num1);
-        convoTopic1.SetTopic(topic1);
+        convoTopic1.SetTopic(topic1, label1);
 
         convoTopic2.SetNum(num2);
-        convoTopic2.SetTopic(topic2);
+        convoTopic2.SetTopic(topic2, label2);
 
         convoTopic3.SetNum(num3);
-        convoTopic3.SetTopic(topic3);
+        convoTopic3.SetTopic(topic3, label3);
 
         convoTopic4.SetNum(num4);
-        convoTopic4.SetTopic(topic4);
+        convoTopic4.SetTopic(topic4, label4);
     }
 
     // Displays the conversation topics
-    private void ShowTopics()
+    public void ShowTopics()
     {
-        SetTopics(power1, type1, power2, type2, power3, type3, power4, type4);
+        SetTopics(power1, type1, power2, type2, power3, type3, power4, type4, label1, label2, label3, label4);
     }
 
     // Reads text from a stream and updates the UI
