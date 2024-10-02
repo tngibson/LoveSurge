@@ -201,27 +201,37 @@ public class Dropzone : MonoBehaviour
         dateText.text = "";
 
         // Depending on which convo topic we have selected, we change which lines and sprites we use
-        switch (selectedConvoTopic.ConvoAttribute)
+        switch (selectedConvoTopic.ConvoAttribute.ToLower())
         {
-            case "Cha":
+            case "cha":
+            case "charisma":
                 lines = currentSession.chaLines;
                 sprites = currentSession.chaSprites;
                 speaker = currentSession.chaSpeaker;
                 break;
-            case "Cou":
+            case "cou":
+            case "courage":
                 lines = currentSession.couLines;
                 sprites = currentSession.couSprites;
                 speaker = currentSession.couSpeaker;
                 break;
-            case "Cle":
+            case "cle":
+            case "cleverness":
                 lines = currentSession.cleLines;
                 sprites = currentSession.cleSprites;
                 speaker = currentSession.cleSpeaker;
                 break;
-            default:
+            case "cre":
+            case "creativity":
                 lines = currentSession.creLines;
                 sprites = currentSession.creSprites;
                 speaker = currentSession.creSpeaker;
+                break;
+            default:
+                Debug.LogWarning("Unknown convoAttribute: " + selectedConvoTopic.ConvoAttribute);
+                lines = null;
+                sprites = null;
+                speaker = null;
                 break;
         }
 
