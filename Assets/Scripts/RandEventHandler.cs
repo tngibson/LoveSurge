@@ -41,6 +41,7 @@ public class RandEventHandler : MonoBehaviour
     // FMOD Audio
     private EventInstance levelMusic;
     private EventInstance dateDialogueVoice;
+    private EventInstance date2DialougeVoice;
     private EventInstance playerDialogueVoice;
 
     void Start()
@@ -241,8 +242,11 @@ public class RandEventHandler : MonoBehaviour
     // FMOD Sound Functions
     private void UpdateVoice(string speaker)
     {
-        var voiceInstance = (speaker == "You" || string.IsNullOrEmpty(speaker)) ? playerDialogueVoice : dateDialogueVoice;
-
+        var voiceInstance = (speaker == "You" || string.IsNullOrEmpty(speaker))
+                ? playerDialogueVoice
+                : (speaker == "Noki")
+                    ? date2DialougeVoice
+                    : dateDialogueVoice;
         if (isTypewriting)
         {
             voiceInstance.start();
@@ -258,6 +262,7 @@ public class RandEventHandler : MonoBehaviour
         levelMusic = AudioManager.instance.CreateInstance(FMODEvents.instance.music);
         playerDialogueVoice = AudioManager.instance.CreateInstance(FMODEvents.instance.playerVoice);
         dateDialogueVoice = AudioManager.instance.CreateInstance(FMODEvents.instance.dateVoice);
+        date2DialougeVoice = AudioManager.instance.CreateInstance(FMODEvents.instance.dateVoice2);
         PlayBackgroundMusic();
     }
 

@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.18028331, g: 0.2257133, b: 0.3069217, a: 1}
+  m_IndirectSpecularColor: {r: 0.18028378, g: 0.22571412, b: 0.30692285, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -1049,6 +1049,11 @@ PrefabInstance:
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
       value: RandEventHandler, Assembly-CSharp
       objectReference: {fileID: 0}
+    - target: {fileID: 2050580655265243912, guid: caff7daa29ed80547bbcab65c7792ef9,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 2063435094972535630, guid: caff7daa29ed80547bbcab65c7792ef9,
         type: 3}
       propertyPath: m_Name
@@ -1103,7 +1108,7 @@ PrefabInstance:
         type: 3}
       propertyPath: m_fontAsset
       value: 
-      objectReference: {fileID: 11400000, guid: 37e6f01393fdd914a9dc677042f11af3,
+      objectReference: {fileID: 11400000, guid: df7cadaad356fc945a444aceb9b4e11e,
         type: 2}
     - target: {fileID: 2797055304395627853, guid: caff7daa29ed80547bbcab65c7792ef9,
         type: 3}
@@ -1114,7 +1119,7 @@ PrefabInstance:
         type: 3}
       propertyPath: m_sharedMaterial
       value: 
-      objectReference: {fileID: 518837333957051346, guid: 37e6f01393fdd914a9dc677042f11af3,
+      objectReference: {fileID: 4935103395473980988, guid: df7cadaad356fc945a444aceb9b4e11e,
         type: 2}
     - target: {fileID: 2797055304395627853, guid: caff7daa29ed80547bbcab65c7792ef9,
         type: 3}
