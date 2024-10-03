@@ -53,7 +53,10 @@ public class GameManager : MonoBehaviour
 
         SetConvoStart();
     }
-
+    private void Update()
+    {
+        onEscPress();  
+    }
     // Setup the conversation at the start of the game (Currenty empty)
     public void SetConvoStart()
     {
@@ -113,5 +116,13 @@ public class GameManager : MonoBehaviour
     {
         currentConvoTopic = null;
         topicContainer.EnableButtons();
+    }
+    private void onEscPress()
+    {
+        if (Input.GetKeyDown(KeyCode.Escape)) 
+        {
+            Application.Quit();
+            print("esc");
+        }
     }
 }
