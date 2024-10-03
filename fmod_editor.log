@@ -7,7 +7,7 @@
 [LOG] OutputWASAPI::init                       : Output buffer size: 4096 samples, latency: 0.00ms, period: 10.00ms, DSP buffer: 1024 * 4
 [LOG] Thread::initThread                       : Init FMOD stream thread. Affinity: 0x4000000000000003, Priority: 0xFFFF7FFB, Stack Size: 98304, Semaphore: No, Sleep Time: 10, Looping: Yes.
 [LOG] Thread::initThread                       : Init FMOD mixer thread. Affinity: 0x4000000000000001, Priority: 0xFFFF7FFA, Stack Size: 81920, Semaphore: No, Sleep Time: 0, Looping: Yes.
-[LOG] AsyncManager::init                       : manager 000001644A5D94F8 isAsync 0 updatePeriod 0.02
+[LOG] AsyncManager::init                       : manager 000001644AC63D08 isAsync 0 updatePeriod 0.02
 [LOG] AsyncManager::init                       : done
 [LOG] PlaybackSystem::init                     : 
 [LOG] Thread::initThread                       : Init FMOD Studio sample load thread. Affinity: 0x4000000000000003, Priority: 0xFFFF7FFD, Stack Size: 98304, Semaphore: No, Sleep Time: 1, Looping: No.
@@ -18,6 +18,45 @@
 [LOG] Manager::readBank                        : fileversion = 142, compatVersion = 140 (oldest = 44, newest = 142)
 [LOG] Manager::readBank                        : fileversion = 142, compatVersion = 140 (oldest = 44, newest = 142)
 [LOG] PlaybackSystem::acquireMasterBus         : Setting master channel group format to 6
+[LOG] SystemI::createSoundInternal             : Create name='', mode=0x02000202
+[LOG] SystemI::createSoundInternal             : exinfo->cbsize             = 224
+[LOG] SystemI::createSoundInternal             : exinfo->length             = 9925216
+[LOG] SystemI::createSoundInternal             : exinfo->fileoffset         = 21664
+[LOG] SystemI::createSoundInternal             : exinfo->numsubsounds       = 1
+[LOG] SystemI::createSoundInternal             : exinfo->inclusionlist      = 000000315CEFF4C8
+[LOG] SystemI::createSoundInternal             : exinfo->inclusionlistnum   = 1
+[LOG] SystemI::createSoundInternal             : exinfo->suggestedsoundtype = 5
+[LOG] SystemI::createSoundInternal             : exinfo->useropen           = 00007FFEBCA03F70
+[LOG] SystemI::createSoundInternal             : exinfo->userclose          = 00007FFEBCA03F30
+[LOG] SystemI::createSoundInternal             : exinfo->userread           = 00007FFEBCA04050
+[LOG] SystemI::createSoundInternal             : exinfo->userseek           = 00007FFEBCA04110
+[LOG] SystemI::createSoundInternal             : exinfo->fileuserdata       = 00000164214F1B88
+[LOG] SystemI::createSoundInternal             : exinfo->initialseekpostype = 1
+[LOG] SystemI::DSPCodecPoolRegister            : register codec pool for pool type 5
+[LOG] SystemI::createSoundInternal             : Sample 0/1: name='Card Shuffle', format=5, channels=2, frequency=48000, lengthbytes=11392, lengthpcm=39461, pcmblocksize=0, loopstart=0, loopend=0, mode=0x00000000, channelmask=0x00000000, channelorder=0, peakvolume=0.241669.
+[LOG] SoundI::release                          : Sam_s Theme (000001644A4DE6C8)
+[LOG] SoundI::release                          :     Sam_s Theme (000001644A6B6888)
+[LOG] SoundI::release                          :     Sam_s Theme (000001644A4E0A38)
+[LOG] SoundI::release                          :  (0000016449DB4198)
+[LOG] SoundI::release                          :     Dating Start (000001635CC58258)
+[LOG] SoundI::release                          :  (0000016449DB5A08)
+[LOG] SoundI::release                          :     Card Shuffle (000001635CC58738)
+[LOG] SoundI::release                          :  (0000016449DB03C8)
+[LOG] SoundI::release                          :     MaleVoice2 (000001644A3FDD78)
+[LOG] SoundI::release                          :  (0000016449DB4E88)
+[LOG] SoundI::release                          :     MaleVoice3 (000001644A3FD898)
+[LOG] SoundI::release                          :  (0000016449DB2A98)
+[LOG] SoundI::release                          :     MaleVoice1 (000001644A3FDBD8)
+[LOG] Thread::callback                         : FMOD Studio update thread finished.
+[LOG] Thread::callback                         : FMOD Studio bank load thread finished.
+[LOG] Profile::disconnectAll                   : Profiler disconnecting all clients
+[LOG] Thread::callback                         : FMOD Studio sample load thread finished.
+[LOG] LiveUpdate::release                      : 
+[LOG] LiveUpdate::reset                        : Reset connection (reason Disconnected)
+[LOG] Thread::callback                         : FMOD stream thread finished.
+[LOG] Thread::callback                         : FMOD mixer thread finished.
+[LOG] Profile::disconnectAll                   : Profiler disconnecting all clients
+[LOG] SystemI::close                           : Closed.
 [LOG] Thread::callback                         : FMOD Studio bank load thread finished.
 [LOG] Thread::callback                         : FMOD Studio sample load thread finished.
 [LOG] LiveUpdate::release                      : 
@@ -25,3 +64,5 @@
 [LOG] Thread::callback                         : FMOD stream thread finished.
 [LOG] Thread::callback                         : FMOD mixer thread finished.
 [LOG] SystemI::close                           : Closed.
+[LOG] Thread::callback                         : FMOD nonblocking thread (0) finished.
+[LOG] Thread::callback                         : FMOD file thread finished.
