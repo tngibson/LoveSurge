@@ -16,6 +16,6 @@ public class SamTest : Playtest
         */
         ShowTopics();
         playerNameText.text = "Player"; // For now, since we are not taking player's name, this is just set to Player. Later, it will be set a different way
-        dateNameText.text = "Sam"; // Sets the Date's Name to Lotte
+        dateNameText.text = "Noki"; // Sets the Date's Name to Lotte
     }
 }
