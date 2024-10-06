@@ -32,7 +32,7 @@ public class GameManager : MonoBehaviour
     public int turnCount = 0;
     [SerializeField] public int maxTurnCount = 3; // The max turn count you can go on for each conversation topic
 
-    public List<string> categories = new List<string> { "Cha", "Cou", "Cle", "Cre" }; // List of categories for conversation topics
+    public List<string> categories = new List<string> {"Cha", "Cou", "Cle", "Cre"}; // List of categories for conversation topics
 
     // Buttons 
     [SerializeField] private GameObject drawCardsButton;
@@ -52,11 +52,9 @@ public class GameManager : MonoBehaviour
         }
 
         SetConvoStart();
+        UpdateEndTurnButton(false);
     }
-    private void Update()
-    {
-        onEscPress();  
-    }
+
     // Setup the conversation at the start of the game (Currenty empty)
     public void SetConvoStart()
     {
@@ -111,18 +109,18 @@ public class GameManager : MonoBehaviour
             endTurnButton.SetActive(false);
             mapButton.SetActive(true);
         }
+
+        UpdateEndTurnButton(false);
     }
     public void ResetConvoTopic()
     {
         currentConvoTopic = null;
         topicContainer.EnableButtons();
     }
-    private void onEscPress()
+
+    public void UpdateEndTurnButton(bool state)
     {
-        if (Input.GetKeyDown(KeyCode.Escape)) 
-        {
-            Application.Quit();
-            print("esc");
-        }
+        endTurnButton.GetComponent<Button>().interactable = state;
     }
+
 }

@@ -10,6 +10,7 @@ public class DragDrop : MonoBehaviour
     [SerializeField] private Dropzone dropZone;  // Reference to the Dropzone component
     [SerializeField] private Card card;  // Reference to the Card component
     [SerializeField] private PlayerArea playerArea;  // Reference to the PlayerArea component
+    [SerializeField] private Canvas canvas;  // Reference to the UI canvas to ensure drag is rendered above all UI elements
     private bool isDragging = false;  // Flag to check if the object is being dragged
     private Transform startParent;  // To store the original parent of the dragged object
     private Vector2 startPos;  // To store the original position of the dragged object
@@ -29,6 +30,9 @@ public class DragDrop : MonoBehaviour
 
         GameObject playerAreaObject = GameObject.Find("PlayerArea");
         playerArea = playerAreaObject?.GetComponent<PlayerArea>();
+
+        GameObject canvasObject = GameObject.Find("Canvas");
+        canvas = canvasObject?.GetComponent<Canvas>();
 
         if (dropZone == null || playerArea == null)
         {
@@ -56,6 +60,12 @@ public class DragDrop : MonoBehaviour
         isDragging = true;
         startParent = transform.parent;
         startPos = transform.position;
+
+        // Unparent from the current parent and move to the canvas root so it's rendered above all other elements
+        transform.SetParent(canvas.transform, true);
+
+        // Bring the dragged object to the front
+        transform.SetAsLastSibling(); // Ensures the object is rendered above all other UI elements
     }
 
     public void EndDrag()
@@ -77,7 +87,19 @@ public class DragDrop : MonoBehaviour
             }
 
             GetComponent<GridElementSwapper>()?.SetFirstSelectedElement(null);
-            playerArea = null;
+        }
+        else if (!isOverDropZone)
+        {
+            AudioManager.instance.PlayOneShot(FMODEvents.instance.cardPlaced, this.transform.position);
+
+            transform.SetParent(playerArea.transform, false);
+
+            if (dropZone != null)
+            {
+                dropZone.RemoveCard(card);
+            }
+
+            GetComponent<GridElementSwapper>()?.SetFirstSelectedElement(null);
         }
         else
         {
@@ -89,15 +111,24 @@ public class DragDrop : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        // Set the drop zone flag and reference when the object enters a collider
-        isOverDropZone = true;
-        currentDropZone = collision.gameObject;
+        // Check if the collider's GameObject has a Dropzone component
+        Dropzone zone = collision.gameObject.GetComponent<Dropzone>();
+
+        if (zone != null)  // Only proceed if a Dropzone component is found
+        {
+            // Set the drop zone flag and reference when the object enters a valid dropzone collider
+            isOverDropZone = true;
+            currentDropZone = collision.gameObject;
+        }
     }
 
     private void OnTriggerExit2D(Collider2D collision)
     {
-        // Reset the drop zone flag and reference when the object exits a collider
-        if (collision.gameObject == currentDropZone)
+        // Check if the collider's GameObject has a Dropzone component
+        Dropzone zone = collision.gameObject.GetComponent<Dropzone>();
+
+        // Only reset the drop zone if the object exiting is the current drop zone
+        if (zone != null && collision.gameObject == currentDropZone)
         {
             isOverDropZone = false;
             currentDropZone = null;

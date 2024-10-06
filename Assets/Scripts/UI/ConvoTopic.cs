@@ -100,8 +100,6 @@ public class ConvoTopic : MonoBehaviour
             case "cleverness":
                 iconRenderer.sprite = cleIcon;
                 break;
-            case "":
-                break;
             default:
                 Debug.LogWarning("Unknown convoAttribute: " + convoAttribute);
                 break;
@@ -129,8 +127,6 @@ public class ConvoTopic : MonoBehaviour
             case "cle":
             case "cleverness":
                 background.color = cleColor;
-                break;
-            case "":
                 break;
             default:
                 Debug.LogWarning("Unknown convoAttribute: " + convoAttribute);

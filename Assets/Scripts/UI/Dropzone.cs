@@ -72,11 +72,31 @@ public class Dropzone : MonoBehaviour
         {
             playedCards.Add(card);
             playerArea.RemoveCards(card);
+            gameManager.UpdateEndTurnButton(true);
             CalculateScore();
         }
         else
         {
             Debug.LogError("There is no card to add.");
+        }
+    }
+
+    // Removes a card to from the dropzone and adds it to the player's area
+    public void RemoveCard(Card card)
+    {
+        if (card != null && !isTopicSelected)
+        {
+            playedCards.Remove(card);
+            playerArea.AddCards(card);
+            if (playedCards.Count == 0)
+            {
+                gameManager.UpdateEndTurnButton(false);
+            }
+            CalculateScore();
+        }
+        else
+        {
+            Debug.LogError("There is no card to remove.");
         }
     }
 
@@ -421,28 +441,35 @@ public class Dropzone : MonoBehaviour
         // Reset score to recalculate
         score = 0;
 
-        // Iterate through all played cards to calculate the score
-        for (int i = 0; i < playedCards.Count; i++)
+        if (playedCards.Count != 0)
         {
-            // Add the card's power to the score
-            score += playedCards[i].Power;
-
-            // If there's a next card, apply bonuses based on matching attributes
-            if (i + 1 < playedCards.Count)
+            // Iterate through all played cards to calculate the score
+            for (int i = 0; i < playedCards.Count; i++)
             {
-                Card card1 = playedCards[i];
-                Card card2 = playedCards[i + 1];
+                // Add the card's power to the score
+                score += playedCards[i].Power;
 
-                // Bonus points for matching types or similar power levels
-                if (card1.Type == card2.Type) { score++; }
-                if (card1.Power == card2.Power) { score++; }
-                if (card1.Power == card2.Power - 1) { score++; }
+                // If there's a next card, apply bonuses based on matching attributes
+                if (i + 1 < playedCards.Count)
+                {
+                    Card card1 = playedCards[i];
+                    Card card2 = playedCards[i + 1];
+
+                    // Bonus points for matching types or similar power levels
+                    if (card1.Type == card2.Type) { score++; }
+                    if (card1.Power == card2.Power) { score++; }
+                    if (card1.Power == card2.Power - 1) { score++; }
+                }
+
+                // Bonus points for matching the selected conversation topic
+                if (playedCards[i].Type == selectedConvoTopic.ConvoAttribute) { score++; }
+
+                // Sets the current score text field to what the current score would be after recalculating
+                currentScoreText.text = "Current Score: " + score.ToString();
             }
-
-            // Bonus points for matching the selected conversation topic
-            if (playedCards[i].Type == selectedConvoTopic.ConvoAttribute) { score++; }
-
-            // Sets the current score text field to what the current score would be after recalculating
+        }
+        else
+        {
             currentScoreText.text = "Current Score: " + score.ToString();
         }
     }
@@ -509,4 +536,7 @@ public class Dropzone : MonoBehaviour
     {
         return playedCards.Contains(card);
     }
+
+    // Public getters for various properties
+    public List<Card> GetPlayedCards() => playedCards;
 }

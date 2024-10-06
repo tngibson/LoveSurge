@@ -61,20 +61,6 @@ public class Playtest : MonoBehaviour
     [SerializeField] private TextMeshProUGUI playerTextOutput;
     [SerializeField] public TextMeshProUGUI playerNameText;
 
-    // File handling variables
-    /*
-    [SerializeField] private FileInfo source;
-    protected FileInfo playerSource;
-    protected StreamReader reader = null;
-    protected StreamReader playerReader = null;
-    */
-
-    // Getter methods for the readers
-    /*
-    public StreamReader GetReader() => reader;
-    public StreamReader GetPlayerReader() => playerReader;
-    */
-
     // Text for conversation output
     protected string text = " ";
     protected string playerText = " ";
@@ -93,25 +79,8 @@ public class Playtest : MonoBehaviour
         dateNameText.text = dateCharacter.gameObject.ToString();
     }
 
-    private void start()
-    {
-        //playerVoice = AudioManager.instance.CreateEventInstance(FMODEvents.instance.playerVoice);
-        //dateVoice = AudioManager.instance.CreateEventInstance(FMODEvents.instance.dateVoice);
-    }
-
-    // Initialize file sources for reading text
-    /*
-    private void InitializeFileSources()
-    {
-        source = new FileInfo("Assets/Assets/DialogueResources/Dialogue Files/CelciText.txt");
-        reader = source.OpenText();
-        playerSource = new FileInfo("Assets/Assets/DialogueResources/Dialogue Files/playerText.txt");
-        playerReader = playerSource.OpenText();
-    }
-    */
-
     // Sets the conversation topics with power and topic names
-    protected void SetTopics(int num1, string topic1, int num2, string topic2, int num3, string topic3, int num4, string topic4, string label1, string label2, string label3, string label4)
+    protected void SetTopics(int num1, string topic1, string label1, int num2, string topic2, string label2, int num3, string topic3, string label3, int num4, string topic4, string label4)
     {
         convoTopic1.SetNum(num1);
         convoTopic1.SetTopic(topic1, label1);
@@ -129,21 +98,8 @@ public class Playtest : MonoBehaviour
     // Displays the conversation topics
     public void ShowTopics()
     {
-        SetTopics(power1, type1, power2, type2, power3, type3, power4, type4, label1, label2, label3, label4);
+        SetTopics(power1, type1, label1, power2, type2, label2, power3, type3, label3, power4, type4, label4);
     }
-
-    // Reads text from a stream and updates the UI
-    /*
-    public void ReadText(TextMeshProUGUI convoTextOutput, StreamReader stream)
-    {
-        if (stream != null)
-        {
-            text = stream.ReadLine();
-            textSFX.Play();
-            convoTextOutput.text = text ?? ""; // If the text is null, set it to an empty string
-        }
-    }
-    */
 
     // Plays player text sounds
     public void ReadPlayerText()
