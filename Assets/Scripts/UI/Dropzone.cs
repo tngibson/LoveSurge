@@ -10,7 +10,10 @@ public class Dropzone : MonoBehaviour
     [SerializeField] private TextMeshProUGUI totalScoreText;
     [SerializeField] private TextMeshProUGUI playerText;
     [SerializeField] private TextMeshProUGUI dateText;
+
     [SerializeField] private List<Card> playedCards;
+    [SerializeField] private int maxCards = 4;
+
     [SerializeField] private DiscardPile discard;
     [SerializeField] private PlayerArea playerArea;
     [SerializeField] private TopicContainer topicContainer;
@@ -42,10 +45,6 @@ public class Dropzone : MonoBehaviour
     private int targetPowerNum;
     private Coroutine countDownPowerCoroutine;
 
-    // Boolean for if a topic has been selected or not
-    private bool isTopicSelected = false;
-    public bool IsTopicSelected { get; set; }
-
     [SerializeField] private float discardDuration = 1.0f; // Duration of the discard animation
     private Coroutine discardCardsCoroutine;
 
@@ -68,7 +67,7 @@ public class Dropzone : MonoBehaviour
     // Adds a card to the played cards list and removes it from the player's area
     public void AddCard(Card card)
     {
-        if (card != null && !isTopicSelected)
+        if (card != null && (gameManager.IsTopicSelected))
         {
             playedCards.Add(card);
             playerArea.RemoveCards(card);
@@ -84,7 +83,7 @@ public class Dropzone : MonoBehaviour
     // Removes a card to from the dropzone and adds it to the player's area
     public void RemoveCard(Card card)
     {
-        if (card != null && !isTopicSelected)
+        if (card != null && (gameManager.IsTopicSelected))
         {
             playedCards.Remove(card);
             playerArea.AddCards(card);
@@ -100,6 +99,17 @@ public class Dropzone : MonoBehaviour
         }
     }
 
+    public void ReturnCards()
+    {
+        for (int i = 0;  i < playedCards.Count; i++)
+        {
+            playerArea.AddCards(playedCards[i]);
+            playedCards[i].transform.SetParent(playerArea.transform, false);
+        }
+        playedCards.Clear();
+        CalculateScore();
+    }
+
     // Scores the played cards, moves them to the discard pile, and updates the UI
     public void ScoreCards()
     {
@@ -109,6 +119,7 @@ public class Dropzone : MonoBehaviour
             initialPower = selectedConvoTopic.PowerNum;
             lineNum = 0;
             gameManager.turnCount = 1; // Resets the turn count
+            selectedConvoTopic.isLocked = true;
         }
 
         // Calculates our current score
@@ -151,7 +162,7 @@ public class Dropzone : MonoBehaviour
             dialogPlayedAtFullPower = false;
 
             // Resets the bool for whether a topic is selected or not
-            isTopicSelected = false;
+            gameManager.IsTopicSelected = false;
         }
 
         // If the conversation topic has not been completed in time
@@ -174,7 +185,7 @@ public class Dropzone : MonoBehaviour
             dialogPlayedAtFullPower = false;
 
             // Resets the bool for whether a topic is selected or not
-            isTopicSelected = false;
+            gameManager.IsTopicSelected = false;
         }
 
         // Clear the played cards, reset the score for the next round, and updates the total score
@@ -314,7 +325,7 @@ public class Dropzone : MonoBehaviour
         currentSession.isWriting = false; 
     }
 
-    void Update()
+    private void Update()
     {
         // Allow only skip input when dialog is playing
         if (isTypewriting && Input.GetButtonDown("Skip"))
@@ -381,14 +392,18 @@ public class Dropzone : MonoBehaviour
             selectedConvoTopic.numText.text = ""; // Hide the num text
             selectedConvoTopic.finishedText.SetActive(true); // Show the finished text
             selectedConvoTopic.background.color = new Color(0.68f, 0.85f, 0.90f, 1); // Pastel blue
+            selectedConvoTopic.isLocked = false;
+            selectedConvoTopic.ToggleClick(true);
+            gameManager.ResetConvoTopic();
         }
-
-        if (gameManager.turnCount >= gameManager.maxTurnCount && selectedConvoTopic.PowerNum > 0)
+        else if (gameManager.turnCount >= gameManager.maxTurnCount && selectedConvoTopic.PowerNum > 0)
         {
             selectedConvoTopic.numText.text = ""; // Hide the num text
             selectedConvoTopic.bustedText.SetActive(true); // Show the busted text
             selectedConvoTopic.background.color = new Color(1f, 0.5f, 0.5f, 1f); // Pastel red
-            selectedConvoTopic = null;
+            selectedConvoTopic.isLocked = false;
+            selectedConvoTopic.ToggleClick(true);
+            gameManager.ResetConvoTopic();
         }
     }
 
@@ -462,7 +477,7 @@ public class Dropzone : MonoBehaviour
                 }
 
                 // Bonus points for matching the selected conversation topic
-                if (playedCards[i].Type == selectedConvoTopic.ConvoAttribute) { score++; }
+                if (playedCards[i].Type == selectedConvoTopic.ConvoAttribute.Substring(0, 3)) { score++; }
 
                 // Sets the current score text field to what the current score would be after recalculating
                 currentScoreText.text = "Current Score: " + score.ToString();
@@ -539,4 +554,5 @@ public class Dropzone : MonoBehaviour
 
     // Public getters for various properties
     public List<Card> GetPlayedCards() => playedCards;
+    public int GetMaxCards() => maxCards;
 }

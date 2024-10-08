@@ -39,6 +39,9 @@ public class GameManager : MonoBehaviour
     [SerializeField] private GameObject endTurnButton;
     [SerializeField] private GameObject mapButton;
 
+    private bool isTopicSelected;
+    public bool IsTopicSelected { get; set; }
+
     // Initial game setup
     private void Awake()
     {
@@ -58,6 +61,10 @@ public class GameManager : MonoBehaviour
     // Setup the conversation at the start of the game (Currenty empty)
     public void SetConvoStart()
     {
+        if (isTopicSelected)
+        {
+            isTopicSelected = false;
+        }
     }
 
     // Sets the topic for the current game manager
@@ -103,7 +110,7 @@ public class GameManager : MonoBehaviour
             dropzone.ScoreCards();
         }
 
-        if (topicContainer.convoTopics.Count == 0)
+        if (topicContainer.convoTopics.Count == 0 || (deckContainer.Deck.Count == 0 && playerArea.CardsInHand.Count == 0))
         {
             drawCardsButton.SetActive(false);
             endTurnButton.SetActive(false);
@@ -115,6 +122,7 @@ public class GameManager : MonoBehaviour
     public void ResetConvoTopic()
     {
         currentConvoTopic = null;
+        isTopicSelected = false;
         topicContainer.EnableButtons();
     }
 

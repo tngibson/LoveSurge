@@ -11,6 +11,7 @@ public class DragDrop : MonoBehaviour
     [SerializeField] private Card card;  // Reference to the Card component
     [SerializeField] private PlayerArea playerArea;  // Reference to the PlayerArea component
     [SerializeField] private Canvas canvas;  // Reference to the UI canvas to ensure drag is rendered above all UI elements
+    [SerializeField] private GameManager gameManager;
     private bool isDragging = false;  // Flag to check if the object is being dragged
     private Transform startParent;  // To store the original parent of the dragged object
     private Vector2 startPos;  // To store the original position of the dragged object
@@ -21,6 +22,10 @@ public class DragDrop : MonoBehaviour
     private EventInstance levelMusic;
 
 
+    private void Awake()
+    {
+        gameManager = FindAnyObjectByType<GameManager>();
+    }
 
     void Start()
     {
@@ -73,7 +78,7 @@ public class DragDrop : MonoBehaviour
         // End dragging the object
         isDragging = false;
 
-        if (isOverDropZone && dropZone != null && dropZone.IsTopicSelected)
+        if (isOverDropZone && dropZone != null && gameManager.IsTopicSelected && dropZone.GetPlayedCards().Count < dropZone.GetMaxCards())
         {
             AudioManager.instance.PlayOneShot(FMODEvents.instance.cardPlaced, this.transform.position);
             // Drop the object in the drop zone

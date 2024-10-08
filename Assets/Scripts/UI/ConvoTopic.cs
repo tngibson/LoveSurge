@@ -45,6 +45,12 @@ public class ConvoTopic : MonoBehaviour
     // Tracks if the convo topic is failed
     public bool isFailed = false;
 
+    // To track if the player is locked into a convo topic
+    public bool isLocked = false;
+
+    public RectTransform buttonTransform;
+    public float pressAmount = 5f; // The amount the button moves down when clicked
+
     // Called when the script instance is being loaded
     void Awake()
     {
@@ -150,24 +156,29 @@ public class ConvoTopic : MonoBehaviour
     {
         if (!isClicked && !isFailed && powerNum > 0)
         {
+            ToggleClick(isClicked);
+
             // Highlight the background color when clicked
             background.color = new Color(1, 0.95f, 0.5f, 1); // Pastel yellow
             isClicked = true;
 
             // Set this as the selected convo topic in the drop zone and game manager
             dropZoneScript.selectedConvoTopic = this;
-            dropZoneScript.IsTopicSelected = true;
+            gameManager.IsTopicSelected = true;
             gameManager.currentConvoTopic = this;
         }
-        else if (isClicked && !isFailed && powerNum > 0)
+        else if (isClicked && !isFailed && powerNum > 0 && !isLocked)
         {
+            ToggleClick(isClicked);
+
             gameManager.currentConvoTopic = this;
             changeBGColor();
             isClicked = false;
             //Deselects current convo topic when clicked
             dropZoneScript.selectedConvoTopic = null;
-            dropZoneScript.IsTopicSelected = false;
+            gameManager.IsTopicSelected = false;
             gameManager.ResetConvoTopic();
+            dropZoneScript.ReturnCards();
         }
     }
 
@@ -175,6 +186,20 @@ public class ConvoTopic : MonoBehaviour
     public bool GetIsClicked()
     {
         return isClicked;
+    }
+
+    public void ToggleClick(bool clicked)
+    {
+        if (clicked)
+        {
+            // Move the button down when clicked
+            buttonTransform.anchoredPosition = new Vector2(buttonTransform.anchoredPosition.x, buttonTransform.anchoredPosition.y + pressAmount);
+        }
+        else
+        {
+            // Move the button down when clicked
+            buttonTransform.anchoredPosition = new Vector2(buttonTransform.anchoredPosition.x, buttonTransform.anchoredPosition.y - pressAmount);
+        }
     }
 }
 
