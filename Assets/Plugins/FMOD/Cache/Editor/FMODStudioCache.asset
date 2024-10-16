@@ -54,6 +54,54 @@ MonoBehaviour:
   MinDistance: 1
   MaxDistance: 20
   Length: 1061
+--- !u!114 &-3594835075646195633
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
+  m_Name: parameter:/lotteNewVoice/textTyping
+  m_EditorClassIdentifier: 
+  Name: textTyping
+  StudioPath: 
+  Min: 0
+  Max: 1
+  Default: 0
+  ID:
+    data1: 1219594499
+    data2: 956621869
+  Type: 1
+  IsGlobal: 0
+  Labels: []
+  Exists: 1
+--- !u!114 &-3436712120508720770
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
+  m_Name: parameter:/mickeyVoice/vocalType
+  m_EditorClassIdentifier: 
+  Name: vocalType
+  StudioPath: 
+  Min: 0
+  Max: 7
+  Default: 0
+  ID:
+    data1: 2203840479
+    data2: 1838988143
+  Type: 1
+  IsGlobal: 0
+  Labels: []
+  Exists: 1
 --- !u!114 &-3093909443781545764
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -231,10 +279,10 @@ MonoBehaviour:
   Path: LSFMOD/Build/Desktop/Master.strings.bank
   Name: Master.strings
   StudioPath: bank:/Master.strings
-  lastModified: 638633257346719370
+  lastModified: 638646895876456079
   FileSizes:
   - Name: Desktop
-    Value: 1482
+    Value: 1690
   Exists: 1
 --- !u!114 &-62025236325886557
 MonoBehaviour:
@@ -295,13 +343,68 @@ MonoBehaviour:
   - {fileID: -2111950618178967441}
   - {fileID: -646641886318731699}
   - {fileID: -62025236325886557}
+  - {fileID: 3848543842602398634}
+  - {fileID: 1144394797387421176}
   EditorParameters: []
   MasterBanks:
   - {fileID: 3830891757910060433}
   StringsBanks:
   - {fileID: -233124731061743878}
-  cacheTime: 638633257346719370
+  cacheTime: 638646895876456079
   cacheVersion: 131616
+--- !u!114 &1144394797387421176
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/SFX/Voices/lotteNewVoice
+  m_EditorClassIdentifier: 
+  Path: event:/SFX/Voices/lotteNewVoice
+  Guid:
+    Data1: 964451169
+    Data2: 1304749693
+    Data3: -872073561
+    Data4: 198192378
+  Banks:
+  - {fileID: 3830891757910060433}
+  IsStream: 0
+  Is3D: 0
+  IsOneShot: 0
+  Parameters:
+  - {fileID: -3594835075646195633}
+  - {fileID: 4067565678482669995}
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 17500
+--- !u!114 &1681463941662423317
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
+  m_Name: parameter:/mickeyVoice/textTyping
+  m_EditorClassIdentifier: 
+  Name: textTyping
+  StudioPath: 
+  Min: 0
+  Max: 1
+  Default: 0
+  ID:
+    data1: 1219594499
+    data2: 956621869
+  Type: 1
+  IsGlobal: 0
+  Labels: []
+  Exists: 1
 --- !u!114 &2588951006968363903
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -398,10 +501,63 @@ MonoBehaviour:
   Path: LSFMOD/Build/Desktop/Master.bank
   Name: Master
   StudioPath: bank:/Master
-  lastModified: 638633257346698630
+  lastModified: 638646895876435149
   FileSizes:
   - Name: Desktop
-    Value: 8088544
+    Value: 8126080
+  Exists: 1
+--- !u!114 &3848543842602398634
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/SFX/Voices/mickeyVoice
+  m_EditorClassIdentifier: 
+  Path: event:/SFX/Voices/mickeyVoice
+  Guid:
+    Data1: 1043090993
+    Data2: 1102554748
+    Data3: -876076894
+    Data4: 737562545
+  Banks:
+  - {fileID: 3830891757910060433}
+  IsStream: 0
+  Is3D: 0
+  IsOneShot: 0
+  Parameters:
+  - {fileID: 1681463941662423317}
+  - {fileID: -3436712120508720770}
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 17500
+--- !u!114 &4067565678482669995
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
+  m_Name: parameter:/lotteNewVoice/vocalType
+  m_EditorClassIdentifier: 
+  Name: vocalType
+  StudioPath: 
+  Min: 0
+  Max: 7
+  Default: 0
+  ID:
+    data1: 2203840479
+    data2: 1838988143
+  Type: 1
+  IsGlobal: 0
+  Labels: []
   Exists: 1
 --- !u!114 &5578982307358916007
 MonoBehaviour:
