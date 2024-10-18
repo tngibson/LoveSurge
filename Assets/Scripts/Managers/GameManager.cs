@@ -11,6 +11,9 @@ public class GameManager : MonoBehaviour
     [SerializeField] private TextMeshProUGUI turnText;
     [SerializeField] private TextMeshProUGUI endGameText;
     [SerializeField] private TextMeshProUGUI fullHandText;
+    
+    [SerializeField] private int currentStressAmt;
+    [SerializeField] private int maxStressAmt = 10;
 
     // References to card prefabs
     [SerializeField] private GameObject chaCard;
@@ -130,5 +133,12 @@ public class GameManager : MonoBehaviour
     {
         endTurnButton.GetComponent<Button>().interactable = state;
     }
+
+    public int GetCurrentStressAmt()
+    {
+        return currentStressAmt;
+    }
+    public int getMaxStressAmt() { return maxStressAmt; }
+
 
 }

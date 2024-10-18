@@ -10,10 +10,16 @@ public class MapScript : MonoBehaviour
     public string locName;
 
     public MapLocationsManager manager; // Reference to the MapLocationsManager
-
+    private StressBar SB;
+    private void Start()
+    {
+        SB = GetComponent<StressBar>();
+    }
     // OnSelect is triggered when the map location is selected
     public void OnSelect()
     {
+        SB.addToCurrentStress();
+        SB.updateStressBar();
         // Delegate the selection logic to the manager, passing location info and name
         if (manager != null)  // Check if the manager reference is assigned
         {
