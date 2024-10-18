@@ -4,6 +4,7 @@ using UnityEngine;
 
 public enum SilenceTrigger
 {
-  TYPING = 0,
-  SILENCE = 1,
+  SILENCE = 0,
+  TYPING = 1,
+  VOCALS = 2,
 }
