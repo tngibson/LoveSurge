@@ -20,9 +20,10 @@ public class ConvoTopic : MonoBehaviour
     [SerializeField] public GameObject finishedText;
     [SerializeField] public GameObject bustedText;
     [SerializeField] public Image background;
+    [SerializeField] public Color topicColor;
 
     // Icon-related fields
-    [SerializeField] private SpriteRenderer iconRenderer;
+    [SerializeField] private Image icon;
 
     // Icon sprites for different attributes
     [SerializeField] private Sprite chaIcon;
@@ -73,7 +74,7 @@ public class ConvoTopic : MonoBehaviour
         convoAttribute = topic;
         attributeText.text = topic;
         topicLabelText.text = topicLabel;
-        SetIcon(); // Update the icon based on the new topic
+        //SetIcon(); // Update the icon based on the new topic
     }
 
     // Set the power number and update the UI
@@ -90,19 +91,19 @@ public class ConvoTopic : MonoBehaviour
         {
             case "cha":
             case "charisma":
-                iconRenderer.sprite = chaIcon;
+                icon.sprite = chaIcon;
                 break;
             case "cre":
             case "creativity":
-                iconRenderer.sprite = creIcon;
+                icon.sprite = creIcon;
                 break;
             case "cou":
             case "courage":
-                iconRenderer.sprite = couIcon;
+                icon.sprite = couIcon;
                 break;
             case "cle":
             case "cleverness":
-                iconRenderer.sprite = cleIcon;
+                icon.sprite = cleIcon;
                 break;
             default:
                 Debug.LogWarning("Unknown convoAttribute: " + convoAttribute);
@@ -119,18 +120,22 @@ public class ConvoTopic : MonoBehaviour
             case "cha":
             case "charisma":
                 background.color = chaColor;
+                topicColor = chaColor;
                 break;
             case "cre":
             case "creativity":
                 background.color = creColor;
+                topicColor = creColor;
                 break;
             case "cou":
             case "courage":
                 background.color = couColor;
+                topicColor = couColor;
                 break;
             case "cle":
             case "cleverness":
                 background.color = cleColor;
+                topicColor = cleColor;
                 break;
             default:
                 Debug.LogWarning("Unknown convoAttribute: " + convoAttribute);

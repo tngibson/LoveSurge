@@ -55,6 +55,11 @@ public class GameManager : MonoBehaviour
         UpdateEndTurnButton(false);
     }
 
+    private void Start()
+    {
+        turnText.SetText("Turns Till Bust: " + (maxTurnCount - turnCount).ToString());
+    }
+
     // Setup the conversation at the start of the game (Currenty empty)
     public void SetConvoStart()
     {
@@ -75,7 +80,7 @@ public class GameManager : MonoBehaviour
     {
         // Increment the turn counter and update the UI
         turnCount++;
-        turnText.SetText("Turns Passed: " + turnCount.ToString());
+        turnText.SetText("Turns Till Bust: " + (maxTurnCount - turnCount).ToString());
 
         // Draw cards if the player has fewer than 5 cards in hand and the deck is not empty
         if (playerArea.CardsInHand.Count < 5 && deckContainer.Deck.Count > 0)

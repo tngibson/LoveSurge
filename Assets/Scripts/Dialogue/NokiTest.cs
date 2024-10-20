@@ -7,5 +7,6 @@ public class NokiTest : Playtest
     protected new void Start()
     {
         ShowTopics();
+        SetUIColor();
     }
 }

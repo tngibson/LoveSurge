@@ -25,6 +25,7 @@ public class Dropzone : MonoBehaviour
 
     private int score = 0;
     private int lineNum = 0;
+    private int maxLineNum;
     private int initialPower;
     private bool dialogPlayedAtFullPower = false;
     private bool dialogPlayedAtHalfPower = false;
@@ -317,6 +318,9 @@ public class Dropzone : MonoBehaviour
         topicContainer.doneConvos.Add(selectedConvoTopic);
         topicContainer.convoTopics.Remove(selectedConvoTopic);
 
+        // Reset the convoText
+        selectedConvoTopic.convoText.text = "Awaiting Topic...";
+
         // Reset topic selection state for the next round
         selectedConvoTopic.isClicked = false;
         gameManager.IsTopicSelected = false;
@@ -333,6 +337,9 @@ public class Dropzone : MonoBehaviour
         // Move the topic to the "failed" list and remove it from active topics
         topicContainer.failedConvos.Add(selectedConvoTopic);
         topicContainer.convoTopics.Remove(selectedConvoTopic);
+
+        // Reset the convoText
+        selectedConvoTopic.convoText.text = "Awaiting Topic...";
 
         // Mark the topic as failed and reset its state
         selectedConvoTopic.isFailed = true;
@@ -367,30 +374,35 @@ public class Dropzone : MonoBehaviour
             case "cha":
             case "charisma":
                 lines = currentSession.chaLines;
+                maxLineNum = lines.Count;
                 sprites = currentSession.chaSprites;
                 speakers = currentSession.chaSpeaker;
                 break;
             case "cou":
             case "courage":
                 lines = currentSession.couLines;
+                maxLineNum = lines.Count;
                 sprites = currentSession.couSprites;
                 speakers = currentSession.couSpeaker;
                 break;
             case "cle":
             case "cleverness":
                 lines = currentSession.cleLines;
+                maxLineNum = lines.Count;
                 sprites = currentSession.cleSprites;
                 speakers = currentSession.cleSpeaker;
                 break;
             case "cre":
             case "creativity":
                 lines = currentSession.creLines;
+                maxLineNum = lines.Count;
                 sprites = currentSession.creSprites;
                 speakers = currentSession.creSpeaker;
                 break;
             default:
                 Debug.LogWarning("Unknown conversation attribute: " + selectedConvoTopic.ConvoAttribute);
                 lines = null;
+                maxLineNum = lines.Count;
                 sprites = null;
                 speakers = null;
                 break;
@@ -436,6 +448,18 @@ public class Dropzone : MonoBehaviour
         // Prepare the speaker's portion in bold (appears immediately)
         string speakerPortion = $"<b>{speaker}:</b> ";
 
+        // Check if it's the first line of the conversation
+        if (lineNum == 0)
+        {
+            Color topicColor = selectedConvoTopic.topicColor;  // topic color of the selected convo topic
+            Color darkenedColor = DarkenColor(topicColor, 0.75f);  // Darken given color
+            string hexColor = ColorUtility.ToHtmlStringRGB(darkenedColor);  // Convert to the color to a hex string
+
+            // Set the convo topic label for the current topic convo
+            string topicLabel = $"<b><u><align=center><color=#{hexColor}>{selectedConvoTopic.topicLabelText.text}</color></align></u></b>";
+            dialogText.text += topicLabel;  // Display the topic label
+        }
+
         // Store the current dialog text to preserve history
         string previousText = dialogText.text;
 
@@ -445,9 +469,8 @@ public class Dropzone : MonoBehaviour
             previousText += "\n\n";  // Add space between previous and new lines
         }
 
-        // Set the initial text immediately with the speaker portion
+        // Set the initial text with the speaker's portion
         string initialText = $"{previousText}{speakerPortion}";
-
         dialogText.text = initialText;  // Display the speaker portion immediately
         AdjustTextBoxHeight();  // Ensure the text box resizes
 
@@ -478,9 +501,28 @@ public class Dropzone : MonoBehaviour
         AdjustTextBoxHeight();  // Ensure the text box is fully adjusted
         ScrollToBottom();  // Keep the scroll at the bottom
 
+        // Add a new line after the conversation ends to distinguish it from the next one
+        if (lineNum >= maxLineNum - 1) 
+        {
+            dialogText.text += "\n\n";  // Add spacing to separate conversations
+            AdjustTextBoxHeight();
+            ScrollToBottom();
+        }
+
         // Reset typewriter and writing state
         isTypewriting = false;
         currentSession.isWriting = false;
+    }
+
+    // Helper method to darken the convo topic color
+    private Color DarkenColor(Color color, float factor)
+    {
+        return new Color(
+            color.r * factor,
+            color.g * factor,
+            color.b * factor,
+            color.a 
+        );
     }
 
     // Adjust the height of the text box based on the content size

@@ -32,6 +32,12 @@ public class Playtest : MonoBehaviour
     // List to hold conversation topics
     private List<ConvoTopic> convoTopics;
 
+    // List to hold colorable UI sprites
+    [SerializeField] private List<Image> uiOpaqueImages;
+    [SerializeField] private Color uiOpaqueColor;
+    [SerializeField] private List<Image> uiImages;
+    [SerializeField] private Color uiColor;
+
     // Serialized fields for the individual conversation topics
     [SerializeField] public ConvoTopic convoTopic1;
     [SerializeField] public ConvoTopic convoTopic2;
@@ -69,6 +75,7 @@ public class Playtest : MonoBehaviour
     {
         //InitializeFileSources();
         ShowTopics();
+        SetUIColor();
     }
 
     // Sets the conversation topics with power and topic names
@@ -91,6 +98,19 @@ public class Playtest : MonoBehaviour
     public void ShowTopics()
     {
         SetTopics(power1, type1, label1, power2, type2, label2, power3, type3, label3, power4, type4, label4);
+    }
+
+    public void SetUIColor()
+    {
+        foreach (var uiSprite in uiOpaqueImages)
+        {
+            uiSprite.color = uiOpaqueColor;
+        }
+
+        foreach (var uiSprite in uiImages)
+        {
+            uiSprite.color = uiColor;
+        }
     }
 
     // Plays player text sounds
