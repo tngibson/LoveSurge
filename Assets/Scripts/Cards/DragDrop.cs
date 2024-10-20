@@ -1,169 +1,230 @@
 using System.Collections;
-using System.Collections.Generic;
-using FMOD.Studio;
-using Unity.VisualScripting;
 using UnityEngine;
-
+using UnityEngine.EventSystems;
 
 public class DragDrop : MonoBehaviour
 {
-    [SerializeField] private Dropzone dropZone;  // Reference to the Dropzone component
-    [SerializeField] private Card card;  // Reference to the Card component
-    [SerializeField] private PlayerArea playerArea;  // Reference to the PlayerArea component
-    [SerializeField] private Canvas canvas;  // Reference to the UI canvas to ensure drag is rendered above all UI elements
-    [SerializeField] private GameManager gameManager;
-    private bool isDragging = false;  // Flag to check if the object is being dragged
-    private Transform startParent;  // To store the original parent of the dragged object
-    private Vector2 startPos;  // To store the original position of the dragged object
-    private GameObject currentDropZone;  // To keep track of the current drop zone
-    private bool isOverDropZone = false;  // Flag to check if the object is over a drop zone
+    [SerializeField] private PlayerArea playerArea;   // Reference to the PlayerArea component
+    [SerializeField] private Canvas canvas;           // Reference to the UI canvas to render above all UI elements
+    [SerializeField] private GameManager gameManager; // Reference to GameManager
+    [SerializeField] Dropzone dropzoneManager;        // Reference to Dropzone
 
-    // Audio
-    private EventInstance levelMusic;
+    private Transform startParent;    // Store the original parent of the dragged card
+    private Vector2 startPos;         // Store the original position of the dragged card
+    private bool isDragging = false;  // Track if the card is being dragged
 
+    private DragDrop targetCard;      // The card this one is dropped on (for swapping)
+    private DropzoneSlot currentDropZone; // The dropzone this card is over
+    private bool isOverDropZone = false; // Track if card is over a dropzone
+    private bool isOverPlayerArea = false;  // Track if card is over the player areas
+
+    private Vector3 initialPositionA;  // Initial position of this card
+    private Vector3 initialPositionB;  // Initial position of the target card
+    private Card card;
+
+    // Public method to check if the card is being dragged
+    public bool IsDragging() => isDragging;
 
     private void Awake()
     {
-        gameManager = FindAnyObjectByType<GameManager>();
+        gameManager = FindAnyObjectByType<GameManager>();  // Find GameManager in the scene
     }
 
     void Start()
     {
-        // Initialize references to Dropzone and PlayerArea components
-        GameObject dropZoneObject = GameObject.Find("Dropzone");
-        dropZone = dropZoneObject?.GetComponent<Dropzone>();
+        // Initialize PlayerArea and Canvas
+        playerArea = GameObject.Find("PlayerArea")?.GetComponent<PlayerArea>();
+        canvas = GameObject.Find("Canvas")?.GetComponent<Canvas>();
+        dropzoneManager = GameObject.Find("CardSlotsPanel").GetComponent<Dropzone>();
 
-        GameObject playerAreaObject = GameObject.Find("PlayerArea");
-        playerArea = playerAreaObject?.GetComponent<PlayerArea>();
-
-        GameObject canvasObject = GameObject.Find("Canvas");
-        canvas = canvasObject?.GetComponent<Canvas>();
-
-        if (dropZone == null || playerArea == null)
+        if (playerArea == null)
         {
-            Debug.LogError("Dropzone or PlayerArea not found in the scene.");
+            Debug.LogError("PlayerArea not found in the scene.");
         }
-        InitializeAudio();
-        AudioManager.instance.PlayOneShot(FMODEvents.instance.datingStart, this.transform.position);
-
+        card = this.GetComponent<Card>();
     }
 
     void Update()
     {
         if (isDragging)
         {
-            // Update the position of the dragged object to follow the mouse
+            // Make the card follow the mouse cursor
             Vector3 mousePosition = Input.mousePosition;
-            mousePosition.z = 0; // Ensure the object is in the correct Z plane
+            mousePosition.z = 0;  // Ensure it stays in the 2D plane
             transform.position = mousePosition;
         }
     }
 
+    // Start dragging the card.
     public void StartDrag()
     {
-        // Start dragging the object
-        isDragging = true;
-        startParent = transform.parent;
-        startPos = transform.position;
+        isDragging = true;  // Enable dragging
+        startParent = transform.parent;  // Store the original parent
+        startPos = transform.position;   // Store the original position
 
-        // Unparent from the current parent and move to the canvas root so it's rendered above all other elements
+        // Move the card to the canvas root to render above other elements
         transform.SetParent(canvas.transform, true);
+        transform.SetAsLastSibling();  // Ensure it renders above all other elements
 
-        // Bring the dragged object to the front
-        transform.SetAsLastSibling(); // Ensures the object is rendered above all other UI elements
+        initialPositionA = transform.position;  // Store the initial position of this card
     }
 
+    // End dragging the card and determine the appropriate action.
     public void EndDrag()
     {
-        // End dragging the object
-        isDragging = false;
+        isDragging = false;  // Disable dragging
 
-        if (isOverDropZone && dropZone != null && gameManager.IsTopicSelected && dropZone.GetPlayedCards().Count < dropZone.GetMaxCards())
+        if (targetCard != null)  // Swap with another card if applicable
         {
-            AudioManager.instance.PlayOneShot(FMODEvents.instance.cardPlaced, this.transform.position);
-            // Drop the object in the drop zone
-            transform.SetParent(currentDropZone.transform, false);
-
-            // Check if the card is already in the drop zone's list to avoid duplication
-            if (!dropZone.HasCard(card))  // New method to check if card is already present
-            {
-                dropZone.AddCard(card);
-                transform.position = startPos;
-            }
-
-            GetComponent<GridElementSwapper>()?.SetFirstSelectedElement(null);
+            SwapCards(this, targetCard, startParent);
         }
-        else if (!isOverDropZone)
+        else if (isOverDropZone && currentDropZone.IsEmpty && gameManager.IsTopicSelected)  // Place in dropzone if applicable
         {
-            AudioManager.instance.PlayOneShot(FMODEvents.instance.cardPlaced, this.transform.position);
-
-            transform.SetParent(playerArea.transform, false);
-
-            if (dropZone != null)
-            {
-                dropZone.RemoveCard(card);
-            }
-
-            GetComponent<GridElementSwapper>()?.SetFirstSelectedElement(null);
+            PlaceInDropzone();
         }
-        else
+        else if (isOverPlayerArea)  // Return the card to the player area
         {
-            // Return the object to its original position and parent
-            transform.position = startPos;
-            transform.SetParent(startParent, false);
+            ReturnToPlayerArea();
         }
+        else  // Return to original position if no valid drop
+        {
+            ReturnToStart();
+        }
+    }
+
+    // Swap the positions of two cards.
+    private void SwapCards(DragDrop cardA, DragDrop cardB, Transform startParent)
+    {
+
+        // Store world positions before changing parents
+        Vector3 worldPosA = cardA.transform.position;
+        Vector3 worldPosB = cardB.transform.position;
+
+        // Handle parent assignment during the swap
+        Transform parentA = startParent;
+        Transform parentB = cardB.transform.parent;
+
+        if (parentA.GetComponent<PlayerArea>() != null && parentB.GetComponent<DropzoneSlot>() != null)
+        {
+            int index = dropzoneManager.GetCardIndex(cardB.GetComponent<Card>());
+            cardB.dropzoneManager.RemoveCardFromDropzone(index);
+            cardA.dropzoneManager.AddCardToDropzone(cardA.GetComponent<Card>(), index);
+        }
+        else if (parentA.GetComponent<DropzoneSlot>() != null && parentB.GetComponent<PlayerArea>() != null)
+        {
+            int index = dropzoneManager.GetCardIndex(cardA.GetComponent<Card>());
+            cardA.dropzoneManager.RemoveCardFromDropzone(index);
+            cardB.dropzoneManager.AddCardToDropzone(cardB.GetComponent<Card>(), index);
+        }
+        else if (parentA.GetComponent<DropzoneSlot>() != null && parentB.GetComponent<DropzoneSlot>() != null)
+        {
+            // Swap the index of the cards in the Dropzone list PlayedCards
+            dropzoneManager.SwapCards(dropzoneManager.GetCardIndex(cardA.GetComponent<Card>()), dropzoneManager.GetCardIndex(cardB.GetComponent<Card>()));
+        }
+
+        // Swap parents if one of the cards belongs to a dropzone
+        cardA.transform.SetParent(parentB, false);  // Assign cardA to cardB's parent (could be a dropzone)
+        cardB.transform.SetParent(parentA, false);  // Assign cardB to cardA's original parent
+
+        // Convert world positions to local positions in the new parents
+        cardA.transform.localPosition = cardA.transform.parent.InverseTransformPoint(worldPosB);
+        cardB.transform.localPosition = cardB.transform.parent.InverseTransformPoint(worldPosA);
+
+        // Ensure both cards keep their original size after swapping
+        cardA.transform.localScale = Vector3.one;
+        cardB.transform.localScale = Vector3.one;
+
+        // Swap sibling indices to maintain correct hierarchy order
+        int indexA = cardA.transform.GetSiblingIndex();
+        int indexB = cardB.transform.GetSiblingIndex();
+        cardA.transform.SetSiblingIndex(indexB);
+        cardB.transform.SetSiblingIndex(indexA);
+
+        // Recalculate the score of the Dropzone in case it's necessary
+        dropzoneManager.CalculateScore();
+    }
+
+    // Place the card into the current dropzone.
+    private void PlaceInDropzone()
+    {
+        // Set the card as a child of the dropzone
+        transform.SetParent(currentDropZone.transform, false);
+
+        // Reset the local scale to maintain the original card size
+        transform.localScale = Vector3.one;
+
+        dropzoneManager.AddCardToDropzone(card, currentDropZone.GetSlotNum());
+    }
+
+    // Return the card to the player area.
+    private void ReturnToPlayerArea()
+    {
+        // If the card was previously in a dropzone, remove it from there
+        if (startParent.GetComponent<DropzoneSlot>() != null)
+        {
+            DropzoneSlot previousDropzone = startParent.GetComponent<DropzoneSlot>();
+            dropzoneManager.RemoveCardFromDropzone(previousDropzone.GetSlotNum());
+        }
+
+        // Set the card's parent to the player area and position it at the end
+        transform.SetParent(playerArea.transform, false);
+
+        // Reset the local scale to maintain the original card size
+        transform.localScale = Vector3.one;
+    }
+
+    // Return the card to its original position if no valid drop occurred.
+    private void ReturnToStart()
+    {
+        transform.SetParent(startParent, false);  // Reset parent to original
+        this.transform.localScale = Vector3.one;
+        transform.position = startPos;  // Reset position
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        // Check if the collider's GameObject has a Dropzone component
-        Dropzone zone = collision.gameObject.GetComponent<Dropzone>();
-
-        if (zone != null)  // Only proceed if a Dropzone component is found
+        // Check if the collider is another DragDrop component
+        DragDrop otherCard = collision.GetComponent<DragDrop>();
+        if (otherCard != null && otherCard != this)  // Ensure it's not the same card
         {
-            // Set the drop zone flag and reference when the object enters a valid dropzone collider
+            targetCard = otherCard;  // Set the target card for swapping
+            initialPositionB = otherCard.transform.position;  // Store its initial position
+        }
+
+        // Check if the collider is a DropzoneSlot
+        DropzoneSlot zone = collision.GetComponent<DropzoneSlot>();
+        if (zone != null)  // If valid dropzone, set it as the current dropzone
+        {
             isOverDropZone = true;
-            currentDropZone = collision.gameObject;
+            currentDropZone = zone;
+        }
+
+        // Check if the collider is the PlayerArea
+        if (collision.GetComponent<PlayerArea>() != null)
+        {
+            isOverPlayerArea = true;
         }
     }
 
     private void OnTriggerExit2D(Collider2D collision)
     {
-        // Check if the collider's GameObject has a Dropzone component
-        Dropzone zone = collision.gameObject.GetComponent<Dropzone>();
+        // Reset the target card if it leaves the collider
+        if (collision.GetComponent<DragDrop>() == targetCard)
+        {
+            targetCard = null;
+        }
 
-        // Only reset the drop zone if the object exiting is the current drop zone
-        if (zone != null && collision.gameObject == currentDropZone)
+        // Reset the dropzone if it leaves the collider
+        if (collision.GetComponent<DropzoneSlot>() == currentDropZone)
         {
             isOverDropZone = false;
             currentDropZone = null;
         }
-    }
 
-    // Public getters for various properties
-    public bool IsDragging() => isDragging;
-
-    public PlayerArea GetPlayerArea() => playerArea;
-
-    public Dropzone GetDropzone() => dropZone;
-
-    public void OnMouseOver()
-    {
-        AudioManager.instance.PlayOneShot(FMODEvents.instance.cardHovering, this.transform.position);
-    }
-    private void InitializeAudio()
-    {
-        PlayBackgroundMusic();
-    }
-    private void PlayBackgroundMusic()
-    {
-        levelMusic.getPlaybackState(out PLAYBACK_STATE playbackState);
-        if (playbackState == PLAYBACK_STATE.STOPPED)
+        // Reset the player area flag if the card leaves the player area
+        if (collision.GetComponent<PlayerArea>() != null)
         {
-            levelMusic.start();
+            isOverPlayerArea = false;
         }
-
     }
 }
-
-

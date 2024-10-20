@@ -16,13 +16,13 @@ public class ConvoTopic : MonoBehaviour
     [SerializeField] private TextMeshProUGUI attributeText;
     [SerializeField] public TextMeshProUGUI numText;
     [SerializeField] public TextMeshProUGUI topicLabelText;
+    [SerializeField] public TextMeshProUGUI convoText;
     [SerializeField] public GameObject finishedText;
     [SerializeField] public GameObject bustedText;
     [SerializeField] public Image background;
 
     // Icon-related fields
-    [SerializeField] private GameObject attrIconContainer;
-    private SpriteRenderer iconRenderer;
+    [SerializeField] private SpriteRenderer iconRenderer;
 
     // Icon sprites for different attributes
     [SerializeField] private Sprite chaIcon;
@@ -55,7 +55,6 @@ public class ConvoTopic : MonoBehaviour
     void Awake()
     {
         // Cache references to the SpriteRenderer and GameManager
-        iconRenderer = attrIconContainer.GetComponentInChildren<SpriteRenderer>();
         gameManager = FindAnyObjectByType<GameManager>();
     }
 
@@ -63,8 +62,7 @@ public class ConvoTopic : MonoBehaviour
     void Start()
     {
         // Initialize drop zone and set the appropriate icon based on the convoAttribute
-        dropZone = GameObject.Find("Dropzone");
-        dropZoneScript = dropZone.GetComponent<Dropzone>();
+        dropZone = GameObject.Find("ConvoTopicPanel");
         SetIcon();
         changeBGColor();
     }
@@ -161,6 +159,7 @@ public class ConvoTopic : MonoBehaviour
             // Highlight the background color when clicked
             background.color = new Color(1, 0.95f, 0.5f, 1); // Pastel yellow
             isClicked = true;
+            convoText.text = topicLabelText.text;
 
             // Set this as the selected convo topic in the drop zone and game manager
             dropZoneScript.selectedConvoTopic = this;
@@ -174,6 +173,8 @@ public class ConvoTopic : MonoBehaviour
             gameManager.currentConvoTopic = this;
             changeBGColor();
             isClicked = false;
+            convoText.text = "Awaiting Topic...";
+
             //Deselects current convo topic when clicked
             dropZoneScript.selectedConvoTopic = null;
             gameManager.IsTopicSelected = false;

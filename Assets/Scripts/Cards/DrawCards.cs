@@ -11,7 +11,7 @@ public class DrawCards : MonoBehaviour
     [SerializeField] private PlayerDeckScript deckContainer;  // Reference to the deck containing cards
     [SerializeField] private PlayerArea playerArea;  // Reference to the player's area where cards will be added
 
-    public void OnClick()
+    public void Start()
     {
         // Draw 5 cards from the deck and add them to the player's area
         for (int i = 0; i < 5; i++)
@@ -28,8 +28,5 @@ public class DrawCards : MonoBehaviour
             playerArea.AddCards(card);  // Add the card to the player's area
         }
         AudioManager.instance.PlayOneShot(FMODEvents.instance.cardShuffle, this.transform.position);
-
-        // Deactivate the GameObject to indicate that the draw process is complete
-        gameObject.SetActive(false);
     }
 }

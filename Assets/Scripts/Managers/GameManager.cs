@@ -9,8 +9,7 @@ public class GameManager : MonoBehaviour
 
     // UI elements for displaying game information
     [SerializeField] private TextMeshProUGUI turnText;
-    [SerializeField] private TextMeshProUGUI endGameText;
-    [SerializeField] private TextMeshProUGUI fullHandText;
+    [SerializeField] private GameObject fullHandText;
 
     // References to card prefabs
     [SerializeField] private GameObject chaCard;
@@ -27,7 +26,6 @@ public class GameManager : MonoBehaviour
     [SerializeField] private DiscardPile discard;
 
     // Player health and turn tracking
-    [SerializeField] public int health = 3;
     private int missingCards;
     public int turnCount = 0;
     [SerializeField] public int maxTurnCount = 3; // The max turn count you can go on for each conversation topic
@@ -35,7 +33,6 @@ public class GameManager : MonoBehaviour
     public List<string> categories = new List<string> {"Cha", "Cou", "Cle", "Cre"}; // List of categories for conversation topics
 
     // Buttons 
-    [SerializeField] private GameObject drawCardsButton;
     [SerializeField] private GameObject endTurnButton;
     [SerializeField] private GameObject mapButton;
 
@@ -84,7 +81,7 @@ public class GameManager : MonoBehaviour
         if (playerArea.CardsInHand.Count < 5 && deckContainer.Deck.Count > 0)
         {
             missingCards = 5 - playerArea.CardsInHand.Count;
-            fullHandText.enabled = false;
+            fullHandText.SetActive(false);
 
             // Draw the necessary number of cards to fill the player's hand
             for (int i = 0; i < missingCards; i++)
@@ -101,7 +98,7 @@ public class GameManager : MonoBehaviour
         else
         {
             // Show "full hand" text if player cannot draw more cards
-            fullHandText.enabled = true;
+            fullHandText.SetActive(true);
         }
 
         // Score the current conversation topic if it exists
@@ -112,7 +109,6 @@ public class GameManager : MonoBehaviour
 
         if (topicContainer.convoTopics.Count == 0 || (deckContainer.Deck.Count == 0 && playerArea.CardsInHand.Count == 0))
         {
-            drawCardsButton.SetActive(false);
             endTurnButton.SetActive(false);
             mapButton.SetActive(true);
         }

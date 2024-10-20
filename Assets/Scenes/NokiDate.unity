@@ -3182,24 +3182,24 @@ PrefabInstance:
     - target: {fileID: 8434249713329815653, guid: c097ff11a12b0134490e27b0223e856b,
         type: 3}
       propertyPath: m_fontSize
-      value: 50
+      value: 40
       objectReference: {fileID: 0}
     - target: {fileID: 8434249713329815653, guid: c097ff11a12b0134490e27b0223e856b,
         type: 3}
       propertyPath: m_fontAsset
       value: 
-      objectReference: {fileID: 11400000, guid: 37e6f01393fdd914a9dc677042f11af3,
+      objectReference: {fileID: 11400000, guid: df7cadaad356fc945a444aceb9b4e11e,
         type: 2}
     - target: {fileID: 8434249713329815653, guid: c097ff11a12b0134490e27b0223e856b,
         type: 3}
       propertyPath: m_fontSizeBase
-      value: 50
+      value: 40
       objectReference: {fileID: 0}
     - target: {fileID: 8434249713329815653, guid: c097ff11a12b0134490e27b0223e856b,
         type: 3}
       propertyPath: m_sharedMaterial
       value: 
-      objectReference: {fileID: 518837333957051346, guid: 37e6f01393fdd914a9dc677042f11af3,
+      objectReference: {fileID: 4935103395473980988, guid: df7cadaad356fc945a444aceb9b4e11e,
         type: 2}
     - target: {fileID: 8434249713329815653, guid: c097ff11a12b0134490e27b0223e856b,
         type: 3}
@@ -3773,7 +3773,7 @@ GameObject:
   - component: {fileID: 1661069648}
   - component: {fileID: 1661069647}
   m_Layer: 5
-  m_Name: Sam
+  m_Name: Noki
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -4615,6 +4615,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: DrawCardButton
       objectReference: {fileID: 0}
+    - target: {fileID: 8434249712324134771, guid: c097ff11a12b0134490e27b0223e856b,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 8434249713329815653, guid: c097ff11a12b0134490e27b0223e856b,
         type: 3}
       propertyPath: m_fontSize
@@ -4839,6 +4844,11 @@ PrefabInstance:
         type: 3}
       propertyPath: discardDuration
       value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 8832624841497814469, guid: 42c8ac5f651191b4396847b82ee71bf5,
+        type: 3}
+      propertyPath: typewriterSpeed
+      value: 0.01
       objectReference: {fileID: 0}
     - target: {fileID: 8832624841497814469, guid: 42c8ac5f651191b4396847b82ee71bf5,
         type: 3}

@@ -55,12 +55,6 @@ public class Playtest : MonoBehaviour
     [SerializeField] public List<string> creSpeaker;
     [SerializeField] public List<Sprite> creSprites;
 
-    // Serialized fields for UI output
-    [SerializeField] private TextMeshProUGUI dateTextOutput;
-    [SerializeField] public TextMeshProUGUI dateNameText;
-    [SerializeField] private TextMeshProUGUI playerTextOutput;
-    [SerializeField] public TextMeshProUGUI playerNameText;
-
     // Text for conversation output
     protected string text = " ";
     protected string playerText = " ";
@@ -75,8 +69,6 @@ public class Playtest : MonoBehaviour
     {
         //InitializeFileSources();
         ShowTopics();
-        playerNameText.text = "Player"; // For now, since we are not taking player's name, this is just set to Player. Later, it will be set a different way
-        dateNameText.text = dateCharacter.gameObject.ToString();
     }
 
     // Sets the conversation topics with power and topic names
