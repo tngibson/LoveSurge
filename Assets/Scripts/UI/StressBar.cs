@@ -6,31 +6,34 @@ using UnityEngine.UI;
 
 public class StressBar : MonoBehaviour
 {
+    public static StressBar instance;
+
     public GameObject stressBar;
     public float currentStressAmt;
-    public float maxStressAmt;
-
     [SerializeField] private GameObject StressBarParent;
     // Start is called before the first frame update
+    private void Awake()
+    {
+        if (instance != null && instance != this)
+        {
+            Destroy(this.gameObject);  // Ensures only one instance of Stress Bar
+        }
+        else
+        {
+            instance = this;
+        }
+    }
     void Start()
     {
-        currentStressAmt = GameManager.instance.GetCurrentStressAmt();
-        maxStressAmt = GameManager.instance.getMaxStressAmt();
+        currentStressAmt = StressManager.instance.getCurrentStressAmount();
+        updateStressBar();
         
     }
 
     // Update is called once per frame
-    void Update()
-    {
-
-    }
-    public void addToCurrentStress()
-    {
-        currentStressAmt += 01f;
-    }
+  
     public void updateStressBar()
     {
-        float stressPercent = currentStressAmt/ maxStressAmt;
-        StressBarParent.transform.localScale += new Vector3(stressPercent, 0);
+        StressBarParent.transform.localScale += new Vector3(currentStressAmt, 0);
     }
 }

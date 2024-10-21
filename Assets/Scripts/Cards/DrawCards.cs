@@ -8,6 +8,7 @@ public class DrawCards : MonoBehaviour
     [SerializeField] private GameObject card2;
     [SerializeField] private GameObject card3;
     [SerializeField] private GameObject card4;
+    [SerializeField] private GameObject card5;
     [SerializeField] private PlayerDeckScript deckContainer;  // Reference to the deck containing cards
     [SerializeField] private PlayerArea playerArea;  // Reference to the player's area where cards will be added
 

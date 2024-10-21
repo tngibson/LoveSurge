@@ -67,12 +67,27 @@ public class Dropzone : MonoBehaviour
     // Adds a card to the played cards list and removes it from the player's area
     public void AddCard(Card card)
     {
-        if (card != null && (gameManager.IsTopicSelected))
+        print(card);
+        if (card != null && (gameManager.IsTopicSelected) && card.Type != "Str")
         {
             playedCards.Add(card);
             playerArea.RemoveCards(card);
             gameManager.UpdateEndTurnButton(true);
             CalculateScore();
+        }
+        
+        else if (card != null && card.Type == "Str")
+        {
+            if (StressManager.instance.currentStressAmt> 0) 
+            {
+                StressManager.instance.removeFromCurrentStress(card.Power * .1f);
+                StressBar.instance.updateStressBar();
+            }
+            else
+            {
+                print("add something indicating 0 stress, also probably shouldnt have stress card if stress is 0 but could potentially happen");
+            }
+            
         }
         else
         {
