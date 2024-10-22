@@ -152,7 +152,6 @@ public class Dropzone : MonoBehaviour
         if (!dialogPlayedAtFullPower)
         {
             initialPower = selectedConvoTopic.PowerNum;   // Store the initial power of the topic
-            gameManager.turnCount = 1;                    // Reset turn count to 1
             selectedConvoTopic.isLocked = true;           // Lock the topic to prevent changes during scoring
             completedConvo = false;
             failedConvo = false;
@@ -324,6 +323,7 @@ public class Dropzone : MonoBehaviour
         // Reset topic selection state for the next round
         selectedConvoTopic.isClicked = false;
         gameManager.IsTopicSelected = false;
+        gameManager.turnCount = 0;
 
         // Re-enable topic buttons for the next selection
         topicContainer.EnableButtons();
@@ -347,6 +347,7 @@ public class Dropzone : MonoBehaviour
 
         // Reset topic selection state
         gameManager.IsTopicSelected = false;
+        gameManager.turnCount = 0;
 
         // Re-enable topic buttons for the next selection
         topicContainer.EnableButtons();
