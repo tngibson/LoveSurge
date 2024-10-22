@@ -55,6 +55,9 @@ public class Dropzone : MonoBehaviour
     [SerializeField] private ScrollRect scrollRect; // Reference to the Scroll Rect and Content Transform
     [SerializeField] private RectTransform textRectTransform;  // RectTransform of the TextMeshProUGUI
 
+    private Player playerManager;
+    private string playerName;
+
     // Awake is called when the script instance is being loaded
     void Awake()
     {
@@ -69,6 +72,10 @@ public class Dropzone : MonoBehaviour
         {
             dropzone.Initialize(this);
         }
+
+        // Set the playerManager and get the player's preferred name
+        playerManager = GameObject.Find("PlayerManager").GetComponent<Player>();
+        playerName = playerManager.GetName();
     }
 
     private void Update()
@@ -445,6 +452,17 @@ public class Dropzone : MonoBehaviour
         isTypewriting = true;
         skipRequested = false;
         currentSession.isWriting = true;
+
+        // If the speaker is player, we will set their name to playerName. If for whatever reason the playerName variable is empty, we won't set it
+        if (speaker == "PC")
+        {
+            if (playerName != "")
+            {
+                speaker = playerName;
+            }
+        }
+
+        message = message.Replace("[Player]", playerName);
 
         // Prepare the speaker's portion in bold (appears immediately)
         string speakerPortion = $"<b>{speaker}:</b> ";

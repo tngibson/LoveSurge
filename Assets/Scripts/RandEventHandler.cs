@@ -44,8 +44,15 @@ public class RandEventHandler : MonoBehaviour
     private EventInstance date2DialougeVoice;
     private EventInstance playerDialogueVoice;
 
+    private Player playerManager;
+    private string playerName;
+
     void Start()
     {
+        // Set the playerManager and get the player's preferred name
+        playerManager = GameObject.Find("PlayerManager").GetComponent<Player>();
+        playerName = playerManager.GetName();
+
         choicePanel.SetActive(false); // Hide choice panel at start
         mapButton.SetActive(false);   // Hide the map buttonW at start
         InitializeAudio(); // Starts FMOD audio
@@ -101,7 +108,19 @@ public class RandEventHandler : MonoBehaviour
 
         // Set the speaker name based on the current line's speaker
         string currentSpeaker = speakersPerLine[currentLineIndex];
+
+        // If the speaker is player, we will set their name to playerName. If for whatever reason the playerName variable is empty, we won't set it
+        if (currentSpeaker == "You")
+        {
+            if (playerName != "")
+            {
+                currentSpeaker = playerName;
+            }
+        }
+
         speakerNameText.text = currentSpeaker;
+
+        dialogLines[currentLineIndex] = dialogLines[currentLineIndex].Replace("[Player]", playerName);
 
         // Update all portraits based on the current line
         UpdateAllPortraits(currentSpeaker);
