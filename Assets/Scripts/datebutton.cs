@@ -3,11 +3,12 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-public class datebutton : MonoBehaviour
+public class DateButton : MonoBehaviour
 {
+    [SerializeField] private string dateScene;
     // Start is called before the first frame update
     public void onPress()
     {
-        SceneManager.LoadScene(sceneName: "SamDate");
+        SceneManager.LoadScene(dateScene);
     }
 }
