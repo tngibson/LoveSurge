@@ -57,6 +57,14 @@ public class AudioManager : MonoBehaviour
         dialougeEventInstance = CreateInstance(eventReference);
     }
 
+    public void SetDialougeType(VocalTypes vocalType)
+    {
+        dialougeEventInstance.setParameterByName("vocalType", (float) vocalType);
+    }
+    public void SetDialougeType(SilenceTrigger textTyping)
+    {
+        dialougeEventInstance.setParameterByName("textTyping", (float) textTyping);
+    }
     private void CleanUp()
     {
         //stop and release created instances

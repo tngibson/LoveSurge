@@ -27,7 +27,103 @@ MonoBehaviour:
   MinDistance: 1
   MaxDistance: 20
   Length: 164571
---- !u!114 &-8784285329359159583
+--- !u!114 &-8559080776869382048
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
+  m_Name: parameter:/celciVoice/textTyping
+  m_EditorClassIdentifier: 
+  Name: textTyping
+  StudioPath: 
+  Min: 0
+  Max: 2
+  Default: 0
+  ID:
+    data1: 1219594499
+    data2: 956621869
+  Type: 1
+  IsGlobal: 0
+  Labels: []
+  Exists: 1
+--- !u!114 &-7450959430342909309
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
+  m_Name: parameter:/mickeyVoiceV2/textTyping
+  m_EditorClassIdentifier: 
+  Name: textTyping
+  StudioPath: 
+  Min: 0
+  Max: 2
+  Default: 0
+  ID:
+    data1: 1219594499
+    data2: 956621869
+  Type: 1
+  IsGlobal: 0
+  Labels: []
+  Exists: 1
+--- !u!114 &-7154036221011528353
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
+  m_Name: parameter:/mickeyVoiceEmotes/vocalType
+  m_EditorClassIdentifier: 
+  Name: vocalType
+  StudioPath: 
+  Min: 0
+  Max: 7
+  Default: 0
+  ID:
+    data1: 2203840479
+    data2: 1838988143
+  Type: 1
+  IsGlobal: 0
+  Labels: []
+  Exists: 1
+--- !u!114 &-6811498745860326416
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
+  m_Name: parameter:/mickeyVoiceEmotesFirst/textTyping
+  m_EditorClassIdentifier: 
+  Name: textTyping
+  StudioPath: 
+  Min: 0
+  Max: 2
+  Default: 0
+  ID:
+    data1: 1219594499
+    data2: 956621869
+  Type: 1
+  IsGlobal: 0
+  Labels: []
+  Exists: 1
+--- !u!114 &-5672113265680376975
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -37,24 +133,50 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
-  m_Name: event:/SFX/Voices/maleVoice
+  m_Name: event:/SFX/Voices/Old/lotteNewVoice
   m_EditorClassIdentifier: 
-  Path: event:/SFX/Voices/maleVoice
+  Path: event:/SFX/Voices/Old/lotteNewVoice
   Guid:
-    Data1: -280023058
-    Data2: 1230527890
-    Data3: 1059141045
-    Data4: -151194650
+    Data1: 964451169
+    Data2: 1304749693
+    Data3: -872073561
+    Data4: 198192378
   Banks:
   - {fileID: 3830891757910060433}
   IsStream: 0
   Is3D: 0
-  IsOneShot: 1
-  Parameters: []
+  IsOneShot: 0
+  Parameters:
+  - {fileID: -1923371145955250595}
+  - {fileID: 4717573238467541884}
   MinDistance: 1
   MaxDistance: 20
-  Length: 1519
---- !u!114 &-7978765028701152644
+  Length: 17500
+--- !u!114 &-5457386923577548336
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
+  m_Name: parameter:/mickeyEmotionParams/textTyping
+  m_EditorClassIdentifier: 
+  Name: textTyping
+  StudioPath: 
+  Min: 0
+  Max: 2
+  Default: 0
+  ID:
+    data1: 1219594499
+    data2: 956621869
+  Type: 1
+  IsGlobal: 0
+  Labels: []
+  Exists: 1
+--- !u!114 &-4295909870990566225
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -64,24 +186,26 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
-  m_Name: event:/SFX/Voices/lotteVoice
+  m_Name: event:/SFX/Voices/nokiEmotionParams
   m_EditorClassIdentifier: 
-  Path: event:/SFX/Voices/lotteVoice
+  Path: event:/SFX/Voices/nokiEmotionParams
   Guid:
-    Data1: 1819835926
-    Data2: 1259899958
-    Data3: 418353039
-    Data4: -1988650125
+    Data1: -798155301
+    Data2: 1132264398
+    Data3: 1250424979
+    Data4: 1350275273
   Banks:
   - {fileID: 3830891757910060433}
   IsStream: 0
   Is3D: 0
   IsOneShot: 1
-  Parameters: []
+  Parameters:
+  - {fileID: 514745573116201116}
+  - {fileID: -2717291261151261370}
   MinDistance: 1
   MaxDistance: 20
-  Length: 1061
---- !u!114 &-7584262277252552493
+  Length: 0
+--- !u!114 &-4284379312502545523
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -91,23 +215,78 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
-  m_Name: event:/SFX/Cards/cardPlace
+  m_Name: event:/SFX/Voices/Old/mickeyVoiceEmotesFirst
   m_EditorClassIdentifier: 
-  Path: event:/SFX/Cards/cardPlace
+  Path: event:/SFX/Voices/Old/mickeyVoiceEmotesFirst
   Guid:
-    Data1: 785571725
-    Data2: 1260154379
-    Data3: 2033152178
-    Data4: -586214260
+    Data1: -950060200
+    Data2: 1291737665
+    Data3: 1523125435
+    Data4: 299679910
   Banks:
   - {fileID: 3830891757910060433}
   IsStream: 0
   Is3D: 0
-  IsOneShot: 1
-  Parameters: []
+  IsOneShot: 0
+  Parameters:
+  - {fileID: -6811498745860326416}
+  - {fileID: 5785201744828829092}
   MinDistance: 1
   MaxDistance: 20
-  Length: 431
+  Length: 20625
+--- !u!114 &-4128786940515429219
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
+  m_Name: parameter:/mickeyVoice/textTyping
+  m_EditorClassIdentifier: 
+  Name: textTyping
+  StudioPath: 
+  Min: 0
+  Max: 2
+  Default: 0
+  ID:
+    data1: 1219594499
+    data2: 956621869
+  Type: 1
+  IsGlobal: 0
+  Labels: []
+  Exists: 1
+--- !u!114 &-3869680337606220386
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/SFX/Voices/mickeyVoiceV2
+  m_EditorClassIdentifier: 
+  Path: event:/SFX/Voices/mickeyVoiceV2
+  Guid:
+    Data1: -1078180823
+    Data2: 1157661612
+    Data3: -1878948218
+    Data4: -1404305939
+  Banks:
+  - {fileID: 3830891757910060433}
+  IsStream: 0
+  Is3D: 0
+  IsOneShot: 0
+  Parameters:
+  - {fileID: -7450959430342909309}
+  - {fileID: 8734960091071982341}
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 1500
 --- !u!114 &-3093909443781545764
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -135,33 +314,6 @@ MonoBehaviour:
   MinDistance: 1
   MaxDistance: 20
   Length: 1286
---- !u!114 &-3034503326650325567
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
-  m_Name: event:/SFX/Voices/samVoice
-  m_EditorClassIdentifier: 
-  Path: event:/SFX/Voices/samVoice
-  Guid:
-    Data1: -153891535
-    Data2: 1124538250
-    Data3: 214067122
-    Data4: 573354995
-  Banks:
-  - {fileID: 3830891757910060433}
-  IsStream: 0
-  Is3D: 0
-  IsOneShot: 1
-  Parameters: []
-  MinDistance: 1
-  MaxDistance: 20
-  Length: 918
 --- !u!114 &-2918330743397021419
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -188,7 +340,55 @@ MonoBehaviour:
   Parameters: []
   MinDistance: 1
   MaxDistance: 20
-  Length: 69677
+  Length: 431
+--- !u!114 &-2717291261151261370
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
+  m_Name: parameter:/nokiEmotionParams/textTyping
+  m_EditorClassIdentifier: 
+  Name: textTyping
+  StudioPath: 
+  Min: 0
+  Max: 2
+  Default: 0
+  ID:
+    data1: 1219594499
+    data2: 956621869
+  Type: 1
+  IsGlobal: 0
+  Labels: []
+  Exists: 1
+--- !u!114 &-2588139516457981859
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
+  m_Name: parameter:/celciEmotionParams/textTyping
+  m_EditorClassIdentifier: 
+  Name: textTyping
+  StudioPath: 
+  Min: 0
+  Max: 2
+  Default: 0
+  ID:
+    data1: 1219594499
+    data2: 956621869
+  Type: 1
+  IsGlobal: 0
+  Labels: []
+  Exists: 1
 --- !u!114 &-2111950618178967441
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -216,6 +416,59 @@ MonoBehaviour:
   MinDistance: 1
   MaxDistance: 20
   Length: 1935
+--- !u!114 &-1923371145955250595
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
+  m_Name: parameter:/lotteNewVoice/textTyping
+  m_EditorClassIdentifier: 
+  Name: textTyping
+  StudioPath: 
+  Min: 0
+  Max: 2
+  Default: 0
+  ID:
+    data1: 1219594499
+    data2: 956621869
+  Type: 1
+  IsGlobal: 0
+  Labels: []
+  Exists: 1
+--- !u!114 &-1097471348314541416
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/SFX/Voices/celciEmotionParams
+  m_EditorClassIdentifier: 
+  Path: event:/SFX/Voices/celciEmotionParams
+  Guid:
+    Data1: 1561401168
+    Data2: 1250556986
+    Data3: -1074353250
+    Data4: 1793422650
+  Banks:
+  - {fileID: 3830891757910060433}
+  IsStream: 0
+  Is3D: 0
+  IsOneShot: 1
+  Parameters:
+  - {fileID: -2588139516457981859}
+  - {fileID: 4670775095370588475}
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 0
 --- !u!114 &-727397309706727916
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -285,10 +538,10 @@ MonoBehaviour:
   Path: LSFMOD/Build/Desktop/Master.strings.bank
   Name: Master.strings
   StudioPath: bank:/Master.strings
-  lastModified: 638634984060000000
+  lastModified: 638652122967664839
   FileSizes:
   - Name: Desktop
-    Value: 1524
+    Value: 2096
   Exists: 1
 --- !u!114 &11400000
 MonoBehaviour:
@@ -306,8 +559,6 @@ MonoBehaviour:
   - {fileID: -233124731061743878}
   - {fileID: 3830891757910060433}
   EditorEvents:
-  - {fileID: -7978765028701152644}
-  - {fileID: -3034503326650325567}
   - {fileID: 3680537933178867247}
   - {fileID: 2588951006968363903}
   - {fileID: 9163996217986788133}
@@ -320,16 +571,103 @@ MonoBehaviour:
   - {fileID: 6803137830569240618}
   - {fileID: -2111950618178967441}
   - {fileID: -646641886318731699}
-  - {fileID: 4095552953021601933}
-  - {fileID: -7584262277252552493}
-  - {fileID: -8859516942946248290}
+  - {fileID: 8304281809632987059}
+  - {fileID: -3869680337606220386}
+  - {fileID: 3969162770121709988}
+  - {fileID: 4845982162114195631}
+  - {fileID: -1097471348314541416}
+  - {fileID: -4284379312502545523}
+  - {fileID: -5672113265680376975}
+  - {fileID: 5677185362044733072}
+  - {fileID: 7568250905169547269}
+  - {fileID: 1463468487019989630}
+  - {fileID: 3991991158348532411}
+  - {fileID: -4295909870990566225}
+  - {fileID: 4228051388238985276}
   EditorParameters: []
   MasterBanks:
   - {fileID: 3830891757910060433}
   StringsBanks:
   - {fileID: -233124731061743878}
-  cacheTime: 638635081360000000
+  cacheTime: 638652122967664839
   cacheVersion: 131616
+--- !u!114 &514745573116201116
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
+  m_Name: parameter:/nokiEmotionParams/vocalType
+  m_EditorClassIdentifier: 
+  Name: vocalType
+  StudioPath: 
+  Min: 0
+  Max: 7
+  Default: 0
+  ID:
+    data1: 2203840479
+    data2: 1838988143
+  Type: 1
+  IsGlobal: 0
+  Labels: []
+  Exists: 1
+--- !u!114 &1463468487019989630
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/SFX/Voices/celciVoice
+  m_EditorClassIdentifier: 
+  Path: event:/SFX/Voices/celciVoice
+  Guid:
+    Data1: -1572853863
+    Data2: 1314451981
+    Data3: -389458793
+    Data4: 1766707316
+  Banks:
+  - {fileID: 3830891757910060433}
+  IsStream: 0
+  Is3D: 0
+  IsOneShot: 0
+  Parameters:
+  - {fileID: 4800126821057811323}
+  - {fileID: -8559080776869382048}
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 1515
+--- !u!114 &1837833481926798212
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
+  m_Name: parameter:/mickeyEmotionParams/vocalType
+  m_EditorClassIdentifier: 
+  Name: vocalType
+  StudioPath: 
+  Min: 0
+  Max: 7
+  Default: 0
+  ID:
+    data1: 2203840479
+    data2: 1838988143
+  Type: 1
+  IsGlobal: 0
+  Labels: []
+  Exists: 1
 --- !u!114 &2588951006968363903
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -399,12 +737,12 @@ MonoBehaviour:
   Path: LSFMOD/Build/Desktop/Master.bank
   Name: Master
   StudioPath: bank:/Master
-  lastModified: 638635081360000000
+  lastModified: 638652122967626417
   FileSizes:
   - Name: Desktop
-    Value: 9946880
+    Value: 8278720
   Exists: 1
---- !u!114 &4095552953021601933
+--- !u!114 &3969162770121709988
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -414,23 +752,204 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
-  m_Name: event:/Music/titleTheme
+  m_Name: event:/SFX/Voices/Old/mickeyVoice
   m_EditorClassIdentifier: 
-  Path: event:/Music/titleTheme
+  Path: event:/SFX/Voices/Old/mickeyVoice
   Guid:
-    Data1: 1587278420
-    Data2: 1256190478
-    Data3: 2125243015
-    Data4: 204900698
+    Data1: 1043090993
+    Data2: 1102554748
+    Data3: -876076894
+    Data4: 737562545
   Banks:
   - {fileID: 3830891757910060433}
-  IsStream: 1
+  IsStream: 0
   Is3D: 0
   IsOneShot: 0
+  Parameters:
+  - {fileID: -4128786940515429219}
+  - {fileID: 4265879407129765386}
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 17511
+--- !u!114 &3991991158348532411
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/SFX/Voices/nokiVoiceV2
+  m_EditorClassIdentifier: 
+  Path: event:/SFX/Voices/nokiVoiceV2
+  Guid:
+    Data1: 305948344
+    Data2: 1182375219
+    Data3: 1121776280
+    Data4: -1150604255
+  Banks:
+  - {fileID: 3830891757910060433}
+  IsStream: 0
+  Is3D: 0
+  IsOneShot: 0
+  Parameters:
+  - {fileID: 8171170116576004160}
+  - {fileID: 6773808812315008034}
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 1500
+--- !u!114 &4228051388238985276
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/SFX/Voices/Old/maleVoice
+  m_EditorClassIdentifier: 
+  Path: event:/SFX/Voices/Old/maleVoice
+  Guid:
+    Data1: -280023058
+    Data2: 1230527890
+    Data3: 1059141045
+    Data4: -151194650
+  Banks:
+  - {fileID: 3830891757910060433}
+  IsStream: 0
+  Is3D: 0
+  IsOneShot: 1
   Parameters: []
   MinDistance: 1
   MaxDistance: 20
-  Length: 133333
+  Length: 1519
+--- !u!114 &4265879407129765386
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
+  m_Name: parameter:/mickeyVoice/vocalType
+  m_EditorClassIdentifier: 
+  Name: vocalType
+  StudioPath: 
+  Min: 0
+  Max: 7
+  Default: 0
+  ID:
+    data1: 2203840479
+    data2: 1838988143
+  Type: 1
+  IsGlobal: 0
+  Labels: []
+  Exists: 1
+--- !u!114 &4670775095370588475
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
+  m_Name: parameter:/celciEmotionParams/vocalType
+  m_EditorClassIdentifier: 
+  Name: vocalType
+  StudioPath: 
+  Min: 0
+  Max: 7
+  Default: 0
+  ID:
+    data1: 2203840479
+    data2: 1838988143
+  Type: 1
+  IsGlobal: 0
+  Labels: []
+  Exists: 1
+--- !u!114 &4717573238467541884
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
+  m_Name: parameter:/lotteNewVoice/vocalType
+  m_EditorClassIdentifier: 
+  Name: vocalType
+  StudioPath: 
+  Min: 0
+  Max: 7
+  Default: 0
+  ID:
+    data1: 2203840479
+    data2: 1838988143
+  Type: 1
+  IsGlobal: 0
+  Labels: []
+  Exists: 1
+--- !u!114 &4800126821057811323
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
+  m_Name: parameter:/celciVoice/vocalType
+  m_EditorClassIdentifier: 
+  Name: vocalType
+  StudioPath: 
+  Min: 0
+  Max: 7
+  Default: 0
+  ID:
+    data1: 2203840479
+    data2: 1838988143
+  Type: 1
+  IsGlobal: 0
+  Labels: []
+  Exists: 1
+--- !u!114 &4845982162114195631
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/SFX/Voices/Old/samVoice
+  m_EditorClassIdentifier: 
+  Path: event:/SFX/Voices/Old/samVoice
+  Guid:
+    Data1: -153891535
+    Data2: 1124538250
+    Data3: 214067122
+    Data4: 573354995
+  Banks:
+  - {fileID: 3830891757910060433}
+  IsStream: 0
+  Is3D: 0
+  IsOneShot: 1
+  Parameters: []
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 918
 --- !u!114 &5578982307358916007
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -457,7 +976,60 @@ MonoBehaviour:
   Parameters: []
   MinDistance: 1
   MaxDistance: 20
-  Length: 686
+  Length: 29
+--- !u!114 &5677185362044733072
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/SFX/Voices/mickeyEmotionParams
+  m_EditorClassIdentifier: 
+  Path: event:/SFX/Voices/mickeyEmotionParams
+  Guid:
+    Data1: 1054311038
+    Data2: 1213417102
+    Data3: -1918628732
+    Data4: -939936155
+  Banks:
+  - {fileID: 3830891757910060433}
+  IsStream: 0
+  Is3D: 0
+  IsOneShot: 1
+  Parameters:
+  - {fileID: -5457386923577548336}
+  - {fileID: 1837833481926798212}
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 0
+--- !u!114 &5785201744828829092
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
+  m_Name: parameter:/mickeyVoiceEmotesFirst/vocalType
+  m_EditorClassIdentifier: 
+  Name: vocalType
+  StudioPath: 
+  Min: 0
+  Max: 7
+  Default: 0
+  ID:
+    data1: 2203840479
+    data2: 1838988143
+  Type: 1
+  IsGlobal: 0
+  Labels: []
+  Exists: 1
 --- !u!114 &6158530130872442455
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -485,6 +1057,30 @@ MonoBehaviour:
   MinDistance: 1
   MaxDistance: 20
   Length: 1500
+--- !u!114 &6773808812315008034
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
+  m_Name: parameter:/nokiVoiceV2/textTyping
+  m_EditorClassIdentifier: 
+  Name: textTyping
+  StudioPath: 
+  Min: 0
+  Max: 2
+  Default: 0
+  ID:
+    data1: 1219594499
+    data2: 956621869
+  Type: 1
+  IsGlobal: 0
+  Labels: []
+  Exists: 1
 --- !u!114 &6803137830569240618
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -512,6 +1108,134 @@ MonoBehaviour:
   MinDistance: 1
   MaxDistance: 20
   Length: 2154
+--- !u!114 &7568250905169547269
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/SFX/Voices/Old/mickeyVoiceEmotes
+  m_EditorClassIdentifier: 
+  Path: event:/SFX/Voices/Old/mickeyVoiceEmotes
+  Guid:
+    Data1: -506597752
+    Data2: 1236816928
+    Data3: -239017817
+    Data4: 774012391
+  Banks:
+  - {fileID: 3830891757910060433}
+  IsStream: 0
+  Is3D: 0
+  IsOneShot: 0
+  Parameters:
+  - {fileID: -7154036221011528353}
+  - {fileID: 8920997401970713478}
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 20000
+--- !u!114 &8171170116576004160
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
+  m_Name: parameter:/nokiVoiceV2/vocalType
+  m_EditorClassIdentifier: 
+  Name: vocalType
+  StudioPath: 
+  Min: 0
+  Max: 7
+  Default: 0
+  ID:
+    data1: 2203840479
+    data2: 1838988143
+  Type: 1
+  IsGlobal: 0
+  Labels: []
+  Exists: 1
+--- !u!114 &8304281809632987059
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/SFX/Voices/Old/lotteVoice
+  m_EditorClassIdentifier: 
+  Path: event:/SFX/Voices/Old/lotteVoice
+  Guid:
+    Data1: 1819835926
+    Data2: 1259899958
+    Data3: 418353039
+    Data4: -1988650125
+  Banks:
+  - {fileID: 3830891757910060433}
+  IsStream: 0
+  Is3D: 0
+  IsOneShot: 1
+  Parameters: []
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 1061
+--- !u!114 &8734960091071982341
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
+  m_Name: parameter:/mickeyVoiceV2/vocalType
+  m_EditorClassIdentifier: 
+  Name: vocalType
+  StudioPath: 
+  Min: 0
+  Max: 7
+  Default: 0
+  ID:
+    data1: 2203840479
+    data2: 1838988143
+  Type: 1
+  IsGlobal: 0
+  Labels: []
+  Exists: 1
+--- !u!114 &8920997401970713478
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
+  m_Name: parameter:/mickeyVoiceEmotes/textTyping
+  m_EditorClassIdentifier: 
+  Name: textTyping
+  StudioPath: 
+  Min: 0
+  Max: 2
+  Default: 0
+  ID:
+    data1: 1219594499
+    data2: 956621869
+  Type: 1
+  IsGlobal: 0
+  Labels: []
+  Exists: 1
 --- !u!114 &9163996217986788133
 MonoBehaviour:
   m_ObjectHideFlags: 0
