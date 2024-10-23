@@ -354,7 +354,6 @@ public class Dropzone : MonoBehaviour
 
         // Reset topic selection state
         gameManager.IsTopicSelected = false;
-        gameManager.turnCount = 0;
 
         // Re-enable topic buttons for the next selection
         topicContainer.EnableButtons();
@@ -453,10 +452,10 @@ public class Dropzone : MonoBehaviour
         skipRequested = false;
         currentSession.isWriting = true;
 
-        // If the speaker is player, we will set their name to playerName. If for whatever reason the playerName variable is empty, we won't set it
+        // If the speaker is player, we will set their name to playerName. If for whatever reason the playerName variable is empty or null, we won't set it
         if (speaker == "PC")
         {
-            if (playerName != "")
+            if (playerName != "" && playerName != null)
             {
                 speaker = playerName;
             }
@@ -633,6 +632,7 @@ public class Dropzone : MonoBehaviour
             selectedConvoTopic.background.color = new Color(1f, 0.5f, 0.5f, 1f); // Pastel red
             selectedConvoTopic.isLocked = false;
             selectedConvoTopic.ToggleClick(true);
+            gameManager.turnCount = 0;
             gameManager.ResetConvoTopic();
         }
     }

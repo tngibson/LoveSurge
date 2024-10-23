@@ -3,6 +3,7 @@ using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 using System.Collections.Generic;
+using System.Collections;
 //using FMOD.Studio;
 
 
@@ -129,14 +130,50 @@ public class Playtest : MonoBehaviour
     // Changes the character pose and plays sounds
     public void ReadDateText(Sprite characterPose)
     {
+        // Change the sprite of the date character
         dateCharacter.sprite = characterPose;
-        //dateVoice.start();
-        //if (isWriting)
-        //{
-            AudioManager.instance.PlayOneShot(FMODEvents.instance.dateVoice, this.transform.position);
-        //}
-        //Debug.Log("AHHHHHHHHHHHHH");
-        //dateVoice.stop(STOP_MODE.IMMEDIATE);         
-        //dateTextSFX.Play();
+
+        // Play date voice sound
+        AudioManager.instance.PlayOneShot(FMODEvents.instance.dateVoice, this.transform.position);
+
+        // Start the jump animation coroutine
+        StartCoroutine(JumpAnimation());
+    }
+
+    // Coroutine to handle the jump animation
+    private IEnumerator JumpAnimation()
+    {
+        // Store the original position of the dateCharacter
+        Vector3 originalPosition = dateCharacter.transform.localPosition;
+
+        // Define the jump height and speed
+        float jumpHeight = 50f;
+        float jumpSpeed = 0.15f;
+
+        // Move the character up
+        Vector3 targetPosition = originalPosition + new Vector3(0, jumpHeight, 0);
+        float elapsedTime = 0f;
+
+        // Animate the upward movement
+        while (elapsedTime < jumpSpeed)
+        {
+            dateCharacter.transform.localPosition = Vector3.Lerp(originalPosition, targetPosition, (elapsedTime / jumpSpeed));
+            elapsedTime += Time.deltaTime;
+            yield return null;
+        }
+
+        // Reset time for downward movement
+        elapsedTime = 0f;
+
+        // Animate the downward movement back to the original position
+        while (elapsedTime < jumpSpeed)
+        {
+            dateCharacter.transform.localPosition = Vector3.Lerp(targetPosition, originalPosition, (elapsedTime / jumpSpeed));
+            elapsedTime += Time.deltaTime;
+            yield return null;
+        }
+
+        // Ensure the position is set exactly to the original
+        dateCharacter.transform.localPosition = originalPosition;
     }
 }
