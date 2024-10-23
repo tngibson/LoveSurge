@@ -12,7 +12,7 @@ public class PlayerDeckScript : MonoBehaviour
     [SerializeField] private CleCard cleCard;
     [SerializeField] private CreCard creCard;
     [SerializeField] private CouCard couCard;
-
+    [SerializeField] private StressCard stressCard;
     // The container where cards are instantiated
     [SerializeField] private GameObject container;
 
@@ -59,6 +59,7 @@ public class PlayerDeckScript : MonoBehaviour
                 MakeCard(couCard, i);
             }
         }
+        addStressCards();
     }
 
     // Draw a random card from the deck
@@ -77,6 +78,19 @@ public class PlayerDeckScript : MonoBehaviour
             Debug.LogWarning("Deck is empty");
             return null;
         }
+    }
+
+    private void addStressCards()
+    {
+        // Checks if player has stress
+        if (StressManager.instance.currentStressAmt > 0)
+        {
+            // since stress amount is a decimal between 0 and 1, we multiply  the amount by 10 to get a whole number and add that many stress cards, eventually need to figure out a better formula for this
+            for (int i = 0; i < (StressManager.instance.currentStressAmt * 10); i++)
+            {
+                MakeCard(stressCard, i);
+            }
+        }   
     }
 }
 

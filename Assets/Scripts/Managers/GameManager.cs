@@ -9,7 +9,11 @@ public class GameManager : MonoBehaviour
 
     // UI elements for displaying game information
     [SerializeField] private TextMeshProUGUI turnText;
-    [SerializeField] private GameObject fullHandText;
+    [SerializeField] private TextMeshProUGUI endGameText;
+    [SerializeField] private TextMeshProUGUI fullHandText;
+    
+    [SerializeField] private float currentStressAmt = 0f;
+    [SerializeField] private float maxStressAmt = 10f;
 
     // References to card prefabs
     [SerializeField] private GameObject chaCard;
@@ -50,7 +54,7 @@ public class GameManager : MonoBehaviour
         {
             instance = this;
         }
-
+        StressBar.instance.updateStressBar();
         SetConvoStart();
         UpdateEndTurnButton(false);
     }
