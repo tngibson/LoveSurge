@@ -372,6 +372,8 @@ public class Dropzone : MonoBehaviour
         // Reset topic selection state
         gameManager.IsTopicSelected = false;
 
+        ResetDialogFlags();
+
         // Re-enable topic buttons for the next selection
         topicContainer.EnableButtons();
     }
@@ -613,10 +615,7 @@ public class Dropzone : MonoBehaviour
             yield return StartCoroutine(WaitForSkipButton());
         }
 
-        // Makes the dialog available for the next topic
-        dialogPlayedAtZeroPower = false;
-        dialogPlayedAtHalfPower = false;
-        dialogPlayedAtFullPower = false;
+        ResetDialogFlags();
     }
 
     // Coroutine to count down PowerNum smoothly
@@ -724,5 +723,13 @@ public class Dropzone : MonoBehaviour
             if (!dropzone.IsEmpty) return false;
         }
         return true;
+    }
+
+    public void ResetDialogFlags()
+    {
+        // Makes the dialog available for the next topic
+        dialogPlayedAtZeroPower = false;
+        dialogPlayedAtHalfPower = false;
+        dialogPlayedAtFullPower = false;
     }
 }
