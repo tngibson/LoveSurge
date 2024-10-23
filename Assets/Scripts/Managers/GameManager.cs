@@ -10,7 +10,7 @@ public class GameManager : MonoBehaviour
     // UI elements for displaying game information
     [SerializeField] private TextMeshProUGUI turnText;
     [SerializeField] private TextMeshProUGUI endGameText;
-    [SerializeField] private TextMeshProUGUI fullHandText;
+    [SerializeField] private GameObject fullHandText;
     
     [SerializeField] private float currentStressAmt = 0f;
     [SerializeField] private float maxStressAmt = 10f;

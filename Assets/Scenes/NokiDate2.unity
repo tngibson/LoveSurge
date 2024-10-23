@@ -2501,8 +2501,8 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 602046419}
-        m_TargetAssemblyTypeName: RandEventHandler, Assembly-CSharp
-        m_MethodName: OnMap
+        m_TargetAssemblyTypeName: MapScript, Assembly-CSharp
+        m_MethodName: OnSelect
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -2559,21 +2559,13 @@ MonoBehaviour:
   m_GameObject: {fileID: 602046414}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7e75707f22957634d99193ed7906f313, type: 3}
+  m_Script: {fileID: 11500000, guid: bbe147c37e01d3847adb6df4c90f7c49, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  dialogLines: []
-  speakersPerLine: []
-  characterSprites: []
-  characterPortraits: []
-  textOutput: {fileID: 0}
-  speakerNameText: {fileID: 0}
-  choicePanel: {fileID: 0}
-  choiceButtons: []
-  choiceButtonTexts: []
-  mapButton: {fileID: 0}
-  choices: []
-  typewriterSpeed: 0.05
+  locInfo: 
+  locName: Map
+  useMapManager: 0
+  manager: {fileID: 0}
 --- !u!1 &619394800
 GameObject:
   m_ObjectHideFlags: 0
@@ -4556,6 +4548,7 @@ MonoBehaviour:
   card2: {fileID: 2815518541516747621, guid: 05b5675adef6c844888a1391108fb4d9, type: 3}
   card3: {fileID: 8545693278635080263, guid: 1796bafd5756dbc41b01a0a95cf61460, type: 3}
   card4: {fileID: 73816925136746911, guid: afba97dd884423a4e8264984c925383c, type: 3}
+  card5: {fileID: 0}
   deckContainer: {fileID: 1771563199}
   playerArea: {fileID: 1251171728}
 --- !u!1001 &1216944643
@@ -5222,7 +5215,7 @@ GameObject:
   - component: {fileID: 1293555610}
   - component: {fileID: 1293555609}
   - component: {fileID: 1293555608}
-  - component: {fileID: 1293555607}
+  - component: {fileID: 1293555611}
   m_Layer: 5
   m_Name: ReturnToMapButton(DEMO ONLY)
   m_TagString: Untagged
@@ -5250,30 +5243,6 @@ RectTransform:
   m_AnchoredPosition: {x: 731, y: 471}
   m_SizeDelta: {x: 228.4796, y: 44.4101}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &1293555607
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1293555605}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7e75707f22957634d99193ed7906f313, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  dialogLines: []
-  speakersPerLine: []
-  characterSprites: []
-  characterPortraits: []
-  textOutput: {fileID: 0}
-  speakerNameText: {fileID: 0}
-  choicePanel: {fileID: 0}
-  choiceButtons: []
-  choiceButtonTexts: []
-  mapButton: {fileID: 0}
-  choices: []
-  typewriterSpeed: 0.05
 --- !u!114 &1293555608
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5318,9 +5287,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1293555607}
-        m_TargetAssemblyTypeName: RandEventHandler, Assembly-CSharp
-        m_MethodName: OnMap
+      - m_Target: {fileID: 1293555611}
+        m_TargetAssemblyTypeName: MapScript, Assembly-CSharp
+        m_MethodName: OnSelect
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -5368,6 +5337,22 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1293555605}
   m_CullTransparentMesh: 1
+--- !u!114 &1293555611
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1293555605}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bbe147c37e01d3847adb6df4c90f7c49, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  locInfo: 
+  locName: Map
+  useMapManager: 0
+  manager: {fileID: 0}
 --- !u!1 &1298419915
 GameObject:
   m_ObjectHideFlags: 0
@@ -8185,6 +8170,7 @@ MonoBehaviour:
   creCard: {fileID: -1454504632352844718, guid: afba97dd884423a4e8264984c925383c,
     type: 3}
   couCard: {fileID: 2326991348489003529, guid: 1796bafd5756dbc41b01a0a95cf61460, type: 3}
+  stressCard: {fileID: 0}
   container: {fileID: 1771563197}
   cardCount: 2
 --- !u!1 &1820997958
@@ -9085,7 +9071,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   turnText: {fileID: 1769402630}
+  endGameText: {fileID: 0}
   fullHandText: {fileID: 468733688}
+  currentStressAmt: 0
+  maxStressAmt: 10
   chaCard: {fileID: 2722319676426828343, guid: 1e37df9f36f5407498c1e18e05ebc7f9, type: 3}
   couCard: {fileID: 8545693278635080263, guid: 1796bafd5756dbc41b01a0a95cf61460, type: 3}
   cleCard: {fileID: 2815518541516747621, guid: 05b5675adef6c844888a1391108fb4d9, type: 3}

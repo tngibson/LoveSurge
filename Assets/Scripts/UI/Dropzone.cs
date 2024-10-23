@@ -67,84 +67,10 @@ public class Dropzone : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        // Initialize the StreamReader objects using the current session's playerReader and dateReader
-        /*
-        playerReader = currentSession.GetPlayerReader();
-        dateReader = currentSession.GetReader();
-        */
-    }
-
-    // Adds a card to the played cards list and removes it from the player's area
-    public void AddCard(Card card)
-    {
-        print(card);
-        if (card != null && (gameManager.IsTopicSelected) && card.Type != "Str")
+        // Initialize all dropzones and link them to this Dropzone manager
+        foreach (var dropzone in dropzones)
         {
-            playedCards.Add(card);
-            playerArea.RemoveCards(card);
-            gameManager.UpdateEndTurnButton(true);
-            CalculateScore();
-        }
-        
-        else if (card != null && card.Type == "Str")
-        {
-            if (StressManager.instance.currentStressAmt> 0) 
-            {
-                StressManager.instance.removeFromCurrentStress(card.Power * .1f);
-                StressBar.instance.updateStressBar();
-            }
-            else
-            {
-                print("add something indicating 0 stress, also probably shouldnt have stress card if stress is 0 but could potentially happen");
-            }
-            
-        }
-        else
-        {
-            Debug.LogError("There is no card to add.");
-        }
-    }
-
-    // Removes a card to from the dropzone and adds it to the player's area
-    public void RemoveCard(Card card)
-    {
-        if (card != null && (gameManager.IsTopicSelected))
-        {
-            playedCards.Remove(card);
-            playerArea.AddCards(card);
-            if (playedCards.Count == 0)
-            {
-                gameManager.UpdateEndTurnButton(false);
-            }
-            CalculateScore();
-        }
-        else
-        {
-            Debug.LogError("There is no card to remove.");
-        }
-    }
-
-    public void ReturnCards()
-    {
-        for (int i = 0;  i < playedCards.Count; i++)
-        {
-            playerArea.AddCards(playedCards[i]);
-            playedCards[i].transform.SetParent(playerArea.transform, false);
-        }
-        playedCards.Clear();
-        CalculateScore();
-    }
-
-    // Scores the played cards, moves them to the discard pile, and updates the UI
-    public void ScoreCards()
-    {
-        // Sets the initial power and line number of the convo topic that is selected
-        if (!dialogPlayedAtFullPower)
-        {
-            initialPower = selectedConvoTopic.PowerNum;
-            lineNum = 0;
-            gameManager.turnCount = 1; // Resets the turn count
-            selectedConvoTopic.isLocked = true;
+            dropzone.Initialize(this);
         }
 
         // Set the playerManager and get the player's preferred name
@@ -164,7 +90,7 @@ public class Dropzone : MonoBehaviour
     // Adds a card to the played cards list and removes it from the player's area
     public void AddCardToDropzone(Card card, int dropzoneIndex)
     {
-        if (card != null && dropzones[dropzoneIndex].IsEmpty)
+        if (card != null && dropzones[dropzoneIndex].IsEmpty && card.Type != "Str")
         {
             dropzones[dropzoneIndex].SetCard(card);  // Place card in the dropzone
 
@@ -182,6 +108,23 @@ public class Dropzone : MonoBehaviour
             playerArea.RemoveCards(card);            // Remove card from player's area
             gameManager.UpdateEndTurnButton(true);   // Enable end turn button
             CalculateScore();                        // Recalculate the score
+        }
+        else if (card != null && card.Type == "Str")
+        {
+            if (StressManager.instance.currentStressAmt > 0)
+            {
+                StressManager.instance.removeFromCurrentStress(card.Power * .1f);
+                StressBar.instance.updateStressBar();
+            }
+            else
+            {
+                print("add something indicating 0 stress, also probably shouldnt have stress card if stress is 0 but could potentially happen");
+            }
+
+        }
+        else
+        {
+            Debug.LogError("There is no card to add.");
         }
     }
 

@@ -9,10 +9,16 @@ public class MapScript : MonoBehaviour
     public string locInfo;
     public string locName;
 
+    public bool useMapManager;
+
     public MapLocationsManager manager; // Reference to the MapLocationsManager
+
     private void Awake()
     {
-        StressBar.instance.updateStressBar();
+        if (StressBar.instance != null)
+        {
+            StressBar.instance.updateStressBar();
+        }
     }
     private void Start()
     {
@@ -22,13 +28,24 @@ public class MapScript : MonoBehaviour
     public void OnSelect()
     {
         // Delegate the selection logic to the manager, passing location info and name
-        if (manager != null)  // Check if the manager reference is assigned
+        if (manager != null || !useMapManager)  // Check if the manager reference is assigned
         {
-            StressManager.instance.addToCurrentStress();
-            StressBar.instance.updateStressBar();
-            SceneManager.LoadScene(sceneName:locName);
+            if (StressManager.instance != null)
+            {
+                StressManager.instance.addToCurrentStress();
+            }
+            if (StressBar.instance != null)
+            {
+                StressBar.instance.updateStressBar();
+            }
+
+            SceneManager.LoadScene(locName);
             this.gameObject.SetActive(false);
-            manager.LocationSelect(locInfo, locName);
+
+            if (useMapManager)
+            {
+                manager.LocationSelect(locInfo, locName);
+            }
         }
         else
         {

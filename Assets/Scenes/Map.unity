@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.18028331, g: 0.2257133, b: 0.3069217, a: 1}
+  m_IndirectSpecularColor: {r: 0.18028378, g: 0.22571412, b: 0.30692285, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -1915,6 +1915,7 @@ RectTransform:
   - {fileID: 1411151159}
   - {fileID: 1084810359}
   - {fileID: 297754943}
+  - {fileID: 866647085}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
@@ -3988,6 +3989,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   locInfo: locationinfololidk
   locName: House
+  useMapManager: 0
   manager: {fileID: 879752011}
 --- !u!1 &860699387
 GameObject:
@@ -4077,7 +4079,7 @@ GameObject:
   - component: {fileID: 866647089}
   - component: {fileID: 866647088}
   - component: {fileID: 866647087}
-  - component: {fileID: 866647086}
+  - component: {fileID: 866647090}
   m_Layer: 5
   m_Name: Date2Button
   m_TagString: Untagged
@@ -4105,19 +4107,6 @@ RectTransform:
   m_AnchoredPosition: {x: 790, y: 310.74}
   m_SizeDelta: {x: 347.424, y: 190.83}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &866647086
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 866647084}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 120e794c8a2facf4ca3fea6862f0b927, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  dateScene: NokiDate2
 --- !u!114 &866647087
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4162,9 +4151,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 866647086}
-        m_TargetAssemblyTypeName: datebutton, Assembly-CSharp
-        m_MethodName: onPress
+      - m_Target: {fileID: 866647090}
+        m_TargetAssemblyTypeName: MapScript, Assembly-CSharp
+        m_MethodName: OnSelect
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -4212,6 +4201,22 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 866647084}
   m_CullTransparentMesh: 1
+--- !u!114 &866647090
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 866647084}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bbe147c37e01d3847adb6df4c90f7c49, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  locInfo: 
+  locName: NokiDate2
+  useMapManager: 0
+  manager: {fileID: 0}
 --- !u!1 &879752009
 GameObject:
   m_ObjectHideFlags: 0
@@ -6263,6 +6268,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   locInfo: Courage
   locName: Kitchen
+  useMapManager: 1
   manager: {fileID: 879752011}
 --- !u!1 &1205583403
 GameObject:
@@ -7969,8 +7975,8 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 1411151163}
-        m_TargetAssemblyTypeName: datebutton, Assembly-CSharp
-        m_MethodName: onPress
+        m_TargetAssemblyTypeName: MapScript, Assembly-CSharp
+        m_MethodName: OnSelect
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -8027,10 +8033,13 @@ MonoBehaviour:
   m_GameObject: {fileID: 1411151158}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 120e794c8a2facf4ca3fea6862f0b927, type: 3}
+  m_Script: {fileID: 11500000, guid: bbe147c37e01d3847adb6df4c90f7c49, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  dateScene: NokiDate1
+  locInfo: 
+  locName: NokiDate1
+  useMapManager: 0
+  manager: {fileID: 0}
 --- !u!1 &1470067103
 GameObject:
   m_ObjectHideFlags: 0
@@ -8179,6 +8188,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   locInfo: Charisma
   locName: JobApplication
+  useMapManager: 1
   manager: {fileID: 879752011}
 --- !u!1 &1507143150
 GameObject:
@@ -10774,6 +10784,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   locInfo: Cleverness & Creativity
   locName: Loc3
+  useMapManager: 0
   manager: {fileID: 879752011}
 --- !u!1 &2040937098
 GameObject:
