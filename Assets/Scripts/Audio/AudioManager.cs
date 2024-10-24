@@ -17,23 +17,29 @@ public class AudioManager : MonoBehaviour
    private EventInstance dialougeEventInstance;
    private List<EventInstance> eventInstances;
 
-   private void Awake()
-   {
-    if (instance != null)
+    private void Awake()
     {
-        Debug.LogError("Found more than one Audio Manager in the scene.");
+        if (instance == null)
+        {
+            instance = this;
+            eventInstances = new List<EventInstance>();
+
+        }
+        else
+        {
+            Debug.LogWarning("AudioManager instance already exists. Destroying duplicate.");
+            Destroy(gameObject);
+        }
     }
-        instance = this;
-        eventInstances = new List<EventInstance>();
-   
-   }
-   
-   private void Start()
+
+    private void Start()
    {
         InitializeMusic(FMODEvents.instance.music);
         InitializeVoices(FMODEvents.instance.playerVoice);
 
     }
+
+    //Play Sound Effects
     public void PlayOneShot(EventReference sound, Vector3 worldPos)
     {
         RuntimeManager.PlayOneShot(sound, worldPos);
@@ -46,15 +52,29 @@ public class AudioManager : MonoBehaviour
         return eventInstance;
     }
     
+    //Start && Stop Music
     private void InitializeMusic(EventReference musicEventReference)
     {
         musicEventInstance = CreateInstance(musicEventReference);
         musicEventInstance.start();
     }
 
+    public void StopMusic(EventReference musicEventReference)
+    {
+        musicEventInstance.stop(FMOD.Studio.STOP_MODE.ALLOWFADEOUT);
+    }
+
+    //Start && Stop Dialouge
     private void InitializeVoices(EventReference eventReference)
     {
         dialougeEventInstance = CreateInstance(eventReference);
+        dialougeEventInstance.start();
+    }
+
+    private void StopDialouge()
+    {
+        dialougeEventInstance.stop(FMOD.Studio.STOP_MODE.ALLOWFADEOUT);
+
     }
 
     public void SetDialougeType(VocalTypes vocalType)

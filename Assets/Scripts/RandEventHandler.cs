@@ -269,10 +269,12 @@ public class RandEventHandler : MonoBehaviour
         if (isTypewriting)
         {
             voiceInstance.start();
+            //voiceInstance.setParameterByName("textTyping", 1f);
         }
         else
         {
-            voiceInstance.stop(FMOD.Studio.STOP_MODE.ALLOWFADEOUT);
+           voiceInstance.stop(FMOD.Studio.STOP_MODE.ALLOWFADEOUT);
+           //voiceInstance.setParameterByName("textTyping", 0f);
         }
     }
 
