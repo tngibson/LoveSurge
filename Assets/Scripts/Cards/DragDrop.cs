@@ -80,6 +80,14 @@ public class DragDrop : MonoBehaviour
         }
         else if (isOverDropZone && currentDropZone.IsEmpty && gameManager.IsTopicSelected)  // Place in dropzone if applicable
         {
+            // Remove from the previous dropzone if it was in one
+            if (startParent.GetComponent<DropzoneSlot>() != null)
+            {
+                DropzoneSlot previousDropzone = startParent.GetComponent<DropzoneSlot>();
+                dropzoneManager.RemoveCardFromDropzone(previousDropzone.GetSlotNum());
+            }
+
+            // Now place in the new dropzone
             PlaceInDropzone();
         }
         else if (isOverPlayerArea)  // Return the card to the player area

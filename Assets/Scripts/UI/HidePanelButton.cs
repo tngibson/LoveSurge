@@ -25,7 +25,7 @@ public class HidePanelButton : MonoBehaviour
     }
 
     // Method that is triggered when the button is clicked.
-    private void OnButtonClick()
+    public void OnButtonClick()
     {
         if (isMoving) return; // If already moving, don't allow another move.
 
