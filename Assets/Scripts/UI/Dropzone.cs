@@ -74,8 +74,11 @@ public class Dropzone : MonoBehaviour
         }
 
         // Set the playerManager and get the player's preferred name
-        playerManager = GameObject.Find("PlayerManager").GetComponent<Player>();
-        playerName = playerManager.GetName();
+        if (GameObject.Find("PlayerManager") != null)
+        {
+            playerManager = GameObject.Find("PlayerManager").GetComponent<Player>();
+            playerName = playerManager.GetName();
+        }
     }
 
     private void Update()

@@ -719,11 +719,11 @@ MonoBehaviour:
   - {fileID: 1411976328}
   - {fileID: 518824316}
   - {fileID: 2117575011}
-  uiOpaqueColor: {r: 0.69411767, g: 0.85490197, b: 0.8745098, a: 1}
+  uiOpaqueColor: {r: 0.85490197, g: 0.74509805, b: 0.92941177, a: 1}
   uiImages:
   - {fileID: 1253847017}
   - {fileID: 759086123}
-  uiColor: {r: 0.5254902, g: 0.5254902, b: 0.9098039, a: 1}
+  uiColor: {r: 0.9882353, g: 0.84705883, b: 0.5058824, a: 1}
   convoTopic1: {fileID: 1042258432}
   convoTopic2: {fileID: 1646536590}
   convoTopic3: {fileID: 1497879191}
@@ -3575,6 +3575,8 @@ GameObject:
   m_Component:
   - component: {fileID: 848889914}
   - component: {fileID: 848889915}
+  - component: {fileID: 848889917}
+  - component: {fileID: 848889916}
   m_Layer: 5
   m_Name: DiscardBin
   m_TagString: Untagged
@@ -3598,8 +3600,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -101, y: 0}
-  m_SizeDelta: {x: 100, y: 100}
+  m_AnchoredPosition: {x: -149.11, y: 0}
+  m_SizeDelta: {x: 100, y: 112.5}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &848889915
 MonoBehaviour:
@@ -3613,6 +3615,44 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 40743fec33fdfe54c8a6199e1c90dde1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &848889916
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 848889913}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_RaycastTarget: 1
+  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
+  m_Maskable: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  m_Sprite: {fileID: 21300000, guid: 8c206ea80fcda534aa8246392d4093c9, type: 3}
+  m_Type: 0
+  m_PreserveAspect: 0
+  m_FillCenter: 1
+  m_FillMethod: 4
+  m_FillAmount: 1
+  m_FillClockwise: 1
+  m_FillOrigin: 0
+  m_UseSpriteMesh: 0
+  m_PixelsPerUnitMultiplier: 1
+--- !u!222 &848889917
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 848889913}
+  m_CullTransparentMesh: 1
 --- !u!1 &871239976
 GameObject:
   m_ObjectHideFlags: 0
@@ -4992,8 +5032,7 @@ PrefabInstance:
       propertyPath: m_IsTrigger
       value: 1
       objectReference: {fileID: 0}
-    m_RemovedComponents:
-    - {fileID: 591658424966451305, guid: 9cf95e50df30941479d48e7b083a01e3, type: 3}
+    m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents:
@@ -5001,10 +5040,6 @@ PrefabInstance:
         type: 3}
       insertIndex: -1
       addedObject: {fileID: 1251171728}
-    - targetCorrespondingSourceObject: {fileID: 1746943226734212087, guid: 9cf95e50df30941479d48e7b083a01e3,
-        type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 1251171729}
   m_SourcePrefab: {fileID: 100100000, guid: 9cf95e50df30941479d48e7b083a01e3, type: 3}
 --- !u!224 &1251171723 stripped
 RectTransform:
@@ -5025,24 +5060,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   cardsInHand: []
---- !u!114 &1251171729
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 515718259}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a926c779712dc0043a044c25cfe2622c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  fanWidth: 1000
-  cardSpacing: 250
-  fanAngle: 30
-  hoverOffset: 50
-  hoverScale: 1.2
-  layoutUpdateDelay: 0.001
 --- !u!1 &1251843995
 GameObject:
   m_ObjectHideFlags: 0
@@ -5751,12 +5768,12 @@ PrefabInstance:
     - target: {fileID: 9087966427139456051, guid: a021c6d3c1a46724ca869d9fa4244f20,
         type: 3}
       propertyPath: <dateVoice>k__BackingField.Path
-      value: event:/SFX/Voices/samVoice
+      value: event:/SFX/Voices/Old/samVoice
       objectReference: {fileID: 0}
     - target: {fileID: 9087966427139456051, guid: a021c6d3c1a46724ca869d9fa4244f20,
         type: 3}
       propertyPath: <dateVoice2>k__BackingField.Path
-      value: event:/SFX/Voices/lotteVoice
+      value: event:/SFX/Voices/Old/lotteVoice
       objectReference: {fileID: 0}
     - target: {fileID: 9087966427139456051, guid: a021c6d3c1a46724ca869d9fa4244f20,
         type: 3}
