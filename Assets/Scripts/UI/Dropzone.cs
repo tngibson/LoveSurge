@@ -593,9 +593,6 @@ public class Dropzone : MonoBehaviour
         {
             yield return StartCoroutine(PlayDialog());
             dialogPlayedAtFullPower = true;
-
-            // Wait for the player to press the skip button before continuing
-            yield return StartCoroutine(WaitForSkipButton());
         }
 
         // Play the dialog for half power if not yet played
@@ -603,9 +600,6 @@ public class Dropzone : MonoBehaviour
         {
             yield return StartCoroutine(PlayDialog());
             dialogPlayedAtHalfPower = true;
-
-            // Wait for the player to press the skip button before continuing
-            yield return StartCoroutine(WaitForSkipButton());
         }
 
         // Play the dialog for zero power if not yet played
@@ -613,9 +607,6 @@ public class Dropzone : MonoBehaviour
         {
             yield return StartCoroutine(PlayDialog());
             dialogPlayedAtZeroPower = true;
-
-            // Wait for the player to press the skip button before continuing
-            yield return StartCoroutine(WaitForSkipButton());
         }
 
         ResetDialogFlags();
@@ -674,19 +665,6 @@ public class Dropzone : MonoBehaviour
         if (discardCoroutine != null)
         {
             countDownPowerCoroutine = StartCoroutine(DiscardCards());
-        }
-    }
-
-    private IEnumerator WaitForSkipButton()
-    {
-        skipRequested = false;
-        while (!skipRequested)
-        {
-            if (Input.GetButtonDown("Skip"))
-            {
-                skipRequested = true;
-            }
-            yield return null; // Wait until the next frame before checking again
         }
     }
 

@@ -36,6 +36,7 @@ public class PlayerDeckScript : MonoBehaviour
     {
         Card finishedCard = Instantiate(prefab, container.transform);
         finishedCard.Power = power;
+        finishedCard.SetVisiblity(false);
         AddCard(finishedCard);
     }
 
@@ -70,6 +71,7 @@ public class PlayerDeckScript : MonoBehaviour
             // Randomly select a card and remove it from the deck
             int cardChosen = Random.Range(0, deck.Count);
             Card drawnCard = deck[cardChosen];
+            drawnCard.SetVisiblity(true);
             RemoveCard(drawnCard);
             return drawnCard;
         }
