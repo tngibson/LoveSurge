@@ -31,6 +31,9 @@ public class Dropzone : MonoBehaviour
     private bool dialogPlayedAtHalfPower = false;
     private bool dialogPlayedAtZeroPower = false;
 
+    // Queue to manage multiple dialogs for sequential playback
+    private Queue<IEnumerator> dialogQueue = new Queue<IEnumerator>();
+
     private bool completedConvo = false;
     private bool failedConvo = false;
 
@@ -311,23 +314,32 @@ public class Dropzone : MonoBehaviour
     }
 
 
-    // Checks if the appropriate dialog should be triggered based on the topic's power state.
+    // Checks if the appropriate dialogs should be triggered based on the topic's power state.
     private void CheckDialogTriggers()
     {
-        if (!dialogPlayedAtZeroPower && dialogPlayedAtHalfPower && selectedConvoTopic.PowerNum <= 0)
-        {
-            dialogPlayedAtZeroPower = true;
-            StartCoroutine(PlayDialog());  // Play dialog for zero power state
-        }
-        else if (!dialogPlayedAtHalfPower && dialogPlayedAtFullPower && selectedConvoTopic.PowerNum <= initialPower / 2)
-        {
-            dialogPlayedAtHalfPower = true;
-            StartCoroutine(PlayDialog());  // Play dialog for half power state
-        }
-        else if (!dialogPlayedAtFullPower)
+        // Check each threshold and enqueue dialogs if necessary
+        if (!dialogPlayedAtFullPower)
         {
             dialogPlayedAtFullPower = true;
-            StartCoroutine(PlayDialog());  // Play dialog for full power state
+            dialogQueue.Enqueue(PlayDialog());  // Enqueue dialog for full power
+        }
+
+        if (!dialogPlayedAtHalfPower && selectedConvoTopic.PowerNum <= initialPower / 2)
+        {
+            dialogPlayedAtHalfPower = true;
+            dialogQueue.Enqueue(PlayDialog());  // Enqueue dialog for half power
+        }
+
+        if (!dialogPlayedAtZeroPower && selectedConvoTopic.PowerNum <= 0)
+        {
+            dialogPlayedAtZeroPower = true;
+            dialogQueue.Enqueue(PlayDialog());  // Enqueue dialog for zero power
+        }
+
+        // Play all queued dialogs sequentially
+        if (dialogQueue.Count > 0)
+        {
+            StartCoroutine(PlayQueuedDialogs());
         }
     }
 
@@ -706,9 +718,22 @@ public class Dropzone : MonoBehaviour
         return true;
     }
 
+    // Coroutine to play all dialogs in the queue sequentially
+    private IEnumerator PlayQueuedDialogs()
+    {
+        while (dialogQueue.Count > 0)
+        {
+            yield return StartCoroutine(dialogQueue.Dequeue());
+        }
+
+        // Clears the queue for the dialog
+        dialogQueue.Clear();
+    }
+
+    // Clears the dialog queue and resets all dialog flags
     public void ResetDialogFlags()
     {
-        // Makes the dialog available for the next topic
+        dialogQueue.Clear();
         dialogPlayedAtZeroPower = false;
         dialogPlayedAtHalfPower = false;
         dialogPlayedAtFullPower = false;
