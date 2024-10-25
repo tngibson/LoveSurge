@@ -170,6 +170,7 @@ public class Dropzone : MonoBehaviour
                 dropzone.ClearCard();
             }
         }
+        playedCards.Clear();
 
         // Reset the score since no cards are left in the dropzones
         CalculateScore();
