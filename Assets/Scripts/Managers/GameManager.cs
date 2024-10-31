@@ -28,6 +28,8 @@ public class GameManager : MonoBehaviour
     [SerializeField] private PlayerDeckScript deckContainer;
     [SerializeField] private Dropzone dropzone;
     [SerializeField] private DiscardPile discard;
+    [SerializeField] private GameObject discardBin;
+
 
     // Player health and turn tracking
     private int missingCards;
@@ -119,6 +121,7 @@ public class GameManager : MonoBehaviour
         if (topicContainer.convoTopics.Count == 0 || (deckContainer.Deck.Count == 0 && playerArea.CardsInHand.Count == 0))
         {
             endTurnButton.SetActive(false);
+            discardBin.SetActive(false);
             mapButton.SetActive(true);
         }
 
