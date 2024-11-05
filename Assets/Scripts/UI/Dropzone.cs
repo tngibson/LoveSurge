@@ -31,6 +31,9 @@ public class Dropzone : MonoBehaviour
     private bool dialogPlayedAtHalfPower = false;
     private bool dialogPlayedAtZeroPower = false;
 
+    // Queue to manage multiple dialogs for sequential playback
+    private Queue<IEnumerator> dialogQueue = new Queue<IEnumerator>();
+
     private bool completedConvo = false;
     private bool failedConvo = false;
 
@@ -43,10 +46,8 @@ public class Dropzone : MonoBehaviour
 
     // Coroutine reference for CountDownPower
     private int targetPowerNum;
-    private Coroutine countDownPowerCoroutine;
 
     [SerializeField] private float discardDuration = 1.0f; // Duration of the discard animation
-    private Coroutine discardCardsCoroutine;
 
     // Public getters for various properties
     public List<Card> GetPlayedCards() => playedCards;
@@ -74,8 +75,11 @@ public class Dropzone : MonoBehaviour
         }
 
         // Set the playerManager and get the player's preferred name
-        playerManager = GameObject.Find("PlayerManager").GetComponent<Player>();
-        playerName = playerManager.GetName();
+        if (GameObject.Find("PlayerManager") != null)
+        {
+            playerManager = GameObject.Find("PlayerManager").GetComponent<Player>();
+            playerName = playerManager.GetName();
+        }
     }
 
     private void Update()
@@ -164,6 +168,7 @@ public class Dropzone : MonoBehaviour
                 dropzone.ClearCard();
             }
         }
+        playedCards.Clear();
 
         // Reset the score since no cards are left in the dropzones
         CalculateScore();
@@ -172,31 +177,33 @@ public class Dropzone : MonoBehaviour
     // Scores the played cards, moves them to the discard pile, and updates the UI
     public void ScoreCards()
     {
-        // Initialize power and turn count if full power dialog has not yet been played
-        if (!dialogPlayedAtFullPower)
+        if (failedConvo)
         {
-            initialPower = selectedConvoTopic.PowerNum;   // Store the initial power of the topic
-            selectedConvoTopic.isLocked = true;           // Lock the topic to prevent changes during scoring
+            dialogText.text += "\n\n";
+        }
+
+        if (completedConvo || failedConvo || !dialogPlayedAtFullPower)
+        {
             completedConvo = false;
             failedConvo = false;
+            ResetDialogFlags();
             lineNum = 0;
+            initialPower = selectedConvoTopic.PowerNum;   // Store the initial power of the topic
+            selectedConvoTopic.isLocked = true;           // Lock the topic to prevent changes during scoring
         }
 
         // Recalculate the current score based on cards in dropzones
         CalculateScore();
 
         // Move all cards to the discard pile asynchronously
-        discardCardsCoroutine = StartCoroutine(DiscardCards());
+        StartCoroutine(DiscardCards());
 
         // Calculate the new power level after subtracting the score
         int targetPowerNum = selectedConvoTopic.PowerNum - score;
         selectedConvoTopic.PowerNum = targetPowerNum;  // Update the power level of the topic
 
         // Start the countdown of the power value (smooth UI animation)
-        if (countDownPowerCoroutine != null)
-            StopCoroutine(countDownPowerCoroutine);
-
-        countDownPowerCoroutine = StartCoroutine(CountDownPower(initialPower, targetPowerNum));
+        StartCoroutine(CountDownPower(initialPower, targetPowerNum));
 
         // If the topic's power is depleted, complete the conversation topic
         if (selectedConvoTopic.PowerNum <= 0)
@@ -258,73 +265,89 @@ public class Dropzone : MonoBehaviour
         }
     }
 
-    // Coroutine that moves all cards from the dropzones to the discard pile.
+    // Coroutine that moves all cards from the dropzones to the discard pile at once.
     private IEnumerator DiscardCards()
     {
+        List<Coroutine> discardCoroutines = new List<Coroutine>();
+
         foreach (var dropzone in dropzones)
         {
             Card card = dropzone.GetCard();
             if (card != null)
             {
-                // Move card to the discard pile with an animation
-                yield return StartCoroutine(MoveCardToDiscardPile(card));
-                dropzone.ClearCard();  // Clear each dropzone
+                // Start discarding each card without waiting for completion
+                Coroutine discardCoroutine = StartCoroutine(MoveCardToDiscardPile(card));
+                discardCoroutines.Add(discardCoroutine);
+
+                dropzone.ClearCard();  // Clear each dropzone immediately
                 playedCards.Remove(card);
                 discard.AddToDiscard(card);  // Add card to discard pile
             }
         }
+
+        // Wait until all discard coroutines are complete
+        foreach (Coroutine coroutine in discardCoroutines)
+        {
+            yield return coroutine;
+        }
     }
 
+    // Modified to support simultaneous movement
     private IEnumerator MoveCardToDiscardPile(Card card)
     {
-        Vector3 startPosition = card.transform.position;  // Starting position of the card
-        Vector3 discardPosition = discard.transform.position;  // Target position (discard pile)
+        Vector3 startPosition = card.transform.position;
+        Vector3 discardPosition = discard.transform.position;
 
-        Vector3 startScale = card.transform.localScale;  // Store the original scale (Vector3.one)
-        Vector3 targetScale = Vector3.zero;  // Target scale (shrink to 0)
+        Vector3 startScale = card.transform.localScale;
+        Vector3 targetScale = Vector3.zero;
 
-        float duration = discardDuration;  // Animation duration in seconds
-        float elapsedTime = 0f;  // Track elapsed time
+        float duration = discardDuration;
+        float elapsedTime = 0f;
 
-        // Move the card smoothly from the dropzone to the discard pile and shrink it
         while (elapsedTime < duration)
         {
-            float progress = elapsedTime / duration;  // Calculate normalized progress (0 to 1)
+            float progress = elapsedTime / duration;
 
-            // Interpolate the position and scale smoothly over time
             card.transform.position = Vector3.Lerp(startPosition, discardPosition, Mathf.SmoothStep(0, 1, progress));
             card.transform.localScale = Vector3.Lerp(startScale, targetScale, progress);
 
-            elapsedTime += Time.deltaTime;  // Increment elapsed time by the frame duration
-            yield return null;  // Wait for the next frame
+            elapsedTime += Time.deltaTime;
+            yield return null;
         }
 
-        // Ensure the card is exactly at the discard pile position and has a scale of 0
         card.transform.position = discardPosition;
         card.transform.localScale = targetScale;
-
-        // Set the card as a child of the discard pile to maintain hierarchy
-        card.transform.SetParent(discard.transform, true);  // 'true' preserves the world position
+        card.transform.SetParent(discard.transform, true);
     }
 
 
-    // Checks if the appropriate dialog should be triggered based on the topic's power state.
+
+    // Checks if the appropriate dialogs should be triggered based on the topic's power state.
     private void CheckDialogTriggers()
     {
-        if (!dialogPlayedAtZeroPower && dialogPlayedAtHalfPower && selectedConvoTopic.PowerNum <= 0)
-        {
-            dialogPlayedAtZeroPower = true;
-            StartCoroutine(PlayDialog());  // Play dialog for zero power state
-        }
-        else if (!dialogPlayedAtHalfPower && dialogPlayedAtFullPower && selectedConvoTopic.PowerNum <= initialPower / 2)
-        {
-            dialogPlayedAtHalfPower = true;
-            StartCoroutine(PlayDialog());  // Play dialog for half power state
-        }
-        else if (!dialogPlayedAtFullPower)
+        // Check each threshold and enqueue dialogs if necessary
+        if (!dialogPlayedAtFullPower)
         {
             dialogPlayedAtFullPower = true;
-            StartCoroutine(PlayDialog());  // Play dialog for full power state
+            dialogQueue.Enqueue(PlayDialog());  // Enqueue dialog for full power
+        }
+
+        if (!dialogPlayedAtHalfPower && selectedConvoTopic.PowerNum <= initialPower / 2)
+        {
+            dialogPlayedAtHalfPower = true;
+            dialogQueue.Enqueue(PlayDialog());  // Enqueue dialog for half power
+        }
+
+        if (!dialogPlayedAtZeroPower && selectedConvoTopic.PowerNum <= 0)
+        {
+            dialogPlayedAtZeroPower = true;
+            dialogQueue.Enqueue(PlayDialog());  // Enqueue dialog for zero power
+        }
+
+        // Play all queued dialogs sequentially
+        if (dialogQueue.Count > 0)
+        {
+            StartCoroutine(PlayQueuedDialogs());
         }
     }
 
@@ -333,9 +356,7 @@ public class Dropzone : MonoBehaviour
     {
         completedConvo = true;
 
-        StopMultipleCoroutines();  // Stop all except CountDownPower & DiscardCards
-
-        StartCoroutine(PlayAllDialogsSequentially());  // Play all remaining dialogs
+        CheckDialogTriggers();
 
         // Move the topic to the "done" list and remove it from active topics
         topicContainer.doneConvos.Add(selectedConvoTopic);
@@ -357,7 +378,9 @@ public class Dropzone : MonoBehaviour
     private void FailConvo()
     {
         failedConvo = true;
-        
+
+        CheckDialogTriggers();
+
         // Move the topic to the "failed" list and remove it from active topics
         topicContainer.failedConvos.Add(selectedConvoTopic);
         topicContainer.convoTopics.Remove(selectedConvoTopic);
@@ -371,8 +394,6 @@ public class Dropzone : MonoBehaviour
 
         // Reset topic selection state
         gameManager.IsTopicSelected = false;
-
-        ResetDialogFlags();
 
         // Re-enable topic buttons for the next selection
         topicContainer.EnableButtons();
@@ -582,42 +603,6 @@ public class Dropzone : MonoBehaviour
         scrollRect.verticalNormalizedPosition = 0f;  // Scroll to the bottom
     }
 
-    // Coroutine that plays all dialogs sequentially
-    private IEnumerator PlayAllDialogsSequentially()
-    {
-        // Play the dialog for full power if not yet played
-        if (!dialogPlayedAtFullPower || lineNum == 0)
-        {
-            yield return StartCoroutine(PlayDialog());
-            dialogPlayedAtFullPower = true;
-
-            // Wait for the player to press the skip button before continuing
-            yield return StartCoroutine(WaitForSkipButton());
-        }
-
-        // Play the dialog for half power if not yet played
-        if (!dialogPlayedAtHalfPower || lineNum == 2)
-        {
-            yield return StartCoroutine(PlayDialog());
-            dialogPlayedAtHalfPower = true;
-
-            // Wait for the player to press the skip button before continuing
-            yield return StartCoroutine(WaitForSkipButton());
-        }
-
-        // Play the dialog for zero power if not yet played
-        if (!dialogPlayedAtZeroPower || lineNum == 4)
-        {
-            yield return StartCoroutine(PlayDialog());
-            dialogPlayedAtZeroPower = true;
-
-            // Wait for the player to press the skip button before continuing
-            yield return StartCoroutine(WaitForSkipButton());
-        }
-
-        ResetDialogFlags();
-    }
-
     // Coroutine to count down PowerNum smoothly
     private IEnumerator CountDownPower(int startValue, int endValue)
     {
@@ -650,40 +635,6 @@ public class Dropzone : MonoBehaviour
             selectedConvoTopic.ToggleClick(true);
             gameManager.turnCount = 0;
             gameManager.ResetConvoTopic();
-        }
-    }
-
-    // Method to stop all coroutines except CountDownPower
-    private void StopMultipleCoroutines()
-    {
-        // Store the CountDownPower coroutine
-        Coroutine countdownCoroutine = countDownPowerCoroutine;
-        Coroutine discardCoroutine = discardCardsCoroutine;
-
-        // Stop all coroutines
-        StopAllCoroutines();
-
-        // Restart the coroutines if it's still valid
-        if (countdownCoroutine != null)
-        {
-            countDownPowerCoroutine = StartCoroutine(CountDownPower(selectedConvoTopic.PowerNum + score, targetPowerNum));
-        }
-        if (discardCoroutine != null)
-        {
-            countDownPowerCoroutine = StartCoroutine(DiscardCards());
-        }
-    }
-
-    private IEnumerator WaitForSkipButton()
-    {
-        skipRequested = false;
-        while (!skipRequested)
-        {
-            if (Input.GetButtonDown("Skip"))
-            {
-                skipRequested = true;
-            }
-            yield return null; // Wait until the next frame before checking again
         }
     }
 
@@ -725,9 +676,22 @@ public class Dropzone : MonoBehaviour
         return true;
     }
 
+    // Coroutine to play all dialogs in the queue sequentially
+    private IEnumerator PlayQueuedDialogs()
+    {
+        while (dialogQueue.Count > 0)
+        {
+            yield return StartCoroutine(dialogQueue.Dequeue());
+        }
+
+        // Clears the queue for the dialog
+        dialogQueue.Clear();
+    }
+
+    // Clears the dialog queue and resets all dialog flags
     public void ResetDialogFlags()
     {
-        // Makes the dialog available for the next topic
+        dialogQueue.Clear();
         dialogPlayedAtZeroPower = false;
         dialogPlayedAtHalfPower = false;
         dialogPlayedAtFullPower = false;

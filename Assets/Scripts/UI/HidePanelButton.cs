@@ -13,6 +13,7 @@ public class HidePanelButton : MonoBehaviour
     private Vector3 originalPosition; // Store the original position.
     private bool isHidden = false;    // Boolean to track if the object is hidden.
     [SerializeField] private RectTransform parentRectTransform; // To store the parent RectTransform.
+    [SerializeField] private GameObject buttonObject; // To store the parent RectTransform.
     private bool isMoving = false;    // To prevent multiple movements at once.
 
     void Start()
@@ -32,7 +33,7 @@ public class HidePanelButton : MonoBehaviour
         if (isHidden)
         {
             // Move the parent game object back to its original position.
-            StartCoroutine(MoveOverTime(parentRectTransform.anchoredPosition, originalPosition));
+            StartCoroutine(MoveAndRotateOverTime(parentRectTransform.anchoredPosition, originalPosition, 90f, -90f));
             isHidden = false;
         }
         else
@@ -56,27 +57,36 @@ public class HidePanelButton : MonoBehaviour
             }
 
             // Start the coroutine to move the object.
-            StartCoroutine(MoveOverTime(parentRectTransform.anchoredPosition, targetPosition));
+            StartCoroutine(MoveAndRotateOverTime(parentRectTransform.anchoredPosition, targetPosition, -90f, 90f));
             isHidden = true;
         }
     }
 
     // Coroutine to move the object smoothly over time.
-    private IEnumerator MoveOverTime(Vector3 start, Vector3 end)
+    private IEnumerator MoveAndRotateOverTime(Vector3 start, Vector3 end, float startRotation, float endRotation)
     {
         isMoving = true;
         float elapsedTime = 0f;
 
         while (elapsedTime < moveDuration)
         {
-            // Smoothly interpolate between the start and end positions over time.
-            parentRectTransform.anchoredPosition = Vector3.Lerp(start, end, elapsedTime / moveDuration);
+            float t = elapsedTime / moveDuration;
+
+            // Interpolate position
+            parentRectTransform.anchoredPosition = Vector3.Lerp(start, end, t);
+
+            // Interpolate rotation on the Z axis
+            float currentRotation = Mathf.Lerp(startRotation, endRotation, t);
+            buttonObject.transform.localRotation = Quaternion.Euler(0, 0, currentRotation);
+
             elapsedTime += Time.deltaTime;
             yield return null;
         }
 
-        // Ensure the final position is exactly the end position.
+        // Ensure final position and rotation are set precisely
         parentRectTransform.anchoredPosition = end;
+        buttonObject.transform.localRotation = Quaternion.Euler(0, 0, endRotation);
+
         isMoving = false;
     }
 }

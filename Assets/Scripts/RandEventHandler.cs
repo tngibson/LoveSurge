@@ -50,11 +50,14 @@ public class RandEventHandler : MonoBehaviour
     void Start()
     {
         // Set the playerManager and get the player's preferred name
-        playerManager = GameObject.Find("PlayerManager").GetComponent<Player>();
-        playerName = playerManager.GetName();
+        if (GameObject.Find("PlayerManager") != null)
+        {
+            playerManager = GameObject.Find("PlayerManager").GetComponent<Player>();
+            playerName = playerManager.GetName();
+        }
 
         choicePanel.SetActive(false); // Hide choice panel at start
-        mapButton.SetActive(false);   // Hide the map buttonW at start
+        mapButton.SetActive(false);   // Hide the map button at start
         InitializeAudio(); // Starts FMOD audio
         DisplayLine(); // Display the first line
     }
@@ -112,7 +115,7 @@ public class RandEventHandler : MonoBehaviour
         // If the speaker is player, we will set their name to playerName. If for whatever reason the playerName variable is empty, we won't set it
         if (currentSpeaker == "You")
         {
-            if (playerName != "")
+            if (playerName != "" && playerName != null)
             {
                 currentSpeaker = playerName;
             }

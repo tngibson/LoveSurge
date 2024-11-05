@@ -71,4 +71,9 @@ public abstract class Card : MonoBehaviour
             Debug.LogWarning("Background image is not assigned.");
         }
     }
+
+    public void SetVisiblity(bool visiblity)
+    {
+        container.SetActive(visiblity);
+    }
 }
