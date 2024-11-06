@@ -62,7 +62,8 @@ public class Dropzone : MonoBehaviour
     // Awake is called when the script instance is being loaded
     void Awake()
     {
-        playedCards = new List<Card>(); // Initialize the list of played cards
+        int maxSlots = dropzones.Length;  // Assuming dropzones is an array of DropzoneSlot components
+        playedCards = new List<Card>(new Card[maxSlots]); // Initializes with nulls up to maxSlots
     }
 
     // Start is called before the first frame update
@@ -98,33 +99,19 @@ public class Dropzone : MonoBehaviour
         {
             dropzones[dropzoneIndex].SetCard(card);  // Place card in the dropzone
 
-            // Ensure the dropzone index is within bounds of the playedCards list
-            if (dropzoneIndex < 0)
-            {
-                dropzoneIndex = 0; // If negative, start from the beginning
-            }
-            else if (dropzoneIndex > playedCards.Count)
-            {
-                dropzoneIndex = playedCards.Count; // If greater than the count, add to the end
-            }
+            // Directly place the card at the specified dropzoneIndex in playedCards
+            playedCards[dropzoneIndex] = card;
 
-            playedCards.Insert(dropzoneIndex, card); 
-            playerArea.RemoveCards(card);            // Remove card from player's area
-            gameManager.UpdateEndTurnButton(true);   // Enable end turn button
-            CalculateScore();                        // Recalculate the score
+            // Remove card from player's area
+            playerArea.RemoveCards(card);
+
+            // Update UI and calculate score
+            gameManager.UpdateEndTurnButton(true);
+            CalculateScore();
         }
         else if (card != null && card.Type == "Str")
         {
-            if (StressManager.instance.currentStressAmt > 0)
-            {
-                StressManager.instance.removeFromCurrentStress(card.Power * .1f);
-                StressBar.instance.updateStressBar();
-            }
-            else
-            {
-                print("add something indicating 0 stress, also probably shouldnt have stress card if stress is 0 but could potentially happen");
-            }
-
+            HandleStressCard(card);
         }
         else
         {
@@ -132,16 +119,36 @@ public class Dropzone : MonoBehaviour
         }
     }
 
-    // Removes a card to from the dropzone and adds it to the player's area
+    // Method to handle special "Str" type cards separately for modularity
+    private void HandleStressCard(Card card)
+    {
+        if (StressManager.instance.currentStressAmt > 0)
+        {
+            StressManager.instance.removeFromCurrentStress(card.Power * 0.1f);
+            StressBar.instance.updateStressBar();
+        }
+        else
+        {
+            Debug.Log("Cannot add stress card when stress is at 0.");
+        }
+    }
+
+    // Removes a card from the dropzone and adds it to the player's area
     public void RemoveCardFromDropzone(int dropzoneIndex)
     {
         Card card = dropzones[dropzoneIndex].GetCard();
         if (card != null)
         {
-            playerArea.AddCards(card);               // Return card to player area
-            dropzones[dropzoneIndex].ClearCard();    // Clear the dropzone slot
-            playedCards.Remove(card);
+            // Return card to player area
+            playerArea.AddCards(card);
 
+            // Clear the dropzone slot
+            dropzones[dropzoneIndex].ClearCard();
+
+            // Set the corresponding index in playedCards to null instead of removing
+            playedCards[dropzoneIndex] = null;
+
+            // Check if all dropzones are empty to update the end turn button state
             if (AllDropzonesEmpty())
             {
                 gameManager.UpdateEndTurnButton(false);  // Disable end turn button if no cards are placed
@@ -153,9 +160,9 @@ public class Dropzone : MonoBehaviour
 
     public void ReturnCards()
     {
-        foreach (var dropzone in dropzones)
+        for (int i = 0; i < dropzones.Length; i++)
         {
-            Card card = dropzone.GetCard();
+            Card card = dropzones[i].GetCard();
             if (card != null)
             {
                 // Add the card back to the player's hand
@@ -165,10 +172,12 @@ public class Dropzone : MonoBehaviour
                 card.transform.SetParent(playerArea.transform, false);
 
                 // Clear the dropzone slot
-                dropzone.ClearCard();
+                dropzones[i].ClearCard();
+
+                // Set the corresponding playedCards slot to null instead of removing it
+                playedCards[i] = null;
             }
         }
-        playedCards.Clear();
 
         // Reset the score since no cards are left in the dropzones
         CalculateScore();
@@ -237,30 +246,39 @@ public class Dropzone : MonoBehaviour
             // Iterate through all played cards to calculate the score
             for (int i = 0; i < playedCards.Count; i++)
             {
+                Card card1 = playedCards[i];
+
+                // Skip null entries in the playedCards list
+                if (card1 == null) continue;
+
                 // Add the card's power to the score
-                score += playedCards[i].Power;
+                score += card1.Power;
 
                 // If there's a next card, apply bonuses based on matching attributes
                 if (i + 1 < playedCards.Count)
                 {
-                    Card card1 = playedCards[i];
                     Card card2 = playedCards[i + 1];
 
-                    // Bonus points for matching types or similar power levels
-                    if (card1.Type == card2.Type) { score++; }
-                    if (card1.Power == card2.Power) { score++; }
-                    if (card1.Power == card2.Power - 1) { score++; }
+                    // Skip null comparisons
+                    if (card2 != null)
+                    {
+                        // Bonus points for matching types or similar power levels
+                        if (card1.Type == card2.Type) { score++; }
+                        if (card1.Power == card2.Power) { score++; }
+                        if (card1.Power == card2.Power - 1) { score++; }
+                    }
                 }
 
                 // Bonus points for matching the selected conversation topic
-                if (playedCards[i].Type == selectedConvoTopic.ConvoAttribute.Substring(0, 3)) { score++; }
-
-                // Sets the current score text field to what the current score would be after recalculating
-                currentScoreText.text = "Current Score: " + score.ToString();
+                if (card1.Type == selectedConvoTopic.ConvoAttribute.Substring(0, 3)) { score++; }
             }
+
+            // Update the current score text field with the recalculated score
+            currentScoreText.text = "Current Score: " + score.ToString();
         }
         else
         {
+            // Set score text to zero if no cards are played or no topic is selected
             currentScoreText.text = "Current Score: " + score.ToString();
         }
     }

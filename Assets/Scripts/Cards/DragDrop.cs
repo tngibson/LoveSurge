@@ -23,6 +23,8 @@ public class DragDrop : MonoBehaviour
     private Card card;
     private CardHandLayout cardHandLayout;
 
+    private int playerAreaCounter = 0; // Counter to track PlayerArea overlap
+
     // Public method to check if the card is being dragged
     public bool IsDragging() => isDragging;
 
@@ -248,8 +250,9 @@ public class DragDrop : MonoBehaviour
         // Check if the collider is the PlayerArea
         if (collision.GetComponent<PlayerArea>() != null)
         {
-            isOverPlayerArea = true;
-            Debug.Log("Player Area...");
+            playerAreaCounter++; // Increment counter
+            isOverPlayerArea = true; // Ensure it's set to true if we're over the PlayerArea
+            Debug.Log("Entered Player Area...");
         }
     }
 
@@ -271,10 +274,14 @@ public class DragDrop : MonoBehaviour
         }
 
         // Reset the player area flag if the card leaves the player area
-        if (collision.GetComponent<PlayerArea>() == null)
+        if (collision.GetComponent<PlayerArea>() != null)
         {
-            isOverPlayerArea = false;
-            Debug.Log("Not Player Area");
+            playerAreaCounter--; // Decrement counter
+            if (playerAreaCounter <= 0)
+            {
+                isOverPlayerArea = false; // Only set to false if counter is zero or less
+                Debug.Log("Exited Player Area");
+            }
         }
     }
 
