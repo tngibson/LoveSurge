@@ -696,4 +696,13 @@ public class Dropzone : MonoBehaviour
         dialogPlayedAtHalfPower = false;
         dialogPlayedAtFullPower = false;
     }
+
+    public void ValidateDropzoneState()
+    {
+        foreach (var slot in dropzones) 
+        {
+            if (slot.transform.childCount == 0)
+                slot.ClearCard();  // Clear the card if there is no child object
+        }
+    }
 }

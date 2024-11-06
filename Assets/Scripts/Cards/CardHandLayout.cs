@@ -5,13 +5,13 @@ using System.Collections.Generic;
 public class CardHandLayout : MonoBehaviour
 {
     public float fanWidth = 500f;           // The width of the fan (how far cards spread)
-    public float cardSpacing = 100f;        // Spacing between each card
+    public float cardSpacing = 250f;        // Spacing between each card
     public float fanAngle = 30f;            // The angle spread of the fan
-    public float hoverOffset = 50f;         // How much the card moves up when hovered
+    public float hoverYPosition = -20f;     // Target Y position to hover to
     public float hoverScale = 1.2f;         // The scale increase when hovered
     public float layoutUpdateDelay = 0.1f;  // Delay to batch updates if cards are added/removed in quick succession.
     public float maxYOffset = 50f;          // Maximum Y offset for cards on the outside of the fan.
-    public float middleCardOffset = 5f; // Adjust as needed
+    public float middleCardOffset = 35f; // Adjusts how high up on the y-axis the middle card is
 
     private List<Transform> cardTransforms = new List<Transform>(); // List of card transforms
     private bool isLayoutDirty = false;     // Flag to trigger layout recalculation
@@ -137,13 +137,22 @@ public class CardHandLayout : MonoBehaviour
         return false;
     }
 
-    // Method for handling the hover enter (straighten the card)
     public void OnCardHoverEnter(GameObject card)
     {
+        // Store the current position for reference
+        Vector3 currentPos = card.transform.localPosition;
+
+        // Calculate the new position, setting Y to hoverYPosition
+        Vector3 hoverPosition = new Vector3(currentPos.x, hoverYPosition, currentPos.z);
+
         // Straighten the card
         card.transform.localRotation = Quaternion.Euler(0, 0, 0);
-        card.transform.localPosition += new Vector3(0, hoverOffset, 0); // Move the card upwards
-        card.transform.localScale = new Vector3(hoverScale, hoverScale, hoverScale); // Scale up the card
+
+        // Apply the hover position
+        card.transform.localPosition = hoverPosition;
+
+        // Scale up the card
+        card.transform.localScale = new Vector3(hoverScale, hoverScale, hoverScale);
     }
 
     // Method for handling the hover exit (return the card to its original position and rotation)

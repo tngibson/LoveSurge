@@ -79,29 +79,26 @@ public class DragDrop : MonoBehaviour
         if (targetCard != null)  // Swap with another card if applicable
         {
             SwapCards(this, targetCard, startParent);
+            Debug.Log("Swap Cards");
         }
         else if (isOverDropZone && currentDropZone.IsEmpty && gameManager.IsTopicSelected)  // Place in dropzone if applicable
         {
-            // Remove from the previous dropzone if it was in one
-            if (startParent.GetComponent<DropzoneSlot>() != null)
-            {
-                DropzoneSlot previousDropzone = startParent.GetComponent<DropzoneSlot>();
-                dropzoneManager.RemoveCardFromDropzone(previousDropzone.GetSlotNum());
-            }
-
-            // Now place in the new dropzone
-            PlaceInDropzone();
-
-            RemoveHoverListeners();
+            PlaceInDropzone(); // Use updated PlaceInDropzone to ensure slot state updates correctly
+            Debug.Log("Place Dropzone");
         }
         else if (isOverPlayerArea)  // Return the card to the player area
         {
             ReturnToPlayerArea();
+            Debug.Log("Place Player");
         }
         else  // Return to original position if no valid drop
         {
             ReturnToStart();
+            Debug.Log("Return Start");
         }
+
+        // Ensure dropzone state is updated after every drag
+        dropzoneManager.ValidateDropzoneState();
     }
 
     // Swap the positions of two cards.
@@ -171,19 +168,32 @@ public class DragDrop : MonoBehaviour
     }
 
 
-    // Place the card into the current dropzone.
+    // Place the card into the current dropzone and update slot state.
     private void PlaceInDropzone()
     {
+        // Remove from the previous dropzone if it was in one
+        if (startParent.GetComponent<DropzoneSlot>() != null)
+        {
+            DropzoneSlot previousDropzone = startParent.GetComponent<DropzoneSlot>();
+            dropzoneManager.RemoveCardFromDropzone(previousDropzone.GetSlotNum());
+        }
+
         // Set the card as a child of the dropzone
         transform.SetParent(currentDropZone.transform, false);
-
-        // Reset the local scale to maintain the original card size
-        transform.localScale = Vector3.one;
 
         // Reset the rotation when the card is placed
         transform.rotation = Quaternion.identity; // Reset rotation to (0, 0, 0)
 
+        // Add card to the current dropzone
         dropzoneManager.AddCardToDropzone(card, currentDropZone.GetSlotNum());
+
+        RemoveHoverListeners();
+
+        // Update dropzone state to reflect the new card position
+        dropzoneManager.ValidateDropzoneState();
+
+        // Reset the local scale to maintain the original card size
+        transform.localScale = Vector3.one;
     }
 
     // Return the card to the player area.
@@ -223,6 +233,7 @@ public class DragDrop : MonoBehaviour
         {
             targetCard = otherCard;  // Set the target card for swapping
             initialPositionB = otherCard.transform.position;  // Store its initial position
+            Debug.Log("Swapping...");
         }
 
         // Check if the collider is a DropzoneSlot
@@ -231,12 +242,14 @@ public class DragDrop : MonoBehaviour
         {
             isOverDropZone = true;
             currentDropZone = zone;
+            Debug.Log("Dropzone...");
         }
 
         // Check if the collider is the PlayerArea
         if (collision.GetComponent<PlayerArea>() != null)
         {
             isOverPlayerArea = true;
+            Debug.Log("Player Area...");
         }
     }
 
@@ -246,6 +259,7 @@ public class DragDrop : MonoBehaviour
         if (collision.GetComponent<DragDrop>() == targetCard)
         {
             targetCard = null;
+            Debug.Log("Not Swapping...");
         }
 
         // Reset the dropzone if it leaves the collider
@@ -253,12 +267,14 @@ public class DragDrop : MonoBehaviour
         {
             isOverDropZone = false;
             currentDropZone = null;
+            Debug.Log("Not Dropzone...");
         }
 
         // Reset the player area flag if the card leaves the player area
-        if (collision.GetComponent<PlayerArea>() != null)
+        if (collision.GetComponent<PlayerArea>() == null)
         {
             isOverPlayerArea = false;
+            Debug.Log("Not Player Area");
         }
     }
 

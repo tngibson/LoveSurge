@@ -34,7 +34,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -141, y: 42.9}
+  m_AnchoredPosition: {x: -141, y: 42.75}
   m_SizeDelta: {x: 119.7048, y: 119.7048}
   m_Pivot: {x: 0.83794665, y: 0.72089976}
 --- !u!222 &2019420692390439128
@@ -133,7 +133,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 0.8114402, g: 1, b: 0.8066038, a: 1}
   m_RaycastTarget: 0
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -174,6 +174,12 @@ PrefabInstance:
       propertyPath: m_SortingLayer
       value: 32709
       objectReference: {fileID: 0}
+    - target: {fileID: 2458212191477848760, guid: 44687f3797c06f041bb712efdc800917,
+        type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 5243bf46bde17da4aaa69031cde22061,
+        type: 3}
     - target: {fileID: 2458212191477848760, guid: 44687f3797c06f041bb712efdc800917,
         type: 3}
       propertyPath: m_Color.b
@@ -298,6 +304,26 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4531473862938060446, guid: 44687f3797c06f041bb712efdc800917,
+        type: 3}
+      propertyPath: m_fontColor.b
+      value: 0.21021003
+      objectReference: {fileID: 0}
+    - target: {fileID: 4531473862938060446, guid: 44687f3797c06f041bb712efdc800917,
+        type: 3}
+      propertyPath: m_fontColor.g
+      value: 0.41509432
+      objectReference: {fileID: 0}
+    - target: {fileID: 4531473862938060446, guid: 44687f3797c06f041bb712efdc800917,
+        type: 3}
+      propertyPath: m_fontColor.r
+      value: 0.2016732
+      objectReference: {fileID: 0}
+    - target: {fileID: 4531473862938060446, guid: 44687f3797c06f041bb712efdc800917,
+        type: 3}
+      propertyPath: m_fontColor32.rgba
+      value: 4281756211
       objectReference: {fileID: 0}
     - target: {fileID: 5357963197280185475, guid: 44687f3797c06f041bb712efdc800917,
         type: 3}
