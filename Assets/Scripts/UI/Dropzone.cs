@@ -288,17 +288,18 @@ public class Dropzone : MonoBehaviour
     {
         List<Coroutine> discardCoroutines = new List<Coroutine>();
 
-        foreach (var dropzone in dropzones)
+        for (int i = 0; i < dropzones.Length; i++)
         {
-            Card card = dropzone.GetCard();
+            Card card = dropzones[i].GetCard();
             if (card != null)
             {
                 // Start discarding each card without waiting for completion
                 Coroutine discardCoroutine = StartCoroutine(MoveCardToDiscardPile(card));
                 discardCoroutines.Add(discardCoroutine);
 
-                dropzone.ClearCard();  // Clear each dropzone immediately
-                playedCards.Remove(card);
+                // Clear each dropzone and set playedCards[i] to null instead of removing
+                dropzones[i].ClearCard();
+                playedCards[i] = null;  // Set the corresponding slot in playedCards to null
                 discard.AddToDiscard(card);  // Add card to discard pile
             }
         }
