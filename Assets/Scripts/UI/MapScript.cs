@@ -1,34 +1,60 @@
 using UnityEngine;
-using System.Collections;
-using System.Collections.Generic;
+using UnityEngine.UI;
+using UnityEngine.EventSystems;
 using UnityEngine.SceneManagement;
+using TMPro;
 
-public class MapScript : MonoBehaviour
+public class MapScript : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
 {
-    // Information and name for the map location
     public string locInfo;
     public string locName;
-
     public bool useMapManager;
+    public MapLocationsManager manager;
 
-    public MapLocationsManager manager; // Reference to the MapLocationsManager
+    [SerializeField] private Button button;
+    [SerializeField] private GameObject questionText;
+    [SerializeField] private GameObject locationText;
+    [SerializeField] private string locationTextText;
+    public bool isEnabled;
+
+    // Scale factor and material for hover effect
+    public float hoverScale = 1.1f;
+    private Vector3 originalScale;
 
     private void Awake()
     {
+        // Save original scale and material
+        originalScale = transform.localScale;
+
         if (StressBar.instance != null)
         {
             StressBar.instance.updateStressBar();
         }
+
+        SetEnabled();
+        locationText.GetComponent<TextMeshProUGUI>().text = locationTextText;
     }
-    private void Start()
+
+    public void OnPointerEnter(PointerEventData eventData)
     {
-        
+        if (isEnabled)
+        {
+            // Scale up and apply hover material
+            transform.localScale = originalScale * hoverScale;
+            locationText.SetActive(true);
+        }
     }
-    // OnSelect is triggered when the map location is selected
+
+    public void OnPointerExit(PointerEventData eventData)
+    {
+        // Reset scale and material
+        transform.localScale = originalScale;
+        locationText.SetActive(false);
+    }
+
     public void OnSelect()
     {
-        // Delegate the selection logic to the manager, passing location info and name
-        if (manager != null || !useMapManager)  // Check if the manager reference is assigned
+        if (manager != null || !useMapManager)
         {
             if (StressManager.instance != null)
             {
@@ -38,9 +64,8 @@ public class MapScript : MonoBehaviour
             {
                 StressBar.instance.updateStressBar();
             }
-
             SceneManager.LoadScene(locName);
-            this.gameObject.SetActive(false);
+            gameObject.SetActive(false);
 
             if (useMapManager)
             {
@@ -51,5 +76,42 @@ public class MapScript : MonoBehaviour
         {
             Debug.LogWarning("MapLocationsManager reference is missing on " + gameObject.name);
         }
+    }
+
+    public void SetEnabled()
+    {
+        if (isEnabled)
+        {
+            button.interactable = true;
+            questionText.SetActive(false);
+        }
+        else
+        {
+            button.interactable = false;
+            questionText.SetActive(true);
+        }
+    }
+
+    public void ToggleEnabled()
+    {
+        if (isEnabled)
+        {
+            isEnabled = false;
+            button.interactable = false;
+            questionText.SetActive(true);
+        }
+        else
+        {
+            isEnabled = true;
+            button.interactable = true;
+            questionText.SetActive(false);
+        }
+
+    }
+
+    public void UpdateLocationText(string newText)
+    {
+        locationTextText = newText;
+        locationText.GetComponent<TextMeshProUGUI>().text = locationTextText;
     }
 }
