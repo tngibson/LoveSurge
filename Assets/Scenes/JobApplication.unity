@@ -191,6 +191,28 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 7272601c17fb4d848b466f2382895650, type: 3}
+--- !u!114 &157298770
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5353494745443344015}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bbe147c37e01d3847adb6df4c90f7c49, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  locInfo: 
+  locName: Map
+  useMapManager: 0
+  manager: {fileID: 0}
+  button: {fileID: 0}
+  questionText: {fileID: 0}
+  locationText: {fileID: 0}
+  locationTextText: 
+  isEnabled: 0
+  hoverScale: 1
 --- !u!1 &579954884
 GameObject:
   m_ObjectHideFlags: 0
@@ -1016,6 +1038,12 @@ MonoBehaviour:
   locName: Map
   useMapManager: 0
   manager: {fileID: 0}
+  button: {fileID: 0}
+  questionText: {fileID: 0}
+  locationText: {fileID: 0}
+  locationTextText: 
+  isEnabled: 0
+  hoverScale: 1.1
 --- !u!114 &2079138174
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1639,7 +1667,7 @@ PrefabInstance:
         type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
-      objectReference: {fileID: 1840215327}
+      objectReference: {fileID: 157298770}
     - target: {fileID: 7790266744647393451, guid: caff7daa29ed80547bbcab65c7792ef9,
         type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
@@ -1648,12 +1676,12 @@ PrefabInstance:
     - target: {fileID: 7790266744647393451, guid: caff7daa29ed80547bbcab65c7792ef9,
         type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: OnMap
+      value: OnSelect
       objectReference: {fileID: 0}
     - target: {fileID: 7790266744647393451, guid: caff7daa29ed80547bbcab65c7792ef9,
         type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
-      value: RandEventHandler, Assembly-CSharp
+      value: MapScript, Assembly-CSharp
       objectReference: {fileID: 0}
     - target: {fileID: 7790266744647393451, guid: caff7daa29ed80547bbcab65c7792ef9,
         type: 3}
@@ -1886,7 +1914,11 @@ PrefabInstance:
         type: 3}
       insertIndex: -1
       addedObject: {fileID: 1676341667}
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 6940135994936192850, guid: caff7daa29ed80547bbcab65c7792ef9,
+        type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 157298770}
   m_SourcePrefab: {fileID: 100100000, guid: caff7daa29ed80547bbcab65c7792ef9, type: 3}
 --- !u!114 &5353494745443344014 stripped
 MonoBehaviour:

@@ -2908,7 +2908,7 @@ GameObject:
   - component: {fileID: 602046416}
   - component: {fileID: 602046419}
   m_Layer: 5
-  m_Name: ReturnToMapButton
+  m_Name: EndDateButton
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3044,6 +3044,12 @@ MonoBehaviour:
   locName: Map
   useMapManager: 0
   manager: {fileID: 0}
+  button: {fileID: 0}
+  questionText: {fileID: 0}
+  locationText: {fileID: 0}
+  locationTextText: 
+  isEnabled: 0
+  hoverScale: 1.1
 --- !u!1 &619394800
 GameObject:
   m_ObjectHideFlags: 0
@@ -3353,7 +3359,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Return to Map
+  m_text: Finish Date!
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: df7cadaad356fc945a444aceb9b4e11e, type: 2}
   m_sharedMaterial: {fileID: 4935103395473980988, guid: df7cadaad356fc945a444aceb9b4e11e,
@@ -5652,7 +5658,7 @@ PrefabInstance:
     - target: {fileID: 2397522579818487745, guid: 46447929fac09ed4e9bb3195ffbdda95,
         type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2534847987639120676, guid: 46447929fac09ed4e9bb3195ffbdda95,
         type: 3}
@@ -6531,6 +6537,12 @@ MonoBehaviour:
   locName: Map
   useMapManager: 0
   manager: {fileID: 0}
+  button: {fileID: 0}
+  questionText: {fileID: 0}
+  locationText: {fileID: 0}
+  locationTextText: 
+  isEnabled: 0
+  hoverScale: 1.1
 --- !u!1 &1298419915
 GameObject:
   m_ObjectHideFlags: 0

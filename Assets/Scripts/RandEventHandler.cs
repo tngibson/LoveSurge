@@ -296,14 +296,6 @@ public class RandEventHandler : MonoBehaviour
             levelMusic.start();
         }
     }
-
-    // Button Event: Return to Map
-    public void OnMap()
-    {
-        AudioManager.instance.PlayOneShot(FMODEvents.instance.uiClick, this.transform.position); // Play click sound
-        levelMusic.stop(FMOD.Studio.STOP_MODE.ALLOWFADEOUT);  // Stop the background music
-        SceneManager.LoadScene("Map"); // Load the "Map" scene
-    }
 }
 
 [System.Serializable]

@@ -50,7 +50,7 @@ public class PlayerDeckScript : MonoBehaviour
     private void FillDeck()
     {
         // Loop through the cards and create the deck based on `cardCount` for each power level
-        for (int i = 1; i <= 3; i++) // Powers 1, 2, 3
+        for (int i = 1; i <= 4; i++) // Powers 1, 2, 3, and 4
         {
             for (int j = 0; j < cardCount; j++)
             {

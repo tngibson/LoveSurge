@@ -1,0 +1,71 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8cbd23a6cba4cdc48b96bcdf5fdcbc9c, type: 3}
+  m_Name: SkillCheck1
+  m_EditorClassIdentifier: 
+  skillName: Courage
+  successDialogLines:
+  - You don't just win, you hit a bullseye and then proceed to split your own dart
+    with the next one your throw. FOUR TIMES IN A ROW. Robin hood is crying right
+    now
+  - Congratulations! I truly didn't expect you to have any sort of skill.
+  - Um. Is that a compliment.
+  - Maybe!
+  - Now, onto business.
+  - She leans closer to you presents her cheek. You give it an unsure peck.
+  - That was very nice. Lets do something else now.
+  successSpeakersPerLine:
+  - 
+  - Noki
+  - PC
+  - Noki
+  - Noki
+  - 
+  - Noki
+  successSpriteOptions:
+  - spriteOptions:
+    - {fileID: 21300000, guid: eb54c0b9144af6b4e8e9578c07a0c65b, type: 3}
+    - {fileID: 21300000, guid: eb54c0b9144af6b4e8e9578c07a0c65b, type: 3}
+    - {fileID: 21300000, guid: 9a5bb60305ed56c4c8b921b54258e133, type: 3}
+    - {fileID: 21300000, guid: eb54c0b9144af6b4e8e9578c07a0c65b, type: 3}
+    - {fileID: 21300000, guid: 416f14cbfab2b6c409b24a5d0f866e02, type: 3}
+    - {fileID: 21300000, guid: eb54c0b9144af6b4e8e9578c07a0c65b, type: 3}
+    - {fileID: 21300000, guid: 52174a669ceab084893f4460563966e2, type: 3}
+  failureDialogLines:
+  - Honestly you didn't even do that bad Noki is just miraculously very good at darts.
+    You've only played like...once. Drunk. 2 years ago.
+  - Congratulations! You did your best!
+  - My pride's a little hurt but you are a robot.
+  - I'm more than just a robot.
+  - Wai- I didn't mean it like that! I-
+  - She sticks out her tongue and punches you in the shoulder.
+  - I'm a robot that just kicked your butt at darts.
+  - Heh. Cool.
+  failureSpeakersPerLine:
+  - 
+  - Noki
+  - PC
+  - Noki
+  - Noki
+  - 
+  - Noki
+  - PC
+  failureSpriteOptions:
+  - spriteOptions:
+    - {fileID: 21300000, guid: eb54c0b9144af6b4e8e9578c07a0c65b, type: 3}
+    - {fileID: 21300000, guid: eb54c0b9144af6b4e8e9578c07a0c65b, type: 3}
+    - {fileID: 21300000, guid: 9a5bb60305ed56c4c8b921b54258e133, type: 3}
+    - {fileID: 21300000, guid: eb54c0b9144af6b4e8e9578c07a0c65b, type: 3}
+    - {fileID: 21300000, guid: 416f14cbfab2b6c409b24a5d0f866e02, type: 3}
+    - {fileID: 21300000, guid: eb54c0b9144af6b4e8e9578c07a0c65b, type: 3}
+    - {fileID: 21300000, guid: eb54c0b9144af6b4e8e9578c07a0c65b, type: 3}
+    - {fileID: 21300000, guid: 730ee9a125f1e6949a7533b22645379e, type: 3}
