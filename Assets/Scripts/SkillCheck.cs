@@ -122,6 +122,25 @@ public class SkillCheck : MonoBehaviour
     {
         isSkillCheckTime = true;
         skillCheckStage = 0;
+
+        // Rolls which card is drawn, THIS WILL BE CHANGED LATER WHEN MORE CARDS ARE ADDED
+        modifier = Random.Range(1, 5);
+        skillRoll = Random.Range(0, 4);
+        switch (skillRoll)
+        {
+            case 0:
+                textOutput.text = $"A Charisma card with a power of {modifier} was drawn!";
+                break;
+            case 1:
+                textOutput.text = $"A Cleverness card with a power of {modifier} was drawn!";
+                break;
+            case 2:
+                textOutput.text = $"A Creativity card with a power of {modifier} was drawn!";
+                break;
+            case 3:
+                textOutput.text = $"A Courage card with a power of {modifier} was drawn!";
+                break;
+        }
     }
 
     private IEnumerator ShowRollingEffect()
@@ -140,33 +159,10 @@ public class SkillCheck : MonoBehaviour
         switch (skillCheckStage)
         {
             case 0:
-                modifier = Random.Range(1, 5);
-                skillRoll = Random.Range(0, 4);
-                switch (skillRoll)
-                {
-                    case 0:
-                        textOutput.text = $"A Charisma card with a power of {modifier} was drawn!";
-                        break;
-                    case 1:
-                        textOutput.text = $"A Cleverness card with a power of {modifier} was drawn!";
-                        break;
-                    case 2:
-                        textOutput.text = $"A Creativity card with a power of {modifier} was drawn!";
-                        break;
-                    case 3:
-                        textOutput.text = $"A Courage card with a power of {modifier} was drawn!";
-                        break;
-                    default:
-                        textOutput.text = "Hello!";
-                        break;
-                }
+                StartCoroutine(ShowRollingEffect());
                 skillCheckStage = 1;
                 break;
             case 1:
-                StartCoroutine(ShowRollingEffect());
-                skillCheckStage = 2;
-                break;
-            case 2:
                 isRollingDisplayActive = false;
                 diceRoll1 = Random.Range(1, 7);
                 diceRoll2 = Random.Range(1, 7);
@@ -185,15 +181,15 @@ public class SkillCheck : MonoBehaviour
                 {
                     textOutput.text = $"{diceRoll1} + {diceRoll2} + ({modifier}) = {rollTotal}";
                 }
+                skillCheckStage = 2;
+                break;
+
+            case 2:
+                textOutput.text = skillCheckPassed ? "Skill Check Passed!" : "Skill Check Failed...";
                 skillCheckStage = 3;
                 break;
 
             case 3:
-                textOutput.text = skillCheckPassed ? "Skill Check Passed!" : "Skill Check Failed...";
-                skillCheckStage = 4;
-                break;
-
-            case 4:
                 LoadSkillCheckPath(skillCheckPassed);
                 DisplayLine();
                 isSkillCheckTime = false;

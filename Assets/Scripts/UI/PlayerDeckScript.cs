@@ -19,10 +19,16 @@ public class PlayerDeckScript : MonoBehaviour
     // Number of cards per type and power level
     [SerializeField] private int cardCount;
 
+    //private bool deckFilled = false;
+
     // Initialize the deck on Awake
     private void Awake()
     {
-        FillDeck();
+        //if (deckFilled == false)
+        //{
+            FillDeck();
+            //deckFilled = true;
+        //}
     }
 
     // Adds a card to the deck
