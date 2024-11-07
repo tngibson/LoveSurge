@@ -136,6 +136,7 @@ public class SkillCheck : MonoBehaviour
 
     private void HandleSkillCheckClick()
     {
+        AudioManager.instance.PlayOneShot(FMODEvents.instance.uiClick, this.transform.position); // Play click sound
         switch (skillCheckStage)
         {
             case 0:
@@ -257,6 +258,7 @@ public class SkillCheck : MonoBehaviour
 
     public void NextLine()
     {
+        AudioManager.instance.PlayOneShot(FMODEvents.instance.uiClick, this.transform.position); // Play click sound
         currentLineIndex++;
         DisplayLine();
     }
