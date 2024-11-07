@@ -43,7 +43,9 @@ public class SkillCheck : MonoBehaviour
     private int originalLineIndex;  // Index to return to after skill check dialog path
 
     private EventInstance levelMusic;
-    private EventInstance dialogueVoice;
+    private EventInstance dateDialogueVoice;
+    private EventInstance date2DialougeVoice;
+    private EventInstance playerDialogueVoice; 
     private Player playerManager;
     private string playerName;
 
@@ -115,7 +117,8 @@ public class SkillCheck : MonoBehaviour
         speakerNameText.text = currentSpeaker;
         dialogLines[currentLineIndex] = dialogLines[currentLineIndex].Replace("[Player]", playerName);
         UpdateAllPortraits(currentSpeaker);
-        StartCoroutine(TypewriteText(dialogLines[currentLineIndex]));
+        StartCoroutine(TypewriteText(dialogLines[currentLineIndex], currentSpeaker));
+
     }
 
     private void StartSkillCheck()
@@ -210,12 +213,14 @@ public class SkillCheck : MonoBehaviour
             dialogLines = new List<string>(skillCheckPaths.successDialogLines);
             speakersPerLine = new List<string>(skillCheckPaths.successSpeakersPerLine);
             characterSprites = new List<SpriteOptions>(skillCheckPaths.successSpriteOptions);
+            AudioManager.instance.PlayOneShot(FMODEvents.instance.goodResponse, this.transform.position); // Play good sound
         }
         else
         {
             dialogLines = new List<string>(skillCheckPaths.failureDialogLines);
             speakersPerLine = new List<string>(skillCheckPaths.failureSpeakersPerLine);
             characterSprites = new List<SpriteOptions>(skillCheckPaths.failureSpriteOptions);
+            AudioManager.instance.PlayOneShot(FMODEvents.instance.badResponse, this.transform.position); // Play sound sound
         }
 
         currentLineIndex = 0;  // Reset to start of skill check dialog
@@ -231,11 +236,13 @@ public class SkillCheck : MonoBehaviour
         DisplayLine();
     }
 
-    private IEnumerator TypewriteText(string line)
+    private IEnumerator TypewriteText(string line, string speaker)
     {
         textOutput.text = "";
         isTypewriting = true;
         skipRequested = false;
+
+        UpdateVoice(speaker);
 
         foreach (char letter in line.ToCharArray())
         {
@@ -250,6 +257,8 @@ public class SkillCheck : MonoBehaviour
         }
 
         isTypewriting = false;  // Set to false once typewriting is completed
+        UpdateVoice(speaker);
+
     }
 
     public void NextLine()
@@ -294,7 +303,7 @@ public class SkillCheck : MonoBehaviour
 
     private void UpdateVoice(string speaker)
     {
-        var voiceInstance = (speaker == "You" || string.IsNullOrEmpty(speaker)) ? dialogueVoice : dialogueVoice;
+        var voiceInstance = (speaker == "You" || string.IsNullOrEmpty(speaker)) ? playerDialogueVoice : date2DialougeVoice;
         if (isTypewriting)
         {
             voiceInstance.start();
@@ -308,7 +317,9 @@ public class SkillCheck : MonoBehaviour
     private void InitializeAudio()
     {
         levelMusic = AudioManager.instance.CreateInstance(FMODEvents.instance.music);
-        dialogueVoice = AudioManager.instance.CreateInstance(FMODEvents.instance.playerVoice);
+        playerDialogueVoice = AudioManager.instance.CreateInstance(FMODEvents.instance.playerVoice);
+        dateDialogueVoice = AudioManager.instance.CreateInstance(FMODEvents.instance.dateVoice);
+        date2DialougeVoice = AudioManager.instance.CreateInstance(FMODEvents.instance.dateVoice2);  
         PlayBackgroundMusic();
     }
 
