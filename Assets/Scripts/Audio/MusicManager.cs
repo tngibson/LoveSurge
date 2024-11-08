@@ -37,7 +37,7 @@ public class MusicManager : MonoBehaviour
     {
         InitializeMusic(FMODEvents.instance.gameSoundtrack);
         UnityEngine.SceneManagement.Scene scene = SceneManager.GetActiveScene();
-        Debug.Log(scene);
+        AudioSwitcher(EnumSoundtrack.TITLE_THEME);
     }
     public EventInstance CreateInstance(EventReference eventReference)
     {
@@ -61,7 +61,6 @@ public class MusicManager : MonoBehaviour
                 break;
             case EnumSoundtrack.TITLE_THEME:
                 musicEventInstance.setParameterByName("Song", 1);
-                Debug.Log("Title Play");
                 break;
             case EnumSoundtrack.NOKI_THEME:
                 musicEventInstance.setParameterByName("Song", 2);

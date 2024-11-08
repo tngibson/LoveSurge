@@ -18,6 +18,7 @@ public class SceneChecker : MonoBehaviour
         Debug.Log("OnSceneLoaded: " + scene.name + ", Build Index : " + scene.buildIndex.ToString());
         Debug.Log("Load Mode : " + mode);
         MusicManager.instance.AudioSwitcher(track);
+        Debug.Log(track);
     }
 
     // called third
