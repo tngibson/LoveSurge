@@ -281,7 +281,7 @@ public class RandEventHandler : MonoBehaviour
 
     private void InitializeAudio()
     {
-        levelMusic = AudioManager.instance.CreateInstance(FMODEvents.instance.music);
+        //levelMusic = AudioManager.instance.CreateInstance(FMODEvents.instance.music);
         playerDialogueVoice = AudioManager.instance.CreateInstance(FMODEvents.instance.playerVoice);
         dateDialogueVoice = AudioManager.instance.CreateInstance(FMODEvents.instance.dateVoice);
         date2DialougeVoice = AudioManager.instance.CreateInstance(FMODEvents.instance.dateVoice2);

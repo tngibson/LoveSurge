@@ -25,12 +25,13 @@ public class AudioManager : MonoBehaviour
     }
         instance = this;
         eventInstances = new List<EventInstance>();
+        Object.Destroy(this);
    
    }
    
    private void Start()
    {
-        InitializeMusic(FMODEvents.instance.music);
+        //InitializeMusic(FMODEvents.instance.music);
         InitializeVoices(FMODEvents.instance.playerVoice);
 
     }

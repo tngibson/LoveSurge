@@ -9,13 +9,15 @@ using Unity.VisualScripting;
 public class FMODEvents : MonoBehaviour
 {
     [field: Header("Music")]
-    [field: SerializeField] public EventReference music { get; private set; }
 
-    [field: SerializeField] public EventReference lotteTheme {get; private set;}
-    [field: SerializeField] public EventReference samTheme { get; private set; }
-    [field: SerializeField] public EventReference roomateTheme { get; private set; }
-    [field: SerializeField] public EventReference deepConversation { get; private set; }
-    [field: SerializeField] public EventReference anAverageDay { get; private set; }
+    [field: SerializeField] public EventReference gameSoundtrack { get; private set; }
+    //[field: SerializeField] public EventReference music { get; private set; }
+
+   // [field: SerializeField] public EventReference lotteTheme {get; private set;}
+    //[field: SerializeField] public EventReference samTheme { get; private set; }
+    //[field: SerializeField] public EventReference roomateTheme { get; private set; }
+    //[field: SerializeField] public EventReference deepConversation { get; private set; }
+    //[field: SerializeField] public EventReference anAverageDay { get; private set; }
 
 
 
