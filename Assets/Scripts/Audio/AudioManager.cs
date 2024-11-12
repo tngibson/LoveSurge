@@ -12,7 +12,21 @@ public class AudioManager : MonoBehaviour
 {
     // Start is called before the first frame update
    public static AudioManager instance { get; private set;}
-   
+
+   //UI Volume Control
+   [Header("Volume")]
+   [Range(0, 1)]
+   public float masterVolume = 1;
+   [Range(0, 1)]
+   public float musicVolume = 1;
+   [Range(0, 1)]
+   public float sfxVolume = 1;
+   [Range(0, 1)]
+
+   private Bus masterBus;
+   private Bus musicBus;
+   private Bus sfxBus;
+
    private EventInstance musicEventInstance;
    private EventInstance dialougeEventInstance;
    private List<EventInstance> eventInstances;
@@ -26,14 +40,26 @@ public class AudioManager : MonoBehaviour
         instance = this;
         eventInstances = new List<EventInstance>();
         Object.Destroy(this);
-   
-   }
-   
-   private void Start()
+
+        //Set Bus
+        masterBus = RuntimeManager.GetBus("bus:/");
+        musicBus = RuntimeManager.GetBus("bus:/Music");
+        sfxBus = RuntimeManager.GetBus("bus:/SFX");
+
+    }
+
+    private void Start()
    {
         //InitializeMusic(FMODEvents.instance.music);
         InitializeVoices(FMODEvents.instance.playerVoice);
 
+    }
+
+    private void Update()
+    {
+        masterBus.setVolume(masterVolume);
+        musicBus.setVolume(musicVolume);
+        sfxBus.setVolume(sfxVolume);
     }
     public void PlayOneShot(EventReference sound, Vector3 worldPos)
     {
