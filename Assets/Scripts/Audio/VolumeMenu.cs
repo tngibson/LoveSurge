@@ -13,6 +13,7 @@ public class VolumeMenu : MonoBehaviour
 
     [SerializeField] private GameObject menu;
     [SerializeField] private GameObject firstSelected;
+    [SerializeField] AudioMenuToggle audioMenuToggle;
     void Start()
     {
         menu.gameObject.SetActive(false);
@@ -21,7 +22,7 @@ public class VolumeMenu : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (AudioMenuToggle.instance.menuOpen)
+        if (audioMenuToggle.menuOpen)
         {
             ToggleVolumeMenu();
         }
@@ -30,15 +31,17 @@ public class VolumeMenu : MonoBehaviour
 
     {
         //toggle menu OFF
-        if (menu.gameObject.activeInHierarchy)
+        if (menu.activeInHierarchy)
         {
-            menu.gameObject.SetActive(false);
+            menu.SetActive(false);
+            Debug.Log("Closed");
         }
         else
         {
             //toggle menu ON
-            menu.gameObject.SetActive(true);
+            menu.SetActive(true);
             EventSystem.current.SetSelectedGameObject(firstSelected);
+            Debug.Log("Opened");
         }
     }
 }

@@ -20,10 +20,15 @@ public class AudioMenuToggle : MonoBehaviour
         {
             GetPausePressed();
         }
+        else
+        {
+            menuOpen = false;
+        }
+
     }
     public void GetPausePressed()
     {
        Debug.Log("Paused");
-        menuOpen = true;
+       menuOpen = true;
     }
 }
