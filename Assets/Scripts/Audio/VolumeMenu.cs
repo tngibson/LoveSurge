@@ -17,6 +17,7 @@ public class VolumeMenu : MonoBehaviour
     void Start()
     {
         menu.gameObject.SetActive(false);
+        DontDestroyOnLoad(gameObject);
     }
 
     // Update is called once per frame
