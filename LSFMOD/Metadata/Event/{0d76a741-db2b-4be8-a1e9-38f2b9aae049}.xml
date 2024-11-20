@@ -95,6 +95,9 @@
 		<property name="timelockedOffset">
 			<value>7.9921875</value>
 		</property>
+		<relationship name="modulators">
+			<destination>{3de5b287-04be-4d61-b621-656dff506fc4}</destination>
+		</relationship>
 		<relationship name="fadeOutCurve">
 			<destination>{737aef79-72d7-4e57-aed2-132e78fc919e}</destination>
 		</relationship>
@@ -123,6 +126,14 @@
 	</object>
 	<object class="MixerBusPanner" id="{fb05ab96-f827-419b-88b7-c6788a65348f}" />
 	<object class="MixerBusFader" id="{ece437b1-7e2f-46d4-890a-78595bcf8487}" />
+	<object class="RandomizerModulator" id="{3de5b287-04be-4d61-b621-656dff506fc4}">
+		<property name="nameOfPropertyBeingModulated">
+			<value>pitch</value>
+		</property>
+		<property name="amount">
+			<value>9.5</value>
+		</property>
+	</object>
 	<object class="FadeCurve" id="{737aef79-72d7-4e57-aed2-132e78fc919e}">
 		<relationship name="startPoint">
 			<destination>{f3823013-ea78-4b76-a311-858b6807ee59}</destination>
