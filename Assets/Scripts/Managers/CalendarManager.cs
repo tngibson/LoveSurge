@@ -2,20 +2,20 @@ using UnityEngine;
 
 public class CalendarManager : MonoBehaviour
 {
-    public static CalendarManager Instance { get; private set; }
-    public DayManager CurrentDate { get; private set; }
-    public DayPhase CurrentPhase { get; private set; }
+    public static CalendarManager instance { get; private set; }
+    public DayManager currentDate { get; private set; }
+    public DayPhase currentPhase { get; private set; }
 
     void Awake()
     {
-        if (Instance != null && Instance != this)
+        if (instance == null)
         {
-            Destroy(this);
+            instance = this;
+            DontDestroyOnLoad(gameObject);
         }
         else
         {
-            Instance = this;
-            DontDestroyOnLoad(this);
+            Destroy(gameObject);
         }
 
         InitializeCalendar(new DayManager(2023, 1, 1)); // Set start date
@@ -23,25 +23,25 @@ public class CalendarManager : MonoBehaviour
 
     public void InitializeCalendar(DayManager startDate)
     {
-        CurrentDate = startDate;
-        CurrentPhase = DayPhase.Morning;
+        currentDate = startDate;
+        currentPhase = DayPhase.Morning;
     }
 
     public void AdvancePhase()
     {
-        if (CurrentPhase == DayPhase.Evening)
+        if (currentPhase == DayPhase.Evening)
         {
-            CurrentPhase = DayPhase.Morning;
-            CurrentDate.AdvanceDay();
+            currentPhase = DayPhase.Morning;
+            currentDate.AdvanceDay();
         }
         else
         {
-            CurrentPhase++;
+            currentPhase++;
         }
     }
 
     public override string ToString()
     {
-        return $"{CurrentDate.ToString()} - {CurrentPhase}";
+        return $"{currentDate.ToString()} - {currentPhase}";
     }
 }
