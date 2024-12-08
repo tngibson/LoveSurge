@@ -1,3 +1,5 @@
+using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
 
 public class CalendarManager : MonoBehaviour
@@ -18,7 +20,7 @@ public class CalendarManager : MonoBehaviour
             Destroy(gameObject);
         }
 
-        InitializeCalendar(new DayManager(2023, 1, 1)); // Set start date
+        InitializeCalendar(new DayManager(20, 6, 2)); // Set start date
     }
 
     public void InitializeCalendar(DayManager startDate)

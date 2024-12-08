@@ -10,12 +10,14 @@ public class DrawCards : MonoBehaviour
     [SerializeField] private GameObject card4;
     [SerializeField] private GameObject card5;
     [SerializeField] private PlayerDeckScript deckContainer;  // Reference to the deck containing cards
-    [SerializeField] private PlayerArea playerArea;  // Reference to the player's area where cards will be added
+    [SerializeField] private PlayerArea playerArea;           // Reference to the player's area where cards will be added
+    [SerializeField] private int handSize = 4;                // Max hand size the player can have
+
 
     public void Start()
     {
         // Draw 5 cards from the deck and add them to the player's area
-        for (int i = 0; i < 5; i++)
+        for (int i = 0; i < handSize; i++)
         {
             Card card = deckContainer.Draw();
             if (card == null)

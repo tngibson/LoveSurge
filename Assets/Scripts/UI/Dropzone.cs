@@ -12,6 +12,8 @@ public class Dropzone : MonoBehaviour
 
     [SerializeField] private List<Card> playedCards;
     [SerializeField] private int maxCards = 4;
+    [SerializeField] private List<Card> cardsToScore = new List<Card>(); // Cards to be scored this turn
+    [SerializeField] private Card lastPlacedCard; // Most recently placed card
 
     [SerializeField] private DiscardPile discard;
     [SerializeField] private PlayerArea playerArea;
@@ -20,8 +22,8 @@ public class Dropzone : MonoBehaviour
     [SerializeField] public ConvoTopic selectedConvoTopic;
     [SerializeField] private GameManager gameManager;
 
-    // Array to hold four individual dropzones, each capable of storing one card
-    [SerializeField] private DropzoneSlot[] dropzones = new DropzoneSlot[4];
+    // Array to hold the dropzone
+    [SerializeField] private DropzoneSlot dropzone; 
 
     private int score = 0;
     private int lineNum = 0;
@@ -59,22 +61,9 @@ public class Dropzone : MonoBehaviour
     private Player playerManager;
     private string playerName;
 
-    // Awake is called when the script instance is being loaded
-    void Awake()
-    {
-        int maxSlots = dropzones.Length;  // Assuming dropzones is an array of DropzoneSlot components
-        playedCards = new List<Card>(new Card[maxSlots]); // Initializes with nulls up to maxSlots
-    }
-
     // Start is called before the first frame update
     void Start()
     {
-        // Initialize all dropzones and link them to this Dropzone manager
-        foreach (var dropzone in dropzones)
-        {
-            dropzone.Initialize(this);
-        }
-
         // Set the playerManager and get the player's preferred name
         if (GameObject.Find("PlayerManager") != null)
         {
@@ -93,30 +82,44 @@ public class Dropzone : MonoBehaviour
     }
 
     // Adds a card to the played cards list and removes it from the player's area
-    public void AddCardToDropzone(Card card, int dropzoneIndex)
+    public void AddCardToDropzone(Card card)
     {
-        if (card != null && dropzones[dropzoneIndex].IsEmpty && card.Type != "Str")
+        if (card == null) return;
+
+        // Check placement rules (using CanPlaceCard method or similar logic)
+        if (lastPlacedCard == null || AttributesMatch(card, lastPlacedCard))
         {
-            dropzones[dropzoneIndex].SetCard(card);  // Place card in the dropzone
+            // Add card to the dropzone
+            dropzone.AddCard(card); // Add to the internal list
+            cardsToScore.Add(card); // Add to the scoring list
+            card.transform.SetParent(dropzone.transform, false); // Parent it to the DropzoneSlot
 
-            // Directly place the card at the specified dropzoneIndex in playedCards
-            playedCards[dropzoneIndex] = card;
+            // Disable collider to prevent interactions while in dropzone
+            card.GetComponent<Collider2D>().enabled = false;
 
-            // Remove card from player's area
-            playerArea.RemoveCards(card);
+            // Update the card's position based on its stacking order
+            int index = dropzone.GetCards().Count - 1; // Get current index in the stack
+            card.transform.localPosition = new Vector3(0, index * 0.2f, 0); // Slightly staggered stacking
+            card.transform.localScale = Vector3.one; // Reset scale
+            card.transform.rotation = Quaternion.identity; // Reset rotation
 
-            // Update UI and calculate score
-            gameManager.UpdateEndTurnButton(true);
+            // Update the last placed card
+            lastPlacedCard = card;
+
+            Debug.Log($"Card {card.name} placed in DropzoneSlot.");
+            gameManager.UpdateEndTurnButton(true); // Enable end turn button
             CalculateScore();
-        }
-        else if (card != null && card.Type == "Str")
-        {
-            HandleStressCard(card);
         }
         else
         {
-            Debug.LogError("There is no card to add.");
+            Debug.LogError("Cannot place card: Attributes do not match.");
         }
+    }
+
+    private bool AttributesMatch(Card card1, Card card2)
+    {
+        // Check if either type or power matches
+        return card1.Type == card2.Type || card1.Power == card2.Power;
     }
 
     // Method to handle special "Str" type cards separately for modularity
@@ -134,52 +137,47 @@ public class Dropzone : MonoBehaviour
     }
 
     // Removes a card from the dropzone and adds it to the player's area
-    public void RemoveCardFromDropzone(int dropzoneIndex)
+    public void RemoveCardFromDropzone()
     {
-        Card card = dropzones[dropzoneIndex].GetCard();
-        if (card != null)
+        Card topCard = dropzone.TopCard; // Get the current top card
+        if (topCard != null)
         {
-            // Return card to player area
-            playerArea.AddCards(card);
+            // Remove the top card from the dropzone and add it back to the player's hand
+            playerArea.AddCards(topCard);
+            cardsToScore.Remove(topCard);
+            dropzone.RemoveTopCard();
 
-            // Clear the dropzone slot
-            dropzones[dropzoneIndex].ClearCard();
+            // Update the last placed card to the new top card
+            lastPlacedCard = dropzone.TopCard;
 
-            // Set the corresponding index in playedCards to null instead of removing
-            playedCards[dropzoneIndex] = null;
-
-            // Check if all dropzones are empty to update the end turn button state
-            if (AllDropzonesEmpty())
-            {
-                gameManager.UpdateEndTurnButton(false);  // Disable end turn button if no cards are placed
-            }
-
-            CalculateScore();  // Recalculate the score
+            // Reset UI or other visual elements if necessary
+            gameManager.UpdateEndTurnButton(false); // Disable end turn button if dropzone is empty
+            CalculateScore();
         }
     }
 
     public void ReturnCards()
     {
-        for (int i = 0; i < dropzones.Length; i++)
+        List<Card> cards = dropzone.GetCards(); // Get all cards in the dropzone
+        foreach (Card card in cards)
         {
-            Card card = dropzones[i].GetCard();
-            if (card != null)
-            {
-                // Add the card back to the player's hand
-                playerArea.AddCards(card);
-
-                // Reset the card's parent to the player area to maintain correct hierarchy
-                card.transform.SetParent(playerArea.transform, false);
-
-                // Clear the dropzone slot
-                dropzones[i].ClearCard();
-
-                // Set the corresponding playedCards slot to null instead of removing it
-                playedCards[i] = null;
-            }
+            // Add each card back to the player's hand
+            playerArea.AddCards(card);
+            card.transform.SetParent(playerArea.transform, false); // Reset card hierarchy visually
         }
 
-        // Reset the score since no cards are left in the dropzones
+        // Clear the dropzone
+        dropzone.ClearAllCards();
+
+        // Reset last placed card
+        lastPlacedCard = null;
+
+        // Clear the cards to score
+        cardsToScore.Clear();
+        Debug.Log(cardsToScore.Count);
+
+        // Update UI or other states if necessary
+        gameManager.UpdateEndTurnButton(false); // Disable end turn button
         CalculateScore();
     }
 
@@ -197,7 +195,7 @@ public class Dropzone : MonoBehaviour
             failedConvo = false;
             ResetDialogFlags();
             lineNum = 0;
-            initialPower = selectedConvoTopic.PowerNum;   // Store the initial power of the topic
+            initialPower = selectedConvoTopic.TierPower;   // Store the initial power of the topic
             selectedConvoTopic.isLocked = true;           // Lock the topic to prevent changes during scoring
         }
 
@@ -205,24 +203,21 @@ public class Dropzone : MonoBehaviour
         CalculateScore();
 
         // Move all cards to the discard pile asynchronously
-        StartCoroutine(DiscardCards());
+        //Currently removed for obsolescence
+        // StartCoroutine(DiscardCards());
 
         // Calculate the new power level after subtracting the score
-        int targetPowerNum = selectedConvoTopic.PowerNum - score;
-        selectedConvoTopic.PowerNum = targetPowerNum;  // Update the power level of the topic
+        int targetPowerNum = selectedConvoTopic.TierPower - score;
+        selectedConvoTopic.tierPower = targetPowerNum;  // Update the power level of the topic
 
         // Start the countdown of the power value (smooth UI animation)
         StartCoroutine(CountDownPower(initialPower, targetPowerNum));
 
         // If the topic's power is depleted, complete the conversation topic
-        if (selectedConvoTopic.PowerNum <= 0)
+        if (selectedConvoTopic.TierPower <= 0)
         {
             CompleteConvo();
-        }
-        // If the maximum turn count is reached without depleting power, the topic fails
-        else if (gameManager.turnCount >= gameManager.maxTurnCount)
-        {
-            FailConvo();
+            selectedConvoTopic.ProgressToNextTier(); // Move to the next tier or finish
         }
 
         if (!completedConvo && !failedConvo)
@@ -235,43 +230,44 @@ public class Dropzone : MonoBehaviour
         ResetAfterScoring();
     }
 
+    public void ResetForNewTurn()
+    {
+        // Remove the DragDrop script from all of the cards that were scored
+        foreach (Card card in cardsToScore)
+        {
+            Destroy(card.GetComponent<DragDrop>());
+        }
+
+        // Clear cardsToScore for a fresh scoring list
+        cardsToScore.Clear();
+        // Maintain cards in dropzone but reset lastPlacedCard
+        lastPlacedCard = dropzone.TopCard; // Set to the current top card in dropzone
+    }
+
     // Method to calculate score (call anytime score may be changed)
     public void CalculateScore()
     {
         // Reset score to recalculate
         score = 0;
 
-        if (playedCards.Count != 0 && gameManager.IsTopicSelected)
+        // Calculate total power and find the highest power
+        int totalPower = 0;
+        int highestPower = 0;
+
+        if (cardsToScore.Count != 0 && gameManager.IsTopicSelected)
         {
             // Iterate through all played cards to calculate the score
-            for (int i = 0; i < playedCards.Count; i++)
+            foreach (Card card in cardsToScore)
             {
-                Card card1 = playedCards[i];
-
-                // Skip null entries in the playedCards list
-                if (card1 == null) continue;
-
-                // Add the card's power to the score
-                score += card1.Power;
-
-                // If there's a next card, apply bonuses based on matching attributes
-                if (i + 1 < playedCards.Count)
+                totalPower += card.Power;
+                if (card.Power > highestPower)
                 {
-                    Card card2 = playedCards[i + 1];
-
-                    // Skip null comparisons
-                    if (card2 != null)
-                    {
-                        // Bonus points for matching types or similar power levels
-                        if (card1.Type == card2.Type) { score++; }
-                        if (card1.Power == card2.Power) { score++; }
-                        if (card1.Power == card2.Power - 1) { score++; }
-                    }
+                    highestPower = card.Power;
                 }
-
-                // Bonus points for matching the selected conversation topic
-                if (card1.Type == selectedConvoTopic.ConvoAttribute.Substring(0, 3)) { score++; }
             }
+
+            // Apply scoring formula: (sum of powers) * (highest power value)
+            score = totalPower * highestPower;
 
             // Update the current score text field with the recalculated score
             currentScoreText.text = "Current Score: " + score.ToString();
@@ -284,6 +280,8 @@ public class Dropzone : MonoBehaviour
     }
 
     // Coroutine that moves all cards from the dropzones to the discard pile at once.
+    // Currently removed for obsolescence
+    /*
     private IEnumerator DiscardCards()
     {
         List<Coroutine> discardCoroutines = new List<Coroutine>();
@@ -310,8 +308,11 @@ public class Dropzone : MonoBehaviour
             yield return coroutine;
         }
     }
+    */
 
     // Modified to support simultaneous movement
+    // Currently removed for obsolescence
+    /*
     private IEnumerator MoveCardToDiscardPile(Card card)
     {
         Vector3 startPosition = card.transform.position;
@@ -338,6 +339,7 @@ public class Dropzone : MonoBehaviour
         card.transform.localScale = targetScale;
         card.transform.SetParent(discard.transform, true);
     }
+    */
 
 
 
@@ -351,13 +353,13 @@ public class Dropzone : MonoBehaviour
             dialogQueue.Enqueue(PlayDialog());  // Enqueue dialog for full power
         }
 
-        if (!dialogPlayedAtHalfPower && selectedConvoTopic.PowerNum <= initialPower / 2)
+        if (!dialogPlayedAtHalfPower && selectedConvoTopic.TierPower <= initialPower / 2)
         {
             dialogPlayedAtHalfPower = true;
             dialogQueue.Enqueue(PlayDialog());  // Enqueue dialog for half power
         }
 
-        if (!dialogPlayedAtZeroPower && selectedConvoTopic.PowerNum <= 0)
+        if (!dialogPlayedAtZeroPower && selectedConvoTopic.TierPower <= 0)
         {
             dialogPlayedAtZeroPower = true;
             dialogQueue.Enqueue(PlayDialog());  // Enqueue dialog for zero power
@@ -377,9 +379,12 @@ public class Dropzone : MonoBehaviour
 
         CheckDialogTriggers();
 
-        // Move the topic to the "done" list and remove it from active topics
-        topicContainer.doneConvos.Add(selectedConvoTopic);
-        topicContainer.convoTopics.Remove(selectedConvoTopic);
+        if (selectedConvoTopic.CurrentTier >= 3)
+        {
+            // Move the topic to the "done" list and remove it from active topics
+            topicContainer.doneConvos.Add(selectedConvoTopic);
+            topicContainer.convoTopics.Remove(selectedConvoTopic);
+        }
 
         // Reset the convoText
         selectedConvoTopic.convoText.text = "Awaiting Topic...";
@@ -387,13 +392,14 @@ public class Dropzone : MonoBehaviour
         // Reset topic selection state for the next round
         selectedConvoTopic.isClicked = false;
         gameManager.IsTopicSelected = false;
-        gameManager.turnCount = 0;
 
         // Re-enable topic buttons for the next selection
         topicContainer.EnableButtons();
     }
 
     // Handles the failure of a conversation topic by moving it to the "failed" list and resetting relevant states for the next round.
+    // Currently removed for obsolescence
+    /*
     private void FailConvo()
     {
         failedConvo = true;
@@ -417,6 +423,7 @@ public class Dropzone : MonoBehaviour
         // Re-enable topic buttons for the next selection
         topicContainer.EnableButtons();
     }
+    */
 
     // Clears all cards from dropzones and resets the current score to 0.
     private void ResetAfterScoring()
@@ -579,7 +586,7 @@ public class Dropzone : MonoBehaviour
         ScrollToBottom();  // Keep the scroll at the bottom
 
         // Add a new line after the conversation ends to distinguish it from the next one
-        if (lineNum >= maxLineNum - 1) 
+        if (lineNum >= maxLineNum - 1)
         {
             dialogText.text += "\n\n";  // Add spacing to separate conversations
             AdjustTextBoxHeight();
@@ -598,7 +605,7 @@ public class Dropzone : MonoBehaviour
             color.r * factor,
             color.g * factor,
             color.b * factor,
-            color.a 
+            color.a
         );
     }
 
@@ -633,26 +640,16 @@ public class Dropzone : MonoBehaviour
         }
 
         // Ensure the final value is set correctly
-        selectedConvoTopic.PowerNum = endValue;
+        selectedConvoTopic.tierPower = endValue;
         selectedConvoTopic.numText.text = endValue.ToString();
 
-        if (selectedConvoTopic.PowerNum <= 0)
+        if (selectedConvoTopic.TierPower <= 0)
         {
             selectedConvoTopic.numText.text = ""; // Hide the num text
             selectedConvoTopic.finishedText.SetActive(true); // Show the finished text
             selectedConvoTopic.background.color = new Color(0.68f, 0.85f, 0.90f, 1); // Pastel blue
             selectedConvoTopic.isLocked = false;
             selectedConvoTopic.ToggleClick(true);
-            gameManager.ResetConvoTopic();
-        }
-        else if (gameManager.turnCount >= gameManager.maxTurnCount && selectedConvoTopic.PowerNum > 0)
-        {
-            selectedConvoTopic.numText.text = ""; // Hide the num text
-            selectedConvoTopic.bustedText.SetActive(true); // Show the busted text
-            selectedConvoTopic.background.color = new Color(1f, 0.5f, 0.5f, 1f); // Pastel red
-            selectedConvoTopic.isLocked = false;
-            selectedConvoTopic.ToggleClick(true);
-            gameManager.turnCount = 0;
             gameManager.ResetConvoTopic();
         }
     }
@@ -686,6 +683,8 @@ public class Dropzone : MonoBehaviour
     }
 
     // Checks if all dropzones are empty.
+    // Currently removed for obsolescence
+    /*
     private bool AllDropzonesEmpty()
     {
         foreach (var dropzone in dropzones)
@@ -694,6 +693,7 @@ public class Dropzone : MonoBehaviour
         }
         return true;
     }
+    */
 
     // Coroutine to play all dialogs in the queue sequentially
     private IEnumerator PlayQueuedDialogs()
@@ -718,10 +718,20 @@ public class Dropzone : MonoBehaviour
 
     public void ValidateDropzoneState()
     {
-        foreach (var slot in dropzones) 
+        // Ensure the dropzone is properly managed
+        if (dropzone.TopCard == null && dropzone.GetCards().Count > 0)
         {
-            if (slot.transform.childCount == 0)
-                slot.ClearCard();  // Clear the card if there is no child object
+            dropzone.ClearAllCards(); // Clear invalid state
         }
+    }
+
+    public bool CanPlaceCard(Card card)
+    {
+        return lastPlacedCard == null || AttributesMatch(card, lastPlacedCard);
+    }
+
+    public DropzoneSlot GetDropzone()
+    {
+        return dropzone;
     }
 }

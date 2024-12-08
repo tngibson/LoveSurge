@@ -46,6 +46,6 @@ public class DayManager
 
     public override string ToString()
     {
-        return $"{Year:0000}-{Month:00}-{Day:00}";
+        return $"{Year:00XX}-{Month:00}-{Day:00}";
     }
 }

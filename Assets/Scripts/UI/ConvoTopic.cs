@@ -9,8 +9,12 @@ public class ConvoTopic : MonoBehaviour
     [SerializeField] private string convoAttribute;
     public string ConvoAttribute { get { return convoAttribute; } set { convoAttribute = value; } }
 
-    [SerializeField] private int powerNum;
-    public int PowerNum { get { return powerNum; } set { powerNum = value; } }
+    [SerializeField] private int currentTier = 1; // Current tier (1, 2, or 3)
+    [SerializeField] public int tierPower; // Current tier's power
+    [SerializeField] private int[] tierPowers = { 350, 400, 500 }; // Points for each tier
+
+    public int CurrentTier => currentTier;
+    public int TierPower => tierPower;
 
     // UI components for displaying attribute and power number
     [SerializeField] private TextMeshProUGUI attributeText;
@@ -43,11 +47,11 @@ public class ConvoTopic : MonoBehaviour
     // To track if this convo topic has been clicked
     public bool isClicked = false;
 
-    // Tracks if the convo topic is failed
-    public bool isFailed = false;
-
     // To track if the player is locked into a convo topic
     public bool isLocked = false;
+
+    // To track if this convo topic is completed
+    public bool isCompleted = false;
 
     public RectTransform buttonTransform;
     public float pressAmount = 5f; // The amount the button moves down when clicked
@@ -66,6 +70,11 @@ public class ConvoTopic : MonoBehaviour
         dropZone = GameObject.Find("ConvoTopicPanel");
         SetIcon();
         changeBGColor();
+
+        // Initialize the first tier
+        currentTier = 1;
+        tierPower = tierPowers[currentTier - 1];
+        UpdatePowerUI();
     }
 
     // Set the conversation topic and update the UI
@@ -80,7 +89,7 @@ public class ConvoTopic : MonoBehaviour
     // Set the power number and update the UI
     public void SetNum(int numInput)
     {
-        powerNum = numInput;
+        tierPower = numInput;
         numText.text = numInput.ToString();
     }
 
@@ -143,9 +152,9 @@ public class ConvoTopic : MonoBehaviour
         }
     }
     // Return the power number
-    public int GetPowerNum()
+    public int GetTierPower()
     {
-        return powerNum;
+        return tierPower;
     }
 
     // Return the conversation topic
@@ -157,7 +166,7 @@ public class ConvoTopic : MonoBehaviour
     // Called when the button is pressed, changes background color and updates state
     public void OnButtonPress()
     {
-        if (!isClicked && !isFailed && powerNum > 0)
+        if (!isClicked && tierPower > 0)
         {
             ToggleClick(isClicked);
 
@@ -171,7 +180,7 @@ public class ConvoTopic : MonoBehaviour
             gameManager.IsTopicSelected = true;
             gameManager.currentConvoTopic = this;
         }
-        else if (isClicked && !isFailed && powerNum > 0 && !isLocked)
+        else if (isClicked && tierPower > 0 && !isLocked)
         {
             ToggleClick(isClicked);
 
@@ -206,6 +215,33 @@ public class ConvoTopic : MonoBehaviour
             // Move the button down when clicked
             buttonTransform.anchoredPosition = new Vector2(buttonTransform.anchoredPosition.x, buttonTransform.anchoredPosition.y - pressAmount);
         }
+    }
+
+    public void ProgressToNextTier()
+    {
+        if (currentTier < tierPowers.Length)
+        {
+            currentTier++; // Move to the next tier
+            tierPower = tierPowers[currentTier - 1]; // Update tier power
+            isClicked = false;
+            isLocked = false;
+            UpdatePowerUI();
+
+            Debug.Log($"Convo Topic progressed to Tier {currentTier}.");
+        }
+        else
+        {
+            // Mark the topic as completed
+            isClicked = false;
+            isLocked = false;
+            isCompleted = true;
+            Debug.Log("Convo Topic fully completed.");
+        }
+    }
+
+    private void UpdatePowerUI()
+    {
+        numText.text = tierPower > 0 ? tierPower.ToString() : ""; // Show power if above 0
     }
 }
 

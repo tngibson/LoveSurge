@@ -19,15 +19,15 @@ public class PlayerDeckScript : MonoBehaviour
     // Number of cards per type and power level
     [SerializeField] private int cardCount;
 
-    //private bool deckFilled = false;
+    [SerializeField] private int maxCardPower = 5;
 
     // Initialize the deck on Awake
     private void Awake()
     {
         //if (deckFilled == false)
         //{
-            FillDeck();
-            //deckFilled = true;
+        FillDeck();
+        //deckFilled = true;
         //}
     }
 
@@ -56,7 +56,7 @@ public class PlayerDeckScript : MonoBehaviour
     private void FillDeck()
     {
         // Loop through the cards and create the deck based on `cardCount` for each power level
-        for (int i = 1; i <= 4; i++) // Powers 1, 2, 3, and 4
+        for (int i = 1; i <= maxCardPower; i++) // Powers from 1 to maxCardPower
         {
             for (int j = 0; j < cardCount; j++)
             {
@@ -98,7 +98,6 @@ public class PlayerDeckScript : MonoBehaviour
             {
                 MakeCard(stressCard, i);
             }
-        }   
+        }
     }
 }
-
