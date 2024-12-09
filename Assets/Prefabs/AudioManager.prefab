@@ -9,7 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2940753333971068076}
-  - component: {fileID: 1204149368896222880}
+  - component: {fileID: 8820709199529070112}
   m_Layer: 0
   m_Name: AudioManager
   m_TagString: Untagged
@@ -33,7 +33,7 @@ Transform:
   - {fileID: 194150219122257520}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1204149368896222880
+--- !u!114 &8820709199529070112
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -45,6 +45,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 01b1aaa9aaf3e7142bfd99bb16bf1519, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  masterVolume: 1
+  musicVolume: 1
+  sfxVolume: 1
 --- !u!1 &7435091223773093968
 GameObject:
   m_ObjectHideFlags: 0
@@ -89,48 +92,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 41e3bff62702a494e9a28ee1b9bb4a98, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  <music>k__BackingField:
+  <gameSoundtrack>k__BackingField:
     Guid:
-      Data1: 1277772494
-      Data2: 1149568430
-      Data3: 455371962
-      Data4: 297081059
-    Path: event:/Music/anAverageDay
-  <lotteTheme>k__BackingField:
-    Guid:
-      Data1: -1833997649
-      Data2: 1184496280
-      Data3: -1639951457
-      Data4: -2713297
-    Path: event:/Music/lotteTheme
-  <samTheme>k__BackingField:
-    Guid:
-      Data1: 1300156995
-      Data2: 1165030288
-      Data3: 1209920696
-      Data4: -127509072
-    Path: event:/Music/samTheme
-  <roomateTheme>k__BackingField:
-    Guid:
-      Data1: -1217347897
-      Data2: 1202790394
-      Data3: 669381566
-      Data4: -1596217073
-    Path: event:/Music/roomateTheme
-  <deepConversation>k__BackingField:
-    Guid:
-      Data1: -415721628
-      Data2: 1318390846
-      Data3: 960163739
-      Data4: -981010115
-    Path: event:/Music/deepConversation
-  <anAverageDay>k__BackingField:
-    Guid:
-      Data1: 1277772494
-      Data2: 1149568430
-      Data3: 455371962
-      Data4: 297081059
-    Path: event:/Music/anAverageDay
+      Data1: 1391730313
+      Data2: 1177866133
+      Data3: 1771741348
+      Data4: -284715698
+    Path: event:/Music/gameSoundtrack
   <cardPlaced>k__BackingField:
     Guid:
       Data1: 785571725
@@ -161,18 +129,18 @@ MonoBehaviour:
     Path: event:/SFX/Cards/cardClick
   <dateVoice>k__BackingField:
     Guid:
-      Data1: -280023058
-      Data2: 1230527890
-      Data3: 1059141045
-      Data4: -151194650
-    Path: event:/SFX/Voices/Old/maleVoice
+      Data1: -153891535
+      Data2: 1124538250
+      Data3: 214067122
+      Data4: 573354995
+    Path: event:/SFX/Voices/Old/samVoice
   <dateVoice2>k__BackingField:
     Guid:
-      Data1: -280023058
-      Data2: 1230527890
-      Data3: 1059141045
-      Data4: -151194650
-    Path: event:/SFX/Voices/Old/maleVoice
+      Data1: -153891535
+      Data2: 1124538250
+      Data3: 214067122
+      Data4: 573354995
+    Path: event:/SFX/Voices/Old/samVoice
   <playerVoice>k__BackingField:
     Guid:
       Data1: -280023058
