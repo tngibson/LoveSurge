@@ -56,7 +56,6 @@ public class DragDrop : MonoBehaviour
             Vector3 mousePosition = Input.mousePosition;
             mousePosition.z = 0;  // Ensure it stays in the 2D plane
             transform.position = mousePosition;
-
         }
     }
 

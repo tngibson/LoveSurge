@@ -12,7 +12,7 @@ public class Dropzone : MonoBehaviour
 
     [SerializeField] private List<Card> playedCards;
     [SerializeField] private int maxCards = 4;
-    [SerializeField] private List<Card> cardsToScore = new List<Card>(); // Cards to be scored this turn
+    [SerializeField] public List<Card> cardsToScore = new List<Card>(); // Cards to be scored this turn
     [SerializeField] private Card lastPlacedCard; // Most recently placed card
 
     [SerializeField] private DiscardPile discard;

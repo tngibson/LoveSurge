@@ -23,6 +23,7 @@ public class DropzoneSlot : MonoBehaviour
 
         Destroy(startingCard.GetComponent<DragDrop>());
         dropzone.AddCardToDropzone(startingCard);
+        dropzone.cardsToScore.Remove(startingCard);
     }
 
     public void AddCard(Card card)
