@@ -15,8 +15,10 @@ public class DragDrop : MonoBehaviour
 
     private DragDrop targetCard;      // The card this one is dropped on (for swapping)
     private DropzoneSlot currentDropZone; // The dropzone this card is over
+    private DiscardPile currentDiscard; // The discard pile this card is over
     private bool isOverDropZone = false; // Track if card is over a dropzone
     private bool isOverPlayerArea = false;  // Track if card is over the player areas
+    private bool isOverDiscardPile = false;  // Track if card is over the discard pile
 
     private Vector3 initialPositionA;  // Initial position of this card
     private Vector3 initialPositionB;  // Initial position of the target card
@@ -90,6 +92,10 @@ public class DragDrop : MonoBehaviour
         else if (isOverPlayerArea)  // Return the card to the player area
         {
             ReturnToPlayerArea();
+        }
+        else if (isOverDiscardPile)
+        {
+            DiscardCard();
         }
         else  // Return to original position if no valid drop
         {
@@ -186,6 +192,23 @@ public class DragDrop : MonoBehaviour
         transform.position = startPos;  // Reset position
     }
 
+    private void DiscardCard()
+    {
+        playerArea.RemoveCards(GetComponent<Card>()); // Add card back to the player area
+
+        transform.SetParent(currentDiscard.transform, false);  // Reset parent to original
+
+        // Disable DragDrop functionality
+        var dragDropComponent = GetComponent<DragDrop>();
+        if (dragDropComponent != null)
+        {
+            dragDropComponent.enabled = false;
+        }
+
+        // Deactivate the GameObject
+        gameObject.SetActive(false);
+    }
+
     private void OnTriggerEnter2D(Collider2D collision)
     {
         // Check if the collider is another DragDrop component
@@ -212,6 +235,16 @@ public class DragDrop : MonoBehaviour
             playerAreaCounter++; // Increment counter
             isOverPlayerArea = true; // Ensure it's set to true if we're over the PlayerArea
             Debug.Log("Enter Area!");
+        }
+
+
+        DiscardPile discard = collision.GetComponent<DiscardPile>();
+        // Check if the collider is the DiscardPile
+        if (collision.GetComponent<DiscardPile>() != null)
+        {
+            isOverDiscardPile = true; // Ensure it's set to true if we're over the DiscardPile
+            currentDiscard = discard;
+            Debug.Log("Enter Discard!");
         }
     }
 
@@ -241,6 +274,14 @@ public class DragDrop : MonoBehaviour
                 isOverPlayerArea = false; // Only set to false if counter is zero or less
                 Debug.Log("Exit Area!");
             }
+        }
+
+        // Check if the collider is the DiscardPile
+        if (collision.GetComponent<DiscardPile>() != null)
+        {
+            isOverDiscardPile = false; // Ensure it's set to true if we're over the DiscardPile
+            currentDiscard = null;
+            Debug.Log("Exit Discard!");
         }
     }
 
