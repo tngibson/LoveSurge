@@ -32,7 +32,7 @@ public class SkillCheck : MonoBehaviour
     private bool skipRequested = false; // If the skip button is pressed
 
     private int modifier;
-    private int skillRoll;
+    private int skillShake;
     private int diceRoll1, diceRoll2;  // Final values for dice rolls
 
     private int skillCheckStage = 0;  // Track which stage of skill check we are in
@@ -43,6 +43,7 @@ public class SkillCheck : MonoBehaviour
     private int originalLineIndex;  // Index to return to after skill check dialog path
 
     private EventInstance levelMusic;
+    private EventInstance diceShake;
     private EventInstance dateDialogueVoice;
     private EventInstance date2DialougeVoice;
     private EventInstance playerDialogueVoice; 
@@ -128,8 +129,8 @@ public class SkillCheck : MonoBehaviour
         skillCheckStage = 0;
         // Rolls which card is drawn, THIS WILL BE CHANGED LATER WHEN MORE CARDS ARE ADDED
         modifier = Random.Range(1, 5);
-        skillRoll = Random.Range(0, 4);
-        switch (skillRoll)
+        skillShake = Random.Range(0, 4);
+        switch (skillShake)
         {
             case 0:
                 textOutput.text = $"A Charisma card with a power of {modifier} was drawn!";
@@ -165,7 +166,7 @@ public class SkillCheck : MonoBehaviour
             case 0:
                 StartCoroutine(ShowRollingEffect());
                 skillCheckStage = 1;
-                //AudioManager.instance.PlayOneShot(FMODEvents.instance.diceShake, this.transform.position);
+                diceShake.start();
 
                 break;
             case 1:
@@ -173,13 +174,13 @@ public class SkillCheck : MonoBehaviour
                 diceRoll1 = Random.Range(1, 7);
                 diceRoll2 = Random.Range(1, 7);
                 int rollTotal = diceRoll1 + diceRoll2 + modifier;
-                if (skillRoll == currentSkillIndex)
+                if (skillShake == currentSkillIndex)
                 {
                     rollTotal += 1;
                 }
                 //
                 skillCheckPassed = rollTotal >= skillCheckThreshold;
-                if (skillRoll == currentSkillIndex)
+                if (skillShake == currentSkillIndex)
                 {
                     textOutput.text = $"{diceRoll1} + {diceRoll2} + ({modifier}) + (1 | same type bonus!) = {rollTotal}";
                 }
@@ -188,7 +189,7 @@ public class SkillCheck : MonoBehaviour
                     textOutput.text = $"{diceRoll1} + {diceRoll2} + ({modifier}) = {rollTotal}";
                 }
                 skillCheckStage = 2;
-                //AudioManager.instance.CleanUpLoop(FMODEvents.instance.diceShake);
+                diceShake.stop(FMOD.Studio.STOP_MODE.ALLOWFADEOUT);
                 AudioManager.instance.PlayOneShot(FMODEvents.instance.diceRoll, this.transform.position);
 
                 break;
@@ -327,8 +328,7 @@ public class SkillCheck : MonoBehaviour
         playerDialogueVoice = AudioManager.instance.CreateInstance(FMODEvents.instance.playerVoice);
         dateDialogueVoice = AudioManager.instance.CreateInstance(FMODEvents.instance.dateVoice);
         date2DialougeVoice = AudioManager.instance.CreateInstance(FMODEvents.instance.dateVoice2);  
-        //diceRoll = AudioManager.instance.CreateInstance(FMODEvents.instance.diceRoll);
-        //diceShake = AudioManager.instance.CreateInstance(FMODEvents.instance.diceShake);
+        diceShake = AudioManager.instance.CreateInstance(FMODEvents.instance.diceShake);
 
         PlayBackgroundMusic();
     }

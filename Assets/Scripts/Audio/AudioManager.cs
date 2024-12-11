@@ -75,14 +75,6 @@ public class AudioManager : MonoBehaviour
         eventInstances.Add(eventInstance);
         return eventInstance;
     }
-    public EventInstance StartInstance(EventReference eventReference)
-    {
-        EventInstance eventInstance = RuntimeManager.CreateInstance(eventReference);
-        eventInstance.start();
-        return eventInstance;
-
-    }
-
     private void InitializeMusic(EventReference musicEventReference)
     {
         musicEventInstance = CreateInstance(musicEventReference);
@@ -108,7 +100,7 @@ public class AudioManager : MonoBehaviour
     {
         dialougeEventInstance.setParameterByName("textTyping", (float) textTyping);
     }
-    public void CleanUp()
+    private void CleanUp()
     {
         //stop and release created instances
         foreach (EventInstance eventInstance in eventInstances)
@@ -121,7 +113,8 @@ public class AudioManager : MonoBehaviour
         {
             eventInstance.stop(FMOD.Studio.STOP_MODE.ALLOWFADEOUT);
             eventInstance.release();
-        }
+     }
+
     private void OnDestroy()
     {
         CleanUp();
