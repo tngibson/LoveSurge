@@ -22,6 +22,6 @@ public class PlayerArea : MonoBehaviour
     // Remove a card from the player's hand
     public void RemoveCards(Card card)
     {
-        cardsInHand.Remove(card); 
+        cardsInHand.Remove(card);
     }
 }

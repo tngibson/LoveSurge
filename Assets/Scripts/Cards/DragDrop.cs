@@ -47,7 +47,7 @@ public class DragDrop : MonoBehaviour
         {
             Debug.LogError("PlayerArea not found in the scene.");
         }
-        card = this.GetComponent<Card>();
+        card = GetComponent<Card>();
     }
 
     void Update()
@@ -194,7 +194,7 @@ public class DragDrop : MonoBehaviour
 
     private void DiscardCard()
     {
-        playerArea.RemoveCards(GetComponent<Card>()); // Add card back to the player area
+        playerArea.RemoveCards(GetComponent<Card>()); // Remove card from player area
 
         transform.SetParent(currentDiscard.transform, false);  // Reset parent to original
 

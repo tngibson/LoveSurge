@@ -40,7 +40,6 @@ public class ConvoTopic : MonoBehaviour
     [SerializeField] private Color couColor;
     [SerializeField] private Color creColor;
     // Drop zone and game manager references
-    [SerializeField] private GameObject dropZone;
     [SerializeField] private Dropzone dropZoneScript;
     [SerializeField] private GameManager gameManager;
 
@@ -67,7 +66,7 @@ public class ConvoTopic : MonoBehaviour
     void Start()
     {
         // Initialize drop zone and set the appropriate icon based on the convoAttribute
-        dropZone = GameObject.Find("ConvoTopicPanel");
+        dropZoneScript = GameObject.Find("CardSlotsPanel").GetComponent<Dropzone>();
         SetIcon();
         changeBGColor();
 
