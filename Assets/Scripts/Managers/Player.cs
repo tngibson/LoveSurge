@@ -9,6 +9,7 @@ public class Player : MonoBehaviour
     // order of stats is Charisma, Cleverness, Creativity, Courage
     public List<int> stats = new List<int>();
     public static Player instance;
+    public int cash = 0;
 
     void Awake()
     {
@@ -28,7 +29,7 @@ public class Player : MonoBehaviour
 
        for (int i = 0; i <4; i++)
         {
-            stats.Add(4);
+            stats.Add(0);
         }
     }
     public void SetName(string name)
