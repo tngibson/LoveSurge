@@ -28,6 +28,7 @@ public class AudioManager : MonoBehaviour
    private Bus sfxBus;
 
    private EventInstance musicEventInstance;
+   private EventInstance environmentEventInstance;
    private EventInstance dialougeEventInstance;
    private List<EventInstance> eventInstances;
 
@@ -50,9 +51,10 @@ public class AudioManager : MonoBehaviour
     }
 
     private void Start()
-   {
+    {
         //InitializeMusic(FMODEvents.instance.music);
         InitializeVoices(FMODEvents.instance.playerVoice);
+        InitializeEnvironment(FMODEvents.instance.environmentTrack);
 
     }
 
@@ -73,11 +75,16 @@ public class AudioManager : MonoBehaviour
         eventInstances.Add(eventInstance);
         return eventInstance;
     }
-    
     private void InitializeMusic(EventReference musicEventReference)
     {
         musicEventInstance = CreateInstance(musicEventReference);
         musicEventInstance.start();
+    }
+    private void InitializeEnvironment(EventReference musicEventReference)
+    {
+        environmentEventInstance = CreateInstance(musicEventReference);
+        PlayOneShot(FMODEvents.instance.envIntroSound, this.transform.position);
+        environmentEventInstance.start();
     }
 
     private void InitializeVoices(EventReference eventReference)
@@ -102,6 +109,11 @@ public class AudioManager : MonoBehaviour
             eventInstance.release();
         }
     }
+    public void CleanUpLoop(EventInstance eventInstance)
+        {
+            eventInstance.stop(FMOD.Studio.STOP_MODE.ALLOWFADEOUT);
+            eventInstance.release();
+     }
 
     private void OnDestroy()
     {
