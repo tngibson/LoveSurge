@@ -13,9 +13,11 @@ public class FMODEvents : MonoBehaviour
     [field: SerializeField] public EventReference gameSoundtrack { get; private set; }
     [field: SerializeField] public EventReference environmentTrack { get; private set; }
     [field: SerializeField] public EventReference envIntroSound { get; private set; }
-    
+    [field: SerializeField] public EventReference currentRingtone { get; private set; }
+
+
     //[field: SerializeField] public EventReference music { get; private set; }
-   // [field: SerializeField] public EventReference lotteTheme {get; private set;}
+    // [field: SerializeField] public EventReference lotteTheme {get; private set;}
     //[field: SerializeField] public EventReference samTheme { get; private set; }
     //[field: SerializeField] public EventReference roomateTheme { get; private set; }
     //[field: SerializeField] public EventReference deepConversation { get; private set; }
@@ -38,6 +40,14 @@ public class FMODEvents : MonoBehaviour
     [field: SerializeField] public EventReference uiClick { get; private set; }
     [field: SerializeField] public EventReference goodResponse { get; private set; }
     [field: SerializeField] public EventReference badResponse { get; private set; }
+    [field: SerializeField] public EventReference connectionBarUp { get; private set; }
+    [field: SerializeField] public EventReference connectionBarDown { get; private set; }
+
+
+    [field: SerializeField] public EventReference dateTierII { get; private set; }
+    [field: SerializeField] public EventReference dateTierIII { get; private set; }
+    [field: SerializeField] public EventReference diceRoll { get; private set; }
+    [field: SerializeField] public EventReference diceShake { get; private set; }
 
     [field: Header("Vocal SFX")]
     [field: SerializeField] public EventReference busted { get; private set; }

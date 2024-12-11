@@ -277,7 +277,7 @@ public class RandEventHandler : MonoBehaviour
         {
             voiceInstance.stop(FMOD.Studio.STOP_MODE.ALLOWFADEOUT);
         }
-    }
+}
 
     private void InitializeAudio()
     {
