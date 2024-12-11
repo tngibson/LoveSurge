@@ -194,19 +194,26 @@ public class DragDrop : MonoBehaviour
 
     private void DiscardCard()
     {
-        playerArea.RemoveCards(GetComponent<Card>()); // Remove card from player area
-
-        transform.SetParent(currentDiscard.transform, false);  // Reset parent to original
-
-        // Disable DragDrop functionality
-        var dragDropComponent = GetComponent<DragDrop>();
-        if (dragDropComponent != null)
+        if(GetComponent<StressCard>() == null)
         {
-            dragDropComponent.enabled = false;
-        }
+            playerArea.RemoveCards(GetComponent<Card>()); // Remove card from player area
 
-        // Deactivate the GameObject
-        gameObject.SetActive(false);
+            transform.SetParent(currentDiscard.transform, false);  // Reset parent to original
+
+            // Disable DragDrop functionality
+            var dragDropComponent = GetComponent<DragDrop>();
+            if (dragDropComponent != null)
+            {
+                dragDropComponent.enabled = false;
+            }
+
+            // Deactivate the GameObject
+            gameObject.SetActive(false);
+        }
+        else
+        {
+            ReturnToStart();
+        }
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
