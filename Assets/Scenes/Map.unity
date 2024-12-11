@@ -3159,6 +3159,7 @@ GameObject:
   - component: {fileID: 1360938912}
   - component: {fileID: 1360938914}
   - component: {fileID: 1360938913}
+  - component: {fileID: 1360938915}
   m_Layer: 0
   m_Name: MapBackground
   m_TagString: Untagged
@@ -3224,6 +3225,22 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1360938911}
   m_CullTransparentMesh: 1
+--- !u!114 &1360938915
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1360938911}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 88a689aef511a8a438f1fcb82e04d9d0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  backgroundImage: {fileID: 1360938913}
+  morningSprite: {fileID: 21300000, guid: 82eb21018961cac4e8437caf1fa1df72, type: 3}
+  eveningSprite: {fileID: 21300000, guid: 46312194a82d52245b976948d2cd65ab, type: 3}
+  nightSprite: {fileID: 21300000, guid: 5ced6f172b35193478c84119bc216692, type: 3}
 --- !u!1 &1470067103
 GameObject:
   m_ObjectHideFlags: 0

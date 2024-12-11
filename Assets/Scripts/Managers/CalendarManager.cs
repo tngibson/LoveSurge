@@ -7,6 +7,7 @@ public class CalendarManager : MonoBehaviour
     public static CalendarManager instance { get; private set; }
     public DayManager currentDate { get; private set; }
     public DayPhase currentPhase { get; private set; }
+    public event System.Action<DayPhase> OnPhaseChanged;
 
     void Awake()
     {
@@ -23,6 +24,16 @@ public class CalendarManager : MonoBehaviour
         InitializeCalendar(new DayManager(20, 6, 2)); // Set start date
     }
 
+    void Update()
+    {
+        //if (Input.GetKeyDown(KeyCode.Space))
+        //{
+        //    AdvancePhase();
+        //    Debug.Log($"Current Date and Phase: {ToString()}");
+        //}
+    }
+
+
     public void InitializeCalendar(DayManager startDate)
     {
         currentDate = startDate;
@@ -31,7 +42,7 @@ public class CalendarManager : MonoBehaviour
 
     public void AdvancePhase()
     {
-        if (currentPhase == DayPhase.Evening)
+        if (currentPhase == DayPhase.Night)
         {
             currentPhase = DayPhase.Morning;
             currentDate.AdvanceDay();
@@ -40,6 +51,8 @@ public class CalendarManager : MonoBehaviour
         {
             currentPhase++;
         }
+
+        OnPhaseChanged?.Invoke(currentPhase);
     }
 
     public override string ToString()
