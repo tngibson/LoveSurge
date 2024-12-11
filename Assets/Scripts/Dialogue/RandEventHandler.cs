@@ -225,6 +225,39 @@ public class RandEventHandler : MonoBehaviour
         {
             choiceButtons[i].gameObject.SetActive(false);
         }
+
+        // Update the layout of the buttons
+        UpdateChoiceButtonLayout();
+    }
+
+    private void UpdateChoiceButtonLayout()
+    {
+        int activeChoices = 0;
+
+        // Count the number of active choice buttons
+        foreach (var button in choiceButtons)
+        {
+            if (button.gameObject.activeSelf)
+            {
+                activeChoices++;
+            }
+        }
+
+        // Calculate spacing and centering logic
+        float spacing = 500f;
+        float startX = -((activeChoices - 1) * spacing) / 2; // Center the buttons horizontally
+
+        int index = 0;
+        foreach (var button in choiceButtons)
+        {
+            if (button.gameObject.activeSelf)
+            {
+                // Position each active button
+                RectTransform buttonRect = button.GetComponent<RectTransform>();
+                buttonRect.anchoredPosition = new Vector2(startX + (index * spacing), buttonRect.anchoredPosition.y);
+                index++;
+            }
+        }
     }
 
     public void OnChoiceSelected(int choiceIndex)
@@ -239,15 +272,41 @@ public class RandEventHandler : MonoBehaviour
         originalSpriteOptions = new List<SpriteOptions>(characterSprites);
         originalLineIndex = currentLineIndex + 1;  // Index to resume after choice
 
-        // Retrieve the choice paths
+        // Retrieve the selected choice path
         Choices currentChoices = choices[currentLineIndex];
-        dialogLines = currentChoices.choicePaths[choiceIndex].afterChoiceDialogLines;
-        speakersPerLine = currentChoices.choicePaths[choiceIndex].afterChoiceSpeakersPerLine;
-        characterSprites = currentChoices.choicePaths[choiceIndex].afterChoiceSpriteOptions;
+        ChoicePath selectedPath = currentChoices.choicePaths[choiceIndex];
+
+        // Apply stat changes if a stat tag and value are defined
+        if (!string.IsNullOrEmpty(selectedPath.statTag) && selectedPath.statValue != 0)
+        {
+            ApplyStatChange(selectedPath.statTag, selectedPath.statValue);
+        }
+
+        // Branch to the selected choice dialog
+        dialogLines = selectedPath.afterChoiceDialogLines;
+        speakersPerLine = selectedPath.afterChoiceSpeakersPerLine;
+        characterSprites = selectedPath.afterChoiceSpriteOptions;
 
         // Start the choice dialog from the beginning
         currentLineIndex = 0;
         DisplayLine();
+    }
+
+    private void ApplyStatChange(string statTag, int statValue)
+    {
+        if (playerManager == null) return;
+
+        // Match the statTag with the enum in the Player class
+        if (System.Enum.TryParse<Player.StatType>(statTag, out var statType))
+        {
+            int currentStat = playerManager.GetStat(statType);
+            playerManager.SetStat(statType, currentStat + statValue);
+            Debug.Log($"{statType} increased by {statValue}. New value: {currentStat + statValue}");
+        }
+        else
+        {
+            Debug.LogWarning($"Invalid stat tag: {statTag}");
+        }
     }
 
     private void EndChoicePath()

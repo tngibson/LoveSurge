@@ -1,0 +1,34 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2de807345bdd09646bb1f755bf64c760, type: 3}
+  m_Name: Question3
+  m_EditorClassIdentifier: 
+  choiceOptions:
+  - Yes.
+  - No.
+  choicePaths:
+  - afterChoiceDialogLines:
+    - Your Courage has increased by 4!
+    afterChoiceSpeakersPerLine:
+    - 
+    afterChoiceSpriteOptions:
+    - spriteOptions: []
+    statTag: Courage
+    statValue: 4
+  - afterChoiceDialogLines:
+    - Your Cleverness has increased by 4!
+    afterChoiceSpeakersPerLine:
+    - 
+    afterChoiceSpriteOptions:
+    - spriteOptions: []
+    statTag: Cleverness
+    statValue: 4

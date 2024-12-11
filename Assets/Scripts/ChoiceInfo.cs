@@ -18,4 +18,6 @@ public class ChoicePath
     public List<string> afterChoiceDialogLines = new List<string>(); // Dialog lines after each choice
     public List<string> afterChoiceSpeakersPerLine = new List<string>(); // Speakers after each choice
     public List<SpriteOptions> afterChoiceSpriteOptions = new List<SpriteOptions>(); // Sprites after each choice
+    public string statTag; // The stat to increase (e.g., "Charisma")
+    public int statValue;  // The value to increase it by
 }
