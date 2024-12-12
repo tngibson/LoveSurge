@@ -159,18 +159,26 @@ public class Dropzone : MonoBehaviour
     public void ReturnCards()
     {
         List<Card> cards = dropzone.GetCards(); // Get all cards in the dropzone
+        Card bottomCard = null;
         foreach (Card card in cards)
         {
-            // Add each card back to the player's hand
-            playerArea.AddCards(card);
-            card.transform.SetParent(playerArea.transform, false); // Reset card hierarchy visually
+            if (!card.isBottomCard)
+            {
+                // Add each card back to the player's hand
+                playerArea.AddCards(card);
+                card.transform.SetParent(playerArea.transform, false); // Reset card hierarchy visually
+            }
+            else
+            {
+                bottomCard = card;
+            }
         }
 
         // Clear the dropzone
         dropzone.ClearAllCards();
 
         // Reset last placed card
-        lastPlacedCard = null;
+        lastPlacedCard = bottomCard;
 
         // Clear the cards to score
         cardsToScore.Clear();
@@ -207,11 +215,12 @@ public class Dropzone : MonoBehaviour
         // StartCoroutine(DiscardCards());
 
         // Calculate the new power level after subtracting the score
+        int startPowerNum = selectedConvoTopic.TierPower;
         int targetPowerNum = selectedConvoTopic.TierPower - score;
         selectedConvoTopic.tierPower = targetPowerNum;  // Update the power level of the topic
 
         // Start the countdown of the power value (smooth UI animation)
-        StartCoroutine(CountDownPower(initialPower, targetPowerNum));
+        StartCoroutine(CountDownPower(startPowerNum, targetPowerNum));
 
         // If the topic's power is depleted, complete the conversation topic
         if (selectedConvoTopic.TierPower <= 0)
@@ -242,6 +251,7 @@ public class Dropzone : MonoBehaviour
         cardsToScore.Clear();
         // Maintain cards in dropzone but reset lastPlacedCard
         lastPlacedCard = dropzone.TopCard; // Set to the current top card in dropzone
+        lastPlacedCard.isBottomCard = true;
     }
 
     // Method to calculate score (call anytime score may be changed)

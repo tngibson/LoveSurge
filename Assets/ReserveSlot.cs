@@ -18,5 +18,6 @@ public class ReserveSlot : MonoBehaviour
         startingCard.Power = randomPower;
 
         startingCard.transform.SetParent(dropzone.transform, false); // Parent it to the DropzoneSlot
+        startingCard.isReserveCard = true;
     }
 }

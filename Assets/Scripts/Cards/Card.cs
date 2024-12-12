@@ -12,6 +12,8 @@ public abstract class Card : MonoBehaviour
     [SerializeField] public GameObject container;
     [SerializeField] public Image background;
     [SerializeField] private AudioSource cardHover; // Reference to the Card Hover Sound effect
+    public bool isBottomCard = false;
+    public bool isReserveCard = false;
 
     // Private backing fields with public properties for type and power
     private string type;
