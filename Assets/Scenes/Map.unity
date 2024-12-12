@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.18028331, g: 0.2257133, b: 0.3069217, a: 1}
+  m_IndirectSpecularColor: {r: 0.18028378, g: 0.22571412, b: 0.30692285, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -632,14 +632,15 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   locInfo: 
-  locName: NokiDate1
+  locName: Office
   useMapManager: 1
   manager: {fileID: 879752011}
   button: {fileID: 128797538}
   questionText: {fileID: 1772355312}
   locationText: {fileID: 1546689999}
-  locationTextText: Coming Soon...
-  isEnabled: 0
+  locationTextText: "OMNITEMP OPPORTUNITIES\u2122 - Cash"
+  isEnabled: 1
+  isDayProgressor: 0
   hoverScale: 1.1
 --- !u!1 &223940459
 GameObject:
@@ -827,14 +828,15 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   locInfo: 
-  locName: NokiDate1
+  locName: Park
   useMapManager: 1
   manager: {fileID: 879752011}
   button: {fileID: 223940461}
   questionText: {fileID: 1112068148}
   locationText: {fileID: 916375622}
-  locationTextText: Coming Soon...
-  isEnabled: 0
+  locationTextText: OMNISPARK WYLDLIFEPARK - Courage
+  isEnabled: 1
+  isDayProgressor: 0
   hoverScale: 1.1
 --- !u!224 &297754943 stripped
 RectTransform:
@@ -1028,14 +1030,15 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   locInfo: 
-  locName: NokiDate1
+  locName: ArtBuilding
   useMapManager: 1
   manager: {fileID: 879752011}
   button: {fileID: 363275429}
   questionText: {fileID: 998427654}
   locationText: {fileID: 693944578}
-  locationTextText: Coming Soon...
-  isEnabled: 0
+  locationTextText: "4RT15T1C G3N3RAT10N  Zone\u2122 - Creativity"
+  isEnabled: 1
+  isDayProgressor: 0
   hoverScale: 1.1
 --- !u!1 &367484162
 GameObject:
@@ -1924,14 +1927,15 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   locInfo: 
-  locName: NokiDate1
+  locName: Observatory
   useMapManager: 1
   manager: {fileID: 879752011}
   button: {fileID: 810015465}
   questionText: {fileID: 1917106783}
   locationText: {fileID: 1957821105}
-  locationTextText: Coming Soon...
-  isEnabled: 0
+  locationTextText: Observatory - Cleverness
+  isEnabled: 1
+  isDayProgressor: 0
   hoverScale: 1.1
 --- !u!114 &810015470
 MonoBehaviour:
@@ -2690,14 +2694,15 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   locInfo: 
-  locName: NokiDate1
+  locName: GrandMall
   useMapManager: 1
   manager: {fileID: 879752011}
   button: {fileID: 1043008525}
   questionText: {fileID: 76049275}
   locationText: {fileID: 1769958536}
-  locationTextText: Coming Soon...
-  isEnabled: 0
+  locationTextText: Grand Mall - Charisma
+  isEnabled: 1
+  isDayProgressor: 0
   hoverScale: 1.1
 --- !u!224 &1084810359 stripped
 RectTransform:
@@ -3197,6 +3202,7 @@ MonoBehaviour:
   locationText: {fileID: 0}
   locationTextText: 
   isEnabled: 0
+  isDayProgressor: 0
   hoverScale: 1.1
 --- !u!1 &1360938911
 GameObject:
@@ -3446,6 +3452,7 @@ MonoBehaviour:
   locationText: {fileID: 0}
   locationTextText: 
   isEnabled: 0
+  isDayProgressor: 0
   hoverScale: 1.1
 --- !u!1 &1530979893
 GameObject:
@@ -3641,6 +3648,7 @@ MonoBehaviour:
   locationText: {fileID: 470919701}
   locationTextText: Go on a date with Noki!
   isEnabled: 1
+  isDayProgressor: 0
   hoverScale: 1.1
 --- !u!1 &1536943380
 GameObject:
@@ -5303,6 +5311,7 @@ MonoBehaviour:
   locationText: {fileID: 0}
   locationTextText: 
   isEnabled: 0
+  isDayProgressor: 0
   hoverScale: 1.1
 --- !u!1001 &3968537896322223962
 PrefabInstance:

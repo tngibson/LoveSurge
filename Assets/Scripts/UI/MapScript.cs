@@ -17,6 +17,9 @@ public class MapScript : MonoBehaviour, IPointerEnterHandler, IPointerExitHandle
     [SerializeField] private string locationTextText;
     public bool isEnabled;
 
+    // New boolean to check if this map item should advance the day phase
+    [SerializeField] private bool isDayProgressor;
+
     // Scale factor and material for hover effect
     public float hoverScale = 1.1f;
     private Vector3 originalScale;
@@ -71,6 +74,12 @@ public class MapScript : MonoBehaviour, IPointerEnterHandler, IPointerExitHandle
             {
                 manager.LocationSelect(locInfo, locName);
             }
+
+            // Check if this map item progresses the day phase
+            if (isDayProgressor && CalendarManager.instance != null)
+            {
+                CalendarManager.instance.AdvancePhase();
+            }
         }
         else
         {
@@ -106,7 +115,6 @@ public class MapScript : MonoBehaviour, IPointerEnterHandler, IPointerExitHandle
             button.interactable = true;
             questionText.SetActive(false);
         }
-
     }
 
     public void UpdateLocationText(string newText)
