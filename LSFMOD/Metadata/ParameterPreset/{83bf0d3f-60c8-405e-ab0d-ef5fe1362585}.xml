@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<objects serializationModel="Studio.02.02.00">
+	<object class="ParameterPreset" id="{83bf0d3f-60c8-405e-ab0d-ef5fe1362585}">
+		<property name="name">
+			<value>dateCharacter</value>
+		</property>
+		<relationship name="folder">
+			<destination>{fb5494be-97ca-44ca-8e72-a8e23c4b9d83}</destination>
+		</relationship>
+		<relationship name="parameter">
+			<destination>{97b46485-41de-485a-b5f6-d3257cf36497}</destination>
+		</relationship>
+	</object>
+	<object class="GameParameter" id="{97b46485-41de-485a-b5f6-d3257cf36497}">
+		<property name="parameterType">
+			<value>2</value>
+		</property>
+		<property name="maximum">
+			<value>3</value>
+		</property>
+		<property name="enumerationLabels">
+			<value>Celci</value>
+			<value>Lotte</value>
+			<value>Noki</value>
+		</property>
+		<property name="initialValue">
+			<value>0</value>
+		</property>
+	</object>
+</objects>
