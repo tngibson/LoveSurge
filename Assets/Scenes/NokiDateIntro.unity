@@ -299,6 +299,7 @@ MonoBehaviour:
   locationText: {fileID: 0}
   locationTextText: 
   isEnabled: 0
+  isDayProgressor: 0
   hoverScale: 1
 --- !u!114 &358605962
 MonoBehaviour:
@@ -1068,7 +1069,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 0, y: -3.1392822}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1741321908
@@ -1128,6 +1129,12 @@ PrefabInstance:
       propertyPath: m_text
       value: Continue
       objectReference: {fileID: 0}
+    - target: {fileID: 1228945755956342202, guid: caff7daa29ed80547bbcab65c7792ef9,
+        type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 4df2ef5a9cc37c842816c811f5a32692,
+        type: 3}
     - target: {fileID: 1715403562571543631, guid: caff7daa29ed80547bbcab65c7792ef9,
         type: 3}
       propertyPath: m_SizeDelta.x
@@ -1256,7 +1263,7 @@ PrefabInstance:
     - target: {fileID: 7670938489061958255, guid: caff7daa29ed80547bbcab65c7792ef9,
         type: 3}
       propertyPath: m_Color.a
-      value: 0.80784315
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7790266744647393451, guid: caff7daa29ed80547bbcab65c7792ef9,
         type: 3}
@@ -1276,12 +1283,12 @@ PrefabInstance:
     - target: {fileID: 7856950899987577378, guid: caff7daa29ed80547bbcab65c7792ef9,
         type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: -1373.5
+      value: -1519
       objectReference: {fileID: 0}
     - target: {fileID: 7856950899987577378, guid: caff7daa29ed80547bbcab65c7792ef9,
         type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: -0.96499
+      value: 96
       objectReference: {fileID: 0}
     - target: {fileID: 8427216516346150109, guid: caff7daa29ed80547bbcab65c7792ef9,
         type: 3}
@@ -1801,6 +1808,7 @@ MonoBehaviour:
   locationText: {fileID: 0}
   locationTextText: 
   isEnabled: 0
+  isDayProgressor: 0
   hoverScale: 1
 --- !u!1660057539 &9223372036854775807
 SceneRoots:

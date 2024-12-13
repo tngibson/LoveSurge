@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 
 public class CalendarManager : MonoBehaviour
@@ -8,9 +9,11 @@ public class CalendarManager : MonoBehaviour
     public DayManager currentDate { get; private set; }
     public DayPhase currentPhase { get; private set; }
     public event System.Action<DayPhase> OnPhaseChanged;
-
+    [SerializeField] TextMeshProUGUI dateAndTimeText;
+    CalendarParent parent;
     void Awake()
     {
+        
         if (instance == null)
         {
             instance = this;
@@ -26,6 +29,7 @@ public class CalendarManager : MonoBehaviour
 
     void Update()
     {
+  
         //if (Input.GetKeyDown(KeyCode.Space))
         //{
         //    AdvancePhase();
@@ -51,12 +55,17 @@ public class CalendarManager : MonoBehaviour
         {
             currentPhase++;
         }
-
+        setText();
         OnPhaseChanged?.Invoke(currentPhase);
     }
 
     public override string ToString()
     {
-        return $"{currentDate.ToString()} - {currentPhase}";
+        return $"{currentDate.ToString()}  - {currentPhase}";
+    }
+
+    public void setText()
+    {
+        dateAndTimeText.text = parent.getText();
     }
 }

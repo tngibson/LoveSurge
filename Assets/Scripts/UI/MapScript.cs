@@ -76,7 +76,8 @@ public class MapScript : MonoBehaviour, IPointerEnterHandler, IPointerExitHandle
             }
 
             // Check if this map item progresses the day phase
-            if (isDayProgressor && CalendarManager.instance != null)
+            // Took out isDayProgressor for now just to have every event advance time - Colin
+            if (CalendarManager.instance != null)
             {
                 CalendarManager.instance.AdvancePhase();
             }
