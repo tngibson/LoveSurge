@@ -326,8 +326,8 @@ public class RandEventHandler : MonoBehaviour
         var voiceInstance = (speaker == "You" || string.IsNullOrEmpty(speaker))
                 ? playerDialogueVoice
                 : (speaker == "Noki")
-                    ? date2DialougeVoice
-                    : dateDialogueVoice;
+                    ? dateDialogueVoice
+                    : date2DialougeVoice;
         if (isTypewriting)
         {
             voiceInstance.start();
