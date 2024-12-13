@@ -98,56 +98,56 @@ public class StatUpgrade : MonoBehaviour
 
         placeholderOptions["__person/animal/group__"] = new List<string>()
     {
-        "a murder of crows", "a leopard", "a gang of feral capitalists", "OmniSpark CEO",
+        "a murder of crows", "a leopard", "a gang of feral capitalists", "the OmniSpark CEO",
         "a pack of really strong beetles", "a dinosaur", "a really cool dog."
     };
 
         placeholderOptions["__action__"] = new List<string>()
     {
-        "Feeding on the corpse of a fawn.", "Jogging through the woods.", "Lifting weights in the outdoor gym.",
-        "Meditating peacefully.", "Hunting prey...", "Swimming through a cool stream.", "Enjoying nature."
+        "feeding on the corpse of a fawn.", "jogging through the woods.", "lifting weights in the outdoor gym.",
+        "meditating peacefully.", "hunting prey...", "swimming through a cool stream.", "enjoying nature."
     };
 
         placeholderOptions["__creative_action__"] = new List<string>()
     {
-        "Try sculpting a buff man.", "Paint a beautiful landscape.", "Make a trophy and give it to yourself.",
-        "Invent a new, efficient and cost-effective method for city planning.", "Build a Gundam. A real one. You stomp around in it for a bit.",
-        "Write an entire novel about wolves kissing."
+        "try sculpting a buff man.", "paint a beautiful landscape.", "make a trophy and give it to yourself.",
+        "invent a new, efficient and cost-effective method for city planning.", "build a Gundam. A real one. You stomp around in it for a bit.",
+        "write an entire novel about wolves kissing."
     };
 
         placeholderOptions["__state__"] = new List<string>()
     {
-        "so well you win an award for it.", "Great! You’re very proud of your work.", "Okay, but your mom said it was INCREDIBLE!",
-        "Fine, it’s not what you wanted but oh well. Next time!", "Bad, but you feel inspired to try again soon.",
-        "Bad, you injure yourself in the process."
+        "so well you win an award for it.", "great! You’re very proud of your work.", "okay, but your mom said it was INCREDIBLE!",
+        "fine, it’s not what you wanted but oh well. Next time!", "bad, but you feel inspired to try again soon.",
+        "bad, you injure yourself in the process."
     };
 
         placeholderOptions["__topic__"] = new List<string>()
     {
-        "The beaching of dozens of whales on the island as of late", "The flight patterns of birds and how they mimic neural networks",
-        "The shaky moral ground this company operates on", "The terminator franchise", "Cybersecurity and why this company keeps getting hacked."
+        "the beaching of dozens of whales on the island as of late", "the flight patterns of birds and how they mimic neural networks",
+        "the shaky moral ground this company operates on", "the terminator franchise", "cybersecurity and why this company keeps getting hacked."
     };
 
         placeholderOptions["__research_action__"] = new List<string>()
     {
         "write an overly wordy research paper about it that is impossible to read.",
         "burnout and spend a few hours eating fast food in a broom closet.",
-        "Create a massive study that completely upends the conversation on the topic.",
-        "Solve it. Completely.",
-        "Go to sleep."
+        "create a massive study that completely upends the conversation on the topic.",
+        "solve it. Completely.",
+        "go to sleep."
     };
 
         placeholderOptions["__mallshenanigans__"] = new List<string>()
     {
-        "An angsty flock of mall goths.", "A child says 'woah look at that cool person' and points at you.",
-        "A store filled with $800 shoes that all look really nice on you.",
-        "The perfect pair of pants that are just too expensive."
+        "an angsty flock of mall goths.", "a child that says 'woah look at that cool person' and points at you.",
+        "a store filled with $800 shoes that all look really nice on you.",
+        "the perfect pair of pants that are just too expensive."
     };
 
         placeholderOptions["__charaction__"] = new List<string>()
     {
-        "Changes your sense of self-worth forever.", "Makes you feel really nice about yourself.",
-        "Makes you reconsider your entire wardrobe."
+        "changes your sense of self-worth forever.", "makes you feel really nice about yourself.",
+        "makes you reconsider your entire wardrobe."
     };
 
         // Scene-specific dialog templates
