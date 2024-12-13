@@ -46,6 +46,12 @@ public class DayManager
 
     public override string ToString()
     {
-        return $"{Year:00XX}-{Month:00}-{Day:00}";
+        string[] monthNames =
+        {
+        "January", "February", "March", "April", "May", "June",
+        "July", "August", "September", "October", "November", "December"
+    };
+        string monthName = monthNames[Month - 1]; // Adjust for zero-based index
+        return $"{monthName} {Day:00}, {Year:00XX}";
     }
 }
