@@ -863,7 +863,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 45a960cb0a316ac4186af3d11d80359b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  <track>k__BackingField: 2
+  <track>k__BackingField: 5
 --- !u!1 &725283226
 GameObject:
   m_ObjectHideFlags: 0
@@ -1271,6 +1271,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 9087966427139456051, guid: a021c6d3c1a46724ca869d9fa4244f20,
         type: 3}
+      propertyPath: <envIntroSound>k__BackingField.Path
+      value: event:/Ambience/MallIntroSound
+      objectReference: {fileID: 0}
+    - target: {fileID: 9087966427139456051, guid: a021c6d3c1a46724ca869d9fa4244f20,
+        type: 3}
       propertyPath: <dateVoice>k__BackingField.Guid.Data1
       value: -280023058
       objectReference: {fileID: 0}
@@ -1308,6 +1313,51 @@ PrefabInstance:
         type: 3}
       propertyPath: <dateVoice2>k__BackingField.Guid.Data4
       value: -151194650
+      objectReference: {fileID: 0}
+    - target: {fileID: 9087966427139456051, guid: a021c6d3c1a46724ca869d9fa4244f20,
+        type: 3}
+      propertyPath: <environmentTrack>k__BackingField.Path
+      value: event:/Ambience/MallAmbient
+      objectReference: {fileID: 0}
+    - target: {fileID: 9087966427139456051, guid: a021c6d3c1a46724ca869d9fa4244f20,
+        type: 3}
+      propertyPath: <envIntroSound>k__BackingField.Guid.Data1
+      value: -87424408
+      objectReference: {fileID: 0}
+    - target: {fileID: 9087966427139456051, guid: a021c6d3c1a46724ca869d9fa4244f20,
+        type: 3}
+      propertyPath: <envIntroSound>k__BackingField.Guid.Data2
+      value: 1332431517
+      objectReference: {fileID: 0}
+    - target: {fileID: 9087966427139456051, guid: a021c6d3c1a46724ca869d9fa4244f20,
+        type: 3}
+      propertyPath: <envIntroSound>k__BackingField.Guid.Data3
+      value: 1316215695
+      objectReference: {fileID: 0}
+    - target: {fileID: 9087966427139456051, guid: a021c6d3c1a46724ca869d9fa4244f20,
+        type: 3}
+      propertyPath: <envIntroSound>k__BackingField.Guid.Data4
+      value: -1032442022
+      objectReference: {fileID: 0}
+    - target: {fileID: 9087966427139456051, guid: a021c6d3c1a46724ca869d9fa4244f20,
+        type: 3}
+      propertyPath: <environmentTrack>k__BackingField.Guid.Data1
+      value: -1773241904
+      objectReference: {fileID: 0}
+    - target: {fileID: 9087966427139456051, guid: a021c6d3c1a46724ca869d9fa4244f20,
+        type: 3}
+      propertyPath: <environmentTrack>k__BackingField.Guid.Data2
+      value: 1085309067
+      objectReference: {fileID: 0}
+    - target: {fileID: 9087966427139456051, guid: a021c6d3c1a46724ca869d9fa4244f20,
+        type: 3}
+      propertyPath: <environmentTrack>k__BackingField.Guid.Data3
+      value: -1801513812
+      objectReference: {fileID: 0}
+    - target: {fileID: 9087966427139456051, guid: a021c6d3c1a46724ca869d9fa4244f20,
+        type: 3}
+      propertyPath: <environmentTrack>k__BackingField.Guid.Data4
+      value: 466579327
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
