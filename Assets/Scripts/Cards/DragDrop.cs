@@ -173,11 +173,14 @@ public class DragDrop : MonoBehaviour
         {
             dropzoneManager.RemoveCardFromDropzone(); // Remove card from dropzone
         }
+        else
+        {
+            playerArea.AddCards(cardComponent); // Add card back to the player area
+        }
 
         // Re-enable the collider when moving back to the player area
         GetComponent<Collider2D>().enabled = true;
 
-        playerArea.AddCards(cardComponent); // Add card back to the player area
         transform.SetParent(playerArea.transform, false); // Set as a child of PlayerArea in hierarchy
         cardHandLayout.UpdateCardListAndLayout();
         transform.localScale = Vector3.one; // Reset card size
