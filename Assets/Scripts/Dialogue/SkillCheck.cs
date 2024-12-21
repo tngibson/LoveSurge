@@ -46,7 +46,9 @@ public class SkillCheck : MonoBehaviour
     private EventInstance diceShake;
     private EventInstance dateDialogueVoice;
     private EventInstance date2DialougeVoice;
-    private EventInstance playerDialogueVoice; 
+    private EventInstance playerDialogueVoice;
+
+    private Coroutine voiceCoroutine; // Tracks the voice playback coroutine
 
     private Player playerManager;
     private string playerName;
@@ -309,16 +311,69 @@ public class SkillCheck : MonoBehaviour
         portrait.color = endColor;
     }
 
+    private IEnumerator PlayVoiceLoop(EventInstance voiceInstance)
+    {
+        PLAYBACK_STATE playbackState;
+
+        while (isTypewriting)
+        {
+            voiceInstance.getPlaybackState(out playbackState);
+
+            if (playbackState != PLAYBACK_STATE.PLAYING && playbackState != PLAYBACK_STATE.STARTING)
+            {
+                voiceInstance.start(); // Start audio if not already playing
+            }
+
+            yield return null; // Wait for the next frame
+        }
+
+        // Once typewriting ends, stop the audio
+        voiceInstance.getPlaybackState(out playbackState);
+        if (playbackState == PLAYBACK_STATE.PLAYING && playbackState == PLAYBACK_STATE.STARTING)
+        {
+            voiceInstance.stop(FMOD.Studio.STOP_MODE.ALLOWFADEOUT);
+        }
+    }
+
     private void UpdateVoice(string speaker)
     {
-        var voiceInstance = (speaker == "You" || string.IsNullOrEmpty(speaker)) ? playerDialogueVoice : date2DialougeVoice;
-        if (isTypewriting)
+        EventInstance voiceInstance;
+
+        // Determine the correct voice instance based on the speaker
+        if (speaker == "You" || string.IsNullOrEmpty(speaker))
         {
-            voiceInstance.start();
+            voiceInstance = playerDialogueVoice;
+        }
+        else if (speaker == "Noki")
+        {
+            voiceInstance = dateDialogueVoice;
         }
         else
         {
-            voiceInstance.stop(FMOD.Studio.STOP_MODE.ALLOWFADEOUT);
+            voiceInstance = date2DialougeVoice;
+        }
+
+        // Manage voice playback based on typewriting state
+        if (isTypewriting)
+        {
+            if (voiceCoroutine == null) // Start the voice loop if not already running
+            {
+                voiceCoroutine = StartCoroutine(PlayVoiceLoop(voiceInstance));
+            }
+        }
+        else
+        {
+            if (voiceCoroutine != null) // Stop the loop when typewriting ends
+            {
+                StopCoroutine(voiceCoroutine);
+                voiceCoroutine = null;
+
+                voiceInstance.getPlaybackState(out var playbackState);
+                if (playbackState == PLAYBACK_STATE.PLAYING)
+                {
+                    voiceInstance.stop(FMOD.Studio.STOP_MODE.ALLOWFADEOUT); // Stop audio safely
+                }
+            }
         }
     }
 

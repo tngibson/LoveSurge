@@ -44,6 +44,8 @@ public class RandEventHandler : MonoBehaviour
     private EventInstance date2DialougeVoice;
     private EventInstance playerDialogueVoice;
 
+    private Coroutine voiceCoroutine; // To track the active coroutine
+
     private Player playerManager;
     private string playerName;
 
@@ -320,23 +322,73 @@ public class RandEventHandler : MonoBehaviour
         DisplayLine();  // Continue the main dialog
     }
 
-    // FMOD Sound Functions
-    private void UpdateVoice(string speaker)
+    private IEnumerator PlayVoiceLoop(EventInstance voiceInstance)
     {
-        var voiceInstance = (speaker == "You" || string.IsNullOrEmpty(speaker))
-                ? playerDialogueVoice
-                : (speaker == "Noki")
-                    ? dateDialogueVoice
-                    : date2DialougeVoice;
-        if (isTypewriting)
+        PLAYBACK_STATE playbackState;
+
+        while (isTypewriting) // Run as long as typewriting is active
         {
-            voiceInstance.start();
+            voiceInstance.getPlaybackState(out playbackState);
+
+            if (playbackState != PLAYBACK_STATE.PLAYING && playbackState != PLAYBACK_STATE.STARTING)
+            {
+                voiceInstance.start(); // Ensure only one instance is playing
+            }
+
+            yield return null; // Wait until the next frame
         }
-        else
+
+        // Stop the voice playback gracefully when typewriting ends
+        voiceInstance.getPlaybackState(out playbackState);
+
+        if (playbackState == PLAYBACK_STATE.PLAYING && playbackState == PLAYBACK_STATE.STARTING)
         {
             voiceInstance.stop(FMOD.Studio.STOP_MODE.ALLOWFADEOUT);
         }
-}
+    }
+
+    // FMOD Sound Functions
+    private void UpdateVoice(string speaker)
+    {
+        EventInstance voiceInstance;
+
+        // Determine the correct voice instance
+        if (speaker == "You" || string.IsNullOrEmpty(speaker))
+        {
+            voiceInstance = playerDialogueVoice;
+        }
+        else if (speaker == "Noki")
+        {
+            voiceInstance = dateDialogueVoice;
+        }
+        else
+        {
+            voiceInstance = date2DialougeVoice;
+        }
+
+        // Manage the voice playback coroutine
+        if (isTypewriting)
+        {
+            if (voiceCoroutine == null) // Start the loop if not already running
+            {
+                voiceCoroutine = StartCoroutine(PlayVoiceLoop(voiceInstance));
+            }
+        }
+        else
+        {
+            if (voiceCoroutine != null) // Stop the loop when typewriting ends
+            {
+                StopCoroutine(voiceCoroutine);
+                voiceCoroutine = null;
+
+                voiceInstance.getPlaybackState(out var playbackState);
+                if (playbackState == PLAYBACK_STATE.PLAYING)
+                {
+                    voiceInstance.stop(FMOD.Studio.STOP_MODE.ALLOWFADEOUT); // Stop audio safely
+                }
+            }
+        }
+    }
 
     private void InitializeAudio()
     {
