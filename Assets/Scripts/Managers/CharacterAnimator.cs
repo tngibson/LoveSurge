@@ -111,6 +111,24 @@ public class CharacterAnimator : MonoBehaviour
     {
         stopAnimationEvent.Invoke(sender, args);
     }
+
+    public static bool HasAnimator(object sender)
+    {
+        // Perform null check or any specific validation for animator presence
+        Animator animator = GetAnimatorFromSender(sender);
+        return animator != null;
+    }
+
+    // Example helper for retrieving animator (adjust as needed for your project)
+    private static Animator GetAnimatorFromSender(object sender)
+    {
+        // Replace with the actual logic for fetching the Animator
+        if (sender is Component component)
+        {
+            return component.GetComponent<Animator>();
+        }
+        return null;
+    }
 }
 
 public class AnimatorEventData : EventArgs

@@ -329,7 +329,7 @@ public class SkillCheck : MonoBehaviour
 
         // Once typewriting ends, stop the audio
         voiceInstance.getPlaybackState(out playbackState);
-        if (playbackState == PLAYBACK_STATE.PLAYING && playbackState == PLAYBACK_STATE.STARTING)
+        if (playbackState == PLAYBACK_STATE.PLAYING || playbackState == PLAYBACK_STATE.STARTING)
         {
             voiceInstance.stop(FMOD.Studio.STOP_MODE.ALLOWFADEOUT);
         }

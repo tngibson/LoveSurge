@@ -158,28 +158,29 @@ public class RandEventHandler : MonoBehaviour
         {
             if (i < characterSprites.Count && characterSprites[i].spriteOptions.Count > 0)
             {
-                // Update sprite/animation for all characters based on the current line index
                 Sprite targetSprite = characterSprites[i].spriteOptions[currentLineIndex];
                 if (targetSprite != null)
                 {
                     characterPortraits[i].sprite = targetSprite;
                     lastTargetSpriteName = targetSprite.name;
-                    CharacterAnimator.InvokeStartAnimation(this, new AnimatorEventData
+
+                    // Check if animation can be invoked
+                    if (CharacterAnimator.HasAnimator(characterPortraits[i]))
                     {
-                        State = targetSprite.name,
-                        Speaker = currentSpeaker
-                    });
+                        CharacterAnimator.InvokeStartAnimation(this, new AnimatorEventData
+                        {
+                            State = targetSprite.name,
+                            Speaker = currentSpeaker
+                        });
+                    }
                 }
 
-                // Determine if the character is speaking or not
                 if (characterPortraits[i].name == currentSpeaker)
                 {
-                    // Undim the speaker with a smooth transition to full opacity (Color.white)
                     StartCoroutine(FadeCharacter(characterPortraits[i], characterPortraits[i].color, Color.white, 0.5f));
                 }
                 else
                 {
-                    // Dim non-speaking characters with a smooth transition to gray
                     StartCoroutine(FadeCharacter(characterPortraits[i], characterPortraits[i].color, Color.gray, 0.5f));
                 }
             }
@@ -198,7 +199,6 @@ public class RandEventHandler : MonoBehaviour
         {
             if (skipRequested)
             {
-                // If skip is requested, display the full line immediately
                 textOutput.text = line;
                 break;
             }
@@ -208,11 +208,28 @@ public class RandEventHandler : MonoBehaviour
 
         isTypewriting = false;
 
-        CharacterAnimator.InvokeStopAnimation(this, new AnimatorEventData()
+        // Safely invoke animation stop
+        for (int i = 0; i <characterPortraits.Count; i++)
         {
-            State = lastTargetSpriteName,
-            Speaker = speaker
-        });
+            if (CharacterAnimator.HasAnimator(characterPortraits[i]))
+            {
+                if (i < characterPortraits.Count && characterSprites[i].spriteOptions.Count > 0)
+                {
+                    Sprite targetSprite = characterSprites[i].spriteOptions[currentLineIndex];
+                    if (targetSprite != null)
+                    {
+                        characterPortraits[i].sprite = targetSprite;
+                        lastTargetSpriteName = targetSprite.name;
+
+                        CharacterAnimator.InvokeStopAnimation(this, new AnimatorEventData()
+                        {
+                            State = lastTargetSpriteName,
+                            Speaker = speaker
+                        });
+                    }
+                }
+            }
+        }
 
         UpdateVoice(speaker);
     }
@@ -358,7 +375,7 @@ public class RandEventHandler : MonoBehaviour
         // Stop the voice playback gracefully when typewriting ends
         voiceInstance.getPlaybackState(out playbackState);
 
-        if (playbackState == PLAYBACK_STATE.PLAYING && playbackState == PLAYBACK_STATE.STARTING)
+        if (playbackState == PLAYBACK_STATE.PLAYING || playbackState == PLAYBACK_STATE.STARTING)
         {
             voiceInstance.stop(FMOD.Studio.STOP_MODE.ALLOWFADEOUT);
         }
