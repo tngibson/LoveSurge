@@ -34,6 +34,7 @@ public class RandEventHandler : MonoBehaviour
     private List<string> originalSpeakersPerLine;
     private List<SpriteOptions> originalSpriteOptions;
     private int originalLineIndex;  // Store the current index before the choice
+    private string lastTargetSpriteName;
 
     // Typewriter variables
     [SerializeField] private float typewriterSpeed = 0.05f;
@@ -157,8 +158,18 @@ public class RandEventHandler : MonoBehaviour
         {
             if (i < characterSprites.Count && characterSprites[i].spriteOptions.Count > 0)
             {
-                // Update sprite for all characters based on the current line index
-                characterPortraits[i].sprite = characterSprites[i].spriteOptions[currentLineIndex];
+                // Update sprite/animation for all characters based on the current line index
+                Sprite targetSprite = characterSprites[i].spriteOptions[currentLineIndex];
+                if (targetSprite != null)
+                {
+                    characterPortraits[i].sprite = targetSprite;
+                    lastTargetSpriteName = targetSprite.name;
+                    CharacterAnimator.InvokeStartAnimation(this, new AnimatorEventData
+                    {
+                        State = targetSprite.name,
+                        Speaker = currentSpeaker
+                    });
+                }
 
                 // Determine if the character is speaking or not
                 if (characterPortraits[i].name == currentSpeaker)
@@ -196,6 +207,12 @@ public class RandEventHandler : MonoBehaviour
         }
 
         isTypewriting = false;
+
+        CharacterAnimator.InvokeStopAnimation(this, new AnimatorEventData()
+        {
+            State = lastTargetSpriteName,
+            Speaker = speaker
+        });
 
         UpdateVoice(speaker);
     }
