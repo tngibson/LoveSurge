@@ -127,7 +127,7 @@ public class Dropzone : MonoBehaviour
     {
         if (StressManager.instance.currentStressAmt > 0)
         {
-            StressManager.instance.removeFromCurrentStress(card.Power * 0.1f);
+            StressManager.instance.RemoveFromCurrentStress(card.Power * 0.1f);
             StressBar.instance.updateStressBar();
         }
         else

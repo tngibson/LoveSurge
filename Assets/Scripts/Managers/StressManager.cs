@@ -21,17 +21,20 @@ public class StressManager : MonoBehaviour
             instance = this;
         }
     }
-    public float getCurrentStressAmount()
+
+    public float GetCurrentStressAmount()
     {
         return currentStressAmt;
     }
-    public float addToCurrentStress()
+
+    public float AddToCurrentStress()
     {
         currentStressAmt += .1f;
         print(currentStressAmt);
         return currentStressAmt;
     }
-    public float removeFromCurrentStress(float amount)
+
+    public float RemoveFromCurrentStress(float amount)
     {
         currentStressAmt -= amount;
         return currentStressAmt;

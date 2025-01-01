@@ -61,7 +61,7 @@ public class MapScript : MonoBehaviour, IPointerEnterHandler, IPointerExitHandle
         {
             if (StressManager.instance != null)
             {
-                StressManager.instance.addToCurrentStress();
+                StressManager.instance.AddToCurrentStress();
             }
             if (StressBar.instance != null)
             {

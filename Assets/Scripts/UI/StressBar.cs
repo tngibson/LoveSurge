@@ -25,7 +25,7 @@ public class StressBar : MonoBehaviour
     }
     void Start()
     {
-        currentStressAmt = StressManager.instance.getCurrentStressAmount();
+        currentStressAmt = StressManager.instance.GetCurrentStressAmount();
         updateStressBar();
         
     }
