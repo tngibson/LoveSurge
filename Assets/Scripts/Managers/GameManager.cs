@@ -56,7 +56,7 @@ public class GameManager : MonoBehaviour
             instance = this;
         }
 
-        StressBar.instance.updateStressBar();
+        StressBar.instance?.updateStressBar();
         SetConvoStart();
         UpdateEndTurnButton(false);
     }

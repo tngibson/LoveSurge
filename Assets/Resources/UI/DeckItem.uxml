@@ -1,0 +1,5 @@
+<ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" xsi="http://www.w3.org/2001/XMLSchema-instance" engine="UnityEngine.UIElements" editor="UnityEditor.UIElements" noNamespaceSchemaLocation="../../UIElementsSchema/UIElements.xsd" editor-extension-mode="False">
+    <ui:VisualElement name="BG" style="flex-grow: 1; background-color: rgb(40, 40, 40); border-top-left-radius: 5px; border-top-right-radius: 5px; border-bottom-right-radius: 5px; border-bottom-left-radius: 5px; margin-top: 5px; margin-right: 5px; margin-bottom: 5px; margin-left: 5px;">
+        <ui:Label tabindex="-1" text="ITEM NAME" parse-escape-sequences="true" display-tooltip-when-elided="true" name="Label" binding-path="name" style="flex-grow: 1; align-self: stretch; -unity-text-align: middle-center; color: rgb(255, 255, 255); font-size: 24px;" />
+    </ui:VisualElement>
+</ui:UXML>

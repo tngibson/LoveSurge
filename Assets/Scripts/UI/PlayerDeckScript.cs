@@ -1,5 +1,6 @@
 using System.Collections.Generic;
 using UnityEngine;
+using Random = UnityEngine.Random;
 
 public class PlayerDeckScript : MonoBehaviour
 {
@@ -20,6 +21,7 @@ public class PlayerDeckScript : MonoBehaviour
     [SerializeField] private int cardCount;
 
     [SerializeField] private int maxCardPower = 5;
+    [SerializeField] private bool disableRandomDraw = false;
 
     // Initialize the deck on Awake
     private void Awake()
@@ -55,18 +57,19 @@ public class PlayerDeckScript : MonoBehaviour
     // Fills the deck with cards of each type and power level
     private void FillDeck()
     {
+        int[] offsets = CalculateStressPowerOffsets();
         // Loop through the cards and create the deck based on `cardCount` for each power level
         for (int i = 1; i <= maxCardPower; i++) // Powers from 1 to maxCardPower
         {
             for (int j = 0; j < cardCount; j++)
             {
-                MakeCard(chaCard, i);
-                MakeCard(cleCard, i);
-                MakeCard(creCard, i);
-                MakeCard(couCard, i);
+                MakeCard(chaCard, i + offsets[0]);
+                MakeCard(cleCard, i + offsets[1]);
+                MakeCard(creCard, i + offsets[2]);
+                MakeCard(couCard, i + offsets[3]);
             }
         }
-        addStressCards();
+        AddStressCards();
     }
 
     // Draw a random card from the deck
@@ -74,6 +77,15 @@ public class PlayerDeckScript : MonoBehaviour
     {
         if (deck.Count > 0)
         {
+            // Makes testing hands easier
+            if (disableRandomDraw)
+            {
+                Card cardToDraw = deck[0];
+                cardToDraw.SetVisiblity(true);
+                RemoveCard(cardToDraw);
+                return cardToDraw;
+            }
+
             // Randomly select a card and remove it from the deck
             int cardChosen = Random.Range(0, deck.Count);
             Card drawnCard = deck[cardChosen];
@@ -88,16 +100,46 @@ public class PlayerDeckScript : MonoBehaviour
         }
     }
 
-    private void addStressCards()
+    private void AddStressCards()
     {
         // Checks if player has stress
         if (StressManager.instance.currentStressAmt > 0)
         {
             // since stress amount is a decimal between 0 and 1, we multiply  the amount by 10 to get a whole number and add that many stress cards, eventually need to figure out a better formula for this
-            for (int i = 0; i < (StressManager.instance.currentStressAmt * 10); i++)
+            for (int i = 0; i <= StressManager.instance.numStressBars - 
+                 StressManager.GetStressBarsFilled(StressManager.instance.currentStressAmt); i++)
             {
                 MakeCard(stressCard, i);
             }
         }
+    }
+
+    private int[] CalculateStressPowerOffsets()
+    {
+        int[] offsets = new[] { 0, 0, 0, 0 };
+
+        if (StressManager.instance.currentStressAmt <= 0) return offsets;
+
+        if (StressManager.GetStressBarsFilled(StressManager.instance.currentStressAmt) == 2)
+        {
+            int index = Random.Range(0, 4);
+            offsets[index] = -1;
+            return offsets;
+        }
+
+        if (StressManager.GetStressBarsFilled(StressManager.instance.currentStressAmt) == 3)
+        {
+            int index = Random.Range(0, 4);
+            offsets[index] = -1;
+
+            int secondIndex = index;
+            while (secondIndex == index)
+                secondIndex = Random.Range(0, 4);
+
+            offsets[secondIndex] = -1;
+            return offsets;
+        }
+
+        return offsets;
     }
 }

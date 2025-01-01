@@ -1,0 +1,5 @@
+<ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" xsi="http://www.w3.org/2001/XMLSchema-instance" engine="UnityEngine.UIElements" editor="UnityEditor.UIElements" noNamespaceSchemaLocation="../../UIElementsSchema/UIElements.xsd" editor-extension-mode="False">
+    <Style src="project://database/Assets/Editor/DeckEditor.uss?fileID=7433441132597879392&amp;guid=49b2a09bc59d9cd4cb64d170787363ce&amp;type=3#DeckEditor" />
+    <ui:Label text="LoveSurge Deck Editor" class="custom-label" />
+    <ui:ListView focusable="true" name="CardsList" reorderable="true" header-title="Deck Contents" binding-path="Deck" fixed-item-height="45" />
+</ui:UXML>

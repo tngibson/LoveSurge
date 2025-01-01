@@ -4793,6 +4793,79 @@ MonoBehaviour:
   - {fileID: 2326991348489003529, guid: 1796bafd5756dbc41b01a0a95cf61460, type: 3}
   - {fileID: -1454504632352844718, guid: afba97dd884423a4e8264984c925383c, type: 3}
   dropzone: {fileID: 2119566656}
+--- !u!1001 &1005606886
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 712736321295159483, guid: 7272601c17fb4d848b466f2382895650,
+        type: 3}
+      propertyPath: currentStressAmt
+      value: 0.25
+      objectReference: {fileID: 0}
+    - target: {fileID: 1341665765811902726, guid: 7272601c17fb4d848b466f2382895650,
+        type: 3}
+      propertyPath: m_Name
+      value: StressManager
+      objectReference: {fileID: 0}
+    - target: {fileID: 7581236233489316948, guid: 7272601c17fb4d848b466f2382895650,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 550
+      objectReference: {fileID: 0}
+    - target: {fileID: 7581236233489316948, guid: 7272601c17fb4d848b466f2382895650,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 332.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 7581236233489316948, guid: 7272601c17fb4d848b466f2382895650,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -2.8645835
+      objectReference: {fileID: 0}
+    - target: {fileID: 7581236233489316948, guid: 7272601c17fb4d848b466f2382895650,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7581236233489316948, guid: 7272601c17fb4d848b466f2382895650,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7581236233489316948, guid: 7272601c17fb4d848b466f2382895650,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7581236233489316948, guid: 7272601c17fb4d848b466f2382895650,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7581236233489316948, guid: 7272601c17fb4d848b466f2382895650,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7581236233489316948, guid: 7272601c17fb4d848b466f2382895650,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7581236233489316948, guid: 7272601c17fb4d848b466f2382895650,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 7272601c17fb4d848b466f2382895650, type: 3}
 --- !u!1 &1009903353
 GameObject:
   m_ObjectHideFlags: 0
@@ -8456,10 +8529,12 @@ MonoBehaviour:
   creCard: {fileID: -1454504632352844718, guid: afba97dd884423a4e8264984c925383c,
     type: 3}
   couCard: {fileID: 2326991348489003529, guid: 1796bafd5756dbc41b01a0a95cf61460, type: 3}
-  stressCard: {fileID: 0}
+  stressCard: {fileID: 197109645831250398, guid: 01c879dcac3a90640a8fc1808bf209b5,
+    type: 3}
   container: {fileID: 1771563197}
   cardCount: 2
   maxCardPower: 5
+  disableRandomDraw: 1
 --- !u!1 &1820997958
 GameObject:
   m_ObjectHideFlags: 0
@@ -11036,3 +11111,4 @@ SceneRoots:
   - {fileID: 379998687}
   - {fileID: 1365369316}
   - {fileID: 1363499924}
+  - {fileID: 1005606886}
