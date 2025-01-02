@@ -4804,7 +4804,7 @@ PrefabInstance:
     - target: {fileID: 712736321295159483, guid: 7272601c17fb4d848b466f2382895650,
         type: 3}
       propertyPath: currentStressAmt
-      value: 0.75
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1341665765811902726, guid: 7272601c17fb4d848b466f2382895650,
         type: 3}
@@ -8715,7 +8715,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   stats: 05000000050000000500000005000000
-  statOffsets: 00000000000000000000000000000000
+  statOffsets:
+  - affectingTags: []
+  - affectingTags: []
+  - affectingTags: []
+  - affectingTags: []
   cash: 1000
 --- !u!1 &1828372911
 GameObject:

@@ -6,6 +6,7 @@ using UnityEngine;
 public class StressManager : MonoBehaviour
 {
     public static EventHandler stressFilledEvent; // Called when stress meter fills
+    public static EventHandler stressUnfilledEvent; // Called when stress is above 1 and then decrements below 1
     public static StressManager instance;
     public float currentStressAmt = .1f;
     public int numStressBars = 4;
@@ -48,6 +49,8 @@ public class StressManager : MonoBehaviour
 
     public float RemoveFromCurrentStress(float amount)
     {
+        if (currentStressAmt >= 1f) stressUnfilledEvent?.Invoke(this, EventArgs.Empty);
+
         currentStressAmt -= amount;
         return currentStressAmt;
     }
