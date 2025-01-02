@@ -12,6 +12,10 @@ public abstract class Card : MonoBehaviour
     [SerializeField] public GameObject container;
     [SerializeField] public Image background;
     [SerializeField] private AudioSource cardHover; // Reference to the Card Hover Sound effect
+    [Tooltip("Means this card can be played on any other card")]
+    public bool isWildPlacer = false; // Means this card can be played on any other card
+    [Tooltip("Means any card can be played on this card")]
+    public bool isWildReceiver = false; // Means any card can be played on this card
     public bool isBottomCard = false;
     public bool isReserveCard = false;
 
@@ -89,5 +93,19 @@ public abstract class Card : MonoBehaviour
     public void SetVisiblity(bool visiblity)
     {
         container.SetActive(visiblity);
+    }
+
+    // If you aren't using the Equals operator for anything, you could override that and
+    // move this over there to simplify your syntax a little
+    public bool CompareCards(Card otherCard)
+    {
+        return this.Type == otherCard.Type || this.Power == otherCard.Power;
+    }
+
+    public virtual bool CanPlaceOnCard(Card otherCard)
+    {
+        // See the variable definitions for explanations of what wildPlacer and wildReceiver mean
+        if (isWildPlacer || (otherCard != null && otherCard.isWildReceiver)) return true;
+        else return otherCard == null || CompareCards(otherCard);
     }
 }

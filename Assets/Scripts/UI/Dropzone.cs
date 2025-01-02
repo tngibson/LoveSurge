@@ -117,12 +117,6 @@ public class Dropzone : MonoBehaviour
         }
     }
 
-    private bool AttributesMatch(Card card1, Card card2)
-    {
-        // Check if either type or power matches
-        return card1.Type == card2.Type || card1.Power == card2.Power;
-    }
-
     // Method to handle special "Str" type cards separately for modularity
     private void HandleStressCard()
     {
@@ -740,9 +734,9 @@ public class Dropzone : MonoBehaviour
 
     public bool CanPlaceCard(Card card)
     {
-        // Always allow stress cards to be played or played on
-        if (card.GetType() == typeof(StressCard) || (lastPlacedCard != null && lastPlacedCard.GetType() == typeof(StressCard))) return true;
-        return lastPlacedCard == null || AttributesMatch(card, lastPlacedCard);
+        // If the dropzone wants to prevent a card from being placed, that logic
+        // should go here, not in Card.CanPlaceOnCard()
+        return card.CanPlaceOnCard(lastPlacedCard);
     }
 
     public DropzoneSlot GetDropzone()
