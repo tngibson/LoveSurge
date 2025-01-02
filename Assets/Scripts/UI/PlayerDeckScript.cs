@@ -29,7 +29,7 @@ public class PlayerDeckScript : MonoBehaviour
     public static readonly string STRESS_THRESH_3 = "StressThreshold3";
 
     // Initialize the deck on Awake
-    private void Awake()
+    private void Start()
     {
         //if (deckFilled == false)
         //{
@@ -140,7 +140,7 @@ public class PlayerDeckScript : MonoBehaviour
 
     private void CalculateStressPowerOffsets()
     {
-        if (Player.instance == null)
+        /*if (Player.instance == null)
         {
             Debug.Log("Cannot set stat offsets with no player!");
             return;
@@ -155,19 +155,22 @@ public class PlayerDeckScript : MonoBehaviour
         if (StressManager.GetStressBarsFilled(StressManager.instance.currentStressAmt) >= 2)
         {
             int index = Random.Range(0, indices.Count);
-            Player.instance.statOffsets[indices[index]].AddOffsetTag(STRESS_THRESH_2);
+            if (!Player.instance.statOffsets[indices[index]].HasOffsetTag(PlayerDeckScript.STRESS_THRESH_2))
+                Player.instance.statOffsets[indices[index]].AddOffsetTag(PlayerDeckScript.STRESS_THRESH_2);
             indices.Remove(index);
         }
 
         if (StressManager.GetStressBarsFilled(StressManager.instance.currentStressAmt) >= 3)
         {
             int index = Random.Range(0, indices.Count);
-            Player.instance.statOffsets[indices[index]].AddOffsetTag(STRESS_THRESH_3);
+            if (!Player.instance.statOffsets[indices[index]].HasOffsetTag(PlayerDeckScript.STRESS_THRESH_3))
+                Player.instance.statOffsets[indices[index]].AddOffsetTag(PlayerDeckScript.STRESS_THRESH_3);
             indices.Remove(index);
 
             index = Random.Range(0, indices.Count);
-            Player.instance.statOffsets[indices[index]].AddOffsetTag(STRESS_THRESH_3);
+            if (!Player.instance.statOffsets[indices[index]].HasOffsetTag(PlayerDeckScript.STRESS_THRESH_3))
+                Player.instance.statOffsets[indices[index]].AddOffsetTag(PlayerDeckScript.STRESS_THRESH_3);
             indices.Remove(index);
-        }
+        }*/
     }
 }

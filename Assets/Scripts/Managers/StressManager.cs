@@ -30,7 +30,9 @@ public class StressManager : MonoBehaviour
 
     private void Start()
     {
+        // Invoke events on start to make sure things are updated at the beginning of the game
         if (currentStressAmt >= 1) stressFilledEvent?.Invoke(this, EventArgs.Empty);
+        stressChangedEvent?.Invoke(this, new StressEventArgs(){AmountChanged = 0, NewTotal = currentStressAmt});
     }
 
     public float GetCurrentStressAmount()
