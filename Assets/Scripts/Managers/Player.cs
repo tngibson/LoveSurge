@@ -18,6 +18,8 @@ public class Player : MonoBehaviour
     public static Player instance;
     public int cash = 0;
 
+    private List<string> ignoredTags;
+
     void Awake()
     {
         if (instance == null)
@@ -29,10 +31,7 @@ public class Player : MonoBehaviour
         {
             Destroy(gameObject);
         }
-    }
 
-    private void Start()
-    {
         if (stats.Count <= 0)
         {
             // Initialize the list with zero values for all stats
@@ -43,6 +42,14 @@ public class Player : MonoBehaviour
             }
         }
 
+        ignoredTags = new List<string>()
+        {
+            PlayerDeckScript.STRESS_THRESH_2, PlayerDeckScript.STRESS_THRESH_3
+        };
+    }
+
+    private void Start()
+    {
         StressManager.stressFilledEvent += OnStressFilled;
         StressManager.stressUnfilledEvent += OnStressUnfilled;
     }
@@ -71,7 +78,7 @@ public class Player : MonoBehaviour
     // Returns stat value with associated offset
     public int GetStat(StatType stat)
     {
-        return stats[(int)stat] + statOffsets[(int)stat].GetAmount(); // Access the value using the enum index
+        return stats[(int)stat] + statOffsets[(int)stat].GetAmount(ignoredTags); // Access the value using the enum index
     }
 
     // Returns stat value without offsets
@@ -83,6 +90,24 @@ public class Player : MonoBehaviour
     public List<int> GetStats()
     {
         return new List<int>(stats); // Return a copy of the list for safety
+    }
+
+    // Will always return a list of stat offsets, even if Player is null
+    // (the list will still be the correct length even in that case)
+    public static List<StatOffset> GetSafeOffsets()
+    {
+        if (instance == null)
+        {
+            List<StatOffset> newList = new List<StatOffset>(System.Enum.GetValues(typeof(StatType)).Length);
+            for (int i = 0; i < System.Enum.GetValues(typeof(StatType)).Length; i++)
+            {
+                newList.Add(new StatOffset(0));
+            }
+            Debug.Log("Returning empty stat offset list because Player was null!");
+            return newList;
+        }
+
+        return new List<StatOffset>(instance.statOffsets);
     }
 
     private void OnStressFilled(object sender, EventArgs args)
@@ -105,12 +130,18 @@ public class Player : MonoBehaviour
 }
 
 [Serializable]
-public struct StatOffset
+public class StatOffset
 {
     public static readonly string STRESS_FOUR = "Stress-4";
 
     [SerializeField] private List<string> affectingTags;
-    private Dictionary<string, Func<int, int>> tagMapping;
+
+    private static Dictionary<string, Func<int, int>> tagMapping = new Dictionary<string, Func<int, int>>()
+    {
+        {STRESS_FOUR, input => input - 4},
+        {PlayerDeckScript.STRESS_THRESH_2, input => input - 1},
+        {PlayerDeckScript.STRESS_THRESH_3, input => input - 1}
+    };
     private int amount;
     private bool isDirty;
 
@@ -119,10 +150,6 @@ public struct StatOffset
         amount = _amount;
         affectingTags = new List<string>();
         isDirty = false;
-        tagMapping = new Dictionary<string, Func<int, int>>()
-        {
-            {STRESS_FOUR, (input) => input - 4}
-        };
     }
 
     public void AddOffsetTag(string tag)
@@ -144,15 +171,18 @@ public struct StatOffset
         return affectingTags.Contains(tag);
     }
 
-    public int GetAmount()
+    public int GetAmount(List<string> ignoreTags = null)
     {
-        if (!isDirty) return amount;
+        //if (!isDirty) return amount;
 
         int finalAmount = 0;
 
         foreach (var tag in affectingTags)
         {
-            if(tagMapping.ContainsKey(tag)) finalAmount = tagMapping[tag](finalAmount);
+            // ignoreTags allows you to conditionally ignore certain tags
+            bool ignoreTag = ignoreTags?.Contains(tag) ?? false;
+            if (tagMapping.ContainsKey(tag) && !ignoreTag) 
+                finalAmount = tagMapping[tag](finalAmount);
         }
 
         amount = finalAmount;

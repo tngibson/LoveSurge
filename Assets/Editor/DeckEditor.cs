@@ -84,5 +84,6 @@ public class DeckItemController
         else if (cardName.Contains("Cre")) cardName = "Creativity";
         else if (cardName.Contains("Stress")) cardName = "Stress";
         nameLabel.text = cardName + " - " + card.Power;
+        if (card.Debuffed) nameLabel.style.color = new StyleColor(Color.red);
     }
 }

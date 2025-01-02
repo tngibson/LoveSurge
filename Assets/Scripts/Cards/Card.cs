@@ -19,6 +19,10 @@ public abstract class Card : MonoBehaviour
     public bool isBottomCard = false;
     public bool isReserveCard = false;
 
+    private Color defaultTextColor;
+
+    private List<string> ignoredTags;
+
     // Private backing fields with public properties for type and power
     private string type;
     public string Type
@@ -30,7 +34,7 @@ public abstract class Card : MonoBehaviour
     [SerializeField] private int power;
     public int Power
     {
-        get => power;
+        get => power + GetStatOffsetFromCardType();
         set
         {
             power = value;
@@ -38,7 +42,7 @@ public abstract class Card : MonoBehaviour
         }
     }
 
-    private bool debuffed = false;
+    public bool debuffed = false;
 
     public bool Debuffed
     {
@@ -46,27 +50,48 @@ public abstract class Card : MonoBehaviour
         set
         {
             debuffed = value;
-            numText.color = Color.red;
+            UpdatePowerDisplay();
         }
     }
 
     // Start is called before the first frame update
     protected virtual void Start()
     {
-        UpdatePowerDisplay();  // Initialize the power display on start
         SetType();             // Set the type of card in derived classes
+        defaultTextColor = numText.color;
+        defaultTextColor.a = 1f;
+        ignoredTags = new List<string>() { StatOffset.STRESS_FOUR };
+        UpdatePowerDisplay();  // Initialize the power display on start
         
     }
 
     // Abstract method to set the card type, which will be implemented in derived classes
     protected abstract void SetType();
 
+    public int GetStatOffsetFromCardType()
+    {
+        switch (Type)
+        {
+            case "Cha":
+                return Player.GetSafeOffsets()[0].GetAmount(ignoredTags);
+            case "Cle":
+                return Player.GetSafeOffsets()[1].GetAmount(ignoredTags);
+            case "Cou":
+                return Player.GetSafeOffsets()[2].GetAmount(ignoredTags);
+            case "Cre":
+                return Player.GetSafeOffsets()[3].GetAmount(ignoredTags);
+            default:
+                return 0;
+        }
+    }
+
     // Updates the UI text to display the current power
     private void UpdatePowerDisplay()
     {
         if (numText != null)
         {
-            numText.text = power.ToString();
+            numText.text = Power.ToString();
+            numText.color = debuffed ? Color.red : defaultTextColor;
         }
     }
 
