@@ -44,14 +44,17 @@ public class StressManager : MonoBehaviour
         print(currentStressAmt);
 
         if (currentStressAmt >= 1f) stressFilledEvent?.Invoke(this, EventArgs.Empty);
+        StressBar.instance?.updateStressBar();
         return currentStressAmt;
     }
 
     public float RemoveFromCurrentStress(float amount)
     {
-        if (currentStressAmt >= 1f) stressUnfilledEvent?.Invoke(this, EventArgs.Empty);
+        if (currentStressAmt >= 1f && amount > 0) stressUnfilledEvent?.Invoke(this, EventArgs.Empty);
+        if (currentStressAmt - amount < 0) return currentStressAmt; // Don't make stress negative
 
         currentStressAmt -= amount;
+        StressBar.instance?.updateStressBar();
         return currentStressAmt;
     }
 

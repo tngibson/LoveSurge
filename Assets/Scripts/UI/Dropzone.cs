@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.IO;
@@ -87,7 +88,7 @@ public class Dropzone : MonoBehaviour
         if (card == null) return;
 
         // Check placement rules (using CanPlaceCard method or similar logic)
-        if (lastPlacedCard == null || AttributesMatch(card, lastPlacedCard))
+        if (CanPlaceCard(card))
         {
             // Add card to the dropzone
             dropzone.AddCard(card); // Add to the internal list
@@ -123,17 +124,10 @@ public class Dropzone : MonoBehaviour
     }
 
     // Method to handle special "Str" type cards separately for modularity
-    private void HandleStressCard(Card card)
+    private void HandleStressCard()
     {
-        if (StressManager.instance.currentStressAmt > 0)
-        {
-            StressManager.instance.RemoveFromCurrentStress(card.Power * 0.1f);
-            StressBar.instance.updateStressBar();
-        }
-        else
-        {
-            Debug.Log("Cannot add stress card when stress is at 0.");
-        }
+        Debug.Log("Removing stress");
+        StressManager.instance?.RemoveFromCurrentStress(0.1f);
     }
 
     // Removes a card from the dropzone and adds it to the player's area
@@ -208,7 +202,7 @@ public class Dropzone : MonoBehaviour
         }
 
         // Recalculate the current score based on cards in dropzones
-        CalculateScore();
+        CalculateScore(true);
 
         // Move all cards to the discard pile asynchronously
         //Currently removed for obsolescence
@@ -255,7 +249,9 @@ public class Dropzone : MonoBehaviour
     }
 
     // Method to calculate score (call anytime score may be changed)
-    public void CalculateScore()
+    // EndOfTurnTally should only be set when calculating the score at the end of the turn,
+    // for effects that only accumulate at the end of the turn
+    public void CalculateScore(bool endOfTurnTally = false)
     {
         // Reset score to recalculate
         score = 0;
@@ -269,6 +265,13 @@ public class Dropzone : MonoBehaviour
             // Iterate through all played cards to calculate the score
             foreach (Card card in cardsToScore)
             {
+                // If this card is a stress card, reduce stress instead of scoring
+                if (endOfTurnTally && card.GetType() == typeof(StressCard))
+                {
+                    HandleStressCard();
+                    continue;
+                }
+
                 totalPower += card.Power;
                 if (card.Power > highestPower)
                 {
@@ -737,6 +740,8 @@ public class Dropzone : MonoBehaviour
 
     public bool CanPlaceCard(Card card)
     {
+        // Always allow stress cards to be played or played on
+        if (card.GetType() == typeof(StressCard) || (lastPlacedCard != null && lastPlacedCard.GetType() == typeof(StressCard))) return true;
         return lastPlacedCard == null || AttributesMatch(card, lastPlacedCard);
     }
 
