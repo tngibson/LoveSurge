@@ -124,9 +124,9 @@ public abstract class Card : MonoBehaviour
         }
     }
 
-    public void SetVisiblity(bool visiblity)
+    public void SetVisibility(bool visibility)
     {
-        container.SetActive(visiblity);
+        container.SetActive(visibility);
     }
 
     // If you aren't using the Equals operator for anything, you could override that and

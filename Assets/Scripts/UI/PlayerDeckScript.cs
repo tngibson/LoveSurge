@@ -50,7 +50,7 @@ public class PlayerDeckScript : MonoBehaviour
     {
         Card finishedCard = Instantiate(prefab, container.transform);
         finishedCard.Power = power;
-        finishedCard.SetVisiblity(false);
+        finishedCard.SetVisibility(false);
         AddCard(finishedCard);
 
         return finishedCard;
@@ -65,7 +65,6 @@ public class PlayerDeckScript : MonoBehaviour
     // Fills the deck with cards of each type and power level
     private void FillDeck()
     {
-        CalculateStressPowerOffsets();
         // Loop through the cards and create the deck based on `cardCount` for each power level
         for (int i = 1; i <= maxCardPower; i++) // Powers from 1 to maxCardPower
         {
@@ -95,7 +94,7 @@ public class PlayerDeckScript : MonoBehaviour
             if (disableRandomDraw)
             {
                 Card cardToDraw = deck[0];
-                cardToDraw.SetVisiblity(true);
+                cardToDraw.SetVisibility(true);
                 RemoveCard(cardToDraw);
                 return cardToDraw;
             }
@@ -103,7 +102,7 @@ public class PlayerDeckScript : MonoBehaviour
             // Randomly select a card and remove it from the deck
             int cardChosen = Random.Range(0, deck.Count);
             Card drawnCard = deck[cardChosen];
-            drawnCard.SetVisiblity(true);
+            drawnCard.SetVisibility(true);
             RemoveCard(drawnCard);
             return drawnCard;
         }
@@ -138,39 +137,4 @@ public class PlayerDeckScript : MonoBehaviour
         return sum;
     }
 
-    private void CalculateStressPowerOffsets()
-    {
-        /*if (Player.instance == null)
-        {
-            Debug.Log("Cannot set stat offsets with no player!");
-            return;
-        }
-
-        List<int> indices = new List<int>(Player.GetSafeOffsets().Count);
-        for (int i = 0; i < Player.GetSafeOffsets().Count; i++)
-        {
-            indices.Add(i);
-        }
-
-        if (StressManager.GetStressBarsFilled(StressManager.instance.currentStressAmt) >= 2)
-        {
-            int index = Random.Range(0, indices.Count);
-            if (!Player.instance.statOffsets[indices[index]].HasOffsetTag(PlayerDeckScript.STRESS_THRESH_2))
-                Player.instance.statOffsets[indices[index]].AddOffsetTag(PlayerDeckScript.STRESS_THRESH_2);
-            indices.Remove(index);
-        }
-
-        if (StressManager.GetStressBarsFilled(StressManager.instance.currentStressAmt) >= 3)
-        {
-            int index = Random.Range(0, indices.Count);
-            if (!Player.instance.statOffsets[indices[index]].HasOffsetTag(PlayerDeckScript.STRESS_THRESH_3))
-                Player.instance.statOffsets[indices[index]].AddOffsetTag(PlayerDeckScript.STRESS_THRESH_3);
-            indices.Remove(index);
-
-            index = Random.Range(0, indices.Count);
-            if (!Player.instance.statOffsets[indices[index]].HasOffsetTag(PlayerDeckScript.STRESS_THRESH_3))
-                Player.instance.statOffsets[indices[index]].AddOffsetTag(PlayerDeckScript.STRESS_THRESH_3);
-            indices.Remove(index);
-        }*/
-    }
 }
