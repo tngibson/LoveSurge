@@ -34,6 +34,18 @@ public abstract class Card : MonoBehaviour
         }
     }
 
+    private bool debuffed = false;
+
+    public bool Debuffed
+    {
+        get => debuffed;
+        set
+        {
+            debuffed = value;
+            numText.color = Color.red;
+        }
+    }
+
     // Start is called before the first frame update
     protected virtual void Start()
     {

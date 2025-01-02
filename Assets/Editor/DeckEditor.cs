@@ -7,7 +7,7 @@ public class DeckEditor : EditorWindow
     [SerializeField]
     private VisualTreeAsset m_VisualTreeAsset = default;
 
-    [SerializeField] private VisualTreeAsset listItemPrefab;
+    private VisualTreeAsset listItemPrefab;
 
     private ListView deckList;
     private PlayerDeckScript deck;
@@ -76,6 +76,13 @@ public class DeckItemController
 
     public void SetCardData(Card card)
     {
-        nameLabel.text = card.name + " - " + card.Power;
+        string cardName = card.name;
+
+        if (cardName.Contains("Cha")) cardName = "Charisma";
+        else if(cardName.Contains("Cle")) cardName = "Cleverness";
+        else if (cardName.Contains("Cou")) cardName = "Courage";
+        else if (cardName.Contains("Cre")) cardName = "Creativity";
+        else if (cardName.Contains("Stress")) cardName = "Stress";
+        nameLabel.text = cardName + " - " + card.Power;
     }
 }

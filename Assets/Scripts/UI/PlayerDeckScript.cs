@@ -40,12 +40,14 @@ public class PlayerDeckScript : MonoBehaviour
     }
 
     // Instantiates a card, assigns its power, and adds it to the deck
-    private void MakeCard(Card prefab, int power)
+    private Card MakeCard(Card prefab, int power)
     {
         Card finishedCard = Instantiate(prefab, container.transform);
         finishedCard.Power = power;
         finishedCard.SetVisiblity(false);
         AddCard(finishedCard);
+
+        return finishedCard;
     }
 
     // Removes a card from the deck
@@ -63,10 +65,16 @@ public class PlayerDeckScript : MonoBehaviour
         {
             for (int j = 0; j < cardCount; j++)
             {
-                MakeCard(chaCard, i + offsets[0]);
-                MakeCard(cleCard, i + offsets[1]);
-                MakeCard(creCard, i + offsets[2]);
-                MakeCard(couCard, i + offsets[3]);
+                Card card1 = MakeCard(chaCard, i + offsets[0]);
+                Card card2 = MakeCard(cleCard, i + offsets[1]);
+                Card card3 = MakeCard(creCard, i + offsets[2]);
+                Card card4 = MakeCard(couCard, i + offsets[3]);
+
+                // Set cards that had their power decreased so the UI can reflect this
+                if (offsets[0] < 0) card1.Debuffed = true;
+                if (offsets[1] < 0) card2.Debuffed = true;
+                if (offsets[2] < 0) card3.Debuffed = true;
+                if (offsets[3] < 0) card4.Debuffed = true;
             }
         }
         AddStressCards();

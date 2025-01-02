@@ -5,7 +5,7 @@ using UnityEngine;
 
 public class StressManager : MonoBehaviour
 {
-    
+    public static EventHandler stressFilledEvent; // Called when stress meter fills
     public static StressManager instance;
     public float currentStressAmt = .1f;
     public int numStressBars = 4;
@@ -24,6 +24,11 @@ public class StressManager : MonoBehaviour
         }
     }
 
+    private void Start()
+    {
+        if (currentStressAmt >= 1) stressFilledEvent?.Invoke(this, EventArgs.Empty);
+    }
+
     public float GetCurrentStressAmount()
     {
         return currentStressAmt;
@@ -31,8 +36,13 @@ public class StressManager : MonoBehaviour
 
     public float AddToCurrentStress(float amount = 0.1f)
     {
+        // Necessary so that adding stress over 1 doesn't call the stress filled event multiple times
+        if (currentStressAmt >= 1f) return currentStressAmt;
+
         currentStressAmt += amount;
         print(currentStressAmt);
+
+        if (currentStressAmt >= 1f) stressFilledEvent?.Invoke(this, EventArgs.Empty);
         return currentStressAmt;
     }
 
