@@ -31,7 +31,7 @@ public class MapScript : MonoBehaviour, IPointerEnterHandler, IPointerExitHandle
 
         if (StressBar.instance != null)
         {
-            StressBar.instance.updateStressBar();
+            StressBar.instance.UpdateStressBar();
         }
 
         SetEnabled();
@@ -61,11 +61,11 @@ public class MapScript : MonoBehaviour, IPointerEnterHandler, IPointerExitHandle
         {
             if (StressManager.instance != null)
             {
-                StressManager.instance.addToCurrentStress();
+                StressManager.instance.AddToCurrentStress();
             }
             if (StressBar.instance != null)
             {
-                StressBar.instance.updateStressBar();
+                StressBar.instance.UpdateStressBar();
             }
             SceneManager.LoadScene(locName);
             gameObject.SetActive(false);

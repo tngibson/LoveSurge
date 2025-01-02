@@ -194,6 +194,11 @@ PrefabInstance:
       propertyPath: m_SortingLayer
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 7198534747800206469, guid: 44687f3797c06f041bb712efdc800917,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 7210089657204452481, guid: 44687f3797c06f041bb712efdc800917,
         type: 3}
       propertyPath: m_Name
@@ -258,6 +263,30 @@ PrefabInstance:
       insertIndex: -1
       addedObject: {fileID: 197109645831250398}
   m_SourcePrefab: {fileID: 100100000, guid: 44687f3797c06f041bb712efdc800917, type: 3}
+--- !u!114 &48361777302721214 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 4531473862938060446, guid: 44687f3797c06f041bb712efdc800917,
+    type: 3}
+  m_PrefabInstance: {fileID: 4488074246323844128}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &2041684555972505240 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 2458212191477848760, guid: 44687f3797c06f041bb712efdc800917,
+    type: 3}
+  m_PrefabInstance: {fileID: 4488074246323844128}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &6505368195767310497 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 7210089657204452481, guid: 44687f3797c06f041bb712efdc800917,
@@ -277,8 +306,20 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   cost: 0
-  numText: {fileID: 0}
-  container: {fileID: 0}
-  background: {fileID: 0}
+  numText: {fileID: 48361777302721214}
+  container: {fileID: 8512214492090208195}
+  background: {fileID: 2041684555972505240}
   cardHover: {fileID: 0}
+  isWildPlacer: 1
+  isWildReceiver: 1
+  isBottomCard: 0
+  isReserveCard: 0
+  defaultTextColor: {r: 0, g: 0, b: 0, a: 1}
   power: 0
+  shouldLog: 0
+--- !u!1 &8512214492090208195 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 5217880058731838435, guid: 44687f3797c06f041bb712efdc800917,
+    type: 3}
+  m_PrefabInstance: {fileID: 4488074246323844128}
+  m_PrefabAsset: {fileID: 0}
