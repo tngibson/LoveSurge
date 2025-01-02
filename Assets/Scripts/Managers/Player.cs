@@ -52,12 +52,14 @@ public class Player : MonoBehaviour
     {
         StressManager.stressFilledEvent += OnStressFilled;
         StressManager.stressUnfilledEvent += OnStressUnfilled;
+        StressManager.stressChangedEvent += OnStressChanged;
     }
 
     private void OnDestroy()
     {
         StressManager.stressFilledEvent -= OnStressFilled;
         StressManager.stressUnfilledEvent -= OnStressUnfilled;
+        StressManager.stressChangedEvent -= OnStressChanged;
     }
 
     public void SetName(string name)
@@ -125,6 +127,18 @@ public class Player : MonoBehaviour
                 offset.RemoveOffsetTag(StatOffset.STRESS_FOUR);
                 break;
             }
+        }
+    }
+
+    private void OnStressChanged(object sender, StressEventArgs e)
+    {
+        int barsFilled = StressManager.GetStressBarsFilled(StressManager.instance.currentStressAmt);
+        foreach (var statOffset in statOffsets)
+        {
+            if (statOffset.HasOffsetTag(PlayerDeckScript.STRESS_THRESH_2) && barsFilled < 2)
+                statOffset.RemoveOffsetTag(PlayerDeckScript.STRESS_THRESH_2);
+            if (statOffset.HasOffsetTag(PlayerDeckScript.STRESS_THRESH_3) && barsFilled < 3)
+                statOffset.RemoveOffsetTag(PlayerDeckScript.STRESS_THRESH_3);
         }
     }
 }

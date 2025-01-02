@@ -7,6 +7,9 @@ public class StressManager : MonoBehaviour
 {
     public static EventHandler stressFilledEvent; // Called when stress meter fills
     public static EventHandler stressUnfilledEvent; // Called when stress is above 1 and then decrements below 1
+
+    public static EventHandler<StressEventArgs> stressChangedEvent; // Called whenever stress changes
+
     public static StressManager instance;
     public float currentStressAmt = .1f;
     public int numStressBars = 4;
@@ -42,6 +45,11 @@ public class StressManager : MonoBehaviour
 
         currentStressAmt += amount;
         print(currentStressAmt);
+        stressChangedEvent?.Invoke(this, new StressEventArgs()
+        {
+            AmountChanged = amount,
+            NewTotal = currentStressAmt
+        });
 
         if (currentStressAmt >= 1f) stressFilledEvent?.Invoke(this, EventArgs.Empty);
         StressBar.instance?.updateStressBar();
@@ -51,9 +59,16 @@ public class StressManager : MonoBehaviour
     public float RemoveFromCurrentStress(float amount)
     {
         if (currentStressAmt >= 1f && amount > 0) stressUnfilledEvent?.Invoke(this, EventArgs.Empty);
-        if (currentStressAmt - amount < 0) return currentStressAmt; // Don't make stress negative
+        if (currentStressAmt - amount < 0) amount = currentStressAmt; // Set amount so stress will equal 0
 
         currentStressAmt -= amount;
+
+        stressChangedEvent?.Invoke(this, new StressEventArgs()
+        {
+            AmountChanged = -amount,
+            NewTotal = currentStressAmt
+        });
+
         StressBar.instance?.updateStressBar();
         return currentStressAmt;
     }
@@ -62,11 +77,17 @@ public class StressManager : MonoBehaviour
     {
         if (amount <= 0) return 0;
 
-        int numSteps = instance.numStressBars + 1;
+        int numSteps = instance.numStressBars;
 
         // Should round down to nearest int
         int stepIndex = (int)(amount * numSteps);
 
         return Math.Min(stepIndex, instance.numStressBars);
     }
+}
+
+public class StressEventArgs : EventArgs
+{
+    public float AmountChanged;
+    public float NewTotal;
 }

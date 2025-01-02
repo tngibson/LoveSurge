@@ -19,7 +19,7 @@ public abstract class Card : MonoBehaviour
     public bool isBottomCard = false;
     public bool isReserveCard = false;
 
-    private Color defaultTextColor;
+    public Color defaultTextColor;
 
     private List<string> ignoredTags;
 
@@ -42,7 +42,7 @@ public abstract class Card : MonoBehaviour
         }
     }
 
-    public bool debuffed = false;
+    private bool debuffed = false;
 
     public bool Debuffed
     {
@@ -58,11 +58,20 @@ public abstract class Card : MonoBehaviour
     protected virtual void Start()
     {
         SetType();             // Set the type of card in derived classes
-        defaultTextColor = numText.color;
-        defaultTextColor.a = 1f;
         ignoredTags = new List<string>() { StatOffset.STRESS_FOUR };
         UpdatePowerDisplay();  // Initialize the power display on start
         
+        StressManager.stressChangedEvent += StressChangedEvent;
+    }
+
+    private void OnDestroy()
+    {
+        StressManager.stressChangedEvent -= StressChangedEvent;
+    }
+
+    private void StressChangedEvent(object sender, StressEventArgs e)
+    {
+        Debuffed = GetStatOffsetFromCardType() < 0;
     }
 
     // Abstract method to set the card type, which will be implemented in derived classes
@@ -91,7 +100,7 @@ public abstract class Card : MonoBehaviour
         if (numText != null)
         {
             numText.text = Power.ToString();
-            numText.color = debuffed ? Color.red : defaultTextColor;
+            numText.color = Debuffed ? Color.red : defaultTextColor;
         }
     }
 
