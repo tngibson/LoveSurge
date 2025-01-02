@@ -26,13 +26,13 @@ public class StressBar : MonoBehaviour
     void Start()
     {
         currentStressAmt = StressManager.instance.GetCurrentStressAmount();
-        updateStressBar();
+        UpdateStressBar();
         
     }
 
     // Update is called once per frame
   
-    public void updateStressBar()
+    public void UpdateStressBar()
     {
         StressBarParent.transform.localScale += new Vector3(currentStressAmt, 0);
     }

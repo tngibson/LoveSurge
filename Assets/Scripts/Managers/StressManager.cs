@@ -54,7 +54,7 @@ public class StressManager : MonoBehaviour
         });
 
         if (currentStressAmt >= 1f) stressFilledEvent?.Invoke(this, EventArgs.Empty);
-        StressBar.instance?.updateStressBar();
+        StressBar.instance?.UpdateStressBar();
         return currentStressAmt;
     }
 
@@ -71,10 +71,11 @@ public class StressManager : MonoBehaviour
             NewTotal = currentStressAmt
         });
 
-        StressBar.instance?.updateStressBar();
+        StressBar.instance?.UpdateStressBar();
         return currentStressAmt;
     }
 
+    // Gets the number of bars filled rounded down
     public static int GetStressBarsFilled(float amount)
     {
         if (amount <= 0) return 0;

@@ -187,6 +187,7 @@ public class StatOffset
 
     public int GetAmount(List<string> ignoreTags = null)
     {
+        // TODO: This makes it always return 0 for some reason
         //if (!isDirty) return amount;
 
         int finalAmount = 0;
