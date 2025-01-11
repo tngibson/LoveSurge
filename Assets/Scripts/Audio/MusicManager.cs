@@ -12,6 +12,7 @@ public class MusicManager : MonoBehaviour
     public static MusicManager instance { get; private set; }
 
     private EventInstance musicEventInstance;
+    private EventInstance dateMusicInstance;
     private List<EventInstance> eventInstances;
     private EnumSoundtrack soundtrackInstance;
     public EnumSoundtrack SoundTrackInstance { get => soundtrackInstance; set => soundtrackInstance = value; }
@@ -35,6 +36,7 @@ public class MusicManager : MonoBehaviour
     private void Start()
     {
         InitializeMusic(FMODEvents.instance.gameSoundtrack);
+        InitializeDate(FMODEvents.instance.dateMusic);
         UnityEngine.SceneManagement.Scene scene = SceneManager.GetActiveScene();
         AudioSwitcher(EnumSoundtrack.TITLE_THEME);
     }
@@ -51,6 +53,10 @@ public class MusicManager : MonoBehaviour
         musicEventInstance.start();
     }
 
+    private void InitializeDate(EventReference dateMusic)
+    {
+        dateMusicInstance = CreateInstance(dateMusic);
+    }
     public void AudioSwitcher(EnumSoundtrack track)
     {
         switch (track)
@@ -78,6 +84,41 @@ public class MusicManager : MonoBehaviour
                 break;
             case EnumSoundtrack.DEEP_CONVERSATION:
                 musicEventInstance.setParameterByName("Song", 7);
+                break;
+        }
+    }
+
+    public void DateProgress(EnumDateProgress track)
+    {
+        switch (track)
+        {
+            case EnumDateProgress.CARD_DATE:
+                dateMusicInstance.setParameterByName("dateProgress", 0);
+                break;
+            case EnumDateProgress.SKILL_CHECK:
+                dateMusicInstance.setParameterByName("dateProgress", 1);
+                break;
+            case EnumDateProgress.START:
+                dateMusicInstance.start();
+                break;
+            case EnumDateProgress.STOP:
+                dateMusicInstance.stop(FMOD.Studio.STOP_MODE.ALLOWFADEOUT);
+                break;
+
+        }
+    }
+    public void DateCharacter (EnumDateCharacter character)
+    {
+        switch (character)
+        {
+            case EnumDateCharacter.CELCI:
+                dateMusicInstance.setParameterByName("dateCharacter", 0);
+                break;
+            case EnumDateCharacter.LOTTE:
+                dateMusicInstance.setParameterByName("dateCharacter", 1);
+                break;
+            case EnumDateCharacter.NOKI:
+                dateMusicInstance.setParameterByName("dateCharacter", 2);
                 break;
         }
     }

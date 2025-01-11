@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.18028331, g: 0.2257133, b: 0.3069217, a: 1}
+  m_IndirectSpecularColor: {r: 0.18028378, g: 0.22571412, b: 0.30692285, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -287,7 +287,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 45a960cb0a316ac4186af3d11d80359b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  <track>k__BackingField: 2
+  <track>k__BackingField: 7
 --- !u!4 &301476305
 Transform:
   m_ObjectHideFlags: 0
@@ -303,6 +303,81 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1001 &314311660
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 3204525061469704729, guid: c9eefffa35b1d894db33df280ee5d533,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 629.6033
+      objectReference: {fileID: 0}
+    - target: {fileID: 3204525061469704729, guid: c9eefffa35b1d894db33df280ee5d533,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 337.17117
+      objectReference: {fileID: 0}
+    - target: {fileID: 3204525061469704729, guid: c9eefffa35b1d894db33df280ee5d533,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 8.130157
+      objectReference: {fileID: 0}
+    - target: {fileID: 3204525061469704729, guid: c9eefffa35b1d894db33df280ee5d533,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3204525061469704729, guid: c9eefffa35b1d894db33df280ee5d533,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3204525061469704729, guid: c9eefffa35b1d894db33df280ee5d533,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3204525061469704729, guid: c9eefffa35b1d894db33df280ee5d533,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3204525061469704729, guid: c9eefffa35b1d894db33df280ee5d533,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3204525061469704729, guid: c9eefffa35b1d894db33df280ee5d533,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3204525061469704729, guid: c9eefffa35b1d894db33df280ee5d533,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7073611027408158490, guid: c9eefffa35b1d894db33df280ee5d533,
+        type: 3}
+      propertyPath: <track>k__BackingField
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 7189279189892377890, guid: c9eefffa35b1d894db33df280ee5d533,
+        type: 3}
+      propertyPath: m_Name
+      value: DateMusicSetter
+      objectReference: {fileID: 0}
+    m_RemovedComponents:
+    - {fileID: 2158595546042542923, guid: c9eefffa35b1d894db33df280ee5d533, type: 3}
+    - {fileID: 7609280152017813501, guid: c9eefffa35b1d894db33df280ee5d533, type: 3}
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: c9eefffa35b1d894db33df280ee5d533, type: 3}
 --- !u!1 &358605960
 GameObject:
   m_ObjectHideFlags: 0
@@ -2019,3 +2094,4 @@ SceneRoots:
   - {fileID: 1237740653}
   - {fileID: 1115827566}
   - {fileID: 301476305}
+  - {fileID: 314311660}

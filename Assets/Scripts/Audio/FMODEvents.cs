@@ -11,6 +11,8 @@ public class FMODEvents : MonoBehaviour
     [field: Header("Music")]
 
     [field: SerializeField] public EventReference gameSoundtrack { get; private set; }
+
+    [field: SerializeField] public EventReference dateMusic { get; private set; }
     [field: SerializeField] public EventReference environmentTrack { get; private set; }
     [field: SerializeField] public EventReference envIntroSound { get; private set; }
     [field: SerializeField] public EventReference currentRingtone { get; private set; }
