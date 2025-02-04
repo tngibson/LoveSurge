@@ -1167,7 +1167,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 893d1f42e4053c04ea705dcb002b0aa2, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 3ccc13f75f2a58341be0cf87caab0556, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -1362,7 +1362,7 @@ PrefabInstance:
     - target: {fileID: 8427216516346150109, guid: caff7daa29ed80547bbcab65c7792ef9,
         type: 3}
       propertyPath: choices.Array.size
-      value: 32
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 8427216516346150109, guid: caff7daa29ed80547bbcab65c7792ef9,
         type: 3}
@@ -1386,13 +1386,8 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8427216516346150109, guid: caff7daa29ed80547bbcab65c7792ef9,
         type: 3}
-      propertyPath: choices.Array.data[23]
-      value: 
-      objectReference: {fileID: 0}
-    - target: {fileID: 8427216516346150109, guid: caff7daa29ed80547bbcab65c7792ef9,
-        type: 3}
       propertyPath: dialogLines.Array.size
-      value: 32
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 8427216516346150109, guid: caff7daa29ed80547bbcab65c7792ef9,
         type: 3}
@@ -1402,206 +1397,101 @@ PrefabInstance:
     - target: {fileID: 8427216516346150109, guid: caff7daa29ed80547bbcab65c7792ef9,
         type: 3}
       propertyPath: dialogLines.Array.data[0]
-      value: "Noki\u2019s eyes start to blur a bit, noticing her battery starting
-        to get lower and she decides to keep pushing through with the date. Noki
-        doesn\u2019t want to go back to where she can hear the voices."
+      value: "Hello [PlayerName], I hope you aren\u2019t too busy?"
       objectReference: {fileID: 0}
     - target: {fileID: 8427216516346150109, guid: caff7daa29ed80547bbcab65c7792ef9,
         type: 3}
       propertyPath: dialogLines.Array.data[1]
-      value: "Come on, let\u2019s go even further!"
+      value: She peers over your shoulder as she looks at what you are reading. She
+        squints as she looks at the book, tilting her head.
       objectReference: {fileID: 0}
     - target: {fileID: 8427216516346150109, guid: caff7daa29ed80547bbcab65c7792ef9,
         type: 3}
       propertyPath: dialogLines.Array.data[2]
-      value: "Wait! Noki, please- you\u2019ve been acting off-."
+      value: You look up to Noki, raising your book for her to get a better look.
       objectReference: {fileID: 0}
     - target: {fileID: 8427216516346150109, guid: caff7daa29ed80547bbcab65c7792ef9,
         type: 3}
       propertyPath: dialogLines.Array.data[3]
-      value: "I promise, I\u2019m fine! This date has been amazing. Why stop now?"
+      value: "Just a book about flowers. I\u2019m trying to figure out what type
+        of flower would best suit me to give to a person later on. So far..got symbolisms
+        and whatnot."
       objectReference: {fileID: 0}
     - target: {fileID: 8427216516346150109, guid: caff7daa29ed80547bbcab65c7792ef9,
         type: 3}
       propertyPath: dialogLines.Array.data[4]
-      value: I- Noki-
+      value: "Wait\u2026you\u2019re planning on giving flowers to someone? Who?"
       objectReference: {fileID: 0}
     - target: {fileID: 8427216516346150109, guid: caff7daa29ed80547bbcab65c7792ef9,
         type: 3}
       propertyPath: dialogLines.Array.data[5]
-      value: You try to protest as you can tell she is hiding something with the
-        tone of her voice getting more shaky.
+      value: She tilts her head, a small frown forming on her face. She pouts slightly
+        as she crosses her arms.
       objectReference: {fileID: 0}
     - target: {fileID: 8427216516346150109, guid: caff7daa29ed80547bbcab65c7792ef9,
         type: 3}
       propertyPath: dialogLines.Array.data[6]
-      value: You worry too much! Oh how about we take a picture of the flowers by
-        the fountain?
+      value: "Oh that\u2019s a surprise."
       objectReference: {fileID: 0}
     - target: {fileID: 8427216516346150109, guid: caff7daa29ed80547bbcab65c7792ef9,
         type: 3}
       propertyPath: dialogLines.Array.data[7]
-      value: "She drags you to the fountain that\u2019s at the end of the city streets.
-        She looks down at the flowers, a soft smile forming on her lips. Her gaze
-        softens a little before she glances back at you."
+      value: You give a grin to Noki, but she continues to pout.
       objectReference: {fileID: 0}
     - target: {fileID: 8427216516346150109, guid: caff7daa29ed80547bbcab65c7792ef9,
         type: 3}
       propertyPath: dialogLines.Array.data[8]
-      value: "See? I told you it\u2019s fine. Besides, look at these flowers! They\u2019re
-        just asking to have their pictures taken. I believe this would qualify for
-        the perfect picture!"
+      value: Well fine, how about I help you look for some flowers in the arboretum?
       objectReference: {fileID: 0}
     - target: {fileID: 8427216516346150109, guid: caff7daa29ed80547bbcab65c7792ef9,
         type: 3}
       propertyPath: dialogLines.Array.data[9]
-      value: You look at Noki cautiously, noticing her movements starting to be a
-        little slow.
+      value: She looks a little defeated, but she is your phone. One of her duties
+        as your phone is to help you after all.
       objectReference: {fileID: 0}
     - target: {fileID: 8427216516346150109, guid: caff7daa29ed80547bbcab65c7792ef9,
         type: 3}
       propertyPath: dialogLines.Array.data[10]
-      value: Noki? Are you sure everything is okay?
+      value: "Whatever, The Net is probably  better than\u2026this place."
       objectReference: {fileID: 0}
     - target: {fileID: 8427216516346150109, guid: caff7daa29ed80547bbcab65c7792ef9,
         type: 3}
       propertyPath: dialogLines.Array.data[11]
-      value: "Hm? Yea! It\u2019s just nice to be out here with you. You\u2019re\u2026happy
-        being here with me, right?"
+      value: You cringe looking around your apartment, shuddering in slight disgust.
+        It was pretty on the outside, but the actual inside looked pretty crappy.
+        Cabinets falling apart, the sink only dispensing cold water, and the AC being
+        temperamental. Damn you Celci.
       objectReference: {fileID: 0}
     - target: {fileID: 8427216516346150109, guid: caff7daa29ed80547bbcab65c7792ef9,
         type: 3}
       propertyPath: dialogLines.Array.data[12]
-      value: "Yea, of course I am\u2026I- Why wouldn\u2019t I be?"
+      value: "True! You are disgusting!~ However, our adventures in The Net will
+        be wonderful because we\u2019re together! I am useful!"
       objectReference: {fileID: 0}
     - target: {fileID: 8427216516346150109, guid: caff7daa29ed80547bbcab65c7792ef9,
         type: 3}
       propertyPath: dialogLines.Array.data[13]
-      value: "I just wanted to make sure that I\u2019m giving you the best experience
-        for our date! It\u2019s also nice to be out of the Omniverse\u2026I don\u2019t
-        hear those voices anymore."
+      value: CHOICE
       objectReference: {fileID: 0}
     - target: {fileID: 8427216516346150109, guid: caff7daa29ed80547bbcab65c7792ef9,
         type: 3}
       propertyPath: dialogLines.Array.data[14]
-      value: You look at her with a softened gaze, as you see her having a sincere
-        smile. You never really thought about what it would be like to be Noki up
-        till now.
+      value: CHOICE
       objectReference: {fileID: 0}
     - target: {fileID: 8427216516346150109, guid: caff7daa29ed80547bbcab65c7792ef9,
         type: 3}
       propertyPath: dialogLines.Array.data[15]
-      value: "And..I finally get to see actual flowers, not those\u2026fake digital
-        pixels. Even their petals have imperfections, but I think it makes them even
-        more beautiful."
+      value: CHOICE
       objectReference: {fileID: 0}
     - target: {fileID: 8427216516346150109, guid: caff7daa29ed80547bbcab65c7792ef9,
         type: 3}
       propertyPath: dialogLines.Array.data[16]
-      value: "You smile a little, feeling you finally get to see a side of Noki that
-        you haven\u2019t seen before."
-      objectReference: {fileID: 0}
-    - target: {fileID: 8427216516346150109, guid: caff7daa29ed80547bbcab65c7792ef9,
-        type: 3}
-      propertyPath: dialogLines.Array.data[17]
-      value: Noki crouches down, her eyes gazing down to the blue flower in front
-        of her. She picks up the flower and sniffs it, her eyes widening a bit.
-      objectReference: {fileID: 0}
-    - target: {fileID: 8427216516346150109, guid: caff7daa29ed80547bbcab65c7792ef9,
-        type: 3}
-      propertyPath: dialogLines.Array.data[18]
-      value: Wow, these smell better than the coffee in the morning!
-      objectReference: {fileID: 0}
-    - target: {fileID: 8427216516346150109, guid: caff7daa29ed80547bbcab65c7792ef9,
-        type: 3}
-      propertyPath: dialogLines.Array.data[19]
-      value: Yea, I think the flowers they have out here by the fountain are nice.
-        They tend to keep up on this area due to the statue of the creator being
-        here.
-      objectReference: {fileID: 0}
-    - target: {fileID: 8427216516346150109, guid: caff7daa29ed80547bbcab65c7792ef9,
-        type: 3}
-      propertyPath: dialogLines.Array.data[20]
-      value: Noki glances up to the statue, and squints a little. She frowns a bit
-        as she thinks about the fact she was blessed to be perfect with everything
-        from this man that now has a statue built for him.
-      objectReference: {fileID: 0}
-    - target: {fileID: 8427216516346150109, guid: caff7daa29ed80547bbcab65c7792ef9,
-        type: 3}
-      propertyPath: dialogLines.Array.data[21]
-      value: "However, if it weren\u2019t for him I don\u2019t think I\u2019d have
-        an awesome phone such as you."
-      objectReference: {fileID: 0}
-    - target: {fileID: 8427216516346150109, guid: caff7daa29ed80547bbcab65c7792ef9,
-        type: 3}
-      propertyPath: dialogLines.Array.data[22]
-      value: "I appreciate it. I\u2019m glad I can make you happy and I hope to continue
-        doing so. Your happiness is my top priority after all!"
-      objectReference: {fileID: 0}
-    - target: {fileID: 8427216516346150109, guid: caff7daa29ed80547bbcab65c7792ef9,
-        type: 3}
-      propertyPath: dialogLines.Array.data[23]
-      value: You playfully roll your eyes at her, before you hold out the camera
-        in your hands.
-      objectReference: {fileID: 0}
-    - target: {fileID: 8427216516346150109, guid: caff7daa29ed80547bbcab65c7792ef9,
-        type: 3}
-      propertyPath: dialogLines.Array.data[24]
-      value: "You don\u2019t need to keep pushing yourself to make me happy, besides
-        you deserve to feel human too\u2026now say cheese! roll your eyes at her,
-        before you hold out the camera in your hands."
-      objectReference: {fileID: 0}
-    - target: {fileID: 8427216516346150109, guid: caff7daa29ed80547bbcab65c7792ef9,
-        type: 3}
-      propertyPath: dialogLines.Array.data[25]
-      value: "Noki\u2019s eyes widened, surprised by your words. She quickly gets
-        into pose, having a huge grin on her lips. Her hands are held behind her
-        back as she looks at you. The wind blows gently as the flowers sway to the
-        side."
-      objectReference: {fileID: 0}
-    - target: {fileID: 8427216516346150109, guid: caff7daa29ed80547bbcab65c7792ef9,
-        type: 3}
-      propertyPath: dialogLines.Array.data[26]
-      value: Cheese!
-      objectReference: {fileID: 0}
-    - target: {fileID: 8427216516346150109, guid: caff7daa29ed80547bbcab65c7792ef9,
-        type: 3}
-      propertyPath: dialogLines.Array.data[27]
-      value: You take the picture, the camera flashing.
-      objectReference: {fileID: 0}
-    - target: {fileID: 8427216516346150109, guid: caff7daa29ed80547bbcab65c7792ef9,
-        type: 3}
-      propertyPath: dialogLines.Array.data[28]
-      value: "Now that\u2019s what I call the perfect picture."
-      objectReference: {fileID: 0}
-    - target: {fileID: 8427216516346150109, guid: caff7daa29ed80547bbcab65c7792ef9,
-        type: 3}
-      propertyPath: dialogLines.Array.data[29]
-      value: "Noki\u2019s eyes slowly start to flicker."
-      objectReference: {fileID: 0}
-    - target: {fileID: 8427216516346150109, guid: caff7daa29ed80547bbcab65c7792ef9,
-        type: 3}
-      propertyPath: dialogLines.Array.data[30]
-      value: Noki? Noki!
-      objectReference: {fileID: 0}
-    - target: {fileID: 8427216516346150109, guid: caff7daa29ed80547bbcab65c7792ef9,
-        type: 3}
-      propertyPath: dialogLines.Array.data[31]
-      value: Noki starts to sway side to side a little before she collapses onto
-        the flower bed. You try to grab her before she hits the ground. However,
-        as you try to reach for her, she reverts back to being a smartphone. You
-        frantically grab Noki off of the flowers, rushing to Mickey to possibly figure
-        out what happened.
-      objectReference: {fileID: 0}
-    - target: {fileID: 8427216516346150109, guid: caff7daa29ed80547bbcab65c7792ef9,
-        type: 3}
-      propertyPath: dialogLines.Array.data[32]
-      value: 
+      value: CHOICE
       objectReference: {fileID: 0}
     - target: {fileID: 8427216516346150109, guid: caff7daa29ed80547bbcab65c7792ef9,
         type: 3}
       propertyPath: speakersPerLine.Array.size
-      value: 32
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 8427216516346150109, guid: caff7daa29ed80547bbcab65c7792ef9,
         type: 3}
@@ -1630,23 +1520,28 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8427216516346150109, guid: caff7daa29ed80547bbcab65c7792ef9,
         type: 3}
-      propertyPath: speakersPerLine.Array.data[1]
+      propertyPath: speakersPerLine.Array.data[0]
       value: Noki
+      objectReference: {fileID: 0}
+    - target: {fileID: 8427216516346150109, guid: caff7daa29ed80547bbcab65c7792ef9,
+        type: 3}
+      propertyPath: speakersPerLine.Array.data[1]
+      value: 
       objectReference: {fileID: 0}
     - target: {fileID: 8427216516346150109, guid: caff7daa29ed80547bbcab65c7792ef9,
         type: 3}
       propertyPath: speakersPerLine.Array.data[2]
-      value: You
+      value: 
       objectReference: {fileID: 0}
     - target: {fileID: 8427216516346150109, guid: caff7daa29ed80547bbcab65c7792ef9,
         type: 3}
       propertyPath: speakersPerLine.Array.data[3]
-      value: Noki
+      value: You
       objectReference: {fileID: 0}
     - target: {fileID: 8427216516346150109, guid: caff7daa29ed80547bbcab65c7792ef9,
         type: 3}
       propertyPath: speakersPerLine.Array.data[4]
-      value: You
+      value: Noki
       objectReference: {fileID: 0}
     - target: {fileID: 8427216516346150109, guid: caff7daa29ed80547bbcab65c7792ef9,
         type: 3}
@@ -1656,7 +1551,7 @@ PrefabInstance:
     - target: {fileID: 8427216516346150109, guid: caff7daa29ed80547bbcab65c7792ef9,
         type: 3}
       propertyPath: speakersPerLine.Array.data[6]
-      value: Noki
+      value: You
       objectReference: {fileID: 0}
     - target: {fileID: 8427216516346150109, guid: caff7daa29ed80547bbcab65c7792ef9,
         type: 3}
@@ -1681,91 +1576,16 @@ PrefabInstance:
     - target: {fileID: 8427216516346150109, guid: caff7daa29ed80547bbcab65c7792ef9,
         type: 3}
       propertyPath: speakersPerLine.Array.data[11]
-      value: Noki
+      value: 
       objectReference: {fileID: 0}
     - target: {fileID: 8427216516346150109, guid: caff7daa29ed80547bbcab65c7792ef9,
         type: 3}
       propertyPath: speakersPerLine.Array.data[12]
-      value: You
+      value: Noki
       objectReference: {fileID: 0}
     - target: {fileID: 8427216516346150109, guid: caff7daa29ed80547bbcab65c7792ef9,
         type: 3}
       propertyPath: speakersPerLine.Array.data[13]
-      value: Noki
-      objectReference: {fileID: 0}
-    - target: {fileID: 8427216516346150109, guid: caff7daa29ed80547bbcab65c7792ef9,
-        type: 3}
-      propertyPath: speakersPerLine.Array.data[15]
-      value: Noki
-      objectReference: {fileID: 0}
-    - target: {fileID: 8427216516346150109, guid: caff7daa29ed80547bbcab65c7792ef9,
-        type: 3}
-      propertyPath: speakersPerLine.Array.data[16]
-      value: 
-      objectReference: {fileID: 0}
-    - target: {fileID: 8427216516346150109, guid: caff7daa29ed80547bbcab65c7792ef9,
-        type: 3}
-      propertyPath: speakersPerLine.Array.data[17]
-      value: 
-      objectReference: {fileID: 0}
-    - target: {fileID: 8427216516346150109, guid: caff7daa29ed80547bbcab65c7792ef9,
-        type: 3}
-      propertyPath: speakersPerLine.Array.data[18]
-      value: Noki
-      objectReference: {fileID: 0}
-    - target: {fileID: 8427216516346150109, guid: caff7daa29ed80547bbcab65c7792ef9,
-        type: 3}
-      propertyPath: speakersPerLine.Array.data[19]
-      value: You
-      objectReference: {fileID: 0}
-    - target: {fileID: 8427216516346150109, guid: caff7daa29ed80547bbcab65c7792ef9,
-        type: 3}
-      propertyPath: speakersPerLine.Array.data[20]
-      value: 
-      objectReference: {fileID: 0}
-    - target: {fileID: 8427216516346150109, guid: caff7daa29ed80547bbcab65c7792ef9,
-        type: 3}
-      propertyPath: speakersPerLine.Array.data[21]
-      value: You
-      objectReference: {fileID: 0}
-    - target: {fileID: 8427216516346150109, guid: caff7daa29ed80547bbcab65c7792ef9,
-        type: 3}
-      propertyPath: speakersPerLine.Array.data[22]
-      value: Noki
-      objectReference: {fileID: 0}
-    - target: {fileID: 8427216516346150109, guid: caff7daa29ed80547bbcab65c7792ef9,
-        type: 3}
-      propertyPath: speakersPerLine.Array.data[24]
-      value: You
-      objectReference: {fileID: 0}
-    - target: {fileID: 8427216516346150109, guid: caff7daa29ed80547bbcab65c7792ef9,
-        type: 3}
-      propertyPath: speakersPerLine.Array.data[25]
-      value: 
-      objectReference: {fileID: 0}
-    - target: {fileID: 8427216516346150109, guid: caff7daa29ed80547bbcab65c7792ef9,
-        type: 3}
-      propertyPath: speakersPerLine.Array.data[26]
-      value: Noki
-      objectReference: {fileID: 0}
-    - target: {fileID: 8427216516346150109, guid: caff7daa29ed80547bbcab65c7792ef9,
-        type: 3}
-      propertyPath: speakersPerLine.Array.data[27]
-      value: 
-      objectReference: {fileID: 0}
-    - target: {fileID: 8427216516346150109, guid: caff7daa29ed80547bbcab65c7792ef9,
-        type: 3}
-      propertyPath: speakersPerLine.Array.data[28]
-      value: You
-      objectReference: {fileID: 0}
-    - target: {fileID: 8427216516346150109, guid: caff7daa29ed80547bbcab65c7792ef9,
-        type: 3}
-      propertyPath: speakersPerLine.Array.data[30]
-      value: You
-      objectReference: {fileID: 0}
-    - target: {fileID: 8427216516346150109, guid: caff7daa29ed80547bbcab65c7792ef9,
-        type: 3}
-      propertyPath: speakersPerLine.Array.data[31]
       value: 
       objectReference: {fileID: 0}
     - target: {fileID: 8427216516346150109, guid: caff7daa29ed80547bbcab65c7792ef9,
@@ -1791,7 +1611,7 @@ PrefabInstance:
     - target: {fileID: 8427216516346150109, guid: caff7daa29ed80547bbcab65c7792ef9,
         type: 3}
       propertyPath: characterSprites.Array.data[0].spriteOptions.Array.size
-      value: 32
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 8427216516346150109, guid: caff7daa29ed80547bbcab65c7792ef9,
         type: 3}
@@ -1826,25 +1646,25 @@ PrefabInstance:
         type: 3}
       propertyPath: characterSprites.Array.data[0].spriteOptions.Array.data[4]
       value: 
-      objectReference: {fileID: 21300000, guid: 1efff82e0a469464987b91e1e6ff298e,
+      objectReference: {fileID: 21300000, guid: 4793868bd2892bd4abc8227a508d91d7,
         type: 3}
     - target: {fileID: 8427216516346150109, guid: caff7daa29ed80547bbcab65c7792ef9,
         type: 3}
       propertyPath: characterSprites.Array.data[0].spriteOptions.Array.data[5]
       value: 
-      objectReference: {fileID: 21300000, guid: 1efff82e0a469464987b91e1e6ff298e,
+      objectReference: {fileID: 21300000, guid: 4793868bd2892bd4abc8227a508d91d7,
         type: 3}
     - target: {fileID: 8427216516346150109, guid: caff7daa29ed80547bbcab65c7792ef9,
         type: 3}
       propertyPath: characterSprites.Array.data[0].spriteOptions.Array.data[6]
       value: 
-      objectReference: {fileID: 21300000, guid: 18e1c1d22c2cbaa47914600a13de0859,
+      objectReference: {fileID: 21300000, guid: 4793868bd2892bd4abc8227a508d91d7,
         type: 3}
     - target: {fileID: 8427216516346150109, guid: caff7daa29ed80547bbcab65c7792ef9,
         type: 3}
       propertyPath: characterSprites.Array.data[0].spriteOptions.Array.data[7]
       value: 
-      objectReference: {fileID: 21300000, guid: 18e1c1d22c2cbaa47914600a13de0859,
+      objectReference: {fileID: 21300000, guid: 4793868bd2892bd4abc8227a508d91d7,
         type: 3}
     - target: {fileID: 8427216516346150109, guid: caff7daa29ed80547bbcab65c7792ef9,
         type: 3}
@@ -1922,139 +1742,31 @@ PrefabInstance:
         type: 3}
       propertyPath: characterSprites.Array.data[0].spriteOptions.Array.data[10]
       value: 
-      objectReference: {fileID: 21300000, guid: 18e1c1d22c2cbaa47914600a13de0859,
+      objectReference: {fileID: 21300000, guid: 1efff82e0a469464987b91e1e6ff298e,
         type: 3}
     - target: {fileID: 8427216516346150109, guid: caff7daa29ed80547bbcab65c7792ef9,
         type: 3}
       propertyPath: characterSprites.Array.data[0].spriteOptions.Array.data[11]
       value: 
-      objectReference: {fileID: 21300000, guid: 18e1c1d22c2cbaa47914600a13de0859,
+      objectReference: {fileID: 21300000, guid: 1efff82e0a469464987b91e1e6ff298e,
         type: 3}
     - target: {fileID: 8427216516346150109, guid: caff7daa29ed80547bbcab65c7792ef9,
         type: 3}
       propertyPath: characterSprites.Array.data[0].spriteOptions.Array.data[12]
       value: 
-      objectReference: {fileID: 21300000, guid: 18e1c1d22c2cbaa47914600a13de0859,
+      objectReference: {fileID: 21300000, guid: eb54c0b9144af6b4e8e9578c07a0c65b,
         type: 3}
     - target: {fileID: 8427216516346150109, guid: caff7daa29ed80547bbcab65c7792ef9,
         type: 3}
       propertyPath: characterSprites.Array.data[0].spriteOptions.Array.data[13]
       value: 
-      objectReference: {fileID: 21300000, guid: eb54c0b9144af6b4e8e9578c07a0c65b,
+      objectReference: {fileID: 21300000, guid: 1efff82e0a469464987b91e1e6ff298e,
         type: 3}
     - target: {fileID: 8427216516346150109, guid: caff7daa29ed80547bbcab65c7792ef9,
         type: 3}
       propertyPath: characterSprites.Array.data[0].spriteOptions.Array.data[14]
       value: 
-      objectReference: {fileID: 21300000, guid: eb54c0b9144af6b4e8e9578c07a0c65b,
-        type: 3}
-    - target: {fileID: 8427216516346150109, guid: caff7daa29ed80547bbcab65c7792ef9,
-        type: 3}
-      propertyPath: characterSprites.Array.data[0].spriteOptions.Array.data[15]
-      value: 
-      objectReference: {fileID: 21300000, guid: eb54c0b9144af6b4e8e9578c07a0c65b,
-        type: 3}
-    - target: {fileID: 8427216516346150109, guid: caff7daa29ed80547bbcab65c7792ef9,
-        type: 3}
-      propertyPath: characterSprites.Array.data[0].spriteOptions.Array.data[16]
-      value: 
-      objectReference: {fileID: 21300000, guid: eb54c0b9144af6b4e8e9578c07a0c65b,
-        type: 3}
-    - target: {fileID: 8427216516346150109, guid: caff7daa29ed80547bbcab65c7792ef9,
-        type: 3}
-      propertyPath: characterSprites.Array.data[0].spriteOptions.Array.data[17]
-      value: 
-      objectReference: {fileID: 21300000, guid: eb54c0b9144af6b4e8e9578c07a0c65b,
-        type: 3}
-    - target: {fileID: 8427216516346150109, guid: caff7daa29ed80547bbcab65c7792ef9,
-        type: 3}
-      propertyPath: characterSprites.Array.data[0].spriteOptions.Array.data[18]
-      value: 
-      objectReference: {fileID: 21300000, guid: eb54c0b9144af6b4e8e9578c07a0c65b,
-        type: 3}
-    - target: {fileID: 8427216516346150109, guid: caff7daa29ed80547bbcab65c7792ef9,
-        type: 3}
-      propertyPath: characterSprites.Array.data[0].spriteOptions.Array.data[19]
-      value: 
-      objectReference: {fileID: 21300000, guid: eb54c0b9144af6b4e8e9578c07a0c65b,
-        type: 3}
-    - target: {fileID: 8427216516346150109, guid: caff7daa29ed80547bbcab65c7792ef9,
-        type: 3}
-      propertyPath: characterSprites.Array.data[0].spriteOptions.Array.data[20]
-      value: 
-      objectReference: {fileID: 21300000, guid: eb54c0b9144af6b4e8e9578c07a0c65b,
-        type: 3}
-    - target: {fileID: 8427216516346150109, guid: caff7daa29ed80547bbcab65c7792ef9,
-        type: 3}
-      propertyPath: characterSprites.Array.data[0].spriteOptions.Array.data[21]
-      value: 
-      objectReference: {fileID: 21300000, guid: eb54c0b9144af6b4e8e9578c07a0c65b,
-        type: 3}
-    - target: {fileID: 8427216516346150109, guid: caff7daa29ed80547bbcab65c7792ef9,
-        type: 3}
-      propertyPath: characterSprites.Array.data[0].spriteOptions.Array.data[22]
-      value: 
-      objectReference: {fileID: 21300000, guid: eb54c0b9144af6b4e8e9578c07a0c65b,
-        type: 3}
-    - target: {fileID: 8427216516346150109, guid: caff7daa29ed80547bbcab65c7792ef9,
-        type: 3}
-      propertyPath: characterSprites.Array.data[0].spriteOptions.Array.data[23]
-      value: 
-      objectReference: {fileID: 21300000, guid: eb54c0b9144af6b4e8e9578c07a0c65b,
-        type: 3}
-    - target: {fileID: 8427216516346150109, guid: caff7daa29ed80547bbcab65c7792ef9,
-        type: 3}
-      propertyPath: characterSprites.Array.data[0].spriteOptions.Array.data[24]
-      value: 
-      objectReference: {fileID: 21300000, guid: eb54c0b9144af6b4e8e9578c07a0c65b,
-        type: 3}
-    - target: {fileID: 8427216516346150109, guid: caff7daa29ed80547bbcab65c7792ef9,
-        type: 3}
-      propertyPath: characterSprites.Array.data[0].spriteOptions.Array.data[25]
-      value: 
-      objectReference: {fileID: 21300000, guid: eb54c0b9144af6b4e8e9578c07a0c65b,
-        type: 3}
-    - target: {fileID: 8427216516346150109, guid: caff7daa29ed80547bbcab65c7792ef9,
-        type: 3}
-      propertyPath: characterSprites.Array.data[0].spriteOptions.Array.data[26]
-      value: 
-      objectReference: {fileID: 21300000, guid: eb54c0b9144af6b4e8e9578c07a0c65b,
-        type: 3}
-    - target: {fileID: 8427216516346150109, guid: caff7daa29ed80547bbcab65c7792ef9,
-        type: 3}
-      propertyPath: characterSprites.Array.data[0].spriteOptions.Array.data[27]
-      value: 
-      objectReference: {fileID: 21300000, guid: eb54c0b9144af6b4e8e9578c07a0c65b,
-        type: 3}
-    - target: {fileID: 8427216516346150109, guid: caff7daa29ed80547bbcab65c7792ef9,
-        type: 3}
-      propertyPath: characterSprites.Array.data[0].spriteOptions.Array.data[28]
-      value: 
-      objectReference: {fileID: 21300000, guid: eb54c0b9144af6b4e8e9578c07a0c65b,
-        type: 3}
-    - target: {fileID: 8427216516346150109, guid: caff7daa29ed80547bbcab65c7792ef9,
-        type: 3}
-      propertyPath: characterSprites.Array.data[0].spriteOptions.Array.data[29]
-      value: 
-      objectReference: {fileID: 21300000, guid: 52174a669ceab084893f4460563966e2,
-        type: 3}
-    - target: {fileID: 8427216516346150109, guid: caff7daa29ed80547bbcab65c7792ef9,
-        type: 3}
-      propertyPath: characterSprites.Array.data[0].spriteOptions.Array.data[30]
-      value: 
-      objectReference: {fileID: 21300000, guid: 52174a669ceab084893f4460563966e2,
-        type: 3}
-    - target: {fileID: 8427216516346150109, guid: caff7daa29ed80547bbcab65c7792ef9,
-        type: 3}
-      propertyPath: characterSprites.Array.data[0].spriteOptions.Array.data[31]
-      value: 
-      objectReference: {fileID: 21300000, guid: 52174a669ceab084893f4460563966e2,
-        type: 3}
-    - target: {fileID: 8427216516346150109, guid: caff7daa29ed80547bbcab65c7792ef9,
-        type: 3}
-      propertyPath: characterSprites.Array.data[0].spriteOptions.Array.data[32]
-      value: 
-      objectReference: {fileID: 21300000, guid: 52174a669ceab084893f4460563966e2,
+      objectReference: {fileID: 21300000, guid: 1efff82e0a469464987b91e1e6ff298e,
         type: 3}
     - target: {fileID: 8427216516346150109, guid: caff7daa29ed80547bbcab65c7792ef9,
         type: 3}
