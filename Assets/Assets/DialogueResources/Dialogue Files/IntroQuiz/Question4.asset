@@ -13,22 +13,23 @@ MonoBehaviour:
   m_Name: Question4
   m_EditorClassIdentifier: 
   choiceOptions:
-  - You try to convince your roommate to let you get the last virtual glasses.
-  - You create a diversion and snatch the glasses out of their hands.
+  - You try to convince your roommate to let you get the last virtual glasses by
+    proposing to them.
+  - Blackmail your roommate to give you the glasses.
   choicePaths:
   - afterChoiceDialogLines:
-    - Your Charisma has increased by 4!
+    - Your Charisma has increased by 3!
     afterChoiceSpeakersPerLine:
     - 
     afterChoiceSpriteOptions:
     - spriteOptions: []
     statTag: Charisma
-    statValue: 4
+    statValue: 3
   - afterChoiceDialogLines:
-    - Your Creativity has increased by 4!
+    - Your Creativity has increased by 3!
     afterChoiceSpeakersPerLine:
     - 
     afterChoiceSpriteOptions:
     - spriteOptions: []
     statTag: Creativity
-    statValue: 4
+    statValue: 3

@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.18028378, g: 0.22571412, b: 0.30692285, a: 1}
+  m_IndirectSpecularColor: {r: 0.18028331, g: 0.2257133, b: 0.3069217, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -1857,37 +1857,58 @@ PrefabInstance:
     - target: {fileID: 8427216516346150109, guid: caff7daa29ed80547bbcab65c7792ef9,
         type: 3}
       propertyPath: choices.Array.size
-      value: 12
+      value: 11
       objectReference: {fileID: 0}
     - target: {fileID: 8427216516346150109, guid: caff7daa29ed80547bbcab65c7792ef9,
         type: 3}
-      propertyPath: choices.Array.data[3]
+      propertyPath: choices.Array.data[2]
       value: 
       objectReference: {fileID: 11400000, guid: 6c56301a3aa128a42960e00eb21204a0,
         type: 2}
     - target: {fileID: 8427216516346150109, guid: caff7daa29ed80547bbcab65c7792ef9,
         type: 3}
-      propertyPath: choices.Array.data[5]
+      propertyPath: choices.Array.data[3]
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 8427216516346150109, guid: caff7daa29ed80547bbcab65c7792ef9,
+        type: 3}
+      propertyPath: choices.Array.data[4]
       value: 
       objectReference: {fileID: 11400000, guid: 24c64e81f6b3c5e49a9b778d507c4062,
         type: 2}
     - target: {fileID: 8427216516346150109, guid: caff7daa29ed80547bbcab65c7792ef9,
         type: 3}
-      propertyPath: choices.Array.data[7]
+      propertyPath: choices.Array.data[5]
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 8427216516346150109, guid: caff7daa29ed80547bbcab65c7792ef9,
+        type: 3}
+      propertyPath: choices.Array.data[6]
       value: 
       objectReference: {fileID: 11400000, guid: b696ff70cc33f3a4e8caadc8a25f2c41,
         type: 2}
     - target: {fileID: 8427216516346150109, guid: caff7daa29ed80547bbcab65c7792ef9,
         type: 3}
-      propertyPath: choices.Array.data[9]
+      propertyPath: choices.Array.data[7]
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 8427216516346150109, guid: caff7daa29ed80547bbcab65c7792ef9,
+        type: 3}
+      propertyPath: choices.Array.data[8]
       value: 
       objectReference: {fileID: 11400000, guid: de7ab1db5635fb64b9f82f0fa5aa013d,
         type: 2}
     - target: {fileID: 8427216516346150109, guid: caff7daa29ed80547bbcab65c7792ef9,
         type: 3}
-      propertyPath: choices.Array.data[10]
+      propertyPath: choices.Array.data[9]
       value: 
       objectReference: {fileID: 0}
+    - target: {fileID: 8427216516346150109, guid: caff7daa29ed80547bbcab65c7792ef9,
+        type: 3}
+      propertyPath: choices.Array.data[10]
+      value: 
+      objectReference: {fileID: 11400000, guid: 3b08c2a2f6992b04aa20c1a7391733ac,
+        type: 2}
     - target: {fileID: 8427216516346150109, guid: caff7daa29ed80547bbcab65c7792ef9,
         type: 3}
       propertyPath: choices.Array.data[11]
@@ -1903,7 +1924,7 @@ PrefabInstance:
     - target: {fileID: 8427216516346150109, guid: caff7daa29ed80547bbcab65c7792ef9,
         type: 3}
       propertyPath: dialogLines.Array.size
-      value: 12
+      value: 11
       objectReference: {fileID: 0}
     - target: {fileID: 8427216516346150109, guid: caff7daa29ed80547bbcab65c7792ef9,
         type: 3}
@@ -1913,61 +1934,62 @@ PrefabInstance:
     - target: {fileID: 8427216516346150109, guid: caff7daa29ed80547bbcab65c7792ef9,
         type: 3}
       propertyPath: dialogLines.Array.data[0]
-      value: Welcome to the Intro Quiz of Love Surge! In this quiz, you will get
-        a number of questions who's answers will increase your stats!
+      value: Hi User! To continue meeting with your lovely appliances, you must answer
+        these questions down below! No cheating :).
       objectReference: {fileID: 0}
     - target: {fileID: 8427216516346150109, guid: caff7daa29ed80547bbcab65c7792ef9,
         type: 3}
       propertyPath: dialogLines.Array.data[1]
-      value: Without further ado, lets begin!
+      value: If you were confronted with a big muscular fish man..what would you
+        do!?
       objectReference: {fileID: 0}
     - target: {fileID: 8427216516346150109, guid: caff7daa29ed80547bbcab65c7792ef9,
         type: 3}
       propertyPath: dialogLines.Array.data[2]
-      value: 'Question 1: You go to a movie theatre. What genre of movie do you go
-        see?'
+      value: CHOICE
       objectReference: {fileID: 0}
     - target: {fileID: 8427216516346150109, guid: caff7daa29ed80547bbcab65c7792ef9,
         type: 3}
       propertyPath: dialogLines.Array.data[3]
-      value: CHOICE
+      value: Your ex messages and you can only answer with one message what would
+        it be?
       objectReference: {fileID: 0}
     - target: {fileID: 8427216516346150109, guid: caff7daa29ed80547bbcab65c7792ef9,
         type: 3}
       propertyPath: dialogLines.Array.data[4]
-      value: 'Question 2: You see a friend feeling down. What do you do?'
+      value: CHOICE
       objectReference: {fileID: 0}
     - target: {fileID: 8427216516346150109, guid: caff7daa29ed80547bbcab65c7792ef9,
         type: 3}
       propertyPath: dialogLines.Array.data[5]
-      value: CHOICE
+      value: What type of latte art would you like for your coffee?
       objectReference: {fileID: 0}
     - target: {fileID: 8427216516346150109, guid: caff7daa29ed80547bbcab65c7792ef9,
         type: 3}
       propertyPath: dialogLines.Array.data[6]
-      value: 'Question 3: You see a button on the street. Do you press it?'
+      value: CHOICE
       objectReference: {fileID: 0}
     - target: {fileID: 8427216516346150109, guid: caff7daa29ed80547bbcab65c7792ef9,
         type: 3}
       propertyPath: dialogLines.Array.data[7]
-      value: CHOICE
+      value: You head to the mall to buy the new OmniSpark virtual glasses. However,
+        you see your ROOMMATE buy the last one. What do you do?
       objectReference: {fileID: 0}
     - target: {fileID: 8427216516346150109, guid: caff7daa29ed80547bbcab65c7792ef9,
         type: 3}
       propertyPath: dialogLines.Array.data[8]
-      value: 'Question 4: You head to the mall to buy the new OmniSpark virtual glasses.
-        However, you see your ROOMMATE buy the last one. What do you do?'
-      objectReference: {fileID: 0}
-    - target: {fileID: 8427216516346150109, guid: caff7daa29ed80547bbcab65c7792ef9,
-        type: 3}
-      propertyPath: dialogLines.Array.data[9]
       value: CHOICE
       objectReference: {fileID: 0}
     - target: {fileID: 8427216516346150109, guid: caff7daa29ed80547bbcab65c7792ef9,
         type: 3}
+      propertyPath: dialogLines.Array.data[9]
+      value: "If someone asked \u201Cwould you love me even as a worm\u201D would
+        you?"
+      objectReference: {fileID: 0}
+    - target: {fileID: 8427216516346150109, guid: caff7daa29ed80547bbcab65c7792ef9,
+        type: 3}
       propertyPath: dialogLines.Array.data[10]
-      value: 'Question 5: You are attending summer classes. What are your favorite
-        classes?'
+      value: CHOICE
       objectReference: {fileID: 0}
     - target: {fileID: 8427216516346150109, guid: caff7daa29ed80547bbcab65c7792ef9,
         type: 3}
@@ -2002,7 +2024,7 @@ PrefabInstance:
     - target: {fileID: 8427216516346150109, guid: caff7daa29ed80547bbcab65c7792ef9,
         type: 3}
       propertyPath: speakersPerLine.Array.size
-      value: 12
+      value: 11
       objectReference: {fileID: 0}
     - target: {fileID: 8427216516346150109, guid: caff7daa29ed80547bbcab65c7792ef9,
         type: 3}

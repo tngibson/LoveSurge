@@ -13,22 +13,40 @@ MonoBehaviour:
   m_Name: Question3
   m_EditorClassIdentifier: 
   choiceOptions:
-  - Yes.
-  - No.
+  - A cat in a box.
+  - "A latte art of the foam it\u2019s made in."
+  - A bear holding a chainsaw that is chasing people!
+  - A very detailed map of The United States.
   choicePaths:
   - afterChoiceDialogLines:
-    - Your Courage has increased by 4!
+    - Your Charisma has increased by 2!
     afterChoiceSpeakersPerLine:
     - 
     afterChoiceSpriteOptions:
     - spriteOptions: []
-    statTag: Courage
-    statValue: 4
+    statTag: Charisma
+    statValue: 2
   - afterChoiceDialogLines:
-    - Your Cleverness has increased by 4!
+    - Your Cleverness has increased by 2!
     afterChoiceSpeakersPerLine:
     - 
     afterChoiceSpriteOptions:
     - spriteOptions: []
     statTag: Cleverness
-    statValue: 4
+    statValue: 2
+  - afterChoiceDialogLines:
+    - Your Courage has increased by 2!
+    afterChoiceSpeakersPerLine:
+    - 
+    afterChoiceSpriteOptions:
+    - spriteOptions: []
+    statTag: Courage
+    statValue: 2
+  - afterChoiceDialogLines:
+    - Your Creativity has increased by 2!
+    afterChoiceSpeakersPerLine:
+    - 
+    afterChoiceSpriteOptions:
+    - spriteOptions: []
+    statTag: Creativity
+    statValue: 2

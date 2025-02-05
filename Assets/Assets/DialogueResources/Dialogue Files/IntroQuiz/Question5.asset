@@ -13,35 +13,11 @@ MonoBehaviour:
   m_Name: Question5
   m_EditorClassIdentifier: 
   choiceOptions:
-  - Computer Science
-  - Painting
-  - Acting
-  - Gym
+  - YES! NO MATTER WHAT!
+  - Make yourself become a worm.
   choicePaths:
   - afterChoiceDialogLines:
-    - Your Cleverness has increased by 2!
-    - This concludes our Intro Quiz, enjoy!
-    afterChoiceSpeakersPerLine:
-    - 
-    - 
-    afterChoiceSpriteOptions:
-    - spriteOptions: []
-    - spriteOptions: []
-    statTag: Cleverness
-    statValue: 2
-  - afterChoiceDialogLines:
-    - Your Creativity has increased by 2!
-    - This concludes our Intro Quiz, enjoy!
-    afterChoiceSpeakersPerLine:
-    - 
-    - 
-    afterChoiceSpriteOptions:
-    - spriteOptions: []
-    - spriteOptions: []
-    statTag: Creativity
-    statValue: 2
-  - afterChoiceDialogLines:
-    - Your Courage has increased by 2!
+    - Your Courage has increased by 3!
     - This concludes our Intro Quiz, enjoy!
     afterChoiceSpeakersPerLine:
     - 
@@ -50,9 +26,9 @@ MonoBehaviour:
     - spriteOptions: []
     - spriteOptions: []
     statTag: Courage
-    statValue: 2
+    statValue: 3
   - afterChoiceDialogLines:
-    - Your Charisma has increased by 2!
+    - Your Creativity has increased by 3!
     - This concludes our Intro Quiz, enjoy!
     afterChoiceSpeakersPerLine:
     - 
@@ -60,5 +36,5 @@ MonoBehaviour:
     afterChoiceSpriteOptions:
     - spriteOptions: []
     - spriteOptions: []
-    statTag: Charisma
-    statValue: 2
+    statTag: Creativity
+    statValue: 3

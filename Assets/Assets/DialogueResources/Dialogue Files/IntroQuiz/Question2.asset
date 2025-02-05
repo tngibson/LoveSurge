@@ -13,9 +13,10 @@ MonoBehaviour:
   m_Name: Question2
   m_EditorClassIdentifier: 
   choiceOptions:
-  - Try to crack a funny joke.
-  - Comfort them.
-  - Talk about their favorite things to cheer them up.
+  - A picture of a poem of how they are trash.
+  - A thumbs up.
+  - Send a link to a virus.
+  - "Let\u2019s meet in person and talk."
   choicePaths:
   - afterChoiceDialogLines:
     - Your Creativity has increased by 3!
@@ -40,4 +41,12 @@ MonoBehaviour:
     afterChoiceSpriteOptions:
     - spriteOptions: []
     statTag: Cleverness
+    statValue: 3
+  - afterChoiceDialogLines:
+    - Your Courage has increased by 3!
+    afterChoiceSpeakersPerLine:
+    - 
+    afterChoiceSpriteOptions:
+    - spriteOptions: []
+    statTag: Courage
     statValue: 3
