@@ -121,7 +121,7 @@ public class PlayerDeckScript : MonoBehaviour
             // Get the number of filled bars and sum that number with n-1 repeatedly, to get the number of cards to spawn
             for (int i = 0; i < ReverseSum(StressManager.GetStressBarsFilled(StressManager.instance.currentStressAmt)); i++)
             {
-                MakeCard(stressCard, i);
+                MakeCard(stressCard, 0);
             }
         }
     }

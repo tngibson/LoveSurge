@@ -9,6 +9,5 @@ public class StressCard : Card
     {
         Type = "Str";
     }
-    
 }
 

@@ -71,7 +71,15 @@ public class StressManager : MonoBehaviour
             NewTotal = currentStressAmt
         });
 
-        StressBar.instance?.UpdateStressBar();
+        if (StressBar.instance != null)
+        {
+            StressBar.instance.UpdateStressBar();
+        }
+        else
+        {
+            Debug.LogWarning("StressBar instance is null! Skipping UpdateStressBar() to prevent errors.");
+        }
+
         return currentStressAmt;
     }
 
