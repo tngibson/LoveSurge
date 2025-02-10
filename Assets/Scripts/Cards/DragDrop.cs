@@ -68,6 +68,9 @@ public class DragDrop : MonoBehaviour
         startParent = transform.parent; // Store the original parent
         startPos = transform.position; // Store the original position
 
+        // Re-enable collider if the card is being dragged out of the dropzone
+        GetComponent<Collider2D>().enabled = true;
+
         // Disable hover behavior while dragging
         RemoveHoverListeners();
 
