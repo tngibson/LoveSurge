@@ -139,6 +139,9 @@ public class CardHandLayout : MonoBehaviour
 
     public void OnCardHoverEnter(GameObject card)
     {
+        DragDrop dragDrop = card.GetComponent<DragDrop>();
+        if (dragDrop != null && dragDrop.IsDragging()) return; // Prevent hover if dragging
+
         // Store the current position for reference
         Vector3 currentPos = card.transform.localPosition;
 
@@ -168,4 +171,5 @@ public class CardHandLayout : MonoBehaviour
             cardTransform.localScale = Vector3.one; // Reset scale
         }
     }
+
 }

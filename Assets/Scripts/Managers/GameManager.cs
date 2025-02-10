@@ -58,7 +58,6 @@ public class GameManager : MonoBehaviour
 
         StressBar.instance?.UpdateStressBar();
         SetConvoStart();
-        UpdateEndTurnButton(false);
     }
 
     private void Start()
@@ -113,12 +112,12 @@ public class GameManager : MonoBehaviour
         dropzone.ResetForNewTurn();
 
         // Check for game over conditions (empty deck and hand)
-        if (deckContainer.Deck.Count == 0 && playerArea.CardsInHand.Count == 0)
+        if (deckContainer.Deck.Count <= 0 && playerArea.CardsInHand.Count == 0)
         {
             EndGame();
         }
 
-        UpdateEndTurnButton(false); // Disable the end turn button
+        //UpdateEndTurnButton(false); // Disable the end turn button
     }
 
     // Ends the game and displays the game over message

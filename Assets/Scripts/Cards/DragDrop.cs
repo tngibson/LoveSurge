@@ -68,13 +68,17 @@ public class DragDrop : MonoBehaviour
         startParent = transform.parent; // Store the original parent
         startPos = transform.position; // Store the original position
 
-        // Re-enable collider if the card is being dragged out of the dropzone
-        GetComponent<Collider2D>().enabled = true;
+        // Disable hover behavior while dragging
+        RemoveHoverListeners();
+
+        // Ensure the rotation resets to normal (no tilt)
+        transform.rotation = Quaternion.identity;
 
         // Move the card to the canvas root to render above other elements
         transform.SetParent(canvas.transform, true);
         transform.SetAsLastSibling(); // Ensure it renders above all other elements
     }
+
 
     // End dragging the card and determine the appropriate action.
     public void EndDrag()
@@ -87,7 +91,7 @@ public class DragDrop : MonoBehaviour
         }
         else if (isOverDropZone && gameManager.IsTopicSelected)  // Place in dropzone if applicable
         {
-            PlaceInDropzone(); // Use updated PlaceInDropzone to ensure slot state updates correctly
+            PlaceInDropzone();
         }
         else if (isOverPlayerArea)  // Return the card to the player area
         {
@@ -104,48 +108,62 @@ public class DragDrop : MonoBehaviour
 
         // Ensure dropzone state is updated after every drag
         dropzoneManager.ValidateDropzoneState();
+
+        // Remove hover state when dragging ends
+        RemoveHoverListeners();
+
+        // Ensure the card goes back to normal scale after dragging
+        transform.localScale = Vector3.one;
+        transform.rotation = Quaternion.identity;
     }
+
 
     // Swap the positions of two cards.
     private void SwapCards(DragDrop cardA, DragDrop cardB, Transform startParent)
     {
+        // Ensure both cards belong to the same parent before swapping
+        if (cardA.transform.parent != cardB.transform.parent)
+        {
+            Debug.LogWarning("Cards must have the same parent to be swapped.");
+            ReturnToStart(); // Prevent invalid swap
+            return;
+        }
+
         // Store world positions before changing parents
         Vector3 worldPosA = cardA.transform.position;
         Vector3 worldPosB = cardB.transform.position;
 
-        // Handle parent assignment during the swap
-        Transform parentA = startParent;
-        Transform parentB = cardB.transform.parent;
+        // Swap positions without changing parents
+        cardA.transform.position = worldPosB;
+        cardB.transform.position = worldPosA;
 
-        if (parentB.GetComponent<PlayerArea>() != null)
-        {
-            // Swap parents if one of the cards belongs to a dropzone
-            cardA.transform.SetParent(parentB, false);  // Assign cardA to cardB's parent (could be a dropzone)
-            cardB.transform.SetParent(parentB, false);  // Assign cardB to cardA's original parent
+        // Ensure both cards keep their original size after swapping
+        cardA.transform.localScale = Vector3.one;
+        cardB.transform.localScale = Vector3.one;
 
-            // Convert world positions to local positions in the new parents
-            cardA.transform.localPosition = cardA.transform.parent.InverseTransformPoint(worldPosB);
-            cardB.transform.localPosition = cardB.transform.parent.InverseTransformPoint(worldPosA);
+        // Swap sibling indices to maintain correct hierarchy order
+        int indexA = cardA.transform.GetSiblingIndex();
+        int indexB = cardB.transform.GetSiblingIndex();
+        cardA.transform.SetSiblingIndex(indexB);
+        cardB.transform.SetSiblingIndex(indexA);
 
-            // Ensure both cards keep their original size after swapping
-            cardA.transform.localScale = Vector3.one;
-            cardB.transform.localScale = Vector3.one;
-
-            // Swap sibling indices to maintain correct hierarchy order
-            int indexA = cardA.transform.GetSiblingIndex();
-            int indexB = cardB.transform.GetSiblingIndex();
-            cardA.transform.SetSiblingIndex(indexB);
-            cardB.transform.SetSiblingIndex(indexA);
-
-            cardHandLayout.UpdateCardListAndLayout(); // Ensure layout is updated
-        }
+        cardHandLayout.UpdateCardListAndLayout(); // Ensure layout is updated
     }
+
 
 
     // Place the card into the current dropzone and update slot state.
     private void PlaceInDropzone()
     {
         Card cardComponent = GetComponent<Card>();
+
+        // Check if the card is already in the dropzone
+        if (dropzoneManager.GetDropzone().GetCards().Contains(cardComponent))
+        {
+            Debug.LogWarning("Card is already in the dropzone. Cannot add it again.");
+            ReturnToStart(); // Prevent infinite additions
+            return;
+        }
 
         // Check if the card can be placed in the dropzone
         if (dropzoneManager.CanPlaceCard(cardComponent))
@@ -163,6 +181,7 @@ public class DragDrop : MonoBehaviour
             ReturnToStart(); // Return the card to its original position
         }
     }
+
 
     // Return the card to the player area.
     private void ReturnToPlayerArea()
