@@ -5,6 +5,7 @@ using FMODUnity;
 using FMOD.Studio;
 using System;
 using UnityEngine.SceneManagement;
+using Unity.VisualScripting;
 
 public class MusicManager : MonoBehaviour
 {
@@ -84,6 +85,9 @@ public class MusicManager : MonoBehaviour
                 break;
             case EnumSoundtrack.DEEP_CONVERSATION:
                 musicEventInstance.setParameterByName("Song", 7);
+                break;
+            case EnumSoundtrack.LOVE_THEME:
+                musicEventInstance.setParameterByName("Song", 8);
                 break;
         }
     }

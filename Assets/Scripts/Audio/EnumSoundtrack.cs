@@ -8,6 +8,7 @@ public enum EnumSoundtrack
     AVERAGE_DAY = 5,
     RAND_EVENT = 6,
     DEEP_CONVERSATION = 7,
+    LOVE_THEME = 8,
 }
 
 
