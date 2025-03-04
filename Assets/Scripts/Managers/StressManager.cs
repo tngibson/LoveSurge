@@ -26,6 +26,8 @@ public class StressManager : MonoBehaviour
         {
             instance = this;
         }
+
+        StressBar.instance?.UpdateStressBar();
     }
 
     private void Start()

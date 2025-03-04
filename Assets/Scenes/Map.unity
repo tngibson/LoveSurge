@@ -634,7 +634,7 @@ MonoBehaviour:
   locInfo: 
   locName: Office
   useMapManager: 1
-  manager: {fileID: 879752011}
+  manager: {fileID: 0}
   button: {fileID: 128797538}
   questionText: {fileID: 1772355312}
   locationText: {fileID: 1546689999}
@@ -966,7 +966,7 @@ MonoBehaviour:
   locInfo: 
   locName: Park
   useMapManager: 1
-  manager: {fileID: 879752011}
+  manager: {fileID: 0}
   button: {fileID: 223940461}
   questionText: {fileID: 1112068148}
   locationText: {fileID: 916375622}
@@ -1168,7 +1168,7 @@ MonoBehaviour:
   locInfo: 
   locName: ArtBuilding
   useMapManager: 1
-  manager: {fileID: 879752011}
+  manager: {fileID: 0}
   button: {fileID: 363275429}
   questionText: {fileID: 998427654}
   locationText: {fileID: 693944578}
@@ -2142,7 +2142,7 @@ MonoBehaviour:
   locInfo: 
   locName: Observatory
   useMapManager: 1
-  manager: {fileID: 879752011}
+  manager: {fileID: 0}
   button: {fileID: 810015465}
   questionText: {fileID: 1917106783}
   locationText: {fileID: 1957821105}
@@ -2308,7 +2308,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 879752010}
-  - component: {fileID: 879752011}
   m_Layer: 0
   m_Name: Locations
   m_TagString: Untagged
@@ -2340,20 +2339,6 @@ Transform:
   - {fileID: 810015464}
   m_Father: {fileID: 1360938912}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &879752011
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 879752009}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5f7b42a820f37f9429d95d5e4c5e8b91, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  infoDisplay: {fileID: 0}
-  windowObject: {fileID: 0}
 --- !u!1 &916375622
 GameObject:
   m_ObjectHideFlags: 0
@@ -2909,7 +2894,7 @@ MonoBehaviour:
   locInfo: 
   locName: GrandMall
   useMapManager: 1
-  manager: {fileID: 879752011}
+  manager: {fileID: 0}
   button: {fileID: 1043008525}
   questionText: {fileID: 76049275}
   locationText: {fileID: 1769958536}
@@ -3409,7 +3394,7 @@ MonoBehaviour:
   locInfo: Courage
   locName: Kitchen
   useMapManager: 1
-  manager: {fileID: 879752011}
+  manager: {fileID: 0}
   button: {fileID: 0}
   questionText: {fileID: 0}
   locationText: {fileID: 0}
@@ -3794,7 +3779,7 @@ MonoBehaviour:
   locInfo: Charisma
   locName: JobApplication
   useMapManager: 1
-  manager: {fileID: 879752011}
+  manager: {fileID: 0}
   button: {fileID: 0}
   questionText: {fileID: 0}
   locationText: {fileID: 0}
@@ -3990,7 +3975,7 @@ MonoBehaviour:
   locInfo: 
   locName: NokiDateIntro
   useMapManager: 1
-  manager: {fileID: 879752011}
+  manager: {fileID: 0}
   button: {fileID: 1530979895}
   questionText: {fileID: 1591945778}
   locationText: {fileID: 470919701}
@@ -5653,7 +5638,7 @@ MonoBehaviour:
   locInfo: Cleverness & Creativity
   locName: WakeUp
   useMapManager: 0
-  manager: {fileID: 879752011}
+  manager: {fileID: 0}
   button: {fileID: 0}
   questionText: {fileID: 0}
   locationText: {fileID: 0}

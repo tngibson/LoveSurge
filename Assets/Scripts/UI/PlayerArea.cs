@@ -22,14 +22,6 @@ public class PlayerArea : MonoBehaviour
     // Remove a card from the player's hand
     public void RemoveCards(Card card)
     {
-        if (cardsInHand.Contains(card))
-        {
-            Debug.Log("Card is in hand and was removed");
-        }
-        else
-        {
-            Debug.Log("Card is not in hand and was not removed");
-        }
         cardsInHand.Remove(card);
     }
 }

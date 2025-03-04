@@ -8,7 +8,14 @@ public class SoundtrackSetter : MonoBehaviour
     [field: SerializeField] public EnumSoundtrack track { get; private set; }
     private void Start()
     {
-        MusicManager.instance.AudioSwitcher(track);
+        if (MusicManager.instance != null)
+        {
+            MusicManager.instance.AudioSwitcher(track);
+        }
+        else
+        {
+            Debug.LogWarning("Music Manager was null!");
+        }
     }
 
     // Update is called once per frame

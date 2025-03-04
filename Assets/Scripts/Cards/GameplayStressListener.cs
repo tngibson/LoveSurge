@@ -7,12 +7,26 @@ public class GameplayStressListener : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        StressManager.stressChangedEvent += OnStressChanged;
+        if (StressManager.instance != null)
+        {
+            StressManager.stressChangedEvent += OnStressChanged;
+        }
+        else
+        {
+            Debug.LogWarning("Stress Manager was null!");
+        }
     }
 
     private void OnDestroy()
     {
-        StressManager.stressChangedEvent -= OnStressChanged;
+        if (StressManager.instance != null)
+        {
+            StressManager.stressChangedEvent -= OnStressChanged;
+        }
+        else
+        {
+            Debug.LogWarning("Stress Manager was null!");
+        }
     }
 
     private bool AnyStatHasTag(string tag)

@@ -6,10 +6,7 @@ using TMPro;
 
 public class MapScript : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
 {
-    public string locInfo;
     public string locName;
-    public bool useMapManager;
-    public MapLocationsManager manager;
 
     [SerializeField] private Button button;
     [SerializeField] private GameObject questionText;
@@ -29,13 +26,8 @@ public class MapScript : MonoBehaviour, IPointerEnterHandler, IPointerExitHandle
         // Save original scale and material
         originalScale = transform.localScale;
 
-        if (StressBar.instance != null)
-        {
-            StressBar.instance.UpdateStressBar();
-        }
-
         SetEnabled();
-        locationText.GetComponent<TextMeshProUGUI>().text = locationTextText;
+        if (locationText != null) locationText.GetComponent<TextMeshProUGUI>().text = locationTextText;
     }
 
     public void OnPointerEnter(PointerEventData eventData)
@@ -57,33 +49,21 @@ public class MapScript : MonoBehaviour, IPointerEnterHandler, IPointerExitHandle
 
     public void OnSelect()
     {
-        if (manager != null || !useMapManager)
+        if (StressManager.instance != null)
         {
-            if (StressManager.instance != null)
-            {
-                StressManager.instance.AddToCurrentStress();
-            }
-            if (StressBar.instance != null)
-            {
-                StressBar.instance.UpdateStressBar();
-            }
-            SceneManager.LoadScene(locName);
-            gameObject.SetActive(false);
-
-            if (useMapManager)
-            {
-                manager.LocationSelect(locInfo, locName);
-            }
-
-            // Check if this map item progresses the day phase
-            if (CalendarManager.instance != null && isDayProgressor)
-            {
-                CalendarManager.instance.AdvancePhase();
-            }
+            StressManager.instance.AddToCurrentStress();
         }
-        else
+        if (StressBar.instance != null)
         {
-            Debug.LogWarning("MapLocationsManager reference is missing on " + gameObject.name);
+            StressBar.instance.UpdateStressBar();
+        }
+        SceneManager.LoadScene(locName);
+        gameObject.SetActive(false);
+
+        // Check if this map item progresses the day phase
+        if (CalendarManager.instance != null && isDayProgressor)
+        {
+            CalendarManager.instance.AdvancePhase();
         }
     }
 
@@ -91,31 +71,24 @@ public class MapScript : MonoBehaviour, IPointerEnterHandler, IPointerExitHandle
     {
         if (isEnabled)
         {
-            button.interactable = true;
-            questionText.SetActive(false);
+            if (button != null) button.interactable = true;
+            if (questionText != null) questionText.SetActive(false);
         }
         else
         {
-            button.interactable = false;
-            questionText.SetActive(true);
+            if (button != null) button.interactable = false;
+            if (questionText != null) questionText.SetActive(true);
         }
     }
 
     public void ToggleEnabled()
     {
-        if (isEnabled)
-        {
-            isEnabled = false;
-            button.interactable = false;
-            questionText.SetActive(true);
-        }
-        else
-        {
-            isEnabled = true;
-            button.interactable = true;
-            questionText.SetActive(false);
-        }
+        isEnabled = !isEnabled; // Toggle the state first
+
+        if (button != null) button.interactable = isEnabled;
+        if (questionText != null) questionText.SetActive(!isEnabled);
     }
+
 
     public void UpdateLocationText(string newText)
     {

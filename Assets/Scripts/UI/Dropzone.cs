@@ -73,6 +73,10 @@ public class Dropzone : MonoBehaviour
             playerManager = FindObjectOfType<Player>();
             playerName = playerManager.GetName();
         }
+        else
+        {
+            Debug.LogWarning("Player Manager was null!");
+        }
     }
 
     private void Update()

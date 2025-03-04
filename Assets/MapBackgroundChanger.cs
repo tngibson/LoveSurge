@@ -12,17 +12,38 @@ public class BackgroundChanger : MonoBehaviour
 
     private void Start()
     {
-        UpdateBackground(CalendarManager.instance.currentPhase); // Set the initial background
+        if (CalendarManager.instance != null)
+        {
+            UpdateBackground(CalendarManager.instance.currentPhase); // Set the initial background
+        }
+        else
+        {
+            Debug.LogWarning("Calendar Manager was null!");
+        }
     }
 
     private void OnEnable()
     {
-        CalendarManager.instance.OnPhaseChanged += UpdateBackground;
+        if (CalendarManager.instance != null)
+        {
+            CalendarManager.instance.OnPhaseChanged += UpdateBackground;
+        }
+        else
+        {
+            Debug.LogWarning("Calendar Manager was null!");
+        }
     }
 
     private void OnDisable()
     {
-        CalendarManager.instance.OnPhaseChanged -= UpdateBackground;
+        if (CalendarManager.instance != null)
+        {
+            CalendarManager.instance.OnPhaseChanged -= UpdateBackground;
+        }
+        else
+        {
+            Debug.LogWarning("Calendar Manager was null!");
+        }
     }
 
     private void UpdateBackground(DayPhase phase)

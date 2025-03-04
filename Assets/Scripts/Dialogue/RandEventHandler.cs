@@ -58,6 +58,10 @@ public class RandEventHandler : MonoBehaviour
             playerManager = GameObject.Find("PlayerManager").GetComponent<Player>();
             playerName = playerManager.GetName();
         }
+        else
+        {
+            Debug.LogWarning("Player Manager was null!");
+        }
 
         choicePanel.SetActive(false); // Hide choice panel at start
         mapButton.SetActive(false);   // Hide the map button at start
