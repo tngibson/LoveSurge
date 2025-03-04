@@ -19,6 +19,7 @@ public abstract class Card : MonoBehaviour
     public bool isBottomCard = false;
     public bool isReserveCard = false;
     public bool isInDropzone = false;
+    public bool isPlayed = false;
 
     public Color defaultTextColor;
 

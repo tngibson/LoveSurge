@@ -147,7 +147,10 @@ public class GameManager : MonoBehaviour
     // Toggles the interactivity of the end turn button
     public void UpdateEndTurnButton(bool state)
     {
-        endTurnButton.GetComponent<Button>().interactable = state;
+        if (endTurnButton.GetComponent<Button>().interactable != state)
+        {
+            endTurnButton.GetComponent<Button>().interactable = state;
+        }
     }
 
 

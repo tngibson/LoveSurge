@@ -17,7 +17,7 @@ public class DragDrop : MonoBehaviour
     private DragDrop targetCard;      // The card this one is dropped on (for swapping)
     private DropzoneSlot currentDropZone; // The dropzone this card is over
     private DiscardPile currentDiscard; // The discard pile this card is over
-    private ReserveSlot currentReserve; // The reserve slot this card is over
+    private ReserveManager currentReserve; // The reserve slot this card is over
     private bool isOverDropZone = false; // Track if card is over a dropzone
     private bool isOverPlayerArea = false;  // Track if card is over the player areas
     private bool isOverDiscardPile = false;  // Track if card is over the discard pile
@@ -97,7 +97,11 @@ public class DragDrop : MonoBehaviour
 
         isDragging = false;  // Disable dragging
 
-        if (targetCard != null)  // Swap with another card if applicable
+        if (isOverReserveSlot && card.isReserveCard && card.isInDropzone)
+        {
+            ReturnToReserveSlot();
+        }
+        else if (targetCard != null)  // Swap with another card if applicable
         {
             SwapCards(this, targetCard, startParent);
         }
@@ -112,10 +116,6 @@ public class DragDrop : MonoBehaviour
         else if (isOverDiscardPile)
         {
             DiscardCard();
-        }
-        else if (isOverReserveSlot && card.isReserveCard && card.isInDropzone)
-        {
-            ReturnToReserveSlot();
         }
         else  // Return to original position if no valid drop
         {
@@ -138,7 +138,7 @@ public class DragDrop : MonoBehaviour
     private void SwapCards(DragDrop cardA, DragDrop cardB, Transform startParent)
     {
         // Ensure both cards belong to the same parent before swapping
-        if (cardA.transform.parent != cardB.transform.parent)
+        if (startParent != cardB.transform.parent)
         {
             Debug.LogWarning("Cards must have the same parent to be swapped.");
             ReturnToStart(); // Prevent invalid swap
@@ -162,6 +162,8 @@ public class DragDrop : MonoBehaviour
         int indexB = cardB.transform.GetSiblingIndex();
         cardA.transform.SetSiblingIndex(indexB);
         cardB.transform.SetSiblingIndex(indexA);
+
+        transform.SetParent(startParent, false);
 
         cardHandLayout.UpdateCardListAndLayout(); // Ensure layout is updated
     }
@@ -205,6 +207,14 @@ public class DragDrop : MonoBehaviour
     private void ReturnToPlayerArea()
     {
         Card cardComponent = GetComponent<Card>();
+
+        // Check if the card is already in the dropzone
+        if (playerArea.CardsInHand.Contains(cardComponent))
+        {
+            Debug.LogWarning("Card is already in the player area. Cannot add it again.");
+            ReturnToStart(); // Prevent infinite additions
+            return;
+        }
 
         if (dropzoneManager.GetDropzone().GetCards().Contains(cardComponent))
         {
@@ -267,9 +277,6 @@ public class DragDrop : MonoBehaviour
     {
         dropzoneManager.RemoveCardFromDropzone(); // Remove card from dropzone
 
-        // Re-enable the collider when moving back to the reserve slot
-        GetComponent<Collider2D>().enabled = true;
-
         transform.SetParent(reserveManager.currentOpenSlot.transform, false); // Set as a child of the current open Reserve Slot in hierarchy
 
         reserveManager.CardReturned(card);
@@ -317,11 +324,11 @@ public class DragDrop : MonoBehaviour
             //Debug.Log("Enter Discard!");
         }
 
-        ReserveSlot reserveSlot = collision.GetComponent<ReserveSlot>();
-        if (reserveSlot != null)
+        ReserveManager reserveManager = collision.GetComponent<ReserveManager>();
+        if (reserveManager != null)
         {
             isOverReserveSlot = true;
-            currentReserve = reserveSlot;
+            currentReserve = reserveManager;
             Debug.Log("Enter Reserve");
         }
     }
@@ -362,8 +369,8 @@ public class DragDrop : MonoBehaviour
             //Debug.Log("Exit Discard!");
         }
 
-        // Check if the collider is the DiscardPile
-        if (collision.GetComponent<ReserveSlot>() != null)
+        // Check if the collider is the ReserveManager
+        if (collision.GetComponent<ReserveManager>() != null)
         {
             isOverReserveSlot = false;
             currentReserve = null;

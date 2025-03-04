@@ -64,7 +64,7 @@ public class ReserveManager : MonoBehaviour
         {
             bool isPlayable = (i == currentPlayableIndex);
             reserveSlots[i].SetPlayable(isPlayable);
-            Debug.Log(isPlayable);
+            reserveSlots[i].card.GetComponent<Collider2D>().enabled = isPlayable;
         }
     }
 

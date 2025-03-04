@@ -50,6 +50,7 @@ public class Dropzone : MonoBehaviour
 
     // Coroutine reference for CountDownPower
     private int targetPowerNum;
+    public bool isCountingDown = false;
 
     [SerializeField] private float discardDuration = 1.0f; // Duration of the discard animation
 
@@ -76,8 +77,8 @@ public class Dropzone : MonoBehaviour
 
     private void Update()
     {
-        // Allow only skip input when dialog is playing
-        if (isTypewriting && Input.GetButtonDown("Skip"))
+        // Allow only skip input when dialog is playing or when power is counting down
+        if ((isTypewriting && Input.GetButtonDown("Skip")) || (isCountingDown && Input.GetButtonDown("Skip")))
         {
             skipRequested = true;
         }
@@ -109,7 +110,6 @@ public class Dropzone : MonoBehaviour
             lastPlacedCard = card;
 
             Debug.Log($"Card {card.name} placed in DropzoneSlot.");
-            gameManager.UpdateEndTurnButton(true); // Enable end turn button
             CalculateScore();
         }
         else
@@ -140,7 +140,6 @@ public class Dropzone : MonoBehaviour
             lastPlacedCard = dropzone.TopCard;
 
             // Reset UI or other visual elements if necessary
-            gameManager.UpdateEndTurnButton(false); // Disable end turn button if dropzone is empty
             CalculateScore();
         }
     }
@@ -151,7 +150,7 @@ public class Dropzone : MonoBehaviour
         Card bottomCard = null;
         foreach (Card card in cards)
         {
-            if (!card.isBottomCard)
+            if (!card.isBottomCard && !card.isPlayed)
             {
                 if (!card.isReserveCard)
                 {
@@ -183,14 +182,13 @@ public class Dropzone : MonoBehaviour
         cardsToScore.Clear();
         Debug.Log(cardsToScore.Count);
 
-        // Update UI or other states if necessary
-        gameManager.UpdateEndTurnButton(false); // Disable end turn button
         CalculateScore();
     }
 
     // Scores the played cards, moves them to the discard pile, and updates the UI
     public void ScoreCards()
     {
+        gameManager.UpdateEndTurnButton(false); // Disables end turn button
         if (failedConvo)
         {
             dialogText.text += "\n\n";
@@ -225,7 +223,6 @@ public class Dropzone : MonoBehaviour
         if (selectedConvoTopic.TierPower <= 0)
         {
             CompleteConvo();
-            selectedConvoTopic.ProgressToNextTier(); // Move to the next tier or finish
         }
 
         if (!completedConvo && !failedConvo)
@@ -251,6 +248,15 @@ public class Dropzone : MonoBehaviour
         // Maintain cards in dropzone but reset lastPlacedCard
         lastPlacedCard = dropzone.TopCard; // Set to the current top card in dropzone
         lastPlacedCard.isBottomCard = true;
+
+        foreach (Card card in dropzone.GetCards())
+        {
+            card.isPlayed = true;
+            if (card != dropzone.TopCard)
+            {
+                card.transform.gameObject.SetActive(false);
+            }
+        }
     }
 
     // Method to calculate score (call anytime score may be changed)
@@ -365,7 +371,7 @@ public class Dropzone : MonoBehaviour
     private void CheckDialogTriggers()
     {
         // Check each threshold and enqueue dialogs if necessary
-        if (!dialogPlayedAtFullPower)
+        if (!dialogPlayedAtFullPower && selectedConvoTopic.TierPower <= initialPower - 1)
         {
             dialogPlayedAtFullPower = true;
             dialogQueue.Enqueue(PlayDialog());  // Enqueue dialog for full power
@@ -582,6 +588,8 @@ public class Dropzone : MonoBehaviour
         // Typewriter effect: Display the message one letter at a time
         foreach (char letter in message.ToCharArray())
         {
+            gameManager.UpdateEndTurnButton(false); // Disable end turn button
+
             if (skipRequested)
             {
                 // If skip is requested, instantly complete the message
@@ -614,6 +622,7 @@ public class Dropzone : MonoBehaviour
         // Reset typewriter and writing state
         isTypewriting = false;
         currentSession.isWriting = false;
+        gameManager.UpdateEndTurnButton(true); // Enable end turn button
     }
 
     // Helper method to darken the convo topic color
@@ -650,9 +659,16 @@ public class Dropzone : MonoBehaviour
     // Coroutine to count down PowerNum smoothly
     private IEnumerator CountDownPower(int startValue, int endValue)
     {
+        if (!isTypewriting)
+        {
+            Cursor.lockState = CursorLockMode.Locked;
+        }
+        
+        isCountingDown = true;
         skipRequested = false;
         while (startValue > endValue)
         {
+            gameManager.UpdateEndTurnButton(false); // Disable end turn button
             if (skipRequested)
             {
                 startValue = endValue; // Instantly set to final value
@@ -676,6 +692,14 @@ public class Dropzone : MonoBehaviour
             selectedConvoTopic.isLocked = false;
             selectedConvoTopic.ToggleClick(true);
             gameManager.ResetConvoTopic();
+        }
+
+        isCountingDown = false;
+        gameManager.UpdateEndTurnButton(true); // Enable end turn button
+
+        if (!isTypewriting)
+        {
+            Cursor.lockState = CursorLockMode.None;
         }
     }
 
