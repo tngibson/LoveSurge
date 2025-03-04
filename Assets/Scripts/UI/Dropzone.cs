@@ -68,9 +68,9 @@ public class Dropzone : MonoBehaviour
     void Start()
     {
         // Set the playerManager and get the player's preferred name
-        if (GameObject.Find("PlayerManager") != null)
+        if (FindObjectsOfType<Player>() != null)
         {
-            playerManager = GameObject.Find("PlayerManager").GetComponent<Player>();
+            playerManager = FindObjectOfType<Player>();
             playerName = playerManager.GetName();
         }
     }
@@ -471,39 +471,34 @@ public class Dropzone : MonoBehaviour
             case "cha":
             case "charisma":
                 lines = currentSession.chaLines;
-                maxLineNum = lines.Count;
                 sprites = currentSession.chaSprites;
                 speakers = currentSession.chaSpeaker;
                 break;
             case "cou":
             case "courage":
                 lines = currentSession.couLines;
-                maxLineNum = lines.Count;
                 sprites = currentSession.couSprites;
                 speakers = currentSession.couSpeaker;
                 break;
             case "cle":
             case "cleverness":
                 lines = currentSession.cleLines;
-                maxLineNum = lines.Count;
                 sprites = currentSession.cleSprites;
                 speakers = currentSession.cleSpeaker;
                 break;
             case "cre":
             case "creativity":
                 lines = currentSession.creLines;
-                maxLineNum = lines.Count;
                 sprites = currentSession.creSprites;
                 speakers = currentSession.creSpeaker;
                 break;
             default:
                 Debug.LogWarning("Unknown conversation attribute: " + selectedConvoTopic.ConvoAttribute);
-                lines = null;
-                maxLineNum = lines.Count;
-                sprites = null;
-                speakers = null;
-                break;
+                yield break;
         }
+
+        maxLineNum = lines.Count;
+        if (lineNum >= maxLineNum) yield break; // Ensure we don't go out of bounds
 
         bool isPCSpeaker = speakers[lineNum] == "PC";
 
@@ -516,22 +511,25 @@ public class Dropzone : MonoBehaviour
         {
             currentSession.ReadDateText(sprites[lineNum]); // Call the method for Date speaker
         }
-        // Read and typewrite the first speaker's line
         yield return StartCoroutine(TypewriteDialog(speakers[lineNum], lines[lineNum]));
         lineNum++;
 
-        // Read and typewrite the second speaker's line
-        if (isPCSpeaker)
+        // Check if there is a next line before proceeding
+        if (lineNum < maxLineNum)
         {
-            currentSession.ReadDateText(sprites[lineNum]); // Call the method for Date speaker
+            isPCSpeaker = speakers[lineNum] == "PC";
+
+            if (isPCSpeaker)
+            {
+                currentSession.ReadDateText(sprites[lineNum]);
+            }
+            else
+            {
+                currentSession.ReadPlayerText();
+            }
+            yield return StartCoroutine(TypewriteDialog(speakers[lineNum], lines[lineNum]));
+            lineNum++;
         }
-        else
-        {
-            currentSession.ReadPlayerText(); // Call the method for PC speaker
-        }
-        // Read and typewrite the second speaker's line
-        yield return StartCoroutine(TypewriteDialog(speakers[lineNum], lines[lineNum]));
-        lineNum++;
 
         Cursor.lockState = CursorLockMode.None;
     }
@@ -552,6 +550,8 @@ public class Dropzone : MonoBehaviour
         }
 
         message = message.Replace("[Player]", playerName);
+        message = message.Replace("[PlayerName]", playerName);
+        message = message.Replace("[Player Name]", playerName);
 
         // Prepare the speaker's portion in bold (appears immediately)
         string speakerPortion = $"<b>{speaker}:</b> ";

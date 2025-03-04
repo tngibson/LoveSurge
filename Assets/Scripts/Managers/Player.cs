@@ -6,7 +6,7 @@ using Random = UnityEngine.Random;
 
 public class Player : MonoBehaviour
 {
-    private string playerName;
+    [SerializeField] private string playerName;
 
     // Define an enum to represent the stat names
     public enum StatType { Charisma, Cleverness, Courage, Creativity }

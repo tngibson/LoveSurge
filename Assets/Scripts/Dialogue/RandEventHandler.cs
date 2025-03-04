@@ -127,6 +127,8 @@ public class RandEventHandler : MonoBehaviour
         speakerNameText.text = currentSpeaker;
 
         dialogLines[currentLineIndex] = dialogLines[currentLineIndex].Replace("[Player]", playerName);
+        dialogLines[currentLineIndex] = dialogLines[currentLineIndex].Replace("[PlayerName]", playerName);
+        dialogLines[currentLineIndex] = dialogLines[currentLineIndex].Replace("[Player Name]", playerName);
 
         // Update all portraits based on the current line
         UpdateAllPortraits(currentSpeaker);
