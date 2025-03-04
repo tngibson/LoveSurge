@@ -8,6 +8,7 @@ public class DragDrop : MonoBehaviour
     [SerializeField] private Canvas canvas;           // Reference to the UI canvas to render above all UI elements
     [SerializeField] private GameManager gameManager; // Reference to GameManager
     [SerializeField] Dropzone dropzoneManager;        // Reference to Dropzone
+    [SerializeField] ReserveManager reserveManager;   // Reference to ReserveManager
 
     private Transform startParent;    // Store the original parent of the dragged card
     private Vector2 startPos;         // Store the original position of the dragged card
@@ -16,9 +17,11 @@ public class DragDrop : MonoBehaviour
     private DragDrop targetCard;      // The card this one is dropped on (for swapping)
     private DropzoneSlot currentDropZone; // The dropzone this card is over
     private DiscardPile currentDiscard; // The discard pile this card is over
+    private ReserveSlot currentReserve; // The reserve slot this card is over
     private bool isOverDropZone = false; // Track if card is over a dropzone
     private bool isOverPlayerArea = false;  // Track if card is over the player areas
     private bool isOverDiscardPile = false;  // Track if card is over the discard pile
+    private bool isOverReserveSlot = false;  // Track if card is over the reserve slot
 
     private Vector3 initialPositionA;  // Initial position of this card
     private Vector3 initialPositionB;  // Initial position of the target card
@@ -26,6 +29,8 @@ public class DragDrop : MonoBehaviour
     private CardHandLayout cardHandLayout;
 
     private int playerAreaCounter = 0; // Counter to track PlayerArea overlap
+
+    [SerializeField] private bool isDraggable = true;
 
     // Public method to check if the card is being dragged
     public bool IsDragging() => isDragging;
@@ -42,6 +47,7 @@ public class DragDrop : MonoBehaviour
         playerArea = GameObject.Find("PlayerArea")?.GetComponent<PlayerArea>();
         canvas = GameObject.Find("Canvas")?.GetComponent<Canvas>();
         dropzoneManager = GameObject.Find("CardSlotsPanel").GetComponent<Dropzone>();
+        reserveManager = GameObject.Find("ReserveCardSlotsPanel").GetComponent<ReserveManager>();
 
         if (playerArea == null)
         {
@@ -64,6 +70,7 @@ public class DragDrop : MonoBehaviour
     // Start dragging the card.
     public void StartDrag()
     {
+        if (!isDraggable) return;
         isDragging = true; // Enable dragging
         startParent = transform.parent; // Store the original parent
         startPos = transform.position; // Store the original position
@@ -86,6 +93,8 @@ public class DragDrop : MonoBehaviour
     // End dragging the card and determine the appropriate action.
     public void EndDrag()
     {
+        if (!isDraggable) return;
+
         isDragging = false;  // Disable dragging
 
         if (targetCard != null)  // Swap with another card if applicable
@@ -96,13 +105,17 @@ public class DragDrop : MonoBehaviour
         {
             PlaceInDropzone();
         }
-        else if (isOverPlayerArea)  // Return the card to the player area
+        else if (isOverPlayerArea && !card.isReserveCard)  // Return the card to the player area
         {
             ReturnToPlayerArea();
         }
         else if (isOverDiscardPile)
         {
             DiscardCard();
+        }
+        else if (isOverReserveSlot && card.isReserveCard && card.isInDropzone)
+        {
+            ReturnToReserveSlot();
         }
         else  // Return to original position if no valid drop
         {
@@ -177,6 +190,8 @@ public class DragDrop : MonoBehaviour
             transform.localScale = Vector3.one; // Reset size
             transform.rotation = Quaternion.identity; // Reset rotation
             RemoveHoverListeners();
+            cardComponent.OnCardPlayed();
+            card.isInDropzone = true;
         }
         else
         {
@@ -206,6 +221,7 @@ public class DragDrop : MonoBehaviour
         transform.SetParent(playerArea.transform, false); // Set as a child of PlayerArea in hierarchy
         cardHandLayout.UpdateCardListAndLayout();
         transform.localScale = Vector3.one; // Reset card size
+        card.isInDropzone = false;
     }
 
 
@@ -215,6 +231,12 @@ public class DragDrop : MonoBehaviour
         transform.SetParent(startParent, false);  // Reset parent to original
         this.transform.localScale = Vector3.one;
         transform.position = startPos;  // Reset position
+
+        // If we are returning a card back to the Dropzone, remove its collider again
+        if (startParent.GetComponent<DropzoneSlot>() != null) 
+        {
+            GetComponent<Collider2D>().enabled = false;
+        }
     }
 
     private void DiscardCard()
@@ -241,6 +263,22 @@ public class DragDrop : MonoBehaviour
         }
     }
 
+    private void ReturnToReserveSlot()
+    {
+        dropzoneManager.RemoveCardFromDropzone(); // Remove card from dropzone
+
+        // Re-enable the collider when moving back to the reserve slot
+        GetComponent<Collider2D>().enabled = true;
+
+        transform.SetParent(reserveManager.currentOpenSlot.transform, false); // Set as a child of the current open Reserve Slot in hierarchy
+
+        reserveManager.CardReturned(card);
+
+        transform.localScale = Vector3.one; // Reset card size
+
+        card.isInDropzone = false;
+    }
+
     private void OnTriggerEnter2D(Collider2D collision)
     {
         // Check if the collider is another DragDrop component
@@ -249,7 +287,7 @@ public class DragDrop : MonoBehaviour
         {
             targetCard = otherCard;  // Set the target card for swapping
             initialPositionB = otherCard.transform.position;  // Store its initial position
-            Debug.Log("Enter Card!");
+            //Debug.Log("Enter Card!");
         }
 
         // Check if the collider is a DropzoneSlot
@@ -258,7 +296,7 @@ public class DragDrop : MonoBehaviour
         {
             isOverDropZone = true;
             currentDropZone = zone;
-            Debug.Log("Enter Dropzone!");
+            //Debug.Log("Enter Dropzone!");
         }
 
         // Check if the collider is the PlayerArea
@@ -266,17 +304,25 @@ public class DragDrop : MonoBehaviour
         {
             playerAreaCounter++; // Increment counter
             isOverPlayerArea = true; // Ensure it's set to true if we're over the PlayerArea
-            Debug.Log("Enter Area!");
+            //Debug.Log("Enter Area!");
         }
 
 
         DiscardPile discard = collision.GetComponent<DiscardPile>();
         // Check if the collider is the DiscardPile
-        if (collision.GetComponent<DiscardPile>() != null)
+        if (discard != null)
         {
             isOverDiscardPile = true; // Ensure it's set to true if we're over the DiscardPile
             currentDiscard = discard;
-            Debug.Log("Enter Discard!");
+            //Debug.Log("Enter Discard!");
+        }
+
+        ReserveSlot reserveSlot = collision.GetComponent<ReserveSlot>();
+        if (reserveSlot != null)
+        {
+            isOverReserveSlot = true;
+            currentReserve = reserveSlot;
+            Debug.Log("Enter Reserve");
         }
     }
 
@@ -286,7 +332,7 @@ public class DragDrop : MonoBehaviour
         if (collision.GetComponent<DragDrop>() == targetCard)
         {
             targetCard = null;
-            Debug.Log("Exit Card!");
+            //Debug.Log("Exit Card!");
         }
 
         // Reset the dropzone if it leaves the collider
@@ -294,7 +340,7 @@ public class DragDrop : MonoBehaviour
         {
             isOverDropZone = false;
             currentDropZone = null;
-            Debug.Log("Exit Dropzone!");
+            //Debug.Log("Exit Dropzone!");
         }
 
         // Reset the player area flag if the card leaves the player area
@@ -304,7 +350,7 @@ public class DragDrop : MonoBehaviour
             if (playerAreaCounter <= 0)
             {
                 isOverPlayerArea = false; // Only set to false if counter is zero or less
-                Debug.Log("Exit Area!");
+                //Debug.Log("Exit Area!");
             }
         }
 
@@ -313,7 +359,15 @@ public class DragDrop : MonoBehaviour
         {
             isOverDiscardPile = false; // Ensure it's set to true if we're over the DiscardPile
             currentDiscard = null;
-            Debug.Log("Exit Discard!");
+            //Debug.Log("Exit Discard!");
+        }
+
+        // Check if the collider is the DiscardPile
+        if (collision.GetComponent<ReserveSlot>() != null)
+        {
+            isOverReserveSlot = false;
+            currentReserve = null;
+            Debug.Log("Exit Reserve");
         }
     }
 
@@ -327,5 +381,10 @@ public class DragDrop : MonoBehaviour
             // Remove all hover-related listeners
             trigger.triggers.RemoveAll(entry => entry.eventID == EventTriggerType.PointerEnter || entry.eventID == EventTriggerType.PointerExit);
         }
+    }
+
+    public void SetDraggable(bool value)
+    {
+        isDraggable = value;
     }
 }

@@ -9,7 +9,7 @@ public class GameManager : MonoBehaviour
 
     // UI elements for displaying game information
     [SerializeField] private TextMeshProUGUI scoreText;  // UI for displaying the score
-    [SerializeField] private TextMeshProUGUI endGameText;
+    [SerializeField] private GameObject endGameText;
     [SerializeField] private GameObject fullHandText;
 
     // Stress values
@@ -123,7 +123,7 @@ public class GameManager : MonoBehaviour
     // Ends the game and displays the game over message
     private void EndGame()
     {
-        endGameText.text = "Game Over! You ran out of cards!";
+        endGameText.SetActive(true);
         endTurnButton.SetActive(false);
         discardBin.SetActive(false);
         mapButton.SetActive(true); // Enable the map button at game over

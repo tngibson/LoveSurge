@@ -18,10 +18,13 @@ public abstract class Card : MonoBehaviour
     public bool isWildReceiver = false; // Means any card can be played on this card
     public bool isBottomCard = false;
     public bool isReserveCard = false;
+    public bool isInDropzone = false;
 
     public Color defaultTextColor;
 
     private List<string> ignoredTags;
+
+    ReserveManager reserveManager;
 
     // Private backing fields with public properties for type and power
     private string type;
@@ -62,6 +65,7 @@ public abstract class Card : MonoBehaviour
         UpdatePowerDisplay();  // Initialize the power display on start
         
         StressManager.stressChangedEvent += StressChangedEvent;
+        reserveManager = GameObject.Find("ReserveCardSlotsPanel").GetComponent<ReserveManager>();
     }
 
     private void OnDestroy()
@@ -141,5 +145,13 @@ public abstract class Card : MonoBehaviour
         // See the variable definitions for explanations of what wildPlacer and wildReceiver mean
         if (isWildPlacer || (otherCard != null && otherCard.isWildReceiver)) return true;
         else return otherCard == null || CompareCards(otherCard);
+    }
+
+    public void OnCardPlayed()
+    {
+        if (isReserveCard)
+        {
+            reserveManager.CardPlayed(); // Notify the manager that the card was used
+        }
     }
 }

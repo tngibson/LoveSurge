@@ -22,6 +22,7 @@ public class Dropzone : MonoBehaviour
     [SerializeField] private Playtest currentSession;
     [SerializeField] public ConvoTopic selectedConvoTopic;
     [SerializeField] private GameManager gameManager;
+    [SerializeField] ReserveManager reserveManager;
 
     // Array to hold the dropzone
     [SerializeField] private DropzoneSlot dropzone; 
@@ -152,9 +153,19 @@ public class Dropzone : MonoBehaviour
         {
             if (!card.isBottomCard)
             {
-                // Add each card back to the player's hand
-                playerArea.AddCards(card);
-                card.transform.SetParent(playerArea.transform, false); // Reset card hierarchy visually
+                if (!card.isReserveCard)
+                {
+                    // Add each card back to the player's hand
+                    playerArea.AddCards(card);
+                    card.transform.SetParent(playerArea.transform, false); // Reset card hierarchy visually
+                }
+                else
+                {
+                    card.transform.SetParent(reserveManager.currentOpenSlot.transform, false); // Set as a child of the current open Reserve Slot in hierarchy
+
+                    reserveManager.CardReturned(card);
+                }
+                card.isInDropzone = false;
             }
             else
             {
@@ -639,8 +650,15 @@ public class Dropzone : MonoBehaviour
     // Coroutine to count down PowerNum smoothly
     private IEnumerator CountDownPower(int startValue, int endValue)
     {
+        skipRequested = false;
         while (startValue > endValue)
         {
+            if (skipRequested)
+            {
+                startValue = endValue; // Instantly set to final value
+                break;
+            }
+
             startValue--;  // Decrement the power by 1
             selectedConvoTopic.numText.text = startValue.ToString();  // Update the UI
             yield return new WaitForSeconds(0.05f);  // Small delay for the countdown effect

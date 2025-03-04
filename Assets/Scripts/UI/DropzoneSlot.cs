@@ -4,7 +4,7 @@ using UnityEngine;
 [System.Serializable]
 public class DropzoneSlot : MonoBehaviour
 {
-    private List<Card> cardsInSlot = new List<Card>(); // List to hold multiple cards
+    [SerializeField] private List<Card> cardsInSlot = new List<Card>(); // List to hold multiple cards
     [SerializeField] private Card[] cardPrefabs; // Array of card prefabs to choose from
 
     public bool IsEmpty => cardsInSlot.Count == 0; // Check if the slot is empty
