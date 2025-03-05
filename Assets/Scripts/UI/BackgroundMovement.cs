@@ -1,34 +1,24 @@
 using UnityEngine;
+using UnityEngine.UI;
 
 public class DirectionalMovement : MonoBehaviour
 {
-    public float scrollSpeed = 1f; // Adjust this to control the speed of the scrolling
-    public float backgroundWidth; // Set this to the width of the background in world units
-    public float backgroundHeight; // Set this to the height of the background in world units
+    public float scrollSpeedX = 0.1f; // Horizontal scroll speed
+    public float scrollSpeedY = 0.1f; // Vertical scroll speed
+    private RawImage rawImage;
+    private Rect uvRect;
 
-    private Vector3 initialPosition;
-
-    private void Start()
+    void Start()
     {
-        initialPosition = transform.position;
+        rawImage = GetComponent<RawImage>();
+        uvRect = rawImage.uvRect;
     }
 
-    private void Update()
+    void Update()
     {
-        // Move the background diagonally based on scroll speed and deltaTime
-        Vector3 movement = new Vector3(scrollSpeed, -scrollSpeed, 0) * Time.deltaTime;
-        transform.Translate(movement);
-
-        // Check if the background has moved off the screen horizontally
-        if (transform.position.x > initialPosition.x + backgroundWidth)
-        {
-            transform.position = new Vector3(initialPosition.x - backgroundWidth, transform.position.y, transform.position.z);
-        }
-
-        // Check if the background has moved off the screen vertically
-        if (transform.position.y < initialPosition.y - backgroundHeight)
-        {
-            transform.position = new Vector3(transform.position.x, initialPosition.y + backgroundHeight, transform.position.z);
-        }
+        uvRect.x += scrollSpeedX * Time.deltaTime;
+        uvRect.y += scrollSpeedY * Time.deltaTime;
+        rawImage.uvRect = uvRect;
     }
 }
+
