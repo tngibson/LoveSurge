@@ -30,6 +30,7 @@ public class GameManager : MonoBehaviour
     [SerializeField] private Dropzone dropzone;
     [SerializeField] private DiscardPile discard;
     [SerializeField] private GameObject discardBin;
+    [SerializeField] private ReserveManager reserveManager;
 
     public List<string> categories = new List<string> { "Cha", "Cou", "Cle", "Cre" }; // List of categories for conversation topics
 
@@ -43,6 +44,8 @@ public class GameManager : MonoBehaviour
     public bool IsTopicSelected { get; set; }
 
     [SerializeField] private int handSize = 4;  // Max hand size the player can have
+
+    private bool isHandPlayable = false;
 
     // Initial game setup
     private void Awake()
@@ -112,7 +115,7 @@ public class GameManager : MonoBehaviour
         dropzone.ResetForNewTurn();
 
         // Check for game over conditions (empty deck and hand)
-        if (deckContainer.Deck.Count <= 0 && playerArea.CardsInHand.Count == 0)
+        if (deckContainer.Deck.Count <= 0 && (playerArea.CardsInHand.Count == 0 || checkHandPlayable() == false))
         {
             EndGame();
         }
@@ -153,5 +156,22 @@ public class GameManager : MonoBehaviour
         }
     }
 
+    private bool checkHandPlayable()
+    {
+        isHandPlayable = false;
+        foreach (Card card in playerArea.CardsInHand)
+        {
+            if (dropzone.CanPlaceCard(card))
+            {
+                isHandPlayable = true;
+            }
+        }
 
+        if (dropzone.CanPlaceCard(reserveManager.GetCurrentPlayableCard()))
+        {
+            isHandPlayable = true;
+        }
+
+        return isHandPlayable;
+    }
 }

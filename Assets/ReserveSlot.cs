@@ -10,8 +10,10 @@ public class ReserveSlot : MonoBehaviour
     [SerializeField] private GameObject reserveSlot;
 
     public Image cardImage; // Reference to the card image for UI changes
-    public DragDrop card;   // The card currently in this slot
+    public DragDrop cardDragDrop;   // The card currently in this slot
+    public Card card;
     [SerializeField] private ReserveManager reserveManager;
+
 
     // Mapping card types to their respective playable colors
     private static readonly Dictionary<string, Color> cardColors = new Dictionary<string, Color>()
@@ -31,12 +33,12 @@ public class ReserveSlot : MonoBehaviour
     {
         if (playable)
         {
-            card.SetDraggable(true);
+            cardDragDrop.SetDraggable(true);
             cardImage.color = GetCardColor(); // Set to the card's specific color
         }
         else
         {
-            card.SetDraggable(false);
+            cardDragDrop.SetDraggable(false);
             cardImage.color = new Color(0.3f, 0.3f, 0.3f, 1f); // Gray out effect
         }
     }
@@ -47,30 +49,30 @@ public class ReserveSlot : MonoBehaviour
         int randomAttribute = Random.Range(0, cardPrefabs.Length);
         int randomPower = Random.Range(1, 6);
 
-        Card startingCard = Instantiate(cardPrefabs[randomAttribute]);
-        card = startingCard.GetComponent<DragDrop>();
-        cardImage = startingCard.background;
-        startingCard.Power = randomPower;
+        card = Instantiate(cardPrefabs[randomAttribute]);
+        cardDragDrop = card.GetComponent<DragDrop>();
+        cardImage = card.background;
+        card.Power = randomPower;
 
-        startingCard.transform.SetParent(reserveSlot.transform, false); // Parent it to the ReserveSlot
-        startingCard.isReserveCard = true;
+        card.transform.SetParent(reserveSlot.transform, false); // Parent it to the ReserveSlot
+        card.isReserveCard = true;
     }
 
     private Color GetCardColor()
     {
-        if (card.GetComponent<ChaCard>() != null)
+        if (cardDragDrop.GetComponent<ChaCard>() != null)
         {
             return cardColors["ChaCard"];
         }
-        else if (card.GetComponent<CreCard>() != null)
+        else if (cardDragDrop.GetComponent<CreCard>() != null)
         {
             return cardColors["CreCard"];
         }
-        else if (card.GetComponent<CleCard>() != null)
+        else if (cardDragDrop.GetComponent<CleCard>() != null)
         {
             return cardColors["CleCard"];
         }
-        else if (card.GetComponent<CouCard>() != null)
+        else if (cardDragDrop.GetComponent<CouCard>() != null)
         {
             return cardColors["CouCard"];
         }

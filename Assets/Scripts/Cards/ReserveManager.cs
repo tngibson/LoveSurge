@@ -16,7 +16,7 @@ public class ReserveManager : MonoBehaviour
     public void CardPlayed()
     {
         // Move to the next playable card
-        reserveSlots[currentPlayableIndex].card = null;
+        reserveSlots[currentPlayableIndex].cardDragDrop = null;
         reserveSlots[currentPlayableIndex].cardImage = null;
 
         currentPlayableIndex++;
@@ -44,7 +44,7 @@ public class ReserveManager : MonoBehaviour
     public void CardReturned(Card card)
     {
         // Move to the next playable card
-        reserveSlots[currentOpenIndex].card = card.GetComponent<DragDrop>();
+        reserveSlots[currentOpenIndex].cardDragDrop = card.GetComponent<DragDrop>();
         reserveSlots[currentOpenIndex].cardImage = card.background;
 
         currentPlayableIndex--;
@@ -64,7 +64,7 @@ public class ReserveManager : MonoBehaviour
         {
             bool isPlayable = (i == currentPlayableIndex);
             reserveSlots[i].SetPlayable(isPlayable);
-            reserveSlots[i].card.GetComponent<Collider2D>().enabled = isPlayable;
+            reserveSlots[i].cardDragDrop.GetComponent<Collider2D>().enabled = isPlayable;
         }
     }
 
@@ -74,5 +74,10 @@ public class ReserveManager : MonoBehaviour
         {
             slot.GenerateNewCard(); // Calls the method to generate a new card
         }
+    }
+
+    public Card GetCurrentPlayableCard()
+    {
+        return reserveSlots[currentPlayableIndex].card;
     }
 }
