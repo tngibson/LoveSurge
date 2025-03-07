@@ -37,7 +37,7 @@ public class RandEventHandler : MonoBehaviour
     private string lastTargetSpriteName;
 
     // Typewriter variables
-    [SerializeField] private float typewriterSpeed = 0.05f;
+    private float typewriterSpeed = 0.025f;
 
     // FMOD Audio
     private EventInstance levelMusic;

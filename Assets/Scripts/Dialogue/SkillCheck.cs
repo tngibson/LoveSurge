@@ -21,7 +21,7 @@ public class SkillCheck : MonoBehaviour
     [SerializeField] private int skillCheckThreshold = 10;  // Threshold to pass skill check
     [SerializeField] private int currentSkillIndex;  // Index for skill (0-3 for Charisma, Cleverness, Creativity, Courage)
 
-    [SerializeField] private float typewriterSpeed = 0.05f;  // Speed of typewriter effect
+    private float typewriterSpeed = 0.025f;  // Speed of typewriter effect
 
     private int currentLineIndex = 0;  // Current index for dialog
     private bool isSkillCheckTime = false;  // Flag for skill check time

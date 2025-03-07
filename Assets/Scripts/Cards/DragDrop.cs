@@ -30,7 +30,7 @@ public class DragDrop : MonoBehaviour
 
     private int playerAreaCounter = 0; // Counter to track PlayerArea overlap
 
-    [SerializeField] private bool isDraggable = true;
+    [SerializeField] public bool isDraggable = true;
 
     // Public method to check if the card is being dragged
     public bool IsDragging() => isDragging;

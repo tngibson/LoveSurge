@@ -19,11 +19,8 @@ public class VolumeSlider : MonoBehaviour
 
     private void Awake()
     {
-        volumeSlider = this.GetComponentInChildren<Slider>();
-    }
+        volumeSlider = GetComponentInChildren<Slider>();
 
-    private void Update()
-    {
         switch (volumeType)
         {
             case VolumeType.MASTER:
@@ -36,7 +33,7 @@ public class VolumeSlider : MonoBehaviour
                 volumeSlider.value = AudioManager.instance.sfxVolume;
                 break;
             default:
-                Debug.LogWarning("Vloume Type not supported: " + volumeType);
+                Debug.LogWarning("Volume Type not supported: " + volumeType);
                 break;
         }
     }

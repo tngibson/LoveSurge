@@ -1,5 +1,6 @@
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class ReserveManager : MonoBehaviour
 {
@@ -7,6 +8,8 @@ public class ReserveManager : MonoBehaviour
     public int currentPlayableIndex = 0;
     public int currentOpenIndex = -1;
     public ReserveSlot currentOpenSlot;
+
+    [SerializeField] private Image background;
 
     void Awake()
     {
@@ -27,6 +30,9 @@ public class ReserveManager : MonoBehaviour
             currentOpenSlot = reserveSlots[currentOpenIndex];
         }
 
+
+        // Below is the functionality that would effectively refresh the reserve slots when they run out. This is currently not how they work, but I'm leaving it here in case that changes.
+        /*
         if (currentPlayableIndex >= reserveSlots.Count)
         {
             // All cards have been played, refresh them
@@ -37,7 +43,9 @@ public class ReserveManager : MonoBehaviour
             currentOpenIndex = -1;
             currentOpenSlot = null;
         }
+        */
 
+        // If the above functionality is added back in, this if-statement must be reworked
         UpdateReserveSlots();
     }
 
@@ -74,6 +82,15 @@ public class ReserveManager : MonoBehaviour
         {
             slot.GenerateNewCard(); // Calls the method to generate a new card
         }
+    }
+
+    public void ReservesEmpty()
+    {
+        foreach (ReserveSlot slot in reserveSlots)
+        {
+            slot.GetComponent<Image>().color = new Color(0.3f, 0.3f, 0.3f, 1f); // Gray out effect
+        }
+        background.color = new Color(0.3f, 0.3f, 0.3f, 1f); // Gray out effect
     }
 
     public Card GetCurrentPlayableCard()

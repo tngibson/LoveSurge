@@ -9,6 +9,7 @@ using UnityEngine.UI;
 public class Dropzone : MonoBehaviour
 {
     [SerializeField] private TextMeshProUGUI currentScoreText;
+    [SerializeField] private TextMeshProUGUI scoreCalculationText;
     [SerializeField] private TextMeshProUGUI dialogText;
 
     [SerializeField] private List<Card> playedCards;
@@ -42,7 +43,7 @@ public class Dropzone : MonoBehaviour
     private bool failedConvo = false;
 
     // Typewriter settings
-    [SerializeField] private float typewriterSpeed = 0.05f;  // Speed of the typewriter effect
+    private float typewriterSpeed = 0.025f;  // Speed of the typewriter effect
 
     // Flag to indicate if the typewriter effect is running
     public bool isTypewriting = false;
@@ -256,10 +257,27 @@ public class Dropzone : MonoBehaviour
         foreach (Card card in dropzone.GetCards())
         {
             card.isPlayed = true;
+            
+            // On the off chance DragDrop is not destroyed, we make it so that it can't be dragged anyway
+            if (card.GetComponent<DragDrop>() != null)
+            {
+                card.GetComponent<DragDrop>().isDraggable = false;
+            }
+
+            if (card.isReserveCard)
+            {
+                card.isReserveCard = false;
+            }
+
             if (card != dropzone.TopCard)
             {
                 card.transform.gameObject.SetActive(false);
             }
+        }
+
+        if (reserveManager.currentPlayableIndex >= reserveManager.reserveSlots.Count)
+        {
+            reserveManager.ReservesEmpty();
         }
     }
 
@@ -274,6 +292,9 @@ public class Dropzone : MonoBehaviour
         // Calculate total power and find the highest power
         int totalPower = 0;
         int highestPower = 0;
+
+        // String to hold the calculation breakdown
+        string calculationBreakdown = "";
 
         if (cardsToScore.Count != 0 && gameManager.IsTopicSelected)
         {
@@ -299,13 +320,21 @@ public class Dropzone : MonoBehaviour
 
             // Update the current score text field with the recalculated score
             currentScoreText.text = "Current Score: " + score.ToString();
+
+            // Construct the breakdown string
+            calculationBreakdown = $"Total Power: {totalPower}\nHighest Power: {highestPower}\nScore Calculation: {totalPower} * {highestPower} = {score}";
         }
         else
         {
             // Set score text to zero if no cards are played or no topic is selected
             currentScoreText.text = "Current Score: " + score.ToString();
+            calculationBreakdown = "No cards played or no topic selected.\nScore: 0";
         }
+
+        // Update the TextMeshProUGUI object with the calculation breakdown
+        scoreCalculationText.text = calculationBreakdown;
     }
+
 
     // Coroutine that moves all cards from the dropzones to the discard pile at once.
     // Currently removed for obsolescence
@@ -457,7 +486,7 @@ public class Dropzone : MonoBehaviour
     private void ResetAfterScoring()
     {
         score = 0;  // Reset score to 0
-        currentScoreText.text = "Current Score: 0";  // Update UI
+        CalculateScore();
     }
 
     // Coroutine to play the dialog 
@@ -525,11 +554,11 @@ public class Dropzone : MonoBehaviour
 
             if (isPCSpeaker)
             {
-                currentSession.ReadDateText(sprites[lineNum]);
+                currentSession.ReadPlayerText();
             }
             else
             {
-                currentSession.ReadPlayerText();
+                currentSession.ReadDateText(sprites[lineNum]);
             }
             yield return StartCoroutine(TypewriteDialog(speakers[lineNum], lines[lineNum]));
             lineNum++;

@@ -41,6 +41,7 @@ public class AudioManager : MonoBehaviour
 
         }
         instance = this;
+        DontDestroyOnLoad(gameObject);
         eventInstances = new List<EventInstance>();
 
         //Set Bus
@@ -118,5 +119,10 @@ public class AudioManager : MonoBehaviour
     private void OnDestroy()
     {
         CleanUp();
+    }
+
+    public void SetPaused(bool isPaused)
+    {
+        masterBus.setPaused(isPaused);
     }
 }

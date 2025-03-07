@@ -11,7 +11,7 @@ public class StatUpgrade : MonoBehaviour
     private Player playerManager;      // Reference to the Player manager script
     private string playerName;
 
-    [SerializeField] private float typewriterSpeed = 0.05f; // Speed of the typewriter effect
+    private float typewriterSpeed = 0.025f; // Speed of the typewriter effect
 
     private bool isTypewriting = false;
     private bool skipRequested = false;

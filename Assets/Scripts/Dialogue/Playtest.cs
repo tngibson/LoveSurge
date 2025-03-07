@@ -157,18 +157,23 @@ public class Playtest : MonoBehaviour
         // Animate the upward movement
         while (elapsedTime < jumpSpeed)
         {
-            dateCharacter.transform.localPosition = Vector3.Lerp(originalPosition, targetPosition, (elapsedTime / jumpSpeed));
+            float t = Mathf.Clamp01(elapsedTime / jumpSpeed);
+            dateCharacter.transform.localPosition = Vector3.Lerp(originalPosition, targetPosition, t);
             elapsedTime += Time.deltaTime;
             yield return null;
         }
 
+        // Ensure the position is set exactly to the target
+        dateCharacter.transform.localPosition = targetPosition;
+
         // Reset time for downward movement
         elapsedTime = 0f;
 
-        // Animate the downward movement back to the original position
+        // Animate the downward movement
         while (elapsedTime < jumpSpeed)
         {
-            dateCharacter.transform.localPosition = Vector3.Lerp(targetPosition, originalPosition, (elapsedTime / jumpSpeed));
+            float t = Mathf.Clamp01(elapsedTime / jumpSpeed);
+            dateCharacter.transform.localPosition = Vector3.Lerp(targetPosition, originalPosition, t);
             elapsedTime += Time.deltaTime;
             yield return null;
         }
