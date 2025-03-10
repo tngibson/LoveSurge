@@ -579,7 +579,7 @@ public class Dropzone : MonoBehaviour
             }
 
             currentMessage += letter;
-            dialogText.text = initialText + currentMessage;  // Update dialog with each letter
+            dialogText.text = initialText + currentMessage + '|';  // Update dialog with each letter
 
             AdjustTextBoxHeight();  // Adjust the text box height with each letter
             ScrollToBottom();  // Keep the scroll at the bottom
@@ -588,7 +588,7 @@ public class Dropzone : MonoBehaviour
         }
 
         // Finalize the message and ensure layout updates
-        dialogText.text = initialText + currentMessage;
+        dialogText.text = initialText + currentMessage + '<';
         AdjustTextBoxHeight();  // Ensure the text box is fully adjusted
         ScrollToBottom();  // Keep the scroll at the bottom
 
