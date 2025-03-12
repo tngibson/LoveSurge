@@ -12,6 +12,8 @@ public class GlobalInformation : MonoBehaviour
 
     [SerializeField] private int numStats = 4; // The number of stats used in the game
 
+    
+
     void Awake()
     {
         // Ensure only one instance of GlobalInformation exists

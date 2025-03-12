@@ -38,6 +38,7 @@ public class GameManager : MonoBehaviour
     [SerializeField] private GameObject endTurnButton;
     [SerializeField] private GameObject mapButton;
 
+    [SerializeField] private int CurrentCharacterIndex;
     private int currentScore = 0;  // Tracks the player's score
     private bool isTopicSelected;
 
