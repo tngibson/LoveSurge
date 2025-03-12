@@ -50,6 +50,8 @@ public class RandEventHandler : MonoBehaviour
     private Player playerManager;
     private string playerName;
 
+    [SerializeField] private GameObject continueIndicator;
+
     void Start()
     {
         // Set the playerManager and get the player's preferred name
@@ -196,6 +198,7 @@ public class RandEventHandler : MonoBehaviour
     private IEnumerator TypewriteText(string line, string speaker)
     {
         textOutput.text = "";
+        continueIndicator.SetActive(false);
         isTypewriting = true;
         skipRequested = false;
 
@@ -213,6 +216,7 @@ public class RandEventHandler : MonoBehaviour
         }
 
         isTypewriting = false;
+        continueIndicator.SetActive(true);
 
         // Safely invoke animation stop
         for (int i = 0; i <characterPortraits.Count; i++)
@@ -285,18 +289,30 @@ public class RandEventHandler : MonoBehaviour
             }
         }
 
-        // Calculate spacing and centering logic
-        float spacing = 500f;
-        float startX = -((activeChoices - 1) * spacing) / 2; // Center the buttons horizontally
+        // Ensure we only ever have two layers with two buttons max per layer
+        int maxButtonsPerLayer = 2;
+        float horizontalSpacing = 650f; // Space between buttons horizontally
+        float verticalSpacing = 265f;   // Space between layers vertically
 
         int index = 0;
         foreach (var button in choiceButtons)
         {
             if (button.gameObject.activeSelf)
             {
-                // Position each active button
                 RectTransform buttonRect = button.GetComponent<RectTransform>();
-                buttonRect.anchoredPosition = new Vector2(startX + (index * spacing), buttonRect.anchoredPosition.y);
+
+                // Determine layer (0 or 1) and horizontal index (0 or 1)
+                int layer = index / maxButtonsPerLayer;
+                int horizontalIndex = index % maxButtonsPerLayer;
+
+                // Calculate horizontal position to center the two buttons
+                float xPos = -((maxButtonsPerLayer - 1) * horizontalSpacing) / 2 + (horizontalIndex * horizontalSpacing);
+
+                // Calculate vertical position to create two layers
+                float yPos = -((layer * verticalSpacing));
+
+                // Apply the position
+                buttonRect.anchoredPosition = new Vector2(xPos, yPos + 200);
                 index++;
             }
         }

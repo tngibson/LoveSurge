@@ -24,6 +24,8 @@ public class StatUpgrade : MonoBehaviour
 
     [SerializeField] private GameObject mapButton;  // Button to return to map
 
+    [SerializeField] private GameObject continueIndicator;
+
     void Start()
     {
         if (GameObject.Find("PlayerManager") != null)
@@ -270,6 +272,7 @@ public class StatUpgrade : MonoBehaviour
     private IEnumerator TypewriteDialog(string message)
     {
         isTypewriting = true;
+        continueIndicator.SetActive(false);
         dialogText.text = ""; // Clear the text box
         string currentMessage = "";
 
@@ -290,6 +293,7 @@ public class StatUpgrade : MonoBehaviour
 
         dialogText.text = message; // Ensure the full message is displayed
         isTypewriting = false;
+        continueIndicator.SetActive(true);
     }
 
     private void ApplyStatChanges(List<string> lines)

@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.18028331, g: 0.2257133, b: 0.3069217, a: 1}
+  m_IndirectSpecularColor: {r: 0.18028378, g: 0.22571412, b: 0.30692285, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -290,10 +290,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bbe147c37e01d3847adb6df4c90f7c49, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  locInfo: 
   locName: Map
-  useMapManager: 0
-  manager: {fileID: 0}
   button: {fileID: 0}
   questionText: {fileID: 0}
   locationText: {fileID: 0}
@@ -1202,17 +1199,17 @@ PrefabInstance:
     - target: {fileID: 1715403562571543631, guid: caff7daa29ed80547bbcab65c7792ef9,
         type: 3}
       propertyPath: m_SizeDelta.x
-      value: 350
+      value: 513.8445
       objectReference: {fileID: 0}
     - target: {fileID: 1715403562571543631, guid: caff7daa29ed80547bbcab65c7792ef9,
         type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 64.680115
+      value: -6.618
       objectReference: {fileID: 0}
     - target: {fileID: 1715403562571543631, guid: caff7daa29ed80547bbcab65c7792ef9,
         type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: 180
+      value: -0.000013351
       objectReference: {fileID: 0}
     - target: {fileID: 3932021884715458363, guid: caff7daa29ed80547bbcab65c7792ef9,
         type: 3}
@@ -1252,7 +1249,7 @@ PrefabInstance:
     - target: {fileID: 3932021884715458363, guid: caff7daa29ed80547bbcab65c7792ef9,
         type: 3}
       propertyPath: m_SizeDelta.y
-      value: 505
+      value: 800
       objectReference: {fileID: 0}
     - target: {fileID: 3932021884715458363, guid: caff7daa29ed80547bbcab65c7792ef9,
         type: 3}
@@ -1297,7 +1294,7 @@ PrefabInstance:
     - target: {fileID: 3932021884715458363, guid: caff7daa29ed80547bbcab65c7792ef9,
         type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: -828.46
+      value: -680
       objectReference: {fileID: 0}
     - target: {fileID: 3932021884715458363, guid: caff7daa29ed80547bbcab65c7792ef9,
         type: 3}
@@ -1327,7 +1324,7 @@ PrefabInstance:
     - target: {fileID: 7670938489061958255, guid: caff7daa29ed80547bbcab65c7792ef9,
         type: 3}
       propertyPath: m_Color.a
-      value: 0.80784315
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7790266744647393451, guid: caff7daa29ed80547bbcab65c7792ef9,
         type: 3}
@@ -1347,12 +1344,12 @@ PrefabInstance:
     - target: {fileID: 7856950899987577378, guid: caff7daa29ed80547bbcab65c7792ef9,
         type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: -1373.5
+      value: -1220
       objectReference: {fileID: 0}
     - target: {fileID: 7856950899987577378, guid: caff7daa29ed80547bbcab65c7792ef9,
         type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: -0.96499
+      value: -188.45
       objectReference: {fileID: 0}
     - target: {fileID: 8427216516346150109, guid: caff7daa29ed80547bbcab65c7792ef9,
         type: 3}
@@ -2076,7 +2073,9 @@ PrefabInstance:
       objectReference: {fileID: 21300000, guid: 1efff82e0a469464987b91e1e6ff298e,
         type: 3}
     m_RemovedComponents: []
-    m_RemovedGameObjects: []
+    m_RemovedGameObjects:
+    - {fileID: 6823445040621581736, guid: caff7daa29ed80547bbcab65c7792ef9, type: 3}
+    - {fileID: 495577212065273282, guid: caff7daa29ed80547bbcab65c7792ef9, type: 3}
     m_AddedGameObjects: []
     m_AddedComponents:
     - targetCorrespondingSourceObject: {fileID: 6940135994936192850, guid: caff7daa29ed80547bbcab65c7792ef9,
@@ -2150,10 +2149,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bbe147c37e01d3847adb6df4c90f7c49, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  locInfo: 
   locName: Map
-  useMapManager: 0
-  manager: {fileID: 0}
   button: {fileID: 0}
   questionText: {fileID: 0}
   locationText: {fileID: 0}

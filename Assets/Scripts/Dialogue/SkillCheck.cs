@@ -53,6 +53,8 @@ public class SkillCheck : MonoBehaviour
     private Player playerManager;
     private string playerName;
 
+    [SerializeField] private GameObject continueIndicator;
+
     void Start()
     {
         if (GameObject.Find("PlayerManager") != null)
@@ -249,6 +251,7 @@ public class SkillCheck : MonoBehaviour
     private IEnumerator TypewriteText(string line, string speaker)
     {
         textOutput.text = "";
+        continueIndicator.SetActive(false);
         isTypewriting = true;
         skipRequested = false;
 
@@ -267,6 +270,7 @@ public class SkillCheck : MonoBehaviour
         }
 
         isTypewriting = false;  // Set to false once typewriting is completed
+        continueIndicator.SetActive(true);
         UpdateVoice(speaker);
 
     }

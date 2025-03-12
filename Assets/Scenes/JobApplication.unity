@@ -203,10 +203,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bbe147c37e01d3847adb6df4c90f7c49, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  locInfo: 
   locName: Map
-  useMapManager: 0
-  manager: {fileID: 0}
   button: {fileID: 0}
   questionText: {fileID: 0}
   locationText: {fileID: 0}
@@ -1035,10 +1032,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bbe147c37e01d3847adb6df4c90f7c49, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  locInfo: 
   locName: Map
-  useMapManager: 0
-  manager: {fileID: 0}
   button: {fileID: 0}
   questionText: {fileID: 0}
   locationText: {fileID: 0}
@@ -1336,17 +1330,17 @@ PrefabInstance:
     - target: {fileID: 1228945755956342202, guid: caff7daa29ed80547bbcab65c7792ef9,
         type: 3}
       propertyPath: m_Color.b
-      value: 0.25087583
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1228945755956342202, guid: caff7daa29ed80547bbcab65c7792ef9,
         type: 3}
       propertyPath: m_Color.g
-      value: 0.21960664
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1228945755956342202, guid: caff7daa29ed80547bbcab65c7792ef9,
         type: 3}
       propertyPath: m_Color.r
-      value: 0.3301887
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1589527554075471085, guid: caff7daa29ed80547bbcab65c7792ef9,
         type: 3}
@@ -1518,7 +1512,7 @@ PrefabInstance:
     - target: {fileID: 3932021884715458363, guid: caff7daa29ed80547bbcab65c7792ef9,
         type: 3}
       propertyPath: m_SizeDelta.y
-      value: 505
+      value: 800
       objectReference: {fileID: 0}
     - target: {fileID: 3932021884715458363, guid: caff7daa29ed80547bbcab65c7792ef9,
         type: 3}
@@ -1563,7 +1557,7 @@ PrefabInstance:
     - target: {fileID: 3932021884715458363, guid: caff7daa29ed80547bbcab65c7792ef9,
         type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: -828.46
+      value: -680
       objectReference: {fileID: 0}
     - target: {fileID: 3932021884715458363, guid: caff7daa29ed80547bbcab65c7792ef9,
         type: 3}
@@ -1663,7 +1657,7 @@ PrefabInstance:
     - target: {fileID: 7670938489061958255, guid: caff7daa29ed80547bbcab65c7792ef9,
         type: 3}
       propertyPath: m_Color.a
-      value: 0.78431374
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7770531277950400213, guid: caff7daa29ed80547bbcab65c7792ef9,
         type: 3}
@@ -1931,6 +1925,8 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects:
     - {fileID: 1852978795681085199, guid: caff7daa29ed80547bbcab65c7792ef9, type: 3}
+    - {fileID: 6823445040621581736, guid: caff7daa29ed80547bbcab65c7792ef9, type: 3}
+    - {fileID: 495577212065273282, guid: caff7daa29ed80547bbcab65c7792ef9, type: 3}
     m_AddedGameObjects:
     - targetCorrespondingSourceObject: {fileID: 3932021884715458363, guid: caff7daa29ed80547bbcab65c7792ef9,
         type: 3}
