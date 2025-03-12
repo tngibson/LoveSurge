@@ -11,7 +11,7 @@ public class ConvoTopic : MonoBehaviour
 
     [SerializeField] private int currentTier = 1; // Current tier (1, 2, or 3)
     [SerializeField] public int tierPower; // Current tier's power
-    [SerializeField] private int[] tierPowers = { 350, 400, 500 }; // Points for each tier
+    [SerializeField] private int[] tierPowers = { 1, 400, 500 }; // Points for each tier
 
     public int CurrentTier => currentTier;
     public int TierPower => tierPower;

@@ -1642,7 +1642,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -1492, y: 866}
+  m_AnchoredPosition: {x: -1492, y: 762.51}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &619137633
@@ -4138,6 +4138,7 @@ MonoBehaviour:
   timeOfDay: 0
   statlist: 
   numStats: 4
+  connectionList: 
 --- !u!1 &1591945778
 GameObject:
   m_ObjectHideFlags: 0
@@ -5702,7 +5703,7 @@ PrefabInstance:
     - target: {fileID: 4406170097288796218, guid: e08180e388e3fac4093673c00690dbd8,
         type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: 937
+      value: 853.85
       objectReference: {fileID: 0}
     - target: {fileID: 4406170097288796218, guid: e08180e388e3fac4093673c00690dbd8,
         type: 3}
@@ -5825,7 +5826,7 @@ PrefabInstance:
     - target: {fileID: 535824621575453568, guid: 3b7deb3f75f593f408b068c426e15ba1,
         type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: 933
+      value: 853.85
       objectReference: {fileID: 0}
     - target: {fileID: 535824621575453568, guid: 3b7deb3f75f593f408b068c426e15ba1,
         type: 3}
@@ -5846,6 +5847,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: StressBarParent
+      objectReference: {fileID: 0}
+    - target: {fileID: 2985859313757426994, guid: 3b7deb3f75f593f408b068c426e15ba1,
+        type: 3}
+      propertyPath: m_ConstrainProportionsScale
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

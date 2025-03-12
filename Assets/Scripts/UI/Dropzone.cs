@@ -433,7 +433,7 @@ public class Dropzone : MonoBehaviour
     private void CompleteConvo()
     {
         completedConvo = true;
-
+        increaseConnection(0);
         CheckDialogTriggers();
 
         if (selectedConvoTopic.CurrentTier >= 3)
@@ -817,5 +817,10 @@ public class Dropzone : MonoBehaviour
     public DropzoneSlot GetDropzone()
     {
         return dropzone;
+    }
+
+    public void increaseConnection(int index)
+    {
+        ConnectionManager.instance.increaseConnection(index, 1);
     }
 }
