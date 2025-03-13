@@ -17,6 +17,8 @@ public class MapScript : MonoBehaviour, IPointerEnterHandler, IPointerExitHandle
     // New boolean to check if this map item should advance the day phase
     [SerializeField] private bool isDayProgressor;
 
+    [SerializeField] private bool isDateButton;
+
     // Scale factor and material for hover effect
     public float hoverScale = 1.1f;
     private Vector3 originalScale;
@@ -26,7 +28,7 @@ public class MapScript : MonoBehaviour, IPointerEnterHandler, IPointerExitHandle
         // Save original scale and material
         originalScale = transform.localScale;
 
-        SetEnabled();
+        SetEnabled(true);
         if (locationText != null) locationText.GetComponent<TextMeshProUGUI>().text = locationTextText;
     }
 
@@ -57,6 +59,12 @@ public class MapScript : MonoBehaviour, IPointerEnterHandler, IPointerExitHandle
         {
             StressBar.instance.UpdateStressBar();
         }
+
+        if (isDateButton)
+        {
+            LocationManager.Instance.phaseEnteredDate = CalendarManager.instance.currentPhase;
+        }
+
         SceneManager.LoadScene(locName);
         gameObject.SetActive(false);
 
@@ -67,9 +75,9 @@ public class MapScript : MonoBehaviour, IPointerEnterHandler, IPointerExitHandle
         }
     }
 
-    public void SetEnabled()
+    public void SetEnabled(bool state)
     {
-        if (isEnabled)
+        if (state)
         {
             if (button != null) button.interactable = true;
             if (questionText != null) questionText.SetActive(false);

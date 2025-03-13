@@ -1,4 +1,4 @@
-public enum DayPhase { Morning, Evening, Night }
+public enum DayPhase { Morning, Evening, Night, None }
 
 [System.Serializable]
 public class DayManager

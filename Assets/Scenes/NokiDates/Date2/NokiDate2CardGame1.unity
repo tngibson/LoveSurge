@@ -1164,10 +1164,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isWriting: 0
-  power1: 14
-  power2: 12
-  power3: 12
-  power4: 14
   type1: Courage
   type2: Creativity
   type3: Cleverness
@@ -3509,13 +3505,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bbe147c37e01d3847adb6df4c90f7c49, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  locName: NokiDateOutro
+  locName: Map
   button: {fileID: 0}
   questionText: {fileID: 0}
   locationText: {fileID: 0}
   locationTextText: 
   isEnabled: 0
-  isDayProgressor: 0
+  isDayProgressor: 1
   hoverScale: 0
 --- !u!1 &619394800
 GameObject:
@@ -5821,7 +5817,7 @@ MonoBehaviour:
   convoAttribute: 
   currentTier: 1
   tierPower: 0
-  tierPowers: 5e01000090010000f4010000
+  tierPowers: 5e010000af00000000000000
   attributeText: {fileID: 358839903}
   numText: {fileID: 1513417707}
   topicLabelText: {fileID: 628715680}
@@ -5841,6 +5837,7 @@ MonoBehaviour:
   creColor: {r: 0.7725491, g: 0.90196085, b: 0.8196079, a: 1}
   dropZoneScript: {fileID: 0}
   gameManager: {fileID: 0}
+  topicContainer: {fileID: 0}
   isClicked: 0
   isLocked: 0
   isCompleted: 0
@@ -6855,30 +6852,8 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents:
-    - targetCorrespondingSourceObject: {fileID: 7189279189892377890, guid: c9eefffa35b1d894db33df280ee5d533,
-        type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 1295519646}
+    m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c9eefffa35b1d894db33df280ee5d533, type: 3}
---- !u!1 &1295519645 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 7189279189892377890, guid: c9eefffa35b1d894db33df280ee5d533,
-    type: 3}
-  m_PrefabInstance: {fileID: 1295519644}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &1295519646
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1295519645}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8cefab928ba566b44bd765157e547b99, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &1298419915
 GameObject:
   m_ObjectHideFlags: 0
@@ -7577,7 +7552,6 @@ MonoBehaviour:
   - {fileID: 1497879191}
   - {fileID: 1975168385}
   doneConvos: []
-  failedConvos: []
 --- !u!1 &1438024205
 GameObject:
   m_ObjectHideFlags: 0
@@ -7883,7 +7857,7 @@ MonoBehaviour:
   convoAttribute: 
   currentTier: 1
   tierPower: 0
-  tierPowers: 5e01000090010000f4010000
+  tierPowers: 5e010000af00000000000000
   attributeText: {fileID: 799427224}
   numText: {fileID: 512021105}
   topicLabelText: {fileID: 1018990248}
@@ -7903,6 +7877,7 @@ MonoBehaviour:
   creColor: {r: 0.7725491, g: 0.90196085, b: 0.8196079, a: 1}
   dropZoneScript: {fileID: 0}
   gameManager: {fileID: 0}
+  topicContainer: {fileID: 0}
   isClicked: 0
   isLocked: 0
   isCompleted: 0
@@ -8503,7 +8478,7 @@ MonoBehaviour:
   convoAttribute: 
   currentTier: 1
   tierPower: 0
-  tierPowers: 5e01000090010000f4010000
+  tierPowers: 5e010000af00000000000000
   attributeText: {fileID: 60042738}
   numText: {fileID: 2075437849}
   topicLabelText: {fileID: 361509898}
@@ -8523,6 +8498,7 @@ MonoBehaviour:
   creColor: {r: 0.7725491, g: 0.90196085, b: 0.8196079, a: 1}
   dropZoneScript: {fileID: 0}
   gameManager: {fileID: 0}
+  topicContainer: {fileID: 0}
   isClicked: 0
   isLocked: 0
   isCompleted: 0
@@ -9479,6 +9455,7 @@ MonoBehaviour:
   - affectingTags: []
   - affectingTags: []
   cash: 1000
+  convoTiers: 01000000010000000100000001000000
 --- !u!1 &1828372911
 GameObject:
   m_ObjectHideFlags: 0
@@ -10128,7 +10105,7 @@ MonoBehaviour:
   convoAttribute: 
   currentTier: 1
   tierPower: 0
-  tierPowers: 5e01000090010000f4010000
+  tierPowers: 5e010000af00000000000000
   attributeText: {fileID: 2143843332}
   numText: {fileID: 35175124}
   topicLabelText: {fileID: 1363842151}
@@ -10148,6 +10125,7 @@ MonoBehaviour:
   creColor: {r: 0.7725491, g: 0.90196085, b: 0.8196079, a: 1}
   dropZoneScript: {fileID: 0}
   gameManager: {fileID: 0}
+  topicContainer: {fileID: 0}
   isClicked: 0
   isLocked: 0
   isCompleted: 0
@@ -10420,6 +10398,7 @@ MonoBehaviour:
   mapButton: {fileID: 602046414}
   CurrentCharacterIndex: 0
   handSize: 4
+  mapButtonScript: {fileID: 602046419}
 --- !u!4 &2001940043
 Transform:
   m_ObjectHideFlags: 0

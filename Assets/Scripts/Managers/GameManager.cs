@@ -48,6 +48,8 @@ public class GameManager : MonoBehaviour
 
     private bool isHandPlayable = false;
 
+    [SerializeField] private MapScript mapButtonScript;
+
     // Initial game setup
     private void Awake()
     {
@@ -100,10 +102,16 @@ public class GameManager : MonoBehaviour
                 }
             }
         }
+        else if (deckContainer.Deck.Count <= 0)
+        {
+            fullHandText.SetActive(true);
+            fullHandText.GetComponentInChildren<TextMeshProUGUI>().text = "Your Deck is Empty!";
+        }
         else
         {
             // Show "full hand" warning if applicable
             fullHandText.SetActive(true);
+            fullHandText.GetComponentInChildren<TextMeshProUGUI>().text = "Your Hand is Full!";
         }
 
         // Score the cards in the dropzone
@@ -115,22 +123,45 @@ public class GameManager : MonoBehaviour
         // Reset the dropzone for the next turn
         dropzone.ResetForNewTurn();
 
-        // Check for game over conditions (empty deck and hand)
-        if (deckContainer.Deck.Count <= 0 && (playerArea.CardsInHand.Count == 0 || checkHandPlayable() == false))
+        // Check for card game win conditions (no more convo topics to choose from)
+        if (topicContainer.convoTopics.Count <= 0)
         {
-            EndGame();
+            EndGameWin();
+        }
+        else if (deckContainer.Deck.Count <= 0 && (playerArea.CardsInHand.Count == 0 || checkHandPlayable() == false))
+        {
+            EndGameLoss();
         }
 
         //UpdateEndTurnButton(false); // Disable the end turn button
     }
 
+    private void EndGameWin()
+    {
+        mapButtonScript.locName = "NokiDate2DeepConvo2"; // Hard coded for date 2 demo, will be changed later
+        endGameText.GetComponentInChildren<TextMeshProUGUI>().text = "You Win, Congratulations!";
+        endGameText.SetActive(true);
+        endTurnButton.SetActive(false);
+        discardBin.SetActive(false);
+        mapButton.SetActive(true); // Enable the map button at game win
+    }
+
     // Ends the game and displays the game over message
-    private void EndGame()
+    private void EndGameLoss()
     {
         endGameText.SetActive(true);
         endTurnButton.SetActive(false);
         discardBin.SetActive(false);
         mapButton.SetActive(true); // Enable the map button at game over
+        
+
+
+        // Hard coded for date 2 demo, will be changed later
+        if (!LocationManager.Instance.GetDateState(1))
+        {
+            LocationManager.Instance.SetDateState(1, true);
+            LocationManager.Instance.isPlayable = false;
+        }
     }
 
     // Updates the score and refreshes the UI
@@ -168,7 +199,7 @@ public class GameManager : MonoBehaviour
             }
         }
 
-        if (dropzone.CanPlaceCard(reserveManager.GetCurrentPlayableCard()))
+        if (reserveManager.playableCardsLeft != 0 && dropzone.CanPlaceCard(reserveManager.GetCurrentPlayableCard()))
         {
             isHandPlayable = true;
         }

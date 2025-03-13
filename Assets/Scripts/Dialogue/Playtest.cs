@@ -17,10 +17,6 @@ public class Playtest : MonoBehaviour
     // private EventInstance dateVoice;
 
     // Serialized fields for conversation topics, power levels, and types
-    [SerializeField] public int power1;
-    [SerializeField] public int power2;
-    [SerializeField] public int power3;
-    [SerializeField] public int power4;
     [SerializeField] public string type1;
     [SerializeField] public string type2;
     [SerializeField] public string type3;
@@ -84,25 +80,21 @@ public class Playtest : MonoBehaviour
     }
 
     // Sets the conversation topics with power and topic names
-    protected void SetTopics(int num1, string topic1, string label1, int num2, string topic2, string label2, int num3, string topic3, string label3, int num4, string topic4, string label4)
+    protected void SetTopics(string topic1, string label1, string topic2, string label2, string topic3, string label3, string topic4, string label4)
     {
-        convoTopic1.SetNum(num1);
         convoTopic1.SetTopic(topic1, label1);
 
-        convoTopic2.SetNum(num2);
         convoTopic2.SetTopic(topic2, label2);
 
-        convoTopic3.SetNum(num3);
         convoTopic3.SetTopic(topic3, label3);
 
-        convoTopic4.SetNum(num4);
         convoTopic4.SetTopic(topic4, label4);
     }
 
     // Displays the conversation topics
     public void ShowTopics()
     {
-        SetTopics(power1, type1, label1, power2, type2, label2, power3, type3, label3, power4, type4, label4);
+        SetTopics(type1, label1, type2, label2, type3, label3, type4, label4);
     }
 
     public void SetUIColor()

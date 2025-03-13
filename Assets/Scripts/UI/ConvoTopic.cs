@@ -42,6 +42,7 @@ public class ConvoTopic : MonoBehaviour
     // Drop zone and game manager references
     [SerializeField] private Dropzone dropZoneScript;
     [SerializeField] private GameManager gameManager;
+    [SerializeField] private TopicContainer topicContainer;
 
     // To track if this convo topic has been clicked
     public bool isClicked = false;
@@ -70,8 +71,40 @@ public class ConvoTopic : MonoBehaviour
         SetIcon();
         changeBGColor();
 
-        // Initialize the first tier
-        currentTier = 1;
+        // Initialize the tier
+        switch (convoAttribute.ToLower())
+        {
+            case "cha":
+            case "charisma":
+                currentTier = Player.instance.convoTiers[3];
+                break;
+            case "cre":
+            case "creativity":
+                currentTier = Player.instance.convoTiers[1];
+                break;
+            case "cou":
+            case "courage":
+                currentTier = Player.instance.convoTiers[0];
+                break;
+            case "cle":
+            case "cleverness":
+                currentTier = Player.instance.convoTiers[2];
+                break;
+            default:
+                Debug.LogWarning("Unknown convoAttribute: " + convoAttribute);
+                break;
+        }
+
+        if (currentTier == 3)
+        {
+            numText.text = ""; // Hide the num text
+            finishedText.SetActive(true); // Show the finished text
+            background.color = new Color(0.68f, 0.85f, 0.90f, 1); // Pastel blue
+            topicContainer.doneConvos.Add(this);
+            topicContainer.convoTopics.Remove(this);
+            isCompleted = true;
+        }
+
         tierPower = tierPowers[currentTier - 1];
         UpdatePowerUI();
     }

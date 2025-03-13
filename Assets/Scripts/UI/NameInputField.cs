@@ -16,9 +16,18 @@ public class NameInputField : MonoBehaviour
 
         if (player != null)
         {
-            player.SetName(PlayerPrefs.GetString("PlayerName", ""));
-
+            player.SetName(storedInput);
         }
+
+        // Select and focus on the input field at the start
+        StartCoroutine(SetInputFieldSelected());
+    }
+
+    private IEnumerator SetInputFieldSelected()
+    {
+        yield return null; // Wait a frame to ensure UI is initialized
+        inputField.Select();
+        inputField.ActivateInputField();
     }
 
     // This method can be called from a button click or any other event to save the input text

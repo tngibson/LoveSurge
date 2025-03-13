@@ -414,12 +414,14 @@ public class Dropzone : MonoBehaviour
 
         if (!dialogPlayedAtHalfPower && selectedConvoTopic.TierPower <= initialPower / 2)
         {
+            Player.instance.SetConvoTiers(selectedConvoTopic.ConvoAttribute, 2);
             dialogPlayedAtHalfPower = true;
             dialogQueue.Enqueue(PlayDialog());  // Enqueue dialog for half power
         }
 
         if (!dialogPlayedAtZeroPower && selectedConvoTopic.TierPower <= 0)
         {
+            Player.instance.SetConvoTiers(selectedConvoTopic.ConvoAttribute, 3);
             dialogPlayedAtZeroPower = true;
             dialogQueue.Enqueue(PlayDialog());  // Enqueue dialog for zero power
             if (addExtraLine)

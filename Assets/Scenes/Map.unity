@@ -303,6 +303,81 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 76049275}
   m_CullTransparentMesh: 1
+--- !u!1001 &92435323
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 3204525061469704729, guid: c9eefffa35b1d894db33df280ee5d533,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 629.6033
+      objectReference: {fileID: 0}
+    - target: {fileID: 3204525061469704729, guid: c9eefffa35b1d894db33df280ee5d533,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 337.17117
+      objectReference: {fileID: 0}
+    - target: {fileID: 3204525061469704729, guid: c9eefffa35b1d894db33df280ee5d533,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 8.130157
+      objectReference: {fileID: 0}
+    - target: {fileID: 3204525061469704729, guid: c9eefffa35b1d894db33df280ee5d533,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3204525061469704729, guid: c9eefffa35b1d894db33df280ee5d533,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3204525061469704729, guid: c9eefffa35b1d894db33df280ee5d533,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3204525061469704729, guid: c9eefffa35b1d894db33df280ee5d533,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3204525061469704729, guid: c9eefffa35b1d894db33df280ee5d533,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3204525061469704729, guid: c9eefffa35b1d894db33df280ee5d533,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3204525061469704729, guid: c9eefffa35b1d894db33df280ee5d533,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7073611027408158490, guid: c9eefffa35b1d894db33df280ee5d533,
+        type: 3}
+      propertyPath: <track>k__BackingField
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 7189279189892377890, guid: c9eefffa35b1d894db33df280ee5d533,
+        type: 3}
+      propertyPath: m_Name
+      value: DateMusicSetter
+      objectReference: {fileID: 0}
+    m_RemovedComponents:
+    - {fileID: 2158595546042542923, guid: c9eefffa35b1d894db33df280ee5d533, type: 3}
+    - {fileID: 7609280152017813501, guid: c9eefffa35b1d894db33df280ee5d533, type: 3}
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: c9eefffa35b1d894db33df280ee5d533, type: 3}
 --- !u!1 &128797536
 GameObject:
   m_ObjectHideFlags: 0
@@ -495,6 +570,7 @@ MonoBehaviour:
   locationTextText: "OMNITEMP OPPORTUNITIES\u2122 - Cash"
   isEnabled: 1
   isDayProgressor: 0
+  isDateButton: 0
   hoverScale: 1.1
 --- !u!1 &168460678
 GameObject:
@@ -824,6 +900,7 @@ MonoBehaviour:
   locationTextText: OMNISPARK WYLDLIFEPARK - Courage
   isEnabled: 1
   isDayProgressor: 0
+  isDateButton: 0
   hoverScale: 1.1
 --- !u!224 &297754943 stripped
 RectTransform:
@@ -1023,6 +1100,7 @@ MonoBehaviour:
   locationTextText: "4RT15T1C G3N3RAT10N  Zone\u2122 - Creativity"
   isEnabled: 1
   isDayProgressor: 0
+  isDateButton: 0
   hoverScale: 1.1
 --- !u!1 &367484162
 GameObject:
@@ -1287,7 +1365,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &470919702
 RectTransform:
   m_ObjectHideFlags: 0
@@ -1304,7 +1382,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: -90}
+  m_AnchoredPosition: {x: 0, y: -125}
   m_SizeDelta: {x: 200, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &470919703
@@ -1995,6 +2073,7 @@ MonoBehaviour:
   locationTextText: Observatory - Cleverness
   isEnabled: 1
   isDayProgressor: 0
+  isDateButton: 0
   hoverScale: 1.1
 --- !u!114 &810015470
 MonoBehaviour:
@@ -2744,6 +2823,7 @@ MonoBehaviour:
   locationTextText: Grand Mall - Charisma
   isEnabled: 1
   isDayProgressor: 0
+  isDateButton: 0
   hoverScale: 1.1
 --- !u!224 &1084810359 stripped
 RectTransform:
@@ -3246,6 +3326,7 @@ MonoBehaviour:
   locationTextText: 
   isEnabled: 0
   isDayProgressor: 0
+  isDateButton: 0
   hoverScale: 1.1
 --- !u!1 &1297168585
 GameObject:
@@ -3628,6 +3709,7 @@ MonoBehaviour:
   locationTextText: 
   isEnabled: 0
   isDayProgressor: 0
+  isDateButton: 0
   hoverScale: 1.1
 --- !u!1 &1530979893
 GameObject:
@@ -3814,13 +3896,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bbe147c37e01d3847adb6df4c90f7c49, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  locName: NokiDate2CardGame1
+  locName: NokiDate2Intro
   button: {fileID: 1530979895}
   questionText: {fileID: 1591945778}
   locationText: {fileID: 470919701}
   locationTextText: Go on a date with Noki!
   isEnabled: 1
   isDayProgressor: 0
+  isDateButton: 1
   hoverScale: 1.1
 --- !u!1 &1536943380
 GameObject:
@@ -4138,6 +4221,54 @@ MonoBehaviour:
   timeOfDay: 0
   statlist: 
   numStats: 4
+--- !u!1 &1575434531
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1575434532}
+  - component: {fileID: 1575434533}
+  m_Layer: 0
+  m_Name: LocationManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1575434532
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1575434531}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 2854.7466, y: 1831.4609, z: -1.8719242}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1575434533
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1575434531}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d7a9f8fabc5563144b4f716cf73e3074, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  dateStarted: 0
+  targetMapScript: {fileID: 0}
+  isPlayable: 1
+  phaseEnteredDate: 3
 --- !u!1 &1591945778
 GameObject:
   m_ObjectHideFlags: 0
@@ -5610,6 +5741,7 @@ MonoBehaviour:
   locationTextText: 
   isEnabled: 0
   isDayProgressor: 0
+  isDateButton: 0
   hoverScale: 1.1
 --- !u!1001 &3968537896322223962
 PrefabInstance:
@@ -5868,3 +6000,5 @@ SceneRoots:
   - {fileID: 367484166}
   - {fileID: 1136163673}
   - {fileID: 46480540}
+  - {fileID: 1575434532}
+  - {fileID: 92435323}

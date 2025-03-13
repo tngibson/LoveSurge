@@ -11,6 +11,8 @@ public class ReserveManager : MonoBehaviour
 
     [SerializeField] private Image background;
 
+    public int playableCardsLeft = 4;
+
     void Awake()
     {
         UpdateReserveSlots();
@@ -24,6 +26,7 @@ public class ReserveManager : MonoBehaviour
 
         currentPlayableIndex++;
         currentOpenIndex++;
+        playableCardsLeft--;
 
         if (currentOpenIndex >= 0)
         {
@@ -57,6 +60,7 @@ public class ReserveManager : MonoBehaviour
 
         currentPlayableIndex--;
         currentOpenIndex--;
+        playableCardsLeft++;
 
         if (currentOpenIndex >= 0)
         {

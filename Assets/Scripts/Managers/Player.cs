@@ -20,6 +20,8 @@ public class Player : MonoBehaviour
 
     private List<string> ignoredTags;
 
+    public List<int> convoTiers = new List<int> { 1, 1, 1, 1 }; // Index 0 = Courage, 1 = Creativity, 2 = Cleverness, 3 = Charisma
+
     void Awake()
     {
         if (instance == null)
@@ -139,6 +141,32 @@ public class Player : MonoBehaviour
                 statOffset.RemoveOffsetTag(PlayerDeckScript.STRESS_THRESH_2);
             if (statOffset.HasOffsetTag(PlayerDeckScript.STRESS_THRESH_3) && barsFilled < 3)
                 statOffset.RemoveOffsetTag(PlayerDeckScript.STRESS_THRESH_3);
+        }
+    }
+
+    public void SetConvoTiers(string convoAttribute, int tier)
+    {
+        switch (convoAttribute.ToLower())
+        {
+            case "cha":
+            case "charisma":
+                convoTiers[3] = tier;
+                break;
+            case "cre":
+            case "creativity":
+                convoTiers[1] = tier;
+                break;
+            case "cou":
+            case "courage":
+                convoTiers[0] = tier;
+                break;
+            case "cle":
+            case "cleverness":
+                convoTiers[2] = tier;
+                break;
+            default:
+                Debug.LogWarning("Unknown convoAttribute: " + convoAttribute);
+                break;
         }
     }
 }
