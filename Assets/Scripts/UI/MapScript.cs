@@ -51,6 +51,12 @@ public class MapScript : MonoBehaviour, IPointerEnterHandler, IPointerExitHandle
 
     public void OnSelect()
     {
+        if (locName == "Quit")
+        {
+            RestartApplication();
+            return;
+        }
+
         if (StressManager.instance != null)
         {
             StressManager.instance.AddToCurrentStress();
@@ -73,6 +79,17 @@ public class MapScript : MonoBehaviour, IPointerEnterHandler, IPointerExitHandle
         {
             CalendarManager.instance.AdvancePhase();
         }
+    }
+
+    private void RestartApplication()
+    {
+    #if UNITY_EDITOR
+        UnityEditor.EditorApplication.isPlaying = false; // Stop play mode in the editor
+    #else
+        string exePath = System.IO.Path.Combine(Application.dataPath, "../LoveSurge.exe"); // Adjust path to point to the .exe
+        System.Diagnostics.Process.Start(exePath); // Relaunch the game
+        Application.Quit(); // Close the current instance
+    #endif
     }
 
     public void SetEnabled(bool state)
