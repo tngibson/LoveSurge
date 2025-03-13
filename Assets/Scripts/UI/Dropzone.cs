@@ -65,6 +65,8 @@ public class Dropzone : MonoBehaviour
     private Player playerManager;
     private string playerName;
 
+    private bool addExtraLine;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -420,6 +422,10 @@ public class Dropzone : MonoBehaviour
         {
             dialogPlayedAtZeroPower = true;
             dialogQueue.Enqueue(PlayDialog());  // Enqueue dialog for zero power
+            if (addExtraLine)
+            {
+                dialogQueue.Enqueue(PlayDialog());
+            }
         }
 
         // Play all queued dialogs sequentially
@@ -506,24 +512,28 @@ public class Dropzone : MonoBehaviour
                 lines = currentSession.chaLines;
                 sprites = currentSession.chaSprites;
                 speakers = currentSession.chaSpeaker;
+                addExtraLine = currentSession.addExtraType4Line;
                 break;
             case "cou":
             case "courage":
                 lines = currentSession.couLines;
                 sprites = currentSession.couSprites;
                 speakers = currentSession.couSpeaker;
+                addExtraLine = currentSession.addExtraType1Line;
                 break;
             case "cle":
             case "cleverness":
                 lines = currentSession.cleLines;
                 sprites = currentSession.cleSprites;
                 speakers = currentSession.cleSpeaker;
+                addExtraLine = currentSession.addExtraType3Line;
                 break;
             case "cre":
             case "creativity":
                 lines = currentSession.creLines;
                 sprites = currentSession.creSprites;
                 speakers = currentSession.creSpeaker;
+                addExtraLine = currentSession.addExtraType2Line;
                 break;
             default:
                 Debug.LogWarning("Unknown conversation attribute: " + selectedConvoTopic.ConvoAttribute);
@@ -531,6 +541,7 @@ public class Dropzone : MonoBehaviour
         }
 
         maxLineNum = lines.Count;
+
         if (lineNum >= maxLineNum) yield break; // Ensure we don't go out of bounds
 
         bool isPCSpeaker = speakers[lineNum] == "PC";

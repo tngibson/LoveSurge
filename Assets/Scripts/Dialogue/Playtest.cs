@@ -29,6 +29,10 @@ public class Playtest : MonoBehaviour
     [SerializeField] public string label2;
     [SerializeField] public string label3;
     [SerializeField] public string label4;
+    [SerializeField] public bool addExtraType1Line = false;
+    [SerializeField] public bool addExtraType2Line = false;
+    [SerializeField] public bool addExtraType3Line = false;
+    [SerializeField] public bool addExtraType4Line = false;
 
     // List to hold conversation topics
     private List<ConvoTopic> convoTopics;

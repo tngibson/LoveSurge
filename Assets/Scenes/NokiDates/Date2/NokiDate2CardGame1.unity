@@ -1176,6 +1176,10 @@ MonoBehaviour:
   label2: Noki's Photo Comp
   label3: Composition!
   label4: Picture of Stars
+  addExtraType1Line: 0
+  addExtraType2Line: 0
+  addExtraType3Line: 0
+  addExtraType4Line: 1
   uiOpaqueImages:
   - {fileID: 505803152}
   - {fileID: 1411976328}
@@ -1213,12 +1217,12 @@ MonoBehaviour:
   - PC
   - Noki
   couSprites:
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
+  - {fileID: 21300000, guid: 1efff82e0a469464987b91e1e6ff298e, type: 3}
+  - {fileID: 21300000, guid: 18e1c1d22c2cbaa47914600a13de0859, type: 3}
+  - {fileID: 21300000, guid: 1efff82e0a469464987b91e1e6ff298e, type: 3}
+  - {fileID: 21300000, guid: 9a5bb60305ed56c4c8b921b54258e133, type: 3}
+  - {fileID: 21300000, guid: eb54c0b9144af6b4e8e9578c07a0c65b, type: 3}
+  - {fileID: 21300000, guid: eb54c0b9144af6b4e8e9578c07a0c65b, type: 3}
   chaLines:
   - Hmm, what do you want to take pictures of?
   - What do you think is the prettiest part of the city?
@@ -1238,12 +1242,13 @@ MonoBehaviour:
   - PC
   - Noki
   chaSprites:
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
+  - {fileID: 21300000, guid: 1efff82e0a469464987b91e1e6ff298e, type: 3}
+  - {fileID: 21300000, guid: 9a5bb60305ed56c4c8b921b54258e133, type: 3}
+  - {fileID: 21300000, guid: 9a5bb60305ed56c4c8b921b54258e133, type: 3}
+  - {fileID: 21300000, guid: 9a5bb60305ed56c4c8b921b54258e133, type: 3}
+  - {fileID: 21300000, guid: 416f14cbfab2b6c409b24a5d0f866e02, type: 3}
+  - {fileID: 21300000, guid: 1efff82e0a469464987b91e1e6ff298e, type: 3}
+  - {fileID: 21300000, guid: 1efff82e0a469464987b91e1e6ff298e, type: 3}
   cleLines:
   - "[PlayerName], I\u2019ve been studying photography from databases online, but
     I just don\u2019t think I get a few things\u2026"
@@ -1262,12 +1267,12 @@ MonoBehaviour:
   - Noki
   - PC
   cleSprites:
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
+  - {fileID: 21300000, guid: 9a5bb60305ed56c4c8b921b54258e133, type: 3}
+  - {fileID: 21300000, guid: 9a5bb60305ed56c4c8b921b54258e133, type: 3}
+  - {fileID: 21300000, guid: 9a5bb60305ed56c4c8b921b54258e133, type: 3}
+  - {fileID: 21300000, guid: 9a5bb60305ed56c4c8b921b54258e133, type: 3}
+  - {fileID: 21300000, guid: 1efff82e0a469464987b91e1e6ff298e, type: 3}
+  - {fileID: 21300000, guid: 1efff82e0a469464987b91e1e6ff298e, type: 3}
   creLines:
   - Hmm I think this looks good Noki!
   - "You do? I don\u2019t think I quite understand what makes this a \u201Ccool\u201D
@@ -1285,11 +1290,11 @@ MonoBehaviour:
   - Noki
   - PC
   creSprites:
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
+  - {fileID: 21300000, guid: 1efff82e0a469464987b91e1e6ff298e, type: 3}
+  - {fileID: 21300000, guid: 9a5bb60305ed56c4c8b921b54258e133, type: 3}
+  - {fileID: 21300000, guid: 1efff82e0a469464987b91e1e6ff298e, type: 3}
+  - {fileID: 21300000, guid: 1efff82e0a469464987b91e1e6ff298e, type: 3}
+  - {fileID: 21300000, guid: 1efff82e0a469464987b91e1e6ff298e, type: 3}
   dateCharacter: {fileID: 1661069647}
 --- !u!1001 &295771159
 PrefabInstance:
@@ -3095,6 +3100,7 @@ RectTransform:
   m_Children:
   - {fileID: 2095896477}
   - {fileID: 1441009692}
+  - {fileID: 1159307220}
   m_Father: {fileID: 1108671395}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
@@ -6130,6 +6136,130 @@ MonoBehaviour:
   deckContainer: {fileID: 1771563199}
   playerArea: {fileID: 1251171728}
   handSize: 4
+--- !u!1001 &1159307219
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 518824315}
+    m_Modifications:
+    - target: {fileID: 7367609957520061117, guid: 856c630ef5f4c6e4399f2b93206a064e,
+        type: 3}
+      propertyPath: m_Pivot.x
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 7367609957520061117, guid: 856c630ef5f4c6e4399f2b93206a064e,
+        type: 3}
+      propertyPath: m_Pivot.y
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 7367609957520061117, guid: 856c630ef5f4c6e4399f2b93206a064e,
+        type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 0.04666823
+      objectReference: {fileID: 0}
+    - target: {fileID: 7367609957520061117, guid: 856c630ef5f4c6e4399f2b93206a064e,
+        type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 7367609957520061117, guid: 856c630ef5f4c6e4399f2b93206a064e,
+        type: 3}
+      propertyPath: m_AnchorMin.x
+      value: 0.04666823
+      objectReference: {fileID: 0}
+    - target: {fileID: 7367609957520061117, guid: 856c630ef5f4c6e4399f2b93206a064e,
+        type: 3}
+      propertyPath: m_AnchorMin.y
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 7367609957520061117, guid: 856c630ef5f4c6e4399f2b93206a064e,
+        type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 100
+      objectReference: {fileID: 0}
+    - target: {fileID: 7367609957520061117, guid: 856c630ef5f4c6e4399f2b93206a064e,
+        type: 3}
+      propertyPath: m_SizeDelta.y
+      value: 100
+      objectReference: {fileID: 0}
+    - target: {fileID: 7367609957520061117, guid: 856c630ef5f4c6e4399f2b93206a064e,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7367609957520061117, guid: 856c630ef5f4c6e4399f2b93206a064e,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7367609957520061117, guid: 856c630ef5f4c6e4399f2b93206a064e,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7367609957520061117, guid: 856c630ef5f4c6e4399f2b93206a064e,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7367609957520061117, guid: 856c630ef5f4c6e4399f2b93206a064e,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7367609957520061117, guid: 856c630ef5f4c6e4399f2b93206a064e,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7367609957520061117, guid: 856c630ef5f4c6e4399f2b93206a064e,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7367609957520061117, guid: 856c630ef5f4c6e4399f2b93206a064e,
+        type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: -1.2999878
+      objectReference: {fileID: 0}
+    - target: {fileID: 7367609957520061117, guid: 856c630ef5f4c6e4399f2b93206a064e,
+        type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7367609957520061117, guid: 856c630ef5f4c6e4399f2b93206a064e,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7367609957520061117, guid: 856c630ef5f4c6e4399f2b93206a064e,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7367609957520061117, guid: 856c630ef5f4c6e4399f2b93206a064e,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8929191200652380386, guid: 856c630ef5f4c6e4399f2b93206a064e,
+        type: 3}
+      propertyPath: m_Name
+      value: Connection Parent
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 856c630ef5f4c6e4399f2b93206a064e, type: 3}
+--- !u!224 &1159307220 stripped
+RectTransform:
+  m_CorrespondingSourceObject: {fileID: 7367609957520061117, guid: 856c630ef5f4c6e4399f2b93206a064e,
+    type: 3}
+  m_PrefabInstance: {fileID: 1159307219}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1196808311
 GameObject:
   m_ObjectHideFlags: 0
@@ -10288,6 +10418,7 @@ MonoBehaviour:
   categories: []
   endTurnButton: {fileID: 1396999329}
   mapButton: {fileID: 602046414}
+  CurrentCharacterIndex: 0
   handSize: 4
 --- !u!4 &2001940043
 Transform:
