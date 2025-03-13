@@ -67,6 +67,8 @@ public class Dropzone : MonoBehaviour
 
     private bool addExtraLine;
 
+    private bool halfwayPointDone = false;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -138,8 +140,11 @@ public class Dropzone : MonoBehaviour
         Card topCard = dropzone.TopCard; // Get the current top card
         if (topCard != null)
         {
-            // Remove the top card from the dropzone and add it back to the player's hand
-            playerArea.AddCards(topCard);
+            // Remove the top card from the dropzone and add it back to the player's hand (if not a reserve card)
+            if (!topCard.isReserveCard)
+            {
+                playerArea.AddCards(topCard);
+            }
             cardsToScore.Remove(topCard);
             dropzone.RemoveTopCard();
 
@@ -444,12 +449,9 @@ public class Dropzone : MonoBehaviour
         increaseConnection(0);
         CheckDialogTriggers();
 
-        if (selectedConvoTopic.CurrentTier >= 3)
-        {
-            // Move the topic to the "done" list and remove it from active topics
-            topicContainer.doneConvos.Add(selectedConvoTopic);
-            topicContainer.convoTopics.Remove(selectedConvoTopic);
-        }
+        // Move the topic to the "done" list and remove it from active topics
+        topicContainer.doneConvos.Add(selectedConvoTopic);
+        topicContainer.convoTopics.Remove(selectedConvoTopic);
 
         // Reset the convoText
         selectedConvoTopic.convoText.text = "Awaiting Topic...";
@@ -738,6 +740,10 @@ public class Dropzone : MonoBehaviour
             selectedConvoTopic.isLocked = false;
             selectedConvoTopic.ToggleClick(true);
             gameManager.ResetConvoTopic();
+            if (topicContainer.doneConvos.Count == 2 && !halfwayPointDone)
+            {
+                gameManager.EndGameHalfWin();
+            }
         }
 
         isCountingDown = false;

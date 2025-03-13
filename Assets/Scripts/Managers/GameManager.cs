@@ -126,7 +126,7 @@ public class GameManager : MonoBehaviour
         // Check for card game win conditions (no more convo topics to choose from)
         if (topicContainer.convoTopics.Count <= 0)
         {
-            EndGameWin();
+            EndGameFullWin();
         }
         else if (deckContainer.Deck.Count <= 0 && (playerArea.CardsInHand.Count == 0 || checkHandPlayable() == false))
         {
@@ -136,7 +136,17 @@ public class GameManager : MonoBehaviour
         //UpdateEndTurnButton(false); // Disable the end turn button
     }
 
-    private void EndGameWin()
+    public void EndGameHalfWin()
+    {
+        mapButtonScript.locName = "NokiDate2SkillCheck1"; // Hard coded for date 2 demo, will be changed later
+        endGameText.GetComponentInChildren<TextMeshProUGUI>().text = "Noki want's to talk more closely with you...";
+        endGameText.SetActive(true);
+        endTurnButton.SetActive(false);
+        discardBin.SetActive(false);
+        mapButton.SetActive(true); // Enable the map button at game win
+    }
+
+    private void EndGameFullWin()
     {
         mapButtonScript.locName = "NokiDate2DeepConvo2"; // Hard coded for date 2 demo, will be changed later
         endGameText.GetComponentInChildren<TextMeshProUGUI>().text = "You Win, Congratulations!";

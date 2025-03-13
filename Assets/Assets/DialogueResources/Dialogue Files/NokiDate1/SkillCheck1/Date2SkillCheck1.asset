@@ -1,0 +1,78 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8cbd23a6cba4cdc48b96bcdf5fdcbc9c, type: 3}
+  m_Name: Date2SkillCheck1
+  m_EditorClassIdentifier: 
+  skillName: Cleverness
+  successDialogLines:
+  - "Your foot catches a solid piece of the soil just before you dive headfirst into
+    the plants, unfortunately it's not quite enough to keep you on your feet\u2026"
+  - Ah! [Player Name]!
+  - Luckily for you, the few extra seconds granted Noki just enough time to catch
+    your flailing body before you plummeted to your assured doom. Noki helps you
+    backup the bank of the riverside.
+  - "Thanks so much Noki, I would have been\u2026 not quite fish food I don\u2019t
+    think\u2026 um\u2026 plant fertilizer?"
+  - "Of course, [Player Name]. It\u2019s my duty to\u2026 *huff huff* assist you
+    if at all possible. I concluded that would\u2026 *huff huff* include physically
+    saving you, and for your information, *huff huff* those plants wouldn\u2019t
+    have eaten you."
+  - "Haha of course\u2026 um, Noki, you look more worn out than me!"
+  - "I wasn\u2019t made for\u2026 *huff huff* physically strenuous tasks\u2026 I
+    am a phone after all\u2026"
+  - You stand back up and help Noki to her feet, and you both carefully navigate
+    as far as you can away from the river.
+  successSpeakersPerLine:
+  - 
+  - Noki
+  - 
+  - You
+  - Noki
+  - You
+  - Noki
+  - 
+  successSpriteOptions:
+  - spriteOptions:
+    - {fileID: 0}
+    - {fileID: 0}
+    - {fileID: 0}
+    - {fileID: 0}
+    - {fileID: 0}
+    - {fileID: 0}
+    - {fileID: 0}
+    - {fileID: 0}
+  failureDialogLines:
+  - You flaily wildly and try to regain your balance by any means necessary. Your
+    foot catches the ground, but not before the muddy soil slips out from under you,
+    causing you to fall directly into the flowers.
+  - A mixed with the increasing discomfort of various twigs and foliage digging into
+    your skin. Just before you make your peace with this dramatic ending Noki rips
+    you up from your flowery demise.
+  - '[Player Name] are you ok! You fell pretty hard into those bushes!'
+  - Noki gently brushes off some of the flowers still stuck to your clothes.
+  - I-I-I I thought I was going to die!
+  - "[Player Name],  let\u2019s get you away from this river."
+  failureSpeakersPerLine:
+  - 
+  - 
+  - Noki
+  - Noki
+  - You
+  - Noki
+  failureSpriteOptions:
+  - spriteOptions:
+    - {fileID: 0}
+    - {fileID: 0}
+    - {fileID: 0}
+    - {fileID: 0}
+    - {fileID: 0}
+    - {fileID: 0}

@@ -122,6 +122,8 @@ public class SkillCheck : MonoBehaviour
 
         speakerNameText.text = currentSpeaker;
         dialogLines[currentLineIndex] = dialogLines[currentLineIndex].Replace("[Player]", playerName);
+        dialogLines[currentLineIndex] = dialogLines[currentLineIndex].Replace("[Player Name]", playerName);
+        dialogLines[currentLineIndex] = dialogLines[currentLineIndex].Replace("[PlayerName]", playerName);
         UpdateAllPortraits(currentSpeaker);
         StartCoroutine(TypewriteText(dialogLines[currentLineIndex], currentSpeaker));
 

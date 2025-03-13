@@ -8,6 +8,18 @@ public class TopicContainer : MonoBehaviour
     [SerializeField] public List<ConvoTopic> convoTopics;
     [SerializeField] public List<ConvoTopic> doneConvos;
 
+    void Awake()
+    {
+        for (int i = 0; i < 4; i++)
+        {
+            if (Player.instance.convoTiers[i] == 3)
+            {
+                doneConvos.Add(convoTopics[i]);
+                convoTopics.Remove(convoTopics[i]);
+            }
+        }
+    }
+
     // Update is called once per frame
     void Update()
     {

@@ -14,7 +14,7 @@ public class LocationManager : MonoBehaviour
 
     public bool isPlayable = true;
     public DayPhase phaseEnteredDate = DayPhase.None;
-
+    public bool isFirstTime = true;
 
     void Awake()
     {
@@ -44,15 +44,22 @@ public class LocationManager : MonoBehaviour
             }
         }
 
-        if (isPlayable && targetMapScript != null)
+        if (isPlayable && targetMapScript != null && isFirstTime)
         {
             targetMapScript.UpdateLocationText("Go on a date with Noki!");
+            targetMapScript.SetEnabled(true);
+            phaseEnteredDate = CalendarManager.instance.currentPhase;
+            isFirstTime = false;
+        }
+        else if (isPlayable && targetMapScript != null && !isFirstTime)
+        {
+            targetMapScript.UpdateLocationText("Continue your date with Noki!");
             targetMapScript.SetEnabled(true);
             phaseEnteredDate = CalendarManager.instance.currentPhase;
         }
         else if ((phaseEnteredDate != DayPhase.None && phaseEnteredDate == CalendarManager.instance.currentPhase) && targetMapScript != null)
         {
-            targetMapScript.UpdateLocationText("Go on a date with Noki!");
+            targetMapScript.UpdateLocationText("Continue your date with Noki!");
             targetMapScript.SetEnabled(true);
             isPlayable = true;
             phaseEnteredDate = DayPhase.None;

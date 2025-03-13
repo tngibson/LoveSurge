@@ -100,8 +100,6 @@ public class ConvoTopic : MonoBehaviour
             numText.text = ""; // Hide the num text
             finishedText.SetActive(true); // Show the finished text
             background.color = new Color(0.68f, 0.85f, 0.90f, 1); // Pastel blue
-            topicContainer.doneConvos.Add(this);
-            topicContainer.convoTopics.Remove(this);
             isCompleted = true;
         }
 
