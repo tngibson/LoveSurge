@@ -753,6 +753,9 @@ public class Dropzone : MonoBehaviour
         {
             Cursor.lockState = CursorLockMode.None;
         }
+
+        currentScoreText.text = "Current Score: " + 0;
+        scoreCalculationText.text = "No cards played or no topic selected.\nScore: 0";
     }
 
     // Swaps two cards in the played cards list by index

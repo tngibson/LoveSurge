@@ -1,4 +1,7 @@
+using System;
+using System.Collections;
 using System.Collections.Generic;
+using System.IO;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -10,6 +13,9 @@ public class ReserveManager : MonoBehaviour
     public ReserveSlot currentOpenSlot;
 
     [SerializeField] private Image background;
+
+    [SerializeField] private Sprite normalSlotSprite;
+    [SerializeField] private Sprite highlightedSlotSprite;
 
     public int playableCardsLeft = 4;
 
@@ -77,6 +83,20 @@ public class ReserveManager : MonoBehaviour
             bool isPlayable = (i == currentPlayableIndex);
             reserveSlots[i].SetPlayable(isPlayable);
             reserveSlots[i].cardDragDrop.GetComponent<Collider2D>().enabled = isPlayable;
+        }
+
+        for (int i = 0; i < reserveSlots.Count; i++)
+        {
+            if (i == currentPlayableIndex)
+            {
+                reserveSlots[i].GetComponent<Image>().sprite = highlightedSlotSprite;
+                reserveSlots[i].GetComponent<Image>().color = new Color(1f, 1f, 1f, 1f);
+            }
+            else
+            {
+                reserveSlots[i].GetComponent<Image>().sprite = normalSlotSprite;
+                reserveSlots[i].GetComponent<Image>().color = new Color(0.3f, 0.3f, 0.3f, 1f); // Gray out effect
+            }
         }
     }
 

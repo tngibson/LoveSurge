@@ -61,6 +61,7 @@ public class ConvoTopic : MonoBehaviour
     {
         // Cache references to the SpriteRenderer and GameManager
         gameManager = FindAnyObjectByType<GameManager>();
+        topicContainer = FindAnyObjectByType<TopicContainer>();
     }
 
     // Start is called before the first frame update
@@ -69,39 +70,6 @@ public class ConvoTopic : MonoBehaviour
         // Initialize drop zone and set the appropriate icon based on the convoAttribute
         dropZoneScript = GameObject.Find("CardSlotsPanel").GetComponent<Dropzone>();
         SetIcon();
-        changeBGColor();
-
-        // Initialize the tier
-        switch (convoAttribute.ToLower())
-        {
-            case "cha":
-            case "charisma":
-                currentTier = Player.instance.convoTiers[3];
-                break;
-            case "cre":
-            case "creativity":
-                currentTier = Player.instance.convoTiers[1];
-                break;
-            case "cou":
-            case "courage":
-                currentTier = Player.instance.convoTiers[0];
-                break;
-            case "cle":
-            case "cleverness":
-                currentTier = Player.instance.convoTiers[2];
-                break;
-            default:
-                Debug.LogWarning("Unknown convoAttribute: " + convoAttribute);
-                break;
-        }
-
-        if (currentTier == 3)
-        {
-            numText.text = ""; // Hide the num text
-            finishedText.SetActive(true); // Show the finished text
-            background.color = new Color(0.68f, 0.85f, 0.90f, 1); // Pastel blue
-            isCompleted = true;
-        }
 
         tierPower = tierPowers[currentTier - 1];
         UpdatePowerUI();
@@ -272,6 +240,46 @@ public class ConvoTopic : MonoBehaviour
     private void UpdatePowerUI()
     {
         numText.text = tierPower > 0 ? tierPower.ToString() : ""; // Show power if above 0
+    }
+
+    public void SetTier()
+    {
+        // Initialize the tier
+        switch (convoAttribute.ToLower())
+        {
+            case "cha":
+            case "charisma":
+                currentTier = Player.instance.convoTiers[3];
+                break;
+            case "cre":
+            case "creativity":
+                currentTier = Player.instance.convoTiers[1];
+                break;
+            case "cou":
+            case "courage":
+                currentTier = Player.instance.convoTiers[0];
+                break;
+            case "cle":
+            case "cleverness":
+                currentTier = Player.instance.convoTiers[2];
+                break;
+            default:
+                Debug.LogWarning("Unknown convoAttribute: " + convoAttribute);
+                break;
+        }
+
+        changeBGColor();
+
+        if (currentTier == 3)
+        {
+            numText.text = ""; // Hide the num text
+            finishedText.SetActive(true); // Show the finished text
+            background.color = new Color(0.68f, 0.85f, 0.90f, 1); // Pastel blue
+            isCompleted = true;
+            topicContainer.topicsToRemove.Add(this);
+            topicContainer.doneConvos.Add(this);
+            tierPower = 0;
+        }
     }
 }
 

@@ -148,7 +148,7 @@ public class GameManager : MonoBehaviour
 
     private void EndGameFullWin()
     {
-        mapButtonScript.locName = "NokiDate2DeepConvo2"; // Hard coded for date 2 demo, will be changed later
+        mapButtonScript.locName = "NokiDate2SkillCheck2"; // Hard coded for date 2 demo, will be changed later
         endGameText.GetComponentInChildren<TextMeshProUGUI>().text = "You Win, Congratulations!";
         endGameText.SetActive(true);
         endTurnButton.SetActive(false);
@@ -170,8 +170,8 @@ public class GameManager : MonoBehaviour
         if (!LocationManager.Instance.GetDateState(1))
         {
             LocationManager.Instance.SetDateState(1, true);
-            LocationManager.Instance.isPlayable = false;
         }
+        LocationManager.Instance.isPlayable = false;
     }
 
     // Updates the score and refreshes the UI

@@ -7,16 +7,18 @@ public class TopicContainer : MonoBehaviour
     // List of conversation topics and completed topics
     [SerializeField] public List<ConvoTopic> convoTopics;
     [SerializeField] public List<ConvoTopic> doneConvos;
+    [SerializeField] public List<ConvoTopic> topicsToRemove = new List<ConvoTopic>();
 
-    void Awake()
+    void Start()
     {
-        for (int i = 0; i < 4; i++)
+        foreach (ConvoTopic convoTopic in convoTopics)
         {
-            if (Player.instance.convoTiers[i] == 3)
-            {
-                doneConvos.Add(convoTopics[i]);
-                convoTopics.Remove(convoTopics[i]);
-            }
+            convoTopic.SetTier();
+        }
+
+        foreach (ConvoTopic convoTopic in topicsToRemove)
+        {
+            convoTopics.Remove(convoTopic);
         }
     }
 
