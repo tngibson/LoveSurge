@@ -9,6 +9,7 @@ public class GameManager : MonoBehaviour
 
     // UI elements for displaying game information
     [SerializeField] private TextMeshProUGUI scoreText;  // UI for displaying the score
+    [SerializeField] private TextMeshProUGUI deckCountText;
     [SerializeField] private GameObject endGameText;
     [SerializeField] private GameObject fullHandText;
 
@@ -101,6 +102,8 @@ public class GameManager : MonoBehaviour
                     playerArea.AddCards(card);
                 }
             }
+
+            deckCountText.text = "Deck Cards Remaining: " + deckContainer.Deck.Count;
         }
         else if (deckContainer.Deck.Count <= 0)
         {
