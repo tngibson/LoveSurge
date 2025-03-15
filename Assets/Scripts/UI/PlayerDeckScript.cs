@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 using Random = UnityEngine.Random;
 
@@ -28,6 +29,8 @@ public class PlayerDeckScript : MonoBehaviour
     public static readonly string STRESS_THRESH_2 = "StressThreshold2";
     public static readonly string STRESS_THRESH_3 = "StressThreshold3";
 
+    [SerializeField] private TextMeshProUGUI deckCountText;
+
     // Initialize the deck on Awake
     private void Start()
     {
@@ -35,6 +38,8 @@ public class PlayerDeckScript : MonoBehaviour
         //{
         ignoredTags = new List<string>() { StatOffset.STRESS_FOUR };
         FillDeck();
+
+        deckCountText.text = "Deck Cards Remaining: " + deck.Count;
         //deckFilled = true;
         //}
     }
