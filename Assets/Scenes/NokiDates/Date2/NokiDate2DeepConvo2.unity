@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.18028378, g: 0.22571412, b: 0.30692285, a: 1}
+  m_IndirectSpecularColor: {r: 0.18028331, g: 0.2257133, b: 0.3069217, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -1069,6 +1069,26 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: -0.000013351
       objectReference: {fileID: 0}
+    - target: {fileID: 2797055304395627853, guid: caff7daa29ed80547bbcab65c7792ef9,
+        type: 3}
+      propertyPath: m_text
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 2797055304395627853, guid: caff7daa29ed80547bbcab65c7792ef9,
+        type: 3}
+      propertyPath: m_fontSize
+      value: 70
+      objectReference: {fileID: 0}
+    - target: {fileID: 2797055304395627853, guid: caff7daa29ed80547bbcab65c7792ef9,
+        type: 3}
+      propertyPath: m_fontSizeBase
+      value: 70
+      objectReference: {fileID: 0}
+    - target: {fileID: 2797055304395627853, guid: caff7daa29ed80547bbcab65c7792ef9,
+        type: 3}
+      propertyPath: m_fontColor32.rgba
+      value: 4278190080
+      objectReference: {fileID: 0}
     - target: {fileID: 3932021884715458363, guid: caff7daa29ed80547bbcab65c7792ef9,
         type: 3}
       propertyPath: m_Pivot.x
@@ -1171,8 +1191,13 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4592254374607335669, guid: caff7daa29ed80547bbcab65c7792ef9,
         type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 2066.1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4592254374607335669, guid: caff7daa29ed80547bbcab65c7792ef9,
+        type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 78.075
+      value: 138.79
       objectReference: {fileID: 0}
     - target: {fileID: 7239220871883381080, guid: caff7daa29ed80547bbcab65c7792ef9,
         type: 3}
@@ -1403,8 +1428,7 @@ PrefabInstance:
         type: 3}
       propertyPath: dialogLines.Array.data[24]
       value: "You don\u2019t need to keep pushing yourself to make me happy, besides
-        you deserve to feel human too\u2026now say cheese! roll your eyes at her,
-        before you hold out the camera in your hands."
+        you deserve to feel human too\u2026now say cheese!"
       objectReference: {fileID: 0}
     - target: {fileID: 8427216516346150109, guid: caff7daa29ed80547bbcab65c7792ef9,
         type: 3}
@@ -1445,7 +1469,7 @@ PrefabInstance:
       value: Noki starts to sway side to side a little before she collapses onto
         the flower bed. You try to grab her before she hits the ground. However,
         as you try to reach for her, she reverts back to being a smartphone. You
-        frantically grab Noki off of the flowers, rushing to Mickey to possibly figure
+        frantically grab Noki off of the flowers, rushing to Miguel to possibly figure
         out what happened.
       objectReference: {fileID: 0}
     - target: {fileID: 8427216516346150109, guid: caff7daa29ed80547bbcab65c7792ef9,
