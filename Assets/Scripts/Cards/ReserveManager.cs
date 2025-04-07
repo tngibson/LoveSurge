@@ -17,8 +17,6 @@ public class ReserveManager : MonoBehaviour
     [SerializeField] private Sprite normalSlotSprite;
     [SerializeField] private Sprite highlightedSlotSprite;
 
-    public int playableCardsLeft = 4;
-
     void Awake()
     {
         UpdateReserveSlots();
@@ -32,7 +30,6 @@ public class ReserveManager : MonoBehaviour
 
         currentPlayableIndex++;
         currentOpenIndex++;
-        playableCardsLeft--;
 
         if (currentOpenIndex >= 0)
         {
@@ -40,8 +37,6 @@ public class ReserveManager : MonoBehaviour
         }
 
 
-        // Below is the functionality that would effectively refresh the reserve slots when they run out. This is currently not how they work, but I'm leaving it here in case that changes.
-        /*
         if (currentPlayableIndex >= reserveSlots.Count)
         {
             // All cards have been played, refresh them
@@ -52,7 +47,6 @@ public class ReserveManager : MonoBehaviour
             currentOpenIndex = -1;
             currentOpenSlot = null;
         }
-        */
 
         // If the above functionality is added back in, this if-statement must be reworked
         UpdateReserveSlots();
@@ -66,7 +60,6 @@ public class ReserveManager : MonoBehaviour
 
         currentPlayableIndex--;
         currentOpenIndex--;
-        playableCardsLeft++;
 
         if (currentOpenIndex >= 0)
         {

@@ -281,11 +281,6 @@ public class Dropzone : MonoBehaviour
                 card.transform.gameObject.SetActive(false);
             }
         }
-
-        if (reserveManager.currentPlayableIndex >= reserveManager.reserveSlots.Count)
-        {
-            reserveManager.ReservesEmpty();
-        }
     }
 
     // Method to calculate score (call anytime score may be changed)

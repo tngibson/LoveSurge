@@ -212,7 +212,7 @@ public class GameManager : MonoBehaviour
             }
         }
 
-        if (reserveManager.playableCardsLeft != 0 && dropzone.CanPlaceCard(reserveManager.GetCurrentPlayableCard()))
+        if (dropzone.CanPlaceCard(reserveManager.GetCurrentPlayableCard()))
         {
             isHandPlayable = true;
         }

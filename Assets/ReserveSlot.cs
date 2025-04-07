@@ -56,7 +56,6 @@ public class ReserveSlot : MonoBehaviour
 
         card.transform.SetParent(reserveSlot.transform, false); // Parent it to the ReserveSlot
         card.isReserveCard = true;
-        card.isWildPlacer = true;
     }
 
     private Color GetCardColor()
