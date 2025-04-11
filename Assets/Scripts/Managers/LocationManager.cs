@@ -34,7 +34,6 @@ public class LocationManager : MonoBehaviour
 
     private void OnSceneLoaded(Scene scene, LoadSceneMode mode)
     {
-        Debug.Log("Finding House");
         targetMapScript = GameObject.Find("House")?.GetComponent<MapScript>();
         for (int i = 0; i < dateStates.Count; i++)
         {

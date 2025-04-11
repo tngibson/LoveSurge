@@ -27,6 +27,8 @@ public class MapScript : MonoBehaviour, IPointerEnterHandler, IPointerExitHandle
     private Vector3 originalScale;
     private Vector3 hoverScale;
 
+    [SerializeField] private bool isStressReducer;
+
     private void Awake()
     {
         // Save original scale and material
@@ -62,16 +64,25 @@ public class MapScript : MonoBehaviour, IPointerEnterHandler, IPointerExitHandle
 
     public void OnSelect()
     {
+        Debug.Log(isStressReducer);
+        
         if (locName == "Quit")
         {
             RestartApplication();
             return;
         }
 
-        if (StressManager.instance != null)
+        if (StressManager.instance != null && isStressReducer)
         {
+            Debug.Log("Reducing Stress!");
+            StressManager.instance.RemoveFromCurrentStress(0.1f);
+        }
+        else if (StressManager.instance != null && isStressReducer == false)
+        {
+            Debug.Log("Adding Stress!");
             StressManager.instance.AddToCurrentStress();
         }
+
         if (StressBar.instance != null)
         {
             StressBar.instance.UpdateStressBar();

@@ -19,8 +19,8 @@ public class StatUpgrade : MonoBehaviour
     private Dictionary<string, List<string>> placeholderOptions = new Dictionary<string, List<string>>();
     private Dictionary<string, List<string>> baseTextTemplates = new Dictionary<string, List<string>>();
 
-    private List<string> currentDialogLines; // Holds the lines for the current scene
-    private int currentLineIndex = 0; // Tracks the current line being displayed
+    [SerializeField] private List<string> currentDialogLines; // Holds the lines for the current scene
+    [SerializeField] private int currentLineIndex = 0; // Tracks the current line being displayed
 
     [SerializeField] private GameObject mapButton;  // Button to return to map
 
@@ -151,6 +151,11 @@ public class StatUpgrade : MonoBehaviour
         "changes your sense of self-worth forever.", "makes you feel really nice about yourself.",
         "makes you reconsider your entire wardrobe."
     };
+        placeholderOptions["__arcadeaction__"] = new List<string>()
+    {
+        "play one of the many games offered on the island", "hang around the prize station chatting up the attendant",
+        "hone your craft against the AI making sure they know who's boss around here"
+    };
 
         // Scene-specific dialog templates
         baseTextTemplates["Office"] = new List<string>()
@@ -190,6 +195,13 @@ public class StatUpgrade : MonoBehaviour
         "You resolve the situation by __charaction__",
         "Charisma +2."
     };
+
+        baseTextTemplates["Arcade"] = new List<string>()
+    {
+        "You stride into the arcade, hoping to blow off some steam.",
+        "You __arcadeaction__, and after a couple hours, you feel refreshed.",
+        "You reduced your stress!"
+    };
     }
 
     private IEnumerator PlayDialog()
@@ -224,8 +236,6 @@ public class StatUpgrade : MonoBehaviour
             // Wait until the skip button is pressed to proceed
             skipRequested = false;
             yield return new WaitUntil(() => skipRequested);
-
-            currentLineIndex++;
         }
     }
 
