@@ -2671,7 +2671,6 @@ MonoBehaviour:
   normalSlotSprite: {fileID: 21300000, guid: e36449870c80f6145b1b40e239fca727, type: 3}
   highlightedSlotSprite: {fileID: 21300000, guid: 30e1d48fc09d4fa4dad8001bec2d8422,
     type: 3}
-  playableCardsLeft: 4
 --- !u!61 &420358067
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -3729,9 +3728,11 @@ MonoBehaviour:
   locationText: {fileID: 0}
   locationTextText: 
   isEnabled: 0
+  mapAnimator: {fileID: 0}
   isDayProgressor: 1
   isDateButton: 0
-  hoverScale: 0
+  xHoverScale: 0
+  yHoverScale: 0
 --- !u!1 &619394800
 GameObject:
   m_ObjectHideFlags: 0
@@ -8071,9 +8072,11 @@ MonoBehaviour:
   locationText: {fileID: 0}
   locationTextText: 
   isEnabled: 0
+  mapAnimator: {fileID: 0}
   isDayProgressor: 0
   isDateButton: 0
-  hoverScale: 1
+  xHoverScale: 0
+  yHoverScale: 0
 --- !u!114 &1455098161
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -12034,7 +12037,7 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Sprite
       value: 
-      objectReference: {fileID: 21300000, guid: 893d1f42e4053c04ea705dcb002b0aa2,
+      objectReference: {fileID: 21300000, guid: b518b45fe2e33e345a53e18c94cdf157,
         type: 3}
     - target: {fileID: 550191357185191001, guid: 0555a6ec04bb168489488f373c7cb574,
         type: 3}

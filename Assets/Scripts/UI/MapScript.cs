@@ -14,39 +14,50 @@ public class MapScript : MonoBehaviour, IPointerEnterHandler, IPointerExitHandle
     [SerializeField] private string locationTextText;
     public bool isEnabled;
 
+    [SerializeField] private Animator mapAnimator;
+
     // New boolean to check if this map item should advance the day phase
     [SerializeField] private bool isDayProgressor;
 
     [SerializeField] private bool isDateButton;
 
     // Scale factor and material for hover effect
-    public float hoverScale = 1.1f;
+    public float xHoverScale;
+    public float yHoverScale;
     private Vector3 originalScale;
+    private Vector3 hoverScale;
 
     private void Awake()
     {
         // Save original scale and material
         originalScale = transform.localScale;
+        hoverScale = new Vector3 (xHoverScale, yHoverScale);
 
-        SetEnabled(true);
+        SetEnabled(isEnabled);
+
         if (locationText != null) locationText.GetComponent<TextMeshProUGUI>().text = locationTextText;
     }
 
     public void OnPointerEnter(PointerEventData eventData)
     {
-        if (isEnabled)
+        if (isEnabled && mapAnimator != null)
         {
             // Scale up and apply hover material
-            transform.localScale = originalScale * hoverScale;
+            transform.localScale = hoverScale;
             locationText.SetActive(true);
+            mapAnimator.SetBool("isHovered", true);
         }
     }
 
     public void OnPointerExit(PointerEventData eventData)
     {
-        // Reset scale and material
-        transform.localScale = originalScale;
-        locationText.SetActive(false);
+        if (isEnabled && mapAnimator != null)
+        {
+            // Reset scale and material
+            transform.localScale = originalScale;
+            locationText.SetActive(false);
+            mapAnimator.SetBool("isHovered", false);
+        }
     }
 
     public void OnSelect()
