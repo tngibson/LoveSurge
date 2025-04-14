@@ -46,8 +46,8 @@ public class DragDrop : MonoBehaviour
         // Initialize PlayerArea and Canvas
         playerArea = GameObject.Find("PlayerArea")?.GetComponent<PlayerArea>();
         canvas = GameObject.Find("Canvas")?.GetComponent<Canvas>();
-        dropzoneManager = GameObject.Find("CardSlotsPanel").GetComponent<Dropzone>();
-        reserveManager = GameObject.Find("ReserveCardSlotsPanel").GetComponent<ReserveManager>();
+        dropzoneManager = GameObject.Find("CardSlotsPanel")?.GetComponent<Dropzone>();
+        reserveManager = GameObject.Find("ReserveCardSlotsPanel")?.GetComponent<ReserveManager>();
 
         if (playerArea == null)
         {

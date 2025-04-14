@@ -66,7 +66,7 @@ public abstract class Card : MonoBehaviour
         UpdatePowerDisplay();  // Initialize the power display on start
         
         StressManager.stressChangedEvent += StressChangedEvent;
-        reserveManager = GameObject.Find("ReserveCardSlotsPanel").GetComponent<ReserveManager>();
+        reserveManager = GameObject.Find("ReserveCardSlotsPanel")?.GetComponent<ReserveManager>();
     }
 
     private void OnDestroy()

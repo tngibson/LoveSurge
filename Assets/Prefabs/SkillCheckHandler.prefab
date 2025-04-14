@@ -134,7 +134,7 @@ RectTransform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2388532289767978406}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -201,17 +201,137 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f1a83f988b0ade546869288c7b268e11, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  dialogLines: []
-  speakersPerLine: []
-  characterSprites: []
-  characterPortraits: []
-  textOutput: {fileID: 0}
-  speakerNameText: {fileID: 0}
-  mapButton: {fileID: 0}
-  skillCheckPaths: {fileID: 0}
-  skillCheckThreshold: 10
-  currentSkillIndex: 0
-  continueIndicator: {fileID: 0}
+  dialogLines:
+  - You and Noki briskly walk through the flower fields, stopping occasionally to
+    observe the beautiful flora.
+  - "[Player Name], Do you see those plants? They\u2019re odd looking aren\u2019t
+    they?"
+  - Now that you mention it, those look really cool, do you wanna try picking some?
+  - "Why don\u2019t we get a closer look before you blindly thrust your hands into
+    that bush."
+  - You and Noki approach the mysterious purple and white flowers. Carefully sliding
+    your feet down the muddy wells of the river bank, you come face to face with
+    these vibrant plants.
+  - "Hmmmm\u2026 It looks like this is actually two species of plant."
+  - And should I not shove my hand in either of them?
+  - "Er\u2026. no? I suppose nothing could hurt you if you tried to pick them\u2026"
+  - You drive your hands into the flowery bush to attempt to free any of them.
+  - "You begin to feel your balance slip away from you, and the stupidity of this
+    idea begins to dawn on you. A face full of twigs doesn\u2019t sound too pleasant\u2026
+    You quickly try to regain your balance\u2026"
+  - SKILLCHECK
+  - You both find a vending machine along the path.
+  - Here! We can have a sweet drink, as a celebration of our survival!
+  - Ahaha Of course [Player Name]! Can you get me this one?
+  - You insert some change into the machine and a soda falls out. You kneel down
+    to pick up the drink and stand back up.
+  - Here yo-
+  - Just as you hand Noki the drink, she places one of the purple flowers into your
+    hair.
+  - "What\u2019s this?"
+  - "Well\u2026 it's one of the flowers. I picked it while you weren\u2019t looking."
+  - "I thought it\u2019d look pretty\u2026 I guess I\u2019m getting an eye for this
+    sort of thing, because it does."
+  - "Ah! Well\u2026"
+  - "[Player Name] You can keep the drink. I don\u2019t think it\u2019d go down smoothly
+    considering\u2026"
+  - "Then why\u2019d you want it?"
+  - "Hmmm\u2026 well I wanted a souvenir from the real world but\u2026 I think I
+    already have the one I want."
+  - Ah? Noki? What do you mean?
+  - "It\u2019s a secret!"
+  - What! No Fair! Tell me!
+  - Noki smiles softly, content with keeping this secret to herself.
+  speakersPerLine:
+  - 
+  - Noki
+  - You
+  - Noki
+  - 
+  - Noki
+  - You
+  - Noki
+  - 
+  - 
+  - 
+  - 
+  - You
+  - Noki
+  - 
+  - You
+  - 
+  - You
+  - Noki
+  - Noki
+  - You
+  - Noki
+  - You
+  - Noki
+  - You
+  - Noki
+  - You
+  - 
+  characterSprites:
+  - spriteOptions:
+    - {fileID: 21300000, guid: 1efff82e0a469464987b91e1e6ff298e, type: 3}
+    - {fileID: 21300000, guid: 1efff82e0a469464987b91e1e6ff298e, type: 3}
+    - {fileID: 21300000, guid: 1efff82e0a469464987b91e1e6ff298e, type: 3}
+    - {fileID: 21300000, guid: 18e1c1d22c2cbaa47914600a13de0859, type: 3}
+    - {fileID: 21300000, guid: 1efff82e0a469464987b91e1e6ff298e, type: 3}
+    - {fileID: 21300000, guid: 1efff82e0a469464987b91e1e6ff298e, type: 3}
+    - {fileID: 21300000, guid: 1efff82e0a469464987b91e1e6ff298e, type: 3}
+    - {fileID: 21300000, guid: 9a5bb60305ed56c4c8b921b54258e133, type: 3}
+    - {fileID: 21300000, guid: 1efff82e0a469464987b91e1e6ff298e, type: 3}
+    - {fileID: 21300000, guid: 1efff82e0a469464987b91e1e6ff298e, type: 3}
+    - {fileID: 21300000, guid: 1efff82e0a469464987b91e1e6ff298e, type: 3}
+    - {fileID: 21300000, guid: 1efff82e0a469464987b91e1e6ff298e, type: 3}
+    - {fileID: 21300000, guid: 1efff82e0a469464987b91e1e6ff298e, type: 3}
+    - {fileID: 21300000, guid: eb54c0b9144af6b4e8e9578c07a0c65b, type: 3}
+    - {fileID: 21300000, guid: 1efff82e0a469464987b91e1e6ff298e, type: 3}
+    - {fileID: 21300000, guid: 1efff82e0a469464987b91e1e6ff298e, type: 3}
+    - {fileID: 21300000, guid: 1efff82e0a469464987b91e1e6ff298e, type: 3}
+    - {fileID: 21300000, guid: 1efff82e0a469464987b91e1e6ff298e, type: 3}
+    - {fileID: 21300000, guid: 416f14cbfab2b6c409b24a5d0f866e02, type: 3}
+    - {fileID: 21300000, guid: 1efff82e0a469464987b91e1e6ff298e, type: 3}
+    - {fileID: 21300000, guid: 1efff82e0a469464987b91e1e6ff298e, type: 3}
+    - {fileID: 21300000, guid: 18e1c1d22c2cbaa47914600a13de0859, type: 3}
+    - {fileID: 21300000, guid: 18e1c1d22c2cbaa47914600a13de0859, type: 3}
+    - {fileID: 21300000, guid: 9a5bb60305ed56c4c8b921b54258e133, type: 3}
+    - {fileID: 21300000, guid: 1efff82e0a469464987b91e1e6ff298e, type: 3}
+    - {fileID: 21300000, guid: eb54c0b9144af6b4e8e9578c07a0c65b, type: 3}
+    - {fileID: 21300000, guid: eb54c0b9144af6b4e8e9578c07a0c65b, type: 3}
+    - {fileID: 21300000, guid: 1efff82e0a469464987b91e1e6ff298e, type: 3}
+  characterPortraits:
+  - {fileID: 0}
+  textOutput: {fileID: 6206815740741539985}
+  speakerNameText: {fileID: 3209442131139116220}
+  mapButton: {fileID: 3263295233180379929}
+  skillCheckPaths: {fileID: 11400000, guid: 9118d98180d39f145ac6ad7f2cbca046, type: 2}
+  skillCheckThreshold: 5
+  currentSkillIndex: 1
+  continueIndicator: {fileID: 6057344252268401475}
+  skillCheckScreen: {fileID: 0}
+  skillCheckArea: {fileID: 0}
+  startingScreenTime: 1
+  startingScreenOver: 0
+  dice1: {fileID: 0}
+  dice2: {fileID: 0}
+  diceOptions:
+  - {fileID: 21300000, guid: 8983d1e90d13546448b0d8f571e064e7, type: 3}
+  - {fileID: 21300000, guid: f19e5168051776b458f34db0e5680ebd, type: 3}
+  - {fileID: 21300000, guid: 4df308dd7b4ce734c9ec7eedef49857d, type: 3}
+  - {fileID: 21300000, guid: 7603bc8f77fee2c45bccc854f4f2b5c3, type: 3}
+  - {fileID: 21300000, guid: 950e11fd0c9578946978d0d4aef21ac9, type: 3}
+  - {fileID: 21300000, guid: c83a4167ea99d2e4bbbd15a0f1cd224a, type: 3}
+  cardPrefabs:
+  - {fileID: -5963538814804999132, guid: 1e37df9f36f5407498c1e18e05ebc7f9, type: 3}
+  - {fileID: 8562863103195938653, guid: 05b5675adef6c844888a1391108fb4d9, type: 3}
+  - {fileID: -1454504632352844718, guid: afba97dd884423a4e8264984c925383c, type: 3}
+  - {fileID: 2326991348489003529, guid: 1796bafd5756dbc41b01a0a95cf61460, type: 3}
+  cardParent: {fileID: 0}
+  modifierText: {fileID: 0}
+  totalText: {fileID: 0}
+  skillCheckText: {fileID: 0}
 --- !u!1 &3067935883416260219
 GameObject:
   m_ObjectHideFlags: 0
@@ -363,7 +483,7 @@ GameObject:
   - component: {fileID: 7902660564457162343}
   - component: {fileID: 5350209765874161234}
   m_Layer: 5
-  m_Name: Map
+  m_Name: ContinueButton
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -495,15 +615,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bbe147c37e01d3847adb6df4c90f7c49, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  locName: Map
+  locName: NokiDate2DeepConvo1
   button: {fileID: 0}
   questionText: {fileID: 0}
   locationText: {fileID: 0}
   locationTextText: 
   isEnabled: 0
+  mapAnimator: {fileID: 0}
   isDayProgressor: 0
   isDateButton: 0
-  hoverScale: 1
+  xHoverScale: 0
+  yHoverScale: 0
+  isStressReducer: 0
 --- !u!114 &7902660564457162343
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -599,9 +722,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 'Return to Map
-
-'
+  m_text: Continue
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: df7cadaad356fc945a444aceb9b4e11e, type: 2}
   m_sharedMaterial: {fileID: 4935103395473980988, guid: df7cadaad356fc945a444aceb9b4e11e,
@@ -629,7 +750,7 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 67.7
+  m_fontSize: 72
   m_fontSizeBase: 24
   m_fontWeight: 400
   m_enableAutoSizing: 1
@@ -796,8 +917,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 267.74243, y: 13.0706}
-  m_SizeDelta: {x: 2228.4844, y: 503.0402}
+  m_AnchoredPosition: {x: 162.65967, y: 75.141}
+  m_SizeDelta: {x: 2018.3184, y: 378.9}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &8748183011407338893
 CanvasRenderer:

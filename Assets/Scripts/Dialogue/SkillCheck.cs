@@ -55,6 +55,19 @@ public class SkillCheck : MonoBehaviour
 
     [SerializeField] private GameObject continueIndicator;
 
+    [SerializeField] private GameObject skillCheckScreen;
+    [SerializeField] private GameObject skillCheckArea;
+    [SerializeField] private float startingScreenTime;
+    [SerializeField] private bool startingScreenOver = false;
+    [SerializeField] private Image dice1;
+    [SerializeField] private Image dice2;
+    [SerializeField] private List<Sprite> diceOptions = new List<Sprite>();
+    [SerializeField] private List<Card> cardPrefabs = new List<Card>();
+    [SerializeField] private GameObject cardParent;
+    [SerializeField] private GameObject modifierText;
+    [SerializeField] private TextMeshProUGUI totalText;
+    [SerializeField] private TextMeshProUGUI skillCheckText;
+
     void Start()
     {
         if (GameObject.Find("PlayerManager") != null)
@@ -65,12 +78,21 @@ public class SkillCheck : MonoBehaviour
 
         mapButton.SetActive(false);
         InitializeAudio();
+
+        StartCoroutine(HandleStartingScreen());
+    }
+
+    private IEnumerator HandleStartingScreen()
+    {
+        yield return new WaitForSeconds(startingScreenTime);
+        skillCheckScreen.SetActive(false);
+        startingScreenOver = true;
         DisplayLine();
     }
 
     void Update()
     {
-        if (Input.GetButtonDown("Skip"))
+        if (Input.GetButtonDown("Skip") && startingScreenOver)
         {
             HandleClick();
         }
@@ -133,8 +155,11 @@ public class SkillCheck : MonoBehaviour
     {
         isSkillCheckTime = true;
         skillCheckStage = 0;
+        skillCheckScreen.SetActive(true);
+        skillCheckArea.SetActive(true);
+
         // Rolls which card is drawn, THIS WILL BE CHANGED LATER WHEN MORE CARDS ARE ADDED
-        modifier = Random.Range(1, 5);
+        modifier = Random.Range(1, 6);
         skillShake = Random.Range(0, 4);
         switch (skillShake)
         {
@@ -151,6 +176,10 @@ public class SkillCheck : MonoBehaviour
                 textOutput.text = $"A Courage card with a power of {modifier} was drawn!";
                 break;
         }
+
+        Card skillCheckCard = Instantiate(cardPrefabs[skillShake], cardParent.transform);
+        skillCheckCard.Power = modifier;
+        skillCheckCard.transform.parent = cardParent.transform;
     }
 
     private IEnumerator ShowRollingEffect()
@@ -158,7 +187,13 @@ public class SkillCheck : MonoBehaviour
         isRollingDisplayActive = true;
         while (isRollingDisplayActive)
         {
-            textOutput.text = $"{Random.Range(1, 7)} + {Random.Range(1, 7)}";
+            int dice1Num = Random.Range(0, 6);
+            int dice2Num = Random.Range(0, 6);
+            textOutput.text = $"{dice1Num + 1} + {dice2Num + 1}";
+
+            dice1.sprite = diceOptions[dice1Num];
+            dice2.sprite = diceOptions[dice1Num];
+
             yield return new WaitForSeconds(0.1f);
         }
     }
@@ -177,22 +212,29 @@ public class SkillCheck : MonoBehaviour
                 break;
             case 1:
                 isRollingDisplayActive = false;
-                diceRoll1 = Random.Range(1, 7);
-                diceRoll2 = Random.Range(1, 7);
-                int rollTotal = diceRoll1 + diceRoll2 + modifier;
+                diceRoll1 = Random.Range(0, 6);
+                diceRoll2 = Random.Range(0, 6);
+
+                dice1.sprite = diceOptions[diceRoll1];
+                dice2.sprite = diceOptions[diceRoll2];
+
+                int rollTotal = (diceRoll1 + 1) + (diceRoll2 + 1) + modifier;
                 if (skillShake == currentSkillIndex)
                 {
                     rollTotal += 1;
+                    modifierText.SetActive(true);
                 }
-                //
+
+                totalText.text = rollTotal.ToString();
+
                 skillCheckPassed = rollTotal >= skillCheckThreshold;
                 if (skillShake == currentSkillIndex)
                 {
-                    textOutput.text = $"{diceRoll1} + {diceRoll2} + ({modifier}) + (1 | same type bonus!) = {rollTotal}";
+                    textOutput.text = $"{diceRoll1 + 1} + {diceRoll2 + 1} + ({modifier}) + (1 | same type bonus!) = {rollTotal}";
                 }
                 else
                 {
-                    textOutput.text = $"{diceRoll1} + {diceRoll2} + ({modifier}) = {rollTotal}";
+                    textOutput.text = $"{diceRoll1 + 1} + {diceRoll2 + 1} + ({modifier}) = {rollTotal}";
                 }
                 skillCheckStage = 2;
                 diceShake.stop(FMOD.Studio.STOP_MODE.ALLOWFADEOUT);
@@ -202,6 +244,7 @@ public class SkillCheck : MonoBehaviour
 
             case 2:
                 textOutput.text = skillCheckPassed ? "Skill Check Passed!" : "Skill Check Failed...";
+                skillCheckText.text = textOutput.text;
                 skillCheckStage = 3;
                 break;
 
@@ -209,6 +252,7 @@ public class SkillCheck : MonoBehaviour
                 LoadSkillCheckPath(skillCheckPassed);
                 DisplayLine();
                 isSkillCheckTime = false;
+                skillCheckScreen.SetActive(false);
                 break;
         }
     }
