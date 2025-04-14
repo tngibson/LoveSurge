@@ -31,6 +31,12 @@ public class PlayerDeckScript : MonoBehaviour
 
     [SerializeField] private TextMeshProUGUI deckCountText;
 
+    [SerializeField] private GameObject deckBackground;
+
+    private bool isShowing = false;
+
+    private Vector2 initialPosition;
+
     // Initialize the deck on Awake
     private void Start()
     {
@@ -39,7 +45,9 @@ public class PlayerDeckScript : MonoBehaviour
         ignoredTags = new List<string>() { StatOffset.STRESS_FOUR };
         FillDeck();
 
-        deckCountText.text = "Deck Cards Remaining: " + deck.Count;
+        initialPosition = transform.position;
+
+        deckCountText.text = deck.Count.ToString();
         //deckFilled = true;
         //}
     }
@@ -54,8 +62,8 @@ public class PlayerDeckScript : MonoBehaviour
     private Card MakeCard(Card prefab, int power)
     {
         Card finishedCard = Instantiate(prefab, container.transform);
-        finishedCard.Power = power;
         finishedCard.SetVisibility(false);
+        finishedCard.Power = power;
         AddCard(finishedCard);
 
         return finishedCard;
@@ -142,4 +150,33 @@ public class PlayerDeckScript : MonoBehaviour
         return sum;
     }
 
+    public void ShowDeck()
+    {
+        if (isShowing == false)
+        {
+            isShowing = true;
+
+            deckBackground.SetActive(true);
+
+            GetComponent<RectTransform>().anchoredPosition = Vector2.zero;
+
+            foreach (Card card in deck)
+            {
+                card.SetVisibility(true);
+            }
+        }
+        else
+        {
+            isShowing = false;
+
+            deckBackground.SetActive(false);
+
+            transform.position = initialPosition;
+
+            foreach (Card card in deck)
+            {
+                card.SetVisibility(false);
+            }
+        }
+    }
 }

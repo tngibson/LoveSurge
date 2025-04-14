@@ -103,7 +103,7 @@ public class GameManager : MonoBehaviour
                 }
             }
 
-            deckCountText.text = "Deck Cards Remaining: " + deckContainer.Deck.Count;
+            deckCountText.text = deckContainer.Deck.Count.ToString();
         }
         else if (deckContainer.Deck.Count <= 0)
         {
