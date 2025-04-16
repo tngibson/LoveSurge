@@ -14,11 +14,16 @@ public class DataPersistenceManager : MonoBehaviour
     private List<IDataPersistence> dataPersistanceObjects;
     private void Awake()
     {
-        if (instance !=null)
+        if (instance == null)
         {
-            Debug.LogError("Found more than one DPM in scene");
+            instance = this;
+            DontDestroyOnLoad(gameObject);
         }
-        instance = this;
+        else
+        {
+            Destroy(gameObject);
+        }
+
     }
     private void Start()
     {
@@ -37,6 +42,7 @@ public class DataPersistenceManager : MonoBehaviour
 
     public void LoadGame()
     {
+        this.gameData = dataHandler.Load();
         if (this.gameData == null)
         {
             Debug.Log("No save data found, starting a new game");
@@ -47,10 +53,7 @@ public class DataPersistenceManager : MonoBehaviour
             dataPerpet.LoadData(gameData);
             Debug.Log("Load " + dataPerpet);
         }
-        foreach (var i in gameData.connection)
-        {
-            Debug.Log("Loaded connections: " + i.ToString());
-        }
+        Debug.Log("Loaded name: " + gameData.playerName);
     }
 
     public void SaveGame()
@@ -59,7 +62,8 @@ public class DataPersistenceManager : MonoBehaviour
         {
             dataPerpet.SaveData(ref gameData);
         }
-        Debug.Log("Saved connection amt: " + gameData.connection);
+        Debug.Log("Saved name: " + gameData.playerName);
+        dataHandler.Save(gameData);
     }
 
     private List<IDataPersistence> FindAllDataPersitenceObjects() 

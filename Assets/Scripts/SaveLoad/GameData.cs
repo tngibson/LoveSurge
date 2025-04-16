@@ -5,11 +5,12 @@ using UnityEngine;
 [System.Serializable]
 public class GameData
 {
-    private List<int> stats;
-    private string location;
-    private string date;
-    private List<string> playerName;
-    private List<string> curioCards;
+    public List<int> stats;
+    public string location;
+    public string date;
+    public string playerName;
+    public List<string> curioCards;
     public List<int> connection;
-    private int stressAmt;
+    public int stressAmt;
+    public string SceneName;
 }

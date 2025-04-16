@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using Random = UnityEngine.Random;
 
-public class Player : MonoBehaviour
+public class Player : MonoBehaviour,IDataPersistence
 {
     [SerializeField] private string playerName;
 
@@ -144,7 +144,7 @@ public class Player : MonoBehaviour
         }
     }
 
-    public void SetConvoTiers(string convoAttribute, int tier)
+    public void SetConvoTiers(string convoAttribute, int tier) 
     {
         switch (convoAttribute.ToLower())
         {
@@ -168,6 +168,16 @@ public class Player : MonoBehaviour
                 Debug.LogWarning("Unknown convoAttribute: " + convoAttribute);
                 break;
         }
+    }
+
+    public void LoadData(GameData data)
+    {
+        this.playerName = data.playerName;
+    }
+
+    public void SaveData(ref GameData data)
+    {
+        data.playerName = this.playerName;
     }
 }
 
@@ -232,4 +242,6 @@ public class StatOffset
         isDirty = false;
         return amount;
     }
+
+
 }
