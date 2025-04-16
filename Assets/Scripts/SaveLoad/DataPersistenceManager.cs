@@ -1,0 +1,70 @@
+using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+using System.Linq;
+
+public class DataPersistenceManager : MonoBehaviour
+{
+    [SerializeField] private string fileName;
+
+    private FileDataHandler dataHandler;
+    private GameData gameData;
+    public static DataPersistenceManager instance { get; private set; }
+
+    private List<IDataPersistence> dataPersistanceObjects;
+    private void Awake()
+    {
+        if (instance !=null)
+        {
+            Debug.LogError("Found more than one DPM in scene");
+        }
+        instance = this;
+    }
+    private void Start()
+    {
+        this.dataHandler = new FileDataHandler(Application.persistentDataPath, fileName);
+        this.dataPersistanceObjects = FindAllDataPersitenceObjects();
+        LoadGame();
+    }
+    private void OnApplicationQuit()
+    {
+        SaveGame();
+    }
+    public void NewGame()
+    {
+        this.gameData = new GameData();
+    }
+
+    public void LoadGame()
+    {
+        if (this.gameData == null)
+        {
+            Debug.Log("No save data found, starting a new game");
+            NewGame();
+        }
+        foreach (IDataPersistence dataPerpet in dataPersistanceObjects)
+        {
+            dataPerpet.LoadData(gameData);
+            Debug.Log("Load " + dataPerpet);
+        }
+        foreach (var i in gameData.connection)
+        {
+            Debug.Log("Loaded connections: " + i.ToString());
+        }
+    }
+
+    public void SaveGame()
+    {
+        foreach (IDataPersistence dataPerpet in dataPersistanceObjects)
+        {
+            dataPerpet.SaveData(ref gameData);
+        }
+        Debug.Log("Saved connection amt: " + gameData.connection);
+    }
+
+    private List<IDataPersistence> FindAllDataPersitenceObjects() 
+    {
+        IEnumerable<IDataPersistence> dataPersistanceObjects = FindObjectsOfType<MonoBehaviour>().OfType<IDataPersistence>();
+        return new List<IDataPersistence>(dataPersistanceObjects);
+    }
+}
