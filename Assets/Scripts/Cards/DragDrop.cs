@@ -71,9 +71,14 @@ public class DragDrop : MonoBehaviour
     public void StartDrag()
     {
         if (!isDraggable) return;
-        isDragging = true; // Enable dragging
+
         startParent = transform.parent; // Store the original parent
         startPos = transform.position; // Store the original position
+
+        // Only allow left-click to start dragging
+        if (!Input.GetMouseButton(0) || Input.GetMouseButton(1)) return;
+
+        isDragging = true; // Enable dragging
 
         // Re-enable collider if the card is being dragged out of the dropzone
         GetComponent<Collider2D>().enabled = true;
@@ -241,6 +246,8 @@ public class DragDrop : MonoBehaviour
         transform.SetParent(startParent, false);  // Reset parent to original
         this.transform.localScale = Vector3.one;
         transform.position = startPos;  // Reset position
+
+        cardHandLayout.UpdateCardListAndLayout();
 
         // If we are returning a card back to the Dropzone, remove its collider again
         if (startParent.GetComponent<DropzoneSlot>() != null) 
