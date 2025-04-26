@@ -28,7 +28,7 @@ public class AudioManager : MonoBehaviour
    private Bus sfxBus;
 
    private EventInstance musicEventInstance;
-   private EventInstance environmentEventInstance;
+   //private EventInstance environmentEventInstance;
    private EventInstance dialougeEventInstance;
    private List<EventInstance> eventInstances;
 
@@ -53,9 +53,9 @@ public class AudioManager : MonoBehaviour
 
     private void Start()
     {
-        //InitializeMusic(FMODEvents.instance.music);
+        InitializeMusic(FMODEvents.instance.sceneMusic);
         InitializeVoices(FMODEvents.instance.playerVoice);
-        InitializeEnvironment(FMODEvents.instance.environmentTrack);
+        //InitializeEnvironment(FMODEvents.instance.environmentTrack);
 
     }
 
@@ -83,9 +83,9 @@ public class AudioManager : MonoBehaviour
     }
     private void InitializeEnvironment(EventReference musicEventReference)
     {
-        environmentEventInstance = CreateInstance(musicEventReference);
+        //environmentEventInstance = CreateInstance(musicEventReference);
         PlayOneShot(FMODEvents.instance.envIntroSound, this.transform.position);
-        environmentEventInstance.start();
+        //environmentEventInstance.start();
     }
 
     private void InitializeVoices(EventReference eventReference)

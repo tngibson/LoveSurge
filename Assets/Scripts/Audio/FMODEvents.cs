@@ -18,7 +18,7 @@ public class FMODEvents : MonoBehaviour
     [field: SerializeField] public EventReference currentRingtone { get; private set; }
 
 
-    //[field: SerializeField] public EventReference music { get; private set; }
+    [field: SerializeField] public EventReference sceneMusic { get; private set; }
     // [field: SerializeField] public EventReference lotteTheme {get; private set;}
     //[field: SerializeField] public EventReference samTheme { get; private set; }
     //[field: SerializeField] public EventReference roomateTheme { get; private set; }

@@ -32,7 +32,6 @@ public class MapScript : MonoBehaviour, IPointerEnterHandler, IPointerExitHandle
     private Vector3 hoverScale;
 
     [SerializeField] private bool isStressReducer;
-
     private void Awake()
     {
         // Save original scale and material
@@ -113,7 +112,7 @@ public class MapScript : MonoBehaviour, IPointerEnterHandler, IPointerExitHandle
         if (transition != null)
         {
             transition.SetTrigger("Start");
-
+            //AudioManager.CleanUpLoop();
             yield return new WaitForSeconds(transitionTime);
         }
 
