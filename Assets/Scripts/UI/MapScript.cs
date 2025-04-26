@@ -112,7 +112,7 @@ public class MapScript : MonoBehaviour, IPointerEnterHandler, IPointerExitHandle
         if (transition != null)
         {
             transition.SetTrigger("Start");
-            //AudioManager.CleanUpLoop();
+            AudioManager.instance.CleanUp();
             yield return new WaitForSeconds(transitionTime);
         }
 

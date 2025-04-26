@@ -28,7 +28,7 @@ public class AudioManager : MonoBehaviour
    private Bus sfxBus;
 
    private EventInstance musicEventInstance;
-   //private EventInstance environmentEventInstance;
+   private EventInstance environmentEventInstance;
    private EventInstance dialougeEventInstance;
    private List<EventInstance> eventInstances;
 
@@ -41,7 +41,7 @@ public class AudioManager : MonoBehaviour
 
         }
         instance = this;
-        DontDestroyOnLoad(gameObject);
+        //DontDestroyOnLoad(gameObject);
         eventInstances = new List<EventInstance>();
 
         //Set Bus
@@ -55,7 +55,7 @@ public class AudioManager : MonoBehaviour
     {
         InitializeMusic(FMODEvents.instance.sceneMusic);
         InitializeVoices(FMODEvents.instance.playerVoice);
-        //InitializeEnvironment(FMODEvents.instance.environmentTrack);
+        InitializeEnvironment(FMODEvents.instance.envIntroSound);
 
     }
 
@@ -81,6 +81,8 @@ public class AudioManager : MonoBehaviour
         musicEventInstance = CreateInstance(musicEventReference);
         musicEventInstance.start();
     }
+
+
     private void InitializeEnvironment(EventReference musicEventReference)
     {
         //environmentEventInstance = CreateInstance(musicEventReference);
@@ -101,7 +103,7 @@ public class AudioManager : MonoBehaviour
     {
         dialougeEventInstance.setParameterByName("textTyping", (float) textTyping);
     }
-    private void CleanUp()
+    public void CleanUp()
     {
         //stop and release created instances
         foreach (EventInstance eventInstance in eventInstances)

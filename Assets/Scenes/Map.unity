@@ -123,51 +123,6 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
---- !u!1 &46480538
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 46480540}
-  - component: {fileID: 46480539}
-  m_Layer: 0
-  m_Name: SoundtrackSetter
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!114 &46480539
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 46480538}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 45a960cb0a316ac4186af3d11d80359b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  <track>k__BackingField: 5
---- !u!4 &46480540
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 46480538}
-  serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 567.2388, y: 337.72012, z: -4.166292}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &76049275
 GameObject:
   m_ObjectHideFlags: 0
@@ -554,6 +509,8 @@ MonoBehaviour:
   locationTextText: OmniCade - Reduce Stress
   isEnabled: 1
   mapAnimator: {fileID: 128797544}
+  transition: {fileID: 0}
+  transitionTime: 0
   isDayProgressor: 0
   isDateButton: 0
   xHoverScale: 1.709402
@@ -892,6 +849,8 @@ MonoBehaviour:
   locationTextText: OMNISPARK WYLDLIFEPARK - Courage
   isEnabled: 1
   mapAnimator: {fileID: 223940467}
+  transition: {fileID: 0}
+  transitionTime: 0
   isDayProgressor: 0
   isDateButton: 0
   xHoverScale: 1.1
@@ -1100,6 +1059,8 @@ MonoBehaviour:
   locationTextText: "4RT15T1C G3N3RAT10N  Zone\u2122 - Creativity"
   isEnabled: 1
   mapAnimator: {fileID: 363275435}
+  transition: {fileID: 0}
+  transitionTime: 0
   isDayProgressor: 0
   isDateButton: 0
   xHoverScale: 1.5
@@ -2096,6 +2057,8 @@ MonoBehaviour:
   locationTextText: Observatory - Cleverness
   isEnabled: 1
   mapAnimator: {fileID: 810015470}
+  transition: {fileID: 0}
+  transitionTime: 0
   isDayProgressor: 0
   isDateButton: 0
   xHoverScale: 1.6
@@ -2574,6 +2537,124 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 998427654}
   m_CullTransparentMesh: 1
+--- !u!1001 &1002443132
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 1768944104491096021, guid: a021c6d3c1a46724ca869d9fa4244f20,
+        type: 3}
+      propertyPath: m_Name
+      value: AudioManager
+      objectReference: {fileID: 0}
+    - target: {fileID: 2940753333971068076, guid: a021c6d3c1a46724ca869d9fa4244f20,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2940753333971068076, guid: a021c6d3c1a46724ca869d9fa4244f20,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2940753333971068076, guid: a021c6d3c1a46724ca869d9fa4244f20,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2940753333971068076, guid: a021c6d3c1a46724ca869d9fa4244f20,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2940753333971068076, guid: a021c6d3c1a46724ca869d9fa4244f20,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2940753333971068076, guid: a021c6d3c1a46724ca869d9fa4244f20,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2940753333971068076, guid: a021c6d3c1a46724ca869d9fa4244f20,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2940753333971068076, guid: a021c6d3c1a46724ca869d9fa4244f20,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2940753333971068076, guid: a021c6d3c1a46724ca869d9fa4244f20,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2940753333971068076, guid: a021c6d3c1a46724ca869d9fa4244f20,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 9087966427139456051, guid: a021c6d3c1a46724ca869d9fa4244f20,
+        type: 3}
+      propertyPath: <sceneMusic>k__BackingField.Path
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 9087966427139456051, guid: a021c6d3c1a46724ca869d9fa4244f20,
+        type: 3}
+      propertyPath: <envIntroSound>k__BackingField.Path
+      value: event:/Locations/mapIntro
+      objectReference: {fileID: 0}
+    - target: {fileID: 9087966427139456051, guid: a021c6d3c1a46724ca869d9fa4244f20,
+        type: 3}
+      propertyPath: <sceneMusic>k__BackingField.Guid.Data1
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 9087966427139456051, guid: a021c6d3c1a46724ca869d9fa4244f20,
+        type: 3}
+      propertyPath: <sceneMusic>k__BackingField.Guid.Data2
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 9087966427139456051, guid: a021c6d3c1a46724ca869d9fa4244f20,
+        type: 3}
+      propertyPath: <sceneMusic>k__BackingField.Guid.Data3
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 9087966427139456051, guid: a021c6d3c1a46724ca869d9fa4244f20,
+        type: 3}
+      propertyPath: <sceneMusic>k__BackingField.Guid.Data4
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 9087966427139456051, guid: a021c6d3c1a46724ca869d9fa4244f20,
+        type: 3}
+      propertyPath: <envIntroSound>k__BackingField.Guid.Data1
+      value: 438250958
+      objectReference: {fileID: 0}
+    - target: {fileID: 9087966427139456051, guid: a021c6d3c1a46724ca869d9fa4244f20,
+        type: 3}
+      propertyPath: <envIntroSound>k__BackingField.Guid.Data2
+      value: 1098614239
+      objectReference: {fileID: 0}
+    - target: {fileID: 9087966427139456051, guid: a021c6d3c1a46724ca869d9fa4244f20,
+        type: 3}
+      propertyPath: <envIntroSound>k__BackingField.Guid.Data3
+      value: -1086021213
+      objectReference: {fileID: 0}
+    - target: {fileID: 9087966427139456051, guid: a021c6d3c1a46724ca869d9fa4244f20,
+        type: 3}
+      propertyPath: <envIntroSound>k__BackingField.Guid.Data4
+      value: 1444920152
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: a021c6d3c1a46724ca869d9fa4244f20, type: 3}
 --- !u!1 &1006099609
 GameObject:
   m_ObjectHideFlags: 0
@@ -2982,6 +3063,8 @@ MonoBehaviour:
   locationTextText: Grand Mall - Charisma
   isEnabled: 1
   mapAnimator: {fileID: 1043008531}
+  transition: {fileID: 0}
+  transitionTime: 0
   isDayProgressor: 0
   isDateButton: 0
   xHoverScale: 1.2
@@ -3509,6 +3592,8 @@ MonoBehaviour:
   locationTextText: 
   isEnabled: 0
   mapAnimator: {fileID: 0}
+  transition: {fileID: 0}
+  transitionTime: 0
   isDayProgressor: 0
   isDateButton: 0
   xHoverScale: 0
@@ -4030,6 +4115,8 @@ MonoBehaviour:
   locationTextText: 
   isEnabled: 0
   mapAnimator: {fileID: 0}
+  transition: {fileID: 0}
+  transitionTime: 0
   isDayProgressor: 0
   isDateButton: 0
   xHoverScale: 0
@@ -4211,6 +4298,8 @@ MonoBehaviour:
   locationTextText: Go on a date with Noki!
   isEnabled: 1
   mapAnimator: {fileID: 1530979901}
+  transition: {fileID: 0}
+  transitionTime: 0
   isDayProgressor: 0
   isDateButton: 1
   xHoverScale: 1.4
@@ -5405,6 +5494,92 @@ RectTransform:
     type: 3}
   m_PrefabInstance: {fileID: 1832058693}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &1854711803
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1854711804}
+  - component: {fileID: 1854711805}
+  - component: {fileID: 1854711807}
+  m_Layer: 0
+  m_Name: MapMusic
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1854711804
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1854711803}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 485.2447, y: 333.6023, z: -3.1593382}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1854711805
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1854711803}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9a6610d2e704f1648819acc8d7460285, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  CollisionTag: 
+  EventReference:
+    Guid:
+      Data1: 1277772494
+      Data2: 1149568430
+      Data3: 455371962
+      Data4: 297081059
+    Path: event:/Music/dayTheme
+  Event: 
+  PlayEvent: 11
+  StopEvent: 2
+  AllowFadeout: 1
+  TriggerOnce: 0
+  Preload: 0
+  AllowNonRigidbodyDoppler: 0
+  Params: []
+  OverrideAttenuation: 0
+  OverrideMinDistance: 1
+  OverrideMaxDistance: 20
+--- !u!114 &1854711807
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1854711803}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d241e687b000ea94ebc71b03851b7525, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  sceneNamesToDestroy:
+  - DemoIntro
+  - DemoOutro
+  - TestDate
+  - TestSkillCheck
+  - TitleScreen
+  - WakeUp
+  - Kitchen
+  - NokiDateIntro
+  - Arcade
 --- !u!1 &1917106783
 GameObject:
   m_ObjectHideFlags: 0
@@ -6074,6 +6249,8 @@ MonoBehaviour:
   locationTextText: 
   isEnabled: 0
   mapAnimator: {fileID: 0}
+  transition: {fileID: 0}
+  transitionTime: 0
   isDayProgressor: 0
   isDateButton: 0
   xHoverScale: 0
@@ -6182,6 +6359,8 @@ MonoBehaviour:
   locationTextText: The Shop is closed for now...
   isEnabled: 0
   mapAnimator: {fileID: 2122793601}
+  transition: {fileID: 0}
+  transitionTime: 0
   isDayProgressor: 0
   isDateButton: 0
   xHoverScale: 1.8
@@ -6537,6 +6716,7 @@ SceneRoots:
   - {fileID: 544546309}
   - {fileID: 367484166}
   - {fileID: 1136163673}
-  - {fileID: 46480540}
   - {fileID: 1575434532}
   - {fileID: 92435323}
+  - {fileID: 1002443132}
+  - {fileID: 1854711804}

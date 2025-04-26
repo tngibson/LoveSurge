@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.18028331, g: 0.2257133, b: 0.3069217, a: 1}
+  m_IndirectSpecularColor: {r: 0.18028378, g: 0.22571412, b: 0.30692285, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -564,6 +564,99 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1001 &1163886341
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 1768944104491096021, guid: a021c6d3c1a46724ca869d9fa4244f20,
+        type: 3}
+      propertyPath: m_Name
+      value: AudioManager
+      objectReference: {fileID: 0}
+    - target: {fileID: 2940753333971068076, guid: a021c6d3c1a46724ca869d9fa4244f20,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2940753333971068076, guid: a021c6d3c1a46724ca869d9fa4244f20,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2940753333971068076, guid: a021c6d3c1a46724ca869d9fa4244f20,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2940753333971068076, guid: a021c6d3c1a46724ca869d9fa4244f20,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2940753333971068076, guid: a021c6d3c1a46724ca869d9fa4244f20,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2940753333971068076, guid: a021c6d3c1a46724ca869d9fa4244f20,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2940753333971068076, guid: a021c6d3c1a46724ca869d9fa4244f20,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2940753333971068076, guid: a021c6d3c1a46724ca869d9fa4244f20,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2940753333971068076, guid: a021c6d3c1a46724ca869d9fa4244f20,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2940753333971068076, guid: a021c6d3c1a46724ca869d9fa4244f20,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 9087966427139456051, guid: a021c6d3c1a46724ca869d9fa4244f20,
+        type: 3}
+      propertyPath: <sceneMusic>k__BackingField.Path
+      value: event:/Music/titleTheme
+      objectReference: {fileID: 0}
+    - target: {fileID: 9087966427139456051, guid: a021c6d3c1a46724ca869d9fa4244f20,
+        type: 3}
+      propertyPath: <sceneMusic>k__BackingField.Guid.Data1
+      value: 1587278420
+      objectReference: {fileID: 0}
+    - target: {fileID: 9087966427139456051, guid: a021c6d3c1a46724ca869d9fa4244f20,
+        type: 3}
+      propertyPath: <sceneMusic>k__BackingField.Guid.Data2
+      value: 1256190478
+      objectReference: {fileID: 0}
+    - target: {fileID: 9087966427139456051, guid: a021c6d3c1a46724ca869d9fa4244f20,
+        type: 3}
+      propertyPath: <sceneMusic>k__BackingField.Guid.Data3
+      value: 2125243015
+      objectReference: {fileID: 0}
+    - target: {fileID: 9087966427139456051, guid: a021c6d3c1a46724ca869d9fa4244f20,
+        type: 3}
+      propertyPath: <sceneMusic>k__BackingField.Guid.Data4
+      value: 204900698
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: a021c6d3c1a46724ca869d9fa4244f20, type: 3}
 --- !u!1 &1227112910
 GameObject:
   m_ObjectHideFlags: 0
@@ -1817,3 +1910,4 @@ SceneRoots:
   - {fileID: 1231755590}
   - {fileID: 1227112913}
   - {fileID: 1145651767}
+  - {fileID: 1163886341}

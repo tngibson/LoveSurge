@@ -35,10 +35,9 @@ public class MusicManager : MonoBehaviour
 
     private void Start()
     {
-        InitializeMusic(FMODEvents.instance.gameSoundtrack);
+        //InitializeMusic(FMODEvents.instance.sceneMusic);
         InitializeDate(FMODEvents.instance.dateMusic);
         UnityEngine.SceneManagement.Scene scene = SceneManager.GetActiveScene();
-        AudioSwitcher(EnumSoundtrack.TITLE_THEME);
     }
     public EventInstance CreateInstance(EventReference eventReference)
     {
@@ -47,11 +46,11 @@ public class MusicManager : MonoBehaviour
         return eventInstance;
     }
 
-    private void InitializeMusic(EventReference musicEventReference)
-    {
-        musicEventInstance = CreateInstance(musicEventReference);
-        musicEventInstance.start();
-    }
+    //private void InitializeMusic(EventReference musicEventReference)
+   // {
+       // musicEventInstance = CreateInstance(musicEventReference);
+       // musicEventInstance.start();
+    //}
 
     private void InitializeDate(EventReference dateMusic)
     {

@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.18028331, g: 0.2257133, b: 0.3069217, a: 1}
+  m_IndirectSpecularColor: {r: 0.18028378, g: 0.22571412, b: 0.30692285, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -601,6 +601,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 9087966427139456051, guid: a021c6d3c1a46724ca869d9fa4244f20,
         type: 3}
+      propertyPath: <sceneMusic>k__BackingField.Path
+      value: event:/Music/titleTheme
+      objectReference: {fileID: 0}
+    - target: {fileID: 9087966427139456051, guid: a021c6d3c1a46724ca869d9fa4244f20,
+        type: 3}
       propertyPath: <music>k__BackingField.Guid.Data1
       value: 1587278420
       objectReference: {fileID: 0}
@@ -638,6 +643,26 @@ PrefabInstance:
         type: 3}
       propertyPath: <dateVoice2>k__BackingField.Guid.Data4
       value: -151194650
+      objectReference: {fileID: 0}
+    - target: {fileID: 9087966427139456051, guid: a021c6d3c1a46724ca869d9fa4244f20,
+        type: 3}
+      propertyPath: <sceneMusic>k__BackingField.Guid.Data1
+      value: 1587278420
+      objectReference: {fileID: 0}
+    - target: {fileID: 9087966427139456051, guid: a021c6d3c1a46724ca869d9fa4244f20,
+        type: 3}
+      propertyPath: <sceneMusic>k__BackingField.Guid.Data2
+      value: 1256190478
+      objectReference: {fileID: 0}
+    - target: {fileID: 9087966427139456051, guid: a021c6d3c1a46724ca869d9fa4244f20,
+        type: 3}
+      propertyPath: <sceneMusic>k__BackingField.Guid.Data3
+      value: 2125243015
+      objectReference: {fileID: 0}
+    - target: {fileID: 9087966427139456051, guid: a021c6d3c1a46724ca869d9fa4244f20,
+        type: 3}
+      propertyPath: <sceneMusic>k__BackingField.Guid.Data4
+      value: 204900698
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -861,7 +886,7 @@ MonoBehaviour:
   isEnabled: 1
   mapAnimator: {fileID: 0}
   transition: {fileID: 1199109661}
-  transitionTime: 1
+  transitionTime: 2
   isDayProgressor: 0
   isDateButton: 0
   xHoverScale: 0

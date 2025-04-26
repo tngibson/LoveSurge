@@ -10,20 +10,16 @@ public class FMODEvents : MonoBehaviour
 {
     [field: Header("Music")]
 
-    [field: SerializeField] public EventReference gameSoundtrack { get; private set; }
+    //[field: SerializeField] public EventReference gameSoundtrack { get; private set; }
 
     [field: SerializeField] public EventReference dateMusic { get; private set; }
-    [field: SerializeField] public EventReference environmentTrack { get; private set; }
+    //[field: SerializeField] public EventReference environmentTrack { get; private set; }
     [field: SerializeField] public EventReference envIntroSound { get; private set; }
     [field: SerializeField] public EventReference currentRingtone { get; private set; }
 
 
     [field: SerializeField] public EventReference sceneMusic { get; private set; }
-    // [field: SerializeField] public EventReference lotteTheme {get; private set;}
-    //[field: SerializeField] public EventReference samTheme { get; private set; }
-    //[field: SerializeField] public EventReference roomateTheme { get; private set; }
-    //[field: SerializeField] public EventReference deepConversation { get; private set; }
-    //[field: SerializeField] public EventReference anAverageDay { get; private set; }
+  
 
 
 
