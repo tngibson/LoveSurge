@@ -28,6 +28,7 @@ public class FMODEvents : MonoBehaviour
     [field: SerializeField] public EventReference cardHovering { get; private set; }
     [field: SerializeField] public EventReference cardShuffle { get; private set; }
     [field: SerializeField] public EventReference cardClicked { get; private set; }
+    [field: SerializeField] public EventReference discardCard { get; private set; }
 
     [field: Header("Voices")]
     [field: SerializeField] public EventReference dateVoice { get; private set; }

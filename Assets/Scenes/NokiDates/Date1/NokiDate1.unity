@@ -1164,10 +1164,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isWriting: 0
-  power1: 14
-  power2: 12
-  power3: 12
-  power4: 14
   type1: Courage
   type2: Creativity
   type3: Cleverness
@@ -2454,6 +2450,8 @@ MonoBehaviour:
   currentOpenIndex: -1
   currentOpenSlot: {fileID: 0}
   background: {fileID: 523106773}
+  normalSlotSprite: {fileID: 0}
+  highlightedSlotSprite: {fileID: 0}
 --- !u!61 &420358067
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -3510,8 +3508,14 @@ MonoBehaviour:
   locationText: {fileID: 0}
   locationTextText: 
   isEnabled: 0
+  mapAnimator: {fileID: 0}
+  transition: {fileID: 0}
+  transitionTime: 0
   isDayProgressor: 0
-  hoverScale: 0
+  isDateButton: 0
+  xHoverScale: 0
+  yHoverScale: 0
+  isStressReducer: 0
 --- !u!1 &619394800
 GameObject:
   m_ObjectHideFlags: 0
@@ -5836,6 +5840,7 @@ MonoBehaviour:
   creColor: {r: 0.7725491, g: 0.90196085, b: 0.8196079, a: 1}
   dropZoneScript: {fileID: 0}
   gameManager: {fileID: 0}
+  topicContainer: {fileID: 0}
   isClicked: 0
   isLocked: 0
   isCompleted: 0
@@ -7448,7 +7453,7 @@ MonoBehaviour:
   - {fileID: 1497879191}
   - {fileID: 1975168385}
   doneConvos: []
-  failedConvos: []
+  topicsToRemove: []
 --- !u!1 &1438024205
 GameObject:
   m_ObjectHideFlags: 0
@@ -7600,6 +7605,74 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1441009691}
   m_CullTransparentMesh: 1
+--- !u!1001 &1451019573
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 1768944104491096021, guid: a021c6d3c1a46724ca869d9fa4244f20,
+        type: 3}
+      propertyPath: m_Name
+      value: AudioManager
+      objectReference: {fileID: 0}
+    - target: {fileID: 2940753333971068076, guid: a021c6d3c1a46724ca869d9fa4244f20,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2940753333971068076, guid: a021c6d3c1a46724ca869d9fa4244f20,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2940753333971068076, guid: a021c6d3c1a46724ca869d9fa4244f20,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2940753333971068076, guid: a021c6d3c1a46724ca869d9fa4244f20,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2940753333971068076, guid: a021c6d3c1a46724ca869d9fa4244f20,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2940753333971068076, guid: a021c6d3c1a46724ca869d9fa4244f20,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2940753333971068076, guid: a021c6d3c1a46724ca869d9fa4244f20,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2940753333971068076, guid: a021c6d3c1a46724ca869d9fa4244f20,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2940753333971068076, guid: a021c6d3c1a46724ca869d9fa4244f20,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2940753333971068076, guid: a021c6d3c1a46724ca869d9fa4244f20,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: a021c6d3c1a46724ca869d9fa4244f20, type: 3}
 --- !u!1 &1497879186
 GameObject:
   m_ObjectHideFlags: 0
@@ -7774,6 +7847,7 @@ MonoBehaviour:
   creColor: {r: 0.7725491, g: 0.90196085, b: 0.8196079, a: 1}
   dropZoneScript: {fileID: 0}
   gameManager: {fileID: 0}
+  topicContainer: {fileID: 0}
   isClicked: 0
   isLocked: 0
   isCompleted: 0
@@ -8400,6 +8474,7 @@ MonoBehaviour:
   creColor: {r: 0.7725491, g: 0.90196085, b: 0.8196079, a: 1}
   dropZoneScript: {fileID: 0}
   gameManager: {fileID: 0}
+  topicContainer: {fileID: 0}
   isClicked: 0
   isLocked: 0
   isCompleted: 0
@@ -9169,6 +9244,8 @@ MonoBehaviour:
   cardCount: 2
   maxCardPower: 5
   disableRandomDraw: 0
+  deckCountText: {fileID: 0}
+  deckBackground: {fileID: 0}
 --- !u!1 &1820997958
 GameObject:
   m_ObjectHideFlags: 0
@@ -9356,6 +9433,7 @@ MonoBehaviour:
   - affectingTags: []
   - affectingTags: []
   cash: 1000
+  convoTiers: 01000000010000000100000001000000
 --- !u!1 &1828372911
 GameObject:
   m_ObjectHideFlags: 0
@@ -10025,6 +10103,7 @@ MonoBehaviour:
   creColor: {r: 0.7725491, g: 0.90196085, b: 0.8196079, a: 1}
   dropZoneScript: {fileID: 0}
   gameManager: {fileID: 0}
+  topicContainer: {fileID: 0}
   isClicked: 0
   isLocked: 0
   isCompleted: 0
@@ -10276,6 +10355,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   scoreText: {fileID: 634695430}
+  deckCountText: {fileID: 0}
   endGameText: {fileID: 1196808311}
   fullHandText: {fileID: 468733688}
   currentStressAmt: 0
@@ -10297,6 +10377,7 @@ MonoBehaviour:
   mapButton: {fileID: 602046414}
   CurrentCharacterIndex: 0
   handSize: 4
+  mapButtonScript: {fileID: 0}
 --- !u!4 &2001940043
 Transform:
   m_ObjectHideFlags: 0
@@ -11899,3 +11980,4 @@ SceneRoots:
   - {fileID: 1005606886}
   - {fileID: 1821074930}
   - {fileID: 1295519644}
+  - {fileID: 1451019573}

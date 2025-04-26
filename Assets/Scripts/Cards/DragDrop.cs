@@ -92,6 +92,8 @@ public class DragDrop : MonoBehaviour
         // Move the card to the canvas root to render above other elements
         transform.SetParent(canvas.transform, true);
         transform.SetAsLastSibling(); // Ensure it renders above all other elements
+        AudioManager.instance.PlayOneShot(FMODEvents.instance.cardClicked, this.transform.position);
+
     }
 
 
@@ -113,6 +115,8 @@ public class DragDrop : MonoBehaviour
         else if (isOverDropZone && gameManager.IsTopicSelected)  // Place in dropzone if applicable
         {
             PlaceInDropzone();
+            AudioManager.instance.PlayOneShot(FMODEvents.instance.cardPlaced, this.transform.position);
+
         }
         else if (isOverPlayerArea && !card.isReserveCard)  // Return the card to the player area
         {
@@ -273,6 +277,7 @@ public class DragDrop : MonoBehaviour
 
             // Deactivate the GameObject
             gameObject.SetActive(false);
+            AudioManager.instance.PlayOneShot(FMODEvents.instance.discardCard, this.transform.position);
         }
         else
         {
