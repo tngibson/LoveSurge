@@ -3,6 +3,7 @@ using UnityEngine.UI;
 using UnityEngine.EventSystems;
 using UnityEngine.SceneManagement;
 using TMPro;
+using System.Collections;
 
 public class MapScript : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
 {
@@ -15,6 +16,9 @@ public class MapScript : MonoBehaviour, IPointerEnterHandler, IPointerExitHandle
     public bool isEnabled;
 
     [SerializeField] private Animator mapAnimator;
+
+    [SerializeField] private Animator transition;
+    [SerializeField] private float transitionTime;
 
     // New boolean to check if this map item should advance the day phase
     [SerializeField] private bool isDayProgressor;
@@ -93,14 +97,29 @@ public class MapScript : MonoBehaviour, IPointerEnterHandler, IPointerExitHandle
             LocationManager.Instance.phaseEnteredDate = CalendarManager.instance.currentPhase;
         }
 
-        SceneManager.LoadScene(locName);
-        gameObject.SetActive(false);
+        StartCoroutine(LoadScene(locName));
 
         // Check if this map item progresses the day phase
         if (CalendarManager.instance != null && isDayProgressor)
         {
             CalendarManager.instance.AdvancePhase();
         }
+    }
+
+    IEnumerator LoadScene(string scene)
+    {
+        // Check if there is a scene transition
+        // If there is, transition before loading the scene
+        if (transition != null)
+        {
+            transition.SetTrigger("Start");
+
+            yield return new WaitForSeconds(transitionTime);
+        }
+
+        // Loads scene
+        SceneManager.LoadScene(scene);
+        gameObject.SetActive(false);
     }
 
     private void RestartApplication()
