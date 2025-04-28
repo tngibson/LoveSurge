@@ -7,7 +7,7 @@ public class DateCharacter : MonoBehaviour
     [field: SerializeField] public EnumDateCharacter character { get; private set; }
     private void Start()
     {
-        MusicManager.instance.DateCharacter(character);
+        AudioManager.instance.DateCharacter(character);
     }
 
     // Update is called once per frame

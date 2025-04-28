@@ -608,6 +608,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   currentScoreText: {fileID: 532872336}
+  scoreCalculationText: {fileID: 0}
   dialogText: {fileID: 1251843997}
   playedCards: []
   maxCards: 4
@@ -621,8 +622,8 @@ MonoBehaviour:
   gameManager: {fileID: 2001940042}
   reserveManager: {fileID: 1408573037}
   dropzone: {fileID: 1209788053}
-  typewriterSpeed: 0.05
   isTypewriting: 0
+  isCountingDown: 0
   discardDuration: 1
   scrollRect: {fileID: 202139553}
   textRectTransform: {fileID: 1251843996}
@@ -812,10 +813,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isWriting: 0
-  power1: 14
-  power2: 12
-  power3: 12
-  power4: 14
   type1: Courage
   type2: Creativity
   type3: Cleverness
@@ -824,6 +821,10 @@ MonoBehaviour:
   label2: Vandalizing Steve Statue
   label3: Flowers
   label4: Cockroaches
+  addExtraType1Line: 0
+  addExtraType2Line: 0
+  addExtraType3Line: 0
+  addExtraType4Line: 0
   uiOpaqueImages:
   - {fileID: 505803152}
   - {fileID: 1411976328}
@@ -2750,17 +2751,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bbe147c37e01d3847adb6df4c90f7c49, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  locInfo: 
   locName: NokiDateOutro
-  useMapManager: 0
-  manager: {fileID: 0}
   button: {fileID: 0}
   questionText: {fileID: 0}
   locationText: {fileID: 0}
   locationTextText: 
   isEnabled: 0
+  mapAnimator: {fileID: 0}
+  transition: {fileID: 0}
+  transitionTime: 0
   isDayProgressor: 0
-  hoverScale: 1.1
+  isDateButton: 0
+  xHoverScale: 0
+  yHoverScale: 0
+  isStressReducer: 0
 --- !u!1 &619394800
 GameObject:
   m_ObjectHideFlags: 0
@@ -4612,6 +4616,7 @@ MonoBehaviour:
   creColor: {r: 0.7725491, g: 0.90196085, b: 0.8196079, a: 1}
   dropZoneScript: {fileID: 0}
   gameManager: {fileID: 0}
+  topicContainer: {fileID: 0}
   isClicked: 0
   isLocked: 0
   isCompleted: 0
@@ -5006,6 +5011,7 @@ MonoBehaviour:
   - {fileID: -1454504632352844718, guid: afba97dd884423a4e8264984c925383c, type: 3}
   reserveSlot: {fileID: 1133278159}
   cardImage: {fileID: 0}
+  cardDragDrop: {fileID: 0}
   card: {fileID: 0}
   reserveManager: {fileID: 1408573037}
 --- !u!1001 &1209788050
@@ -5672,6 +5678,7 @@ MonoBehaviour:
   - {fileID: -1454504632352844718, guid: afba97dd884423a4e8264984c925383c, type: 3}
   reserveSlot: {fileID: 1250643034}
   cardImage: {fileID: 0}
+  cardDragDrop: {fileID: 0}
   card: {fileID: 0}
   reserveManager: {fileID: 1408573037}
 --- !u!1001 &1251171722
@@ -6403,17 +6410,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bbe147c37e01d3847adb6df4c90f7c49, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  locInfo: 
   locName: Map
-  useMapManager: 0
-  manager: {fileID: 0}
   button: {fileID: 0}
   questionText: {fileID: 0}
   locationText: {fileID: 0}
   locationTextText: 
   isEnabled: 0
+  mapAnimator: {fileID: 0}
+  transition: {fileID: 0}
+  transitionTime: 0
   isDayProgressor: 0
-  hoverScale: 1.1
+  isDateButton: 0
+  xHoverScale: 0
+  yHoverScale: 0
+  isStressReducer: 0
 --- !u!1 &1298419915
 GameObject:
   m_ObjectHideFlags: 0
@@ -6902,51 +6912,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1369001557}
   m_CullTransparentMesh: 1
---- !u!1 &1373152409
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1373152411}
-  - component: {fileID: 1373152410}
-  m_Layer: 0
-  m_Name: SoundtrackSetter
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!114 &1373152410
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1373152409}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 45a960cb0a316ac4186af3d11d80359b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  <track>k__BackingField: 2
---- !u!4 &1373152411
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1373152409}
-  serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 567.2388, y: 337.72012, z: -4.166292}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1396999329
 GameObject:
   m_ObjectHideFlags: 0
@@ -7182,6 +7147,9 @@ MonoBehaviour:
   currentPlayableIndex: 0
   currentOpenIndex: -1
   currentOpenSlot: {fileID: 0}
+  background: {fileID: 0}
+  normalSlotSprite: {fileID: 0}
+  highlightedSlotSprite: {fileID: 0}
 --- !u!1 &1411976327
 GameObject:
   m_ObjectHideFlags: 0
@@ -7282,7 +7250,7 @@ MonoBehaviour:
   - {fileID: 1497879191}
   - {fileID: 1975168385}
   doneConvos: []
-  failedConvos: []
+  topicsToRemove: []
 --- !u!1 &1412511071
 GameObject:
   m_ObjectHideFlags: 0
@@ -7609,6 +7577,7 @@ MonoBehaviour:
   creColor: {r: 0.7725491, g: 0.90196085, b: 0.8196079, a: 1}
   dropZoneScript: {fileID: 0}
   gameManager: {fileID: 0}
+  topicContainer: {fileID: 0}
   isClicked: 0
   isLocked: 0
   isCompleted: 0
@@ -8380,6 +8349,7 @@ MonoBehaviour:
   - {fileID: -1454504632352844718, guid: afba97dd884423a4e8264984c925383c, type: 3}
   reserveSlot: {fileID: 1590153837}
   cardImage: {fileID: 0}
+  cardDragDrop: {fileID: 0}
   card: {fileID: 0}
   reserveManager: {fileID: 1408573037}
 --- !u!1 &1646536585
@@ -8556,6 +8526,7 @@ MonoBehaviour:
   creColor: {r: 0.7725491, g: 0.90196085, b: 0.8196079, a: 1}
   dropZoneScript: {fileID: 0}
   gameManager: {fileID: 0}
+  topicContainer: {fileID: 0}
   isClicked: 0
   isLocked: 0
   isCompleted: 0
@@ -9073,6 +9044,8 @@ MonoBehaviour:
   cardCount: 2
   maxCardPower: 5
   disableRandomDraw: 0
+  deckCountText: {fileID: 0}
+  deckBackground: {fileID: 0}
 --- !u!1 &1820997958
 GameObject:
   m_ObjectHideFlags: 0
@@ -9458,6 +9431,7 @@ MonoBehaviour:
   - {fileID: -1454504632352844718, guid: afba97dd884423a4e8264984c925383c, type: 3}
   reserveSlot: {fileID: 1823637187}
   cardImage: {fileID: 0}
+  cardDragDrop: {fileID: 0}
   card: {fileID: 0}
   reserveManager: {fileID: 1408573037}
 --- !u!1 &1825107569
@@ -10191,6 +10165,7 @@ MonoBehaviour:
   creColor: {r: 0.7725491, g: 0.90196085, b: 0.8196079, a: 1}
   dropZoneScript: {fileID: 0}
   gameManager: {fileID: 0}
+  topicContainer: {fileID: 0}
   isClicked: 0
   isLocked: 0
   isCompleted: 0
@@ -10226,6 +10201,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   scoreText: {fileID: 532872336}
+  deckCountText: {fileID: 0}
   endGameText: {fileID: 1751900497}
   fullHandText: {fileID: 468733688}
   currentStressAmt: 0
@@ -10241,10 +10217,13 @@ MonoBehaviour:
   dropzone: {fileID: 212676571}
   discard: {fileID: 848889915}
   discardBin: {fileID: 848889913}
+  reserveManager: {fileID: 0}
   categories: []
   endTurnButton: {fileID: 1396999329}
   mapButton: {fileID: 602046414}
+  CurrentCharacterIndex: 0
   handSize: 4
+  mapButtonScript: {fileID: 0}
 --- !u!4 &2001940043
 Transform:
   m_ObjectHideFlags: 0
@@ -11394,4 +11373,3 @@ SceneRoots:
   - {fileID: 619394802}
   - {fileID: 379998687}
   - {fileID: 1365369316}
-  - {fileID: 1373152411}

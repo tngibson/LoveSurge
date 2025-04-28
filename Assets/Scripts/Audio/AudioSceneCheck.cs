@@ -34,13 +34,15 @@ public class AudioSceneCheck : MonoBehaviour
         }
     }
 
-    bool isMatch()
+    public bool isMatch()
     {
         string currentSceneName = SceneManager.GetActiveScene().name;
         if (sceneNamesToDestroy.Contains(currentSceneName))
         {
+            Debug.Log(currentSceneName);
             return true;
         }
+        Debug.Log(currentSceneName);
         return false;
     }
 }

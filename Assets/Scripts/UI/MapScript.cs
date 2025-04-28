@@ -119,6 +119,7 @@ public class MapScript : MonoBehaviour, IPointerEnterHandler, IPointerExitHandle
         // Loads scene
         SceneManager.LoadScene(scene);
         gameObject.SetActive(false);
+        AudioSceneCheck.instance?.isMatch();
     }
 
     private void RestartApplication()

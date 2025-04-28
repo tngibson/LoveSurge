@@ -30,6 +30,7 @@ public class AudioManager : MonoBehaviour
    private EventInstance musicEventInstance;
    private EventInstance environmentEventInstance;
    private EventInstance dialougeEventInstance;
+   private EventInstance dateMusicInstance;
    private List<EventInstance> eventInstances;
 
    private void Awake()
@@ -56,7 +57,7 @@ public class AudioManager : MonoBehaviour
         InitializeMusic(FMODEvents.instance.sceneMusic);
         InitializeVoices(FMODEvents.instance.playerVoice);
         InitializeEnvironment(FMODEvents.instance.envIntroSound);
-
+        InitializeDate(FMODEvents.instance.dateMusic);
     }
 
     private void Update()
@@ -65,6 +66,7 @@ public class AudioManager : MonoBehaviour
         musicBus.setVolume(musicVolume);
         sfxBus.setVolume(sfxVolume);
     }
+
     public void PlayOneShot(EventReference sound, Vector3 worldPos)
     {
         RuntimeManager.PlayOneShot(sound, worldPos);
@@ -82,6 +84,53 @@ public class AudioManager : MonoBehaviour
         musicEventInstance.start();
     }
 
+    private void InitializeDate(EventReference dateMusic)
+    {
+        dateMusicInstance = CreateInstance(dateMusic);
+        dateMusicInstance.start();
+    }
+
+    public void DateProgress(EnumDateProgress track)
+    {
+        switch (track)
+        {
+            case EnumDateProgress.CARD_DATE:
+                dateMusicInstance.setParameterByName("dateProgress", 0);
+                break;
+            case EnumDateProgress.SKILL_CHECK:
+                dateMusicInstance.setParameterByName("dateProgress", 1);
+                break;
+            case EnumDateProgress.START:
+                dateMusicInstance.start();
+                break;
+            case EnumDateProgress.STOP:
+                dateMusicInstance.stop(FMOD.Studio.STOP_MODE.ALLOWFADEOUT);
+                break;
+            case EnumDateProgress.GOOD_END:
+                 dateMusicInstance.setParameterByName("dateProgress", 2);
+                break;
+            case EnumDateProgress.BAD_END:
+                dateMusicInstance.setParameterByName("dateProgress", 3);
+                break;
+
+        }
+    }
+
+    public void DateCharacter(EnumDateCharacter character)
+    {
+        switch (character)
+        {
+            case EnumDateCharacter.CELCI:
+                dateMusicInstance.setParameterByName("dateCharacter", 0);
+                break;
+            case EnumDateCharacter.LOTTE:
+                dateMusicInstance.setParameterByName("dateCharacter", 1);
+                break;
+            case EnumDateCharacter.NOKI:
+                dateMusicInstance.setParameterByName("dateCharacter", 2);
+                break;
+        }
+    }
 
     private void InitializeEnvironment(EventReference musicEventReference)
     {
