@@ -150,7 +150,7 @@ public class GameManager : MonoBehaviour
         endTurnButton.SetActive(false);
         discardBin.SetActive(false);
         mapButton.SetActive(true); // Enable the map button at game win
-        AudioManager.instance.DateProgress(track: EnumDateProgress.SKILL_CHECK);
+        AudioManager.instance.DateProgress(EnumDateProgress.SKILL_CHECK);
         Debug.Log("Skill Check");
     }
 
@@ -162,7 +162,7 @@ public class GameManager : MonoBehaviour
         endTurnButton.SetActive(false);
         discardBin.SetActive(false);
         mapButton.SetActive(true); // Enable the map button at game win
-        AudioManager.instance.DateProgress(track: EnumDateProgress.GOOD_END);
+        AudioManager.instance.DateProgress(EnumDateProgress.GOOD_END);
         Debug.Log("Good End");
     }
 
@@ -173,7 +173,7 @@ public class GameManager : MonoBehaviour
         endTurnButton.SetActive(false);
         discardBin.SetActive(false);
         mapButton.SetActive(true); // Enable the map button at game over
-        AudioManager.instance.DateProgress(track: EnumDateProgress.BAD_END);
+        AudioManager.instance.DateProgress(EnumDateProgress.BAD_END);
         Debug.Log("Bad End");
 
 

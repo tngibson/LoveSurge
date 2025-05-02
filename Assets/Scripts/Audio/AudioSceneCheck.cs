@@ -11,38 +11,31 @@ public class AudioSceneCheck : MonoBehaviour
 
     private void Awake()
     {
-        DontDestroyOnLoad(gameObject);
-
         if (instance == null)
         {
             instance = this;
             DontDestroyOnLoad (gameObject);
-            Debug.Log("nope");
         }
         else
         {
             Destroy(gameObject);
-            Debug.Log("destroy");
         }
     }
 
-    private void Start()
-    {
-            if (isMatch())
-        {
-            Destroy(gameObject);
-        }
-    }
-
-    public bool isMatch()
+    public void isMatch()
     {
         string currentSceneName = SceneManager.GetActiveScene().name;
+        Debug.Log($"Testing Match: {currentSceneName}");
         if (sceneNamesToDestroy.Contains(currentSceneName))
         {
-            Debug.Log(currentSceneName);
-            return true;
+            Destroy(gameObject);
+
         }
-        Debug.Log(currentSceneName);
-        return false;
+   
+    }
+
+    private void OnDestroy()
+    {
+        Debug.Log("Did get destroyed");
     }
 }

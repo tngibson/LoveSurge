@@ -11,34 +11,34 @@ using FMODUnityResonance;
 public class AudioManager : MonoBehaviour
 {
     // Start is called before the first frame update
-   public static AudioManager instance { get; private set;}
+    public static AudioManager instance { get; private set; }
 
-   //UI Volume Control
-   [Header("Volume")]
-   [Range(0, 1)]
-   public float masterVolume = 1;
-   [Range(0, 1)]
-   public float musicVolume = 1;
-   [Range(0, 1)]
-   public float sfxVolume = 1;
-   [Range(0, 1)]
+    //UI Volume Control
+    [Header("Volume")]
+    [Range(0, 1)]
+    public float masterVolume = 1;
+    [Range(0, 1)]
+    public float musicVolume = 1;
+    [Range(0, 1)]
+    public float sfxVolume = 1;
+    [Range(0, 1)]
 
-   private Bus masterBus;
-   private Bus musicBus;
-   private Bus sfxBus;
+    private Bus masterBus;
+    private Bus musicBus;
+    private Bus sfxBus;
 
-   private EventInstance musicEventInstance;
-   private EventInstance environmentEventInstance;
-   private EventInstance dialougeEventInstance;
-   private EventInstance dateMusicInstance;
-   private List<EventInstance> eventInstances;
+    private EventInstance musicEventInstance;
+    private EventInstance environmentEventInstance;
+    private EventInstance dialougeEventInstance;
+    private EventInstance dateMusicInstance;
+    private List<EventInstance> eventInstances;
 
-   private void Awake()
-   {
-    if (instance != null)
+    private void Awake()
     {
-        Debug.LogError("Found more than one Audio Manager in the scene.");
-        Destroy(gameObject);
+        if (instance != null)
+        {
+            Debug.LogError("Found more than one Audio Manager in the scene.");
+            Destroy(gameObject);
 
         }
         instance = this;
@@ -52,12 +52,14 @@ public class AudioManager : MonoBehaviour
 
     }
 
+
     private void Start()
     {
         InitializeMusic(FMODEvents.instance.sceneMusic);
         InitializeVoices(FMODEvents.instance.playerVoice);
         InitializeEnvironment(FMODEvents.instance.envIntroSound);
         InitializeDate(FMODEvents.instance.dateMusic);
+        AudioSceneCheck.instance?.isMatch();
     }
 
     private void Update()
@@ -74,12 +76,14 @@ public class AudioManager : MonoBehaviour
 
     public EventInstance CreateInstance (EventReference eventReference)
     {
+       // if (eventReference.IsNull) { return EventInstance; }
         EventInstance eventInstance = RuntimeManager.CreateInstance(eventReference);
         eventInstances.Add(eventInstance);
         return eventInstance;
     }
     private void InitializeMusic(EventReference musicEventReference)
     {
+        if(musicEventReference.IsNull) { return; }
         musicEventInstance = CreateInstance(musicEventReference);
         musicEventInstance.start();
     }

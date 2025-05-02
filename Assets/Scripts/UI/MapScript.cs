@@ -67,7 +67,7 @@ public class MapScript : MonoBehaviour, IPointerEnterHandler, IPointerExitHandle
 
     public void OnSelect()
     {
-        Debug.Log(isStressReducer);
+        //Debug.Log(isStressReducer);
         
         if (locName == "Quit")
         {
