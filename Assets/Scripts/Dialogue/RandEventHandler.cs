@@ -40,10 +40,18 @@ public class RandEventHandler : MonoBehaviour
     private float typewriterSpeed = 0.025f;
 
     // FMOD Audio
-    private EventInstance levelMusic;
-    private EventInstance dateDialogueVoice;
-    private EventInstance date2DialougeVoice;
-    private EventInstance playerDialogueVoice;
+    private EventInstance playerVoice;
+    private EventInstance nokiVoice;
+    private EventInstance lotteVoice;
+    private EventInstance celciVoice;
+    private EventInstance miguelVoice;
+    private EventInstance fishVoice;
+    private EventInstance ceoVoice;
+    private EventInstance wizardVoice;
+    private EventInstance deliahVoice;
+
+
+
 
     private Coroutine voiceCoroutine; // To track the active coroutine
 
@@ -246,7 +254,7 @@ public class RandEventHandler : MonoBehaviour
 
     public void NextLine()
     {
-        AudioManager.instance.PlayOneShot(FMODEvents.instance.uiClick, this.transform.position); // Play click sound
+        AudioManager.instance.PlayOneShot(FMODEvents.instance.UiClick, this.transform.position); // Play click sound
         currentLineIndex++;
         DisplayLine();
     }
@@ -320,7 +328,7 @@ public class RandEventHandler : MonoBehaviour
 
     public void OnChoiceSelected(int choiceIndex)
     {
-        AudioManager.instance.PlayOneShot(FMODEvents.instance.uiClick, this.transform.position); // Play click sound
+        AudioManager.instance.PlayOneShot(FMODEvents.instance.UiClick, this.transform.position); // Play click sound
         isChoiceTime = false;
         choicePanel.SetActive(false);
 
@@ -406,22 +414,45 @@ public class RandEventHandler : MonoBehaviour
     // FMOD Sound Functions
     private void UpdateVoice(string speaker)
     {
-        EventInstance voiceInstance;
+        EventInstance voiceInstance = default;
 
         // Determine the correct voice instance
         if (speaker == "You" || string.IsNullOrEmpty(speaker))
         {
-            voiceInstance = playerDialogueVoice;
+            voiceInstance = playerVoice;
         }
         else if (speaker == "Noki")
         {
-            voiceInstance = dateDialogueVoice;
+            voiceInstance = nokiVoice;
         }
-        else
+        else if (speaker == "Lotte")
         {
-            voiceInstance = date2DialougeVoice;
+            voiceInstance = lotteVoice;
         }
-
+        else if (speaker == "Celci")
+        {
+            voiceInstance = celciVoice;
+        }
+        else if (speaker == "Miguel")
+        {
+            voiceInstance = miguelVoice;
+        }
+        else if (speaker == "Fish")
+        {
+            voiceInstance = fishVoice;
+        }
+        else if (speaker == "Ceo")
+        {
+            voiceInstance = ceoVoice;
+        }
+        else if (speaker == "Wizard")
+        {
+            voiceInstance = wizardVoice;
+        }
+        else if (speaker == "Deliah")
+        {
+            voiceInstance = deliahVoice;
+        }
         // Manage the voice playback coroutine
         if (isTypewriting)
         {
@@ -448,20 +479,15 @@ public class RandEventHandler : MonoBehaviour
 
     private void InitializeAudio()
     {
-        //levelMusic = AudioManager.instance.CreateInstance(FMODEvents.instance.music);
-        playerDialogueVoice = AudioManager.instance.CreateInstance(FMODEvents.instance.playerVoice);
-        dateDialogueVoice = AudioManager.instance.CreateInstance(FMODEvents.instance.dateVoice);
-        date2DialougeVoice = AudioManager.instance.CreateInstance(FMODEvents.instance.dateVoice2);
-        PlayBackgroundMusic();
-    }
-
-    private void PlayBackgroundMusic()
-    {
-        levelMusic.getPlaybackState(out PLAYBACK_STATE playbackState);
-        if (playbackState == PLAYBACK_STATE.STOPPED)
-        {
-            levelMusic.start();
-        }
+        playerVoice = AudioManager.instance.CreateInstance(FMODEvents.instance.PlayerVoice);
+        nokiVoice = AudioManager.instance.CreateInstance(FMODEvents.instance.NokiVoice);
+        lotteVoice = AudioManager.instance.CreateInstance(FMODEvents.instance.LotteVoice);
+        celciVoice = AudioManager.instance.CreateInstance(FMODEvents.instance.CelciVoice);
+        miguelVoice = AudioManager.instance.CreateInstance(FMODEvents.instance.MiguelVoice);
+        fishVoice = AudioManager.instance.CreateInstance(FMODEvents.instance.FishVoice);
+        ceoVoice = AudioManager.instance.CreateInstance(FMODEvents.instance.CeoVoice);
+        wizardVoice = AudioManager.instance.CreateInstance(FMODEvents.instance.WizardVoice);
+        deliahVoice = AudioManager.instance.CreateInstance(FMODEvents.instance.DeliahVoice);
     }
 }
 

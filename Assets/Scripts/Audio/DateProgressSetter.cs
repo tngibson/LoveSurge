@@ -8,7 +8,7 @@ public class DateProgressSetter : MonoBehaviour
     [field: SerializeField] public EnumDateProgress track { get; private set; }
     private void Start()
     {
-        AudioManager.instance.DateProgress(track);
+        //AudioManager.instance.DateProgress(track);
     }
 
     // Update is called once per frame

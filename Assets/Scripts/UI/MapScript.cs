@@ -43,6 +43,11 @@ public class MapScript : MonoBehaviour, IPointerEnterHandler, IPointerExitHandle
         if (locationText != null) locationText.GetComponent<TextMeshProUGUI>().text = locationTextText;
     }
 
+    private void Start()
+    {
+        FindMusicPlayerAndPlay();
+    }
+
     public void OnPointerEnter(PointerEventData eventData)
     {
         if (isEnabled && mapAnimator != null)
@@ -105,6 +110,14 @@ public class MapScript : MonoBehaviour, IPointerEnterHandler, IPointerExitHandle
         }
     }
 
+  private void FindMusicPlayerAndPlay(){
+        Debug.Log("Finding Music Player and Playing Music");
+       SoundtrackSetter setters = FindFirstObjectByType<SoundtrackSetter>();
+        if(setters != null)
+        {
+           setters.PlayMusic();
+        }
+    }
     IEnumerator LoadScene(string scene)
     {
         // Check if there is a scene transition
@@ -112,7 +125,7 @@ public class MapScript : MonoBehaviour, IPointerEnterHandler, IPointerExitHandle
         if (transition != null)
         {
             transition.SetTrigger("Start");
-            AudioManager.instance.CleanUp();
+            MusicManager.Instance.StopMusic();
             yield return new WaitForSeconds(transitionTime);
         }
 

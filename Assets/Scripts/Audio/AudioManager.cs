@@ -32,33 +32,30 @@ public class AudioManager : MonoBehaviour
     private EventInstance dialougeEventInstance;
     private EventInstance dateMusicInstance;
     private List<EventInstance> eventInstances;
-
-    private void Awake()
+    public void Awake()
     {
-        if (instance != null)
+        if (instance == null)
         {
-            Debug.LogError("Found more than one Audio Manager in the scene.");
-            Destroy(gameObject);
-
+            instance = this;
+            DontDestroyOnLoad(gameObject);
         }
-        instance = this;
-        //DontDestroyOnLoad(gameObject);
+        else
+        {
+            Destroy(gameObject);   
+        }
         eventInstances = new List<EventInstance>();
 
         //Set Bus
         masterBus = RuntimeManager.GetBus("bus:/");
         musicBus = RuntimeManager.GetBus("bus:/Music");
         sfxBus = RuntimeManager.GetBus("bus:/SFX");
-
     }
 
 
     private void Start()
     {
-        InitializeMusic(FMODEvents.instance.sceneMusic);
-        InitializeVoices(FMODEvents.instance.playerVoice);
-        InitializeEnvironment(FMODEvents.instance.envIntroSound);
-        InitializeDate(FMODEvents.instance.dateMusic);
+        InitializeVoices(FMODEvents.instance.PlayerVoice);
+        InitializeEnvironment(FMODEvents.instance.EnvIntroSound);
         AudioSceneCheck.instance?.isMatch();
     }
 
@@ -69,7 +66,7 @@ public class AudioManager : MonoBehaviour
         sfxBus.setVolume(sfxVolume);
     }
 
-    public void PlayOneShot(EventReference sound, Vector3 worldPos)
+    public void PlayOneShot(EventReference sound, Vector3 worldPos = default)
     {
         RuntimeManager.PlayOneShot(sound, worldPos);
     }
@@ -81,6 +78,7 @@ public class AudioManager : MonoBehaviour
         eventInstances.Add(eventInstance);
         return eventInstance;
     }
+/**
     private void InitializeMusic(EventReference musicEventReference)
     {
         if(musicEventReference.IsNull) { return; }
@@ -135,26 +133,18 @@ public class AudioManager : MonoBehaviour
                 break;
         }
     }
+**/
 
     private void InitializeEnvironment(EventReference musicEventReference)
     {
         //environmentEventInstance = CreateInstance(musicEventReference);
-        PlayOneShot(FMODEvents.instance.envIntroSound, this.transform.position);
+        PlayOneShot(FMODEvents.instance.EnvIntroSound, this.transform.position);
         //environmentEventInstance.start();
     }
 
     private void InitializeVoices(EventReference eventReference)
     {
         dialougeEventInstance = CreateInstance(eventReference);
-    }
-
-    public void SetDialougeType(VocalTypes vocalType)
-    {
-        dialougeEventInstance.setParameterByName("vocalType", (float) vocalType);
-    }
-    public void SetDialougeType(SilenceTrigger textTyping)
-    {
-        dialougeEventInstance.setParameterByName("textTyping", (float) textTyping);
     }
     public void CleanUp()
     {

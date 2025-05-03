@@ -12,51 +12,53 @@ public class FMODEvents : MonoBehaviour
 
     //[field: SerializeField] public EventReference gameSoundtrack { get; private set; }
 
-    [field: SerializeField] public EventReference dateMusic { get; private set; }
+   // [field: SerializeField] public EventReference dateMusic { get; private set; }
     //[field: SerializeField] public EventReference environmentTrack { get; private set; }
-    [field: SerializeField] public EventReference envIntroSound { get; private set; }
-    [field: SerializeField] public EventReference currentRingtone { get; private set; }
-
-
-    [field: SerializeField] public EventReference sceneMusic { get; private set; }
-
-
-
-
+    [field: SerializeField] public EventReference EnvIntroSound { get; private set; }
+    [field: SerializeField] public EventReference CurrentRingtone { get; private set; }
+    //[field: SerializeField] public EventReference sceneMusic { get; private set; }
 
     [field: Header("Card SFX")]
-    [field: SerializeField] public EventReference cardPlaced { get; private set; }
-    [field: SerializeField] public EventReference cardHovering { get; private set; }
-    [field: SerializeField] public EventReference cardShuffle { get; private set; }
-    [field: SerializeField] public EventReference cardClicked { get; private set; }
-    [field: SerializeField] public EventReference discardCard { get; private set; }
+    [field: SerializeField] public EventReference CardPlaced { get; private set; }
+    [field: SerializeField] public EventReference CardHovering { get; private set; }
+    [field: SerializeField] public EventReference CardShuffle { get; private set; }
+    [field: SerializeField] public EventReference CardClicked { get; private set; }
+    [field: SerializeField] public EventReference DiscardCard { get; private set; }
 
     [field: Header("Voices")]
-    [field: SerializeField] public EventReference dateVoice { get; private set; }
-    [field: SerializeField] public EventReference dateVoice2 { get; private set; }
-    [field: SerializeField] public EventReference playerVoice { get; private set; }
-
+    [field: SerializeField] public EventReference DateVoice { get; private set; }
+    [field: SerializeField] public EventReference DateVoice2 { get; private set; }
+    [field: SerializeField] public EventReference PlayerVoice { get; private set; }
+    [field: SerializeField] public EventReference NokiVoice { get; private set;}
+    [field: SerializeField] public EventReference LotteVoice { get; private set;}
+    [field: SerializeField] public EventReference CelciVoice { get; private set;}
+    [field: SerializeField] public EventReference MiguelVoice { get; private set;}
+    [field: SerializeField] public EventReference FishVoice { get; private set;}
+    [field: SerializeField] public EventReference CeoVoice { get; private set;}
+    [field: SerializeField] public EventReference WizardVoice { get; private set;}
+    [field: SerializeField] public EventReference DeliahVoice { get; private set;}
+   
     [field: Header("UI SFX")]
-    [field: SerializeField] public EventReference uiClick { get; private set; }
-    [field: SerializeField] public EventReference goodResponse { get; private set; }
-    [field: SerializeField] public EventReference badResponse { get; private set; }
-    [field: SerializeField] public EventReference connectionBarUp { get; private set; }
-    [field: SerializeField] public EventReference connectionBarDown { get; private set; }
+    [field: SerializeField] public EventReference UiClick { get; private set; }
+    [field: SerializeField] public EventReference GoodResponse { get; private set; }
+    [field: SerializeField] public EventReference BadResponse { get; private set; }
+    [field: SerializeField] public EventReference ConnectionBarUp { get; private set; }
+    [field: SerializeField] public EventReference ConnectionBarDown { get; private set; }
+    [field: SerializeField] public EventReference WindowOpen { get; private set; }
+    [field: SerializeField] public EventReference WindowClose { get; private set; }
 
 
-    [field: SerializeField] public EventReference dateTierII { get; private set; }
-    [field: SerializeField] public EventReference dateTierIII { get; private set; }
-    [field: SerializeField] public EventReference diceRoll { get; private set; }
-    [field: SerializeField] public EventReference diceShake { get; private set; }
+    //[field: SerializeField] public EventReference dateTierII { get; private set; }
+    //[field: SerializeField] public EventReference dateTierIII { get; private set; }
+    [field: SerializeField] public EventReference DiceRoll { get; private set; }
+    [field: SerializeField] public EventReference DiceShake { get; private set; }
 
     [field: Header("Vocal SFX")]
-    [field: SerializeField] public EventReference busted { get; private set; }
-    [field: SerializeField] public EventReference datingStart { get; private set; }
+    //[field: SerializeField] public EventReference busted { get; private set; }
+    [field: SerializeField] public EventReference DatingStart { get; private set; }
 
     public static FMODEvents instance { get; private set; }
    
-
-
     public void Awake()
     {
         if (instance != null)

@@ -30,6 +30,6 @@ public class DrawCards : MonoBehaviour
             card.transform.SetParent(playerArea.transform);  // Set the parent of the card to the player's area
             playerArea.AddCards(card);  // Add the card to the player's area
         }
-        AudioManager.instance.PlayOneShot(FMODEvents.instance.cardShuffle, this.transform.position);
+        AudioManager.instance.PlayOneShot(FMODEvents.instance.CardShuffle, this.transform.position);
     }
 }

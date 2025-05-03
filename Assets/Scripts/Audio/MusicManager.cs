@@ -5,135 +5,245 @@ using FMODUnity;
 using FMOD.Studio;
 using System;
 using UnityEngine.SceneManagement;
+using Unity.VisualScripting;
+using TMPro;
+using System.IO;
+using UnityEditor;
+using UnityEditor.Rendering;
 
 public class MusicManager : MonoBehaviour
 {
-    // Start is called before the first frame update
-    public static MusicManager instance { get; private set; }
+    #region Serialzied Fields
+    public static MusicManager Instance;
+    [SerializeField] private string currentMusicName;
 
-    private EventInstance musicEventInstance;
-    private EventInstance dateMusicInstance;
-    private List<EventInstance> eventInstances;
-    private EnumSoundtrack soundtrackInstance;
-    public EnumSoundtrack SoundTrackInstance { get => soundtrackInstance; set => soundtrackInstance = value; }
-    private void Awake()
+    [SerializeField] private EventReference
+        titleTheme,
+        mapTheme,
+        nokiTheme,
+        lotteTheme,
+        celciTheme,
+        roomateTheme,
+        randomEventTheme,
+        quietTheme,
+        loveTheme,
+        dateMusic;
+
+    [SerializeField] private bool canSetParameter = false;
+        
+    #region FMOD Paramaters
+
+    [SerializeField] private int dateCharacter = 0;
+    [SerializeField] private int dateProgress = 0;
+
+    #endregion
+    
+    #endregion
+
+    #region Properties
+
+    public EventInstance CurrentMusicInstance {get; private set;}
+    public string ActiveMusicName {get => currentMusicName; set => currentMusicName = value; }
+    public EventReference TitleTheme { get => titleTheme; }
+    public EventReference MapTheme { get => mapTheme; }
+    public EventReference NokiTheme { get => nokiTheme; }
+    public EventReference LotteTheme { get => lotteTheme; }
+    public EventReference CelciTheme { get => celciTheme; }
+    public EventReference RandomEvent { get => randomEventTheme; }
+    public EventReference QuietTheme { get => quietTheme; }
+    public EventReference DateMusic { get => dateMusic; }
+    public EventReference LoveTheme { get => loveTheme; }
+    public Coroutine TransitionCoroutine { get; private set; }
+    #endregion
+   
+    #region Music Manager
+    public void Awake()
     {
-        if (instance != null)
+        if (Instance == null)
         {
-            Debug.LogError("Found more than one Music Manager in the scene.");
-            Destroy(instance);
-        } 
+            Instance = this;
+            DontDestroyOnLoad(gameObject);
+        }
         else
         {
-           DontDestroyOnLoad(this);
+            Destroy(gameObject);   
         }
-
-        instance = this;
-        eventInstances = new List<EventInstance>();
-
     }
 
-    private void Start()
+    public void Reset()
     {
-        //InitializeMusic(FMODEvents.instance.sceneMusic);
-        InitializeDate(FMODEvents.instance.dateMusic);
-        UnityEngine.SceneManagement.Scene scene = SceneManager.GetActiveScene();
-    }
-    public EventInstance CreateInstance(EventReference eventReference)
-    {
-        EventInstance eventInstance = RuntimeManager.CreateInstance(eventReference);
-        eventInstances.Add(eventInstance);
-        return eventInstance;
+        Instance.CurrentMusicInstance.stop(FMOD.Studio.STOP_MODE.ALLOWFADEOUT);
+        ActiveMusicName = string.Empty;
     }
 
-    //private void InitializeMusic(EventReference musicEventReference)
-   // {
-       // musicEventInstance = CreateInstance(musicEventReference);
-       // musicEventInstance.start();
-    //}
-
-    private void InitializeDate(EventReference dateMusic)
+    //Get or set the current music instance paramater given the current music's name
+    private void Update()
     {
-        dateMusicInstance = CreateInstance(dateMusic);
-    }
-    public void AudioSwitcher(EnumSoundtrack track)
-    {
-        switch (track)
+        if (ActiveMusicName.Equals("DateMusic"))
         {
-            case EnumSoundtrack.SILENCE:
-                musicEventInstance.setParameterByName("Song", 0);
-                break;
-            case EnumSoundtrack.TITLE_THEME:
-                musicEventInstance.setParameterByName("Song", 1);
-                break;
-            case EnumSoundtrack.NOKI_THEME:
-                musicEventInstance.setParameterByName("Song", 2);
-                break;
-            case EnumSoundtrack.LOTTE_THEME:
-                musicEventInstance.setParameterByName("Song", 3);
-                break;
-            case EnumSoundtrack.ROOMATE_THEME:
-                musicEventInstance.setParameterByName("Song", 4);
-                break;
-            case EnumSoundtrack.AVERAGE_DAY:
-                musicEventInstance.setParameterByName("Song", 5);
-                break;
-            case EnumSoundtrack.RAND_EVENT:
-                musicEventInstance.setParameterByName("Song", 6);
-                break;
-            case EnumSoundtrack.DEEP_CONVERSATION:
-                musicEventInstance.setParameterByName("Song", 7);
-                break;
+            CurrentMusicInstance.getParameterByName("dateProgress", out float dateProgress);
+            CurrentMusicInstance.getParameterByName("dateCharacter", out float dateCharacter);
+            dateProgress = (int)dateProgress;
+            dateCharacter = (int)dateCharacter;
+
+            if(!canSetParameter)
+                return;
+            SetParameterByName("dateProgress", dateProgress);
+            SetParameterByName("dateCharacter", dateCharacter); 
         }
     }
 
-    public void DateProgress(EnumDateProgress track)
+    public void PlayMusic(EventReference music, bool fadeout = false, float fadeTime = 2f)
     {
-        switch (track)
+        Debug.Log($"Current Music instance is valid: {CurrentMusicInstance.isValid()}");
+        if(!CurrentMusicInstance.isValid())
         {
-            case EnumDateProgress.CARD_DATE:
-                dateMusicInstance.setParameterByName("dateProgress", 0);
-                break;
-            case EnumDateProgress.SKILL_CHECK:
-                dateMusicInstance.setParameterByName("dateProgress", 1);
-                break;
-            case EnumDateProgress.START:
-                dateMusicInstance.start();
-                break;
-            case EnumDateProgress.STOP:
-                dateMusicInstance.stop(FMOD.Studio.STOP_MODE.ALLOWFADEOUT);
-                break;
+            CurrentMusicInstance = RuntimeManager.CreateInstance(music);
+            CurrentMusicInstance.start();
+            
+            #if UNITY_EDITOR
+            Instance.ActiveMusicName = GetMusicName(music);
+            #endif
+            return;
+        }    
+        if(!fadeout) {
+            CurrentMusicInstance.stop(FMOD.Studio.STOP_MODE.ALLOWFADEOUT);
+            CurrentMusicInstance = RuntimeManager.CreateInstance(music);
+            CurrentMusicInstance.start();
+        }
+        else
+        {
+            StartCoroutine(FadeMusicInOut(fadeTime, music));
+        }
 
-        }
-    }
-    public void DateCharacter (EnumDateCharacter character)
-    {
-        switch (character)
-        {
-            case EnumDateCharacter.CELCI:
-                dateMusicInstance.setParameterByName("dateCharacter", 0);
-                break;
-            case EnumDateCharacter.LOTTE:
-                dateMusicInstance.setParameterByName("dateCharacter", 1);
-                break;
-            case EnumDateCharacter.NOKI:
-                dateMusicInstance.setParameterByName("dateCharacter", 2);
-                break;
-        }
-    }
-    public void CleanUp()
-    {
-        //stop and release created instances
-        foreach (EventInstance eventInstance in eventInstances)
-        {
-            eventInstance.stop(FMOD.Studio.STOP_MODE.ALLOWFADEOUT);
-            eventInstance.release();
-        }
+        #if UNITY_EDITOR
+        Instance.ActiveMusicName = GetMusicName(music);
+        #endif
+        print("MusicManager - Played Music: " + Instance.ActiveMusicName);
+        
     }
 
-    private void OnDestroy()
+    public void StopMusic()
     {
-        CleanUp();
+        try
+        {
+            CurrentMusicInstance.stop(FMOD.Studio.STOP_MODE.ALLOWFADEOUT);
+            ActiveMusicName = string.Empty;
+        }
+        catch(SystemException)
+        {
+            Debug.LogWarning("MusicManager: StopMusic failed to stop " + Instance.CurrentMusicInstance);
+        }
     }
-    
+
+    public static void SetParameterByName(string parameter, float value)
+    {
+        try
+        {
+            Debug.Log("Setting " + parameter + "to " + value);
+            Instance.CurrentMusicInstance.setParameterByName(parameter, value);
+        }
+        catch (System.Exception)
+        {
+            Debug.LogWarning("MusicManager: SetParameter failed to set " + parameter + "to" + value);
+        }
+    }
+
+   public static void SetParameterByLabel(string parameter, string label)
+    {
+         Instance.CurrentMusicInstance.setParameterByNameWithLabel(parameter, label);
+    }
+
+    private IEnumerator FadeMusicInOut(float delay, EventReference newMusic)
+    {
+        CurrentMusicInstance.stop(FMOD.Studio.STOP_MODE.ALLOWFADEOUT);
+        yield return new WaitForSeconds(delay);
+        CurrentMusicInstance = RuntimeManager.CreateInstance(newMusic);
+        CurrentMusicInstance.start();
+    }
+
+    public static string GetEventName(string path)
+    {
+        if (string.IsNullOrEmpty(path)) 
+            return "";
+        int lastSlash = path.LastIndexOf('/');
+        return lastSlash >= 0 ? path.Substring(lastSlash + 1) : path;
+    }
+
+    public static string GetEventName(EventReference music)
+    {
+        if(string.IsNullOrEmpty(music.ToString()))
+            return string.Empty;
+
+        return GetEventName(music.ToString());
+    }
+
+#if UNITY_EDITOR
+        private static string GetMusicName(EventReference music)
+        {
+        if (string.IsNullOrEmpty(music.Path)) 
+            return string.Empty;
+
+        return Path.GetFileName(music.Path);
+        }
+#endif
 }
+    #endregion
+    #region Designer Tool    
+
+#if UNITY_EDITOR
+
+[CustomEditor(typeof(MusicManager))]
+public class MusicManagerEditor : Editor
+{
+    SerializedProperty
+        CanSetParameter,
+        DateProgress,
+        DateCharacter;
+
+    bool DateGroup;
+        private void OnEnable()
+        {
+            CanSetParameter = serializedObject.FindProperty("canSetParameter");
+
+            DateProgress = serializedObject.FindProperty("dateProgress");
+            DateCharacter = serializedObject.FindProperty("dateCharacter");
+        }
+
+    public override void OnInspectorGUI()
+    {
+        base.OnInspectorGUI();
+            
+        serializedObject.Update();
+            
+        MusicManager musicManager = (MusicManager)target;
+            
+        EditorGUILayout.PropertyField(CanSetParameter);
+            
+        if (musicManager.ActiveMusicName.Equals("DateTheme"))
+        {
+            if (DateGroup = EditorGUILayout.BeginFoldoutHeaderGroup(DateGroup, "Date Parameters"))
+            {
+                ShowDateParameters();
+            }
+            EditorGUILayout.EndFoldoutHeaderGroup();
+        }
+    
+    serializedObject.ApplyModifiedProperties();
+
+    }
+
+    private void OnDisable()
+    {
+        serializedObject.ApplyModifiedProperties();
+    }
+
+    private void ShowDateParameters()
+    {
+        EditorGUILayout.LabelField("Date Parameters", EditorStyles.boldLabel);
+        EditorGUILayout.PropertyField(DateProgress);
+        EditorGUILayout.PropertyField(DateCharacter);
+    }
+}    
+ #endif
+ #endregion

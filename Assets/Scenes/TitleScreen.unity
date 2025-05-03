@@ -602,7 +602,7 @@ PrefabInstance:
     - target: {fileID: 9087966427139456051, guid: a021c6d3c1a46724ca869d9fa4244f20,
         type: 3}
       propertyPath: <sceneMusic>k__BackingField.Path
-      value: event:/Music/titleTheme
+      value: 
       objectReference: {fileID: 0}
     - target: {fileID: 9087966427139456051, guid: a021c6d3c1a46724ca869d9fa4244f20,
         type: 3}
@@ -647,22 +647,22 @@ PrefabInstance:
     - target: {fileID: 9087966427139456051, guid: a021c6d3c1a46724ca869d9fa4244f20,
         type: 3}
       propertyPath: <sceneMusic>k__BackingField.Guid.Data1
-      value: 1587278420
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 9087966427139456051, guid: a021c6d3c1a46724ca869d9fa4244f20,
         type: 3}
       propertyPath: <sceneMusic>k__BackingField.Guid.Data2
-      value: 1256190478
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 9087966427139456051, guid: a021c6d3c1a46724ca869d9fa4244f20,
         type: 3}
       propertyPath: <sceneMusic>k__BackingField.Guid.Data3
-      value: 2125243015
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 9087966427139456051, guid: a021c6d3c1a46724ca869d9fa4244f20,
         type: 3}
       propertyPath: <sceneMusic>k__BackingField.Guid.Data4
-      value: 204900698
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -2002,6 +2002,124 @@ RectTransform:
     type: 3}
   m_PrefabInstance: {fileID: 3378605315582708562}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &2141404840
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2141404841}
+  - component: {fileID: 2141404842}
+  m_Layer: 0
+  m_Name: MusicManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &2141404841
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2141404840}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 560.7563, y: 128.74239, z: -3.3640141}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &2141404842
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2141404840}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c88187c88456d3746856fa0a25cb0398, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  currentMusicName: 
+  titleTheme:
+    Guid:
+      Data1: 1587278420
+      Data2: 1256190478
+      Data3: 2125243015
+      Data4: 204900698
+    Path: event:/Music/titleTheme
+  mapTheme:
+    Guid:
+      Data1: 1277772494
+      Data2: 1149568430
+      Data3: 455371962
+      Data4: 297081059
+    Path: event:/Music/dayTheme
+  nokiTheme:
+    Guid:
+      Data1: 1300156995
+      Data2: 1165030288
+      Data3: 1209920696
+      Data4: -127509072
+    Path: event:/Music/samTheme
+  lotteTheme:
+    Guid:
+      Data1: -1833997649
+      Data2: 1184496280
+      Data3: -1639951457
+      Data4: -2713297
+    Path: event:/Music/lotteTheme
+  celciTheme:
+    Guid:
+      Data1: 1227708362
+      Data2: 1292140664
+      Data3: -916368208
+      Data4: 1774876713
+    Path: event:/Music/celciTheme
+  roomateTheme:
+    Guid:
+      Data1: 1170212791
+      Data2: 1135390769
+      Data3: 1230597264
+      Data4: -1812947692
+    Path: event:/Music/randEventTheme
+  randomEventTheme:
+    Guid:
+      Data1: 1170212791
+      Data2: 1135390769
+      Data3: 1230597264
+      Data4: -1812947692
+    Path: event:/Music/randEventTheme
+  quietTheme:
+    Guid:
+      Data1: -415721628
+      Data2: 1318390846
+      Data3: 960163739
+      Data4: -981010115
+    Path: event:/Music/deepConversation
+  loveTheme:
+    Guid:
+      Data1: 575004947
+      Data2: 1237757196
+      Data3: 1849890985
+      Data4: 1515586730
+    Path: event:/Music/loveTheme
+  dateMusic:
+    Guid:
+      Data1: -2009058302
+      Data2: 1293411506
+      Data3: 1458965673
+      Data4: -2046846014
+    Path: event:/Music/dateTheme
+  canSetParameter: 0
+  dateCharacter: 0
+  dateProgress: 0
 --- !u!1001 &3378605315582708562
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2125,6 +2243,74 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 1d06199712838c64fabef63615ee830c, type: 3}
+--- !u!1001 &5839547252959377064
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 4310990968111350449, guid: ec3ecb435f8fc39499cde3355a4d25df,
+        type: 3}
+      propertyPath: m_Name
+      value: SoundtrackSetter
+      objectReference: {fileID: 0}
+    - target: {fileID: 7264670186323186703, guid: ec3ecb435f8fc39499cde3355a4d25df,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 653.0671
+      objectReference: {fileID: 0}
+    - target: {fileID: 7264670186323186703, guid: ec3ecb435f8fc39499cde3355a4d25df,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 132.42606
+      objectReference: {fileID: 0}
+    - target: {fileID: 7264670186323186703, guid: ec3ecb435f8fc39499cde3355a4d25df,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -4.026614
+      objectReference: {fileID: 0}
+    - target: {fileID: 7264670186323186703, guid: ec3ecb435f8fc39499cde3355a4d25df,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7264670186323186703, guid: ec3ecb435f8fc39499cde3355a4d25df,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7264670186323186703, guid: ec3ecb435f8fc39499cde3355a4d25df,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7264670186323186703, guid: ec3ecb435f8fc39499cde3355a4d25df,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7264670186323186703, guid: ec3ecb435f8fc39499cde3355a4d25df,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7264670186323186703, guid: ec3ecb435f8fc39499cde3355a4d25df,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7264670186323186703, guid: ec3ecb435f8fc39499cde3355a4d25df,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: ec3ecb435f8fc39499cde3355a4d25df, type: 3}
 --- !u!1001 &5882069003092676026
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2402,3 +2588,5 @@ SceneRoots:
   - {fileID: 832744758}
   - {fileID: 5941982408204178135}
   - {fileID: 76568255}
+  - {fileID: 5839547252959377064}
+  - {fileID: 2141404841}

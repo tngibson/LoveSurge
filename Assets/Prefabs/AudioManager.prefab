@@ -92,161 +92,196 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 41e3bff62702a494e9a28ee1b9bb4a98, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  <dateMusic>k__BackingField:
-    Guid:
-      Data1: -2009058302
-      Data2: 1293411506
-      Data3: 1458965673
-      Data4: -2046846014
-    Path: event:/Music/dateTheme
-  <envIntroSound>k__BackingField:
+  <EnvIntroSound>k__BackingField:
     Guid:
       Data1: 0
       Data2: 0
       Data3: 0
       Data4: 0
     Path: 
-  <currentRingtone>k__BackingField:
+  <CurrentRingtone>k__BackingField:
     Guid:
       Data1: 0
       Data2: 0
       Data3: 0
       Data4: 0
     Path: 
-  <sceneMusic>k__BackingField:
-    Guid:
-      Data1: 0
-      Data2: 0
-      Data3: 0
-      Data4: 0
-    Path: 
-  <cardPlaced>k__BackingField:
+  <CardPlaced>k__BackingField:
     Guid:
       Data1: 785571725
       Data2: 1260154379
       Data3: 2033152178
       Data4: -586214260
     Path: event:/SFX/Cards/cardPlace
-  <cardHovering>k__BackingField:
+  <CardHovering>k__BackingField:
     Guid:
       Data1: -133241259
       Data2: 1138179849
       Data3: 1671777685
       Data4: 137671589
     Path: event:/SFX/Cards/cardHover
-  <cardShuffle>k__BackingField:
+  <CardShuffle>k__BackingField:
     Guid:
       Data1: -1750858678
       Data2: 1122528362
       Data3: 1372038299
       Data4: -415212389
     Path: event:/SFX/Cards/cardShuffle
-  <cardClicked>k__BackingField:
+  <CardClicked>k__BackingField:
     Guid:
       Data1: 1448721132
       Data2: 1132820590
       Data3: 1961928845
       Data4: -455710982
     Path: event:/SFX/Cards/cardClick
-  <discardCard>k__BackingField:
+  <DiscardCard>k__BackingField:
     Guid:
       Data1: 2070127962
       Data2: 1126133071
       Data3: 901073294
       Data4: 238778356
     Path: event:/SFX/Cards/discardCard
-  <dateVoice>k__BackingField:
-    Guid:
-      Data1: -153891535
-      Data2: 1124538250
-      Data3: 214067122
-      Data4: 573354995
-    Path: event:/SFX/Voices/Old/samVoice
-  <dateVoice2>k__BackingField:
+  <DateVoice>k__BackingField:
     Guid:
       Data1: -280023058
       Data2: 1230527890
       Data3: 1059141045
       Data4: -151194650
     Path: event:/SFX/Voices/Old/maleVoice
-  <playerVoice>k__BackingField:
+  <DateVoice2>k__BackingField:
     Guid:
       Data1: -280023058
       Data2: 1230527890
       Data3: 1059141045
       Data4: -151194650
     Path: event:/SFX/Voices/Old/maleVoice
-  <uiClick>k__BackingField:
+  <PlayerVoice>k__BackingField:
+    Guid:
+      Data1: -51193290
+      Data2: 1286226493
+      Data3: 1299727004
+      Data4: 309612515
+    Path: event:/SFX/Voices/pcVoice
+  <NokiVoice>k__BackingField:
+    Guid:
+      Data1: 1782883065
+      Data2: 1111527879
+      Data3: 215707044
+      Data4: -773326566
+    Path: event:/SFX/Voices/nokiVoice
+  <LotteVoice>k__BackingField:
+    Guid:
+      Data1: -470112219
+      Data2: 1171941152
+      Data3: -1345907584
+      Data4: -982932511
+    Path: event:/SFX/Voices/lotteVoice
+  <CelciVoice>k__BackingField:
+    Guid:
+      Data1: 1302092010
+      Data2: 1223270496
+      Data3: 1735747754
+      Data4: -1065348996
+    Path: event:/SFX/Voices/celciVoice
+  <MiguelVoice>k__BackingField:
+    Guid:
+      Data1: 2114347442
+      Data2: 1338120763
+      Data3: -2130747213
+      Data4: -331765312
+    Path: event:/SFX/Voices/miguelVoice
+  <FishVoice>k__BackingField:
+    Guid:
+      Data1: -542207697
+      Data2: 1284218860
+      Data3: -1860231795
+      Data4: 577094917
+    Path: event:/SFX/Voices/fishVoice
+  <CeoVoice>k__BackingField:
+    Guid:
+      Data1: 433278379
+      Data2: 1290106518
+      Data3: 1730351254
+      Data4: -330075901
+    Path: event:/SFX/Voices/ceoVoice
+  <WizardVoice>k__BackingField:
+    Guid:
+      Data1: 879101740
+      Data2: 1338723715
+      Data3: 1423627424
+      Data4: -1173300432
+    Path: event:/SFX/Voices/codeWizardVoice
+  <DeliahVoice>k__BackingField:
+    Guid:
+      Data1: -1098346461
+      Data2: 1277269691
+      Data3: 1874970037
+      Data4: -1143597307
+    Path: event:/SFX/Voices/deliahVoice
+  <UiClick>k__BackingField:
     Guid:
       Data1: 1221401800
       Data2: 1175071396
       Data3: 1774786722
       Data4: 2008028552
     Path: event:/SFX/UI/uiClick
-  <goodResponse>k__BackingField:
+  <GoodResponse>k__BackingField:
     Guid:
       Data1: -977705764
       Data2: 1337600246
       Data3: -1623774026
       Data4: -1177505163
     Path: event:/SFX/Dice/goodResponse
-  <badResponse>k__BackingField:
+  <BadResponse>k__BackingField:
     Guid:
       Data1: -962573398
       Data2: 1191636443
       Data3: 638337213
       Data4: -1199359070
     Path: event:/SFX/Dice/badResponse
-  <connectionBarUp>k__BackingField:
+  <ConnectionBarUp>k__BackingField:
     Guid:
       Data1: 2019312035
       Data2: 1284794259
       Data3: 1546901176
       Data4: -406804687
     Path: event:/SFX/UI/connectionBarUp
-  <connectionBarDown>k__BackingField:
+  <ConnectionBarDown>k__BackingField:
     Guid:
       Data1: 192897275
       Data2: 1139138163
       Data3: 1562197651
       Data4: 1884013193
     Path: event:/SFX/UI/connectionBarDown
-  <dateTierII>k__BackingField:
+  <WindowOpen>k__BackingField:
     Guid:
-      Data1: 1236213200
-      Data2: 1165756823
-      Data3: -1235951714
-      Data4: 943958757
-    Path: event:/SFX/UI/dateTierII
-  <dateTierIII>k__BackingField:
+      Data1: 481389464
+      Data2: 1267285047
+      Data3: -550934379
+      Data4: 727445143
+    Path: event:/SFX/UI/windowOpen
+  <WindowClose>k__BackingField:
     Guid:
-      Data1: 708473345
-      Data2: 1155837546
-      Data3: -648028239
-      Data4: -1346663409
-    Path: event:/SFX/UI/dateTierIII
-  <diceRoll>k__BackingField:
+      Data1: 1718420088
+      Data2: 1202281058
+      Data3: 81959817
+      Data4: -666999416
+    Path: event:/SFX/UI/windowClose
+  <DiceRoll>k__BackingField:
     Guid:
       Data1: 225879873
       Data2: 1273551659
       Data3: -231151199
       Data4: 1239460537
     Path: event:/SFX/Dice/diceRoll
-  <diceShake>k__BackingField:
+  <DiceShake>k__BackingField:
     Guid:
       Data1: 1838477556
       Data2: 1102228954
       Data3: 1844805768
       Data4: -1050091819
     Path: event:/SFX/Dice/diceShake
-  <busted>k__BackingField:
-    Guid:
-      Data1: 1932024243
-      Data2: 1165792135
-      Data3: 601222806
-      Data4: 127243740
-    Path: event:/SFX/Date Voices/busted
-  <datingStart>k__BackingField:
+  <DatingStart>k__BackingField:
     Guid:
       Data1: 752952536
       Data2: 1288662548

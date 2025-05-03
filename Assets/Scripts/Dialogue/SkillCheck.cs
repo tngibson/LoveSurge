@@ -42,11 +42,16 @@ public class SkillCheck : MonoBehaviour
     private List<SpriteOptions> originalSpriteOptions;
     private int originalLineIndex;  // Index to return to after skill check dialog path
 
-    private EventInstance levelMusic;
-    private EventInstance diceShake;
-    private EventInstance dateDialogueVoice;
-    private EventInstance date2DialougeVoice;
-    private EventInstance playerDialogueVoice;
+  private EventInstance diceShake;
+   private EventInstance playerVoice;
+    private EventInstance nokiVoice;
+    private EventInstance lotteVoice;
+    private EventInstance celciVoice;
+    private EventInstance miguelVoice;
+    private EventInstance fishVoice;
+    private EventInstance ceoVoice;
+    private EventInstance wizardVoice;
+    private EventInstance deliahVoice;
 
     private Coroutine voiceCoroutine; // Tracks the voice playback coroutine
 
@@ -200,7 +205,7 @@ public class SkillCheck : MonoBehaviour
 
     private void HandleSkillCheckClick()
     {
-        AudioManager.instance.PlayOneShot(FMODEvents.instance.uiClick, this.transform.position); // Play click sound
+        AudioManager.instance.PlayOneShot(FMODEvents.instance.UiClick, this.transform.position); // Play click sound
 
         switch (skillCheckStage)
         {
@@ -238,7 +243,7 @@ public class SkillCheck : MonoBehaviour
                 }
                 skillCheckStage = 2;
                 diceShake.stop(FMOD.Studio.STOP_MODE.ALLOWFADEOUT);
-                AudioManager.instance.PlayOneShot(FMODEvents.instance.diceRoll, this.transform.position);
+                AudioManager.instance.PlayOneShot(FMODEvents.instance.DiceRoll, this.transform.position);
 
                 break;
 
@@ -271,14 +276,14 @@ public class SkillCheck : MonoBehaviour
             dialogLines = new List<string>(skillCheckPaths.successDialogLines);
             speakersPerLine = new List<string>(skillCheckPaths.successSpeakersPerLine);
             characterSprites = new List<SpriteOptions>(skillCheckPaths.successSpriteOptions);
-            AudioManager.instance.PlayOneShot(FMODEvents.instance.goodResponse, this.transform.position); // Play good sound
+            AudioManager.instance.PlayOneShot(FMODEvents.instance.GoodResponse, this.transform.position); // Play good sound
         }
         else
         {
             dialogLines = new List<string>(skillCheckPaths.failureDialogLines);
             speakersPerLine = new List<string>(skillCheckPaths.failureSpeakersPerLine);
             characterSprites = new List<SpriteOptions>(skillCheckPaths.failureSpriteOptions);
-            AudioManager.instance.PlayOneShot(FMODEvents.instance.badResponse, this.transform.position); // Play sound sound
+            AudioManager.instance.PlayOneShot(FMODEvents.instance.BadResponse, this.transform.position); // Play sound sound
         }
 
         currentLineIndex = 0;  // Reset to start of skill check dialog
@@ -323,7 +328,7 @@ public class SkillCheck : MonoBehaviour
 
     public void NextLine()
     {
-        AudioManager.instance.PlayOneShot(FMODEvents.instance.uiClick, this.transform.position); // Play click sound
+        AudioManager.instance.PlayOneShot(FMODEvents.instance.UiClick, this.transform.position); // Play click sound
         currentLineIndex++;
         DisplayLine();
     }
@@ -385,28 +390,51 @@ public class SkillCheck : MonoBehaviour
         }
     }
 
-    private void UpdateVoice(string speaker)
+        private void UpdateVoice(string speaker)
     {
-        EventInstance voiceInstance;
+        EventInstance voiceInstance = default;
 
-        // Determine the correct voice instance based on the speaker
+        // Determine the correct voice instance
         if (speaker == "You" || string.IsNullOrEmpty(speaker))
         {
-            voiceInstance = playerDialogueVoice;
+            voiceInstance = playerVoice;
         }
         else if (speaker == "Noki")
         {
-            voiceInstance = dateDialogueVoice;
+            voiceInstance = nokiVoice;
         }
-        else
+        else if (speaker == "Lotte")
         {
-            voiceInstance = date2DialougeVoice;
+            voiceInstance = lotteVoice;
         }
-
-        // Manage voice playback based on typewriting state
+        else if (speaker == "Celci")
+        {
+            voiceInstance = celciVoice;
+        }
+        else if (speaker == "Miguel")
+        {
+            voiceInstance = miguelVoice;
+        }
+        else if (speaker == "Fish")
+        {
+            voiceInstance = fishVoice;
+        }
+        else if (speaker == "Ceo")
+        {
+            voiceInstance = ceoVoice;
+        }
+        else if (speaker == "Wizard")
+        {
+            voiceInstance = wizardVoice;
+        }
+        else if (speaker == "Deliah")
+        {
+            voiceInstance = deliahVoice;
+        }
+        // Manage the voice playback coroutine
         if (isTypewriting)
         {
-            if (voiceCoroutine == null) // Start the voice loop if not already running
+            if (voiceCoroutine == null) // Start the loop if not already running
             {
                 voiceCoroutine = StartCoroutine(PlayVoiceLoop(voiceInstance));
             }
@@ -429,21 +457,14 @@ public class SkillCheck : MonoBehaviour
 
     private void InitializeAudio()
     {
-        //levelMusic = AudioManager.instance.CreateInstance(FMODEvents.instance.music);
-        playerDialogueVoice = AudioManager.instance.CreateInstance(FMODEvents.instance.playerVoice);
-        dateDialogueVoice = AudioManager.instance.CreateInstance(FMODEvents.instance.dateVoice);
-        date2DialougeVoice = AudioManager.instance.CreateInstance(FMODEvents.instance.dateVoice2);  
-        diceShake = AudioManager.instance.CreateInstance(FMODEvents.instance.diceShake);
-
-        PlayBackgroundMusic();
-    }
-
-    private void PlayBackgroundMusic()
-    {
-        levelMusic.getPlaybackState(out PLAYBACK_STATE playbackState);
-        if (playbackState == PLAYBACK_STATE.STOPPED)
-        {
-            levelMusic.start();
-        }
+        playerVoice = AudioManager.instance.CreateInstance(FMODEvents.instance.PlayerVoice);
+        nokiVoice = AudioManager.instance.CreateInstance(FMODEvents.instance.NokiVoice);
+        lotteVoice = AudioManager.instance.CreateInstance(FMODEvents.instance.LotteVoice);
+        celciVoice = AudioManager.instance.CreateInstance(FMODEvents.instance.CelciVoice);
+        miguelVoice = AudioManager.instance.CreateInstance(FMODEvents.instance.MiguelVoice);
+        fishVoice = AudioManager.instance.CreateInstance(FMODEvents.instance.FishVoice);
+        ceoVoice = AudioManager.instance.CreateInstance(FMODEvents.instance.CeoVoice);
+        wizardVoice = AudioManager.instance.CreateInstance(FMODEvents.instance.WizardVoice);
+        deliahVoice = AudioManager.instance.CreateInstance(FMODEvents.instance.DeliahVoice);
     }
 }

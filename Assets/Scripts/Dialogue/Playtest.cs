@@ -116,7 +116,7 @@ public class Playtest : MonoBehaviour
         //playerVoice.start();
         //if (isWriting)
         //{
-            AudioManager.instance.PlayOneShot(FMODEvents.instance.playerVoice, this.transform.position);
+            AudioManager.instance.PlayOneShot(FMODEvents.instance.PlayerVoice, this.transform.position);
         //}
         //Debug.Log("AHHHHHHHHHHHHH");
         //playerVoice.stop(STOP_MODE.IMMEDIATE); 
@@ -130,7 +130,7 @@ public class Playtest : MonoBehaviour
         dateCharacter.sprite = characterPose;
 
         // Play date voice sound
-        AudioManager.instance.PlayOneShot(FMODEvents.instance.dateVoice, this.transform.position);
+        AudioManager.instance.PlayOneShot(FMODEvents.instance.DateVoice, this.transform.position);
 
         // Start the jump animation coroutine
         StartCoroutine(JumpAnimation());

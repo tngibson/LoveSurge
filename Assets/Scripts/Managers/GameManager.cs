@@ -71,7 +71,7 @@ public class GameManager : MonoBehaviour
     {
         fullHandText.SetActive(false); // Hide the "full hand" warning initially
         scoreText.text = "Score: 0";   // Initialize the score UI
-        AudioManager.instance.DateProgress(track: EnumDateProgress.START);
+        MusicManager.SetParameterByName("dateProgress", 0);
         Debug.Log("Start Music");
 
     }
@@ -150,8 +150,7 @@ public class GameManager : MonoBehaviour
         endTurnButton.SetActive(false);
         discardBin.SetActive(false);
         mapButton.SetActive(true); // Enable the map button at game win
-        AudioManager.instance.DateProgress(EnumDateProgress.SKILL_CHECK);
-        Debug.Log("Skill Check");
+        MusicManager.SetParameterByName("dateProgress", 1);
     }
 
     private void EndGameFullWin()
@@ -162,7 +161,7 @@ public class GameManager : MonoBehaviour
         endTurnButton.SetActive(false);
         discardBin.SetActive(false);
         mapButton.SetActive(true); // Enable the map button at game win
-        AudioManager.instance.DateProgress(EnumDateProgress.GOOD_END);
+        MusicManager.SetParameterByName("dateProgress", 3);
         Debug.Log("Good End");
     }
 
@@ -173,7 +172,7 @@ public class GameManager : MonoBehaviour
         endTurnButton.SetActive(false);
         discardBin.SetActive(false);
         mapButton.SetActive(true); // Enable the map button at game over
-        AudioManager.instance.DateProgress(EnumDateProgress.BAD_END);
+        MusicManager.SetParameterByName("dateProgress", 4);
         Debug.Log("Bad End");
 
 
