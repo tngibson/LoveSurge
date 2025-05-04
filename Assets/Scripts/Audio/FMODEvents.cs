@@ -27,6 +27,7 @@ public class FMODEvents : MonoBehaviour
     [field: SerializeField] public EventReference DateVoice { get; private set; }
     [field: SerializeField] public EventReference DateVoice2 { get; private set; }
     [field: SerializeField] public EventReference PlayerVoice { get; private set; }
+    [field: SerializeField] public EventReference FemVoice { get; private set; }
     [field: SerializeField] public EventReference NokiVoice { get; private set;}
     [field: SerializeField] public EventReference LotteVoice { get; private set;}
     [field: SerializeField] public EventReference CelciVoice { get; private set;}

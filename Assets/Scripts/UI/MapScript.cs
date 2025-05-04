@@ -122,6 +122,12 @@ public class MapScript : MonoBehaviour, IPointerEnterHandler, IPointerExitHandle
                 }
             yield return new WaitForSeconds(transitionTime);
         }
+        
+        if (MusicManager.Instance != null && MusicManager.Instance.WillChangeTo(nextSceneMusic))
+                {
+                    MusicManager.Instance.StopMusic();
+                    Debug.Log("Stopping music before loading new scene.");
+                }
 
         // Loads scene
         SceneManager.LoadScene(scene);
