@@ -55,7 +55,7 @@ public class AudioManager : MonoBehaviour
     private void Start()
     {
         InitializeVoices(FMODEvents.instance.PlayerVoice);
-        InitializeEnvironment(FMODEvents.instance.EnvIntroSound);
+        //InitializeEnvironment(FMODEvents.instance.EnvIntroSound);
         AudioSceneCheck.instance?.isMatch();
     }
 
@@ -134,14 +134,6 @@ public class AudioManager : MonoBehaviour
         }
     }
 **/
-
-    private void InitializeEnvironment(EventReference musicEventReference)
-    {
-        //environmentEventInstance = CreateInstance(musicEventReference);
-        PlayOneShot(FMODEvents.instance.EnvIntroSound, this.transform.position);
-        //environmentEventInstance.start();
-    }
-
     private void InitializeVoices(EventReference eventReference)
     {
         dialougeEventInstance = CreateInstance(eventReference);

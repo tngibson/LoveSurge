@@ -32,6 +32,7 @@ public class ConnectionBar : MonoBehaviour
     public void updateCurrentConnectionAmt()
     {
         currentConnectionAmt++;
+        AudioManager.instance.PlayOneShot(FMODEvents.instance.ConnectionBarUp);
     }
 
 

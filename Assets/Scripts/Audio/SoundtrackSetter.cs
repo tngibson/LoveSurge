@@ -39,6 +39,11 @@ public class SoundtrackSetter : MonoBehaviour
             MusicManager.Instance?.PlayMusic(_musicReference);
         }  
     }
+
+    private void Start()
+    {
+        PlayMusic();
+    }
 }
 
 #if UNITY_EDITOR

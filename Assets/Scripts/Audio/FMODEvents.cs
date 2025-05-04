@@ -14,10 +14,8 @@ public class FMODEvents : MonoBehaviour
 
    // [field: SerializeField] public EventReference dateMusic { get; private set; }
     //[field: SerializeField] public EventReference environmentTrack { get; private set; }
-    [field: SerializeField] public EventReference EnvIntroSound { get; private set; }
     [field: SerializeField] public EventReference CurrentRingtone { get; private set; }
     //[field: SerializeField] public EventReference sceneMusic { get; private set; }
-
     [field: Header("Card SFX")]
     [field: SerializeField] public EventReference CardPlaced { get; private set; }
     [field: SerializeField] public EventReference CardHovering { get; private set; }
@@ -37,6 +35,7 @@ public class FMODEvents : MonoBehaviour
     [field: SerializeField] public EventReference CeoVoice { get; private set;}
     [field: SerializeField] public EventReference WizardVoice { get; private set;}
     [field: SerializeField] public EventReference DeliahVoice { get; private set;}
+    [field: SerializeField] public EventReference noVoice { get; private set;}
    
     [field: Header("UI SFX")]
     [field: SerializeField] public EventReference UiClick { get; private set; }

@@ -4,6 +4,7 @@ using UnityEngine.EventSystems;
 using UnityEngine.SceneManagement;
 using TMPro;
 using System.Collections;
+using FMODUnity;
 
 public class MapScript : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
 {
@@ -32,6 +33,8 @@ public class MapScript : MonoBehaviour, IPointerEnterHandler, IPointerExitHandle
     private Vector3 hoverScale;
 
     [SerializeField] private bool isStressReducer;
+    [SerializeField] private EventReference nextSceneMusic;
+
     private void Awake()
     {
         // Save original scale and material
@@ -42,12 +45,6 @@ public class MapScript : MonoBehaviour, IPointerEnterHandler, IPointerExitHandle
 
         if (locationText != null) locationText.GetComponent<TextMeshProUGUI>().text = locationTextText;
     }
-
-    private void Start()
-    {
-        FindMusicPlayerAndPlay();
-    }
-
     public void OnPointerEnter(PointerEventData eventData)
     {
         if (isEnabled && mapAnimator != null)
@@ -110,14 +107,6 @@ public class MapScript : MonoBehaviour, IPointerEnterHandler, IPointerExitHandle
         }
     }
 
-  private void FindMusicPlayerAndPlay(){
-        Debug.Log("Finding Music Player and Playing Music");
-       SoundtrackSetter setters = FindFirstObjectByType<SoundtrackSetter>();
-        if(setters != null)
-        {
-           setters.PlayMusic();
-        }
-    }
     IEnumerator LoadScene(string scene)
     {
         // Check if there is a scene transition
@@ -125,14 +114,18 @@ public class MapScript : MonoBehaviour, IPointerEnterHandler, IPointerExitHandle
         if (transition != null)
         {
             transition.SetTrigger("Start");
-            MusicManager.Instance.StopMusic();
+            //Check next Scene music
+            if (MusicManager.Instance != null && MusicManager.Instance.WillChangeTo(nextSceneMusic))
+                {
+                    MusicManager.Instance.StopMusic();
+                    Debug.Log("Stopping music before loading new scene.");
+                }
             yield return new WaitForSeconds(transitionTime);
         }
 
         // Loads scene
         SceneManager.LoadScene(scene);
         gameObject.SetActive(false);
-        AudioSceneCheck.instance?.isMatch();
     }
 
     private void RestartApplication()

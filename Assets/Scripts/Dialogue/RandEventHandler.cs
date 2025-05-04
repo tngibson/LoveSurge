@@ -50,8 +50,7 @@ public class RandEventHandler : MonoBehaviour
     private EventInstance wizardVoice;
     private EventInstance deliahVoice;
 
-
-
+    private EventInstance noVoice; // Narrartion
 
     private Coroutine voiceCoroutine; // To track the active coroutine
 
@@ -414,10 +413,14 @@ public class RandEventHandler : MonoBehaviour
     // FMOD Sound Functions
     private void UpdateVoice(string speaker)
     {
-        EventInstance voiceInstance = default;
-
+        EventInstance voiceInstance = noVoice; // Default to player voice
+        
         // Determine the correct voice instance
-        if (speaker == "You" || string.IsNullOrEmpty(speaker))
+        if (speaker == "You" || speaker == playerName)
+        {
+            voiceInstance = playerVoice;
+        }
+        else if (speaker == "Player")
         {
             voiceInstance = playerVoice;
         }
@@ -437,15 +440,15 @@ public class RandEventHandler : MonoBehaviour
         {
             voiceInstance = miguelVoice;
         }
-        else if (speaker == "Fish")
+        else if (speaker == "John Fishman")
         {
             voiceInstance = fishVoice;
         }
-        else if (speaker == "Ceo")
+        else if (speaker == "CEO")
         {
             voiceInstance = ceoVoice;
         }
-        else if (speaker == "Wizard")
+        else if (speaker == "C0D3W1Z4RD")
         {
             voiceInstance = wizardVoice;
         }
@@ -479,6 +482,7 @@ public class RandEventHandler : MonoBehaviour
 
     private void InitializeAudio()
     {
+        noVoice = AudioManager.instance.CreateInstance(FMODEvents.instance.noVoice);
         playerVoice = AudioManager.instance.CreateInstance(FMODEvents.instance.PlayerVoice);
         nokiVoice = AudioManager.instance.CreateInstance(FMODEvents.instance.NokiVoice);
         lotteVoice = AudioManager.instance.CreateInstance(FMODEvents.instance.LotteVoice);

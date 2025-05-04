@@ -92,18 +92,29 @@ public class MusicManager : MonoBehaviour
             SetParameterByName("dateCharacter", dateCharacter); 
         }
     }
+    public bool WillChangeTo(EventReference newMusic)
+    {
+        if (!CurrentMusicInstance.isValid()) 
+            return true;
 
+       string newMusicPath = newMusic.Path;
+       return !ActiveMusicName.Equals(newMusicPath, StringComparison.OrdinalIgnoreCase);
+    }
     public void PlayMusic(EventReference music, bool fadeout = false, float fadeTime = 2f)
     {
-        Debug.Log($"Current Music instance is valid: {CurrentMusicInstance.isValid()}");
+        string newMusicPath = music.Path;
+        if (CurrentMusicInstance.isValid() && ActiveMusicName.Equals(newMusicPath, StringComparison.OrdinalIgnoreCase))
+            {
+                Debug.Log($"MusicManager:" + newMusicPath + "is already playing, not starting again.");
+                return;
+            }
+
         if(!CurrentMusicInstance.isValid())
         {
             CurrentMusicInstance = RuntimeManager.CreateInstance(music);
             CurrentMusicInstance.start();
             
-            #if UNITY_EDITOR
-            Instance.ActiveMusicName = GetMusicName(music);
-            #endif
+            Instance.ActiveMusicName = music.Path;
             return;
         }    
         if(!fadeout) {
@@ -158,8 +169,17 @@ public class MusicManager : MonoBehaviour
     {
         CurrentMusicInstance.stop(FMOD.Studio.STOP_MODE.ALLOWFADEOUT);
         yield return new WaitForSeconds(delay);
+
+        string newMusicName = GetEventName(newMusic);
+        if (ActiveMusicName.Equals(newMusicName, StringComparison.OrdinalIgnoreCase))
+            yield break;
+
         CurrentMusicInstance = RuntimeManager.CreateInstance(newMusic);
         CurrentMusicInstance.start();
+        
+        #if UNITY_EDITOR
+         ActiveMusicName = GetMusicName(newMusic);
+        #endif
     }
 
     public static string GetEventName(string path)
