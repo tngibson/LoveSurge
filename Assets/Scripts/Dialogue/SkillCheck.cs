@@ -52,6 +52,7 @@ public class SkillCheck : MonoBehaviour
     private EventInstance ceoVoice;
     private EventInstance wizardVoice;
     private EventInstance deliahVoice;
+    private EventInstance noVoice;
 
     private Coroutine voiceCoroutine; // Tracks the voice playback coroutine
 
@@ -131,6 +132,8 @@ public class SkillCheck : MonoBehaviour
             else
             {
                 mapButton.SetActive(true);
+                MusicManager.SetParameterByName("dateProgress", 2);
+                Debug.Log("Good End");
                 return;
             }
         }
@@ -323,7 +326,6 @@ public class SkillCheck : MonoBehaviour
         isTypewriting = false;  // Set to false once typewriting is completed
         continueIndicator.SetActive(true);
         UpdateVoice(speaker);
-
     }
 
     public void NextLine()
@@ -386,22 +388,28 @@ public class SkillCheck : MonoBehaviour
         voiceInstance.getPlaybackState(out playbackState);
         if (playbackState == PLAYBACK_STATE.PLAYING || playbackState == PLAYBACK_STATE.STARTING)
         {
-            voiceInstance.stop(FMOD.Studio.STOP_MODE.ALLOWFADEOUT);
+            //voiceInstance.stop(FMOD.Studio.STOP_MODE.ALLOWFADEOUT);
         }
     }
 
-        private void UpdateVoice(string speaker)
+    private void UpdateVoice(string speaker)
     {
-        EventInstance voiceInstance = default;
-
+        EventInstance voiceInstance = noVoice; // Default to player voice
+        
         // Determine the correct voice instance
-        if (speaker == "You" || string.IsNullOrEmpty(speaker))
+        if (speaker == "You" || speaker == playerName)
         {
             voiceInstance = playerVoice;
+        }
+        else if (speaker == "Player")
+        {
+            voiceInstance = playerVoice;
+            Debug.Log("Player");
         }
         else if (speaker == "Noki")
         {
             voiceInstance = nokiVoice;
+            Debug.Log("Noki");
         }
         else if (speaker == "Lotte")
         {
@@ -415,21 +423,25 @@ public class SkillCheck : MonoBehaviour
         {
             voiceInstance = miguelVoice;
         }
-        else if (speaker == "Fish")
+        else if (speaker == "John Fishman")
         {
             voiceInstance = fishVoice;
         }
-        else if (speaker == "Ceo")
+        else if (speaker == "CEO")
         {
             voiceInstance = ceoVoice;
         }
-        else if (speaker == "Wizard")
+        else if (speaker == "C0D3W1Z4RD")
         {
             voiceInstance = wizardVoice;
         }
         else if (speaker == "Deliah")
         {
             voiceInstance = deliahVoice;
+        }
+        else if (speaker == "")
+        {
+            voiceInstance = noVoice;
         }
         // Manage the voice playback coroutine
         if (isTypewriting)
@@ -449,7 +461,7 @@ public class SkillCheck : MonoBehaviour
                 voiceInstance.getPlaybackState(out var playbackState);
                 if (playbackState == PLAYBACK_STATE.PLAYING)
                 {
-                    voiceInstance.stop(FMOD.Studio.STOP_MODE.ALLOWFADEOUT); // Stop audio safely
+                    //voiceInstance.stop(FMOD.Studio.STOP_MODE.ALLOWFADEOUT); // Stop audio safely
                 }
             }
         }
@@ -466,5 +478,7 @@ public class SkillCheck : MonoBehaviour
         ceoVoice = AudioManager.instance.CreateInstance(FMODEvents.instance.CeoVoice);
         wizardVoice = AudioManager.instance.CreateInstance(FMODEvents.instance.WizardVoice);
         deliahVoice = AudioManager.instance.CreateInstance(FMODEvents.instance.DeliahVoice);
+        nokiVoice = AudioManager.instance.CreateInstance(FMODEvents.instance.noVoice);
+        diceShake = AudioManager.instance.CreateInstance(FMODEvents.instance.DiceShake);
     }
 }

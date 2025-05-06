@@ -1,5 +1,6 @@
 using System.Collections.Generic;
 using TMPro;
+using Unity.Mathematics;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -40,7 +41,7 @@ public class GameManager : MonoBehaviour
     [SerializeField] private GameObject mapButton;
 
     [SerializeField] private int CurrentCharacterIndex;
-    private int currentScore = 0;  // Tracks the player's score
+    private int currentScore = -1;  // Tracks the player's score
     private bool isTopicSelected;
 
     public bool IsTopicSelected { get; set; }
@@ -50,6 +51,13 @@ public class GameManager : MonoBehaviour
     private bool isHandPlayable = false;
 
     [SerializeField] private MapScript mapButtonScript;
+
+    [SerializeField] private int comboSurge = 0;
+    public int ComboSurge 
+    { 
+        get => comboSurge;
+        set { comboSurge = math.clamp(value, 0, 4); }
+    }
 
     // Initial game setup
     private void Awake()
@@ -138,7 +146,8 @@ public class GameManager : MonoBehaviour
         {
             EndGameLoss();
         }
-
+        
+        comboSurge = -1;
         //UpdateEndTurnButton(false); // Disable the end turn button
     }
 
@@ -153,7 +162,7 @@ public class GameManager : MonoBehaviour
         MusicManager.SetParameterByName("dateProgress", 1);
     }
 
-    private void EndGameFullWin()
+    public void EndGameFullWin()
     {
         mapButtonScript.locName = "NokiDate2SkillCheck2"; // Hard coded for date 2 demo, will be changed later
         endGameText.GetComponentInChildren<TextMeshProUGUI>().text = "You Win, Congratulations!";
@@ -161,18 +170,17 @@ public class GameManager : MonoBehaviour
         endTurnButton.SetActive(false);
         discardBin.SetActive(false);
         mapButton.SetActive(true); // Enable the map button at game win
-        MusicManager.SetParameterByName("dateProgress", 3);
-        Debug.Log("Good End");
+        MusicManager.SetParameterByName("dateProgress", 1);
     }
 
     // Ends the game and displays the game over message
-    private void EndGameLoss()
+    public void EndGameLoss()
     {
         endGameText.SetActive(true);
         endTurnButton.SetActive(false);
         discardBin.SetActive(false);
         mapButton.SetActive(true); // Enable the map button at game over
-        MusicManager.SetParameterByName("dateProgress", 4);
+        MusicManager.SetParameterByName("dateProgress", 3);
         Debug.Log("Bad End");
 
 

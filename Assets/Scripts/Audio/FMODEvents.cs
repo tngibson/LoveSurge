@@ -20,6 +20,8 @@ public class FMODEvents : MonoBehaviour
     [field: SerializeField] public EventReference CardPlaced { get; private set; }
     [field: SerializeField] public EventReference CardHovering { get; private set; }
     [field: SerializeField] public EventReference CardShuffle { get; private set; }
+
+    [field: SerializeField] public EventReference ComboSurge { get; private set; }
     [field: SerializeField] public EventReference CardClicked { get; private set; }
     [field: SerializeField] public EventReference DiscardCard { get; private set; }
 

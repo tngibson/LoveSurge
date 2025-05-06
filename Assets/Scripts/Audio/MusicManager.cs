@@ -98,29 +98,37 @@ public class MusicManager : MonoBehaviour
             return true;
 
        string newMusicPath = newMusic.Path;
+       Debug.Log(newMusicPath);
+       Debug.Log(ActiveMusicName);
        return !ActiveMusicName.Equals(newMusicPath, StringComparison.OrdinalIgnoreCase);
     }
     public void PlayMusic(EventReference music, bool fadeout = false, float fadeTime = 2f)
     {
         string newMusicPath = music.Path;
+        
         if (CurrentMusicInstance.isValid() && ActiveMusicName.Equals(newMusicPath, StringComparison.OrdinalIgnoreCase))
-            {
-                Debug.Log($"MusicManager:" + newMusicPath + "is already playing, not starting again.");
-                return;
-            }
+        {
+            Debug.Log($"MusicManager:" + newMusicPath + "is already playing, not starting again.");
+            return;
+        }
 
+        //Handles Null -> no song
         if(!CurrentMusicInstance.isValid())
         {
             CurrentMusicInstance = RuntimeManager.CreateInstance(music);
             CurrentMusicInstance.start();
             
-            Instance.ActiveMusicName = music.Path;
+            ActiveMusicName = music.Path;
             return;
-        }    
-        if(!fadeout) {
+        }
+
+        //Handles if there is a song
+        if(!fadeout) 
+        {
             CurrentMusicInstance.stop(FMOD.Studio.STOP_MODE.ALLOWFADEOUT);
             CurrentMusicInstance = RuntimeManager.CreateInstance(music);
             CurrentMusicInstance.start();
+            ActiveMusicName = music.Path;
         }
         else
         {
@@ -128,7 +136,7 @@ public class MusicManager : MonoBehaviour
         }
 
         #if UNITY_EDITOR
-        Instance.ActiveMusicName = GetMusicName(music);
+        //Instance.ActiveMusicName = GetMusicName(music);
         #endif
         print("MusicManager - Played Music: " + Instance.ActiveMusicName);
         
@@ -153,10 +161,11 @@ public class MusicManager : MonoBehaviour
         {
             Debug.Log("Setting " + parameter + "to " + value);
             Instance.CurrentMusicInstance.setParameterByName(parameter, value);
+            Debug.Log(Instance.CurrentMusicInstance.getParameterByName(parameter, out float paraValue));
         }
         catch (System.Exception)
         {
-            Debug.LogWarning("MusicManager: SetParameter failed to set " + parameter + "to" + value);
+            Debug.LogWarning("MusicManager: SetParameter failed to set " + parameter + "to " + value);
         }
     }
 

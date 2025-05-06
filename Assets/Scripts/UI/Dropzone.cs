@@ -150,6 +150,9 @@ public class Dropzone : MonoBehaviour
 
             // Update the last placed card to the new top card
             lastPlacedCard = dropzone.TopCard;
+            GameManager.instance.ComboSurge --;
+            Debug.Log("YOU ARE BAD AT THE GAME DUMBASS");
+
 
             // Reset UI or other visual elements if necessary
             CalculateScore();

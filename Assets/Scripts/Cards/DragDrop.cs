@@ -1,4 +1,5 @@
 using System.Collections;
+using FMOD.Studio;
 using UnityEngine;
 using UnityEngine.EventSystems;
 
@@ -118,6 +119,11 @@ public class DragDrop : MonoBehaviour
         {
             PlaceInDropzone();
             AudioManager.instance.PlayOneShot(FMODEvents.instance.CardPlaced, this.transform.position);
+            GameManager.instance.ComboSurge ++;
+            EventInstance comboSurge =  AudioManager.instance.CreateInstance(FMODEvents.instance.ComboSurge);
+            comboSurge.setParameterByName("comboSurge", GameManager.instance.ComboSurge);
+            comboSurge.start();
+            comboSurge.release();
 
         }
         else if (isOverPlayerArea && !card.isReserveCard)  // Return the card to the player area

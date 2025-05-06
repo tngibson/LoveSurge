@@ -1279,6 +1279,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5504610424280721779, guid: ec3ecb435f8fc39499cde3355a4d25df,
         type: 3}
+      propertyPath: DateCharacter
+      value: Noki
+      objectReference: {fileID: 0}
+    - target: {fileID: 5504610424280721779, guid: ec3ecb435f8fc39499cde3355a4d25df,
+        type: 3}
       propertyPath: _musicReference.Path
       value: event:/Music/dateTheme
       objectReference: {fileID: 0}
@@ -2709,7 +2714,7 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1877364503}
   m_HandleRect: {fileID: 1877364502}
   m_Direction: 2
-  m_Value: 1.0000002
+  m_Value: 1.0000001
   m_Size: 0.3783666
   m_NumberOfSteps: 0
   m_OnValueChanged:
@@ -3893,6 +3898,13 @@ MonoBehaviour:
   xHoverScale: 0
   yHoverScale: 0
   isStressReducer: 0
+  nextSceneMusic:
+    Guid:
+      Data1: -2009058302
+      Data2: 1293411506
+      Data3: 1458965673
+      Data4: -2046846014
+    Path: event:/Music/dateTheme
 --- !u!1 &619394800
 GameObject:
   m_ObjectHideFlags: 0
@@ -7485,58 +7497,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1298419915}
   m_CullTransparentMesh: 1
---- !u!1 &1363499922
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1363499924}
-  - component: {fileID: 1363499923}
-  m_Layer: 0
-  m_Name: SoundtrackSetter
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!114 &1363499923
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1363499922}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 45a960cb0a316ac4186af3d11d80359b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _musicReference:
-    Guid:
-      Data1: 0
-      Data2: 0
-      Data3: 0
-      Data4: 0
-    Path: 
-  _musicName: 
---- !u!4 &1363499924
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1363499922}
-  serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 567.2388, y: 337.72012, z: -4.166292}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1363842149
 GameObject:
   m_ObjectHideFlags: 0
@@ -8313,6 +8273,13 @@ MonoBehaviour:
   xHoverScale: 0
   yHoverScale: 0
   isStressReducer: 0
+  nextSceneMusic:
+    Guid:
+      Data1: 0
+      Data2: 0
+      Data3: 0
+      Data4: 0
+    Path: 
 --- !u!114 &1455098161
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -11070,6 +11037,7 @@ MonoBehaviour:
   CurrentCharacterIndex: 0
   handSize: 4
   mapButtonScript: {fileID: 602046419}
+  comboSurge: 0
 --- !u!4 &2001940043
 Transform:
   m_ObjectHideFlags: 0
@@ -12152,6 +12120,51 @@ RectTransform:
   m_AnchoredPosition: {x: -167, y: -291}
   m_SizeDelta: {x: 367, y: 375.3165}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!1 &2120616861
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2120616863}
+  - component: {fileID: 2120616862}
+  m_Layer: 0
+  m_Name: Debugger
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &2120616862
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2120616861}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 313bf87faae756d459d8989c8023d1e1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  nextScene: NokiDate2SkillCheck1
+--- !u!4 &2120616863
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2120616861}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 666.21173, y: 363.3996, z: -3.3852165}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &2143843330
 GameObject:
   m_ObjectHideFlags: 0
@@ -12460,7 +12473,7 @@ SceneRoots:
   - {fileID: 1108671395}
   - {fileID: 619394802}
   - {fileID: 379998687}
-  - {fileID: 1363499924}
   - {fileID: 1005606886}
   - {fileID: 1821074930}
   - {fileID: 204677442}
+  - {fileID: 2120616863}

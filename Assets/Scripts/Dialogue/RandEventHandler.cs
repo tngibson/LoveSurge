@@ -406,7 +406,7 @@ public class RandEventHandler : MonoBehaviour
 
         if (playbackState == PLAYBACK_STATE.PLAYING || playbackState == PLAYBACK_STATE.STARTING)
         {
-            voiceInstance.stop(FMOD.Studio.STOP_MODE.ALLOWFADEOUT);
+            //voiceInstance.stop(FMOD.Studio.STOP_MODE.ALLOWFADEOUT);
         }
     }
 
@@ -456,6 +456,10 @@ public class RandEventHandler : MonoBehaviour
         {
             voiceInstance = deliahVoice;
         }
+        else if (speaker == "")
+        {
+            voiceInstance = noVoice;
+        }
         // Manage the voice playback coroutine
         if (isTypewriting)
         {
@@ -474,7 +478,7 @@ public class RandEventHandler : MonoBehaviour
                 voiceInstance.getPlaybackState(out var playbackState);
                 if (playbackState == PLAYBACK_STATE.PLAYING)
                 {
-                    voiceInstance.stop(FMOD.Studio.STOP_MODE.ALLOWFADEOUT); // Stop audio safely
+                    //voiceInstance.stop(FMOD.Studio.STOP_MODE.ALLOWFADEOUT); // Stop audio safely
                 }
             }
         }

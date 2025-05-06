@@ -10,6 +10,8 @@ public class SoundtrackSetter : MonoBehaviour
     [Tooltip("Set Music Here!")]
     [SerializeField] private EventReference _musicReference;
     [SerializeField] private string _musicName;
+
+    [SerializeField] private string DateCharacter;
     
     public void PlayMusicByReference(EventReference musicReference)
     {
@@ -43,6 +45,27 @@ public class SoundtrackSetter : MonoBehaviour
     private void Start()
     {
         PlayMusic();
+
+
+        if (DateCharacter == "Noki")
+        {
+            MusicManager.SetParameterByName("dateCharacter", 2);
+        }
+        
+        if (DateCharacter == "Lotte")
+        {
+            MusicManager.SetParameterByName("dateCharacter", 1);
+        }
+        
+        if (DateCharacter == "Celci")
+        {
+            MusicManager.SetParameterByName("dateCharacter", 0);
+        }
+        
+        if (DateCharacter == "")
+        {
+            MusicManager.SetParameterByName("dateCharacter", 0);
+        }
     }
 }
 
