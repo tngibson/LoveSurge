@@ -25,29 +25,33 @@ public class PauseMenu : MonoBehaviour
             }
             else
             {
-                PauseGame();
+                StartCoroutine(PauseGame());
             }
         }
     }
 
     // Pauses the game and shows the pause menu
-    public void PauseGame()
+    public IEnumerator PauseGame()
     {
         pauseMenuUI.SetActive(true);
         Time.timeScale = 0f;
         isPaused = true;
+        AudioManager.instance.PlayOneShot(FMODEvents.instance.WindowOpen);
+        yield return new WaitForSecondsRealtime(0.4f);
         AudioManager.instance.SetPaused(true); // Pause audio
     }
 
     // Resumes the game and hides the pause menu
     public void ResumeGame()
     {
+        AudioManager.instance.SetPaused(false); // Resume audio
         pauseMenuUI.SetActive(false);
         audioMenuUI.SetActive(false);
         optionsMenuUI.SetActive(false);
         Time.timeScale = 1f;
         isPaused = false;
-        AudioManager.instance.SetPaused(false); // Resume audio
+        AudioManager.instance.PlayOneShot(FMODEvents.instance.WindowClose);
+
     }
 
     public void openOptionsMenu()

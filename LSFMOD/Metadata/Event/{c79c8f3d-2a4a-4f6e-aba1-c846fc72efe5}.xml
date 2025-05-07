@@ -96,6 +96,9 @@
 		</relationship>
 	</object>
 	<object class="EventMixerMaster" id="{3b7f9b63-cfdf-4560-bb0b-d718865fdc3e}">
+		<property name="volume">
+			<value>-6.5</value>
+		</property>
 		<relationship name="effectChain">
 			<destination>{aaeb26a7-e9c0-4a0e-9b99-fbd48d16d1e0}</destination>
 		</relationship>
@@ -143,7 +146,7 @@
 			<value>0.074999999999999983</value>
 		</property>
 		<property name="startOffset">
-			<value>50</value>
+			<value>40</value>
 		</property>
 		<relationship name="modulators">
 			<destination>{431f3505-6f58-4d1f-86e0-8c3387341ef0}</destination>
@@ -364,7 +367,7 @@
 			<value>startOffset</value>
 		</property>
 		<property name="amount">
-			<value>100</value>
+			<value>61.5</value>
 		</property>
 	</object>
 	<object class="FadeCurve" id="{07fe44a2-df1b-4ab0-a34c-631f355923ec}">

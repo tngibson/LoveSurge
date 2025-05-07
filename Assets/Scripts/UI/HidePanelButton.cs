@@ -35,6 +35,7 @@ public class HidePanelButton : MonoBehaviour
             // Move the parent game object back to its original position.
             StartCoroutine(MoveAndRotateOverTime(parentRectTransform.anchoredPosition, originalPosition, 90f, -90f));
             isHidden = false;
+            AudioManager.instance.PlayOneShot(FMODEvents.instance.WindowOpen);
         }
         else
         {
@@ -58,6 +59,7 @@ public class HidePanelButton : MonoBehaviour
 
             // Start the coroutine to move the object.
             StartCoroutine(MoveAndRotateOverTime(parentRectTransform.anchoredPosition, targetPosition, -90f, 90f));
+            AudioManager.instance.PlayOneShot(FMODEvents.instance.WindowClose);
             isHidden = true;
         }
     }

@@ -96,6 +96,9 @@
 		</relationship>
 	</object>
 	<object class="EventMixerMaster" id="{ab839689-79c2-4d9e-be0b-14aa73e4a563}">
+		<property name="volume">
+			<value>-6</value>
+		</property>
 		<relationship name="effectChain">
 			<destination>{d046971f-f84e-4cc6-a04c-b2ee6f24aa6e}</destination>
 		</relationship>
@@ -139,6 +142,12 @@
 		<property name="length">
 			<value>0.074999999999999983</value>
 		</property>
+		<property name="startOffset">
+			<value>42</value>
+		</property>
+		<relationship name="modulators">
+			<destination>{ac373848-619f-4f70-8bcb-813b1e8271b9}</destination>
+		</relationship>
 		<relationship name="fadeInCurve">
 			<destination>{52e76ce1-b686-4c83-b8bb-0f190ded866b}</destination>
 		</relationship>
@@ -352,6 +361,14 @@
 		<relationship name="endPoint">
 			<destination>{c1c95d43-707c-40c1-9ca5-799ee4ca584e}</destination>
 		</relationship>
+	</object>
+	<object class="RandomizerModulator" id="{ac373848-619f-4f70-8bcb-813b1e8271b9}">
+		<property name="nameOfPropertyBeingModulated">
+			<value>startOffset</value>
+		</property>
+		<property name="amount">
+			<value>68.5</value>
+		</property>
 	</object>
 	<object class="FadeCurve" id="{52e76ce1-b686-4c83-b8bb-0f190ded866b}">
 		<relationship name="startPoint">
