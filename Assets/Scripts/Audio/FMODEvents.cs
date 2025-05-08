@@ -14,7 +14,7 @@ public class FMODEvents : MonoBehaviour
 
    // [field: SerializeField] public EventReference dateMusic { get; private set; }
     //[field: SerializeField] public EventReference environmentTrack { get; private set; }
-    [field: SerializeField] public EventReference CurrentRingtone { get; private set; }
+    //[field: SerializeField] public EventReference CurrentRingtone { get; private set; }
     //[field: SerializeField] public EventReference sceneMusic { get; private set; }
     [field: Header("Card SFX")]
     [field: SerializeField] public EventReference CardPlaced { get; private set; }

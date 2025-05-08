@@ -64,7 +64,7 @@ public class SoundtrackSetter : MonoBehaviour
         
         if (DateCharacter == "")
         {
-            MusicManager.SetParameterByName("dateCharacter", 0);
+            MusicManager.SetParameterByName("dateCharacter", 3);
         }
     }
 }
