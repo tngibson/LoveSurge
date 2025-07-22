@@ -22,6 +22,8 @@ public class Player : MonoBehaviour
 
     public List<int> convoTiers = new List<int> { 1, 1, 1, 1 }; // Index 0 = Courage, 1 = Creativity, 2 = Cleverness, 3 = Charisma
 
+    public event Action OnStatsChanged;
+
     void Awake()
     {
         if (instance == null)
@@ -77,6 +79,7 @@ public class Player : MonoBehaviour
     public void SetStat(StatType stat, int value)
     {
         stats[(int)stat] = value; // Use the enum as an index
+        OnStatsChanged?.Invoke();
     }
     
     // Returns stat value with associated offset

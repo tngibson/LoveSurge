@@ -1,6 +1,7 @@
+using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
-using System.Collections;
 
 public class HidePanelButton : MonoBehaviour
 {
@@ -11,10 +12,12 @@ public class HidePanelButton : MonoBehaviour
     public float moveDuration = 0.5f; // Duration for the move animation.
 
     private Vector3 originalPosition; // Store the original position.
-    private bool isHidden = false;    // Boolean to track if the object is hidden.
+    [SerializeField] private bool isHidden = false;    // Boolean to track if the object is hidden.
     [SerializeField] private RectTransform parentRectTransform; // To store the parent RectTransform.
     [SerializeField] private GameObject buttonObject; // To store the parent RectTransform.
     private bool isMoving = false;    // To prevent multiple movements at once.
+    public List<GameObject> itemsToHide = new List<GameObject>();
+    public List<GameObject> itemsToUnhide = new List<GameObject>();
 
     void Start()
     {
@@ -59,7 +62,7 @@ public class HidePanelButton : MonoBehaviour
 
             // Start the coroutine to move the object.
             StartCoroutine(MoveAndRotateOverTime(parentRectTransform.anchoredPosition, targetPosition, -90f, 90f));
-            AudioManager.instance.PlayOneShot(FMODEvents.instance.WindowClose);
+            AudioManager.instance?.PlayOneShot(FMODEvents.instance.WindowClose);
             isHidden = true;
         }
     }
@@ -88,6 +91,19 @@ public class HidePanelButton : MonoBehaviour
         // Ensure final position and rotation are set precisely
         parentRectTransform.anchoredPosition = end;
         buttonObject.transform.localRotation = Quaternion.Euler(0, 0, endRotation);
+
+        // Show or hide items based on the new isHidden state
+        foreach (var item in itemsToHide)
+        {
+            if (item != null)
+                item.SetActive(!isHidden);
+        }
+        // Opposite of above
+        foreach (var item in itemsToUnhide)
+        {
+            if (item != null)
+                item.SetActive(isHidden);
+        }
 
         isMoving = false;
     }
