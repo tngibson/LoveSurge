@@ -97,14 +97,14 @@ public class MusicManager : MonoBehaviour
         if (!CurrentMusicInstance.isValid()) 
             return true;
 
-       string newMusicPath = newMusic.Path;
+       string newMusicPath = newMusic.ToString();
        Debug.Log(newMusicPath);
        Debug.Log(ActiveMusicName);
        return !ActiveMusicName.Equals(newMusicPath, StringComparison.OrdinalIgnoreCase);
     }
     public void PlayMusic(EventReference music, bool fadeout = false, float fadeTime = 2f)
     {
-        string newMusicPath = music.Path;
+        string newMusicPath = music.ToString();
         
         if (CurrentMusicInstance.isValid() && ActiveMusicName.Equals(newMusicPath, StringComparison.OrdinalIgnoreCase))
         {
@@ -118,7 +118,7 @@ public class MusicManager : MonoBehaviour
             CurrentMusicInstance = RuntimeManager.CreateInstance(music);
             CurrentMusicInstance.start();
             
-            ActiveMusicName = music.Path;
+            ActiveMusicName = music.ToString();
             return;
         }
 
@@ -128,7 +128,7 @@ public class MusicManager : MonoBehaviour
             CurrentMusicInstance.stop(FMOD.Studio.STOP_MODE.ALLOWFADEOUT);
             CurrentMusicInstance = RuntimeManager.CreateInstance(music);
             CurrentMusicInstance.start();
-            ActiveMusicName = music.Path;
+            ActiveMusicName = music.ToString();
         }
         else
         {
@@ -210,10 +210,10 @@ public class MusicManager : MonoBehaviour
 #if UNITY_EDITOR
         private static string GetMusicName(EventReference music)
         {
-        if (string.IsNullOrEmpty(music.Path)) 
+        if (string.IsNullOrEmpty(music.ToString())) 
             return string.Empty;
 
-        return Path.GetFileName(music.Path);
+        return Path.GetFileName(music.ToString());
         }
 #endif
 }
