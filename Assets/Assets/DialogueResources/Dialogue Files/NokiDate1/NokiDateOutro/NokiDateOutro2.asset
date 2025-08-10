@@ -1,0 +1,98 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2de807345bdd09646bb1f755bf64c760, type: 3}
+  m_Name: NokiDateOutro2
+  m_EditorClassIdentifier: 
+  choiceOptions:
+  - Absolutely.
+  - I think that's impossible.
+  choicePaths:
+  - afterChoiceDialogLines:
+    - "Oh, absolutely. I don\u2019t think I could be near you for another second."
+    - You let out an exasperated sigh as you hold your hand to your face.
+    - Noki frowns and crosses her arms at you.
+    - Are you being serious right now?
+    - "I\u2019m just kidding\u2026"
+    - You give her a reassuring smile.
+    - Her shoulders begin to relax as she lets out a relieved sigh.
+    - "Oh, that\u2019s good\u2026I thought you were being serious."
+    - Or am I?
+    - You give her a smug smile and puff out your chest.
+    - Noki squints at you, letting out a short huff. She begins to walk off.
+    - I think our date has come to an end.
+    - Wait Noki! I was just messing with you.
+    - "She doesn\u2019t wait for you as she exits the Omniverse, leaving you behind."
+    afterChoiceSpeakersPerLine:
+    - You
+    - 
+    - 
+    - Noki
+    - You
+    - 
+    - 
+    - Noki
+    - You
+    - 
+    - 
+    - Noki
+    - You
+    - 
+    afterChoiceSpriteOptions:
+    - spriteOptions:
+      - {fileID: 21300000, guid: 1efff82e0a469464987b91e1e6ff298e, type: 3}
+      - {fileID: 21300000, guid: 1efff82e0a469464987b91e1e6ff298e, type: 3}
+      - {fileID: 21300000, guid: 4793868bd2892bd4abc8227a508d91d7, type: 3}
+      - {fileID: 21300000, guid: 4793868bd2892bd4abc8227a508d91d7, type: 3}
+      - {fileID: 21300000, guid: 4793868bd2892bd4abc8227a508d91d7, type: 3}
+      - {fileID: 21300000, guid: 4793868bd2892bd4abc8227a508d91d7, type: 3}
+      - {fileID: 21300000, guid: 18e1c1d22c2cbaa47914600a13de0859, type: 3}
+      - {fileID: 21300000, guid: 18e1c1d22c2cbaa47914600a13de0859, type: 3}
+      - {fileID: 21300000, guid: 18e1c1d22c2cbaa47914600a13de0859, type: 3}
+      - {fileID: 21300000, guid: 18e1c1d22c2cbaa47914600a13de0859, type: 3}
+      - {fileID: 21300000, guid: 4793868bd2892bd4abc8227a508d91d7, type: 3}
+      - {fileID: 21300000, guid: 4793868bd2892bd4abc8227a508d91d7, type: 3}
+      - {fileID: 21300000, guid: 4793868bd2892bd4abc8227a508d91d7, type: 3}
+      - {fileID: 21300000, guid: 4793868bd2892bd4abc8227a508d91d7, type: 3}
+    statTag: 
+    statValue: 0
+  - afterChoiceDialogLines:
+    - "I don\u2019t think I could ever get enough of you. I have really enjoyed our
+      time together here."
+    - "Noki\u2019s eyes widen, caught off guard by you. She begins to smile, her
+      cheeks growing a little red."
+    - "Do you really mean that\u2026?"
+    - She looks up to you with a hopeful gaze, her hands hiding behind her back.
+    - Mhm, and I hope we can hang out again sometime in the future as well.
+    - Noki claps her hands together and nods.
+    - I look forward to it!
+    - The both of you walk side by side as you two leave the Omniverse.
+    afterChoiceSpeakersPerLine:
+    - You
+    - 
+    - Noki
+    - 
+    - You
+    - 
+    - Noki
+    - 
+    afterChoiceSpriteOptions:
+    - spriteOptions:
+      - {fileID: 21300000, guid: 1efff82e0a469464987b91e1e6ff298e, type: 3}
+      - {fileID: 21300000, guid: e6c3300e761b41e478bb010bf347ae9d, type: 3}
+      - {fileID: 21300000, guid: e6c3300e761b41e478bb010bf347ae9d, type: 3}
+      - {fileID: 21300000, guid: e6c3300e761b41e478bb010bf347ae9d, type: 3}
+      - {fileID: 21300000, guid: e6c3300e761b41e478bb010bf347ae9d, type: 3}
+      - {fileID: 21300000, guid: eb54c0b9144af6b4e8e9578c07a0c65b, type: 3}
+      - {fileID: 21300000, guid: eb54c0b9144af6b4e8e9578c07a0c65b, type: 3}
+      - {fileID: 21300000, guid: eb54c0b9144af6b4e8e9578c07a0c65b, type: 3}
+    statTag: 
+    statValue: 0

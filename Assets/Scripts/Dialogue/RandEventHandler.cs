@@ -59,6 +59,16 @@ public class RandEventHandler : MonoBehaviour
 
     [SerializeField] private GameObject continueIndicator;
 
+    [SerializeField] private Image cgImage; // The CG image to fade in/out
+    [SerializeField] private GameObject uiContainer; // All UI elements that should hide
+    [SerializeField] private CanvasGroup uiCanvasGroup; // For fading UI without disabling it
+    [SerializeField] private float cgFadeDuration = 0.5f; // How long fade takes
+
+    private bool isCGActive = false; // Are we currently in CG mode?
+    private bool isWaitingForCGClick = false; // Waiting for player to click after CG shows
+
+    private Coroutine typewriterCoroutine; // track current typewriter
+
     void Start()
     {
         // Set the playerManager and get the player's preferred name
@@ -80,10 +90,19 @@ public class RandEventHandler : MonoBehaviour
 
     void Update()
     {
+        // If we're in CG waiting mode, only handle that
+        if (isWaitingForCGClick && Input.GetButtonDown("Skip"))
+        {
+            isWaitingForCGClick = false;
+            StartCoroutine(FadeCanvasGroup(uiCanvasGroup, 0f, 1f, cgFadeDuration));
+            StartCoroutine(ResumeAfterCG());
+            return; // stop here so normal skip doesn't run
+        }
+
         // Check for skip input
         if (Input.GetButtonDown("Skip"))
         {
-            if (isTypewriting)
+            if (isTypewriting && !isWaitingForCGClick)
             {
                 // Skip typewriter effect
                 skipRequested = true;
@@ -113,6 +132,18 @@ public class RandEventHandler : MonoBehaviour
                 mapButton.SetActive(true);  // Show the map button when dialog is done
                 return;
             }
+        }
+
+        if (dialogLines[currentLineIndex] == "CGSTART")
+        {
+            StartCoroutine(HandleCGStart());
+            return;
+        }
+
+        if (dialogLines[currentLineIndex] == "CGEND")
+        {
+            StartCoroutine(HandleCGEnd());
+            return;
         }
 
         // Checks if we find a CHOICE
@@ -147,7 +178,12 @@ public class RandEventHandler : MonoBehaviour
         UpdateAllPortraits(currentSpeaker);
 
         // Start the typewriter effect
-        StartCoroutine(TypewriteText(dialogLines[currentLineIndex], currentSpeaker));
+        if (typewriterCoroutine != null)
+        {
+            StopCoroutine(typewriterCoroutine);
+            typewriterCoroutine = null;
+        }
+        typewriterCoroutine = StartCoroutine(TypewriteText(dialogLines[currentLineIndex], currentSpeaker));
     }
 
     // Coroutine to smoothly transition the character color
@@ -496,6 +532,71 @@ public class RandEventHandler : MonoBehaviour
         ceoVoice = AudioManager.instance.CreateInstance(FMODEvents.instance.CeoVoice);
         wizardVoice = AudioManager.instance.CreateInstance(FMODEvents.instance.WizardVoice);
         deliahVoice = AudioManager.instance.CreateInstance(FMODEvents.instance.DeliahVoice);
+    }
+
+    private IEnumerator FadeImage(Image image, float startAlpha, float endAlpha, float duration)
+    {
+        Color c = image.color;
+        float t = 0f;
+        while (t < duration)
+        {
+            t += Time.deltaTime;
+            c.a = Mathf.Lerp(startAlpha, endAlpha, t / duration);
+            image.color = c;
+            yield return null;
+        }
+        c.a = endAlpha;
+        image.color = c;
+    }
+
+    private IEnumerator FadeCanvasGroup(CanvasGroup group, float startAlpha, float endAlpha, float duration)
+    {
+        float t = 0f;
+        while (t < duration)
+        {
+            t += Time.deltaTime;
+            group.alpha = Mathf.Lerp(startAlpha, endAlpha, t / duration);
+            yield return null;
+        }
+        group.alpha = endAlpha;
+    }
+
+    private IEnumerator HandleCGStart()
+    {
+        // No text typing during CGSTART
+        textOutput.text = "";
+        continueIndicator.SetActive(false);
+
+        // Show CG image & fade in while fading out UI
+        cgImage.gameObject.SetActive(true);
+        StartCoroutine(FadeImage(cgImage, 0f, 1f, cgFadeDuration));
+        yield return StartCoroutine(FadeCanvasGroup(uiCanvasGroup, 1f, 0f, cgFadeDuration));
+
+        // Wait for player click
+        isWaitingForCGClick = true;
+    }
+
+    private IEnumerator HandleCGEnd()
+    {
+        // Fade CG out while letting text continue
+        yield return StartCoroutine(FadeImage(cgImage, 1f, 0f, cgFadeDuration));
+        cgImage.gameObject.SetActive(false);
+
+        // Continue immediately
+        currentLineIndex++;
+        DisplayLine();
+    }
+
+    private IEnumerator ResumeAfterCG()
+    {
+        yield return new WaitForSeconds(cgFadeDuration);
+        if (typewriterCoroutine != null)
+        {
+            StopCoroutine(typewriterCoroutine);
+            typewriterCoroutine = null;
+        }
+        currentLineIndex++;
+        DisplayLine();
     }
 }
 

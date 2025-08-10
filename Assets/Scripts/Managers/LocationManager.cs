@@ -16,6 +16,16 @@ public class LocationManager : MonoBehaviour
     public DayPhase phaseEnteredDate = DayPhase.None;
     public bool isFirstTime = true;
 
+    public enum DateNum { Date1, Date2, Date3 };
+    public enum Date1Stage { Intro, CardGame, Done };
+    public enum Date2Stage { Intro, CardGame, Done };
+    public enum Date3Stage { Intro, CardGame, Done };
+
+    public DateNum date = DateNum.Date1;
+    public Date1Stage date1Stage = Date1Stage.Intro;
+    public Date2Stage date2Stage = Date2Stage.Intro;
+    public Date3Stage date3Stage = Date3Stage.Intro;
+
     void Awake()
     {
         if (Instance == null)
@@ -35,6 +45,7 @@ public class LocationManager : MonoBehaviour
     private void OnSceneLoaded(Scene scene, LoadSceneMode mode)
     {
         targetMapScript = GameObject.Find("House")?.GetComponent<MapScript>();
+        UpdateMapLocation();
         for (int i = 0; i < dateStates.Count; i++)
         {
             if (GetDateState(i))
@@ -95,15 +106,71 @@ public class LocationManager : MonoBehaviour
 
     private void UpdateMapLocation()
     {
-        if (targetMapScript != null)
+        if (targetMapScript == null) return;
+
+        switch (date)
         {
-            targetMapScript.locName = "NokiDate2CardGame1";
-            Debug.Log("Location updated to: " + targetMapScript.locName);
+            case DateNum.Date1:
+                switch (date1Stage)
+                {
+                    case Date1Stage.Intro:
+                        targetMapScript.locName = "NokiDate1Intro";
+                        break;
+                    case Date1Stage.CardGame:
+                        targetMapScript.locName = "NokiDate1CardGame1";
+                        break;
+                    case Date1Stage.Done:
+                        date = DateNum.Date2;
+                        date2Stage = Date2Stage.Intro;
+                        UpdateMapLocation();
+                        for (int i = 0; i < Player.instance.convoTiers.Count; i++)
+                        {
+                            Player.instance.convoTiers[i] = 1;
+                        }
+                        ConnectionManager.instance.setConnection(0, 0);
+                        return;
+                }
+                break;
+
+            case DateNum.Date2:
+                switch (date2Stage)
+                {
+                    case Date2Stage.Intro:
+                        targetMapScript.locName = "NokiDate2Intro";
+                        break;
+                    case Date2Stage.CardGame:
+                        targetMapScript.locName = "NokiDate2CardGame1";
+                        break;
+                    case Date2Stage.Done:
+                        date = DateNum.Date3;
+                        date3Stage = Date3Stage.Intro;
+                        UpdateMapLocation();
+                        for (int i = 0; i < Player.instance.convoTiers.Count; i++)
+                        {
+                            Player.instance.convoTiers[i] = 1;
+                        }
+                        ConnectionManager.instance.setConnection(0, 0);
+                        return;
+                }
+                break;
+
+            case DateNum.Date3:
+                switch (date3Stage)
+                {
+                    case Date3Stage.Intro:
+                        targetMapScript.locName = "NokiDate3Intro";
+                        break;
+                    case Date3Stage.CardGame:
+                        targetMapScript.locName = "NokiDate3CardGame1";
+                        break;
+                    case Date3Stage.Done:
+                        Debug.Log("All dates completed.");
+                        break;
+                }
+                break;
         }
-        else
-        {
-            Debug.LogWarning("Target MapScript not assigned or found!");
-        }
+
+        targetMapScript.SetEnabled(isPlayable);
     }
 
     void OnDestroy()

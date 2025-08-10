@@ -597,6 +597,12 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 637296338}
   m_CullTransparentMesh: 1
+--- !u!1 &666339837 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 7239220871883381080, guid: caff7daa29ed80547bbcab65c7792ef9,
+    type: 3}
+  m_PrefabInstance: {fileID: 5353494745443344013}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &703482445
 GameObject:
   m_ObjectHideFlags: 0
@@ -787,6 +793,7 @@ RectTransform:
   m_Children:
   - {fileID: 1741321907}
   - {fileID: 637296339}
+  - {fileID: 1603443186}
   - {fileID: 1840215326}
   - {fileID: 358605965}
   m_Father: {fileID: 0}
@@ -817,27 +824,27 @@ PrefabInstance:
     - target: {fileID: 5504610424280721779, guid: ec3ecb435f8fc39499cde3355a4d25df,
         type: 3}
       propertyPath: _musicReference.Path
-      value: event:/Music/loveTheme
+      value: event:/Music/deepConversation
       objectReference: {fileID: 0}
     - target: {fileID: 5504610424280721779, guid: ec3ecb435f8fc39499cde3355a4d25df,
         type: 3}
       propertyPath: _musicReference.Guid.Data1
-      value: 575004947
+      value: -415721628
       objectReference: {fileID: 0}
     - target: {fileID: 5504610424280721779, guid: ec3ecb435f8fc39499cde3355a4d25df,
         type: 3}
       propertyPath: _musicReference.Guid.Data2
-      value: 1237757196
+      value: 1318390846
       objectReference: {fileID: 0}
     - target: {fileID: 5504610424280721779, guid: ec3ecb435f8fc39499cde3355a4d25df,
         type: 3}
       propertyPath: _musicReference.Guid.Data3
-      value: 1849890985
+      value: 960163739
       objectReference: {fileID: 0}
     - target: {fileID: 5504610424280721779, guid: ec3ecb435f8fc39499cde3355a4d25df,
         type: 3}
       propertyPath: _musicReference.Guid.Data4
-      value: 1515586730
+      value: -981010115
       objectReference: {fileID: 0}
     - target: {fileID: 7264670186323186703, guid: ec3ecb435f8fc39499cde3355a4d25df,
         type: 3}
@@ -1030,6 +1037,81 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1603443185
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1603443186}
+  - component: {fileID: 1603443188}
+  - component: {fileID: 1603443187}
+  m_Layer: 5
+  m_Name: CG
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 0
+--- !u!224 &1603443186
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1603443185}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 725283230}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 1, y: 1}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 0, y: 0}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &1603443187
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1603443185}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 1, g: 1, b: 1, a: 0}
+  m_RaycastTarget: 1
+  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
+  m_Maskable: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  m_Sprite: {fileID: 21300000, guid: 2063cc61261a5364cbf724b1242719cc, type: 3}
+  m_Type: 0
+  m_PreserveAspect: 0
+  m_FillCenter: 1
+  m_FillMethod: 4
+  m_FillAmount: 1
+  m_FillClockwise: 1
+  m_FillOrigin: 0
+  m_UseSpriteMesh: 0
+  m_PixelsPerUnitMultiplier: 1
+--- !u!222 &1603443188
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1603443185}
+  m_CullTransparentMesh: 1
 --- !u!1 &1741321906
 GameObject:
   m_ObjectHideFlags: 0
@@ -1105,6 +1187,12 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1741321906}
   m_CullTransparentMesh: 1
+--- !u!225 &1808716802 stripped
+CanvasGroup:
+  m_CorrespondingSourceObject: {fileID: 3147556016222178123, guid: caff7daa29ed80547bbcab65c7792ef9,
+    type: 3}
+  m_PrefabInstance: {fileID: 5353494745443344013}
+  m_PrefabAsset: {fileID: 0}
 --- !u!224 &1840215326 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 3932021884715458363, guid: caff7daa29ed80547bbcab65c7792ef9,
@@ -1119,6 +1207,13 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 725283230}
     m_Modifications:
+    - target: {fileID: 1146173216322772198, guid: caff7daa29ed80547bbcab65c7792ef9,
+        type: 3}
+      propertyPath: m_text
+      value: 'Continue
+
+'
+      objectReference: {fileID: 0}
     - target: {fileID: 1715403562571543631, guid: caff7daa29ed80547bbcab65c7792ef9,
         type: 3}
       propertyPath: m_SizeDelta.x
@@ -1301,6 +1396,21 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8427216516346150109, guid: caff7daa29ed80547bbcab65c7792ef9,
         type: 3}
+      propertyPath: cgImage
+      value: 
+      objectReference: {fileID: 1603443187}
+    - target: {fileID: 8427216516346150109, guid: caff7daa29ed80547bbcab65c7792ef9,
+        type: 3}
+      propertyPath: uiContainer
+      value: 
+      objectReference: {fileID: 666339837}
+    - target: {fileID: 8427216516346150109, guid: caff7daa29ed80547bbcab65c7792ef9,
+        type: 3}
+      propertyPath: uiCanvasGroup
+      value: 
+      objectReference: {fileID: 1808716802}
+    - target: {fileID: 8427216516346150109, guid: caff7daa29ed80547bbcab65c7792ef9,
+        type: 3}
       propertyPath: typewriterSpeed
       value: 0.025
       objectReference: {fileID: 0}
@@ -1337,7 +1447,7 @@ PrefabInstance:
     - target: {fileID: 8427216516346150109, guid: caff7daa29ed80547bbcab65c7792ef9,
         type: 3}
       propertyPath: dialogLines.Array.size
-      value: 32
+      value: 34
       objectReference: {fileID: 0}
     - target: {fileID: 8427216516346150109, guid: caff7daa29ed80547bbcab65c7792ef9,
         type: 3}
@@ -1506,31 +1616,41 @@ PrefabInstance:
     - target: {fileID: 8427216516346150109, guid: caff7daa29ed80547bbcab65c7792ef9,
         type: 3}
       propertyPath: dialogLines.Array.data[26]
-      value: Cheese!
+      value: CGSTART
       objectReference: {fileID: 0}
     - target: {fileID: 8427216516346150109, guid: caff7daa29ed80547bbcab65c7792ef9,
         type: 3}
       propertyPath: dialogLines.Array.data[27]
-      value: You take the picture, the camera flashing.
+      value: Cheese!
       objectReference: {fileID: 0}
     - target: {fileID: 8427216516346150109, guid: caff7daa29ed80547bbcab65c7792ef9,
         type: 3}
       propertyPath: dialogLines.Array.data[28]
-      value: "Now that\u2019s what I call the perfect picture."
+      value: You take the picture, the camera flashing.
       objectReference: {fileID: 0}
     - target: {fileID: 8427216516346150109, guid: caff7daa29ed80547bbcab65c7792ef9,
         type: 3}
       propertyPath: dialogLines.Array.data[29]
-      value: "Noki\u2019s eyes slowly start to flicker."
+      value: CGEND
       objectReference: {fileID: 0}
     - target: {fileID: 8427216516346150109, guid: caff7daa29ed80547bbcab65c7792ef9,
         type: 3}
       propertyPath: dialogLines.Array.data[30]
-      value: Noki? Noki!
+      value: "Now that\u2019s what I call the perfect picture."
       objectReference: {fileID: 0}
     - target: {fileID: 8427216516346150109, guid: caff7daa29ed80547bbcab65c7792ef9,
         type: 3}
       propertyPath: dialogLines.Array.data[31]
+      value: "Noki\u2019s eyes slowly start to flicker."
+      objectReference: {fileID: 0}
+    - target: {fileID: 8427216516346150109, guid: caff7daa29ed80547bbcab65c7792ef9,
+        type: 3}
+      propertyPath: dialogLines.Array.data[32]
+      value: Noki? Noki!
+      objectReference: {fileID: 0}
+    - target: {fileID: 8427216516346150109, guid: caff7daa29ed80547bbcab65c7792ef9,
+        type: 3}
+      propertyPath: dialogLines.Array.data[33]
       value: Noki starts to sway side to side a little before she collapses onto
         the flower bed. You try to grab her before she hits the ground. However,
         as you try to reach for her, she reverts back to being a smartphone. You
@@ -1539,13 +1659,8 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8427216516346150109, guid: caff7daa29ed80547bbcab65c7792ef9,
         type: 3}
-      propertyPath: dialogLines.Array.data[32]
-      value: 
-      objectReference: {fileID: 0}
-    - target: {fileID: 8427216516346150109, guid: caff7daa29ed80547bbcab65c7792ef9,
-        type: 3}
       propertyPath: speakersPerLine.Array.size
-      value: 32
+      value: 34
       objectReference: {fileID: 0}
     - target: {fileID: 8427216516346150109, guid: caff7daa29ed80547bbcab65c7792ef9,
         type: 3}
@@ -1690,17 +1805,22 @@ PrefabInstance:
     - target: {fileID: 8427216516346150109, guid: caff7daa29ed80547bbcab65c7792ef9,
         type: 3}
       propertyPath: speakersPerLine.Array.data[26]
-      value: Noki
-      objectReference: {fileID: 0}
-    - target: {fileID: 8427216516346150109, guid: caff7daa29ed80547bbcab65c7792ef9,
-        type: 3}
-      propertyPath: speakersPerLine.Array.data[27]
       value: 
       objectReference: {fileID: 0}
     - target: {fileID: 8427216516346150109, guid: caff7daa29ed80547bbcab65c7792ef9,
         type: 3}
+      propertyPath: speakersPerLine.Array.data[27]
+      value: Noki
+      objectReference: {fileID: 0}
+    - target: {fileID: 8427216516346150109, guid: caff7daa29ed80547bbcab65c7792ef9,
+        type: 3}
       propertyPath: speakersPerLine.Array.data[28]
-      value: You
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 8427216516346150109, guid: caff7daa29ed80547bbcab65c7792ef9,
+        type: 3}
+      propertyPath: speakersPerLine.Array.data[29]
+      value: 
       objectReference: {fileID: 0}
     - target: {fileID: 8427216516346150109, guid: caff7daa29ed80547bbcab65c7792ef9,
         type: 3}
@@ -1711,6 +1831,11 @@ PrefabInstance:
         type: 3}
       propertyPath: speakersPerLine.Array.data[31]
       value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 8427216516346150109, guid: caff7daa29ed80547bbcab65c7792ef9,
+        type: 3}
+      propertyPath: speakersPerLine.Array.data[32]
+      value: You
       objectReference: {fileID: 0}
     - target: {fileID: 8427216516346150109, guid: caff7daa29ed80547bbcab65c7792ef9,
         type: 3}
@@ -1735,7 +1860,7 @@ PrefabInstance:
     - target: {fileID: 8427216516346150109, guid: caff7daa29ed80547bbcab65c7792ef9,
         type: 3}
       propertyPath: characterSprites.Array.data[0].spriteOptions.Array.size
-      value: 32
+      value: 34
       objectReference: {fileID: 0}
     - target: {fileID: 8427216516346150109, guid: caff7daa29ed80547bbcab65c7792ef9,
         type: 3}
@@ -1980,13 +2105,13 @@ PrefabInstance:
         type: 3}
       propertyPath: characterSprites.Array.data[0].spriteOptions.Array.data[29]
       value: 
-      objectReference: {fileID: 21300000, guid: 52174a669ceab084893f4460563966e2,
+      objectReference: {fileID: 21300000, guid: eb54c0b9144af6b4e8e9578c07a0c65b,
         type: 3}
     - target: {fileID: 8427216516346150109, guid: caff7daa29ed80547bbcab65c7792ef9,
         type: 3}
       propertyPath: characterSprites.Array.data[0].spriteOptions.Array.data[30]
       value: 
-      objectReference: {fileID: 21300000, guid: 52174a669ceab084893f4460563966e2,
+      objectReference: {fileID: 21300000, guid: eb54c0b9144af6b4e8e9578c07a0c65b,
         type: 3}
     - target: {fileID: 8427216516346150109, guid: caff7daa29ed80547bbcab65c7792ef9,
         type: 3}
@@ -1997,6 +2122,12 @@ PrefabInstance:
     - target: {fileID: 8427216516346150109, guid: caff7daa29ed80547bbcab65c7792ef9,
         type: 3}
       propertyPath: characterSprites.Array.data[0].spriteOptions.Array.data[32]
+      value: 
+      objectReference: {fileID: 21300000, guid: 52174a669ceab084893f4460563966e2,
+        type: 3}
+    - target: {fileID: 8427216516346150109, guid: caff7daa29ed80547bbcab65c7792ef9,
+        type: 3}
+      propertyPath: characterSprites.Array.data[0].spriteOptions.Array.data[33]
       value: 
       objectReference: {fileID: 21300000, guid: 52174a669ceab084893f4460563966e2,
         type: 3}
@@ -2101,7 +2232,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bbe147c37e01d3847adb6df4c90f7c49, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  locName: DemoOutro
+  locName: NokiDate2Outro
   button: {fileID: 0}
   questionText: {fileID: 0}
   locationText: {fileID: 0}

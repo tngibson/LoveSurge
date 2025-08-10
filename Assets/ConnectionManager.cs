@@ -19,11 +19,18 @@ public class ConnectionManager : MonoBehaviour
             Destroy(gameObject);
         }
     }
-        public void increaseConnection(int index,int amount)
+    
+    public void increaseConnection(int index,int amount)
     {
         connectionList[index] += amount;
         ConnectionBar.instance.updateCurrentConnectionAmt();
         ConnectionBar.instance.UpdateConnectionBar();
+    }
 
+    public void setConnection(int index, int amount)
+    {
+        connectionList[index] = amount;
+        ConnectionBar.instance.updateCurrentConnectionAmt();
+        ConnectionBar.instance.UpdateConnectionBar();
     }
 }

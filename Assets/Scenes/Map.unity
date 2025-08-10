@@ -2443,7 +2443,7 @@ GameObject:
   - component: {fileID: 916375625}
   - component: {fileID: 916375624}
   m_Layer: 0
-  m_Name: LocationText
+  m_Name: ParkLocationText
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2465,7 +2465,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -78, y: 217}
+  m_AnchoredPosition: {x: -22, y: 576}
   m_SizeDelta: {x: 1260.4016, y: 185.47}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &916375624
@@ -4302,7 +4302,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &1400460800
 RectTransform:
   m_ObjectHideFlags: 0
@@ -4849,7 +4849,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bbe147c37e01d3847adb6df4c90f7c49, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  locName: NokiDate2Intro
+  locName: NokiDate1Intro
   button: {fileID: 1530979895}
   questionText: {fileID: 1591945778}
   locationText: {fileID: 470919701}
@@ -5256,6 +5256,10 @@ MonoBehaviour:
   isPlayable: 1
   phaseEnteredDate: 3
   isFirstTime: 1
+  date: 0
+  date1Stage: 0
+  date2Stage: 0
+  date3Stage: 0
 --- !u!1 &1591945778
 GameObject:
   m_ObjectHideFlags: 0
@@ -6842,8 +6846,8 @@ MonoBehaviour:
   button: {fileID: 2122793604}
   questionText: {fileID: 1400460799}
   locationText: {fileID: 1006099609}
-  locationTextText: Visit the Item Shop!
-  isEnabled: 1
+  locationTextText: The shop is closed for now...
+  isEnabled: 0
   mapAnimator: {fileID: 2122793601}
   transition: {fileID: 0}
   transitionTime: 0
