@@ -148,7 +148,7 @@ public class GameManager : MonoBehaviour
             EndGameLoss();
         }
         
-        comboSurge = -1;
+        comboSurge = 0;
         //UpdateEndTurnButton(false); // Disable the end turn button
     }
 

@@ -260,6 +260,26 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4045239420547355991, guid: 44687f3797c06f041bb712efdc800917,
+        type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: -116
+      objectReference: {fileID: 0}
+    - target: {fileID: 4045239420547355991, guid: 44687f3797c06f041bb712efdc800917,
+        type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 92.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 4531473862938060446, guid: 44687f3797c06f041bb712efdc800917,
+        type: 3}
+      propertyPath: m_margin.x
+      value: -42.5352
+      objectReference: {fileID: 0}
+    - target: {fileID: 4531473862938060446, guid: 44687f3797c06f041bb712efdc800917,
+        type: 3}
+      propertyPath: m_margin.z
+      value: 58.441525
+      objectReference: {fileID: 0}
     - target: {fileID: 4531473862938060446, guid: 44687f3797c06f041bb712efdc800917,
         type: 3}
       propertyPath: m_fontColor.b
@@ -279,6 +299,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_fontColor32.rgba
       value: 4281104004
+      objectReference: {fileID: 0}
+    - target: {fileID: 4531473862938060446, guid: 44687f3797c06f041bb712efdc800917,
+        type: 3}
+      propertyPath: m_HorizontalAlignment
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 5127878525038528506, guid: 44687f3797c06f041bb712efdc800917,
         type: 3}
@@ -394,9 +419,10 @@ MonoBehaviour:
   isWildReceiver: 0
   isBottomCard: 0
   isReserveCard: 0
+  isInDropzone: 0
+  isPlayed: 0
   defaultTextColor: {r: 0.5176471, g: 0.4627451, b: 0.17254902, a: 1}
   power: 0
-  shouldLog: 0
 --- !u!114 &7193849438166305806 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 2458212191477848760, guid: 44687f3797c06f041bb712efdc800917,

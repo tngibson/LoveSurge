@@ -305,6 +305,16 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4045239420547355991, guid: 44687f3797c06f041bb712efdc800917,
+        type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: -148.2
+      objectReference: {fileID: 0}
+    - target: {fileID: 4045239420547355991, guid: 44687f3797c06f041bb712efdc800917,
+        type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 92.2
+      objectReference: {fileID: 0}
     - target: {fileID: 4531473862938060446, guid: 44687f3797c06f041bb712efdc800917,
         type: 3}
       propertyPath: m_fontColor.b
@@ -324,6 +334,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_fontColor32.rgba
       value: 4281756211
+      objectReference: {fileID: 0}
+    - target: {fileID: 4531473862938060446, guid: 44687f3797c06f041bb712efdc800917,
+        type: 3}
+      propertyPath: m_HorizontalAlignment
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 5357963197280185475, guid: 44687f3797c06f041bb712efdc800917,
         type: 3}
@@ -387,9 +402,10 @@ MonoBehaviour:
   isWildReceiver: 0
   isBottomCard: 0
   isReserveCard: 0
+  isInDropzone: 0
+  isPlayed: 0
   defaultTextColor: {r: 0.2, g: 0.41568628, b: 0.21176471, a: 1}
   power: 0
-  shouldLog: 0
 --- !u!1 &3269754105949744893 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 5217880058731838435, guid: 44687f3797c06f041bb712efdc800917,
