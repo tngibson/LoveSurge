@@ -12,6 +12,7 @@ public class MapScript : MonoBehaviour, IPointerEnterHandler, IPointerExitHandle
 
     [SerializeField] private Button button;
     [SerializeField] private GameObject questionText;
+    [SerializeField] private GameObject locationTextPanel;
     [SerializeField] private GameObject locationText;
     [SerializeField] private string locationTextText;
     public bool isEnabled;
@@ -51,7 +52,7 @@ public class MapScript : MonoBehaviour, IPointerEnterHandler, IPointerExitHandle
         {
             // Scale up and apply hover material
             transform.localScale = hoverScale;
-            locationText.SetActive(true);
+            locationTextPanel.SetActive(true);
             mapAnimator.SetBool("isHovered", true);
         }
     }
@@ -62,7 +63,7 @@ public class MapScript : MonoBehaviour, IPointerEnterHandler, IPointerExitHandle
         {
             // Reset scale and material
             transform.localScale = originalScale;
-            locationText.SetActive(false);
+            locationTextPanel.SetActive(false);
             mapAnimator.SetBool("isHovered", false);
         }
     }
