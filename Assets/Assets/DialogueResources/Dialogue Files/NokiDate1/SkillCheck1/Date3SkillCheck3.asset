@@ -1,0 +1,125 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8cbd23a6cba4cdc48b96bcdf5fdcbc9c, type: 3}
+  m_Name: Date3SkillCheck3
+  m_EditorClassIdentifier: 
+  skillName: Cleverness
+  successDialogLines:
+  - Ah Noki!
+  - You quickly lunge and pull back her hand from the base of the flower. Holding
+    her by the wrist you carefully examine her hand.
+  - "What\u2019s wrong [PlayerName]?"
+  - "These aren\u2019t Azalea! See, these are Bougainvillea! It says they\u2019ve
+    got pretty nasty thorns riddled all over the stem!"
+  - You point down to the plaque below the flowers.
+  - Bougainvillea, a thorny species of flower originating from Brazil
+  - "I really thought\u2026"
+  - "I\u2019m just glad you weren\u2019t hurt, you need to be more careful here in
+    the real world! There\u2019s a lot of danger!"
+  - "[PlayerName].... I\u2019m sorry I don\u2019t know how\u2026 I must have been
+    misinformed\u2026"
+  - "Hey! Don\u2019t beat yourself up over this. Why don\u2019t we just look at these
+    for now."
+  - "They\u2019re still beautiful, even if they are covered in thorns\u2026 Do you
+    think they get lonely?"
+  - What do you mean? Flowers don't get lonely do they?
+  - "It\u2019s just\u2026 the kind of thing that you want but can\u2019t have because
+    they\u2019re too different or dangerous\u2026"
+  - Where is this coming from?
+  - "It\u2019s nothing\u2026 just a thought."
+  - Noki awkwardly laughs off the comment and moves away from the flowers to continue
+    down the path. You quickly chase after Noki hoping to get things back on track,
+    leaving the flowers alone and undisturbed.
+  successSpeakersPerLine:
+  - You
+  - 
+  - Noki
+  - You
+  - 
+  - You
+  - Noki
+  - You
+  - Noki
+  - You
+  - Noki
+  - You
+  - Noki
+  - You
+  - Noki
+  - 
+  successSpriteOptions:
+  - spriteOptions:
+    - {fileID: 21300000, guid: 9a5bb60305ed56c4c8b921b54258e133, type: 3}
+    - {fileID: 21300000, guid: 9a5bb60305ed56c4c8b921b54258e133, type: 3}
+    - {fileID: 21300000, guid: 9a5bb60305ed56c4c8b921b54258e133, type: 3}
+    - {fileID: 21300000, guid: 9a5bb60305ed56c4c8b921b54258e133, type: 3}
+    - {fileID: 21300000, guid: 0e60cde7e0933604cb178e0903b3e4ba, type: 3}
+    - {fileID: 21300000, guid: 0e60cde7e0933604cb178e0903b3e4ba, type: 3}
+    - {fileID: 21300000, guid: 52174a669ceab084893f4460563966e2, type: 3}
+    - {fileID: 21300000, guid: 52174a669ceab084893f4460563966e2, type: 3}
+    - {fileID: 21300000, guid: 1efff82e0a469464987b91e1e6ff298e, type: 3}
+    - {fileID: 21300000, guid: 18e1c1d22c2cbaa47914600a13de0859, type: 3}
+    - {fileID: 21300000, guid: 18e1c1d22c2cbaa47914600a13de0859, type: 3}
+    - {fileID: 21300000, guid: 18e1c1d22c2cbaa47914600a13de0859, type: 3}
+    - {fileID: 21300000, guid: 18e1c1d22c2cbaa47914600a13de0859, type: 3}
+    - {fileID: 21300000, guid: 18e1c1d22c2cbaa47914600a13de0859, type: 3}
+    - {fileID: 21300000, guid: 18e1c1d22c2cbaa47914600a13de0859, type: 3}
+    - {fileID: 21300000, guid: 18e1c1d22c2cbaa47914600a13de0859, type: 3}
+  failureDialogLines:
+  - If I just reach around here and-
+  - Noki attempts to pluck the flower from the base of its stem, but quickly drags
+    her hand away from the flowers.
+  - EEK!
+  - Ah, Noki?! Are you okay?
+  - "You grab Noki\u2019s hand by the wrist and closely examine it. A small thorn
+    seems to be embedded in her hand."
+  - "You gently slide the thorn out of its resting place, and caress the wounded
+    spot of Noki\u2019s hand."
+  - "Ah\u2026 [PlayerName]... Um\u2026"
+  - "It\u2019s alright, it\u2019s alright. Everything is fine!"
+  - '[PlayerName]... I''m okay, you can stop now.'
+  - "Ah! Sorry\u2026"
+  - "I can\u2019t believe I was mistaken\u2026 I should have known better."
+  - "It\u2019s alright Noki, we can keep moving and look at better non-hurty flowers."
+  - Noki snickers a little.
+  - "Of course, let's go look at some \u201Cnon-hurty\u201D flowers."
+  failureSpeakersPerLine:
+  - Noki
+  - 
+  - Noki
+  - You
+  - 
+  - 
+  - Noki
+  - You
+  - Noki
+  - You
+  - Noki
+  - You
+  - 
+  - Noki
+  failureSpriteOptions:
+  - spriteOptions:
+    - {fileID: 21300000, guid: 9a5bb60305ed56c4c8b921b54258e133, type: 3}
+    - {fileID: 21300000, guid: 9a5bb60305ed56c4c8b921b54258e133, type: 3}
+    - {fileID: 21300000, guid: e6c3300e761b41e478bb010bf347ae9d, type: 3}
+    - {fileID: 21300000, guid: 0e60cde7e0933604cb178e0903b3e4ba, type: 3}
+    - {fileID: 21300000, guid: 0e60cde7e0933604cb178e0903b3e4ba, type: 3}
+    - {fileID: 21300000, guid: 0e60cde7e0933604cb178e0903b3e4ba, type: 3}
+    - {fileID: 21300000, guid: 0e60cde7e0933604cb178e0903b3e4ba, type: 3}
+    - {fileID: 21300000, guid: 0e60cde7e0933604cb178e0903b3e4ba, type: 3}
+    - {fileID: 21300000, guid: 0e60cde7e0933604cb178e0903b3e4ba, type: 3}
+    - {fileID: 21300000, guid: 52174a669ceab084893f4460563966e2, type: 3}
+    - {fileID: 21300000, guid: 52174a669ceab084893f4460563966e2, type: 3}
+    - {fileID: 21300000, guid: 52174a669ceab084893f4460563966e2, type: 3}
+    - {fileID: 21300000, guid: dd7b066d58c40fd458eda1333d2ef0e4, type: 3}
+    - {fileID: 21300000, guid: dd7b066d58c40fd458eda1333d2ef0e4, type: 3}

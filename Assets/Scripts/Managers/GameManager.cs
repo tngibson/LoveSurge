@@ -3,6 +3,7 @@ using TMPro;
 using Unity.Mathematics;
 using UnityEngine;
 using UnityEngine.UI;
+using static LocationManager;
 
 public class GameManager : MonoBehaviour
 {
@@ -147,40 +148,54 @@ public class GameManager : MonoBehaviour
             EndGameLoss();
         }
         
-        comboSurge = -1;
+        comboSurge = 0;
         //UpdateEndTurnButton(false); // Disable the end turn button
     }
 
     public void EndGameHalfWin()
     {
-        mapButtonScript.locName = "NokiDate2SkillCheck1"; // Hard coded for date 2 demo, will be changed later
-        endGameText.GetComponentInChildren<TextMeshProUGUI>().text = "Noki want's to talk more closely with you...";
-        endGameText.SetActive(true);
-        endTurnButton.SetActive(false);
-        discardBin.SetActive(false);
-        mapButton.SetActive(true); // Enable the map button at game win
-        MusicManager.SetParameterByName("dateProgress", 1);
+        switch (LocationManager.Instance.date)
+        {
+            case DateNum.Date1:
+                LocationManager.Instance.date1Stage = Date1Stage.CardGame; // Resume halfway
+                mapButtonScript.locName = "NokiDate1SkillCheck1";
+                break;
+            case DateNum.Date2:
+                LocationManager.Instance.date2Stage = Date2Stage.CardGame;
+                mapButtonScript.locName = "NokiDate2SkillCheck1";
+                break;
+            case DateNum.Date3:
+                LocationManager.Instance.date3Stage = Date3Stage.CardGame;
+                mapButtonScript.locName = "NokiDate3SkillCheck1";
+                break;
+        }
+        ShowMapButton("Noki want's to talk more closely with you...", 1); // Enable the map button at game win
     }
 
     public void EndGameFullWin()
     {
-        mapButtonScript.locName = "NokiDate2SkillCheck2"; // Hard coded for date 2 demo, will be changed later
-        endGameText.GetComponentInChildren<TextMeshProUGUI>().text = "You Win, Congratulations!";
-        endGameText.SetActive(true);
-        endTurnButton.SetActive(false);
-        discardBin.SetActive(false);
-        mapButton.SetActive(true); // Enable the map button at game win
-        MusicManager.SetParameterByName("dateProgress", 1);
+        switch (LocationManager.Instance.date)
+        {
+            case DateNum.Date1:
+                LocationManager.Instance.date1Stage = Date1Stage.Done;
+                mapButtonScript.locName = "NokiDate1DeepConvo1";
+                break;
+            case DateNum.Date2:
+                LocationManager.Instance.date2Stage = Date2Stage.Done;
+                mapButtonScript.locName = "NokiDate2SkillCheck2";
+                break;
+            case DateNum.Date3:
+                LocationManager.Instance.date3Stage = Date3Stage.Done;
+                mapButtonScript.locName = "NokiDate3SkillCheck3";
+                break;
+        }
+        ShowMapButton("You Win, Congratulations!", 1); // Enable the map button at game win
     }
 
     // Ends the game and displays the game over message
     public void EndGameLoss()
     {
-        endGameText.SetActive(true);
-        endTurnButton.SetActive(false);
-        discardBin.SetActive(false);
-        mapButton.SetActive(true); // Enable the map button at game over
-        MusicManager.SetParameterByName("dateProgress", 3);
+        ShowMapButton("It's getting late, you should be heading back...", 3);
         Debug.Log("Bad End");
 
 
@@ -192,6 +207,16 @@ public class GameManager : MonoBehaviour
             LocationManager.Instance.SetDateState(1, true);
         }
         LocationManager.Instance.isPlayable = false;
+    }
+
+    public void ShowMapButton(string message, int musicProgress)
+    {
+        endGameText.GetComponentInChildren<TextMeshProUGUI>().text = message;
+        endGameText.SetActive(true);
+        endTurnButton.SetActive(false);
+        discardBin.SetActive(false);
+        mapButton.SetActive(true);
+        MusicManager.SetParameterByName("dateProgress", musicProgress);
     }
 
     // Updates the score and refreshes the UI

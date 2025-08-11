@@ -1,0 +1,103 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8cbd23a6cba4cdc48b96bcdf5fdcbc9c, type: 3}
+  m_Name: Date3SkillCheck2
+  m_EditorClassIdentifier: 
+  skillName: Creativity
+  successDialogLines:
+  - "You hand Noki a singular apricot colored flower, it\u2019s petals moved and
+    plucked in such a way it forms a heart within the capitulum."
+  - Ah, [PlayerName]...
+  - It was a little hard to get right, but I tried my best.
+  - "Noki\u2019s face shifts from that depressing frown to a bright smile."
+  - "Ahaha, Thanks [PlayerName], this is really sweet\u2026 I never expected you
+    to be this good at this."
+  - Maybe I should pick up gardening, what do you think?
+  - Ah..well do you know a single thing about growing plants?
+  - "Nope! That\u2019s why you\u2019ll help me right?"
+  - "Maybe let's not get too ahead of ourselves\u2026"
+  - "Noki moves past you to examine some of the other mystical greenery. It seems
+    like she\u2019s in a better mood now. You give yourself an approving nod, and
+    march forward with Noki."
+  successSpeakersPerLine:
+  - 
+  - Noki
+  - You
+  - 
+  - Noki
+  - You
+  - Noki
+  - You
+  - Noki
+  - 
+  successSpriteOptions:
+  - spriteOptions:
+    - {fileID: 21300000, guid: 52174a669ceab084893f4460563966e2, type: 3}
+    - {fileID: 21300000, guid: 52174a669ceab084893f4460563966e2, type: 3}
+    - {fileID: 21300000, guid: 52174a669ceab084893f4460563966e2, type: 3}
+    - {fileID: 21300000, guid: eb54c0b9144af6b4e8e9578c07a0c65b, type: 3}
+    - {fileID: 21300000, guid: eb54c0b9144af6b4e8e9578c07a0c65b, type: 3}
+    - {fileID: 21300000, guid: eb54c0b9144af6b4e8e9578c07a0c65b, type: 3}
+    - {fileID: 21300000, guid: 9a5bb60305ed56c4c8b921b54258e133, type: 3}
+    - {fileID: 21300000, guid: 9a5bb60305ed56c4c8b921b54258e133, type: 3}
+    - {fileID: 21300000, guid: 416f14cbfab2b6c409b24a5d0f866e02, type: 3}
+    - {fileID: 21300000, guid: 416f14cbfab2b6c409b24a5d0f866e02, type: 3}
+  failureDialogLines:
+  - "You hand Noki a singular apricot colored flower, its petals have been smashed
+    to pieces and torn up\u2026 Noki looks at you with deep concern."
+  - "Um\u2026 [PlayerName]... Is this supposed to be something?"
+  - "Well you see\u2026 I was trying to form a heart in the center, you see here?"
+  - Noki seems to let out a short chuckle. Something has gotten her chuffed.
+  - "Hmmm\u2026 I can see\u2026 something? I\u2019m not sure it\u2019s a heart though\u2026"
+  - I guess I brutalized this poor flower for nothing huh?
+  - "Noki definitely seems to be holding back a laugh. She seems to be relishing
+    in your failure\u2026"
+  - Do you think I should pick up gardening?
+  - "Noki\u2019s laugh is becoming increasingly difficult to contain, she seems like
+    she\u2019s on the verge of breaking."
+  - "I think we need to get you out of here for the other flower\u2019s safety."
+  - Ahaha! You might be right!
+  - "Noki\u2019s mood seems to have improved from your pitiful attempts to impress
+    her. She gives you a soft smile as you two laugh it off."
+  - "It\u2019s the thought that counts\u2026 Thanks [PlayerName]."
+  - "Noki pushes you forward away from other flowers you could possibly maul\u2026"
+  failureSpeakersPerLine:
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  failureSpriteOptions:
+  - spriteOptions:
+    - {fileID: 21300000, guid: 52174a669ceab084893f4460563966e2, type: 3}
+    - {fileID: 21300000, guid: 52174a669ceab084893f4460563966e2, type: 3}
+    - {fileID: 21300000, guid: 52174a669ceab084893f4460563966e2, type: 3}
+    - {fileID: 21300000, guid: dd7b066d58c40fd458eda1333d2ef0e4, type: 3}
+    - {fileID: 21300000, guid: dd7b066d58c40fd458eda1333d2ef0e4, type: 3}
+    - {fileID: 21300000, guid: dd7b066d58c40fd458eda1333d2ef0e4, type: 3}
+    - {fileID: 21300000, guid: dd7b066d58c40fd458eda1333d2ef0e4, type: 3}
+    - {fileID: 21300000, guid: dd7b066d58c40fd458eda1333d2ef0e4, type: 3}
+    - {fileID: 21300000, guid: dd7b066d58c40fd458eda1333d2ef0e4, type: 3}
+    - {fileID: 21300000, guid: dd7b066d58c40fd458eda1333d2ef0e4, type: 3}
+    - {fileID: 21300000, guid: 1efff82e0a469464987b91e1e6ff298e, type: 3}
+    - {fileID: 21300000, guid: 1efff82e0a469464987b91e1e6ff298e, type: 3}
+    - {fileID: 21300000, guid: 1efff82e0a469464987b91e1e6ff298e, type: 3}
+    - {fileID: 21300000, guid: 1efff82e0a469464987b91e1e6ff298e, type: 3}

@@ -772,7 +772,7 @@ MonoBehaviour:
   locationTextText: 
   isEnabled: 1
   mapAnimator: {fileID: 0}
-  transition: {fileID: 1199109661}
+  transition: {fileID: 6798974029339058903}
   transitionTime: 2
   isDayProgressor: 0
   isDateButton: 0
@@ -1083,12 +1083,6 @@ RectTransform:
   m_AnchoredPosition: {x: -4.7209, y: 152.35999}
   m_SizeDelta: {x: 758.3511, y: 140.4205}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!95 &1199109661 stripped
-Animator:
-  m_CorrespondingSourceObject: {fileID: 8746581277282455830, guid: 7cab638b40405884db5b42fbdb1c1b5a,
-    type: 3}
-  m_PrefabInstance: {fileID: 6798974029339058902}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1227112910
 GameObject:
   m_ObjectHideFlags: 0
@@ -2588,16 +2582,17 @@ PrefabInstance:
       propertyPath: m_Name
       value: SceneTransition - Crossfade
       objectReference: {fileID: 0}
-    - target: {fileID: 8621706404247894105, guid: 7cab638b40405884db5b42fbdb1c1b5a,
-        type: 3}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 7cab638b40405884db5b42fbdb1c1b5a, type: 3}
+--- !u!95 &6798974029339058903 stripped
+Animator:
+  m_CorrespondingSourceObject: {fileID: 8746581277282455830, guid: 7cab638b40405884db5b42fbdb1c1b5a,
+    type: 3}
+  m_PrefabInstance: {fileID: 6798974029339058902}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &7435091224374352136
 GameObject:
   m_ObjectHideFlags: 0

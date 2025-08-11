@@ -151,8 +151,6 @@ public class Dropzone : MonoBehaviour
             // Update the last placed card to the new top card
             lastPlacedCard = dropzone.TopCard;
             GameManager.instance.ComboSurge --;
-            Debug.Log("YOU ARE BAD AT THE GAME DUMBASS");
-
 
             // Reset UI or other visual elements if necessary
             CalculateScore();
@@ -586,6 +584,9 @@ public class Dropzone : MonoBehaviour
         skipRequested = false;
         currentSession.isWriting = true;
 
+        // Store the original position of the dateCharacter
+        Vector3 originalPosition = currentSession.dateCharacter.transform.localPosition;
+
         // If the speaker is player, we will set their name to playerName. If for whatever reason the playerName variable is empty or null, we won't set it
         if (speaker == "PC")
         {
@@ -669,6 +670,7 @@ public class Dropzone : MonoBehaviour
         isTypewriting = false;
         currentSession.isWriting = false;
         gameManager.UpdateEndTurnButton(true); // Enable end turn button
+        currentSession.dateCharacter.transform.localPosition = originalPosition;
     }
 
     // Helper method to darken the convo topic color

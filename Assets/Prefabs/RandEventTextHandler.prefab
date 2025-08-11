@@ -1900,6 +1900,7 @@ GameObject:
   - component: {fileID: 1453378541015761617}
   - component: {fileID: 1228945755956342202}
   - component: {fileID: 8427216516346150109}
+  - component: {fileID: 3147556016222178123}
   m_Layer: 5
   m_Name: RandEventTextHandler
   m_TagString: Untagged
@@ -2156,6 +2157,22 @@ MonoBehaviour:
   - {fileID: 0}
   - {fileID: 0}
   continueIndicator: {fileID: 5020257146438548585}
+  cgImage: {fileID: 0}
+  uiContainer: {fileID: 0}
+  uiCanvasGroup: {fileID: 0}
+  cgFadeDuration: 0.5
+--- !u!225 &3147556016222178123
+CanvasGroup:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7239220871883381080}
+  m_Enabled: 1
+  m_Alpha: 1
+  m_Interactable: 1
+  m_BlocksRaycasts: 1
+  m_IgnoreParentGroups: 0
 --- !u!1 &7770531277950400213
 GameObject:
   m_ObjectHideFlags: 0

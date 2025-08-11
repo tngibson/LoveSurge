@@ -97,15 +97,15 @@ public class MusicManager : MonoBehaviour
         if (!CurrentMusicInstance.isValid()) 
             return true;
 
-       string newMusicPath = newMusic.ToString();
+       string newMusicPath = GetEventName(newMusic);
        Debug.Log(newMusicPath);
        Debug.Log(ActiveMusicName);
        return !ActiveMusicName.Equals(newMusicPath, StringComparison.OrdinalIgnoreCase);
     }
     public void PlayMusic(EventReference music, bool fadeout = false, float fadeTime = 2f)
     {
-        string newMusicPath = music.ToString();
-        
+        string newMusicPath = GetEventName(music);
+
         if (CurrentMusicInstance.isValid() && ActiveMusicName.Equals(newMusicPath, StringComparison.OrdinalIgnoreCase))
         {
             Debug.Log($"MusicManager:" + newMusicPath + "is already playing, not starting again.");
@@ -118,7 +118,7 @@ public class MusicManager : MonoBehaviour
             CurrentMusicInstance = RuntimeManager.CreateInstance(music);
             CurrentMusicInstance.start();
             
-            ActiveMusicName = music.ToString();
+            ActiveMusicName = GetEventName(music);
             return;
         }
 
@@ -128,7 +128,7 @@ public class MusicManager : MonoBehaviour
             CurrentMusicInstance.stop(FMOD.Studio.STOP_MODE.ALLOWFADEOUT);
             CurrentMusicInstance = RuntimeManager.CreateInstance(music);
             CurrentMusicInstance.start();
-            ActiveMusicName = music.ToString();
+            ActiveMusicName = GetEventName(music);
         }
         else
         {
@@ -210,10 +210,10 @@ public class MusicManager : MonoBehaviour
 #if UNITY_EDITOR
         private static string GetMusicName(EventReference music)
         {
-        if (string.IsNullOrEmpty(music.ToString())) 
+        if (string.IsNullOrEmpty(GetEventName(music))) 
             return string.Empty;
 
-        return Path.GetFileName(music.ToString());
+        return Path.GetFileName(GetEventName(music));
         }
 #endif
 }

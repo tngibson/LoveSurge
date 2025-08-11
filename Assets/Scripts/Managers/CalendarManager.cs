@@ -25,7 +25,7 @@ public class CalendarManager : MonoBehaviour
             Destroy(gameObject);
         }
 
-        InitializeCalendar(new DayManager(20, 6, 2)); // Set start date
+        InitializeCalendar(new DayManager(20, 6, 1)); // Set start date
     }
 
     void OnDestroy()
