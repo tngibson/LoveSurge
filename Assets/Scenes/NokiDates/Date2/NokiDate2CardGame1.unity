@@ -1508,16 +1508,18 @@ MonoBehaviour:
   convoTopic3: {fileID: 1497879191}
   convoTopic4: {fileID: 1975168385}
   couLines:
-  - Hmm. *You aim your camera around, looking for something to take a picture of
-    and land on the billboard, snapping a picture and showing it to Noki* Look, it's
-    you! ...Kind of.
-  - "Yes, that\u2019s\u2026 very nice."
-  - "I guess a billboard maybe isn\u2019t the most exciting thing to take a picture
-    of. Even if it does have you on it."
-  - I suppose not. Would you like to look around some more?
-  - "Yeah! It\u2019s a beautiful night, we\u2019ll find something!"
-  - "I\u2019m sure we will in no time!"
+  - Hmm.
+  - You aim your camera around, looking for something to take a picture of and land
+    on the billboard, snapping a picture and showing it to Noki.
+  - Look, it's you! ...Kind of.
+  - "...A billboard maybe isn\u2019t the most exciting thing to take a picture of..."
+  - I guess...
+  - "Let\u2019s try and be a bit more inspired...!"
+  - "I\u2019ll have you know you inspire me more than enough!"
+  - Well...you know what I mean...
   couSpeaker:
+  - You
+  - 
   - You
   - Noki
   - You
@@ -1526,15 +1528,17 @@ MonoBehaviour:
   - Noki
   couSprites:
   - {fileID: 21300000, guid: 1efff82e0a469464987b91e1e6ff298e, type: 3}
-  - {fileID: 21300000, guid: 18e1c1d22c2cbaa47914600a13de0859, type: 3}
   - {fileID: 21300000, guid: 1efff82e0a469464987b91e1e6ff298e, type: 3}
-  - {fileID: 21300000, guid: 9a5bb60305ed56c4c8b921b54258e133, type: 3}
-  - {fileID: 21300000, guid: eb54c0b9144af6b4e8e9578c07a0c65b, type: 3}
-  - {fileID: 21300000, guid: eb54c0b9144af6b4e8e9578c07a0c65b, type: 3}
+  - {fileID: 21300000, guid: 1efff82e0a469464987b91e1e6ff298e, type: 3}
+  - {fileID: 21300000, guid: 18e1c1d22c2cbaa47914600a13de0859, type: 3}
+  - {fileID: 21300000, guid: 18e1c1d22c2cbaa47914600a13de0859, type: 3}
+  - {fileID: 21300000, guid: 4793868bd2892bd4abc8227a508d91d7, type: 3}
+  - {fileID: 21300000, guid: 4793868bd2892bd4abc8227a508d91d7, type: 3}
+  - {fileID: 21300000, guid: e6c3300e761b41e478bb010bf347ae9d, type: 3}
   chaLines:
   - Hmm, what do you want to take pictures of?
   - What do you think is the prettiest part of the city?
-  - "Hmm.\u201D *You look around.* The sky is nice."
+  - Hmm. *You look around.* The beach can be pretty this time of night.
   - You really think so?
   - '*She takes a picture of the stars and looks at it for a long time.* How did
     it come out? *She shows it to you.'
@@ -1551,22 +1555,22 @@ MonoBehaviour:
   - Noki
   chaSprites:
   - {fileID: 21300000, guid: 1efff82e0a469464987b91e1e6ff298e, type: 3}
-  - {fileID: 21300000, guid: 9a5bb60305ed56c4c8b921b54258e133, type: 3}
-  - {fileID: 21300000, guid: 9a5bb60305ed56c4c8b921b54258e133, type: 3}
-  - {fileID: 21300000, guid: 9a5bb60305ed56c4c8b921b54258e133, type: 3}
-  - {fileID: 21300000, guid: 416f14cbfab2b6c409b24a5d0f866e02, type: 3}
+  - {fileID: 21300000, guid: 0e60cde7e0933604cb178e0903b3e4ba, type: 3}
+  - {fileID: 21300000, guid: 0e60cde7e0933604cb178e0903b3e4ba, type: 3}
   - {fileID: 21300000, guid: 1efff82e0a469464987b91e1e6ff298e, type: 3}
+  - {fileID: 21300000, guid: 1efff82e0a469464987b91e1e6ff298e, type: 3}
+  - {fileID: 21300000, guid: eb54c0b9144af6b4e8e9578c07a0c65b, type: 3}
   - {fileID: 21300000, guid: 1efff82e0a469464987b91e1e6ff298e, type: 3}
   cleLines:
   - "[PlayerName], I\u2019ve been studying photography from databases online, but
     I just don\u2019t think I get a few things\u2026"
   - Well, lay it on me!
-  - "Well, [PlayerName] what exactly is composition? I see it referenced everywhere
-    but I don\u2019t think I really get it\u2026"
-  - "Ah\u2026 well\u2026 um\u2026 It's when you\u2026"
+  - Well, [PlayerName] what exactly is composition? I know the rules of course, but
+    what makes a composed picture so different than a normal photograph?
+  - "Ah\u2026 well\u2026 um\u2026 It's when you\u2026It...it gives a feeling of..."
   - Haha [PlayerName] have I stumped you too?
-  - "No no\u2026 um, just keep it simple! When you see something really pretty, take
-    a picture! Whew, I hope she didn\u2019t catch onto me."
+  - "No no\u2026 um, you basically just started.... keep it simple! When you see
+    something really pretty, take a picture!"
   cleSpeaker:
   - Noki
   - You
@@ -1582,15 +1586,13 @@ MonoBehaviour:
   - {fileID: 21300000, guid: 1efff82e0a469464987b91e1e6ff298e, type: 3}
   - {fileID: 21300000, guid: 1efff82e0a469464987b91e1e6ff298e, type: 3}
   creLines:
-  - Hmm I think this looks good Noki!
+  - "Check this out. I\u2019ve been editing a few of the photos we took!"
+  - What is this? There are little graphical images covering the photo!
+  - "I think it looks cool...I think if we got an awesome skateboard it\u2019d look
+    even better!"
   - "You do? I don\u2019t think I quite understand what makes this a \u201Ccool\u201D
     photo. Is it the sunglasses, or the fire stickers you put on it?"
-  - "Well just look at how cool you look! I think if we got an awesome skateboard
-    it\u2019d look even better!"
-  - "I don\u2019t think I understand the concept of \u201Ccool\u201D but I do like
-    the way the stickers look."
-  - "Well then try scrapbooking some stickers onto your own photos! I\u2019m sure
-    there\u2019s some cute ones to make the perfect photo!"
+  - Try it!  Scrapbooking and decorating your photos can be half the fun!!
   creSpeaker:
   - You
   - Noki
@@ -1599,8 +1601,8 @@ MonoBehaviour:
   - You
   creSprites:
   - {fileID: 21300000, guid: 1efff82e0a469464987b91e1e6ff298e, type: 3}
-  - {fileID: 21300000, guid: 9a5bb60305ed56c4c8b921b54258e133, type: 3}
-  - {fileID: 21300000, guid: 1efff82e0a469464987b91e1e6ff298e, type: 3}
+  - {fileID: 21300000, guid: 0e60cde7e0933604cb178e0903b3e4ba, type: 3}
+  - {fileID: 21300000, guid: 0e60cde7e0933604cb178e0903b3e4ba, type: 3}
   - {fileID: 21300000, guid: 1efff82e0a469464987b91e1e6ff298e, type: 3}
   - {fileID: 21300000, guid: 1efff82e0a469464987b91e1e6ff298e, type: 3}
   dateCharacter: {fileID: 1661069647}
@@ -3887,6 +3889,7 @@ MonoBehaviour:
   locName: Map
   button: {fileID: 0}
   questionText: {fileID: 0}
+  locationTextPanel: {fileID: 0}
   locationText: {fileID: 0}
   locationTextText: 
   isEnabled: 0
@@ -4814,8 +4817,11 @@ MonoBehaviour:
   moveDirection: 0
   moveAmount: 700
   moveDuration: 0.5
+  isHidden: 0
   parentRectTransform: {fileID: 1411976330}
   buttonObject: {fileID: 1369001557}
+  itemsToHide: []
+  itemsToUnhide: []
 --- !u!1 &743144015
 GameObject:
   m_ObjectHideFlags: 0
@@ -8262,6 +8268,7 @@ MonoBehaviour:
   locName: Map
   button: {fileID: 0}
   questionText: {fileID: 0}
+  locationTextPanel: {fileID: 0}
   locationText: {fileID: 0}
   locationTextText: 
   isEnabled: 0
@@ -11961,8 +11968,11 @@ MonoBehaviour:
   moveDirection: 1
   moveAmount: 880
   moveDuration: 0.5
+  isHidden: 0
   parentRectTransform: {fileID: 293364312}
   buttonObject: {fileID: 287402851}
+  itemsToHide: []
+  itemsToUnhide: []
 --- !u!1 &2117575009
 GameObject:
   m_ObjectHideFlags: 0

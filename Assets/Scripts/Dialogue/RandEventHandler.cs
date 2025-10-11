@@ -23,6 +23,10 @@ public class RandEventHandler : MonoBehaviour
 
     [SerializeField] private List<Choices> choices = new List<Choices>(); // List holding all choice objects
 
+    [SerializeField] private List<Sprite> backgrounds = new List<Sprite>(); // List holding all background change objects
+    [SerializeField] private Image background; // Scene background
+    [SerializeField] private float backgroundFadeDuration = 1f;
+
     private int currentLineIndex = 0; // Current index for dialog
     private bool isTypewriting = false; // Whether the typewriter coroutine is going
     private bool skipRequested = false; // If the skip button is pressed
@@ -152,6 +156,16 @@ public class RandEventHandler : MonoBehaviour
             if (dialogLines[currentLineIndex] == "CHOICE")
             {
                 ShowChoices();
+                return;
+            }
+        }
+
+        // Checks if we find a BACKGROUNDCHANGE
+        if (currentLineIndex < dialogLines.Count)
+        {
+            if (dialogLines[currentLineIndex] == "BACKGROUNDCHANGE")
+            {
+                ChangeBackground();
                 return;
             }
         }
@@ -317,6 +331,48 @@ public class RandEventHandler : MonoBehaviour
 
         // Update the layout of the buttons
         UpdateChoiceButtonLayout();
+    }
+
+    private void ChangeBackground()
+    {
+        StartCoroutine(FadeBackground(backgrounds[currentLineIndex], backgroundFadeDuration));
+    }
+
+    private IEnumerator FadeBackground(Sprite newSprite, float duration)
+    {
+        // Create a temporary overlay Image (same parent/layer as the main background)
+        GameObject tempObj = new GameObject("TempBackground");
+        Image tempImage = tempObj.AddComponent<Image>();
+        tempImage.sprite = background.sprite; // start with the current sprite
+        tempImage.rectTransform.SetParent(background.transform.parent, false);
+        tempImage.rectTransform.anchorMin = background.rectTransform.anchorMin;
+        tempImage.rectTransform.anchorMax = background.rectTransform.anchorMax;
+        tempImage.rectTransform.offsetMin = background.rectTransform.offsetMin;
+        tempImage.rectTransform.offsetMax = background.rectTransform.offsetMax;
+        tempImage.preserveAspect = true;
+        tempImage.raycastTarget = false; // so it doesn’t block clicks
+
+        // Put it behind UI but over the real background
+        tempImage.transform.SetSiblingIndex(background.transform.GetSiblingIndex());
+
+        // Set the new background sprite (invisible for now)
+        background.sprite = newSprite;
+        background.color = new Color(1, 1, 1, 0f);
+
+        // Fade
+        float elapsed = 0f;
+        while (elapsed < duration)
+        {
+            float t = elapsed / duration;
+            background.color = new Color(1, 1, 1, t);
+            tempImage.color = new Color(1, 1, 1, 1 - t);
+            elapsed += Time.deltaTime;
+            yield return null;
+        }
+
+        // Ensure fully transitioned
+        background.color = Color.white;
+        Destroy(tempObj);
     }
 
     private void UpdateChoiceButtonLayout()

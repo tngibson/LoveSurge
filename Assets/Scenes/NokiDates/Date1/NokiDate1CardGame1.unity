@@ -1497,7 +1497,7 @@ MonoBehaviour:
   label4: Noki's Features
   addExtraType1Line: 0
   addExtraType2Line: 0
-  addExtraType3Line: 0
+  addExtraType3Line: 1
   addExtraType4Line: 0
   uiOpaqueImages:
   - {fileID: 0}
@@ -1536,21 +1536,20 @@ MonoBehaviour:
   - Noki
   - PC
   couSprites:
-  - {fileID: 21300000, guid: 94338c00cc5049e4a8f4bad156cd00f6, type: 3}
-  - {fileID: 21300000, guid: 94338c00cc5049e4a8f4bad156cd00f6, type: 3}
-  - {fileID: 21300000, guid: 52174a669ceab084893f4460563966e2, type: 3}
-  - {fileID: 21300000, guid: 52174a669ceab084893f4460563966e2, type: 3}
+  - {fileID: 21300000, guid: 0e60cde7e0933604cb178e0903b3e4ba, type: 3}
+  - {fileID: 21300000, guid: 0e60cde7e0933604cb178e0903b3e4ba, type: 3}
   - {fileID: 21300000, guid: 4793868bd2892bd4abc8227a508d91d7, type: 3}
   - {fileID: 21300000, guid: 4793868bd2892bd4abc8227a508d91d7, type: 3}
+  - {fileID: 21300000, guid: 0e60cde7e0933604cb178e0903b3e4ba, type: 3}
+  - {fileID: 21300000, guid: 0e60cde7e0933604cb178e0903b3e4ba, type: 3}
   chaLines:
   - "Gah! All these bugs and errors! It\u2019s too much!"
-  - You know [Player Name], I am perfectly suited for this task with my large memory
-    storage.
+  - You know, I am perfectly suited for this task with my large memory storage.
   - Well then Noki, note this one down! When interacting with this corner of the
     wall causes Z-fighting, and note this down too! Removin-
-  - I am more than a notepad [Player Name], I currently have gigabytes of your personal
-    data. If you wish I can remove it, here let me read out every item to you so
-    you can confirm if you want to delete it or not.
+  - I am more than a notepad, I currently have gigabytes of your personal data. If
+    you wish I can remove it, here let me read out every item to you so you can confirm
+    if you want to delete it or not.
   - "Hey now, no need to do that! I\u2019ll write them down too I promise, I promise!"
   - "Then please note this down [Player Name], \u2018Noki is good at getting what
     she wants."
@@ -1563,34 +1562,37 @@ MonoBehaviour:
   - Noki
   chaSprites:
   - {fileID: 21300000, guid: 1efff82e0a469464987b91e1e6ff298e, type: 3}
-  - {fileID: 21300000, guid: eb54c0b9144af6b4e8e9578c07a0c65b, type: 3}
   - {fileID: 21300000, guid: 1efff82e0a469464987b91e1e6ff298e, type: 3}
-  - {fileID: 21300000, guid: 1efff82e0a469464987b91e1e6ff298e, type: 3}
-  - {fileID: 21300000, guid: eb54c0b9144af6b4e8e9578c07a0c65b, type: 3}
-  - {fileID: 21300000, guid: eb54c0b9144af6b4e8e9578c07a0c65b, type: 3}
+  - {fileID: 21300000, guid: 4793868bd2892bd4abc8227a508d91d7, type: 3}
+  - {fileID: 21300000, guid: 4793868bd2892bd4abc8227a508d91d7, type: 3}
+  - {fileID: 21300000, guid: dd7b066d58c40fd458eda1333d2ef0e4, type: 3}
+  - {fileID: 21300000, guid: dd7b066d58c40fd458eda1333d2ef0e4, type: 3}
   cleLines:
   - "It is pretty nice here, but I think this place could use a bit more\u2026 I
     don\u2019t know, furniture, decoration maybe?"
-  - Noted! Thank you for your feedback! *She becomes a little distracted.*
+  - Oh! Well, the most efficient items to maintain the flow of traffic would be some
+    benches along the wall.
+  - "I didn\u2019t ask about the most efficient...what would you prefer?"
+  - She becomes a little distracted.
+  - Perhaps more dispersed lights! That could also be very practical!
   - You good? You kind of spaced out there a little.
   - Yes, I am good! Please, continue your duties, I am fine!
-  - Hey, what kind of stuff do you think would work best here?
-  - Oh! Well, the most efficient items to maintain the flow of traffic would be some
-    benches along the wall. Perhaps more dispersed lights! Thank you for the suggestion!
   cleSpeaker:
   - PC
   - Noki
   - PC
+  - 
   - Noki
   - PC
   - Noki
   cleSprites:
   - {fileID: 21300000, guid: 1efff82e0a469464987b91e1e6ff298e, type: 3}
-  - {fileID: 21300000, guid: 18e1c1d22c2cbaa47914600a13de0859, type: 3}
+  - {fileID: 21300000, guid: eb54c0b9144af6b4e8e9578c07a0c65b, type: 3}
+  - {fileID: 21300000, guid: eb54c0b9144af6b4e8e9578c07a0c65b, type: 3}
   - {fileID: 21300000, guid: 18e1c1d22c2cbaa47914600a13de0859, type: 3}
   - {fileID: 21300000, guid: 1efff82e0a469464987b91e1e6ff298e, type: 3}
-  - {fileID: 21300000, guid: eb54c0b9144af6b4e8e9578c07a0c65b, type: 3}
-  - {fileID: 21300000, guid: eb54c0b9144af6b4e8e9578c07a0c65b, type: 3}
+  - {fileID: 21300000, guid: 1efff82e0a469464987b91e1e6ff298e, type: 3}
+  - {fileID: 21300000, guid: 1efff82e0a469464987b91e1e6ff298e, type: 3}
   creLines:
   - Hey, you think we could make this bug fixing thing a little more fun?
   - What exactly do you have in mind?
@@ -1605,10 +1607,10 @@ MonoBehaviour:
   - PC
   creSprites:
   - {fileID: 21300000, guid: 1efff82e0a469464987b91e1e6ff298e, type: 3}
-  - {fileID: 21300000, guid: 9a5bb60305ed56c4c8b921b54258e133, type: 3}
-  - {fileID: 21300000, guid: 9a5bb60305ed56c4c8b921b54258e133, type: 3}
+  - {fileID: 21300000, guid: 1efff82e0a469464987b91e1e6ff298e, type: 3}
+  - {fileID: 21300000, guid: 1efff82e0a469464987b91e1e6ff298e, type: 3}
   - {fileID: 21300000, guid: eb54c0b9144af6b4e8e9578c07a0c65b, type: 3}
-  - {fileID: 21300000, guid: eb54c0b9144af6b4e8e9578c07a0c65b, type: 3}
+  - {fileID: 21300000, guid: dd7b066d58c40fd458eda1333d2ef0e4, type: 3}
   dateCharacter: {fileID: 1661069647}
 --- !u!1001 &295771159
 PrefabInstance:
@@ -3893,6 +3895,7 @@ MonoBehaviour:
   locName: Map
   button: {fileID: 0}
   questionText: {fileID: 0}
+  locationTextPanel: {fileID: 0}
   locationText: {fileID: 0}
   locationTextText: 
   isEnabled: 0
@@ -4820,8 +4823,11 @@ MonoBehaviour:
   moveDirection: 0
   moveAmount: 700
   moveDuration: 0.5
+  isHidden: 0
   parentRectTransform: {fileID: 1411976330}
   buttonObject: {fileID: 1369001557}
+  itemsToHide: []
+  itemsToUnhide: []
 --- !u!1 &743144015
 GameObject:
   m_ObjectHideFlags: 0
@@ -8268,6 +8274,7 @@ MonoBehaviour:
   locName: Map
   button: {fileID: 0}
   questionText: {fileID: 0}
+  locationTextPanel: {fileID: 0}
   locationText: {fileID: 0}
   locationTextText: 
   isEnabled: 0
@@ -11967,8 +11974,11 @@ MonoBehaviour:
   moveDirection: 1
   moveAmount: 880
   moveDuration: 0.5
+  isHidden: 0
   parentRectTransform: {fileID: 293364312}
   buttonObject: {fileID: 287402851}
+  itemsToHide: []
+  itemsToUnhide: []
 --- !u!1 &2117575009
 GameObject:
   m_ObjectHideFlags: 0
