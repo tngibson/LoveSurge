@@ -2754,6 +2754,7 @@ MonoBehaviour:
   locName: NokiDateOutro
   button: {fileID: 0}
   questionText: {fileID: 0}
+  locationTextPanel: {fileID: 0}
   locationText: {fileID: 0}
   locationTextText: 
   isEnabled: 0
@@ -2765,6 +2766,13 @@ MonoBehaviour:
   xHoverScale: 0
   yHoverScale: 0
   isStressReducer: 0
+  nextSceneMusic:
+    Guid:
+      Data1: 0
+      Data2: 0
+      Data3: 0
+      Data4: 0
+    Path: 
 --- !u!1 &619394800
 GameObject:
   m_ObjectHideFlags: 0
@@ -3416,8 +3424,11 @@ MonoBehaviour:
   moveDirection: 0
   moveAmount: 350
   moveDuration: 0.5
+  isHidden: 0
   parentRectTransform: {fileID: 1411976330}
   buttonObject: {fileID: 1369001557}
+  itemsToHide: []
+  itemsToUnhide: []
 --- !u!1 &710186044
 GameObject:
   m_ObjectHideFlags: 0
@@ -6413,6 +6424,7 @@ MonoBehaviour:
   locName: Map
   button: {fileID: 0}
   questionText: {fileID: 0}
+  locationTextPanel: {fileID: 0}
   locationText: {fileID: 0}
   locationTextText: 
   isEnabled: 0
@@ -6424,6 +6436,13 @@ MonoBehaviour:
   xHoverScale: 0
   yHoverScale: 0
   isStressReducer: 0
+  nextSceneMusic:
+    Guid:
+      Data1: 0
+      Data2: 0
+      Data3: 0
+      Data4: 0
+    Path: 
 --- !u!1 &1298419915
 GameObject:
   m_ObjectHideFlags: 0
@@ -10224,6 +10243,7 @@ MonoBehaviour:
   CurrentCharacterIndex: 0
   handSize: 4
   mapButtonScript: {fileID: 0}
+  comboSurge: 0
 --- !u!4 &2001940043
 Transform:
   m_ObjectHideFlags: 0
@@ -10989,8 +11009,11 @@ MonoBehaviour:
   moveDirection: 1
   moveAmount: 440
   moveDuration: 0.5
+  isHidden: 0
   parentRectTransform: {fileID: 293364312}
   buttonObject: {fileID: 287402851}
+  itemsToHide: []
+  itemsToUnhide: []
 --- !u!1 &2117575009
 GameObject:
   m_ObjectHideFlags: 0

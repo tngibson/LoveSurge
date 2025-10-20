@@ -4,55 +4,66 @@ using UnityEngine;
 
 public class ConnectionBar : MonoBehaviour
 {
-    // notes as of 2/1/25 the current percentages for the bar to fill each section: section 1: .22, section 2: .50, section 3: .78, section 4: 1
     public static ConnectionBar instance;
+
+    [Header("Connection Settings")]
     private int currentCharacterIndex = 0;
-    public GameObject connectionBar;
     public float currentConnectionAmt;
-    [SerializeField] private GameObject ConnectionBarParent;
+
+    [Header("Bar Segments")]
+    [SerializeField] private GameObject leftBar;
+    [SerializeField] private GameObject middleLeftBar;
+    [SerializeField] private GameObject middleRightBar;
+    [SerializeField] private GameObject rightBar;
 
     private void Awake()
     {
+        // Singleton setup — only one instance allowed
         if (instance != null && instance != this)
         {
-            Destroy(this.gameObject);  // Ensures only one instance of Connection Bar
+            Destroy(this.gameObject);
         }
         else
         {
             instance = this;
         }
     }
+
     void Start()
     {
+        // Initialize connection amount from manager
         currentConnectionAmt = ConnectionManager.instance.connectionList[currentCharacterIndex];
         UpdateConnectionBar();
-
     }
 
-    public void updateCurrentConnectionAmt()
+    public void UpdateCurrentConnectionAmt()
     {
-        currentConnectionAmt++;
-        AudioManager.instance.PlayOneShot(FMODEvents.instance.ConnectionBarUp);
-    }
+        // Increase connection amount (clamp between 0–4)
+        currentConnectionAmt = Mathf.Clamp(currentConnectionAmt + 1, 0, 4);
 
+        // Play sound effect
+        AudioManager.instance.PlayOneShot(FMODEvents.instance.ConnectionBarUp);
+
+        // Update visuals
+        UpdateConnectionBar();
+    }
 
     public void UpdateConnectionBar()
     {
-        if (currentConnectionAmt == 1)
-        {
-            ConnectionBarParent.transform.localScale = new Vector3(.22f, ConnectionBarParent.transform.localScale.y, ConnectionBarParent.transform.localScale.z);
-        }
-        else if (currentConnectionAmt == 2)
-        {
-            ConnectionBarParent.transform.localScale = new Vector3(.5f, ConnectionBarParent.transform.localScale.y, ConnectionBarParent.transform.localScale.z);
-        }
-        else if (currentConnectionAmt == 3)
-        {
-            ConnectionBarParent.transform.localScale = new Vector3(.78f, ConnectionBarParent.transform.localScale.y, ConnectionBarParent.transform.localScale.z);
-        }
-        else if (currentConnectionAmt == 4)
-        {
-            ConnectionBarParent.transform.localScale = new Vector3(1f, ConnectionBarParent.transform.localScale.y, ConnectionBarParent.transform.localScale.z);
-        }
+        // Turn all segments off by default
+        leftBar.SetActive(false);
+        middleLeftBar.SetActive(false);
+        middleRightBar.SetActive(false);
+        rightBar.SetActive(false);
+
+        // Turn on segments based on currentConnectionAmt
+        if (currentConnectionAmt >= 1)
+            leftBar.SetActive(true);
+        if (currentConnectionAmt >= 2)
+            middleLeftBar.SetActive(true);
+        if (currentConnectionAmt >= 3)
+            middleRightBar.SetActive(true);
+        if (currentConnectionAmt >= 4)
+            rightBar.SetActive(true);
     }
 }

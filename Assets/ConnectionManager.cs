@@ -23,14 +23,14 @@ public class ConnectionManager : MonoBehaviour
     public void increaseConnection(int index,int amount)
     {
         connectionList[index] += amount;
-        ConnectionBar.instance.updateCurrentConnectionAmt();
+        ConnectionBar.instance.UpdateCurrentConnectionAmt();
         ConnectionBar.instance.UpdateConnectionBar();
     }
 
     public void setConnection(int index, int amount)
     {
         connectionList[index] = amount;
-        ConnectionBar.instance.updateCurrentConnectionAmt();
+        ConnectionBar.instance.UpdateCurrentConnectionAmt();
         ConnectionBar.instance.UpdateConnectionBar();
     }
 }
