@@ -455,6 +455,7 @@ MonoBehaviour:
   locName: Map
   button: {fileID: 0}
   questionText: {fileID: 0}
+  locationTextPanel: {fileID: 0}
   locationText: {fileID: 0}
   locationTextText: 
   isEnabled: 1
@@ -466,6 +467,7 @@ MonoBehaviour:
   xHoverScale: 0
   yHoverScale: 0
   isStressReducer: 1
+  isStressIncreaser: 0
   nextSceneMusic:
     Guid:
       Data1: 0
@@ -1458,7 +1460,7 @@ PrefabInstance:
     - target: {fileID: 5957189059354811111, guid: 1d76f13929a9c3d4b80e6f2782e854f4,
         type: 3}
       propertyPath: isStressReducer
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5957189059354811111, guid: 1d76f13929a9c3d4b80e6f2782e854f4,
         type: 3}

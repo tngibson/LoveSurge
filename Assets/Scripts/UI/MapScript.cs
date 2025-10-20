@@ -34,6 +34,8 @@ public class MapScript : MonoBehaviour, IPointerEnterHandler, IPointerExitHandle
     private Vector3 hoverScale;
 
     [SerializeField] private bool isStressReducer;
+    [SerializeField] private bool isStressIncreaser;
+
     [SerializeField] private EventReference nextSceneMusic;
 
     private void Awake()
@@ -83,7 +85,7 @@ public class MapScript : MonoBehaviour, IPointerEnterHandler, IPointerExitHandle
             Debug.Log("Reducing Stress!");
             StressManager.instance.RemoveFromCurrentStress(0.1f);
         }
-        else if (StressManager.instance != null && isStressReducer == false)
+        if (StressManager.instance != null && isStressIncreaser)
         {
             Debug.Log("Adding Stress!");
             StressManager.instance.AddToCurrentStress();

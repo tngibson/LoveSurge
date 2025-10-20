@@ -1,6 +1,5 @@
 using System.Collections;
 using System.Collections.Generic;
-using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -8,36 +7,43 @@ public class StressBar : MonoBehaviour
 {
     public static StressBar instance;
 
-    public GameObject stressBar;
+    [Header("Stress Settings")]
     public float currentStressAmt;
-    [SerializeField] private GameObject StressBarParent;
-    // Start is called before the first frame update
+
+    [Header("UI References")]
+    [SerializeField] private Image StressBarFill; // The Image with 'Filled' type
+
     private void Awake()
     {
+        // Singleton setup — ensures only one StressBar exists
         if (instance != null && instance != this)
         {
-            Destroy(this.gameObject);  // Ensures only one instance of Stress Bar
+            Destroy(this.gameObject);
         }
         else
         {
             instance = this;
         }
     }
+
     void Start()
     {
+        // Initialize from StressManager
         currentStressAmt = StressManager.instance.GetCurrentStressAmount();
         UpdateStressBar();
-        
     }
-
-    // Update is called once per frame
 
     public void UpdateStressBar()
     {
-        if (StressBarParent != null)
+        // Always grab latest stress amount
+        currentStressAmt = StressManager.instance.GetCurrentStressAmount();
+
+        // Make sure the fill image exists
+        if (StressBarFill != null)
         {
-            currentStressAmt = StressManager.instance.GetCurrentStressAmount();
-            StressBarParent.transform.localScale = new Vector3(currentStressAmt, StressBarParent.transform.localScale.y, StressBarParent.transform.localScale.z);
+            // Clamp to ensure it stays between 0 and 1
+            StressBarFill.fillAmount = Mathf.Clamp01(currentStressAmt);
         }
     }
 }
+

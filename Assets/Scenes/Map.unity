@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.18028378, g: 0.22571412, b: 0.30692285, a: 1}
+  m_IndirectSpecularColor: {r: 0.18028331, g: 0.2257133, b: 0.30692166, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -442,6 +442,7 @@ MonoBehaviour:
   xHoverScale: 1.709402
   yHoverScale: 1.9
   isStressReducer: 1
+  isStressIncreaser: 0
   nextSceneMusic:
     Guid:
       Data1: 1277772494
@@ -866,6 +867,7 @@ MonoBehaviour:
   xHoverScale: 1.08
   yHoverScale: 2.1
   isStressReducer: 0
+  isStressIncreaser: 1
   nextSceneMusic:
     Guid:
       Data1: 1277772494
@@ -1233,6 +1235,7 @@ MonoBehaviour:
   xHoverScale: 1.5
   yHoverScale: 1.2
   isStressReducer: 0
+  isStressIncreaser: 1
   nextSceneMusic:
     Guid:
       Data1: 1277772494
@@ -1845,6 +1848,18 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 565059523}
   m_CullTransparentMesh: 1
+--- !u!114 &588952955 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 4198025285238060555, guid: 3b7deb3f75f593f408b068c426e15ba1,
+    type: 3}
+  m_PrefabInstance: {fileID: 7730387371596559687}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &619137631
 GameObject:
   m_ObjectHideFlags: 0
@@ -2316,6 +2331,7 @@ MonoBehaviour:
   xHoverScale: 1.6
   yHoverScale: 1.85
   isStressReducer: 0
+  isStressIncreaser: 1
   nextSceneMusic:
     Guid:
       Data1: 1277772494
@@ -3501,6 +3517,7 @@ MonoBehaviour:
   xHoverScale: 1.2
   yHoverScale: 2.1
   isStressReducer: 0
+  isStressIncreaser: 1
   nextSceneMusic:
     Guid:
       Data1: 1277772494
@@ -4101,6 +4118,7 @@ MonoBehaviour:
   xHoverScale: 0
   yHoverScale: 0
   isStressReducer: 0
+  isStressIncreaser: 0
   nextSceneMusic:
     Guid:
       Data1: 0
@@ -4219,6 +4237,7 @@ MonoBehaviour:
   xHoverScale: 1.5
   yHoverScale: 2.5
   isStressReducer: 0
+  isStressIncreaser: 1
   nextSceneMusic:
     Guid:
       Data1: 1277772494
@@ -4578,6 +4597,12 @@ RectTransform:
   m_CorrespondingSourceObject: {fileID: 8362350432066955915, guid: 64ecc85c47f7cc644b1907288656320b,
     type: 3}
   m_PrefabInstance: {fileID: 1335578357}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &1350846527 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 678459984235670699, guid: 3b7deb3f75f593f408b068c426e15ba1,
+    type: 3}
+  m_PrefabInstance: {fileID: 7730387371596559687}
   m_PrefabAsset: {fileID: 0}
 --- !u!1 &1360938911
 GameObject:
@@ -5137,6 +5162,7 @@ MonoBehaviour:
   xHoverScale: 0
   yHoverScale: 0
   isStressReducer: 0
+  isStressIncreaser: 0
   nextSceneMusic:
     Guid:
       Data1: 0
@@ -5404,6 +5430,7 @@ MonoBehaviour:
   xHoverScale: 1.4
   yHoverScale: 2.3
   isStressReducer: 0
+  isStressIncreaser: 1
   nextSceneMusic:
     Guid:
       Data1: 0
@@ -7357,6 +7384,7 @@ MonoBehaviour:
   xHoverScale: 0
   yHoverScale: 0
   isStressReducer: 0
+  isStressIncreaser: 0
   nextSceneMusic:
     Guid:
       Data1: 0
@@ -7475,6 +7503,7 @@ MonoBehaviour:
   xHoverScale: 1.8
   yHoverScale: 1.9
   isStressReducer: 0
+  isStressIncreaser: 1
   nextSceneMusic:
     Guid:
       Data1: 1277772494
@@ -7797,12 +7826,12 @@ PrefabInstance:
     - target: {fileID: 4406170097288796218, guid: e08180e388e3fac4093673c00690dbd8,
         type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 1315
+      value: 1347.2
       objectReference: {fileID: 0}
     - target: {fileID: 4406170097288796218, guid: e08180e388e3fac4093673c00690dbd8,
         type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: 853.85
+      value: 891
       objectReference: {fileID: 0}
     - target: {fileID: 4406170097288796218, guid: e08180e388e3fac4093673c00690dbd8,
         type: 3}
@@ -7837,6 +7866,11 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 367484166}
     m_Modifications:
+    - target: {fileID: 331205632797323575, guid: 3b7deb3f75f593f408b068c426e15ba1,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 535824621575453568, guid: 3b7deb3f75f593f408b068c426e15ba1,
         type: 3}
       propertyPath: m_Pivot.x
@@ -7870,7 +7904,7 @@ PrefabInstance:
     - target: {fileID: 535824621575453568, guid: 3b7deb3f75f593f408b068c426e15ba1,
         type: 3}
       propertyPath: m_SizeDelta.x
-      value: 100
+      value: 1172.032
       objectReference: {fileID: 0}
     - target: {fileID: 535824621575453568, guid: 3b7deb3f75f593f408b068c426e15ba1,
         type: 3}
@@ -7880,7 +7914,7 @@ PrefabInstance:
     - target: {fileID: 535824621575453568, guid: 3b7deb3f75f593f408b068c426e15ba1,
         type: 3}
       propertyPath: m_LocalScale.x
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 535824621575453568, guid: 3b7deb3f75f593f408b068c426e15ba1,
         type: 3}
@@ -7920,12 +7954,12 @@ PrefabInstance:
     - target: {fileID: 535824621575453568, guid: 3b7deb3f75f593f408b068c426e15ba1,
         type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 931.4
+      value: 1347.2
       objectReference: {fileID: 0}
     - target: {fileID: 535824621575453568, guid: 3b7deb3f75f593f408b068c426e15ba1,
         type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: 853.85
+      value: 891
       objectReference: {fileID: 0}
     - target: {fileID: 535824621575453568, guid: 3b7deb3f75f593f408b068c426e15ba1,
         type: 3}
@@ -7947,11 +7981,31 @@ PrefabInstance:
       propertyPath: m_Name
       value: StressBarParent
       objectReference: {fileID: 0}
-    - target: {fileID: 2985859313757426994, guid: 3b7deb3f75f593f408b068c426e15ba1,
+    - target: {fileID: 4198025285238060555, guid: 3b7deb3f75f593f408b068c426e15ba1,
         type: 3}
-      propertyPath: m_ConstrainProportionsScale
+      propertyPath: m_Type
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 4198025285238060555, guid: 3b7deb3f75f593f408b068c426e15ba1,
+        type: 3}
+      propertyPath: m_FillAmount
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 4198025285238060555, guid: 3b7deb3f75f593f408b068c426e15ba1,
+        type: 3}
+      propertyPath: m_FillMethod
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6712176335282230699, guid: 3b7deb3f75f593f408b068c426e15ba1,
+        type: 3}
+      propertyPath: StressBarFill
+      value: 
+      objectReference: {fileID: 588952955}
+    - target: {fileID: 6712176335282230699, guid: 3b7deb3f75f593f408b068c426e15ba1,
+        type: 3}
+      propertyPath: StressBarParent
+      value: 
+      objectReference: {fileID: 1350846527}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
