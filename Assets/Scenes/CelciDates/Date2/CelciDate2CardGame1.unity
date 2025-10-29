@@ -1448,7 +1448,7 @@ GameObject:
   - component: {fileID: 293364312}
   - component: {fileID: 293364313}
   m_Layer: 0
-  m_Name: NokiPlaytest
+  m_Name: CelciPlaytest
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3868,6 +3868,7 @@ MonoBehaviour:
   xHoverScale: 0
   yHoverScale: 0
   isStressReducer: 0
+  isStressIncreaser: 0
   nextSceneMusic:
     Guid:
       Data1: -2009058302
@@ -3875,6 +3876,7 @@ MonoBehaviour:
       Data3: 1458965673
       Data4: -2046846014
     Path: event:/Music/dateTheme
+  hasLocationText: 0
 --- !u!1 &619394800
 GameObject:
   m_ObjectHideFlags: 0
@@ -8172,6 +8174,7 @@ MonoBehaviour:
   xHoverScale: 0
   yHoverScale: 0
   isStressReducer: 0
+  isStressIncreaser: 0
   nextSceneMusic:
     Guid:
       Data1: 0
@@ -8179,6 +8182,7 @@ MonoBehaviour:
       Data3: 0
       Data4: 0
     Path: 
+  hasLocationText: 0
 --- !u!114 &1455098161
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -9379,7 +9383,7 @@ GameObject:
   - component: {fileID: 1661069648}
   - component: {fileID: 1661069647}
   m_Layer: 5
-  m_Name: Noki
+  m_Name: Celci
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -9394,14 +9398,14 @@ RectTransform:
   m_GameObject: {fileID: 1661069645}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 2, y: 2, z: 2}
+  m_LocalScale: {x: 1.75, y: 1.75, z: 1.75}
   m_ConstrainProportionsScale: 1
   m_Children: []
   m_Father: {fileID: 806919273}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -13.659241, y: 0}
+  m_AnchoredPosition: {x: 0, y: -68}
   m_SizeDelta: {x: 541.32, y: 541.32}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1661069647
@@ -9424,7 +9428,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 1efff82e0a469464987b91e1e6ff298e, type: 3}
+  m_Sprite: {fileID: 21300000, guid: aa606251ffd050c478a601249716a481, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -10933,7 +10937,7 @@ MonoBehaviour:
   categories: []
   endTurnButton: {fileID: 1396999329}
   mapButton: {fileID: 602046414}
-  CurrentCharacterIndex: 0
+  CurrentCharacterIndex: 1
   handSize: 4
   mapButtonScript: {fileID: 602046419}
   comboSurge: 0
@@ -12139,7 +12143,7 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Sprite
       value: 
-      objectReference: {fileID: 21300000, guid: 868b2ae3479dfd849aedb5358da0e377,
+      objectReference: {fileID: 21300000, guid: 15f3f6397b18cc44aa8a70bdeebb7af7,
         type: 3}
     - target: {fileID: 550191357185191001, guid: 0555a6ec04bb168489488f373c7cb574,
         type: 3}

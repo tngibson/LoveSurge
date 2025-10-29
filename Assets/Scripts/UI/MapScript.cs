@@ -62,7 +62,7 @@ public class MapScript : MonoBehaviour, IPointerEnterHandler, IPointerExitHandle
 
     public void OnPointerEnter(PointerEventData eventData)
     {
-        if (isEnabled && hasLocationText)
+        if (isEnabled)
         {
             // Scale up and apply hover material
             transform.localScale = hoverScale;
@@ -81,7 +81,7 @@ public class MapScript : MonoBehaviour, IPointerEnterHandler, IPointerExitHandle
 
     public void OnPointerExit(PointerEventData eventData)
     {
-        if (isEnabled && hasLocationText)
+        if (isEnabled)
         {
             // Reset scale and material
             transform.localScale = originalScale;
