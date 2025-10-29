@@ -38,6 +38,8 @@ public class MapScript : MonoBehaviour, IPointerEnterHandler, IPointerExitHandle
 
     [SerializeField] private EventReference nextSceneMusic;
 
+    [SerializeField] public bool hasLocationText;
+
     private void Awake()
     {
         // Save original scale and material
@@ -48,25 +50,51 @@ public class MapScript : MonoBehaviour, IPointerEnterHandler, IPointerExitHandle
 
         if (locationText != null) locationText.GetComponent<TextMeshProUGUI>().text = locationTextText;
     }
+
+    void OnEnable()
+    {
+        if (LocationManager.Instance != null)
+        {
+            LocationManager.Instance.TryBindMapScript(this);
+        }
+    }
+
+
     public void OnPointerEnter(PointerEventData eventData)
     {
-        if (isEnabled && mapAnimator != null)
+        if (isEnabled && hasLocationText)
         {
             // Scale up and apply hover material
             transform.localScale = hoverScale;
-            locationTextPanel.SetActive(true);
-            mapAnimator.SetBool("isHovered", true);
+
+            if (hasLocationText)
+            {
+                locationTextPanel.SetActive(true);
+            }
+
+            if (mapAnimator != null)
+            {
+                mapAnimator.SetBool("isHovered", true);
+            }
         }
     }
 
     public void OnPointerExit(PointerEventData eventData)
     {
-        if (isEnabled && mapAnimator != null)
+        if (isEnabled && hasLocationText)
         {
             // Reset scale and material
             transform.localScale = originalScale;
-            locationTextPanel.SetActive(false);
-            mapAnimator.SetBool("isHovered", false);
+
+            if (hasLocationText)
+            {
+                locationTextPanel.SetActive(false);
+            }
+
+            if (mapAnimator != null)
+            {
+                mapAnimator.SetBool("isHovered", false);
+            }
         }
     }
 
@@ -98,8 +126,19 @@ public class MapScript : MonoBehaviour, IPointerEnterHandler, IPointerExitHandle
 
         if (isDateButton)
         {
-            LocationManager.Instance.phaseEnteredDate = CalendarManager.instance.currentPhase;
+            string charName = locName.StartsWith("Noki") ? "Noki" :
+                              locName.StartsWith("Celci") ? "Celci" :
+                              locName.StartsWith("Lotte") ? "Lotte" : "";
+
+            if (!string.IsNullOrEmpty(charName))
+            {
+                if (LocationManager.Instance != null && CalendarManager.instance != null)
+                {
+                    LocationManager.Instance.SetPhaseEnteredDate(charName, CalendarManager.instance.currentPhase);
+                }
+            }
         }
+
 
         StartCoroutine(LoadScene(locName));
 
@@ -132,6 +171,8 @@ public class MapScript : MonoBehaviour, IPointerEnterHandler, IPointerExitHandle
                     Debug.Log("Stopping music before loading new scene.");
                 }
 
+        yield return null; // wait one frame so the UI event finishes
+
         // Loads scene
         SceneManager.LoadScene(scene);
         gameObject.SetActive(false);
@@ -152,13 +193,19 @@ public class MapScript : MonoBehaviour, IPointerEnterHandler, IPointerExitHandle
     {
         if (state)
         {
-            if (button != null) button.interactable = true;
-            if (questionText != null) questionText.SetActive(false);
+            if (isEnabled)
+            {
+                if (button != null) button.interactable = true;
+                if (questionText != null) questionText.SetActive(false);
+            }
         }
         else
         {
-            if (button != null) button.interactable = false;
-            if (questionText != null) questionText.SetActive(true);
+            if (!isEnabled)
+            {
+                if (button != null) button.interactable = false;
+                if (questionText != null) questionText.SetActive(true);
+            }
         }
     }
 

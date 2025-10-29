@@ -7,24 +7,35 @@ public class LocationManager : MonoBehaviour
 {
     public static LocationManager Instance { get; private set; }
 
-    private List<bool> dateStates = new List<bool> { false, false, false };
-    public bool dateStarted = false;
+    [System.Serializable]
+    public class DateData
+    {
+        public string name; // e.g. "Noki", "Celci", "Lotte"
+        public MapScript mapScript;
+        public bool isPlayable = true;
+        public bool dateStarted = false;
+        public bool isFirstTime = true;
+        public bool allDatesDone = false;
+        public DayPhase phaseEnteredDate = DayPhase.None;
 
-    [SerializeField] private MapScript targetMapScript;
+        public DateNum currentDate = DateNum.Date1;
+        public Date1Stage date1Stage = Date1Stage.Intro;
+        public Date2Stage date2Stage = Date2Stage.Intro;
+        public Date3Stage date3Stage = Date3Stage.Intro;
+    }
 
-    public bool isPlayable = true;
-    public DayPhase phaseEnteredDate = DayPhase.None;
-    public bool isFirstTime = true;
+    public enum DateNum { Date1, Date2, Date3 }
+    public enum Date1Stage { Intro, CardGame, Done }
+    public enum Date2Stage { Intro, CardGame, Done }
+    public enum Date3Stage { Intro, CardGame, Done }
 
-    public enum DateNum { Date1, Date2, Date3 };
-    public enum Date1Stage { Intro, CardGame, Done };
-    public enum Date2Stage { Intro, CardGame, Done };
-    public enum Date3Stage { Intro, CardGame, Done };
-
-    public DateNum date = DateNum.Date1;
-    public Date1Stage date1Stage = Date1Stage.Intro;
-    public Date2Stage date2Stage = Date2Stage.Intro;
-    public Date3Stage date3Stage = Date3Stage.Intro;
+    [Header("Character Date Data")]
+    public List<DateData> characterDates = new List<DateData>
+    {
+        new DateData { name = "Noki" },
+        new DateData { name = "Celci" },
+        new DateData { name = "Lotte" }
+    };
 
     void Awake()
     {
@@ -32,8 +43,6 @@ public class LocationManager : MonoBehaviour
         {
             Instance = this;
             DontDestroyOnLoad(gameObject);
-
-            // Subscribe to sceneLoaded event
             SceneManager.sceneLoaded += OnSceneLoaded;
         }
         else
@@ -44,138 +53,200 @@ public class LocationManager : MonoBehaviour
 
     private void OnSceneLoaded(Scene scene, LoadSceneMode mode)
     {
-        targetMapScript = GameObject.Find("House")?.GetComponent<MapScript>();
-        UpdateMapLocation();
-        for (int i = 0; i < dateStates.Count; i++)
+        foreach (var data in characterDates)
         {
-            if (GetDateState(i))
+            data.mapScript = GameObject.Find(data.name + "Date")?.GetComponent<MapScript>();
+            if (data.mapScript == null) continue;
+
+            if (data.allDatesDone)
             {
-                UpdateMapLocation();
+                // Hide or disable the button entirely if all dates are done
+                data.mapScript.UpdateLocationText($"{data.name}'s story is complete!");
+                data.mapScript.SetEnabled(false);
+                data.mapScript.gameObject.SetActive(false);
+                continue;
             }
-        }
 
-        if (isPlayable && targetMapScript != null && isFirstTime)
-        {
-            targetMapScript.UpdateLocationText("Go on a date with Noki!");
-            targetMapScript.SetEnabled(true);
-            phaseEnteredDate = CalendarManager.instance.currentPhase;
-            isFirstTime = false;
-        }
-        else if (isPlayable && targetMapScript != null && !isFirstTime)
-        {
-            targetMapScript.UpdateLocationText("Continue your date with Noki!");
-            targetMapScript.SetEnabled(true);
-            phaseEnteredDate = CalendarManager.instance.currentPhase;
-        }
-        else if ((phaseEnteredDate != DayPhase.None && phaseEnteredDate == CalendarManager.instance.currentPhase) && targetMapScript != null)
-        {
-            targetMapScript.UpdateLocationText("Continue your date with Noki!");
-            targetMapScript.SetEnabled(true);
-            isPlayable = true;
-            phaseEnteredDate = DayPhase.None;
-        }
-        else if (targetMapScript != null)
-        {
-            targetMapScript.UpdateLocationText("You must wait a full day to continue your date!");
-            targetMapScript.SetEnabled(false);
-        }
-    }
+            UpdateMapLocation(data);
 
-    public bool GetDateState(int dateIndex)
-    {
-        if (dateIndex >= 0 && dateIndex < dateStates.Count)
-        {
-            return dateStates[dateIndex];
-        }
-        return false;
-    }
-
-    public void SetDateState(int dateIndex, bool state)
-    {
-        if (dateIndex >= 0 && dateIndex < dateStates.Count)
-        {
-            dateStates[dateIndex] = state;
-            dateStarted = state; // Update dateStarted if any date is set
-
-            if (dateStarted)
+            if (data.isPlayable && data.isFirstTime)
             {
-                UpdateMapLocation();
+                data.mapScript.UpdateLocationText($"Go on a date with {data.name}!");
+                data.mapScript.SetEnabled(true);
+                data.phaseEnteredDate = CalendarManager.instance.currentPhase;
+                data.isFirstTime = false;
+            }
+            else if (data.isPlayable && !data.isFirstTime)
+            {
+                data.mapScript.UpdateLocationText($"Continue your date with {data.name}!");
+                data.mapScript.SetEnabled(true);
+                data.phaseEnteredDate = CalendarManager.instance.currentPhase;
+            }
+            else if (data.phaseEnteredDate != DayPhase.None &&
+                     data.phaseEnteredDate == CalendarManager.instance.currentPhase)
+            {
+                data.mapScript.UpdateLocationText($"Continue your date with {data.name}!");
+                data.mapScript.SetEnabled(true);
+                data.isPlayable = true;
+                data.phaseEnteredDate = DayPhase.None;
+            }
+            else
+            {
+                data.mapScript.UpdateLocationText("You must wait a full day to continue your date!");
+                data.mapScript.SetEnabled(false);
             }
         }
     }
 
-    private void UpdateMapLocation()
+    public void SetDateState(string charName, bool started)
     {
-        if (targetMapScript == null) return;
+        var data = characterDates.Find(d => d.name == charName);
+        if (data == null) return;
 
-        switch (date)
+        data.dateStarted = started;
+        if (started)
+        {
+            UpdateMapLocation(data);
+        }
+    }
+
+    private void UpdateMapLocation(DateData data)
+    {
+        if (data.mapScript == null) return;
+
+        switch (data.currentDate)
         {
             case DateNum.Date1:
-                switch (date1Stage)
+                switch (data.date1Stage)
                 {
                     case Date1Stage.Intro:
-                        targetMapScript.locName = "NokiDate1Intro";
+                        data.mapScript.locName = $"{data.name}Date1Intro";
                         break;
                     case Date1Stage.CardGame:
-                        targetMapScript.locName = "NokiDate1CardGame1";
+                        data.mapScript.locName = $"{data.name}Date1CardGame1";
                         break;
                     case Date1Stage.Done:
-                        date = DateNum.Date2;
-                        date2Stage = Date2Stage.Intro;
-                        UpdateMapLocation();
-                        for (int i = 0; i < Player.instance.convoTiers.Count; i++)
-                        {
-                            Player.instance.convoTiers[i] = 1;
-                        }
+                        data.currentDate = DateNum.Date2;
+                        data.date2Stage = Date2Stage.Intro;
+                        UpdateMapLocation(data);
+                        ResetPlayerConvo();
                         ConnectionManager.instance.setConnection(0, 0);
                         return;
                 }
                 break;
 
             case DateNum.Date2:
-                switch (date2Stage)
+                switch (data.date2Stage)
                 {
                     case Date2Stage.Intro:
-                        targetMapScript.locName = "NokiDate2Intro";
+                        data.mapScript.locName = $"{data.name}Date2Intro";
                         break;
                     case Date2Stage.CardGame:
-                        targetMapScript.locName = "NokiDate2CardGame1";
+                        data.mapScript.locName = $"{data.name}Date2CardGame1";
                         break;
                     case Date2Stage.Done:
-                        date = DateNum.Date3;
-                        date3Stage = Date3Stage.Intro;
-                        UpdateMapLocation();
-                        for (int i = 0; i < Player.instance.convoTiers.Count; i++)
-                        {
-                            Player.instance.convoTiers[i] = 1;
-                        }
+                        data.currentDate = DateNum.Date3;
+                        data.date3Stage = Date3Stage.Intro;
+                        UpdateMapLocation(data);
+                        ResetPlayerConvo();
                         ConnectionManager.instance.setConnection(0, 0);
                         return;
                 }
                 break;
 
             case DateNum.Date3:
-                switch (date3Stage)
+                switch (data.date3Stage)
                 {
                     case Date3Stage.Intro:
-                        targetMapScript.locName = "NokiDate3Intro";
+                        data.mapScript.locName = $"{data.name}Date3Intro";
                         break;
                     case Date3Stage.CardGame:
-                        targetMapScript.locName = "NokiDate3CardGame1";
+                        data.mapScript.locName = $"{data.name}Date3CardGame1";
                         break;
                     case Date3Stage.Done:
-                        Debug.Log("All dates completed.");
-                        break;
+                        Debug.Log($"All {data.name} dates completed.");
+                        data.allDatesDone = true;
+
+                        // Disable and hide the button when all dates are done
+                        if (data.mapScript != null)
+                        {
+                            data.mapScript.UpdateLocationText($"{data.name}'s story is complete!");
+                            data.mapScript.SetEnabled(false);
+                            data.mapScript.gameObject.SetActive(false);
+                        }
+                        return;
                 }
                 break;
         }
 
-        targetMapScript.SetEnabled(isPlayable);
+        data.mapScript.SetEnabled(data.isPlayable);
+    }
+
+    private void ResetPlayerConvo()
+    {
+        for (int i = 0; i < Player.instance.convoTiers.Count; i++)
+        {
+            Player.instance.convoTiers[i] = 1;
+        }
     }
 
     void OnDestroy()
     {
         SceneManager.sceneLoaded -= OnSceneLoaded;
     }
-}
 
+    public void TryBindMapScript(MapScript map)
+    {
+        if (map == null) return;
+
+        foreach (var data in characterDates)
+        {
+            if (map.name.Contains(data.name + "Date"))
+            {
+                data.mapScript = map;
+                Debug.Log($"Bound {data.name} map button.");
+                UpdateMapLocation(data);
+
+                if (data.allDatesDone)
+                {
+                    map.UpdateLocationText($"{data.name}'s story is complete!");
+                    map.SetEnabled(false);
+                    map.gameObject.SetActive(false);
+                    return;
+                }
+
+                if (data.isPlayable && data.isFirstTime)
+                {
+                    map.UpdateLocationText($"Go on a date with {data.name}!");
+                    map.SetEnabled(true);
+                    data.phaseEnteredDate = CalendarManager.instance.currentPhase;
+                    data.isFirstTime = false;
+                }
+                else if (data.isPlayable)
+                {
+                    map.UpdateLocationText($"Continue your date with {data.name}!");
+                    map.SetEnabled(true);
+                    data.phaseEnteredDate = CalendarManager.instance.currentPhase;
+                }
+                else
+                {
+                    map.UpdateLocationText("You must wait a full day to continue your date!");
+                    map.SetEnabled(false);
+                }
+
+                return;
+            }
+        }
+    }
+
+    public void SetPhaseEnteredDate(string charName, DayPhase phase)
+    {
+        var data = characterDates.Find(d => d.name == charName);
+        if (data != null)
+        {
+            data.phaseEnteredDate = phase;
+        }
+    }
+
+
+}

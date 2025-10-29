@@ -1,0 +1,74 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2de807345bdd09646bb1f755bf64c760, type: 3}
+  m_Name: CelciEvent2Choice2
+  m_EditorClassIdentifier: 
+  choiceOptions:
+  - I don't want to interrupt. I can just watch.
+  - I would love to join!
+  choicePaths:
+  - afterChoiceDialogLines:
+    - "I think we\u2019d all love for you to play."
+    - Took the words right outta my mouth!
+    - You know they say your phone knows you better than you know yourself?
+    - "You aren\u2019t my phone\u2026."
+    - "It\u2019s crazy how much these phones know!"
+    - :p
+    afterChoiceSpeakersPerLine:
+    - Noki
+    - Miguel
+    - Noki
+    - Miguel
+    - Noki
+    - Noki
+    afterChoiceSpriteOptions:
+    - spriteOptions:
+      - {fileID: 21300000, guid: eb54c0b9144af6b4e8e9578c07a0c65b, type: 3}
+      - {fileID: 21300000, guid: eb54c0b9144af6b4e8e9578c07a0c65b, type: 3}
+      - {fileID: 21300000, guid: eb54c0b9144af6b4e8e9578c07a0c65b, type: 3}
+      - {fileID: 21300000, guid: dd7b066d58c40fd458eda1333d2ef0e4, type: 3}
+      - {fileID: 21300000, guid: dd7b066d58c40fd458eda1333d2ef0e4, type: 3}
+      - {fileID: 21300000, guid: dd7b066d58c40fd458eda1333d2ef0e4, type: 3}
+    - spriteOptions:
+      - {fileID: 21300000, guid: c40c192f3a2bf9e4d8d5a166fd087309, type: 3}
+      - {fileID: 21300000, guid: c40c192f3a2bf9e4d8d5a166fd087309, type: 3}
+      - {fileID: 21300000, guid: c40c192f3a2bf9e4d8d5a166fd087309, type: 3}
+      - {fileID: 21300000, guid: c40c192f3a2bf9e4d8d5a166fd087309, type: 3}
+      - {fileID: 21300000, guid: c40c192f3a2bf9e4d8d5a166fd087309, type: 3}
+      - {fileID: 21300000, guid: c40c192f3a2bf9e4d8d5a166fd087309, type: 3}
+    - spriteOptions:
+      - {fileID: 21300000, guid: 3900c097c0bef5c41ab3e639a31d5510, type: 3}
+      - {fileID: 21300000, guid: 3900c097c0bef5c41ab3e639a31d5510, type: 3}
+      - {fileID: 21300000, guid: 3900c097c0bef5c41ab3e639a31d5510, type: 3}
+      - {fileID: 21300000, guid: 3900c097c0bef5c41ab3e639a31d5510, type: 3}
+      - {fileID: 21300000, guid: 3900c097c0bef5c41ab3e639a31d5510, type: 3}
+      - {fileID: 21300000, guid: 3900c097c0bef5c41ab3e639a31d5510, type: 3}
+    - spriteOptions:
+      - {fileID: 21300000, guid: 4b7681c045f002e48b28145e94315c75, type: 3}
+      - {fileID: 21300000, guid: 4b7681c045f002e48b28145e94315c75, type: 3}
+      - {fileID: 21300000, guid: db91c5ce13664584f9581311492ef848, type: 3}
+      - {fileID: 21300000, guid: c11f813b5a0a46449a198d75c5a29153, type: 3}
+      - {fileID: 21300000, guid: c11f813b5a0a46449a198d75c5a29153, type: 3}
+      - {fileID: 21300000, guid: c11f813b5a0a46449a198d75c5a29153, type: 3}
+    statTag: Charisma
+    statValue: 1
+    nestedChoices: []
+  - afterChoiceDialogLines: []
+    afterChoiceSpeakersPerLine: []
+    afterChoiceSpriteOptions:
+    - spriteOptions: []
+    - spriteOptions: []
+    - spriteOptions: []
+    - spriteOptions: []
+    statTag: Charisma
+    statValue: 1
+    nestedChoices: []

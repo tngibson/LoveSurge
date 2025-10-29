@@ -10,7 +10,7 @@ public class GameManager : MonoBehaviour
     public static GameManager instance; // Singleton instance for global access
 
     // UI elements for displaying game information
-    [SerializeField] private TextMeshProUGUI scoreText;  // UI for displaying the score
+    [SerializeField] private TextMeshProUGUI scoreText;
     [SerializeField] private TextMeshProUGUI deckCountText;
     [SerializeField] private GameObject endGameText;
     [SerializeField] private GameObject fullHandText;
@@ -19,13 +19,13 @@ public class GameManager : MonoBehaviour
     [SerializeField] private float currentStressAmt = 0f;
     [SerializeField] private float maxStressAmt = 10f;
 
-    // References to card prefabs
+    // Card prefabs
     [SerializeField] private GameObject chaCard;
     [SerializeField] private GameObject couCard;
     [SerializeField] private GameObject cleCard;
     [SerializeField] private GameObject creCard;
 
-    // References to gameplay elements
+    // Gameplay elements
     [SerializeField] private PlayerArea playerArea;
     [SerializeField] public ConvoTopic currentConvoTopic;
     [SerializeField] private TopicContainer topicContainer;
@@ -35,37 +35,35 @@ public class GameManager : MonoBehaviour
     [SerializeField] private GameObject discardBin;
     [SerializeField] private ReserveManager reserveManager;
 
-    public List<string> categories = new List<string> { "Cha", "Cou", "Cle", "Cre" }; // List of categories for conversation topics
+    public List<string> categories = new List<string> { "Cha", "Cou", "Cle", "Cre" };
 
     // Buttons
     [SerializeField] private GameObject endTurnButton;
     [SerializeField] private GameObject mapButton;
 
-    [SerializeField] private int CurrentCharacterIndex;
-    private int currentScore = -1;  // Tracks the player's score
+    [SerializeField] private int CurrentCharacterIndex; // which character date this belongs to | 0 - Noki, 1 - Celci, 2 - Lotte
+    private int currentScore = -1;
     private bool isTopicSelected;
 
     public bool IsTopicSelected { get; set; }
 
-    [SerializeField] private int handSize = 4;  // Max hand size the player can have
-
+    [SerializeField] private int handSize = 4;
     private bool isHandPlayable = false;
 
     [SerializeField] private MapScript mapButtonScript;
 
     [SerializeField] private int comboSurge = 0;
-    public int ComboSurge 
-    { 
+    public int ComboSurge
+    {
         get => comboSurge;
         set { comboSurge = math.clamp(value, 0, 4); }
     }
 
-    // Initial game setup
     private void Awake()
     {
         if (instance != null && instance != this)
         {
-            Destroy(this.gameObject);  // Ensures only one instance of GameManager
+            Destroy(this.gameObject);
         }
         else
         {
@@ -78,32 +76,25 @@ public class GameManager : MonoBehaviour
 
     private void Start()
     {
-        fullHandText.SetActive(false); // Hide the "full hand" warning initially
-        scoreText.text = "Score: 0";   // Initialize the score UI
+        fullHandText.SetActive(false);
+        scoreText.text = "Score: 0";
         MusicManager.SetParameterByName("dateProgress", 0);
         Debug.Log("Start Music");
-
     }
 
-    // Setup the conversation at the start of the game
     public void SetConvoStart()
     {
         if (isTopicSelected)
-        {
             isTopicSelected = false;
-        }
     }
 
-    // Handles end of turn logic
     public void OnEndTurn()
     {
-        // Ensure the player has up to (handSize) cards in their hand
         if (playerArea.CardsInHand.Count < handSize && deckContainer.Deck.Count > 0)
         {
             int missingCards = handSize - playerArea.CardsInHand.Count;
             fullHandText.SetActive(false);
 
-            // Draw cards to fill the player's hand
             for (int i = 0; i < missingCards; i++)
             {
                 Card card = deckContainer.Draw();
@@ -124,21 +115,15 @@ public class GameManager : MonoBehaviour
         }
         else
         {
-            // Show "full hand" warning if applicable
             fullHandText.SetActive(true);
             fullHandText.GetComponentInChildren<TextMeshProUGUI>().text = "Your Hand is Full!";
         }
 
-        // Score the cards in the dropzone
         if (currentConvoTopic != null)
-        {
             dropzone.ScoreCards();
-        }
 
-        // Reset the dropzone for the next turn
         dropzone.ResetForNewTurn();
 
-        // Check for card game win conditions (no more convo topics to choose from)
         if (topicContainer.convoTopics.Count <= 0)
         {
             EndGameFullWin();
@@ -147,66 +132,79 @@ public class GameManager : MonoBehaviour
         {
             EndGameLoss();
         }
-        
+
         comboSurge = 0;
-        //UpdateEndTurnButton(false); // Disable the end turn button
+    }
+
+    // Retrieve the active character’s date data dynamically
+    private DateData GetActiveCharacter()
+    {
+        return LocationManager.Instance.characterDates[CurrentCharacterIndex];
     }
 
     public void EndGameHalfWin()
     {
-        switch (LocationManager.Instance.date)
+        var data = GetActiveCharacter();
+
+        switch (data.currentDate)
         {
             case DateNum.Date1:
-                LocationManager.Instance.date1Stage = Date1Stage.CardGame; // Resume halfway
-                mapButtonScript.locName = "NokiDate1SkillCheck1";
+                data.date1Stage = Date1Stage.CardGame;
+                mapButtonScript.locName = $"{data.name}Date1SkillCheck1";
                 break;
             case DateNum.Date2:
-                LocationManager.Instance.date2Stage = Date2Stage.CardGame;
-                mapButtonScript.locName = "NokiDate2SkillCheck1";
+                data.date2Stage = Date2Stage.CardGame;
+                mapButtonScript.locName = $"{data.name}Date2SkillCheck1";
                 break;
             case DateNum.Date3:
-                LocationManager.Instance.date3Stage = Date3Stage.CardGame;
-                mapButtonScript.locName = "NokiDate3SkillCheck1";
+                data.date3Stage = Date3Stage.CardGame;
+                mapButtonScript.locName = $"{data.name}Date3SkillCheck1";
                 break;
         }
-        ShowMapButton("Noki want's to talk more closely with you...", 1); // Enable the map button at game win
+
+        ShowMapButton($"{data.name} wants to talk more closely with you...", 1);
     }
 
     public void EndGameFullWin()
     {
-        switch (LocationManager.Instance.date)
+        var data = GetActiveCharacter();
+
+        switch (data.currentDate)
         {
             case DateNum.Date1:
-                LocationManager.Instance.date1Stage = Date1Stage.Done;
-                mapButtonScript.locName = "NokiDate1DeepConvo1";
+                data.date1Stage = Date1Stage.Done;
+                mapButtonScript.locName = $"{data.name}Date1DeepConvo1";
                 break;
             case DateNum.Date2:
-                LocationManager.Instance.date2Stage = Date2Stage.Done;
-                mapButtonScript.locName = "NokiDate2SkillCheck2";
+                data.date2Stage = Date2Stage.Done;
+                mapButtonScript.locName = $"{data.name}Date2SkillCheck2";
                 break;
             case DateNum.Date3:
-                LocationManager.Instance.date3Stage = Date3Stage.Done;
-                mapButtonScript.locName = "NokiDate3SkillCheck3";
+                data.date3Stage = Date3Stage.Done;
+                mapButtonScript.locName = $"{data.name}Date3SkillCheck3";
                 break;
         }
-        ShowMapButton("You Win, Congratulations!", 1); // Enable the map button at game win
+
+        ShowMapButton("You Win, Congratulations!", 1);
+
+        // Update the location so LocationManager can advance to the next date
+        LocationManager.Instance.TryBindMapScript(mapButtonScript);
     }
 
-    // Ends the game and displays the game over message
     public void EndGameLoss()
     {
+        var data = GetActiveCharacter();
+
         ShowMapButton("It's getting late, you should be heading back...", 3);
         Debug.Log("Bad End");
 
-
-
-
-        // Hard coded for date 2 demo, will be changed later
-        if (!LocationManager.Instance.GetDateState(1))
+        if (!data.dateStarted)
         {
-            LocationManager.Instance.SetDateState(1, true);
+            data.dateStarted = true;
         }
-        LocationManager.Instance.isPlayable = false;
+
+        data.isPlayable = false;
+        LocationManager.Instance.TryBindMapScript(mapButtonScript);
     }
 
     public void ShowMapButton(string message, int musicProgress)
@@ -219,22 +217,19 @@ public class GameManager : MonoBehaviour
         MusicManager.SetParameterByName("dateProgress", musicProgress);
     }
 
-    // Updates the score and refreshes the UI
     public void UpdateScore(int score)
     {
-        currentScore += score; // Add to the current score
-        scoreText.text = $"Score: {currentScore}"; // Update the UI
+        currentScore += score;
+        scoreText.text = $"Score: {currentScore}";
     }
 
-    // Resets the conversation topic selection state
     public void ResetConvoTopic()
     {
         currentConvoTopic = null;
         isTopicSelected = false;
-        topicContainer.EnableButtons(); // Re-enable topic buttonss
+        topicContainer.EnableButtons();
     }
 
-    // Toggles the interactivity of the end turn button
     public void UpdateEndTurnButton(bool state)
     {
         if (endTurnButton.GetComponent<Button>().interactable != state)
@@ -249,15 +244,11 @@ public class GameManager : MonoBehaviour
         foreach (Card card in playerArea.CardsInHand)
         {
             if (dropzone.CanPlaceCard(card))
-            {
                 isHandPlayable = true;
-            }
         }
 
         if (dropzone.CanPlaceCard(reserveManager.GetCurrentPlayableCard()))
-        {
             isHandPlayable = true;
-        }
 
         return isHandPlayable;
     }

@@ -1,0 +1,150 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2de807345bdd09646bb1f755bf64c760, type: 3}
+  m_Name: CelciEvent3Choice2
+  m_EditorClassIdentifier: 
+  choiceOptions:
+  - "How\u2019d you know I was here?"
+  - Are you okay?
+  choicePaths:
+  - afterChoiceDialogLines:
+    - "Climbing up a fire escape isn\u2019t exactly the quietest thing in the world."
+    - That makes sense, I guess.
+    - Are you okay?
+    - "Why\u2019d you come out here?"
+    - "It\u2019s easy to ground myself when I\u2019m away from everything. This is
+      as close as you can get I\u2019ve found."
+    - "\u2026"
+    - Would you sit with me?
+    - Yeah.
+    - When you sit next to Celci you can see that their hands are trembling slightly
+      and their eyes are red from crying.
+    - You both sit quietly on the roof and watch cars drive by on the road below.
+      Birds sing soft songs and the rustling of trees in the summer wind fills your
+      ears like white noise. Celci kicks their feet.
+    - "It\u2019s nice up here right?"
+    - Yeah.
+    - An hour passes.
+    - "\u2026thanks for sitting up here with me."
+    - Of course. It was nice.
+    - Celci stands up and offers you a hand. You try to take it but end up phasing
+      right through them. You fall back and knock your head on the roof.
+    - Pfft. Nerd.
+    - Celci walks away.
+    afterChoiceSpeakersPerLine:
+    - Celci
+    - You
+    - You
+    - You
+    - Celci
+    - You
+    - Celci
+    - You
+    - 
+    - 
+    - Celci
+    - You
+    - 
+    - Celci
+    - You
+    - 
+    - Celci
+    - 
+    afterChoiceSpriteOptions:
+    - spriteOptions:
+      - {fileID: 21300000, guid: aa606251ffd050c478a601249716a481, type: 3}
+      - {fileID: 21300000, guid: aa606251ffd050c478a601249716a481, type: 3}
+      - {fileID: 21300000, guid: aa606251ffd050c478a601249716a481, type: 3}
+      - {fileID: 21300000, guid: 1a9896ab5c18242478f77c4b08f279e6, type: 3}
+      - {fileID: 21300000, guid: 1a9896ab5c18242478f77c4b08f279e6, type: 3}
+      - {fileID: 21300000, guid: 1a9896ab5c18242478f77c4b08f279e6, type: 3}
+      - {fileID: 21300000, guid: c40c192f3a2bf9e4d8d5a166fd087309, type: 3}
+      - {fileID: 21300000, guid: c40c192f3a2bf9e4d8d5a166fd087309, type: 3}
+      - {fileID: 21300000, guid: c40c192f3a2bf9e4d8d5a166fd087309, type: 3}
+      - {fileID: 21300000, guid: c40c192f3a2bf9e4d8d5a166fd087309, type: 3}
+      - {fileID: 21300000, guid: 1a9896ab5c18242478f77c4b08f279e6, type: 3}
+      - {fileID: 21300000, guid: 1a9896ab5c18242478f77c4b08f279e6, type: 3}
+      - {fileID: 21300000, guid: 1a9896ab5c18242478f77c4b08f279e6, type: 3}
+      - {fileID: 21300000, guid: c40c192f3a2bf9e4d8d5a166fd087309, type: 3}
+      - {fileID: 21300000, guid: c40c192f3a2bf9e4d8d5a166fd087309, type: 3}
+      - {fileID: 21300000, guid: aa606251ffd050c478a601249716a481, type: 3}
+      - {fileID: 21300000, guid: c40c192f3a2bf9e4d8d5a166fd087309, type: 3}
+      - {fileID: 21300000, guid: c40c192f3a2bf9e4d8d5a166fd087309, type: 3}
+    statTag: 
+    statValue: 0
+    nestedChoices: []
+  - afterChoiceDialogLines:
+    - Yeah, actually.
+    - "Oh\u2026that\u2019s good to hear."
+    - ...
+    - "Why\u2019d you come out here?"
+    - "It\u2019s easy to ground myself when I\u2019m away from everything. This is
+      as close as you can get I\u2019ve found."
+    - "\u2026"
+    - Would you sit with me?
+    - Yeah.
+    - When you sit next to Celci you can see that their hands are trembling slightly
+      and their eyes are red from crying.
+    - You both sit quietly on the roof and watch cars drive by on the road below.
+      Birds sing soft songs and the rustling of trees in the summer wind fills your
+      ears like white noise. Celci kicks their feet.
+    - "It\u2019s nice up here right?"
+    - Yeah.
+    - An hour passes.
+    - "\u2026thanks for sitting up here with me."
+    - Of course. It was nice.
+    - Celci stands up and offers you a hand. You try to take it but end up phasing
+      right through them. You fall back and knock your head on the roof.
+    - Pfft. Nerd.
+    - Celci walks away.
+    afterChoiceSpeakersPerLine:
+    - Celci
+    - You
+    - Celci
+    - You
+    - Celci
+    - You
+    - Celci
+    - You
+    - 
+    - 
+    - Celci
+    - You
+    - 
+    - Celci
+    - You
+    - 
+    - Celci
+    - 
+    afterChoiceSpriteOptions:
+    - spriteOptions:
+      - {fileID: 21300000, guid: c40c192f3a2bf9e4d8d5a166fd087309, type: 3}
+      - {fileID: 21300000, guid: c40c192f3a2bf9e4d8d5a166fd087309, type: 3}
+      - {fileID: 21300000, guid: c40c192f3a2bf9e4d8d5a166fd087309, type: 3}
+      - {fileID: 21300000, guid: 1a9896ab5c18242478f77c4b08f279e6, type: 3}
+      - {fileID: 21300000, guid: 1a9896ab5c18242478f77c4b08f279e6, type: 3}
+      - {fileID: 21300000, guid: 1a9896ab5c18242478f77c4b08f279e6, type: 3}
+      - {fileID: 21300000, guid: c40c192f3a2bf9e4d8d5a166fd087309, type: 3}
+      - {fileID: 21300000, guid: c40c192f3a2bf9e4d8d5a166fd087309, type: 3}
+      - {fileID: 21300000, guid: c40c192f3a2bf9e4d8d5a166fd087309, type: 3}
+      - {fileID: 21300000, guid: c40c192f3a2bf9e4d8d5a166fd087309, type: 3}
+      - {fileID: 21300000, guid: 1a9896ab5c18242478f77c4b08f279e6, type: 3}
+      - {fileID: 21300000, guid: 1a9896ab5c18242478f77c4b08f279e6, type: 3}
+      - {fileID: 21300000, guid: 1a9896ab5c18242478f77c4b08f279e6, type: 3}
+      - {fileID: 21300000, guid: c40c192f3a2bf9e4d8d5a166fd087309, type: 3}
+      - {fileID: 21300000, guid: c40c192f3a2bf9e4d8d5a166fd087309, type: 3}
+      - {fileID: 21300000, guid: aa606251ffd050c478a601249716a481, type: 3}
+      - {fileID: 21300000, guid: c40c192f3a2bf9e4d8d5a166fd087309, type: 3}
+      - {fileID: 21300000, guid: c40c192f3a2bf9e4d8d5a166fd087309, type: 3}
+    statTag: 
+    statValue: 0
+    nestedChoices: []

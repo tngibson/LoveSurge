@@ -419,33 +419,37 @@ public class RandEventHandler : MonoBehaviour
 
     public void OnChoiceSelected(int choiceIndex)
     {
-        AudioManager.instance.PlayOneShot(FMODEvents.instance.UiClick, this.transform.position); // Play click sound
+        AudioManager.instance.PlayOneShot(FMODEvents.instance.UiClick, this.transform.position);
         isChoiceTime = false;
         choicePanel.SetActive(false);
 
-        // Store the original dialog and index before branching to the choice dialog
+        // Save the current main dialog state to return to after the nested path
         originalDialogLines = new List<string>(dialogLines);
         originalSpeakersPerLine = new List<string>(speakersPerLine);
         originalSpriteOptions = new List<SpriteOptions>(characterSprites);
-        originalLineIndex = currentLineIndex + 1;  // Index to resume after choice
+        originalLineIndex = currentLineIndex + 1;
 
-        // Retrieve the selected choice path
         Choices currentChoices = choices[currentLineIndex];
         ChoicePath selectedPath = currentChoices.choicePaths[choiceIndex];
 
-        // Apply stat changes if a stat tag and value are defined
+        // Apply stat changes if applicable
         if (!string.IsNullOrEmpty(selectedPath.statTag) && selectedPath.statValue != 0)
-        {
             ApplyStatChange(selectedPath.statTag, selectedPath.statValue);
-        }
 
-        // Branch to the selected choice dialog
+        // Start with the dialog lines for this choice
         dialogLines = selectedPath.afterChoiceDialogLines;
         speakersPerLine = selectedPath.afterChoiceSpeakersPerLine;
         characterSprites = selectedPath.afterChoiceSpriteOptions;
-
-        // Start the choice dialog from the beginning
         currentLineIndex = 0;
+
+        // If this choice has its own nested choices, track them
+        if (selectedPath.nestedChoices != null && selectedPath.nestedChoices.Count > 0)
+        {
+            // Temporarily replace the main choices list with the nested ones
+            choices = selectedPath.nestedChoices;
+            isChoiceDialog = true;
+        }
+
         DisplayLine();
     }
 
@@ -460,6 +464,10 @@ public class RandEventHandler : MonoBehaviour
             playerManager.SetStat(statType, currentStat + statValue);
             Debug.Log($"{statType} increased by {statValue}. New value: {currentStat + statValue}");
         }
+        else if (statTag == "Stress")
+        {
+            StressManager.instance?.AddToCurrentStress();
+        }
         else
         {
             Debug.LogWarning($"Invalid stat tag: {statTag}");
@@ -468,13 +476,25 @@ public class RandEventHandler : MonoBehaviour
 
     private void EndChoicePath()
     {
-        // After a choice is completed, restore the original dialog flow
-        dialogLines = originalDialogLines;
-        speakersPerLine = originalSpeakersPerLine;
-        characterSprites = originalSpriteOptions;
-        currentLineIndex = originalLineIndex;  // Resume from the saved line index
-        isChoiceDialog = false;  // We're no longer in a choice
-        DisplayLine();  // Continue the main dialog
+        // If we had nested choices, revert to the previous layer
+        if (isChoiceDialog)
+        {
+            dialogLines = originalDialogLines;
+            speakersPerLine = originalSpeakersPerLine;
+            characterSprites = originalSpriteOptions;
+            currentLineIndex = originalLineIndex;
+            isChoiceDialog = false;
+
+            // Optional: if you used nested choices, clear them to avoid confusion
+            choices = new List<Choices>(choices);
+
+            DisplayLine();
+        }
+        else
+        {
+            // No nested choice to return from — just resume normal dialog
+            mapButton.SetActive(true);
+        }
     }
 
     private IEnumerator PlayVoiceLoop(EventInstance voiceInstance)
