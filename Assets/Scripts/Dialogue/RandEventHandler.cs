@@ -74,8 +74,11 @@ public class RandEventHandler : MonoBehaviour
 
     private Coroutine typewriterCoroutine; // track current typewriter
 
+    [Header("Celci Specific Options")]
     [SerializeField] private CelciIntroChoiceData celciIntroDialog; // Shown if house is not hot
     [SerializeField] private CelciDate2ChoiceData celciDate2Dialog; // Shown if player threatens Celci
+
+    [SerializeField] private bool isCelciFinalDeepConvo = false;
 
     void Start()
     {
@@ -93,6 +96,15 @@ public class RandEventHandler : MonoBehaviour
         choicePanel.SetActive(false); // Hide choice panel at start
         mapButton.SetActive(false);   // Hide the map button at start
         InitializeAudio(); // Starts FMOD audio
+
+        if (Player.instance.celciRomanticRoute && isCelciFinalDeepConvo)
+        {
+            dialogLines[90] = "Celci leans over and kisses you on the cheek. It feels like a spot of warm sunlight.";
+            dialogLines[91] = "Thanks for the other stuff you said too. ";
+            speakersPerLine[91] = "Celci";
+            dialogLines[97] = "They hold your arm closely to them. You walk home together as the sun peeks up over the horizon.";
+        }
+
         DisplayLine(); // Display the first line
     }
 
@@ -607,6 +619,18 @@ public class RandEventHandler : MonoBehaviour
         {
             LocationManager.Instance.characterDates[1].allDatesDone = true;
             LocationManager.Instance.characterDates[1].date3Stage = Date3Stage.Done;
+        }
+        else if (statTag == "NokiRomantic")
+        {
+            Player.instance.nokiRomanticRoute = true;
+        }
+        else if (statTag == "CelciRomantic")
+        {
+            Player.instance.celciRomanticRoute = true;
+        }
+        else if (statTag == "LotteRomantic")
+        {
+            Player.instance.lotteRomanticRoute = true;
         }
         else
         {

@@ -24,8 +24,13 @@ public class Player : MonoBehaviour
 
     public event Action OnStatsChanged;
 
+
+    [Header("Choice Booleans")]
     public bool isHouseHot = true;
     public bool isCelciThreatened = false;
+    public bool nokiRomanticRoute = false;
+    public bool celciRomanticRoute = false;
+    public bool lotteRomanticRoute = false;
 
     void Awake()
     {

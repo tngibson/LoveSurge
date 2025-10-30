@@ -1,0 +1,98 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2de807345bdd09646bb1f755bf64c760, type: 3}
+  m_Name: CelciDate3DeepConvo2Choice2
+  m_EditorClassIdentifier: 
+  choiceOptions:
+  - I feel strongly about you too! (flex platonically)
+  - "If I\u2019m honest, I have romantic feelings about you as well."
+  choicePaths:
+  - afterChoiceDialogLines:
+    - "You\u2019re an idiot."
+    - Celci sighs and shakes their head, walking over to you. They give you a big
+      hug.
+    - 'Thank you. '
+    - Before you can say anything, Celci continues.
+    - "Now you say, \u201CYou\u2019re welcome, my cool-robot-best-friend Celci.\u201D"
+    - "hehe...you\u2019re welcome, Celci."
+    - "Loser. Didn\u2019t even say the whole thing. "
+    afterChoiceSpeakersPerLine:
+    - Celci
+    - 
+    - Celci
+    - 
+    - Celci
+    - You
+    - Celci
+    afterChoiceSpriteOptions:
+    - spriteOptions:
+      - {fileID: 21300000, guid: 70e99421608ac5543bf909affcbcbf7c, type: 3}
+      - {fileID: 21300000, guid: 1a9896ab5c18242478f77c4b08f279e6, type: 3}
+      - {fileID: 21300000, guid: 1a9896ab5c18242478f77c4b08f279e6, type: 3}
+      - {fileID: 21300000, guid: 1a9896ab5c18242478f77c4b08f279e6, type: 3}
+      - {fileID: 21300000, guid: 1a9896ab5c18242478f77c4b08f279e6, type: 3}
+      - {fileID: 21300000, guid: 1a9896ab5c18242478f77c4b08f279e6, type: 3}
+      - {fileID: 21300000, guid: aa606251ffd050c478a601249716a481, type: 3}
+    statTag: 
+    statValue: 0
+    celciIntroDialog:
+      lines: []
+      speakers: []
+      spriteOptions: []
+    celciDate2Dialog:
+      lines: []
+      speakers: []
+      spriteOptions: []
+    backgrounds: []
+    nestedChoices: []
+  - afterChoiceDialogLines:
+    - Their head snaps to you, looking you dead in the eyes.
+    - What?!
+    - Is that not what you were getting at?
+    - "Um. No its..well. I guess it wasn\u2019t...NOT what I was getting at..."
+    - "Sorry, maybe now\u2019s not the best time to talk about this\u2026"
+    - Yep. Definitely NOT the time.
+    - "Celci\u2019s hiding a blush in their scarf. You feel the temperature of the
+      room rise a few degrees. Without saying a word, Celci walks over and leans
+      their head on your shoulder and hugs your arm."
+    - "C\u2019mon. We can figure that out later. Lots to search or whatever."
+    afterChoiceSpeakersPerLine:
+    - 
+    - Celci
+    - You
+    - Celci
+    - Yoy
+    - Celci
+    - 
+    - Celci
+    afterChoiceSpriteOptions:
+    - spriteOptions:
+      - {fileID: 21300000, guid: d160170eef1cdfc4babf991757fb7348, type: 3}
+      - {fileID: 21300000, guid: d160170eef1cdfc4babf991757fb7348, type: 3}
+      - {fileID: 21300000, guid: d160170eef1cdfc4babf991757fb7348, type: 3}
+      - {fileID: 21300000, guid: 1a9896ab5c18242478f77c4b08f279e6, type: 3}
+      - {fileID: 21300000, guid: 1a9896ab5c18242478f77c4b08f279e6, type: 3}
+      - {fileID: 21300000, guid: 1a9896ab5c18242478f77c4b08f279e6, type: 3}
+      - {fileID: 21300000, guid: 1a9896ab5c18242478f77c4b08f279e6, type: 3}
+      - {fileID: 21300000, guid: aa606251ffd050c478a601249716a481, type: 3}
+    statTag: CelciRomantic
+    statValue: 0
+    celciIntroDialog:
+      lines: []
+      speakers: []
+      spriteOptions: []
+    celciDate2Dialog:
+      lines: []
+      speakers: []
+      spriteOptions: []
+    backgrounds: []
+    nestedChoices: []

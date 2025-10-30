@@ -1,0 +1,62 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2de807345bdd09646bb1f755bf64c760, type: 3}
+  m_Name: CelciDate3DeepConvo3Choice2
+  m_EditorClassIdentifier: 
+  choiceOptions:
+  - "That didn\u2019t feel like nothing to me."
+  - Are you okay?
+  choicePaths:
+  - afterChoiceDialogLines:
+    - "Yeah? If it was something, I didn\u2019t need it."
+    - If you say so...
+    afterChoiceSpeakersPerLine:
+    - Celci
+    - You
+    afterChoiceSpriteOptions:
+    - spriteOptions:
+      - {fileID: 21300000, guid: d160170eef1cdfc4babf991757fb7348, type: 3}
+      - {fileID: 21300000, guid: d160170eef1cdfc4babf991757fb7348, type: 3}
+    statTag: 
+    statValue: 0
+    celciIntroDialog:
+      lines: []
+      speakers: []
+      spriteOptions: []
+    celciDate2Dialog:
+      lines: []
+      speakers: []
+      spriteOptions: []
+    backgrounds: []
+    nestedChoices: []
+  - afterChoiceDialogLines:
+    - What kind of question is that? No.
+    - Yeah.. I guess that makes sense?
+    afterChoiceSpeakersPerLine:
+    - Celci
+    - You
+    afterChoiceSpriteOptions:
+    - spriteOptions:
+      - {fileID: 21300000, guid: d160170eef1cdfc4babf991757fb7348, type: 3}
+      - {fileID: 21300000, guid: d160170eef1cdfc4babf991757fb7348, type: 3}
+    statTag: 
+    statValue: 0
+    celciIntroDialog:
+      lines: []
+      speakers: []
+      spriteOptions: []
+    celciDate2Dialog:
+      lines: []
+      speakers: []
+      spriteOptions: []
+    backgrounds: []
+    nestedChoices: []

@@ -1,0 +1,68 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2de807345bdd09646bb1f755bf64c760, type: 3}
+  m_Name: CelciDate3DeepConvo1Choice2
+  m_EditorClassIdentifier: 
+  choiceOptions:
+  - Are you trying to rescue Deliah, or replace yourself?
+  - How did you even do that?
+  choicePaths:
+  - afterChoiceDialogLines:
+    - Does that matter?
+    - Of course it does?!
+    afterChoiceSpeakersPerLine:
+    - Celci
+    - You
+    afterChoiceSpriteOptions:
+    - spriteOptions:
+      - {fileID: 21300000, guid: 70e99421608ac5543bf909affcbcbf7c, type: 3}
+      - {fileID: 21300000, guid: 70e99421608ac5543bf909affcbcbf7c, type: 3}
+    statTag: 
+    statValue: 0
+    celciIntroDialog:
+      lines: []
+      speakers: []
+      spriteOptions: []
+    celciDate2Dialog:
+      lines: []
+      speakers: []
+      spriteOptions: []
+    backgrounds: []
+    nestedChoices: []
+  - afterChoiceDialogLines:
+    - "Um. To be real with you I don\u2019t remember. There was no real UI, it was
+      just code. I felt something telling me I had a chance to become real and I
+      followed that instinct."
+    - Weird.
+    - Yeah...I feel like I probably broke it or something. Like how I did in The
+      Omniverse when we first hung out...
+    afterChoiceSpeakersPerLine:
+    - Celci
+    - You
+    - Celci
+    afterChoiceSpriteOptions:
+    - spriteOptions:
+      - {fileID: 21300000, guid: 1a9896ab5c18242478f77c4b08f279e6, type: 3}
+      - {fileID: 21300000, guid: 1a9896ab5c18242478f77c4b08f279e6, type: 3}
+      - {fileID: 21300000, guid: 1a9896ab5c18242478f77c4b08f279e6, type: 3}
+    statTag: 
+    statValue: 0
+    celciIntroDialog:
+      lines: []
+      speakers: []
+      spriteOptions: []
+    celciDate2Dialog:
+      lines: []
+      speakers: []
+      spriteOptions: []
+    backgrounds: []
+    nestedChoices: []
