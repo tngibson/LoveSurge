@@ -14,39 +14,114 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   skillName: Charisma
   successDialogLines:
-  - You reach up and carefully pluck the apple, giving it to Celci.
-  - Oh, you actually did it. I mostly asked to watch you fuck that up.
-  - Yeah. I mean...why not?
-  - That was actually kind of cool.
+  - "Celci\u2026 Do you hear that?"
+  - "You talked about cicadas a while ago\u2026 so I assume they\u2019re those."
+  - "I\u2019m flattered you remembered that but those probably aren\u2019t actually
+    cicadas."
+  - The ones that screech in the night are usually katydids.
+  - "They don\u2019t share a lot of similarities with cicadas\u2026 just the sound
+    really."
+  - "Huh? What! I\u2019ve been telling people those are cicadas!"
+  - pftt sorry! I should have been more specific!
+  - So why are you bringing it up now?
+  - "Well katydids don\u2019t burrow at all, and they don\u2019t really need to stay
+    as nymphs that long either, they just molt enough until they can leave."
+  - "Huh\u2026"
+  - Celci stops for a moment and lets out a deep breath.
+  - "They continue walking again, but it seems like they\u2019re standing a little
+    bit taller. Maybe something resonated with them?"
+  - So I guess they decide when the time is right?
+  - "I guess that\u2019s one way to put it\u2026 cicadas stay in the ground until
+    they\u2019re ready, katydids take up any chance they get."
+  - "You and Celci walk in the woods for a while, Celci seemingly digesting the information
+    you\u2019ve shattered their worldview with. As the cries die down, Celci chimes
+    up again."
+  - "I don\u2019t know why I\u2019m thanking you but\u2026 thanks\u2026 I guess the
+    bug talk has\u2026 helped a little."
+  - Celci chuckles, and you both proceed forward into the ever darkening night.
   successSpeakersPerLine:
-  - 
+  - You
+  - Celci
+  - You
+  - You
+  - You
   - Celci
   - You
   - Celci
-  successSpriteOptions:
-  - spriteOptions:
-    - {fileID: 21300000, guid: e14ed0968c923b4469f785fbf5f274ef, type: 3}
-    - {fileID: 21300000, guid: e14ed0968c923b4469f785fbf5f274ef, type: 3}
-    - {fileID: 21300000, guid: e14ed0968c923b4469f785fbf5f274ef, type: 3}
-    - {fileID: 21300000, guid: 1a9896ab5c18242478f77c4b08f279e6, type: 3}
-  failureDialogLines:
-  - You jump up to grab the apple, but it glitches out in your hand and you collapse
-    back to the ground while the apple twitches in the sky.
-  - Good job.
-  - They pat you on the shoulder.
-  - "Don\u2019t feel bad. I didn\u2019t think you could do it.. This was still satisfying
-    for me to watch."
-  - Oh...thanks?
-  failureSpeakersPerLine:
+  - You
+  - Celci
+  - 
+  - 
+  - Celci
+  - You
   - 
   - Celci
   - 
+  successSpriteOptions:
+  - spriteOptions:
+    - {fileID: 21300000, guid: 1a9896ab5c18242478f77c4b08f279e6, type: 3}
+    - {fileID: 21300000, guid: 1a9896ab5c18242478f77c4b08f279e6, type: 3}
+    - {fileID: 21300000, guid: 1a9896ab5c18242478f77c4b08f279e6, type: 3}
+    - {fileID: 21300000, guid: 1a9896ab5c18242478f77c4b08f279e6, type: 3}
+    - {fileID: 21300000, guid: 1a9896ab5c18242478f77c4b08f279e6, type: 3}
+    - {fileID: 21300000, guid: 70e99421608ac5543bf909affcbcbf7c, type: 3}
+    - {fileID: 21300000, guid: 70e99421608ac5543bf909affcbcbf7c, type: 3}
+    - {fileID: 21300000, guid: 70e99421608ac5543bf909affcbcbf7c, type: 3}
+    - {fileID: 21300000, guid: 70e99421608ac5543bf909affcbcbf7c, type: 3}
+    - {fileID: 21300000, guid: e14ed0968c923b4469f785fbf5f274ef, type: 3}
+    - {fileID: 21300000, guid: e14ed0968c923b4469f785fbf5f274ef, type: 3}
+    - {fileID: 21300000, guid: c40c192f3a2bf9e4d8d5a166fd087309, type: 3}
+    - {fileID: 21300000, guid: c40c192f3a2bf9e4d8d5a166fd087309, type: 3}
+    - {fileID: 21300000, guid: c40c192f3a2bf9e4d8d5a166fd087309, type: 3}
+    - {fileID: 21300000, guid: c40c192f3a2bf9e4d8d5a166fd087309, type: 3}
+    - {fileID: 21300000, guid: 1a9896ab5c18242478f77c4b08f279e6, type: 3}
+    - {fileID: 21300000, guid: 1a9896ab5c18242478f77c4b08f279e6, type: 3}
+  failureDialogLines:
+  - "Celci\u2026 Do you hear that?"
+  - "You talked about cicadas a while ago\u2026 so I assume they\u2019re those."
+  - So you actually remembered something I said?
+  - "Don\u2019t get an inflated ego\u2026 but yes. I did."
+  - Why did cicadas catch your interest?
+  - "Well\u2026 It was interesting that they were buried for a long time\u2026"
+  - "I suppose they only really emerge once they\u2019re finished molting huh\u2026"
+  - Celci seemingly sinks even more into themselves because of that phrase. Did something
+    hit home?
+  - I guess they understand that things would only get screwed up if they emerged
+    early?
+  - I guess so?
+  - "The screeching of the \u2018cicadas\u2019 gets louder as you both sneak through
+    the night. Celci is clearly not doing any better after your bug talk\u2026"
+  - Celci? Do you wanna talk?
+  - ...
+  - "I\u2019ll take that as a no\u2026"
+  failureSpeakersPerLine:
+  - You
+  - Celci
+  - You
+  - Celci
+  - You
+  - Celci
+  - You
+  - 
+  - Celci
+  - You
+  - 
+  - You
   - Celci
   - You
   failureSpriteOptions:
   - spriteOptions:
-    - {fileID: 21300000, guid: c40c192f3a2bf9e4d8d5a166fd087309, type: 3}
-    - {fileID: 21300000, guid: c40c192f3a2bf9e4d8d5a166fd087309, type: 3}
-    - {fileID: 21300000, guid: c40c192f3a2bf9e4d8d5a166fd087309, type: 3}
-    - {fileID: 21300000, guid: c40c192f3a2bf9e4d8d5a166fd087309, type: 3}
-    - {fileID: 21300000, guid: c40c192f3a2bf9e4d8d5a166fd087309, type: 3}
+    - {fileID: 21300000, guid: 1a9896ab5c18242478f77c4b08f279e6, type: 3}
+    - {fileID: 21300000, guid: 1a9896ab5c18242478f77c4b08f279e6, type: 3}
+    - {fileID: 21300000, guid: 1a9896ab5c18242478f77c4b08f279e6, type: 3}
+    - {fileID: 21300000, guid: 70e99421608ac5543bf909affcbcbf7c, type: 3}
+    - {fileID: 21300000, guid: 70e99421608ac5543bf909affcbcbf7c, type: 3}
+    - {fileID: 21300000, guid: 1a9896ab5c18242478f77c4b08f279e6, type: 3}
+    - {fileID: 21300000, guid: 1a9896ab5c18242478f77c4b08f279e6, type: 3}
+    - {fileID: 21300000, guid: 1a9896ab5c18242478f77c4b08f279e6, type: 3}
+    - {fileID: 21300000, guid: 1a9896ab5c18242478f77c4b08f279e6, type: 3}
+    - {fileID: 21300000, guid: 1a9896ab5c18242478f77c4b08f279e6, type: 3}
+    - {fileID: 21300000, guid: 1a9896ab5c18242478f77c4b08f279e6, type: 3}
+    - {fileID: 21300000, guid: 1a9896ab5c18242478f77c4b08f279e6, type: 3}
+    - {fileID: 21300000, guid: 70e99421608ac5543bf909affcbcbf7c, type: 3}
+    - {fileID: 21300000, guid: 70e99421608ac5543bf909affcbcbf7c, type: 3}
