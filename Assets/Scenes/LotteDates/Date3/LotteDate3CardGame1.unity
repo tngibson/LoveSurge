@@ -1448,7 +1448,7 @@ GameObject:
   - component: {fileID: 293364312}
   - component: {fileID: 293364313}
   m_Layer: 0
-  m_Name: CelciPlaytest
+  m_Name: LottePlaytest
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1491,13 +1491,13 @@ MonoBehaviour:
   type2: Creativity
   type3: Cleverness
   type4: Charisma
-  label1: A Creak In The Night
-  label2: Dreams
-  label3: Fireflies Are Cool!
-  label4: Secret Agent!!
-  addExtraType1Line: 1
-  addExtraType2Line: 1
-  addExtraType3Line: 0
+  label1: Those Dastardly Supplies
+  label2: Who Are You Really Protecting?
+  label3: Psychoanalysis Go!
+  label4: In The Name of Despair and Hate.
+  addExtraType1Line: 0
+  addExtraType2Line: 0
+  addExtraType3Line: 1
   addExtraType4Line: 0
   uiOpaqueImages: []
   uiOpaqueColor: {r: 0.85490197, g: 0.74509805, b: 0.92941177, a: 1}
@@ -1508,94 +1508,111 @@ MonoBehaviour:
   convoTopic3: {fileID: 1497879191}
   convoTopic4: {fileID: 1975168385}
   couLines:
-  - As you two progress, you hear something rustling around in the bushes. Celci
-    seems to have clutched your arm because of some distant noises in the dark.
-  - Are you ok Celci?
-  - Celci quickly lets go of your arm.
-  - "I hate all these noises! Everything moves around and makes noises and I can\u2019t
-    see it!"
-  - "Celci, there\u2019s nothing actually out here."
-  - "As long as it leaves us alone I\u2019ll be fine."
-  - It?!
+  - "Is that really the only reason you hid all your coffee supplies? Because you
+    don\u2019t need them?"
+  - Of course, silly! No magical girl has time for something like that!
+  - "If you didn\u2019t like making your latte art, that\u2019s fine. I just think
+    you should give it up if it makes you unhappy, not just to free up time."
+  - "There are far better things to do with my time! And I am very happy doing those
+    things! What things were like before doesn\u2019t matter!"
+  - Nothing about what things were like before? Not going to the theater or talking
+    about anime?
+  - "Well\u2026well, of course those things matter. You know what I mean!"
   couSpeaker:
-  - <>
   - You
-  - <>
-  - Celci
+  - Lotte
   - You
-  - Celci
+  - Lotte
   - You
+  - Lotte
   couSprites:
-  - {fileID: 21300000, guid: 1a9896ab5c18242478f77c4b08f279e6, type: 3}
-  - {fileID: 21300000, guid: 1a9896ab5c18242478f77c4b08f279e6, type: 3}
-  - {fileID: 21300000, guid: 1a9896ab5c18242478f77c4b08f279e6, type: 3}
-  - {fileID: 21300000, guid: 70e99421608ac5543bf909affcbcbf7c, type: 3}
-  - {fileID: 21300000, guid: 70e99421608ac5543bf909affcbcbf7c, type: 3}
-  - {fileID: 21300000, guid: aa606251ffd050c478a601249716a481, type: 3}
-  - {fileID: 21300000, guid: aa606251ffd050c478a601249716a481, type: 3}
+  - {fileID: 21300000, guid: f87102bd0d1966b4ebda9beb54d52a99, type: 3}
+  - {fileID: 21300000, guid: f87102bd0d1966b4ebda9beb54d52a99, type: 3}
+  - {fileID: 21300000, guid: f87102bd0d1966b4ebda9beb54d52a99, type: 3}
+  - {fileID: 21300000, guid: bbd0bcb58707ea741ac1899b89b7be63, type: 3}
+  - {fileID: 21300000, guid: bbd0bcb58707ea741ac1899b89b7be63, type: 3}
+  - {fileID: 21300000, guid: f87102bd0d1966b4ebda9beb54d52a99, type: 3}
   chaLines:
-  - This is a little fun. We're like spies.
-  - Mhm.
-  - Do you think it'd be fun to be a secret agent or too stressful?
-  - Judging by this little taste, I'd lean towards stressful.
-  - At least you seem to be having fun.
-  - Meh, it's how I'm coping with the possibility of being fired for this.
+  - "Lotte, why don\u2019t you tell me what\u2019s up?"
+  - Ehehe, the ceiling of course! Why would anything else be up?
+  - "Is this the \u201Cyou\u201D you want to be? Please\u2026"
+  - "Ah\u2026[PlayerName] I\u2019m not\u2026I mean, Of course!~ I\u2019m a hero after
+    all!"
+  - "For a moment you got a glimpse of the real Lotte, but it seems like she still
+    doesn't want to talk about it for now\u2026"
   chaSpeaker:
   - You
-  - Celci
+  - Lotte
   - You
-  - Celci
-  - Celci
-  - You
+  - Lotte
+  - <>
   chaSprites:
-  - {fileID: 21300000, guid: aa606251ffd050c478a601249716a481, type: 3}
-  - {fileID: 21300000, guid: aa606251ffd050c478a601249716a481, type: 3}
-  - {fileID: 21300000, guid: aa606251ffd050c478a601249716a481, type: 3}
-  - {fileID: 21300000, guid: e14ed0968c923b4469f785fbf5f274ef, type: 3}
-  - {fileID: 21300000, guid: e14ed0968c923b4469f785fbf5f274ef, type: 3}
-  - {fileID: 21300000, guid: e14ed0968c923b4469f785fbf5f274ef, type: 3}
+  - {fileID: 21300000, guid: f87102bd0d1966b4ebda9beb54d52a99, type: 3}
+  - {fileID: 21300000, guid: f87102bd0d1966b4ebda9beb54d52a99, type: 3}
+  - {fileID: 21300000, guid: f87102bd0d1966b4ebda9beb54d52a99, type: 3}
+  - {fileID: 21300000, guid: c673d1b958b99b64c8a42747de073b2f, type: 3}
+  - {fileID: 21300000, guid: c673d1b958b99b64c8a42747de073b2f, type: 3}
   cleLines:
-  - Those lights in the air. What are they?
-  - What? Have you never seen fireflies before?
-  - "So that\u2019s what they are..."
-  - "I really have a hard time believing you\u2019ve never seen fireflies\u2026"
-  - I was stuck in a lab for most of my conscious life. Jerk.
+  - "You sit with Lotte patiently\u2026it\u2019s stressing you out. Surely there\u2019s
+    some way you can make Lotte drop the act\u2026"
+  - "Hey why don\u2019t I make you something to drink? Surely you\u2019re thirsty?"
+  - "Oh! That would be really nice\u2026what are you thinking?"
+  - "Here, try this! I wasn\u2019t the biggest fan but\u2026I think it\u2019s up
+    your alley."
+  - The coffee you make is objectively rushed and bad, but you have a plan...there!
+  - Here!
+  - You hand Lotte a cup of coffee with a crude creamer drawing of an anime girl
+    on the top.
+  - "...Ah\u2026I um\u2026it\u2019s ok I don\u2019t really- Gah! Thanks so much for
+    making it!!"
+  - "It seems like your scheme was a little successful\u2026maybe with some more
+    pressure\u2026"
   cleSpeaker:
-  - Celci
+  - <>
   - You
-  - Celci
-  - You
-  - Celci
-  cleSprites:
-  - {fileID: 21300000, guid: aa606251ffd050c478a601249716a481, type: 3}
-  - {fileID: 21300000, guid: aa606251ffd050c478a601249716a481, type: 3}
-  - {fileID: 21300000, guid: e14ed0968c923b4469f785fbf5f274ef, type: 3}
-  - {fileID: 21300000, guid: e14ed0968c923b4469f785fbf5f274ef, type: 3}
-  - {fileID: 21300000, guid: aa606251ffd050c478a601249716a481, type: 3}
-  creLines:
-  - You woke me up from a dream, you know.
-  - Yeah? What kind?
-  - "Um\u2026 an exciting one!"
-  - They smirk at you.
-  - "Did you wake up in a\u2026 cold sweat?"
-  - Yeah, but not because of the dream.
-  - Heheh.
-  creSpeaker:
-  - You
-  - Celci
+  - Lotte
   - You
   - <>
-  - Celci
   - You
-  - Celci
+  - <>
+  - Lotte
+  - <>
+  cleSprites:
+  - {fileID: 21300000, guid: ceba6a5cba9df564bb636b38f3638fed, type: 3}
+  - {fileID: 21300000, guid: ceba6a5cba9df564bb636b38f3638fed, type: 3}
+  - {fileID: 21300000, guid: ceba6a5cba9df564bb636b38f3638fed, type: 3}
+  - {fileID: 21300000, guid: ceba6a5cba9df564bb636b38f3638fed, type: 3}
+  - {fileID: 21300000, guid: ceba6a5cba9df564bb636b38f3638fed, type: 3}
+  - {fileID: 21300000, guid: ceba6a5cba9df564bb636b38f3638fed, type: 3}
+  - {fileID: 21300000, guid: ceba6a5cba9df564bb636b38f3638fed, type: 3}
+  - {fileID: 21300000, guid: bbd0bcb58707ea741ac1899b89b7be63, type: 3}
+  - {fileID: 21300000, guid: bbd0bcb58707ea741ac1899b89b7be63, type: 3}
+  creLines:
+  - "Lotte, you don\u2019t have to do all this to protect us."
+  - What do you mean? Of course I do! Or else this house would be so gloomy!
+  - You already cheer us all up. We like having you around.
+  - "Lotte\u2019s smile falters just for a moment."
+  - "And now I\u2019ll make things extra cheery!"
+  - "If it\u2019s you who needs help with negative thoughts, you know you can come
+    to us, right? You don\u2019t have to do that by yourself."
+  - "But\u2026but magical girls are always strong! And I will protect everyone from
+    negativity!"
+  creSpeaker:
+  - YYou
+  - Lotte
+  - You
+  - <>
+  - Lotte
+  - You
+  - Lotte
   creSprites:
-  - {fileID: 21300000, guid: aa606251ffd050c478a601249716a481, type: 3}
-  - {fileID: 21300000, guid: aa606251ffd050c478a601249716a481, type: 3}
-  - {fileID: 21300000, guid: aa606251ffd050c478a601249716a481, type: 3}
-  - {fileID: 21300000, guid: c40c192f3a2bf9e4d8d5a166fd087309, type: 3}
-  - {fileID: 21300000, guid: c40c192f3a2bf9e4d8d5a166fd087309, type: 3}
-  - {fileID: 21300000, guid: c40c192f3a2bf9e4d8d5a166fd087309, type: 3}
-  - {fileID: 21300000, guid: c40c192f3a2bf9e4d8d5a166fd087309, type: 3}
+  - {fileID: 21300000, guid: c673d1b958b99b64c8a42747de073b2f, type: 3}
+  - {fileID: 21300000, guid: c673d1b958b99b64c8a42747de073b2f, type: 3}
+  - {fileID: 21300000, guid: c673d1b958b99b64c8a42747de073b2f, type: 3}
+  - {fileID: 21300000, guid: c673d1b958b99b64c8a42747de073b2f, type: 3}
+  - {fileID: 21300000, guid: f87102bd0d1966b4ebda9beb54d52a99, type: 3}
+  - {fileID: 21300000, guid: f87102bd0d1966b4ebda9beb54d52a99, type: 3}
+  - {fileID: 21300000, guid: 3900c097c0bef5c41ab3e639a31d5510, type: 3}
   dateCharacter: {fileID: 1661069647}
 --- !u!1001 &295771159
 PrefabInstance:
@@ -9374,7 +9391,7 @@ GameObject:
   - component: {fileID: 1661069648}
   - component: {fileID: 1661069647}
   m_Layer: 5
-  m_Name: Celci
+  m_Name: Lotte
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -9419,7 +9436,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: aa606251ffd050c478a601249716a481, type: 3}
+  m_Sprite: {fileID: 21300000, guid: f87102bd0d1966b4ebda9beb54d52a99, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -10933,7 +10950,7 @@ MonoBehaviour:
   categories: []
   endTurnButton: {fileID: 1396999329}
   mapButton: {fileID: 602046414}
-  CurrentCharacterIndex: 1
+  CurrentCharacterIndex: 2
   handSize: 4
   mapButtonScript: {fileID: 602046419}
   comboSurge: 0
@@ -12139,7 +12156,7 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Sprite
       value: 
-      objectReference: {fileID: 21300000, guid: bd6f2afe5cafc2e4aa39788ae3cda7c7,
+      objectReference: {fileID: 21300000, guid: c7a0e15d9ed25b54087e52d3518a9065,
         type: 3}
     - target: {fileID: 550191357185191001, guid: 0555a6ec04bb168489488f373c7cb574,
         type: 3}

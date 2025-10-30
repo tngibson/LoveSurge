@@ -1145,7 +1145,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 096d70bbf162fde4599d1b5d8b8cd0c5, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 065c7163c9f31c142bb638cd17a7ce2f, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -1538,7 +1538,7 @@ PrefabInstance:
         type: 3}
       propertyPath: skillCheckPaths
       value: 
-      objectReference: {fileID: 11400000, guid: 4795c4a6222579c488ca30db81a56e9e,
+      objectReference: {fileID: 11400000, guid: 580a875639bec864496f93912453aeea,
         type: 2}
     - target: {fileID: 4723009407783645740, guid: 7b1b62c8971446f4eb5258d5553f5336,
         type: 3}
@@ -1568,7 +1568,7 @@ PrefabInstance:
     - target: {fileID: 4723009407783645740, guid: 7b1b62c8971446f4eb5258d5553f5336,
         type: 3}
       propertyPath: skillCheckThreshold
-      value: 10
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 4723009407783645740, guid: 7b1b62c8971446f4eb5258d5553f5336,
         type: 3}
@@ -1578,7 +1578,7 @@ PrefabInstance:
     - target: {fileID: 4723009407783645740, guid: 7b1b62c8971446f4eb5258d5553f5336,
         type: 3}
       propertyPath: dialogLines.Array.size
-      value: 15
+      value: 7
       objectReference: {fileID: 0}
     - target: {fileID: 4723009407783645740, guid: 7b1b62c8971446f4eb5258d5553f5336,
         type: 3}
@@ -1612,59 +1612,57 @@ PrefabInstance:
     - target: {fileID: 4723009407783645740, guid: 7b1b62c8971446f4eb5258d5553f5336,
         type: 3}
       propertyPath: dialogLines.Array.data[0]
-      value: You and Celci sit silently on the lab room floor, the only thing humming
-        through the dead air is the overhead chime of lights and the clicks of servers.
+      value: As you walk, you come across a tree with a single apple hanging from
+        it. The tree, however, seems to be struggling with its physics.
       objectReference: {fileID: 0}
     - target: {fileID: 4723009407783645740, guid: 7b1b62c8971446f4eb5258d5553f5336,
         type: 3}
       propertyPath: dialogLines.Array.data[1]
-      value: "You both shuffle through folder and folder. Endlessly more and more
-        pile up, you\u2019re even finding folders within folders within folders."
+      value: Hey...why are you looking at that apple?
       objectReference: {fileID: 0}
     - target: {fileID: 4723009407783645740, guid: 7b1b62c8971446f4eb5258d5553f5336,
         type: 3}
       propertyPath: dialogLines.Array.data[2]
-      value: "Of course like any good user, none of the folders are organized either\u2026
-        C:/user/important/aslhg.exe, F:/user/dontopen/lkjhjkhkl.fbx, P:/user/runthis/lkhjkjhalih.obj."
+      value: It looks grabable...
       objectReference: {fileID: 0}
     - target: {fileID: 4723009407783645740, guid: 7b1b62c8971446f4eb5258d5553f5336,
         type: 3}
       propertyPath: dialogLines.Array.data[3]
-      value: "All of the files just have nonsense name tags on top of them\u2026
-        it\u2019ll be impossible to find what Celci\u2019s looking for at this rate.
-        Seems like C0D3-W1Z4RD is very\u2026 unorganized to say the least."
+      value: Celci snorts and walks up to the tree.
       objectReference: {fileID: 0}
     - target: {fileID: 4723009407783645740, guid: 7b1b62c8971446f4eb5258d5553f5336,
         type: 3}
       propertyPath: dialogLines.Array.data[4]
-      value: "Hey um\u2026 Celci? Do you have any idea where this could be?"
+      value: I want it...get it for me.
       objectReference: {fileID: 0}
     - target: {fileID: 4723009407783645740, guid: 7b1b62c8971446f4eb5258d5553f5336,
         type: 3}
       propertyPath: dialogLines.Array.data[5]
-      value: "No clue! But I'm pretty sure it\u2019s here."
+      value: Ok?
       objectReference: {fileID: 0}
     - target: {fileID: 4723009407783645740, guid: 7b1b62c8971446f4eb5258d5553f5336,
         type: 3}
       propertyPath: dialogLines.Array.data[6]
-      value: "Why are you sure it\u2019s here?"
+      value: SKILLCHECK
       objectReference: {fileID: 0}
     - target: {fileID: 4723009407783645740, guid: 7b1b62c8971446f4eb5258d5553f5336,
         type: 3}
       propertyPath: dialogLines.Array.data[7]
-      value: Cause I do, do I need another reason?
+      value: "Er\u2026. no? I suppose nothing could hurt you if you tried to pick
+        them\u2026"
       objectReference: {fileID: 0}
     - target: {fileID: 4723009407783645740, guid: 7b1b62c8971446f4eb5258d5553f5336,
         type: 3}
       propertyPath: dialogLines.Array.data[8]
-      value: "Digging through the files feels like an impossible task, and even talking
-        to Celci seems impossible at this rate\u2026 if only there was a way to get
-        back that bubbly pal from earlier\u2026"
+      value: You drive your hands into the flowery bush to attempt to free any of
+        them.
       objectReference: {fileID: 0}
     - target: {fileID: 4723009407783645740, guid: 7b1b62c8971446f4eb5258d5553f5336,
         type: 3}
       propertyPath: dialogLines.Array.data[9]
-      value: "I\u2019m losing it here Celci."
+      value: "You begin to feel your balance slip away from you, and the stupidity
+        of this idea begins to dawn on you. A face full of twigs doesn\u2019t sound
+        too pleasant\u2026 You quickly try to regain your balance\u2026"
       objectReference: {fileID: 0}
     - target: {fileID: 4723009407783645740, guid: 7b1b62c8971446f4eb5258d5553f5336,
         type: 3}
@@ -1705,39 +1703,39 @@ PrefabInstance:
     - target: {fileID: 4723009407783645740, guid: 7b1b62c8971446f4eb5258d5553f5336,
         type: 3}
       propertyPath: dialogLines.Array.data[10]
-      value: ...
+      value: SKILLCHECK
       objectReference: {fileID: 0}
     - target: {fileID: 4723009407783645740, guid: 7b1b62c8971446f4eb5258d5553f5336,
         type: 3}
       propertyPath: dialogLines.Array.data[11]
-      value: "How about we play a game? What if umm\u2026"
+      value: You both find a vending machine along the path.
       objectReference: {fileID: 0}
     - target: {fileID: 4723009407783645740, guid: 7b1b62c8971446f4eb5258d5553f5336,
         type: 3}
       propertyPath: dialogLines.Array.data[12]
-      value: First to find Deliah wins.
+      value: Here! We can have a sweet drink, as a celebration of our survival!
       objectReference: {fileID: 0}
     - target: {fileID: 4723009407783645740, guid: 7b1b62c8971446f4eb5258d5553f5336,
         type: 3}
       propertyPath: dialogLines.Array.data[13]
-      value: "That\u2019s just what we\u2019re doing, that's not a game! How about\u2026
-        this!"
+      value: Ahaha Of course [Player Name]! Can you get me this one?
       objectReference: {fileID: 0}
     - target: {fileID: 4723009407783645740, guid: 7b1b62c8971446f4eb5258d5553f5336,
         type: 3}
       propertyPath: dialogLines.Array.data[14]
-      value: SKILLCHECK
+      value: You insert some change into the machine and a soda falls out. You kneel
+        down to pick up the drink and stand back up.
       objectReference: {fileID: 0}
     - target: {fileID: 4723009407783645740, guid: 7b1b62c8971446f4eb5258d5553f5336,
         type: 3}
       propertyPath: dialogLines.Array.data[15]
-      value: Noki begins to reach out towards the flowers, approaching the base of
-        the stem with her hand.
+      value: Here yo-
       objectReference: {fileID: 0}
     - target: {fileID: 4723009407783645740, guid: 7b1b62c8971446f4eb5258d5553f5336,
         type: 3}
       propertyPath: dialogLines.Array.data[16]
-      value: SKILLCHECK
+      value: Just as you hand Noki the drink, she places one of the purple flowers
+        into your hair.
       objectReference: {fileID: 0}
     - target: {fileID: 4723009407783645740, guid: 7b1b62c8971446f4eb5258d5553f5336,
         type: 3}
@@ -1801,7 +1799,7 @@ PrefabInstance:
     - target: {fileID: 4723009407783645740, guid: 7b1b62c8971446f4eb5258d5553f5336,
         type: 3}
       propertyPath: speakersPerLine.Array.size
-      value: 15
+      value: 7
       objectReference: {fileID: 0}
     - target: {fileID: 4723009407783645740, guid: 7b1b62c8971446f4eb5258d5553f5336,
         type: 3}
@@ -1816,12 +1814,12 @@ PrefabInstance:
     - target: {fileID: 4723009407783645740, guid: 7b1b62c8971446f4eb5258d5553f5336,
         type: 3}
       propertyPath: speakersPerLine.Array.data[1]
-      value: 
+      value: Celci
       objectReference: {fileID: 0}
     - target: {fileID: 4723009407783645740, guid: 7b1b62c8971446f4eb5258d5553f5336,
         type: 3}
       propertyPath: speakersPerLine.Array.data[2]
-      value: 
+      value: You
       objectReference: {fileID: 0}
     - target: {fileID: 4723009407783645740, guid: 7b1b62c8971446f4eb5258d5553f5336,
         type: 3}
@@ -1831,62 +1829,37 @@ PrefabInstance:
     - target: {fileID: 4723009407783645740, guid: 7b1b62c8971446f4eb5258d5553f5336,
         type: 3}
       propertyPath: speakersPerLine.Array.data[4]
-      value: You
+      value: Celci
       objectReference: {fileID: 0}
     - target: {fileID: 4723009407783645740, guid: 7b1b62c8971446f4eb5258d5553f5336,
         type: 3}
       propertyPath: speakersPerLine.Array.data[5]
-      value: Celci
+      value: You
       objectReference: {fileID: 0}
     - target: {fileID: 4723009407783645740, guid: 7b1b62c8971446f4eb5258d5553f5336,
         type: 3}
       propertyPath: speakersPerLine.Array.data[6]
-      value: You
+      value: 
       objectReference: {fileID: 0}
     - target: {fileID: 4723009407783645740, guid: 7b1b62c8971446f4eb5258d5553f5336,
         type: 3}
       propertyPath: speakersPerLine.Array.data[7]
-      value: Celci
-      objectReference: {fileID: 0}
-    - target: {fileID: 4723009407783645740, guid: 7b1b62c8971446f4eb5258d5553f5336,
-        type: 3}
-      propertyPath: speakersPerLine.Array.data[8]
-      value: 
-      objectReference: {fileID: 0}
-    - target: {fileID: 4723009407783645740, guid: 7b1b62c8971446f4eb5258d5553f5336,
-        type: 3}
-      propertyPath: speakersPerLine.Array.data[9]
-      value: You
-      objectReference: {fileID: 0}
-    - target: {fileID: 4723009407783645740, guid: 7b1b62c8971446f4eb5258d5553f5336,
-        type: 3}
-      propertyPath: speakersPerLine.Array.data[10]
-      value: Celci
-      objectReference: {fileID: 0}
-    - target: {fileID: 4723009407783645740, guid: 7b1b62c8971446f4eb5258d5553f5336,
-        type: 3}
-      propertyPath: speakersPerLine.Array.data[11]
-      value: You
+      value: Noki
       objectReference: {fileID: 0}
     - target: {fileID: 4723009407783645740, guid: 7b1b62c8971446f4eb5258d5553f5336,
         type: 3}
       propertyPath: speakersPerLine.Array.data[12]
-      value: Celci
-      objectReference: {fileID: 0}
-    - target: {fileID: 4723009407783645740, guid: 7b1b62c8971446f4eb5258d5553f5336,
-        type: 3}
-      propertyPath: speakersPerLine.Array.data[13]
       value: You
       objectReference: {fileID: 0}
     - target: {fileID: 4723009407783645740, guid: 7b1b62c8971446f4eb5258d5553f5336,
         type: 3}
-      propertyPath: speakersPerLine.Array.data[14]
-      value: 
+      propertyPath: speakersPerLine.Array.data[13]
+      value: Noki
       objectReference: {fileID: 0}
     - target: {fileID: 4723009407783645740, guid: 7b1b62c8971446f4eb5258d5553f5336,
         type: 3}
       propertyPath: speakersPerLine.Array.data[15]
-      value: 
+      value: You
       objectReference: {fileID: 0}
     - target: {fileID: 4723009407783645740, guid: 7b1b62c8971446f4eb5258d5553f5336,
         type: 3}
@@ -1946,7 +1919,7 @@ PrefabInstance:
     - target: {fileID: 4723009407783645740, guid: 7b1b62c8971446f4eb5258d5553f5336,
         type: 3}
       propertyPath: characterSprites.Array.data[0].spriteOptions.Array.size
-      value: 15
+      value: 7
       objectReference: {fileID: 0}
     - target: {fileID: 4723009407783645740, guid: 7b1b62c8971446f4eb5258d5553f5336,
         type: 3}
@@ -1982,61 +1955,61 @@ PrefabInstance:
         type: 3}
       propertyPath: characterSprites.Array.data[0].spriteOptions.Array.data[5]
       value: 
-      objectReference: {fileID: 21300000, guid: aa606251ffd050c478a601249716a481,
+      objectReference: {fileID: 21300000, guid: 70e99421608ac5543bf909affcbcbf7c,
         type: 3}
     - target: {fileID: 4723009407783645740, guid: 7b1b62c8971446f4eb5258d5553f5336,
         type: 3}
       propertyPath: characterSprites.Array.data[0].spriteOptions.Array.data[6]
       value: 
-      objectReference: {fileID: 21300000, guid: aa606251ffd050c478a601249716a481,
+      objectReference: {fileID: 21300000, guid: 70e99421608ac5543bf909affcbcbf7c,
         type: 3}
     - target: {fileID: 4723009407783645740, guid: 7b1b62c8971446f4eb5258d5553f5336,
         type: 3}
       propertyPath: characterSprites.Array.data[0].spriteOptions.Array.data[7]
       value: 
-      objectReference: {fileID: 21300000, guid: 70e99421608ac5543bf909affcbcbf7c,
+      objectReference: {fileID: 21300000, guid: 9a5bb60305ed56c4c8b921b54258e133,
         type: 3}
     - target: {fileID: 4723009407783645740, guid: 7b1b62c8971446f4eb5258d5553f5336,
         type: 3}
       propertyPath: characterSprites.Array.data[0].spriteOptions.Array.data[8]
       value: 
-      objectReference: {fileID: 21300000, guid: 70e99421608ac5543bf909affcbcbf7c,
+      objectReference: {fileID: 21300000, guid: 1efff82e0a469464987b91e1e6ff298e,
         type: 3}
     - target: {fileID: 4723009407783645740, guid: 7b1b62c8971446f4eb5258d5553f5336,
         type: 3}
       propertyPath: characterSprites.Array.data[0].spriteOptions.Array.data[9]
       value: 
-      objectReference: {fileID: 21300000, guid: 70e99421608ac5543bf909affcbcbf7c,
+      objectReference: {fileID: 21300000, guid: 1efff82e0a469464987b91e1e6ff298e,
         type: 3}
     - target: {fileID: 4723009407783645740, guid: 7b1b62c8971446f4eb5258d5553f5336,
         type: 3}
       propertyPath: characterSprites.Array.data[0].spriteOptions.Array.data[10]
       value: 
-      objectReference: {fileID: 21300000, guid: 1a9896ab5c18242478f77c4b08f279e6,
+      objectReference: {fileID: 21300000, guid: 1efff82e0a469464987b91e1e6ff298e,
         type: 3}
     - target: {fileID: 4723009407783645740, guid: 7b1b62c8971446f4eb5258d5553f5336,
         type: 3}
       propertyPath: characterSprites.Array.data[0].spriteOptions.Array.data[11]
       value: 
-      objectReference: {fileID: 21300000, guid: aa606251ffd050c478a601249716a481,
+      objectReference: {fileID: 21300000, guid: 1efff82e0a469464987b91e1e6ff298e,
         type: 3}
     - target: {fileID: 4723009407783645740, guid: 7b1b62c8971446f4eb5258d5553f5336,
         type: 3}
       propertyPath: characterSprites.Array.data[0].spriteOptions.Array.data[12]
       value: 
-      objectReference: {fileID: 21300000, guid: 70e99421608ac5543bf909affcbcbf7c,
+      objectReference: {fileID: 21300000, guid: 1efff82e0a469464987b91e1e6ff298e,
         type: 3}
     - target: {fileID: 4723009407783645740, guid: 7b1b62c8971446f4eb5258d5553f5336,
         type: 3}
       propertyPath: characterSprites.Array.data[0].spriteOptions.Array.data[13]
       value: 
-      objectReference: {fileID: 21300000, guid: 70e99421608ac5543bf909affcbcbf7c,
+      objectReference: {fileID: 21300000, guid: eb54c0b9144af6b4e8e9578c07a0c65b,
         type: 3}
     - target: {fileID: 4723009407783645740, guid: 7b1b62c8971446f4eb5258d5553f5336,
         type: 3}
       propertyPath: characterSprites.Array.data[0].spriteOptions.Array.data[14]
       value: 
-      objectReference: {fileID: 21300000, guid: 70e99421608ac5543bf909affcbcbf7c,
+      objectReference: {fileID: 21300000, guid: 1efff82e0a469464987b91e1e6ff298e,
         type: 3}
     - target: {fileID: 4723009407783645740, guid: 7b1b62c8971446f4eb5258d5553f5336,
         type: 3}
@@ -2119,7 +2092,7 @@ PrefabInstance:
     - target: {fileID: 7105946490831887653, guid: 7b1b62c8971446f4eb5258d5553f5336,
         type: 3}
       propertyPath: locName
-      value: CelciDate3DeepConvo3
+      value: Map
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

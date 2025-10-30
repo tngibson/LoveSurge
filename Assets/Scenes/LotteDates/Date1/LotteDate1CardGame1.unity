@@ -1448,7 +1448,7 @@ GameObject:
   - component: {fileID: 293364312}
   - component: {fileID: 293364313}
   m_Layer: 0
-  m_Name: CelciPlaytest
+  m_Name: LottePlaytest
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1491,14 +1491,14 @@ MonoBehaviour:
   type2: Creativity
   type3: Cleverness
   type4: Charisma
-  label1: A Creak In The Night
-  label2: Dreams
-  label3: Fireflies Are Cool!
-  label4: Secret Agent!!
-  addExtraType1Line: 1
+  label1: Seats
+  label2: Sweet Treats
+  label3: A Magical How-To
+  label4: Let's Make a Contract!
+  addExtraType1Line: 0
   addExtraType2Line: 1
   addExtraType3Line: 0
-  addExtraType4Line: 0
+  addExtraType4Line: 1
   uiOpaqueImages: []
   uiOpaqueColor: {r: 0.85490197, g: 0.74509805, b: 0.92941177, a: 1}
   uiImages: []
@@ -1508,94 +1508,126 @@ MonoBehaviour:
   convoTopic3: {fileID: 1497879191}
   convoTopic4: {fileID: 1975168385}
   couLines:
-  - As you two progress, you hear something rustling around in the bushes. Celci
-    seems to have clutched your arm because of some distant noises in the dark.
-  - Are you ok Celci?
-  - Celci quickly lets go of your arm.
-  - "I hate all these noises! Everything moves around and makes noises and I can\u2019t
-    see it!"
-  - "Celci, there\u2019s nothing actually out here."
-  - "As long as it leaves us alone I\u2019ll be fine."
-  - It?!
+  - I wonder if these seats move.
+  - Pftt, how would that even work?
+  - You find a lever, push it.
+  - Gugh!
+  - Your seat launches backwards so that your feet are in the air and you're basically
+    lying on the ground.
+  - Lotte laughs quietly.
+  - Like that I guess!
+  - You find the lever again, but this time the chair jerks forward, almost folding
+    you in half.
+  - Here, this should do it!
+  - She pushes the same lever and you come back up to a reasonable position.
   couSpeaker:
+  - You
+  - Lotte
   - <>
   - You
   - <>
-  - Celci
-  - You
-  - Celci
-  - You
+  - <>
+  - Lotte
+  - <>
+  - Lotte
+  - <>
   couSprites:
-  - {fileID: 21300000, guid: 1a9896ab5c18242478f77c4b08f279e6, type: 3}
-  - {fileID: 21300000, guid: 1a9896ab5c18242478f77c4b08f279e6, type: 3}
-  - {fileID: 21300000, guid: 1a9896ab5c18242478f77c4b08f279e6, type: 3}
-  - {fileID: 21300000, guid: 70e99421608ac5543bf909affcbcbf7c, type: 3}
-  - {fileID: 21300000, guid: 70e99421608ac5543bf909affcbcbf7c, type: 3}
-  - {fileID: 21300000, guid: aa606251ffd050c478a601249716a481, type: 3}
-  - {fileID: 21300000, guid: aa606251ffd050c478a601249716a481, type: 3}
+  - {fileID: 21300000, guid: 3900c097c0bef5c41ab3e639a31d5510, type: 3}
+  - {fileID: 21300000, guid: 3900c097c0bef5c41ab3e639a31d5510, type: 3}
+  - {fileID: 21300000, guid: 3900c097c0bef5c41ab3e639a31d5510, type: 3}
+  - {fileID: 21300000, guid: 3900c097c0bef5c41ab3e639a31d5510, type: 3}
+  - {fileID: 21300000, guid: 3900c097c0bef5c41ab3e639a31d5510, type: 3}
+  - {fileID: 21300000, guid: 3900c097c0bef5c41ab3e639a31d5510, type: 3}
+  - {fileID: 21300000, guid: 3900c097c0bef5c41ab3e639a31d5510, type: 3}
+  - {fileID: 21300000, guid: 3900c097c0bef5c41ab3e639a31d5510, type: 3}
+  - {fileID: 21300000, guid: bbd0bcb58707ea741ac1899b89b7be63, type: 3}
+  - {fileID: 21300000, guid: bbd0bcb58707ea741ac1899b89b7be63, type: 3}
   chaLines:
-  - This is a little fun. We're like spies.
-  - Mhm.
-  - Do you think it'd be fun to be a secret agent or too stressful?
-  - Judging by this little taste, I'd lean towards stressful.
-  - At least you seem to be having fun.
-  - Meh, it's how I'm coping with the possibility of being fired for this.
+  - "You both whisper as each episode plays out\u2026"
+  - Pass me the popcorn, this is getting good!
+  - No chance, not unless I get something out of it.
+  - "So it\u2019s gonna be like that?"
+  - "Why don\u2019t you make a contract with me! In exchange for popcorn!"
+  - "Then umm\u2026 free coffee for a week! Just hand it over, incubator!"
+  - "Hahaha! Sorry I can\u2019t offer you magical powers, but I guess popcorn is
+    pretty similar!"
   chaSpeaker:
+  - <>
+  - Lotte
   - You
-  - Celci
+  - Lotte
   - You
-  - Celci
-  - Celci
+  - Lotte
   - You
   chaSprites:
-  - {fileID: 21300000, guid: aa606251ffd050c478a601249716a481, type: 3}
-  - {fileID: 21300000, guid: aa606251ffd050c478a601249716a481, type: 3}
-  - {fileID: 21300000, guid: aa606251ffd050c478a601249716a481, type: 3}
-  - {fileID: 21300000, guid: e14ed0968c923b4469f785fbf5f274ef, type: 3}
-  - {fileID: 21300000, guid: e14ed0968c923b4469f785fbf5f274ef, type: 3}
-  - {fileID: 21300000, guid: e14ed0968c923b4469f785fbf5f274ef, type: 3}
+  - {fileID: 21300000, guid: 3900c097c0bef5c41ab3e639a31d5510, type: 3}
+  - {fileID: 21300000, guid: 3900c097c0bef5c41ab3e639a31d5510, type: 3}
+  - {fileID: 21300000, guid: 3900c097c0bef5c41ab3e639a31d5510, type: 3}
+  - {fileID: 21300000, guid: 13c847a619e3e2347bd390829f102441, type: 3}
+  - {fileID: 21300000, guid: 13c847a619e3e2347bd390829f102441, type: 3}
+  - {fileID: 21300000, guid: c673d1b958b99b64c8a42747de073b2f, type: 3}
+  - {fileID: 21300000, guid: c673d1b958b99b64c8a42747de073b2f, type: 3}
   cleLines:
-  - Those lights in the air. What are they?
-  - What? Have you never seen fireflies before?
-  - "So that\u2019s what they are..."
-  - "I really have a hard time believing you\u2019ve never seen fireflies\u2026"
-  - I was stuck in a lab for most of my conscious life. Jerk.
+  - "You can hear sniffling from Lotte\u2026"
+  - Is everything alright?
+  - "I can\u2019t believe real people are this wonderful!"
+  - "Well I don\u2019t know about real..magic doesn\u2019t exist unfortunately."
+  - Pft...I know..
+  - "Her face drops. You can\u2019t tell if she did know that."
+  - "But we both know their powers aren\u2019t what makes them great...it\u2019s
+    how they treat others. Their strength! All those things are real!"
+  - "You\u2019re right, I\u2019ll be strong! Like Natsume\u2026"
   cleSpeaker:
-  - Celci
+  - <>
   - You
-  - Celci
+  - Lotte
   - You
-  - Celci
+  - Lotte
+  - <>
+  - You
+  - Lotte
   cleSprites:
-  - {fileID: 21300000, guid: aa606251ffd050c478a601249716a481, type: 3}
-  - {fileID: 21300000, guid: aa606251ffd050c478a601249716a481, type: 3}
-  - {fileID: 21300000, guid: e14ed0968c923b4469f785fbf5f274ef, type: 3}
-  - {fileID: 21300000, guid: e14ed0968c923b4469f785fbf5f274ef, type: 3}
-  - {fileID: 21300000, guid: aa606251ffd050c478a601249716a481, type: 3}
+  - {fileID: 21300000, guid: ceba6a5cba9df564bb636b38f3638fed, type: 3}
+  - {fileID: 21300000, guid: ceba6a5cba9df564bb636b38f3638fed, type: 3}
+  - {fileID: 21300000, guid: ceba6a5cba9df564bb636b38f3638fed, type: 3}
+  - {fileID: 21300000, guid: ceba6a5cba9df564bb636b38f3638fed, type: 3}
+  - {fileID: 21300000, guid: bbd0bcb58707ea741ac1899b89b7be63, type: 3}
+  - {fileID: 21300000, guid: bbd0bcb58707ea741ac1899b89b7be63, type: 3}
+  - {fileID: 21300000, guid: bbd0bcb58707ea741ac1899b89b7be63, type: 3}
+  - {fileID: 21300000, guid: 3900c097c0bef5c41ab3e639a31d5510, type: 3}
   creLines:
-  - You woke me up from a dream, you know.
-  - Yeah? What kind?
-  - "Um\u2026 an exciting one!"
-  - They smirk at you.
-  - "Did you wake up in a\u2026 cold sweat?"
-  - Yeah, but not because of the dream.
-  - Heheh.
+  - Hey, do you want to try something special?
+  - Oh, sure, what kind of thing?
+  - You lead her to the concession stand and get some popcorn and a box of non-copyrighted
+    sugar coated chocolate candies.
+  - When you return to your seats, you mix the two together before topping it off
+    with some soda from the fountain.
+  - Oh! That looks bad!
+  - Try it!
+  - You hold the popcorn bucket out to her.
+  - She takes a small handful and cautiously tries it. Then her eyes light up and
+    she takes another handful.
+  - Oh, wow! This is delightful! Thank you!
   creSpeaker:
   - You
-  - Celci
+  - Lotte
+  - <>
+  - <>
+  - Lotte
   - You
   - <>
-  - Celci
-  - You
-  - Celci
+  - <>
+  - Lotte
   creSprites:
-  - {fileID: 21300000, guid: aa606251ffd050c478a601249716a481, type: 3}
-  - {fileID: 21300000, guid: aa606251ffd050c478a601249716a481, type: 3}
-  - {fileID: 21300000, guid: aa606251ffd050c478a601249716a481, type: 3}
-  - {fileID: 21300000, guid: c40c192f3a2bf9e4d8d5a166fd087309, type: 3}
-  - {fileID: 21300000, guid: c40c192f3a2bf9e4d8d5a166fd087309, type: 3}
-  - {fileID: 21300000, guid: c40c192f3a2bf9e4d8d5a166fd087309, type: 3}
-  - {fileID: 21300000, guid: c40c192f3a2bf9e4d8d5a166fd087309, type: 3}
+  - {fileID: 21300000, guid: c9079294e79577a46904ecc4dd24a009, type: 3}
+  - {fileID: 21300000, guid: c9079294e79577a46904ecc4dd24a009, type: 3}
+  - {fileID: 21300000, guid: c9079294e79577a46904ecc4dd24a009, type: 3}
+  - {fileID: 21300000, guid: c9079294e79577a46904ecc4dd24a009, type: 3}
+  - {fileID: 21300000, guid: 3900c097c0bef5c41ab3e639a31d5510, type: 3}
+  - {fileID: 21300000, guid: 3900c097c0bef5c41ab3e639a31d5510, type: 3}
+  - {fileID: 21300000, guid: 3900c097c0bef5c41ab3e639a31d5510, type: 3}
+  - {fileID: 21300000, guid: 3900c097c0bef5c41ab3e639a31d5510, type: 3}
+  - {fileID: 21300000, guid: ceba6a5cba9df564bb636b38f3638fed, type: 3}
   dateCharacter: {fileID: 1661069647}
 --- !u!1001 &295771159
 PrefabInstance:
@@ -2707,8 +2739,8 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1877364503}
   m_HandleRect: {fileID: 1877364502}
   m_Direction: 2
-  m_Value: 1.0000002
-  m_Size: 0.3783666
+  m_Value: 0.9999999
+  m_Size: 0.37836656
   m_NumberOfSteps: 0
   m_OnValueChanged:
     m_PersistentCalls:
@@ -6299,7 +6331,7 @@ MonoBehaviour:
   convoAttribute: 
   currentTier: 1
   tierPower: 0
-  tierPowers: 90010000c800000000000000
+  tierPowers: 640000003200000000000000
   attributeText: {fileID: 358839903}
   numText: {fileID: 1513417707}
   topicLabelText: {fileID: 628715680}
@@ -7227,7 +7259,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.020000001, y: 0.95318764}
   m_AnchorMax: {x: 1.04, y: 0.95318764}
-  m_AnchoredPosition: {x: -0.10385609, y: 13.02581}
+  m_AnchoredPosition: {x: -0.10385609, y: 13.025932}
   m_SizeDelta: {x: -59.896408, y: 735.4188}
   m_Pivot: {x: 0, y: 1}
 --- !u!114 &1251843997
@@ -8442,7 +8474,7 @@ MonoBehaviour:
   convoAttribute: 
   currentTier: 1
   tierPower: 0
-  tierPowers: 90010000c800000000000000
+  tierPowers: 640000003200000000000000
   attributeText: {fileID: 799427224}
   numText: {fileID: 512021105}
   topicLabelText: {fileID: 1018990248}
@@ -9063,7 +9095,7 @@ MonoBehaviour:
   convoAttribute: 
   currentTier: 1
   tierPower: 0
-  tierPowers: 90010000c800000000000000
+  tierPowers: 640000003200000000000000
   attributeText: {fileID: 60042738}
   numText: {fileID: 2075437849}
   topicLabelText: {fileID: 361509898}
@@ -9374,7 +9406,7 @@ GameObject:
   - component: {fileID: 1661069648}
   - component: {fileID: 1661069647}
   m_Layer: 5
-  m_Name: Celci
+  m_Name: Lotte
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -9419,7 +9451,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: aa606251ffd050c478a601249716a481, type: 3}
+  m_Sprite: {fileID: 21300000, guid: f87102bd0d1966b4ebda9beb54d52a99, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -10596,7 +10628,7 @@ MonoBehaviour:
   convoAttribute: 
   currentTier: 1
   tierPower: 0
-  tierPowers: 90010000c800000000000000
+  tierPowers: 640000003200000000000000
   attributeText: {fileID: 2143843332}
   numText: {fileID: 35175124}
   topicLabelText: {fileID: 1363842151}
@@ -10933,7 +10965,7 @@ MonoBehaviour:
   categories: []
   endTurnButton: {fileID: 1396999329}
   mapButton: {fileID: 602046414}
-  CurrentCharacterIndex: 1
+  CurrentCharacterIndex: 2
   handSize: 4
   mapButtonScript: {fileID: 602046419}
   comboSurge: 0
@@ -12139,7 +12171,7 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Sprite
       value: 
-      objectReference: {fileID: 21300000, guid: bd6f2afe5cafc2e4aa39788ae3cda7c7,
+      objectReference: {fileID: 21300000, guid: bd0eb6f096c35674da2af4e318134072,
         type: 3}
     - target: {fileID: 550191357185191001, guid: 0555a6ec04bb168489488f373c7cb574,
         type: 3}

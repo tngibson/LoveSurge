@@ -1518,9 +1518,9 @@ MonoBehaviour:
   couSpeaker:
   - You
   - Celci
-  - 
+  - <>
   - Celci
-  - 
+  - <>
   - You
   - Celci
   couSprites:
@@ -1542,10 +1542,10 @@ MonoBehaviour:
   - You gonna come clean now?
   - "No clue what you\u2019re talkin\u2019 about!"
   chaSpeaker:
-  - 
+  - <>
   - You
   - Celci
-  - 
+  - <>
   - Celci
   - You
   - Celci
@@ -1573,15 +1573,15 @@ MonoBehaviour:
   - They smile a little at the bug in their hand.
   cleSpeaker:
   - Celci
-  - 
+  - <>
   - You
-  - 
+  - <>
   - Celci
   - You
-  - 
+  - <>
   - You
   - Celci
-  - 
+  - <>
   cleSprites:
   - {fileID: 21300000, guid: e14ed0968c923b4469f785fbf5f274ef, type: 3}
   - {fileID: 21300000, guid: e14ed0968c923b4469f785fbf5f274ef, type: 3}
@@ -1603,11 +1603,11 @@ MonoBehaviour:
   - Wait ok! They really are! Thanks [PlayerName]!
   - That was shockingly earnest...
   creSpeaker:
-  - 
+  - <>
   - Celci
   - You
   - Celci
-  - 
+  - <>
   - Celci
   - You
   creSprites:
@@ -10114,6 +10114,11 @@ MonoBehaviour:
   - affectingTags: []
   cash: 1000
   convoTiers: 01000000010000000100000001000000
+  isHouseHot: 1
+  isCelciThreatened: 0
+  nokiRomanticRoute: 0
+  celciRomanticRoute: 0
+  lotteRomanticRoute: 0
 --- !u!1 &1877364501
 GameObject:
   m_ObjectHideFlags: 0
