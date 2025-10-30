@@ -1,0 +1,52 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8cbd23a6cba4cdc48b96bcdf5fdcbc9c, type: 3}
+  m_Name: CelciDate1SkillCheck1
+  m_EditorClassIdentifier: 
+  skillName: Charisma
+  successDialogLines:
+  - You reach up and carefully pluck the apple, giving it to Celci.
+  - Oh, you actually did it. I mostly asked to watch you fuck that up.
+  - Yeah. I mean...why not?
+  - That was actually kind of cool.
+  successSpeakersPerLine:
+  - 
+  - Celci
+  - You
+  - Celci
+  successSpriteOptions:
+  - spriteOptions:
+    - {fileID: 21300000, guid: e14ed0968c923b4469f785fbf5f274ef, type: 3}
+    - {fileID: 21300000, guid: e14ed0968c923b4469f785fbf5f274ef, type: 3}
+    - {fileID: 21300000, guid: e14ed0968c923b4469f785fbf5f274ef, type: 3}
+    - {fileID: 21300000, guid: 1a9896ab5c18242478f77c4b08f279e6, type: 3}
+  failureDialogLines:
+  - You jump up to grab the apple, but it glitches out in your hand and you collapse
+    back to the ground while the apple twitches in the sky.
+  - Good job.
+  - They pat you on the shoulder.
+  - "Don\u2019t feel bad. I didn\u2019t think you could do it.. This was still satisfying
+    for me to watch."
+  - Oh...thanks?
+  failureSpeakersPerLine:
+  - 
+  - Celci
+  - 
+  - Celci
+  - You
+  failureSpriteOptions:
+  - spriteOptions:
+    - {fileID: 21300000, guid: c40c192f3a2bf9e4d8d5a166fd087309, type: 3}
+    - {fileID: 21300000, guid: c40c192f3a2bf9e4d8d5a166fd087309, type: 3}
+    - {fileID: 21300000, guid: c40c192f3a2bf9e4d8d5a166fd087309, type: 3}
+    - {fileID: 21300000, guid: c40c192f3a2bf9e4d8d5a166fd087309, type: 3}
+    - {fileID: 21300000, guid: c40c192f3a2bf9e4d8d5a166fd087309, type: 3}

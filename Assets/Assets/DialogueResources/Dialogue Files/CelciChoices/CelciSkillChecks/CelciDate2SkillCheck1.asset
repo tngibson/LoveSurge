@@ -1,0 +1,98 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8cbd23a6cba4cdc48b96bcdf5fdcbc9c, type: 3}
+  m_Name: CelciDate2SkillCheck1
+  m_EditorClassIdentifier: 
+  skillName: Courage
+  successDialogLines:
+  - You bravely swipe one of the cicadas off a tree with a small branch and show
+    it to Celci.
+  - "Check it out! See how they molt their shell off and leave it behind, it\u2019s
+    really interesting!"
+  - "That\u2019s\u2026"
+  - "Celci seems to be lost in thought again\u2026 maybe the Cicadas are reminding
+    them of what they were stuck on in the first place."
+  - "The song they sing isn\u2019t very pretty at all though, huh?"
+  - Celci chuckles.
+  - You dork! Pfppt
+  - "It seems your little joke is lifting spirits\u2026 not bad!"
+  - "Come on! Enough lookin at dyin\u2019 bugs. Let\u2019s look at some of the real
+    cool stuff, I wanna see a mantis!"
+  - Ok! Ok! I hear you!
+  - You and Celci continue down the pathway into the forest in search of cooler and
+    cooler bugs!
+  successSpeakersPerLine:
+  - 
+  - You
+  - Celci
+  - 
+  - You
+  - 
+  - Celci
+  - 
+  - Celci
+  - You
+  - 
+  successSpriteOptions:
+  - spriteOptions:
+    - {fileID: 21300000, guid: aa606251ffd050c478a601249716a481, type: 3}
+    - {fileID: 21300000, guid: aa606251ffd050c478a601249716a481, type: 3}
+    - {fileID: 21300000, guid: aa606251ffd050c478a601249716a481, type: 3}
+    - {fileID: 21300000, guid: aa606251ffd050c478a601249716a481, type: 3}
+    - {fileID: 21300000, guid: aa606251ffd050c478a601249716a481, type: 3}
+    - {fileID: 21300000, guid: c40c192f3a2bf9e4d8d5a166fd087309, type: 3}
+    - {fileID: 21300000, guid: c40c192f3a2bf9e4d8d5a166fd087309, type: 3}
+    - {fileID: 21300000, guid: c40c192f3a2bf9e4d8d5a166fd087309, type: 3}
+    - {fileID: 21300000, guid: c40c192f3a2bf9e4d8d5a166fd087309, type: 3}
+    - {fileID: 21300000, guid: c40c192f3a2bf9e4d8d5a166fd087309, type: 3}
+    - {fileID: 21300000, guid: c40c192f3a2bf9e4d8d5a166fd087309, type: 3}
+  failureDialogLines:
+  - "You reach towards the Cicada with your bare hands, but it\u2019s a little too
+    gross for your liking. A chill runs up your spine and you back up from the insectoid."
+  - What's wrong? Too chicken to pick it up yourself?
+  - Celci walks up to the Cicada and looks at it intently.
+  - What's so special about this thing?
+  - "I-I-um! Sorry! I lost my train of thought\u2026"
+  - "These little guys make all that noise? How weird\u2026 Why?"
+  - "It\u2019s to attract mates I think? The interesting part is their burrowing
+    thing."
+  - So what, you wanted to show me mole bugs?
+  - Celci laughs at your pathetic attempt to touch some creepy crawlies. You both
+    stand back up and start walking down the path again.
+  - "But um\u2026 I thought they were kinda cool\u2026 if that makes you feel better
+    or anything."
+  - "Thanks Celci, let\u2019s just look for even cooler critters!"
+  failureSpeakersPerLine:
+  - 
+  - Celci
+  - 
+  - Celci
+  - You
+  - Celci
+  - You
+  - Celci
+  - 
+  - Celci
+  - You
+  failureSpriteOptions:
+  - spriteOptions:
+    - {fileID: 21300000, guid: e14ed0968c923b4469f785fbf5f274ef, type: 3}
+    - {fileID: 21300000, guid: e14ed0968c923b4469f785fbf5f274ef, type: 3}
+    - {fileID: 21300000, guid: e14ed0968c923b4469f785fbf5f274ef, type: 3}
+    - {fileID: 21300000, guid: aa606251ffd050c478a601249716a481, type: 3}
+    - {fileID: 21300000, guid: aa606251ffd050c478a601249716a481, type: 3}
+    - {fileID: 21300000, guid: aa606251ffd050c478a601249716a481, type: 3}
+    - {fileID: 21300000, guid: e14ed0968c923b4469f785fbf5f274ef, type: 3}
+    - {fileID: 21300000, guid: aa606251ffd050c478a601249716a481, type: 3}
+    - {fileID: 21300000, guid: aa606251ffd050c478a601249716a481, type: 3}
+    - {fileID: 21300000, guid: 1a9896ab5c18242478f77c4b08f279e6, type: 3}
+    - {fileID: 21300000, guid: 1a9896ab5c18242478f77c4b08f279e6, type: 3}
