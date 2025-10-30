@@ -1448,7 +1448,7 @@ GameObject:
   - component: {fileID: 293364312}
   - component: {fileID: 293364313}
   m_Layer: 0
-  m_Name: NokiPlaytest
+  m_Name: CelciPlaytest
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1491,126 +1491,143 @@ MonoBehaviour:
   type2: Creativity
   type3: Cleverness
   type4: Charisma
-  label1: The Worst Kind of Bug
-  label2: Breaking Things!
-  label3: Decorating
-  label4: Noki's Features
-  addExtraType1Line: 0
-  addExtraType2Line: 0
-  addExtraType3Line: 1
-  addExtraType4Line: 0
-  uiOpaqueImages:
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
+  label1: Be Brave Celci!
+  label2: Fixing
+  label3: Celci's Genius Idea
+  label4: Wanna Bet?
+  addExtraType1Line: 1
+  addExtraType2Line: 1
+  addExtraType3Line: 0
+  addExtraType4Line: 1
+  uiOpaqueImages: []
   uiOpaqueColor: {r: 0.85490197, g: 0.74509805, b: 0.92941177, a: 1}
-  uiImages:
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
+  uiImages: []
   uiColor: {r: 0.9882353, g: 0.84705883, b: 0.5058824, a: 1}
   convoTopic1: {fileID: 1042258432}
   convoTopic2: {fileID: 1646536590}
   convoTopic3: {fileID: 1497879191}
   convoTopic4: {fileID: 1975168385}
   couLines:
-  - AHH!
-  - What was that!?
-  - "Those are\u2026 the worst kind of bug\u2026 they corrupt the space around them
-    and everything just looks\u2026 wrong. Just thinking about it sends chills up
-    my motherboard."
-  - "They\u2019re super creepy\u2026"
-  - "Well then please remove them [Player Name]! I don\u2019t know if my cpu can
-    handle getting scared by one again!"
-  - "Don't worry, Noki, I\u2019ll squash them before they glitch us out of existence!"
+  - Celci, check that out, that building is completely messed up!
+  - Looks like it's the only way through, you up for it, loser?
+  - Pfppt, only if you are!
+  - You leap through part of the broken building towards the path ahead, turning
+    around to look for Celci.
+  - "Ah\u2026 [PlayerName]... do you think there\u2019s um\u2026 some pole or something
+    you can hand me?"
+  - "What\u2019s wrong? Are you scared? It\u2019ll be ok, even if you can\u2019t
+    make it\u2026 I\u2019ll be here to get you."
+  - "Ah! Umm\u2026 No, I'm not scared! Watch, I'll do it myself! Without your help!"
   couSpeaker:
-  - Noki
-  - PC
-  - Noki
-  - PC
-  - Noki
-  - PC
-  couSprites:
-  - {fileID: 21300000, guid: 0e60cde7e0933604cb178e0903b3e4ba, type: 3}
-  - {fileID: 21300000, guid: 0e60cde7e0933604cb178e0903b3e4ba, type: 3}
-  - {fileID: 21300000, guid: 4793868bd2892bd4abc8227a508d91d7, type: 3}
-  - {fileID: 21300000, guid: 4793868bd2892bd4abc8227a508d91d7, type: 3}
-  - {fileID: 21300000, guid: 0e60cde7e0933604cb178e0903b3e4ba, type: 3}
-  - {fileID: 21300000, guid: 0e60cde7e0933604cb178e0903b3e4ba, type: 3}
-  chaLines:
-  - "Gah! All these bugs and errors! It\u2019s too much!"
-  - You know, I am perfectly suited for this task with my large memory storage.
-  - Well then Noki, note this one down! When interacting with this corner of the
-    wall causes Z-fighting, and note this down too! Removin-
-  - I am more than a notepad, I currently have gigabytes of your personal data. If
-    you wish I can remove it, here let me read out every item to you so you can confirm
-    if you want to delete it or not.
-  - "Hey now, no need to do that! I\u2019ll write them down too I promise, I promise!"
-  - "Then please note this down [Player Name], \u2018Noki is good at getting what
-    she wants."
-  chaSpeaker:
-  - PC
-  - Noki
-  - PC
-  - Noki
-  - PC
-  - Noki
-  chaSprites:
-  - {fileID: 21300000, guid: 1efff82e0a469464987b91e1e6ff298e, type: 3}
-  - {fileID: 21300000, guid: 1efff82e0a469464987b91e1e6ff298e, type: 3}
-  - {fileID: 21300000, guid: 4793868bd2892bd4abc8227a508d91d7, type: 3}
-  - {fileID: 21300000, guid: 4793868bd2892bd4abc8227a508d91d7, type: 3}
-  - {fileID: 21300000, guid: dd7b066d58c40fd458eda1333d2ef0e4, type: 3}
-  - {fileID: 21300000, guid: dd7b066d58c40fd458eda1333d2ef0e4, type: 3}
-  cleLines:
-  - "It is pretty nice here, but I think this place could use a bit more\u2026 I
-    don\u2019t know, furniture, decoration maybe?"
-  - Oh! Well, the most efficient items to maintain the flow of traffic would be some
-    benches along the wall.
-  - "I didn\u2019t ask about the most efficient...what would you prefer?"
-  - She becomes a little distracted.
-  - Perhaps more dispersed lights! That could also be very practical!
-  - You good? You kind of spaced out there a little.
-  - Yes, I am good! Please, continue your duties, I am fine!
-  cleSpeaker:
-  - PC
-  - Noki
-  - PC
+  - You
+  - Celci
+  - You
   - 
-  - Noki
-  - PC
-  - Noki
+  - Celci
+  - You
+  - Celci
+  couSprites:
+  - {fileID: 21300000, guid: aa606251ffd050c478a601249716a481, type: 3}
+  - {fileID: 21300000, guid: aa606251ffd050c478a601249716a481, type: 3}
+  - {fileID: 21300000, guid: aa606251ffd050c478a601249716a481, type: 3}
+  - {fileID: 21300000, guid: aa606251ffd050c478a601249716a481, type: 3}
+  - {fileID: 21300000, guid: 1a9896ab5c18242478f77c4b08f279e6, type: 3}
+  - {fileID: 21300000, guid: 1a9896ab5c18242478f77c4b08f279e6, type: 3}
+  - {fileID: 21300000, guid: 1a9896ab5c18242478f77c4b08f279e6, type: 3}
+  chaLines:
+  - Wow, there are a lot of bugs here.
+  - Fast little guys, too.
+  - I think you should try and catch one for me.
+  - Watch me!
+  - You chase after a beetle skittering across the ground. However, you trip over
+    a glitch in the sidewalk and fall flat on your face. You hear Celci cackling
+    behind you.
+  - Honestly, this is better than if you caught it.
+  - I live to impress!
+  chaSpeaker:
+  - You
+  - Celci
+  - Celci
+  - You
+  - 
+  - Celci
+  - You
+  chaSprites:
+  - {fileID: 21300000, guid: e14ed0968c923b4469f785fbf5f274ef, type: 3}
+  - {fileID: 21300000, guid: e14ed0968c923b4469f785fbf5f274ef, type: 3}
+  - {fileID: 21300000, guid: aa606251ffd050c478a601249716a481, type: 3}
+  - {fileID: 21300000, guid: aa606251ffd050c478a601249716a481, type: 3}
+  - {fileID: 21300000, guid: aa606251ffd050c478a601249716a481, type: 3}
+  - {fileID: 21300000, guid: c40c192f3a2bf9e4d8d5a166fd087309, type: 3}
+  - {fileID: 21300000, guid: c40c192f3a2bf9e4d8d5a166fd087309, type: 3}
+  cleLines:
+  - '[PlayerName]. Check that out!'
+  - Celci points towards a large congregation of bugs.
+  - "There\u2019s a bunch of those bugs over there, I wonder if I can crush \u2018em
+    all!"
+  - "Celci\u2026 I don\u2019t know if that's a good idea\u2026"
+  - Nah, check it!
+  - Celci leaps up and knocks down some wiring from the exposed unfinished areas.
+    The wires fall down and electrocute all the bugs, causing them to spasm out.
+  - "Wasn\u2019t that cool as [This word is not authorized for this device]!"
+  - "Ok that was pretty cool\u2026 But what happens to the bugs? Celci? Celci??"
+  cleSpeaker:
+  - Cleci
+  - 
+  - Celci
+  - You
+  - Celci
+  - 
+  - Celci
+  - You
   cleSprites:
-  - {fileID: 21300000, guid: 1efff82e0a469464987b91e1e6ff298e, type: 3}
-  - {fileID: 21300000, guid: eb54c0b9144af6b4e8e9578c07a0c65b, type: 3}
-  - {fileID: 21300000, guid: eb54c0b9144af6b4e8e9578c07a0c65b, type: 3}
-  - {fileID: 21300000, guid: 18e1c1d22c2cbaa47914600a13de0859, type: 3}
-  - {fileID: 21300000, guid: 1efff82e0a469464987b91e1e6ff298e, type: 3}
-  - {fileID: 21300000, guid: 1efff82e0a469464987b91e1e6ff298e, type: 3}
-  - {fileID: 21300000, guid: 1efff82e0a469464987b91e1e6ff298e, type: 3}
+  - {fileID: 21300000, guid: e14ed0968c923b4469f785fbf5f274ef, type: 3}
+  - {fileID: 21300000, guid: e14ed0968c923b4469f785fbf5f274ef, type: 3}
+  - {fileID: 21300000, guid: e14ed0968c923b4469f785fbf5f274ef, type: 3}
+  - {fileID: 21300000, guid: e14ed0968c923b4469f785fbf5f274ef, type: 3}
+  - {fileID: 21300000, guid: e14ed0968c923b4469f785fbf5f274ef, type: 3}
+  - {fileID: 21300000, guid: e14ed0968c923b4469f785fbf5f274ef, type: 3}
+  - {fileID: 21300000, guid: c40c192f3a2bf9e4d8d5a166fd087309, type: 3}
+  - {fileID: 21300000, guid: c40c192f3a2bf9e4d8d5a166fd087309, type: 3}
   creLines:
-  - Hey, you think we could make this bug fixing thing a little more fun?
-  - What exactly do you have in mind?
-  - "We could make it a game! Like\u2026 like a scavenger hunt!"
-  - That sounds both entertaining and efficient!
-  - Whoever can break the physics, textures, and sound first wins!
+  - I'll bet we could help fix up some of these houses.
+  - Yeah?
+  - They toss you a low-poly 3D model of a rock from the ground.
+  - 'Go ahead then. '
+  - You rearrange some loose boards in an attempt to make one of the nearby houses
+    a little more structurally sound.
+  - "That\u2019s terrible...my turn. "
+  - Celci shoves some mismatch pieces from different parts of the house into the
+    space next to you.
+  - 'I think we both did pretty well. '
+  - Yeah but mine probably holds up better than yours...
+  - You knock on both walls which almost immediately glitch into a missing texture
+    and several bugs crawl out from the crevices.
+  - Not that it matters but...I think I saw yours break first.
   creSpeaker:
-  - PC
-  - Noki
-  - PC
-  - Noki
-  - PC
+  - You
+  - Celci
+  - 
+  - Celci
+  - You
+  - Celci
+  - 
+  - You
+  - Celci
+  - 
+  - Celci
   creSprites:
-  - {fileID: 21300000, guid: 1efff82e0a469464987b91e1e6ff298e, type: 3}
-  - {fileID: 21300000, guid: 1efff82e0a469464987b91e1e6ff298e, type: 3}
-  - {fileID: 21300000, guid: 1efff82e0a469464987b91e1e6ff298e, type: 3}
-  - {fileID: 21300000, guid: eb54c0b9144af6b4e8e9578c07a0c65b, type: 3}
-  - {fileID: 21300000, guid: dd7b066d58c40fd458eda1333d2ef0e4, type: 3}
+  - {fileID: 21300000, guid: aa606251ffd050c478a601249716a481, type: 3}
+  - {fileID: 21300000, guid: aa606251ffd050c478a601249716a481, type: 3}
+  - {fileID: 21300000, guid: aa606251ffd050c478a601249716a481, type: 3}
+  - {fileID: 21300000, guid: c40c192f3a2bf9e4d8d5a166fd087309, type: 3}
+  - {fileID: 21300000, guid: c40c192f3a2bf9e4d8d5a166fd087309, type: 3}
+  - {fileID: 21300000, guid: c40c192f3a2bf9e4d8d5a166fd087309, type: 3}
+  - {fileID: 21300000, guid: c40c192f3a2bf9e4d8d5a166fd087309, type: 3}
+  - {fileID: 21300000, guid: c40c192f3a2bf9e4d8d5a166fd087309, type: 3}
+  - {fileID: 21300000, guid: 1a9896ab5c18242478f77c4b08f279e6, type: 3}
+  - {fileID: 21300000, guid: 1a9896ab5c18242478f77c4b08f279e6, type: 3}
+  - {fileID: 21300000, guid: aa606251ffd050c478a601249716a481, type: 3}
   dateCharacter: {fileID: 1661069647}
 --- !u!1001 &295771159
 PrefabInstance:

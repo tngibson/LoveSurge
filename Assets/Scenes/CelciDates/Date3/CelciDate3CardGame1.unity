@@ -1447,7 +1447,6 @@ GameObject:
   m_Component:
   - component: {fileID: 293364312}
   - component: {fileID: 293364313}
-  - component: {fileID: 293364314}
   m_Layer: 0
   m_Name: CelciPlaytest
   m_TagString: Untagged
@@ -1492,14 +1491,14 @@ MonoBehaviour:
   type2: Creativity
   type3: Cleverness
   type4: Charisma
-  label1: Billboards?
-  label2: Noki's Photo Comp
-  label3: Composition!
-  label4: Picture of Stars
-  addExtraType1Line: 0
-  addExtraType2Line: 0
+  label1: A Creak In The Night
+  label2: Dreams
+  label3: Fireflies Are Cool!
+  label4: Secret Agent!!
+  addExtraType1Line: 1
+  addExtraType2Line: 1
   addExtraType3Line: 0
-  addExtraType4Line: 1
+  addExtraType4Line: 0
   uiOpaqueImages: []
   uiOpaqueColor: {r: 0.85490197, g: 0.74509805, b: 0.92941177, a: 1}
   uiImages: []
@@ -1509,166 +1508,95 @@ MonoBehaviour:
   convoTopic3: {fileID: 1497879191}
   convoTopic4: {fileID: 1975168385}
   couLines:
-  - Do you like flowers, Noki?
-  - "I do. I like, um\u2026 Lavender! Yes, those are the ones."
-  - What do you like about them?
-  - "It\u2019s not only beautiful, but useful, too! Its leaves are also\u2026 used
-    as spice! And it\u2026 has antioxidants, and\u2026 um\u2026"
-  - "I think you\u2019re maybe thinking of Rosemary."
-  - Oh!
-  - Yes I am! Silly me.
+  - As you two progress, you hear something rustling around in the bushes. Celci
+    seems to have clutched your arm because of some distant noises in the dark.
+  - Are you ok Celci?
+  - Celci quickly lets go of your arm.
+  - "I hate all these noises! Everything moves around and makes noises and I can\u2019t
+    see it!"
+  - "Celci, there\u2019s nothing actually out here."
+  - "As long as it leaves us alone I\u2019ll be fine."
+  - It?!
   couSpeaker:
+  - 
   - You
-  - Noki
+  - 
+  - Celci
   - You
-  - Noki
+  - Celci
   - You
-  - Noki
-  - Noki
   couSprites:
-  - {fileID: 21300000, guid: 1efff82e0a469464987b91e1e6ff298e, type: 3}
-  - {fileID: 21300000, guid: eb54c0b9144af6b4e8e9578c07a0c65b, type: 3}
-  - {fileID: 21300000, guid: eb54c0b9144af6b4e8e9578c07a0c65b, type: 3}
-  - {fileID: 21300000, guid: 0e60cde7e0933604cb178e0903b3e4ba, type: 3}
-  - {fileID: 21300000, guid: 0e60cde7e0933604cb178e0903b3e4ba, type: 3}
-  - {fileID: 21300000, guid: e6c3300e761b41e478bb010bf347ae9d, type: 3}
-  - {fileID: 21300000, guid: e6c3300e761b41e478bb010bf347ae9d, type: 3}
+  - {fileID: 21300000, guid: 1a9896ab5c18242478f77c4b08f279e6, type: 3}
+  - {fileID: 21300000, guid: 1a9896ab5c18242478f77c4b08f279e6, type: 3}
+  - {fileID: 21300000, guid: 1a9896ab5c18242478f77c4b08f279e6, type: 3}
+  - {fileID: 21300000, guid: 70e99421608ac5543bf909affcbcbf7c, type: 3}
+  - {fileID: 21300000, guid: 70e99421608ac5543bf909affcbcbf7c, type: 3}
+  - {fileID: 21300000, guid: aa606251ffd050c478a601249716a481, type: 3}
+  - {fileID: 21300000, guid: aa606251ffd050c478a601249716a481, type: 3}
   chaLines:
-  - Ah, [PlayerName], look at this!
-  - It appears that Noki has uprooted one of the plants in the garden, she holds
-    it up to you expectedly.
-  - Great job Noki! You know digging that up without destroying the roots is really
-    impressive!
-  - "Without destroying the roots? Ah\u2026 Um\u2026."
-  - "Noki begins to vibrate nervously\u2026"
-  - "Aha, It\u2019s ok. Look, there's plenty of flowers here, I\u2019m sure one being\u2026
-    um\u2026 dead won\u2019t be that big of an issue! It\u2019s ok, Noki!"
-  - You give Noki a warm hug to attempt to console her loss, Noki cheerfully murmurs
-    to herself in your arms.
-  - "Ehehe, all according to plan\u2026"
+  - This is a little fun. We're like spies.
+  - Mhm.
+  - Do you think it'd be fun to be a secret agent or too stressful?
+  - Judging by this little taste, I'd lean towards stressful.
+  - At least you seem to be having fun.
+  - Meh, it's how I'm coping with the possibility of being fired for this.
   chaSpeaker:
-  - Noki
-  - 
   - You
-  - Noki
-  - 
+  - Celci
   - You
-  - 
-  - Noki
+  - Celci
+  - Celci
+  - You
   chaSprites:
-  - {fileID: 21300000, guid: eb54c0b9144af6b4e8e9578c07a0c65b, type: 3}
-  - {fileID: 21300000, guid: eb54c0b9144af6b4e8e9578c07a0c65b, type: 3}
-  - {fileID: 21300000, guid: eb54c0b9144af6b4e8e9578c07a0c65b, type: 3}
-  - {fileID: 21300000, guid: 0e60cde7e0933604cb178e0903b3e4ba, type: 3}
-  - {fileID: 21300000, guid: 0e60cde7e0933604cb178e0903b3e4ba, type: 3}
-  - {fileID: 21300000, guid: 0e60cde7e0933604cb178e0903b3e4ba, type: 3}
-  - {fileID: 21300000, guid: dd7b066d58c40fd458eda1333d2ef0e4, type: 3}
-  - {fileID: 21300000, guid: dd7b066d58c40fd458eda1333d2ef0e4, type: 3}
+  - {fileID: 21300000, guid: aa606251ffd050c478a601249716a481, type: 3}
+  - {fileID: 21300000, guid: aa606251ffd050c478a601249716a481, type: 3}
+  - {fileID: 21300000, guid: aa606251ffd050c478a601249716a481, type: 3}
+  - {fileID: 21300000, guid: e14ed0968c923b4469f785fbf5f274ef, type: 3}
+  - {fileID: 21300000, guid: e14ed0968c923b4469f785fbf5f274ef, type: 3}
+  - {fileID: 21300000, guid: e14ed0968c923b4469f785fbf5f274ef, type: 3}
   cleLines:
-  - You know, I can really appreciate the energy flow of this place. Whoever maintains
-    this garden really knows a lot about visual balance.
-  - "Now that you mention it, I do feel good about being here. It doesn\u2019t really
-    feel like too much or too little\u2026"
-  - Ah, [PlayerName]! I figured it out! The secret of decoration! We can create a
-    sense of balance with these unique plant species at home too!
-  - "I\u2019m not really sure what you mean but\u2026 I trust your vision!"
-  - "I\u2019m going to gather a huge list of positive energy species!"
-  - That sounds...expensive..
+  - Those lights in the air. What are they?
+  - What? Have you never seen fireflies before?
+  - "So that\u2019s what they are..."
+  - "I really have a hard time believing you\u2019ve never seen fireflies\u2026"
+  - I was stuck in a lab for most of my conscious life. Jerk.
   cleSpeaker:
-  - Noki
+  - Celci
   - You
-  - Noki
+  - Celci
   - You
-  - Noki
-  - You
+  - Celci
   cleSprites:
-  - {fileID: 21300000, guid: 1efff82e0a469464987b91e1e6ff298e, type: 3}
-  - {fileID: 21300000, guid: 1efff82e0a469464987b91e1e6ff298e, type: 3}
-  - {fileID: 21300000, guid: eb54c0b9144af6b4e8e9578c07a0c65b, type: 3}
-  - {fileID: 21300000, guid: eb54c0b9144af6b4e8e9578c07a0c65b, type: 3}
-  - {fileID: 21300000, guid: 0e60cde7e0933604cb178e0903b3e4ba, type: 3}
-  - {fileID: 21300000, guid: 0e60cde7e0933604cb178e0903b3e4ba, type: 3}
+  - {fileID: 21300000, guid: aa606251ffd050c478a601249716a481, type: 3}
+  - {fileID: 21300000, guid: aa606251ffd050c478a601249716a481, type: 3}
+  - {fileID: 21300000, guid: e14ed0968c923b4469f785fbf5f274ef, type: 3}
+  - {fileID: 21300000, guid: e14ed0968c923b4469f785fbf5f274ef, type: 3}
+  - {fileID: 21300000, guid: aa606251ffd050c478a601249716a481, type: 3}
   creLines:
-  - Oh...it looks like this tree is struggling.
-  - You pick up a leaf that has fallen to the ground.
-  - "That is very nice. I think it\u2019s from a\u2026 magnolia."
-  - You find another and pick it up, too.
-  - "Here\u2019s another one! *You hand it to her.*"
-  - She looks it over meticulously.
-  - It is a beautiful leaf. Even without its flower.
-  - You begin to pick up leaves as you walk until you have enough to craft a hat
-    out of. You hand it to Noki.
-  - Ta-da!
-  - For me? *She puts it on and smiles* Thank you.
+  - You woke me up from a dream, you know.
+  - Yeah? What kind?
+  - "Um\u2026 an exciting one!"
+  - They smirk at you.
+  - "Did you wake up in a\u2026 cold sweat?"
+  - Yeah, but not because of the dream.
+  - Heheh.
   creSpeaker:
   - You
-  - 
-  - Noki
-  - 
+  - Celci
   - You
   - 
-  - Noki
-  - 
+  - Celci
   - You
-  - Noki
+  - Celci
   creSprites:
-  - {fileID: 21300000, guid: 1efff82e0a469464987b91e1e6ff298e, type: 3}
-  - {fileID: 21300000, guid: 1efff82e0a469464987b91e1e6ff298e, type: 3}
-  - {fileID: 21300000, guid: 1efff82e0a469464987b91e1e6ff298e, type: 3}
-  - {fileID: 21300000, guid: 1efff82e0a469464987b91e1e6ff298e, type: 3}
-  - {fileID: 21300000, guid: 1efff82e0a469464987b91e1e6ff298e, type: 3}
-  - {fileID: 21300000, guid: 1efff82e0a469464987b91e1e6ff298e, type: 3}
-  - {fileID: 21300000, guid: 0e60cde7e0933604cb178e0903b3e4ba, type: 3}
-  - {fileID: 21300000, guid: 0e60cde7e0933604cb178e0903b3e4ba, type: 3}
-  - {fileID: 21300000, guid: e6c3300e761b41e478bb010bf347ae9d, type: 3}
-  - {fileID: 21300000, guid: 1efff82e0a469464987b91e1e6ff298e, type: 3}
+  - {fileID: 21300000, guid: aa606251ffd050c478a601249716a481, type: 3}
+  - {fileID: 21300000, guid: aa606251ffd050c478a601249716a481, type: 3}
+  - {fileID: 21300000, guid: aa606251ffd050c478a601249716a481, type: 3}
+  - {fileID: 21300000, guid: c40c192f3a2bf9e4d8d5a166fd087309, type: 3}
+  - {fileID: 21300000, guid: c40c192f3a2bf9e4d8d5a166fd087309, type: 3}
+  - {fileID: 21300000, guid: c40c192f3a2bf9e4d8d5a166fd087309, type: 3}
+  - {fileID: 21300000, guid: c40c192f3a2bf9e4d8d5a166fd087309, type: 3}
   dateCharacter: {fileID: 1661069647}
---- !u!114 &293364314
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 293364310}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 15217d93254156145aeb7f835bba817e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  isWriting: 0
-  type1: 
-  type2: 
-  type3: 
-  type4: 
-  label1: 
-  label2: 
-  label3: 
-  label4: 
-  addExtraType1Line: 0
-  addExtraType2Line: 0
-  addExtraType3Line: 0
-  addExtraType4Line: 0
-  uiOpaqueImages: []
-  uiOpaqueColor: {r: 0, g: 0, b: 0, a: 0}
-  uiImages: []
-  uiColor: {r: 0, g: 0, b: 0, a: 0}
-  convoTopic1: {fileID: 0}
-  convoTopic2: {fileID: 0}
-  convoTopic3: {fileID: 0}
-  convoTopic4: {fileID: 0}
-  couLines: []
-  couSpeaker: []
-  couSprites: []
-  chaLines: []
-  chaSpeaker: []
-  chaSprites: []
-  cleLines: []
-  cleSpeaker: []
-  cleSprites: []
-  creLines: []
-  creSpeaker: []
-  creSprites: []
-  dateCharacter: {fileID: 0}
 --- !u!1001 &295771159
 PrefabInstance:
   m_ObjectHideFlags: 0

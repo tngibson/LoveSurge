@@ -1491,11 +1491,11 @@ MonoBehaviour:
   type2: Creativity
   type3: Cleverness
   type4: Charisma
-  label1: Billboards?
-  label2: Noki's Photo Comp
-  label3: Composition!
-  label4: Picture of Stars
-  addExtraType1Line: 0
+  label1: Nice Catch!
+  label2: How To Get Your Mind Off Of Things
+  label3: Shiny Bug
+  label4: Rocking Diversion
+  addExtraType1Line: 1
   addExtraType2Line: 0
   addExtraType3Line: 0
   addExtraType4Line: 1
@@ -1508,103 +1508,116 @@ MonoBehaviour:
   convoTopic3: {fileID: 1497879191}
   convoTopic4: {fileID: 1975168385}
   couLines:
-  - Hmm.
-  - You aim your camera around, looking for something to take a picture of and land
-    on the billboard, snapping a picture and showing it to Noki.
-  - Look, it's you! ...Kind of.
-  - "...A billboard maybe isn\u2019t the most exciting thing to take a picture of..."
-  - I guess...
-  - "Let\u2019s try and be a bit more inspired...!"
-  - "I\u2019ll have you know you inspire me more than enough!"
-  - Well...you know what I mean...
+  - "Woah, hey, what\u2019s that over there?"
+  - Oh cool, a mantis!
+  - "You carefully sneak up on it and\u2026 SNATCH!"
+  - Nice catch!
+  - You let it crawl onto your hand. It raises its arms at you.
+  - "He\u2019s so neat!"
+  - Haha! I think he likes you.
   couSpeaker:
+  - You
+  - Celci
+  - 
+  - Celci
+  - 
+  - You
+  - Celci
+  couSprites:
+  - {fileID: 21300000, guid: e14ed0968c923b4469f785fbf5f274ef, type: 3}
+  - {fileID: 21300000, guid: e14ed0968c923b4469f785fbf5f274ef, type: 3}
+  - {fileID: 21300000, guid: e14ed0968c923b4469f785fbf5f274ef, type: 3}
+  - {fileID: 21300000, guid: e14ed0968c923b4469f785fbf5f274ef, type: 3}
+  - {fileID: 21300000, guid: 1a9896ab5c18242478f77c4b08f279e6, type: 3}
+  - {fileID: 21300000, guid: 1a9896ab5c18242478f77c4b08f279e6, type: 3}
+  - {fileID: 21300000, guid: e14ed0968c923b4469f785fbf5f274ef, type: 3}
+  chaLines:
+  - "Celci kicks up a rock from the ground as you\u2019re both walking."
+  - Hey If I hit that telephone poll with this rock...you have to tell me about what
+    happened.
+  - "Ok. You won\u2019t though."
+  - You kick up the rock from the ground and catch it, then you pitch it towards
+    the telephone pole, nailing it completely!
+  - Ok that was impressive..
+  - You gonna come clean now?
+  - "No clue what you\u2019re talkin\u2019 about!"
+  chaSpeaker:
+  - 
+  - You
+  - Celci
+  - 
+  - Celci
+  - You
+  - Celci
+  chaSprites:
+  - {fileID: 21300000, guid: aa606251ffd050c478a601249716a481, type: 3}
+  - {fileID: 21300000, guid: aa606251ffd050c478a601249716a481, type: 3}
+  - {fileID: 21300000, guid: aa606251ffd050c478a601249716a481, type: 3}
+  - {fileID: 21300000, guid: aa606251ffd050c478a601249716a481, type: 3}
+  - {fileID: 21300000, guid: e14ed0968c923b4469f785fbf5f274ef, type: 3}
+  - {fileID: 21300000, guid: 1a9896ab5c18242478f77c4b08f279e6, type: 3}
+  - {fileID: 21300000, guid: aa606251ffd050c478a601249716a481, type: 3}
+  cleLines:
+  - Aha!
+  - Celci suddenly leaps ahead and swings their net. They return with a shiny green
+    beetle crawling from the net onto their hand.
+  - Oh woah! A June beetle!
+  - Celci looks a little surprised.
+  - You know your bugs.
+  - I mean, I've seen them around. We had a bunch where I grew up..
+  - Celci looks like they're dying to say something so you give them a nudge.
+  - "Have they been a part of your \u201Cresearch\u201D at all?"
+  - "Yeah, I mean\u2026 They're pretty cool. They live in the ground which is kinda
+    neat. People don't like them cause they eat crops but I like them. They're big
+    ol\u2019 dummies."
+  - They smile a little at the bug in their hand.
+  cleSpeaker:
+  - Celci
+  - 
+  - You
+  - 
+  - Celci
   - You
   - 
   - You
-  - Noki
-  - You
-  - Noki
-  - You
-  - Noki
-  couSprites:
-  - {fileID: 21300000, guid: 1efff82e0a469464987b91e1e6ff298e, type: 3}
-  - {fileID: 21300000, guid: 1efff82e0a469464987b91e1e6ff298e, type: 3}
-  - {fileID: 21300000, guid: 1efff82e0a469464987b91e1e6ff298e, type: 3}
-  - {fileID: 21300000, guid: 18e1c1d22c2cbaa47914600a13de0859, type: 3}
-  - {fileID: 21300000, guid: 18e1c1d22c2cbaa47914600a13de0859, type: 3}
-  - {fileID: 21300000, guid: 4793868bd2892bd4abc8227a508d91d7, type: 3}
-  - {fileID: 21300000, guid: 4793868bd2892bd4abc8227a508d91d7, type: 3}
-  - {fileID: 21300000, guid: e6c3300e761b41e478bb010bf347ae9d, type: 3}
-  chaLines:
-  - Hmm, what do you want to take pictures of?
-  - What do you think is the prettiest part of the city?
-  - Hmm. *You look around.* The beach can be pretty this time of night.
-  - You really think so?
-  - '*She takes a picture of the stars and looks at it for a long time.* How did
-    it come out? *She shows it to you.'
-  - Wow, that looks great! Taking pictures of normal stars is so hard, too, they
-    always come out blurry.
-  - "I\u2019m very glad you like it."
-  chaSpeaker:
-  - You
-  - Noki
-  - You
-  - Noki
-  - Noki
-  - You
-  - Noki
-  chaSprites:
-  - {fileID: 21300000, guid: 1efff82e0a469464987b91e1e6ff298e, type: 3}
-  - {fileID: 21300000, guid: 0e60cde7e0933604cb178e0903b3e4ba, type: 3}
-  - {fileID: 21300000, guid: 0e60cde7e0933604cb178e0903b3e4ba, type: 3}
-  - {fileID: 21300000, guid: 1efff82e0a469464987b91e1e6ff298e, type: 3}
-  - {fileID: 21300000, guid: 1efff82e0a469464987b91e1e6ff298e, type: 3}
-  - {fileID: 21300000, guid: eb54c0b9144af6b4e8e9578c07a0c65b, type: 3}
-  - {fileID: 21300000, guid: 1efff82e0a469464987b91e1e6ff298e, type: 3}
-  cleLines:
-  - "[PlayerName], I\u2019ve been studying photography from databases online, but
-    I just don\u2019t think I get a few things\u2026"
-  - Well, lay it on me!
-  - Well, [PlayerName] what exactly is composition? I know the rules of course, but
-    what makes a composed picture so different than a normal photograph?
-  - "Ah\u2026 well\u2026 um\u2026 It's when you\u2026It...it gives a feeling of..."
-  - Haha [PlayerName] have I stumped you too?
-  - "No no\u2026 um, you basically just started.... keep it simple! When you see
-    something really pretty, take a picture!"
-  cleSpeaker:
-  - Noki
-  - You
-  - Noki
-  - You
-  - Noki
-  - You
+  - Celci
+  - 
   cleSprites:
-  - {fileID: 21300000, guid: 9a5bb60305ed56c4c8b921b54258e133, type: 3}
-  - {fileID: 21300000, guid: 9a5bb60305ed56c4c8b921b54258e133, type: 3}
-  - {fileID: 21300000, guid: 9a5bb60305ed56c4c8b921b54258e133, type: 3}
-  - {fileID: 21300000, guid: 9a5bb60305ed56c4c8b921b54258e133, type: 3}
-  - {fileID: 21300000, guid: 1efff82e0a469464987b91e1e6ff298e, type: 3}
-  - {fileID: 21300000, guid: 1efff82e0a469464987b91e1e6ff298e, type: 3}
+  - {fileID: 21300000, guid: e14ed0968c923b4469f785fbf5f274ef, type: 3}
+  - {fileID: 21300000, guid: e14ed0968c923b4469f785fbf5f274ef, type: 3}
+  - {fileID: 21300000, guid: e14ed0968c923b4469f785fbf5f274ef, type: 3}
+  - {fileID: 21300000, guid: e14ed0968c923b4469f785fbf5f274ef, type: 3}
+  - {fileID: 21300000, guid: e14ed0968c923b4469f785fbf5f274ef, type: 3}
+  - {fileID: 21300000, guid: e14ed0968c923b4469f785fbf5f274ef, type: 3}
+  - {fileID: 21300000, guid: e14ed0968c923b4469f785fbf5f274ef, type: 3}
+  - {fileID: 21300000, guid: aa606251ffd050c478a601249716a481, type: 3}
+  - {fileID: 21300000, guid: 1a9896ab5c18242478f77c4b08f279e6, type: 3}
+  - {fileID: 21300000, guid: 1a9896ab5c18242478f77c4b08f279e6, type: 3}
   creLines:
-  - "Check this out. I\u2019ve been editing a few of the photos we took!"
-  - What is this? There are little graphical images covering the photo!
-  - "I think it looks cool...I think if we got an awesome skateboard it\u2019d look
-    even better!"
-  - "You do? I don\u2019t think I quite understand what makes this a \u201Ccool\u201D
-    photo. Is it the sunglasses, or the fire stickers you put on it?"
-  - Try it!  Scrapbooking and decorating your photos can be half the fun!!
+  - As Celci frantically searches for things to catch with the net, you chill on
+    a bench for a bit. A butterfly lands on your nose.
+  - ...No way...
+  - "Oh. If you stand perfectly still they\u2019ll come right to you!"
+  - What! Really?!
+  - Celci stops and tries to get the bugs to come to them.
+  - Wait ok! They really are! Thanks [PlayerName]!
+  - That was shockingly earnest...
   creSpeaker:
+  - 
+  - Celci
   - You
-  - Noki
-  - You
-  - Noki
+  - Celci
+  - 
+  - Celci
   - You
   creSprites:
-  - {fileID: 21300000, guid: 1efff82e0a469464987b91e1e6ff298e, type: 3}
-  - {fileID: 21300000, guid: 0e60cde7e0933604cb178e0903b3e4ba, type: 3}
-  - {fileID: 21300000, guid: 0e60cde7e0933604cb178e0903b3e4ba, type: 3}
-  - {fileID: 21300000, guid: 1efff82e0a469464987b91e1e6ff298e, type: 3}
-  - {fileID: 21300000, guid: 1efff82e0a469464987b91e1e6ff298e, type: 3}
+  - {fileID: 21300000, guid: aa606251ffd050c478a601249716a481, type: 3}
+  - {fileID: 21300000, guid: aa606251ffd050c478a601249716a481, type: 3}
+  - {fileID: 21300000, guid: aa606251ffd050c478a601249716a481, type: 3}
+  - {fileID: 21300000, guid: e14ed0968c923b4469f785fbf5f274ef, type: 3}
+  - {fileID: 21300000, guid: e14ed0968c923b4469f785fbf5f274ef, type: 3}
+  - {fileID: 21300000, guid: e14ed0968c923b4469f785fbf5f274ef, type: 3}
+  - {fileID: 21300000, guid: c40c192f3a2bf9e4d8d5a166fd087309, type: 3}
   dateCharacter: {fileID: 1661069647}
 --- !u!1001 &295771159
 PrefabInstance:
