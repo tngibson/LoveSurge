@@ -30,6 +30,14 @@ public class MapScript : MonoBehaviour, IPointerEnterHandler, IPointerExitHandle
     // Scale factor and material for hover effect
     public float xHoverScale;
     public float yHoverScale;
+
+    public float xRaycastPadding;
+    public float yRaycastPadding;
+    public float zRaycastPadding;
+    public float wRaycastPadding;
+    private Vector4 originalPadding;
+    private Vector4 raycastPadding;
+
     private Vector3 originalScale;
     private Vector3 hoverScale;
 
@@ -44,7 +52,9 @@ public class MapScript : MonoBehaviour, IPointerEnterHandler, IPointerExitHandle
     {
         // Save original scale and material
         originalScale = transform.localScale;
+        originalPadding = GetComponent<Image>().raycastPadding;
         hoverScale = new Vector3 (xHoverScale, yHoverScale);
+        raycastPadding = new Vector4 (xRaycastPadding, yRaycastPadding, zRaycastPadding, wRaycastPadding);
 
         SetEnabled(isEnabled);
 
@@ -67,6 +77,8 @@ public class MapScript : MonoBehaviour, IPointerEnterHandler, IPointerExitHandle
             // Scale up and apply hover material
             transform.localScale = hoverScale;
 
+            GetComponent<Image>().raycastPadding = raycastPadding;
+
             if (hasLocationText)
             {
                 locationTextPanel.SetActive(true);
@@ -85,6 +97,7 @@ public class MapScript : MonoBehaviour, IPointerEnterHandler, IPointerExitHandle
         {
             // Reset scale and material
             transform.localScale = originalScale;
+            GetComponent<Image>().raycastPadding = originalPadding;
 
             if (hasLocationText)
             {

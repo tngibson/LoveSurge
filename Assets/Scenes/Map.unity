@@ -371,7 +371,7 @@ MonoBehaviour:
   m_Material: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_RaycastTarget: 1
-  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
+  m_RaycastPadding: {x: 0, y: 75, z: 125, w: 0}
   m_Maskable: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
@@ -441,6 +441,10 @@ MonoBehaviour:
   isDateButton: 0
   xHoverScale: 1.709402
   yHoverScale: 1.9
+  xRaycastPadding: 100
+  yRaycastPadding: 130
+  zRaycastPadding: 160
+  wRaycastPadding: 80
   isStressReducer: 1
   isStressIncreaser: 0
   nextSceneMusic:
@@ -873,7 +877,7 @@ MonoBehaviour:
   m_Material: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_RaycastTarget: 1
-  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
+  m_RaycastPadding: {x: -200, y: 280, z: 830, w: 0}
   m_Maskable: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
@@ -943,6 +947,10 @@ MonoBehaviour:
   isDateButton: 0
   xHoverScale: 1.08
   yHoverScale: 2.1
+  xRaycastPadding: -100
+  yRaycastPadding: 400
+  zRaycastPadding: 870
+  wRaycastPadding: 250
   isStressReducer: 0
   isStressIncreaser: 1
   nextSceneMusic:
@@ -1318,6 +1326,10 @@ MonoBehaviour:
   isDateButton: 0
   xHoverScale: 1.5
   yHoverScale: 1.2
+  xRaycastPadding: 80
+  yRaycastPadding: 80
+  zRaycastPadding: 80
+  wRaycastPadding: 40
   isStressReducer: 0
   isStressIncreaser: 1
   nextSceneMusic:
@@ -2545,7 +2557,7 @@ MonoBehaviour:
   m_Material: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_RaycastTarget: 1
-  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
+  m_RaycastPadding: {x: 75, y: 0, z: 0, w: 0}
   m_Maskable: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
@@ -2615,6 +2627,10 @@ MonoBehaviour:
   isDateButton: 0
   xHoverScale: 1.6
   yHoverScale: 1.85
+  xRaycastPadding: 120
+  yRaycastPadding: 80
+  zRaycastPadding: 80
+  wRaycastPadding: 80
   isStressReducer: 0
   isStressIncreaser: 1
   nextSceneMusic:
@@ -3937,6 +3953,10 @@ MonoBehaviour:
   isDateButton: 0
   xHoverScale: 1.2
   yHoverScale: 2.1
+  xRaycastPadding: 70
+  yRaycastPadding: 100
+  zRaycastPadding: 70
+  wRaycastPadding: 90
   isStressReducer: 0
   isStressIncreaser: 1
   nextSceneMusic:
@@ -4633,6 +4653,10 @@ MonoBehaviour:
   isDateButton: 0
   xHoverScale: 0
   yHoverScale: 0
+  xRaycastPadding: 0
+  yRaycastPadding: 0
+  zRaycastPadding: 0
+  wRaycastPadding: 0
   isStressReducer: 0
   isStressIncreaser: 0
   nextSceneMusic:
@@ -4888,6 +4912,10 @@ MonoBehaviour:
   isDateButton: 0
   xHoverScale: 1.5
   yHoverScale: 2.5
+  xRaycastPadding: 100
+  yRaycastPadding: 90
+  zRaycastPadding: 100
+  wRaycastPadding: 80
   isStressReducer: 0
   isStressIncreaser: 1
   nextSceneMusic:
@@ -4969,7 +4997,7 @@ MonoBehaviour:
   m_Material: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_RaycastTarget: 1
-  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
+  m_RaycastPadding: {x: 25, y: 0, z: 50, w: 0}
   m_Maskable: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
@@ -5049,7 +5077,7 @@ MonoBehaviour:
   m_Material: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_RaycastTarget: 1
-  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
+  m_RaycastPadding: {x: 450, y: 75, z: 325, w: 75}
   m_Maskable: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
@@ -5113,6 +5141,10 @@ MonoBehaviour:
   isDateButton: 1
   xHoverScale: 1
   yHoverScale: 1
+  xRaycastPadding: 0
+  yRaycastPadding: 0
+  zRaycastPadding: 0
+  wRaycastPadding: 0
   isStressReducer: 0
   isStressIncreaser: 1
   nextSceneMusic:
@@ -5392,7 +5424,7 @@ MonoBehaviour:
   m_Material: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_RaycastTarget: 1
-  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
+  m_RaycastPadding: {x: 800, y: 300, z: 725, w: 0}
   m_Maskable: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
@@ -5456,6 +5488,10 @@ MonoBehaviour:
   isDateButton: 1
   xHoverScale: 1
   yHoverScale: 1
+  xRaycastPadding: 0
+  yRaycastPadding: 0
+  zRaycastPadding: 0
+  wRaycastPadding: 0
   isStressReducer: 0
   isStressIncreaser: 1
   nextSceneMusic:
@@ -6494,6 +6530,10 @@ MonoBehaviour:
   isDateButton: 0
   xHoverScale: 0
   yHoverScale: 0
+  xRaycastPadding: 0
+  yRaycastPadding: 0
+  zRaycastPadding: 0
+  wRaycastPadding: 0
   isStressReducer: 0
   isStressIncreaser: 0
   nextSceneMusic:
@@ -6764,6 +6804,10 @@ MonoBehaviour:
   isDateButton: 1
   xHoverScale: 1.4
   yHoverScale: 2.3
+  xRaycastPadding: 80
+  yRaycastPadding: 80
+  zRaycastPadding: 80
+  wRaycastPadding: 80
   isStressReducer: 0
   isStressIncreaser: 1
   nextSceneMusic:
@@ -7665,7 +7709,7 @@ MonoBehaviour:
   m_Material: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_RaycastTarget: 1
-  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
+  m_RaycastPadding: {x: 300, y: 150, z: 350, w: 150}
   m_Maskable: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
@@ -7729,6 +7773,10 @@ MonoBehaviour:
   isDateButton: 1
   xHoverScale: 1
   yHoverScale: 1
+  xRaycastPadding: 0
+  yRaycastPadding: 0
+  zRaycastPadding: 0
+  wRaycastPadding: 0
   isStressReducer: 0
   isStressIncreaser: 1
   nextSceneMusic:
@@ -9363,6 +9411,10 @@ MonoBehaviour:
   isDateButton: 0
   xHoverScale: 0
   yHoverScale: 0
+  xRaycastPadding: 0
+  yRaycastPadding: 0
+  zRaycastPadding: 0
+  wRaycastPadding: 0
   isStressReducer: 0
   isStressIncreaser: 0
   nextSceneMusic:
@@ -9483,6 +9535,10 @@ MonoBehaviour:
   isDateButton: 0
   xHoverScale: 1.8
   yHoverScale: 1.9
+  xRaycastPadding: 0
+  yRaycastPadding: 0
+  zRaycastPadding: 0
+  wRaycastPadding: 0
   isStressReducer: 0
   isStressIncreaser: 1
   nextSceneMusic:
@@ -9564,7 +9620,7 @@ MonoBehaviour:
   m_Material: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_RaycastTarget: 1
-  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
+  m_RaycastPadding: {x: 100, y: 0, z: 50, w: 0}
   m_Maskable: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
