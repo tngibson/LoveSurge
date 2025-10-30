@@ -24,6 +24,8 @@ public class Player : MonoBehaviour
 
     public event Action OnStatsChanged;
 
+    public bool isHouseHot = true;
+
     void Awake()
     {
         if (instance == null)

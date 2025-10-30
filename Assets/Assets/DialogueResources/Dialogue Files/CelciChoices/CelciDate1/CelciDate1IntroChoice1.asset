@@ -1,0 +1,152 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2de807345bdd09646bb1f755bf64c760, type: 3}
+  m_Name: CelciDate1IntroChoice1
+  m_EditorClassIdentifier: 
+  choiceOptions:
+  - We have a test in The Omniverse today!
+  - "Hey, it\u2019s hot in here, can you turn down the thermostat?"
+  choicePaths:
+  - afterChoiceDialogLines:
+    - "Oh. That\u2019s today then. Okay. Yeah, it might be nice to actually do something."
+    - "Yes! Mission accomplished! See? This isn\u2019t so bad!"
+    - Yeah cool. Very cool.
+    - "Trouble arises.  They aren\u2019t making any motions to get up. What are they
+      waiting fo--"
+    - "So do\u2019ya have to like put--"
+    - --put on the glasses to get us in there yeah. I should. Yeah.
+    - "You put on the OMNIVISION\u2122 glasses and summon Celci into The Omniverse."
+    - Rad.
+    afterChoiceSpeakersPerLine:
+    - Celci
+    - 
+    - You
+    - 
+    - Celci
+    - You
+    - 
+    - Celci
+    afterChoiceSpriteOptions:
+    - spriteOptions:
+      - {fileID: 21300000, guid: 602edf163ccd2364b81a4cf9bbd9862f, type: 3}
+      - {fileID: 21300000, guid: 602edf163ccd2364b81a4cf9bbd9862f, type: 3}
+      - {fileID: 21300000, guid: 602edf163ccd2364b81a4cf9bbd9862f, type: 3}
+      - {fileID: 21300000, guid: 602edf163ccd2364b81a4cf9bbd9862f, type: 3}
+      - {fileID: 21300000, guid: 602edf163ccd2364b81a4cf9bbd9862f, type: 3}
+      - {fileID: 21300000, guid: 602edf163ccd2364b81a4cf9bbd9862f, type: 3}
+      - {fileID: 21300000, guid: 602edf163ccd2364b81a4cf9bbd9862f, type: 3}
+      - {fileID: 21300000, guid: 602edf163ccd2364b81a4cf9bbd9862f, type: 3}
+    - spriteOptions:
+      - {fileID: 21300000, guid: e14ed0968c923b4469f785fbf5f274ef, type: 3}
+      - {fileID: 21300000, guid: e14ed0968c923b4469f785fbf5f274ef, type: 3}
+      - {fileID: 21300000, guid: e14ed0968c923b4469f785fbf5f274ef, type: 3}
+      - {fileID: 21300000, guid: e14ed0968c923b4469f785fbf5f274ef, type: 3}
+      - {fileID: 21300000, guid: aa606251ffd050c478a601249716a481, type: 3}
+      - {fileID: 21300000, guid: aa606251ffd050c478a601249716a481, type: 3}
+      - {fileID: 21300000, guid: aa606251ffd050c478a601249716a481, type: 3}
+      - {fileID: 21300000, guid: c40c192f3a2bf9e4d8d5a166fd087309, type: 3}
+    - spriteOptions:
+      - {fileID: 21300000, guid: 602edf163ccd2364b81a4cf9bbd9862f, type: 3}
+      - {fileID: 21300000, guid: 602edf163ccd2364b81a4cf9bbd9862f, type: 3}
+      - {fileID: 21300000, guid: 602edf163ccd2364b81a4cf9bbd9862f, type: 3}
+      - {fileID: 21300000, guid: 602edf163ccd2364b81a4cf9bbd9862f, type: 3}
+      - {fileID: 21300000, guid: 602edf163ccd2364b81a4cf9bbd9862f, type: 3}
+      - {fileID: 21300000, guid: 602edf163ccd2364b81a4cf9bbd9862f, type: 3}
+      - {fileID: 21300000, guid: 602edf163ccd2364b81a4cf9bbd9862f, type: 3}
+      - {fileID: 21300000, guid: 602edf163ccd2364b81a4cf9bbd9862f, type: 3}
+    statTag: 
+    statValue: 0
+    nestedChoices: []
+  - afterChoiceDialogLines:
+    - Oh, is it?
+    - "Wouldn\u2019t you know?"
+    - Your air conditioning is not the center of my universe right now. I have a
+      lot on my plate right now.
+    - "Weren\u2019t you literally born less than a week ago?"
+    - What? Um....yes. For sure.
+    - You narrow your eyes. That was suspicious.
+    - "Stop...whatever that is you\u2019re doing with your face. It\u2019s freaking
+      me out."
+    - "It\u2019s my detective glare."
+    - "A fan kicks on. Somewhere, you hear your roommate Miguel cry out in relief.
+      Celci: OK! Fans on. Let\u2019s please stop this conversation. Where are we
+      going? "
+    - The Omniverse. We have a test today.
+    - Have to?
+    - "They might get suspicious if we don\u2019t."
+    - Fine. I would like to continue being alive so I guess we can go.
+    - "You put on the OMNIVISION GLASSES\u2122  and summon Celci into the net with
+      you."
+    afterChoiceSpeakersPerLine:
+    - Celci
+    - You
+    - Celci
+    - You
+    - Celci
+    - 
+    - Celci
+    - You
+    - 
+    - You
+    - Celci
+    - You
+    - Celci
+    - 
+    afterChoiceSpriteOptions:
+    - spriteOptions:
+      - {fileID: 21300000, guid: 602edf163ccd2364b81a4cf9bbd9862f, type: 3}
+      - {fileID: 21300000, guid: 602edf163ccd2364b81a4cf9bbd9862f, type: 3}
+      - {fileID: 21300000, guid: 602edf163ccd2364b81a4cf9bbd9862f, type: 3}
+      - {fileID: 21300000, guid: 602edf163ccd2364b81a4cf9bbd9862f, type: 3}
+      - {fileID: 21300000, guid: 602edf163ccd2364b81a4cf9bbd9862f, type: 3}
+      - {fileID: 21300000, guid: 602edf163ccd2364b81a4cf9bbd9862f, type: 3}
+      - {fileID: 21300000, guid: 602edf163ccd2364b81a4cf9bbd9862f, type: 3}
+      - {fileID: 21300000, guid: 602edf163ccd2364b81a4cf9bbd9862f, type: 3}
+      - {fileID: 21300000, guid: 602edf163ccd2364b81a4cf9bbd9862f, type: 3}
+      - {fileID: 21300000, guid: 602edf163ccd2364b81a4cf9bbd9862f, type: 3}
+      - {fileID: 21300000, guid: 602edf163ccd2364b81a4cf9bbd9862f, type: 3}
+      - {fileID: 21300000, guid: 602edf163ccd2364b81a4cf9bbd9862f, type: 3}
+      - {fileID: 21300000, guid: 602edf163ccd2364b81a4cf9bbd9862f, type: 3}
+      - {fileID: 21300000, guid: 602edf163ccd2364b81a4cf9bbd9862f, type: 3}
+    - spriteOptions:
+      - {fileID: 21300000, guid: 70e99421608ac5543bf909affcbcbf7c, type: 3}
+      - {fileID: 21300000, guid: 70e99421608ac5543bf909affcbcbf7c, type: 3}
+      - {fileID: 21300000, guid: 70e99421608ac5543bf909affcbcbf7c, type: 3}
+      - {fileID: 21300000, guid: 1a9896ab5c18242478f77c4b08f279e6, type: 3}
+      - {fileID: 21300000, guid: 1a9896ab5c18242478f77c4b08f279e6, type: 3}
+      - {fileID: 21300000, guid: 1a9896ab5c18242478f77c4b08f279e6, type: 3}
+      - {fileID: 21300000, guid: aa606251ffd050c478a601249716a481, type: 3}
+      - {fileID: 21300000, guid: aa606251ffd050c478a601249716a481, type: 3}
+      - {fileID: 21300000, guid: aa606251ffd050c478a601249716a481, type: 3}
+      - {fileID: 21300000, guid: aa606251ffd050c478a601249716a481, type: 3}
+      - {fileID: 21300000, guid: e14ed0968c923b4469f785fbf5f274ef, type: 3}
+      - {fileID: 21300000, guid: e14ed0968c923b4469f785fbf5f274ef, type: 3}
+      - {fileID: 21300000, guid: aa606251ffd050c478a601249716a481, type: 3}
+      - {fileID: 21300000, guid: aa606251ffd050c478a601249716a481, type: 3}
+    - spriteOptions:
+      - {fileID: 21300000, guid: 602edf163ccd2364b81a4cf9bbd9862f, type: 3}
+      - {fileID: 21300000, guid: 602edf163ccd2364b81a4cf9bbd9862f, type: 3}
+      - {fileID: 21300000, guid: 602edf163ccd2364b81a4cf9bbd9862f, type: 3}
+      - {fileID: 21300000, guid: 602edf163ccd2364b81a4cf9bbd9862f, type: 3}
+      - {fileID: 21300000, guid: 602edf163ccd2364b81a4cf9bbd9862f, type: 3}
+      - {fileID: 21300000, guid: 602edf163ccd2364b81a4cf9bbd9862f, type: 3}
+      - {fileID: 21300000, guid: 602edf163ccd2364b81a4cf9bbd9862f, type: 3}
+      - {fileID: 21300000, guid: 602edf163ccd2364b81a4cf9bbd9862f, type: 3}
+      - {fileID: 21300000, guid: 602edf163ccd2364b81a4cf9bbd9862f, type: 3}
+      - {fileID: 21300000, guid: 602edf163ccd2364b81a4cf9bbd9862f, type: 3}
+      - {fileID: 21300000, guid: 602edf163ccd2364b81a4cf9bbd9862f, type: 3}
+      - {fileID: 21300000, guid: 602edf163ccd2364b81a4cf9bbd9862f, type: 3}
+      - {fileID: 21300000, guid: 602edf163ccd2364b81a4cf9bbd9862f, type: 3}
+      - {fileID: 21300000, guid: 602edf163ccd2364b81a4cf9bbd9862f, type: 3}
+    statTag: CelciDate1IntroChoice1
+    statValue: 0
+    nestedChoices: []

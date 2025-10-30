@@ -30,7 +30,7 @@ public class RandEventHandler : MonoBehaviour
     private int currentLineIndex = 0; // Current index for dialog
     private bool isTypewriting = false; // Whether the typewriter coroutine is going
     private bool skipRequested = false; // If the skip button is pressed
-    private bool isChoiceTime = false; // If there is a choice to be made
+    private bool isChoiceTime = false; // If there is a choice to be madech
     private bool isChoiceDialog = false; // If we are reading choice dialog
 
     // Backup the original dialog and speakers to restore after choices
@@ -72,6 +72,8 @@ public class RandEventHandler : MonoBehaviour
     private bool isWaitingForCGClick = false; // Waiting for player to click after CG shows
 
     private Coroutine typewriterCoroutine; // track current typewriter
+
+    [SerializeField] private CelciIntroChoiceData celciIntroDialog; // Shown if house is not hot
 
     void Start()
     {
@@ -156,6 +158,16 @@ public class RandEventHandler : MonoBehaviour
             if (dialogLines[currentLineIndex] == "CHOICE")
             {
                 ShowChoices();
+                return;
+            }
+        }
+
+        // Checks if we find a CELCIINTROCHOICE
+        if (currentLineIndex < dialogLines.Count)
+        {
+            if (dialogLines[currentLineIndex] == "CELCIINTROCHOICE")
+            {
+                HandleCelciIntroChoice();
                 return;
             }
         }
@@ -333,6 +345,54 @@ public class RandEventHandler : MonoBehaviour
         UpdateChoiceButtonLayout();
     }
 
+    private void HandleCelciIntroChoice()
+    {
+        // Backup the current dialog to return to later
+        originalDialogLines = new List<string>(dialogLines);
+        originalSpeakersPerLine = new List<string>(speakersPerLine);
+        originalSpriteOptions = new List<SpriteOptions>(characterSprites);
+        originalLineIndex = currentLineIndex + 1; // Resume after this marker
+        isChoiceDialog = true;
+
+        // If the house is not hot, skip this block
+        if (!Player.instance.isHouseHot)
+        {
+            currentLineIndex++;
+            DisplayLine();
+            return;
+        }
+
+        // Use the inspector-defined dialog if available
+        if (celciIntroDialog != null && celciIntroDialog.lines.Count > 0)
+        {
+            dialogLines = new List<string>(celciIntroDialog.lines);
+            speakersPerLine = new List<string>(celciIntroDialog.speakers);
+            characterSprites = new List<SpriteOptions>(celciIntroDialog.spriteOptions);
+        }
+        else
+        {
+            Debug.LogWarning("CelciIntroChoiceData not set up in inspector! Using fallback text.");
+
+            dialogLines = new List<string>
+        {
+            "Celci: Whoa, it’s freezing in here!",
+            "You: Sorry about that... the heater’s busted again.",
+            "Celci: That’s not great for a guest, [Player]. Let’s fix that later."
+        };
+
+            speakersPerLine = new List<string> { "Celci", "You", "Celci" };
+
+            characterSprites = new List<SpriteOptions>();
+            for (int i = 0; i < speakersPerLine.Count; i++)
+                characterSprites.Add(new SpriteOptions());
+        }
+
+        currentLineIndex = 0;
+        DisplayLine();
+    }
+
+
+
     private void ChangeBackground()
     {
         StartCoroutine(FadeBackground(backgrounds[currentLineIndex], backgroundFadeDuration));
@@ -440,6 +500,14 @@ public class RandEventHandler : MonoBehaviour
         dialogLines = selectedPath.afterChoiceDialogLines;
         speakersPerLine = selectedPath.afterChoiceSpeakersPerLine;
         characterSprites = selectedPath.afterChoiceSpriteOptions;
+
+        // Support background change and Celci intro customization for this choice path
+        if (selectedPath.backgrounds != null && selectedPath.backgrounds.Count > 0)
+            backgrounds = new List<Sprite>(selectedPath.backgrounds);
+
+        if (selectedPath.celciIntroDialog != null)
+            celciIntroDialog = selectedPath.celciIntroDialog;
+
         currentLineIndex = 0;
 
         // If this choice has its own nested choices, track them
@@ -467,6 +535,10 @@ public class RandEventHandler : MonoBehaviour
         else if (statTag == "Stress")
         {
             StressManager.instance?.AddToCurrentStress();
+        }
+        else if (statTag == "CelciDate1IntroChoice1")
+        {
+            Player.instance.isHouseHot = false;
         }
         else
         {
@@ -680,4 +752,12 @@ public class RandEventHandler : MonoBehaviour
 public class SpriteOptions
 {
     public List<Sprite> spriteOptions = new List<Sprite>();
+}
+
+[System.Serializable]
+public class CelciIntroChoiceData
+{
+    public List<string> lines = new List<string>();                // Dialog lines for this event
+    public List<string> speakers = new List<string>();             // Matching speakers
+    public List<SpriteOptions> spriteOptions = new List<SpriteOptions>(); // Matching character sprites
 }
