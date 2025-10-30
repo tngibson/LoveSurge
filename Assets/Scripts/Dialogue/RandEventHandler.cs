@@ -1,11 +1,12 @@
+using FMOD.Studio;
+using FMODUnity;
 using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
-using UnityEngine.UI;
 using UnityEngine.SceneManagement;
-using FMODUnity;
-using FMOD.Studio;
+using UnityEngine.UI;
+using static LocationManager;
 
 public class RandEventHandler : MonoBehaviour
 {
@@ -74,6 +75,7 @@ public class RandEventHandler : MonoBehaviour
     private Coroutine typewriterCoroutine; // track current typewriter
 
     [SerializeField] private CelciIntroChoiceData celciIntroDialog; // Shown if house is not hot
+    [SerializeField] private CelciDate2ChoiceData celciDate2Dialog; // Shown if player threatens Celci
 
     void Start()
     {
@@ -168,6 +170,16 @@ public class RandEventHandler : MonoBehaviour
             if (dialogLines[currentLineIndex] == "CELCIINTROCHOICE")
             {
                 HandleCelciIntroChoice();
+                return;
+            }
+        }
+
+        // Checks if we find a CELCIDATE2CHOICE
+        if (currentLineIndex < dialogLines.Count)
+        {
+            if (dialogLines[currentLineIndex] == "CELCIDATE2CHOICE")
+            {
+                HandleCelciDate2Choice();
                 return;
             }
         }
@@ -391,7 +403,51 @@ public class RandEventHandler : MonoBehaviour
         DisplayLine();
     }
 
+    private void HandleCelciDate2Choice()
+    {
+        // Backup the current dialog to return to later
+        originalDialogLines = new List<string>(dialogLines);
+        originalSpeakersPerLine = new List<string>(speakersPerLine);
+        originalSpriteOptions = new List<SpriteOptions>(characterSprites);
+        originalLineIndex = currentLineIndex + 1; // Resume after this marker
+        isChoiceDialog = true;
 
+        // If Celci is not threatened, skip this block
+        if (!Player.instance.isCelciThreatened)
+        {
+            currentLineIndex++;
+            DisplayLine();
+            return;
+        }
+
+        // Use the inspector-defined dialog if available
+        if (celciDate2Dialog != null && celciDate2Dialog.lines.Count > 0)
+        {
+            dialogLines = new List<string>(celciDate2Dialog.lines);
+            speakersPerLine = new List<string>(celciDate2Dialog.speakers);
+            characterSprites = new List<SpriteOptions>(celciDate2Dialog.spriteOptions);
+        }
+        else
+        {
+            Debug.LogWarning("CelciDate2ChoiceData not set up in inspector! Using fallback text.");
+
+            dialogLines = new List<string>
+        {
+            "Celci: Whoa, it’s freezing in here!",
+            "You: Sorry about that... the heater’s busted again.",
+            "Celci: That’s not great for a guest, [Player]. Let’s fix that later."
+        };
+
+            speakersPerLine = new List<string> { "Celci", "You", "Celci" };
+
+            characterSprites = new List<SpriteOptions>();
+            for (int i = 0; i < speakersPerLine.Count; i++)
+                characterSprites.Add(new SpriteOptions());
+        }
+
+        currentLineIndex = 0;
+        DisplayLine();
+    }
 
     private void ChangeBackground()
     {
@@ -508,6 +564,9 @@ public class RandEventHandler : MonoBehaviour
         if (selectedPath.celciIntroDialog != null)
             celciIntroDialog = selectedPath.celciIntroDialog;
 
+        if (selectedPath.celciDate2Dialog != null)
+            celciDate2Dialog = selectedPath.celciDate2Dialog;
+
         currentLineIndex = 0;
 
         // If this choice has its own nested choices, track them
@@ -539,6 +598,15 @@ public class RandEventHandler : MonoBehaviour
         else if (statTag == "CelciDate1IntroChoice1")
         {
             Player.instance.isHouseHot = false;
+        }
+        else if (statTag == "CelciDate2Choice1")
+        {
+            Player.instance.isCelciThreatened = true;
+        }
+        else if (statTag == "CelciDateEnd")
+        {
+            LocationManager.Instance.characterDates[1].allDatesDone = true;
+            LocationManager.Instance.characterDates[1].date3Stage = Date3Stage.Done;
         }
         else
         {
@@ -756,6 +824,14 @@ public class SpriteOptions
 
 [System.Serializable]
 public class CelciIntroChoiceData
+{
+    public List<string> lines = new List<string>();                // Dialog lines for this event
+    public List<string> speakers = new List<string>();             // Matching speakers
+    public List<SpriteOptions> spriteOptions = new List<SpriteOptions>(); // Matching character sprites
+}
+
+[System.Serializable]
+public class CelciDate2ChoiceData
 {
     public List<string> lines = new List<string>();                // Dialog lines for this event
     public List<string> speakers = new List<string>();             // Matching speakers

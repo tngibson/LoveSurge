@@ -1,0 +1,206 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2de807345bdd09646bb1f755bf64c760, type: 3}
+  m_Name: CelciDate2DeepConvo1Choice1
+  m_EditorClassIdentifier: 
+  choiceOptions:
+  - "I guess if they don\u2019t work right?"
+  - Definitely not!
+  choicePaths:
+  - afterChoiceDialogLines:
+    - I guess if they do-
+    - "Suddenly, from under Celci\u2019s feet, there is a static-y crackly, and large
+      veins of distortion begin to creep out like cracks in glass with Celci at the
+      epicenter."
+    - W-What was that?
+    - "I don\u2019t know! We\u2019re not supposed to be here, I think!!"
+    - "Celci\u2019s normally pretty stoic demeanor crumbles slightly. There\u2019s
+      fear in her eyes."
+    - "Hey can we leave? I\u2019m done. I think I\u2019m done."
+    - "Y-yeah we can. That\u2019s fine."
+    - BACKGROUNDCHANGE
+    - You deactivate your OMNIVISION and the two of your are back in the living room
+      again.
+    - CELCIINTROCHOICE
+    - "Ok. I\u2019m going to go...do some maintenance on the internal...systems or
+      whatever. Bye. Don\u2019t ask me to do that again."
+    - Ok goo-
+    - Celci deactivates.
+    afterChoiceSpeakersPerLine:
+    - You
+    - 
+    - Celci
+    - You
+    - 
+    - Celci
+    - You
+    - 
+    - 
+    - 
+    - Celci
+    - You
+    - 
+    afterChoiceSpriteOptions:
+    - spriteOptions:
+      - {fileID: 21300000, guid: e14ed0968c923b4469f785fbf5f274ef, type: 3}
+      - {fileID: 21300000, guid: e14ed0968c923b4469f785fbf5f274ef, type: 3}
+      - {fileID: 21300000, guid: e14ed0968c923b4469f785fbf5f274ef, type: 3}
+      - {fileID: 21300000, guid: e14ed0968c923b4469f785fbf5f274ef, type: 3}
+      - {fileID: 21300000, guid: e14ed0968c923b4469f785fbf5f274ef, type: 3}
+      - {fileID: 21300000, guid: 1a9896ab5c18242478f77c4b08f279e6, type: 3}
+      - {fileID: 21300000, guid: 1a9896ab5c18242478f77c4b08f279e6, type: 3}
+      - {fileID: 21300000, guid: 1a9896ab5c18242478f77c4b08f279e6, type: 3}
+      - {fileID: 21300000, guid: 1a9896ab5c18242478f77c4b08f279e6, type: 3}
+      - {fileID: 21300000, guid: 1a9896ab5c18242478f77c4b08f279e6, type: 3}
+      - {fileID: 21300000, guid: aa606251ffd050c478a601249716a481, type: 3}
+      - {fileID: 21300000, guid: aa606251ffd050c478a601249716a481, type: 3}
+      - {fileID: 21300000, guid: 70e99421608ac5543bf909affcbcbf7c, type: 3}
+    statTag: 
+    statValue: 0
+    celciIntroDialog:
+      lines:
+      - "All the windows in the house are open and there are several new fans blowing
+        the hot air around. None of this is really helping. Miguel\u2019s voice rings
+        out from deep within the garage."
+      - SOMEONE PLEASE SAVE US.
+      - Ugh. Oh my god. Sorry.
+      - "Guess we\u2019re just making the whole house miserable today."
+      speakers:
+      - 
+      - Miguel
+      - Celci
+      - Celci
+      spriteOptions:
+      - spriteOptions:
+        - {fileID: 21300000, guid: 1a9896ab5c18242478f77c4b08f279e6, type: 3}
+        - {fileID: 21300000, guid: a3252816a49c415409db0f9ffd8c3b1a, type: 3}
+        - {fileID: 21300000, guid: 1a9896ab5c18242478f77c4b08f279e6, type: 3}
+        - {fileID: 21300000, guid: 1a9896ab5c18242478f77c4b08f279e6, type: 3}
+    backgrounds:
+    - {fileID: 0}
+    - {fileID: 0}
+    - {fileID: 0}
+    - {fileID: 0}
+    - {fileID: 0}
+    - {fileID: 0}
+    - {fileID: 0}
+    - {fileID: 21300000, guid: 35e0da6b120ccf649933a424b9870ad2, type: 3}
+    - {fileID: 0}
+    - {fileID: 0}
+    - {fileID: 0}
+    - {fileID: 0}
+    - {fileID: 0}
+    nestedChoices: []
+  - afterChoiceDialogLines:
+    - I guess if they do-
+    - "Suddenly, from under Celci\u2019s feet, there is a static-y crackly, and large
+      veins of distortion begin to creep out like cracks in glass with Celci at the
+      epicenter."
+    - W-What was that?
+    - "I don\u2019t know! We\u2019re not supposed to be here, I think!!"
+    - "Celci\u2019s normally pretty stoic demeanor crumbles slightly. There\u2019s
+      fear in her eyes."
+    - "Hey can we leave? I\u2019m done. I think I\u2019m done."
+    - "Y-yeah we can. That\u2019s fine."
+    - BACKGROUNDCHANGE
+    - You deactivate your OMNIVISION and the two of your are back in the living room
+      again.
+    - CELCIINTROCHOICE
+    - Hey, Celci?
+    - What?
+    - That was cool. It was interesting and I had a good time BECAUSE it was all
+      messed up. Thanks for dragging me there.
+    - "Are you trying to cheer me up? I feel like that\u2019s what\u2019s happening
+      right now."
+    - Is this a trick question? You panic for a moment trying to go through the mental
+      hoops of correctly responding to this.
+    - It is working.
+    - Oh. Awesome.
+    - I also had a good time. Later though, I need to do some stuff. Bye [PlayerName].
+    - Celci deactivates.
+    afterChoiceSpeakersPerLine:
+    - You
+    - 
+    - Celci
+    - You
+    - 
+    - Celci
+    - You
+    - 
+    - 
+    - 
+    - You
+    - Celci
+    - You
+    - Celci
+    - 
+    - Celci
+    - You
+    - Celci
+    - 
+    afterChoiceSpriteOptions:
+    - spriteOptions:
+      - {fileID: 21300000, guid: e14ed0968c923b4469f785fbf5f274ef, type: 3}
+      - {fileID: 21300000, guid: e14ed0968c923b4469f785fbf5f274ef, type: 3}
+      - {fileID: 21300000, guid: e14ed0968c923b4469f785fbf5f274ef, type: 3}
+      - {fileID: 21300000, guid: e14ed0968c923b4469f785fbf5f274ef, type: 3}
+      - {fileID: 21300000, guid: e14ed0968c923b4469f785fbf5f274ef, type: 3}
+      - {fileID: 21300000, guid: 1a9896ab5c18242478f77c4b08f279e6, type: 3}
+      - {fileID: 21300000, guid: 1a9896ab5c18242478f77c4b08f279e6, type: 3}
+      - {fileID: 21300000, guid: 1a9896ab5c18242478f77c4b08f279e6, type: 3}
+      - {fileID: 21300000, guid: 1a9896ab5c18242478f77c4b08f279e6, type: 3}
+      - {fileID: 21300000, guid: 1a9896ab5c18242478f77c4b08f279e6, type: 3}
+      - {fileID: 21300000, guid: aa606251ffd050c478a601249716a481, type: 3}
+      - {fileID: 21300000, guid: aa606251ffd050c478a601249716a481, type: 3}
+      - {fileID: 21300000, guid: aa606251ffd050c478a601249716a481, type: 3}
+      - {fileID: 21300000, guid: 70e99421608ac5543bf909affcbcbf7c, type: 3}
+      - {fileID: 21300000, guid: 70e99421608ac5543bf909affcbcbf7c, type: 3}
+      - {fileID: 21300000, guid: 1a9896ab5c18242478f77c4b08f279e6, type: 3}
+      - {fileID: 21300000, guid: 1a9896ab5c18242478f77c4b08f279e6, type: 3}
+      - {fileID: 21300000, guid: 1a9896ab5c18242478f77c4b08f279e6, type: 3}
+      - {fileID: 21300000, guid: 1a9896ab5c18242478f77c4b08f279e6, type: 3}
+    statTag: 
+    statValue: 0
+    celciIntroDialog:
+      lines:
+      - "All the windows in the house are open and there are several new fans blowing
+        the hot air around. None of this is really helping. Miguel\u2019s voice rings
+        out from deep within the garage."
+      - SOMEONE PLEASE SAVE US.
+      - Ugh. Oh my god. Sorry.
+      - "Guess we\u2019re just making the whole house miserable today."
+      speakers:
+      - 
+      - Miguel
+      - Celci
+      - Celci
+      spriteOptions:
+      - spriteOptions:
+        - {fileID: 21300000, guid: 1a9896ab5c18242478f77c4b08f279e6, type: 3}
+        - {fileID: 21300000, guid: a3252816a49c415409db0f9ffd8c3b1a, type: 3}
+        - {fileID: 21300000, guid: 1a9896ab5c18242478f77c4b08f279e6, type: 3}
+        - {fileID: 21300000, guid: 1a9896ab5c18242478f77c4b08f279e6, type: 3}
+    backgrounds:
+    - {fileID: 0}
+    - {fileID: 0}
+    - {fileID: 0}
+    - {fileID: 0}
+    - {fileID: 0}
+    - {fileID: 0}
+    - {fileID: 0}
+    - {fileID: 21300000, guid: 35e0da6b120ccf649933a424b9870ad2, type: 3}
+    - {fileID: 0}
+    - {fileID: 0}
+    - {fileID: 0}
+    - {fileID: 0}
+    - {fileID: 0}
+    nestedChoices: []

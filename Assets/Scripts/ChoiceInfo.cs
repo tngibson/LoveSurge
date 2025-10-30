@@ -24,7 +24,8 @@ public class ChoicePath
     public int statValue;       // The value to increase it by
 
     [Header("Optional Conditional Events")]
-    public CelciIntroChoiceData celciIntroDialog;   // Optional CELCIINTROCHOICE override for this branch
+    public CelciIntroChoiceData celciIntroDialog;   
+    public CelciDate2ChoiceData celciDate2Dialog;   
     public List<Sprite> backgrounds = new List<Sprite>(); // Optional background sequence for BACKGROUNDCHANGE
 
     [Header("Nested Choices")]

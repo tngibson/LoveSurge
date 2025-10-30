@@ -25,6 +25,7 @@ public class Player : MonoBehaviour
     public event Action OnStatsChanged;
 
     public bool isHouseHot = true;
+    public bool isCelciThreatened = false;
 
     void Awake()
     {

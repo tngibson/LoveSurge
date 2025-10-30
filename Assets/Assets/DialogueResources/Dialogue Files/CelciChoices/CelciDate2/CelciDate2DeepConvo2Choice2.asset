@@ -1,0 +1,93 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2de807345bdd09646bb1f755bf64c760, type: 3}
+  m_Name: CelciDate2DeepConvo2Choice2
+  m_EditorClassIdentifier: 
+  choiceOptions:
+  - What do you mean fix yourself? I like you, Celci.
+  - I can help fix you.
+  choicePaths:
+  - afterChoiceDialogLines:
+    - That seems to catch them off guard for a moment. Then it seems to make them
+      angry. The air heats up, just being close to them feels like standing in front
+      of a boiling stock pot.
+    - Come on, you saw what happened in that construction zone!
+    - I think we both know that was an accident.
+    - "Doesn\u2019t matter. That wasn\u2019t normal. I am not normal."
+    - "Normal, doesn\u2019t flip out at minor incoveninces or stress [PlayerName]..."
+    - "Normal, doesn\u2019t freak out about a lot of things I do, actually."
+    - "Obviously, there\u2019s something broken in me. I just need to go back to
+      what I was. I shouldn\u2019t be here."
+    - Their grip on the net begins to smolder.
+    - Celci...I-
+    afterChoiceSpeakersPerLine:
+    - 
+    - Celci
+    - You
+    - Celci
+    - Celci
+    - Celci
+    - Celci
+    - 
+    - You
+    afterChoiceSpriteOptions:
+    - spriteOptions:
+      - {fileID: 21300000, guid: 70e99421608ac5543bf909affcbcbf7c, type: 3}
+      - {fileID: 21300000, guid: 70e99421608ac5543bf909affcbcbf7c, type: 3}
+      - {fileID: 21300000, guid: 1a9896ab5c18242478f77c4b08f279e6, type: 3}
+      - {fileID: 21300000, guid: 1a9896ab5c18242478f77c4b08f279e6, type: 3}
+      - {fileID: 21300000, guid: 1a9896ab5c18242478f77c4b08f279e6, type: 3}
+      - {fileID: 21300000, guid: 1a9896ab5c18242478f77c4b08f279e6, type: 3}
+      - {fileID: 21300000, guid: 70e99421608ac5543bf909affcbcbf7c, type: 3}
+      - {fileID: 21300000, guid: 70e99421608ac5543bf909affcbcbf7c, type: 3}
+      - {fileID: 21300000, guid: 70e99421608ac5543bf909affcbcbf7c, type: 3}
+    statTag: 
+    statValue: 0
+    celciIntroDialog:
+      lines: []
+      speakers: []
+      spriteOptions:
+      - spriteOptions: []
+    celciDate2Dialog:
+      lines: []
+      speakers: []
+      spriteOptions: []
+    backgrounds: []
+    nestedChoices: []
+  - afterChoiceDialogLines:
+    - That seems to catch them off guard for a moment. Then it seems to make them
+      angry.
+    - "You? This isn\u2019t about what you can do for me. I have to do this myself!
+      Don\u2019t you get that?!"
+    - "...Sorry. I didn\u2019t mean it like that."
+    afterChoiceSpeakersPerLine:
+    - 
+    - Celci
+    - You
+    afterChoiceSpriteOptions:
+    - spriteOptions:
+      - {fileID: 21300000, guid: 1a9896ab5c18242478f77c4b08f279e6, type: 3}
+      - {fileID: 21300000, guid: 1a9896ab5c18242478f77c4b08f279e6, type: 3}
+      - {fileID: 21300000, guid: 1a9896ab5c18242478f77c4b08f279e6, type: 3}
+    statTag: 
+    statValue: 0
+    celciIntroDialog:
+      lines: []
+      speakers: []
+      spriteOptions:
+      - spriteOptions: []
+    celciDate2Dialog:
+      lines: []
+      speakers: []
+      spriteOptions: []
+    backgrounds: []
+    nestedChoices: []
