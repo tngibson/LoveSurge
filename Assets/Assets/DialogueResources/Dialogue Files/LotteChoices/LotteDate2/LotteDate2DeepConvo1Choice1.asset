@@ -1,0 +1,103 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2de807345bdd09646bb1f755bf64c760, type: 3}
+  m_Name: LotteDate2DeepConvo1Choice1
+  m_EditorClassIdentifier: 
+  choiceOptions:
+  - Romance anime.
+  - Anime based on power of friendship.
+  choicePaths:
+  - afterChoiceDialogLines:
+    - "Hm, You know \"The Guy She Had a Crush on Wasn't a Guy at All\", \u201CRelationships
+      are Hard for Nerds\u201D, and \u201CThe Newcomer by the Coast\u201D are some
+      that I've really enjoyed."
+    - "I\u2019m a bit of a hopeless romantic and love cute stories about people finding
+      each other. I prefer happier endings but sometimes a tear-jerking series hits
+      the right spot."
+    - "Seeing people just fit together and go through highs and lows, and making
+      it through the hard times gives me chills. It reminds me that\u2026love still
+      exists and isn\u2019t completely dead. "
+    - "They are a little different from shows like \u201CThe Seafarer Lunar\u201D
+      but I think you might like them."
+    afterChoiceSpeakersPerLine:
+    - You
+    - You
+    - You
+    - You
+    afterChoiceSpriteOptions:
+    - spriteOptions:
+      - {fileID: 21300000, guid: c9079294e79577a46904ecc4dd24a009, type: 3}
+      - {fileID: 21300000, guid: c9079294e79577a46904ecc4dd24a009, type: 3}
+      - {fileID: 21300000, guid: c9079294e79577a46904ecc4dd24a009, type: 3}
+      - {fileID: 21300000, guid: c9079294e79577a46904ecc4dd24a009, type: 3}
+    statTag: 
+    statValue: 0
+    celciIntroDialog:
+      lines: []
+      speakers: []
+      spriteOptions:
+      - spriteOptions: []
+    celciDate2Dialog:
+      lines: []
+      speakers: []
+      spriteOptions: []
+    backgrounds: []
+    nestedChoices: []
+  - afterChoiceDialogLines:
+    - "Hm, You know \u201CFaerieTale\u201D, \u201CVolleyball!!\u201D, and \u201CPouch
+      Creatures\u201D are some that I've really enjoyed."
+    - "There\u2019s just something about anime that relies on friendships and bonds
+      with people and creatures that you care about. It really makes my heart warm
+      up\u2026I feel myself cheering them on."
+    - "All those big fights are only won because they trusted their friends and teammates
+      to have their back. They were stronger together rather than alone\u2026"
+    - "It\u2019s a little bit like \u2018The Seafarer Lunar\u2019 where their friendship
+      and trust in each other makes them stronger by knowing they don\u2019t have
+      to do it alone\u2026where others have their back."
+    afterChoiceSpeakersPerLine:
+    - You
+    - You
+    - You
+    - You
+    afterChoiceSpriteOptions:
+    - spriteOptions:
+      - {fileID: 21300000, guid: 3900c097c0bef5c41ab3e639a31d5510, type: 3}
+      - {fileID: 21300000, guid: 3900c097c0bef5c41ab3e639a31d5510, type: 3}
+      - {fileID: 21300000, guid: 3900c097c0bef5c41ab3e639a31d5510, type: 3}
+      - {fileID: 21300000, guid: 3900c097c0bef5c41ab3e639a31d5510, type: 3}
+    statTag: 
+    statValue: 0
+    celciIntroDialog:
+      lines:
+      - "All the windows in the house are open and there are several new fans blowing
+        the hot air around. None of this is really helping. Miguel\u2019s voice rings
+        out from deep within the garage."
+      - SOMEONE PLEASE SAVE US.
+      - Ugh. Oh my god. Sorry.
+      - "Guess we\u2019re just making the whole house miserable today."
+      speakers:
+      - 
+      - Miguel
+      - Celci
+      - Celci
+      spriteOptions:
+      - spriteOptions:
+        - {fileID: 21300000, guid: 1a9896ab5c18242478f77c4b08f279e6, type: 3}
+        - {fileID: 21300000, guid: a3252816a49c415409db0f9ffd8c3b1a, type: 3}
+        - {fileID: 21300000, guid: 1a9896ab5c18242478f77c4b08f279e6, type: 3}
+        - {fileID: 21300000, guid: 1a9896ab5c18242478f77c4b08f279e6, type: 3}
+    celciDate2Dialog:
+      lines: []
+      speakers: []
+      spriteOptions: []
+    backgrounds: []
+    nestedChoices: []

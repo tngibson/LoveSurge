@@ -1,0 +1,105 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2de807345bdd09646bb1f755bf64c760, type: 3}
+  m_Name: LotteDate1DeepConvo1Choice2
+  m_EditorClassIdentifier: 
+  choiceOptions:
+  - Yea, I think you could!
+  - No, I don't think so.
+  choicePaths:
+  - afterChoiceDialogLines:
+    - I think you could! Besides, Natsume and you have a lot in common.
+    - "You\u2019re both hardworking and always put others before yourself."
+    - You give her a soft reassuring smile.
+    - "R\u2026really?"
+    - She claps her hands together as she smiles even more.
+    - Then I am going to set myself to be a magical girl!
+    - "Pff\u2026sure. I look forward to seeing what Lotte the magical girl can do."
+    afterChoiceSpeakersPerLine:
+    - You
+    - You
+    - 
+    - Lotte
+    - 
+    - Lotte
+    - You
+    afterChoiceSpriteOptions:
+    - spriteOptions:
+      - {fileID: 21300000, guid: 3900c097c0bef5c41ab3e639a31d5510, type: 3}
+      - {fileID: 21300000, guid: 3900c097c0bef5c41ab3e639a31d5510, type: 3}
+      - {fileID: 21300000, guid: 3900c097c0bef5c41ab3e639a31d5510, type: 3}
+      - {fileID: 21300000, guid: ceba6a5cba9df564bb636b38f3638fed, type: 3}
+      - {fileID: 21300000, guid: 3900c097c0bef5c41ab3e639a31d5510, type: 3}
+      - {fileID: 21300000, guid: 3900c097c0bef5c41ab3e639a31d5510, type: 3}
+      - {fileID: 21300000, guid: 3900c097c0bef5c41ab3e639a31d5510, type: 3}
+    statTag: 
+    statValue: 0
+    celciIntroDialog:
+      lines: []
+      speakers: []
+      spriteOptions:
+      - spriteOptions: []
+    celciDate2Dialog:
+      lines: []
+      speakers: []
+      spriteOptions: []
+    backgrounds: []
+    nestedChoices: []
+  - afterChoiceDialogLines:
+    - "I don\u2019t think so\u2026besides you\u2019re my amazing coffee maker! "
+    - Lotte winces from your words and crosses her arms at you.
+    - "Really\u2026just a coffeemaker?"
+    - W-Wait! I mean not just a coffeemaker er-
+    - Lotte lets out a soft sigh as she hugs herself.
+    - "Don\u2019t worry about it. "
+    afterChoiceSpeakersPerLine:
+    - You
+    - 
+    - Lotte
+    - You
+    - 
+    - Lotte
+    afterChoiceSpriteOptions:
+    - spriteOptions:
+      - {fileID: 21300000, guid: 3900c097c0bef5c41ab3e639a31d5510, type: 3}
+      - {fileID: 21300000, guid: 9d582e47bb0c8f3468043bb0483de18d, type: 3}
+      - {fileID: 21300000, guid: 9d582e47bb0c8f3468043bb0483de18d, type: 3}
+      - {fileID: 21300000, guid: 9d582e47bb0c8f3468043bb0483de18d, type: 3}
+      - {fileID: 21300000, guid: c673d1b958b99b64c8a42747de073b2f, type: 3}
+      - {fileID: 21300000, guid: c673d1b958b99b64c8a42747de073b2f, type: 3}
+    statTag: 
+    statValue: 0
+    celciIntroDialog:
+      lines:
+      - "All the windows in the house are open and there are several new fans blowing
+        the hot air around. None of this is really helping. Miguel\u2019s voice rings
+        out from deep within the garage."
+      - SOMEONE PLEASE SAVE US.
+      - Ugh. Oh my god. Sorry.
+      - "Guess we\u2019re just making the whole house miserable today."
+      speakers:
+      - 
+      - Miguel
+      - Celci
+      - Celci
+      spriteOptions:
+      - spriteOptions:
+        - {fileID: 21300000, guid: 1a9896ab5c18242478f77c4b08f279e6, type: 3}
+        - {fileID: 21300000, guid: a3252816a49c415409db0f9ffd8c3b1a, type: 3}
+        - {fileID: 21300000, guid: 1a9896ab5c18242478f77c4b08f279e6, type: 3}
+        - {fileID: 21300000, guid: 1a9896ab5c18242478f77c4b08f279e6, type: 3}
+    celciDate2Dialog:
+      lines: []
+      speakers: []
+      spriteOptions: []
+    backgrounds: []
+    nestedChoices: []

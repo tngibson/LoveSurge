@@ -258,81 +258,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 71073694}
   m_CullTransparentMesh: 1
---- !u!1 &118797577
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 118797578}
-  - component: {fileID: 118797580}
-  - component: {fileID: 118797579}
-  m_Layer: 5
-  m_Name: Celci
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!224 &118797578
-RectTransform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 118797577}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 1
-  m_Children: []
-  m_Father: {fileID: 725283230}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0.5}
-  m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -840, y: -3.1393}
-  m_SizeDelta: {x: 2160, y: 2160}
-  m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &118797579
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 118797577}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_Material: {fileID: 0}
-  m_Color: {r: 0.5019608, g: 0.5019608, b: 0.5019608, a: 1}
-  m_RaycastTarget: 1
-  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
-  m_Maskable: 1
-  m_OnCullStateChanged:
-    m_PersistentCalls:
-      m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: aa606251ffd050c478a601249716a481, type: 3}
-  m_Type: 0
-  m_PreserveAspect: 0
-  m_FillCenter: 1
-  m_FillMethod: 4
-  m_FillAmount: 1
-  m_FillClockwise: 1
-  m_FillOrigin: 0
-  m_UseSpriteMesh: 0
-  m_PixelsPerUnitMultiplier: 1
---- !u!222 &118797580
-CanvasRenderer:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 118797577}
-  m_CullTransparentMesh: 1
 --- !u!1001 &274455774
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -745,7 +670,7 @@ GameObject:
   - component: {fileID: 637296341}
   - component: {fileID: 637296340}
   m_Layer: 5
-  m_Name: Noki
+  m_Name: Lotte
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -790,7 +715,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 18e1c1d22c2cbaa47914600a13de0859, type: 3}
+  m_Sprite: {fileID: 21300000, guid: f87102bd0d1966b4ebda9beb54d52a99, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -998,8 +923,6 @@ RectTransform:
   m_Children:
   - {fileID: 1741321907}
   - {fileID: 637296339}
-  - {fileID: 118797578}
-  - {fileID: 1710154202}
   - {fileID: 1255463090}
   - {fileID: 358605965}
   - {fileID: 274455775}
@@ -1284,14 +1207,18 @@ PrefabInstance:
     - target: {fileID: 8427216516346150109, guid: caff7daa29ed80547bbcab65c7792ef9,
         type: 3}
       propertyPath: choices.Array.size
-      value: 28
+      value: 36
       objectReference: {fileID: 0}
     - target: {fileID: 8427216516346150109, guid: caff7daa29ed80547bbcab65c7792ef9,
         type: 3}
       propertyPath: choices.Array.data[8]
       value: 
-      objectReference: {fileID: 11400000, guid: 5761125da5ff8f347aa74f98f31dc0c9,
-        type: 2}
+      objectReference: {fileID: 0}
+    - target: {fileID: 8427216516346150109, guid: caff7daa29ed80547bbcab65c7792ef9,
+        type: 3}
+      propertyPath: backgrounds.Array.size
+      value: 36
+      objectReference: {fileID: 0}
     - target: {fileID: 8427216516346150109, guid: caff7daa29ed80547bbcab65c7792ef9,
         type: 3}
       propertyPath: choices.Array.data[23]
@@ -1299,174 +1226,232 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8427216516346150109, guid: caff7daa29ed80547bbcab65c7792ef9,
         type: 3}
+      propertyPath: choices.Array.data[31]
+      value: 
+      objectReference: {fileID: 11400000, guid: b7c1da53a4b323b42a19bc79d39f141e,
+        type: 2}
+    - target: {fileID: 8427216516346150109, guid: caff7daa29ed80547bbcab65c7792ef9,
+        type: 3}
       propertyPath: dialogLines.Array.size
-      value: 28
+      value: 36
       objectReference: {fileID: 0}
     - target: {fileID: 8427216516346150109, guid: caff7daa29ed80547bbcab65c7792ef9,
         type: 3}
       propertyPath: dialogLines.Array.data[0]
-      value: "Man, is it hot in this room or is it just you? Haha, it\u2019s 91 degrees
-        Fahrenheit in your house right now."
+      value: You see Lotte and walk up to her while she is sitting at the table.
+        She is making some foam art, looking unamused and sulking a bit.
       objectReference: {fileID: 0}
     - target: {fileID: 8427216516346150109, guid: caff7daa29ed80547bbcab65c7792ef9,
         type: 3}
       propertyPath: dialogLines.Array.data[1]
-      value: Suddenly your phone buzzes.
+      value: "You look bored. Would you want to\u2026go do something?"
       objectReference: {fileID: 0}
     - target: {fileID: 8427216516346150109, guid: caff7daa29ed80547bbcab65c7792ef9,
         type: 3}
       propertyPath: dialogLines.Array.data[2]
-      value: "A little icon shaped like Noki\u2019s face appears next to a textbox."
+      value: "Oh uhm\u2026sure! Sorry, I tried practicing on making coffee, but it\u2019s
+        not really clicking with me."
       objectReference: {fileID: 0}
     - target: {fileID: 8427216516346150109, guid: caff7daa29ed80547bbcab65c7792ef9,
         type: 3}
       propertyPath: dialogLines.Array.data[3]
-      value: Make sure to finish all your assigned testing today!
+      value: "It just feels\u2026like no matter how many times I attempt to make
+        the latte art, it ends miserably."
       objectReference: {fileID: 0}
     - target: {fileID: 8427216516346150109, guid: caff7daa29ed80547bbcab65c7792ef9,
         type: 3}
       propertyPath: dialogLines.Array.data[4]
-      value: "Oh right! You\u2019re assigned to take Celci to the Omniverse today!"
+      value: "A soft sigh escapes her lips as she looks at the cup that\u2019s in
+        front of her. The foam art on the latte looked pitiful."
       objectReference: {fileID: 0}
     - target: {fileID: 8427216516346150109, guid: caff7daa29ed80547bbcab65c7792ef9,
         type: 3}
       propertyPath: dialogLines.Array.data[5]
-      value: Approaching the living room you see Lotte and Noki having a pleasant
-        conversation in the kitchen, ignorant to the heat. Noki shoots you a look,
-        and then glances at the corner of your living room. Celci is there, staring
-        out the window. They seem distracted by something.
+      value: You look at the latte art, placing a hand on her shoulder.
       objectReference: {fileID: 0}
     - target: {fileID: 8427216516346150109, guid: caff7daa29ed80547bbcab65c7792ef9,
         type: 3}
       propertyPath: dialogLines.Array.data[6]
-      value: Uh, hey there Celci!
+      value: "I think the attempt is there, but you can\u2019t force yourself to
+        do something you don\u2019t want to do."
       objectReference: {fileID: 0}
     - target: {fileID: 8427216516346150109, guid: caff7daa29ed80547bbcab65c7792ef9,
         type: 3}
       propertyPath: dialogLines.Array.data[7]
-      value: What? Do you need something?
+      value: Your hand slips away as you step back from her.
       objectReference: {fileID: 0}
     - target: {fileID: 8427216516346150109, guid: caff7daa29ed80547bbcab65c7792ef9,
         type: 3}
       propertyPath: dialogLines.Array.data[8]
-      value: CHOICE
+      value: "I guess, you are right\u2026"
       objectReference: {fileID: 0}
     - target: {fileID: 8427216516346150109, guid: caff7daa29ed80547bbcab65c7792ef9,
         type: 3}
       propertyPath: dialogLines.Array.data[9]
-      value: "The two of you kick around in the OMNIVERSE\u2122 for a bit."
+      value: She pushes herself away from the table and gets up. She gives you a
+        faint smile, tilting her head at you.
       objectReference: {fileID: 0}
     - target: {fileID: 8427216516346150109, guid: caff7daa29ed80547bbcab65c7792ef9,
         type: 3}
+      propertyPath: backgrounds.Array.data[18]
+      value: 
+      objectReference: {fileID: 21300000, guid: 546123abd5df3fb4f85c7cfdda25d81b,
+        type: 3}
+    - target: {fileID: 8427216516346150109, guid: caff7daa29ed80547bbcab65c7792ef9,
+        type: 3}
+      propertyPath: backgrounds.Array.data[21]
+      value: 
+      objectReference: {fileID: 21300000, guid: bd0eb6f096c35674da2af4e318134072,
+        type: 3}
+    - target: {fileID: 8427216516346150109, guid: caff7daa29ed80547bbcab65c7792ef9,
+        type: 3}
       propertyPath: dialogLines.Array.data[10]
-      value: "Celci seems pretty bored, which you don\u2019t blame them. "
+      value: What did you have in mind?
       objectReference: {fileID: 0}
     - target: {fileID: 8427216516346150109, guid: caff7daa29ed80547bbcab65c7792ef9,
         type: 3}
       propertyPath: dialogLines.Array.data[11]
-      value: "Visually it\u2019s kind of pretty here but there isn\u2019t too much
-        to do."
+      value: Well, I was about to head to the Omni-Box Theater.
       objectReference: {fileID: 0}
     - target: {fileID: 8427216516346150109, guid: caff7daa29ed80547bbcab65c7792ef9,
         type: 3}
       propertyPath: dialogLines.Array.data[12]
-      value: "Hey, what\u2019s that? We should go in there."
+      value: It's one of the features OmniSpark wants me to test out, and well I
+        thought it might be something I could take you along for.
       objectReference: {fileID: 0}
     - target: {fileID: 8427216516346150109, guid: caff7daa29ed80547bbcab65c7792ef9,
         type: 3}
       propertyPath: dialogLines.Array.data[13]
-      value: "They\u2019re pointing to a big tunnel, clearly marked with a sign that
-        says \u2018DO NOT ENTER, PLEASE I'M STILL WORKING ON THIS PLEASE DON\u2019T
-        COME IN HERE'"
+      value: She tilts her head, and she raises her eyebrow at you.
       objectReference: {fileID: 0}
     - target: {fileID: 8427216516346150109, guid: caff7daa29ed80547bbcab65c7792ef9,
         type: 3}
       propertyPath: dialogLines.Array.data[14]
-      value: "There\u2019s digital caution tape surrounding a big pipe coming from
-        the wall. Seems to be a tunnel to another Z0NE\u2122 of the OMNIVERSE\u2122."
+      value: It gives us some time to spend together, you know.
       objectReference: {fileID: 0}
     - target: {fileID: 8427216516346150109, guid: caff7daa29ed80547bbcab65c7792ef9,
         type: 3}
       propertyPath: dialogLines.Array.data[15]
-      value: Celci immediately climbs over the tape and enters the passage.
+      value: "Mmm\u2026then sure I would like to go."
       objectReference: {fileID: 0}
     - target: {fileID: 8427216516346150109, guid: caff7daa29ed80547bbcab65c7792ef9,
         type: 3}
       propertyPath: dialogLines.Array.data[16]
-      value: W-wait!
+      value: "I\u2019m ready to head out now if you are."
       objectReference: {fileID: 0}
     - target: {fileID: 8427216516346150109, guid: caff7daa29ed80547bbcab65c7792ef9,
         type: 3}
       propertyPath: dialogLines.Array.data[17]
-      value: "C\u2019mon wouldn\u2019t it be important to get data in \u201Cunstable
-        environments\u201D?"
+      value: Lotte visibly relaxes and stops working.
       objectReference: {fileID: 0}
     - target: {fileID: 8427216516346150109, guid: caff7daa29ed80547bbcab65c7792ef9,
         type: 3}
       propertyPath: dialogLines.Array.data[18]
-      value: Reluctantly or not, you follow. As you enter a pre-recorded holographic
-        projection of your coworker, C0D3W1Z4RD begins following you.
+      value: BACKGROUNDCHANGE
       objectReference: {fileID: 0}
     - target: {fileID: 8427216516346150109, guid: caff7daa29ed80547bbcab65c7792ef9,
         type: 3}
       propertyPath: dialogLines.Array.data[19]
-      value: "The map that you\u2019re about to enter is truly not\u2026um. Finished.
-        At all."
+      value: You put on the OMNIVISION GLASSES where you are both transported to
+        the Omniverse.
       objectReference: {fileID: 0}
     - target: {fileID: 8427216516346150109, guid: caff7daa29ed80547bbcab65c7792ef9,
         type: 3}
       propertyPath: dialogLines.Array.data[20]
-      value: "Don\u2019t mind the bugs. Easier to look at mistakes when they have
-        cute friends all over them...haha."
+      value: Thanks for letting me join you, it's nice to leave the house and take
+        a breather.
       objectReference: {fileID: 0}
     - target: {fileID: 8427216516346150109, guid: caff7daa29ed80547bbcab65c7792ef9,
         type: 3}
       propertyPath: dialogLines.Array.data[21]
-      value: So all the technical bugs have little 3d models of bugs around.
+      value: BACKGROUNDCHANGE
       objectReference: {fileID: 0}
     - target: {fileID: 8427216516346150109, guid: caff7daa29ed80547bbcab65c7792ef9,
         type: 3}
       propertyPath: dialogLines.Array.data[22]
-      value: "I know I\u2019m not supposed to add pointless editions this close to
-        a deadline but\u2026things get carried away sometimes!"
+      value: 'You are not walking for long, before you both know it you arrive at
+        the Omni-Box Theater. '
       objectReference: {fileID: 0}
     - target: {fileID: 8427216516346150109, guid: caff7daa29ed80547bbcab65c7792ef9,
         type: 3}
       propertyPath: dialogLines.Array.data[23]
-      value: "I\u2019M ALOWED TO HAVE FUN SOMETIMES!"
+      value: "Huh\u2026this looks interesting."
       objectReference: {fileID: 0}
     - target: {fileID: 8427216516346150109, guid: caff7daa29ed80547bbcab65c7792ef9,
         type: 3}
       propertyPath: dialogLines.Array.data[24]
-      value: You have to kind of speedwalk to keep up with Celci.
+      value: "The Omni-Box Theater looks run down, hardly any banners of what\u2019s
+        being shown. However, one banner looks pristine as you two head towards the
+        entrance."
       objectReference: {fileID: 0}
     - target: {fileID: 8427216516346150109, guid: caff7daa29ed80547bbcab65c7792ef9,
         type: 3}
       propertyPath: dialogLines.Array.data[25]
-      value: "They\u2019re standing at the end of the tunnel looking out at...A small
-        suburban street? Each of the houses look EXTREMELY unfinished."
+      value: "The both of you come to a stop and your eyes widen. The banner displays
+        \u2018The Seafarer Lunar\u2019."
       objectReference: {fileID: 0}
     - target: {fileID: 8427216516346150109, guid: caff7daa29ed80547bbcab65c7792ef9,
         type: 3}
       propertyPath: dialogLines.Array.data[26]
-      value: "There's a waterfall coming from a house with an overflowing sink. There\u2019s
-        temp assets and wire framed objects littering the streets like trash. Celci
-        looks at you."
+      value: Oh, I remember this! I used to watch this show when I was a kid.
       objectReference: {fileID: 0}
     - target: {fileID: 8427216516346150109, guid: caff7daa29ed80547bbcab65c7792ef9,
         type: 3}
       propertyPath: dialogLines.Array.data[27]
-      value: "Let\u2019s poke around shall we?"
+      value: "Lotte\u2019s eyes shimmer with excitement as she looks at the banner
+        with the magical girl in holding her wand and posing."
+      objectReference: {fileID: 0}
+    - target: {fileID: 8427216516346150109, guid: caff7daa29ed80547bbcab65c7792ef9,
+        type: 3}
+      propertyPath: dialogLines.Array.data[28]
+      value: What is it about?
+      objectReference: {fileID: 0}
+    - target: {fileID: 8427216516346150109, guid: caff7daa29ed80547bbcab65c7792ef9,
+        type: 3}
+      propertyPath: dialogLines.Array.data[29]
+      value: You look over to Lotte, giving her a soft smile.
+      objectReference: {fileID: 0}
+    - target: {fileID: 8427216516346150109, guid: caff7daa29ed80547bbcab65c7792ef9,
+        type: 3}
+      propertyPath: dialogLines.Array.data[30]
+      value: "It\u2019s about a magical seafarer lunar who\u2019s name is Natsume.
+        She defeats evildoers with the power of friendship and her magic!"
+      objectReference: {fileID: 0}
+    - target: {fileID: 8427216516346150109, guid: caff7daa29ed80547bbcab65c7792ef9,
+        type: 3}
+      propertyPath: dialogLines.Array.data[31]
+      value: CHOICE
+      objectReference: {fileID: 0}
+    - target: {fileID: 8427216516346150109, guid: caff7daa29ed80547bbcab65c7792ef9,
+        type: 3}
+      propertyPath: dialogLines.Array.data[32]
+      value: Anyways, we should get going and watch the anime, right?
+      objectReference: {fileID: 0}
+    - target: {fileID: 8427216516346150109, guid: caff7daa29ed80547bbcab65c7792ef9,
+        type: 3}
+      propertyPath: dialogLines.Array.data[33]
+      value: Please! I do not think I can contain my excitement.
+      objectReference: {fileID: 0}
+    - target: {fileID: 8427216516346150109, guid: caff7daa29ed80547bbcab65c7792ef9,
+        type: 3}
+      propertyPath: dialogLines.Array.data[34]
+      value: She lets out an excited squeal before you both head inside.
+      objectReference: {fileID: 0}
+    - target: {fileID: 8427216516346150109, guid: caff7daa29ed80547bbcab65c7792ef9,
+        type: 3}
+      propertyPath: dialogLines.Array.data[35]
+      value: "When you both take your seats, 'The Seafarer Lunar\u2019 theme song
+        starts to play."
       objectReference: {fileID: 0}
     - target: {fileID: 8427216516346150109, guid: caff7daa29ed80547bbcab65c7792ef9,
         type: 3}
       propertyPath: speakersPerLine.Array.size
-      value: 28
+      value: 36
       objectReference: {fileID: 0}
     - target: {fileID: 8427216516346150109, guid: caff7daa29ed80547bbcab65c7792ef9,
         type: 3}
       propertyPath: characterSprites.Array.size
-      value: 3
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8427216516346150109, guid: caff7daa29ed80547bbcab65c7792ef9,
         type: 3}
@@ -1481,22 +1466,22 @@ PrefabInstance:
     - target: {fileID: 8427216516346150109, guid: caff7daa29ed80547bbcab65c7792ef9,
         type: 3}
       propertyPath: characterPortraits.Array.size
-      value: 3
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8427216516346150109, guid: caff7daa29ed80547bbcab65c7792ef9,
         type: 3}
       propertyPath: speakersPerLine.Array.data[1]
-      value: 
+      value: You
       objectReference: {fileID: 0}
     - target: {fileID: 8427216516346150109, guid: caff7daa29ed80547bbcab65c7792ef9,
         type: 3}
       propertyPath: speakersPerLine.Array.data[2]
-      value: 
+      value: Lotte
       objectReference: {fileID: 0}
     - target: {fileID: 8427216516346150109, guid: caff7daa29ed80547bbcab65c7792ef9,
         type: 3}
       propertyPath: speakersPerLine.Array.data[3]
-      value: Noki
+      value: Lotte
       objectReference: {fileID: 0}
     - target: {fileID: 8427216516346150109, guid: caff7daa29ed80547bbcab65c7792ef9,
         type: 3}
@@ -1511,27 +1496,27 @@ PrefabInstance:
     - target: {fileID: 8427216516346150109, guid: caff7daa29ed80547bbcab65c7792ef9,
         type: 3}
       propertyPath: speakersPerLine.Array.data[7]
-      value: Celci
+      value: 
       objectReference: {fileID: 0}
     - target: {fileID: 8427216516346150109, guid: caff7daa29ed80547bbcab65c7792ef9,
         type: 3}
       propertyPath: speakersPerLine.Array.data[8]
-      value: 
+      value: Lotte
       objectReference: {fileID: 0}
     - target: {fileID: 8427216516346150109, guid: caff7daa29ed80547bbcab65c7792ef9,
         type: 3}
       propertyPath: speakersPerLine.Array.data[10]
-      value: 
+      value: Lotte
       objectReference: {fileID: 0}
     - target: {fileID: 8427216516346150109, guid: caff7daa29ed80547bbcab65c7792ef9,
         type: 3}
       propertyPath: speakersPerLine.Array.data[11]
-      value: 
+      value: You
       objectReference: {fileID: 0}
     - target: {fileID: 8427216516346150109, guid: caff7daa29ed80547bbcab65c7792ef9,
         type: 3}
       propertyPath: speakersPerLine.Array.data[12]
-      value: Celci
+      value: You
       objectReference: {fileID: 0}
     - target: {fileID: 8427216516346150109, guid: caff7daa29ed80547bbcab65c7792ef9,
         type: 3}
@@ -1540,8 +1525,13 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8427216516346150109, guid: caff7daa29ed80547bbcab65c7792ef9,
         type: 3}
+      propertyPath: speakersPerLine.Array.data[14]
+      value: You
+      objectReference: {fileID: 0}
+    - target: {fileID: 8427216516346150109, guid: caff7daa29ed80547bbcab65c7792ef9,
+        type: 3}
       propertyPath: speakersPerLine.Array.data[15]
-      value: 
+      value: Lotte
       objectReference: {fileID: 0}
     - target: {fileID: 8427216516346150109, guid: caff7daa29ed80547bbcab65c7792ef9,
         type: 3}
@@ -1551,7 +1541,7 @@ PrefabInstance:
     - target: {fileID: 8427216516346150109, guid: caff7daa29ed80547bbcab65c7792ef9,
         type: 3}
       propertyPath: speakersPerLine.Array.data[17]
-      value: Celci
+      value: 
       objectReference: {fileID: 0}
     - target: {fileID: 8427216516346150109, guid: caff7daa29ed80547bbcab65c7792ef9,
         type: 3}
@@ -1561,27 +1551,32 @@ PrefabInstance:
     - target: {fileID: 8427216516346150109, guid: caff7daa29ed80547bbcab65c7792ef9,
         type: 3}
       propertyPath: speakersPerLine.Array.data[19]
-      value: C0D3-W1Z4RD
+      value: 
       objectReference: {fileID: 0}
     - target: {fileID: 8427216516346150109, guid: caff7daa29ed80547bbcab65c7792ef9,
         type: 3}
       propertyPath: speakersPerLine.Array.data[20]
-      value: C0D3-W1Z4RD
+      value: Lotte
       objectReference: {fileID: 0}
     - target: {fileID: 8427216516346150109, guid: caff7daa29ed80547bbcab65c7792ef9,
         type: 3}
       propertyPath: speakersPerLine.Array.data[21]
-      value: C0D3-W1Z4RD
+      value: 
       objectReference: {fileID: 0}
     - target: {fileID: 8427216516346150109, guid: caff7daa29ed80547bbcab65c7792ef9,
         type: 3}
       propertyPath: speakersPerLine.Array.data[22]
-      value: C0D3-W1Z4RD
+      value: 
       objectReference: {fileID: 0}
     - target: {fileID: 8427216516346150109, guid: caff7daa29ed80547bbcab65c7792ef9,
         type: 3}
       propertyPath: speakersPerLine.Array.data[23]
-      value: C0D3-W1Z4RD
+      value: You
+      objectReference: {fileID: 0}
+    - target: {fileID: 8427216516346150109, guid: caff7daa29ed80547bbcab65c7792ef9,
+        type: 3}
+      propertyPath: speakersPerLine.Array.data[24]
+      value: 
       objectReference: {fileID: 0}
     - target: {fileID: 8427216516346150109, guid: caff7daa29ed80547bbcab65c7792ef9,
         type: 3}
@@ -1590,8 +1585,38 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8427216516346150109, guid: caff7daa29ed80547bbcab65c7792ef9,
         type: 3}
+      propertyPath: speakersPerLine.Array.data[26]
+      value: You
+      objectReference: {fileID: 0}
+    - target: {fileID: 8427216516346150109, guid: caff7daa29ed80547bbcab65c7792ef9,
+        type: 3}
       propertyPath: speakersPerLine.Array.data[27]
-      value: Celci
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 8427216516346150109, guid: caff7daa29ed80547bbcab65c7792ef9,
+        type: 3}
+      propertyPath: speakersPerLine.Array.data[28]
+      value: Lotte
+      objectReference: {fileID: 0}
+    - target: {fileID: 8427216516346150109, guid: caff7daa29ed80547bbcab65c7792ef9,
+        type: 3}
+      propertyPath: speakersPerLine.Array.data[29]
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 8427216516346150109, guid: caff7daa29ed80547bbcab65c7792ef9,
+        type: 3}
+      propertyPath: speakersPerLine.Array.data[30]
+      value: You
+      objectReference: {fileID: 0}
+    - target: {fileID: 8427216516346150109, guid: caff7daa29ed80547bbcab65c7792ef9,
+        type: 3}
+      propertyPath: speakersPerLine.Array.data[32]
+      value: You
+      objectReference: {fileID: 0}
+    - target: {fileID: 8427216516346150109, guid: caff7daa29ed80547bbcab65c7792ef9,
+        type: 3}
+      propertyPath: speakersPerLine.Array.data[33]
+      value: Lotte
       objectReference: {fileID: 0}
     - target: {fileID: 8427216516346150109, guid: caff7daa29ed80547bbcab65c7792ef9,
         type: 3}
@@ -1612,16 +1637,16 @@ PrefabInstance:
         type: 3}
       propertyPath: characterPortraits.Array.data[1]
       value: 
-      objectReference: {fileID: 118797579}
+      objectReference: {fileID: 0}
     - target: {fileID: 8427216516346150109, guid: caff7daa29ed80547bbcab65c7792ef9,
         type: 3}
       propertyPath: characterPortraits.Array.data[2]
       value: 
-      objectReference: {fileID: 1710154203}
+      objectReference: {fileID: 0}
     - target: {fileID: 8427216516346150109, guid: caff7daa29ed80547bbcab65c7792ef9,
         type: 3}
       propertyPath: characterSprites.Array.data[0].spriteOptions.Array.size
-      value: 28
+      value: 36
       objectReference: {fileID: 0}
     - target: {fileID: 8427216516346150109, guid: caff7daa29ed80547bbcab65c7792ef9,
         type: 3}
@@ -1637,61 +1662,61 @@ PrefabInstance:
         type: 3}
       propertyPath: characterSprites.Array.data[0].spriteOptions.Array.data[0]
       value: 
-      objectReference: {fileID: 21300000, guid: 602edf163ccd2364b81a4cf9bbd9862f,
+      objectReference: {fileID: 21300000, guid: c673d1b958b99b64c8a42747de073b2f,
         type: 3}
     - target: {fileID: 8427216516346150109, guid: caff7daa29ed80547bbcab65c7792ef9,
         type: 3}
       propertyPath: characterSprites.Array.data[0].spriteOptions.Array.data[1]
       value: 
-      objectReference: {fileID: 21300000, guid: 602edf163ccd2364b81a4cf9bbd9862f,
+      objectReference: {fileID: 21300000, guid: c673d1b958b99b64c8a42747de073b2f,
         type: 3}
     - target: {fileID: 8427216516346150109, guid: caff7daa29ed80547bbcab65c7792ef9,
         type: 3}
       propertyPath: characterSprites.Array.data[0].spriteOptions.Array.data[2]
       value: 
-      objectReference: {fileID: 21300000, guid: 602edf163ccd2364b81a4cf9bbd9862f,
+      objectReference: {fileID: 21300000, guid: c673d1b958b99b64c8a42747de073b2f,
         type: 3}
     - target: {fileID: 8427216516346150109, guid: caff7daa29ed80547bbcab65c7792ef9,
         type: 3}
       propertyPath: characterSprites.Array.data[0].spriteOptions.Array.data[3]
       value: 
-      objectReference: {fileID: 21300000, guid: 1efff82e0a469464987b91e1e6ff298e,
+      objectReference: {fileID: 21300000, guid: c673d1b958b99b64c8a42747de073b2f,
         type: 3}
     - target: {fileID: 8427216516346150109, guid: caff7daa29ed80547bbcab65c7792ef9,
         type: 3}
       propertyPath: characterSprites.Array.data[0].spriteOptions.Array.data[4]
       value: 
-      objectReference: {fileID: 21300000, guid: 602edf163ccd2364b81a4cf9bbd9862f,
+      objectReference: {fileID: 21300000, guid: c673d1b958b99b64c8a42747de073b2f,
         type: 3}
     - target: {fileID: 8427216516346150109, guid: caff7daa29ed80547bbcab65c7792ef9,
         type: 3}
       propertyPath: characterSprites.Array.data[0].spriteOptions.Array.data[5]
       value: 
-      objectReference: {fileID: 21300000, guid: 602edf163ccd2364b81a4cf9bbd9862f,
+      objectReference: {fileID: 21300000, guid: c673d1b958b99b64c8a42747de073b2f,
         type: 3}
     - target: {fileID: 8427216516346150109, guid: caff7daa29ed80547bbcab65c7792ef9,
         type: 3}
       propertyPath: characterSprites.Array.data[0].spriteOptions.Array.data[6]
       value: 
-      objectReference: {fileID: 21300000, guid: 602edf163ccd2364b81a4cf9bbd9862f,
+      objectReference: {fileID: 21300000, guid: c673d1b958b99b64c8a42747de073b2f,
         type: 3}
     - target: {fileID: 8427216516346150109, guid: caff7daa29ed80547bbcab65c7792ef9,
         type: 3}
       propertyPath: characterSprites.Array.data[0].spriteOptions.Array.data[7]
       value: 
-      objectReference: {fileID: 21300000, guid: 602edf163ccd2364b81a4cf9bbd9862f,
+      objectReference: {fileID: 21300000, guid: c673d1b958b99b64c8a42747de073b2f,
         type: 3}
     - target: {fileID: 8427216516346150109, guid: caff7daa29ed80547bbcab65c7792ef9,
         type: 3}
       propertyPath: characterSprites.Array.data[0].spriteOptions.Array.data[8]
       value: 
-      objectReference: {fileID: 21300000, guid: 602edf163ccd2364b81a4cf9bbd9862f,
+      objectReference: {fileID: 21300000, guid: c673d1b958b99b64c8a42747de073b2f,
         type: 3}
     - target: {fileID: 8427216516346150109, guid: caff7daa29ed80547bbcab65c7792ef9,
         type: 3}
       propertyPath: characterSprites.Array.data[0].spriteOptions.Array.data[9]
       value: 
-      objectReference: {fileID: 21300000, guid: 602edf163ccd2364b81a4cf9bbd9862f,
+      objectReference: {fileID: 21300000, guid: c673d1b958b99b64c8a42747de073b2f,
         type: 3}
     - target: {fileID: 8427216516346150109, guid: caff7daa29ed80547bbcab65c7792ef9,
         type: 3}
@@ -1817,109 +1842,157 @@ PrefabInstance:
         type: 3}
       propertyPath: characterSprites.Array.data[0].spriteOptions.Array.data[10]
       value: 
-      objectReference: {fileID: 21300000, guid: 602edf163ccd2364b81a4cf9bbd9862f,
+      objectReference: {fileID: 21300000, guid: c673d1b958b99b64c8a42747de073b2f,
         type: 3}
     - target: {fileID: 8427216516346150109, guid: caff7daa29ed80547bbcab65c7792ef9,
         type: 3}
       propertyPath: characterSprites.Array.data[0].spriteOptions.Array.data[11]
       value: 
-      objectReference: {fileID: 21300000, guid: 602edf163ccd2364b81a4cf9bbd9862f,
+      objectReference: {fileID: 21300000, guid: c673d1b958b99b64c8a42747de073b2f,
         type: 3}
     - target: {fileID: 8427216516346150109, guid: caff7daa29ed80547bbcab65c7792ef9,
         type: 3}
       propertyPath: characterSprites.Array.data[0].spriteOptions.Array.data[12]
       value: 
-      objectReference: {fileID: 21300000, guid: 602edf163ccd2364b81a4cf9bbd9862f,
+      objectReference: {fileID: 21300000, guid: c673d1b958b99b64c8a42747de073b2f,
         type: 3}
     - target: {fileID: 8427216516346150109, guid: caff7daa29ed80547bbcab65c7792ef9,
         type: 3}
       propertyPath: characterSprites.Array.data[0].spriteOptions.Array.data[13]
       value: 
-      objectReference: {fileID: 21300000, guid: 602edf163ccd2364b81a4cf9bbd9862f,
+      objectReference: {fileID: 21300000, guid: c9079294e79577a46904ecc4dd24a009,
         type: 3}
     - target: {fileID: 8427216516346150109, guid: caff7daa29ed80547bbcab65c7792ef9,
         type: 3}
       propertyPath: characterSprites.Array.data[0].spriteOptions.Array.data[14]
       value: 
-      objectReference: {fileID: 21300000, guid: 602edf163ccd2364b81a4cf9bbd9862f,
+      objectReference: {fileID: 21300000, guid: c9079294e79577a46904ecc4dd24a009,
         type: 3}
     - target: {fileID: 8427216516346150109, guid: caff7daa29ed80547bbcab65c7792ef9,
         type: 3}
       propertyPath: characterSprites.Array.data[0].spriteOptions.Array.data[15]
       value: 
-      objectReference: {fileID: 21300000, guid: 602edf163ccd2364b81a4cf9bbd9862f,
+      objectReference: {fileID: 21300000, guid: c9079294e79577a46904ecc4dd24a009,
         type: 3}
     - target: {fileID: 8427216516346150109, guid: caff7daa29ed80547bbcab65c7792ef9,
         type: 3}
       propertyPath: characterSprites.Array.data[0].spriteOptions.Array.data[16]
       value: 
-      objectReference: {fileID: 21300000, guid: 602edf163ccd2364b81a4cf9bbd9862f,
+      objectReference: {fileID: 21300000, guid: 3900c097c0bef5c41ab3e639a31d5510,
         type: 3}
     - target: {fileID: 8427216516346150109, guid: caff7daa29ed80547bbcab65c7792ef9,
         type: 3}
       propertyPath: characterSprites.Array.data[0].spriteOptions.Array.data[17]
       value: 
-      objectReference: {fileID: 21300000, guid: 602edf163ccd2364b81a4cf9bbd9862f,
+      objectReference: {fileID: 21300000, guid: 3900c097c0bef5c41ab3e639a31d5510,
         type: 3}
     - target: {fileID: 8427216516346150109, guid: caff7daa29ed80547bbcab65c7792ef9,
         type: 3}
       propertyPath: characterSprites.Array.data[0].spriteOptions.Array.data[18]
       value: 
-      objectReference: {fileID: 21300000, guid: 602edf163ccd2364b81a4cf9bbd9862f,
+      objectReference: {fileID: 21300000, guid: 3900c097c0bef5c41ab3e639a31d5510,
         type: 3}
     - target: {fileID: 8427216516346150109, guid: caff7daa29ed80547bbcab65c7792ef9,
         type: 3}
       propertyPath: characterSprites.Array.data[0].spriteOptions.Array.data[19]
       value: 
-      objectReference: {fileID: 21300000, guid: 602edf163ccd2364b81a4cf9bbd9862f,
+      objectReference: {fileID: 21300000, guid: 3900c097c0bef5c41ab3e639a31d5510,
         type: 3}
     - target: {fileID: 8427216516346150109, guid: caff7daa29ed80547bbcab65c7792ef9,
         type: 3}
       propertyPath: characterSprites.Array.data[0].spriteOptions.Array.data[20]
       value: 
-      objectReference: {fileID: 21300000, guid: 602edf163ccd2364b81a4cf9bbd9862f,
+      objectReference: {fileID: 21300000, guid: 3900c097c0bef5c41ab3e639a31d5510,
         type: 3}
     - target: {fileID: 8427216516346150109, guid: caff7daa29ed80547bbcab65c7792ef9,
         type: 3}
       propertyPath: characterSprites.Array.data[0].spriteOptions.Array.data[21]
       value: 
-      objectReference: {fileID: 21300000, guid: 602edf163ccd2364b81a4cf9bbd9862f,
+      objectReference: {fileID: 21300000, guid: 3900c097c0bef5c41ab3e639a31d5510,
         type: 3}
     - target: {fileID: 8427216516346150109, guid: caff7daa29ed80547bbcab65c7792ef9,
         type: 3}
       propertyPath: characterSprites.Array.data[0].spriteOptions.Array.data[22]
       value: 
-      objectReference: {fileID: 21300000, guid: 602edf163ccd2364b81a4cf9bbd9862f,
+      objectReference: {fileID: 21300000, guid: 3900c097c0bef5c41ab3e639a31d5510,
         type: 3}
     - target: {fileID: 8427216516346150109, guid: caff7daa29ed80547bbcab65c7792ef9,
         type: 3}
       propertyPath: characterSprites.Array.data[0].spriteOptions.Array.data[23]
       value: 
-      objectReference: {fileID: 21300000, guid: 602edf163ccd2364b81a4cf9bbd9862f,
+      objectReference: {fileID: 21300000, guid: 3900c097c0bef5c41ab3e639a31d5510,
         type: 3}
     - target: {fileID: 8427216516346150109, guid: caff7daa29ed80547bbcab65c7792ef9,
         type: 3}
       propertyPath: characterSprites.Array.data[0].spriteOptions.Array.data[24]
       value: 
-      objectReference: {fileID: 21300000, guid: 602edf163ccd2364b81a4cf9bbd9862f,
+      objectReference: {fileID: 21300000, guid: 3900c097c0bef5c41ab3e639a31d5510,
         type: 3}
     - target: {fileID: 8427216516346150109, guid: caff7daa29ed80547bbcab65c7792ef9,
         type: 3}
       propertyPath: characterSprites.Array.data[0].spriteOptions.Array.data[25]
       value: 
-      objectReference: {fileID: 21300000, guid: 602edf163ccd2364b81a4cf9bbd9862f,
+      objectReference: {fileID: 21300000, guid: 3900c097c0bef5c41ab3e639a31d5510,
         type: 3}
     - target: {fileID: 8427216516346150109, guid: caff7daa29ed80547bbcab65c7792ef9,
         type: 3}
       propertyPath: characterSprites.Array.data[0].spriteOptions.Array.data[26]
       value: 
-      objectReference: {fileID: 21300000, guid: 602edf163ccd2364b81a4cf9bbd9862f,
+      objectReference: {fileID: 21300000, guid: 3900c097c0bef5c41ab3e639a31d5510,
         type: 3}
     - target: {fileID: 8427216516346150109, guid: caff7daa29ed80547bbcab65c7792ef9,
         type: 3}
       propertyPath: characterSprites.Array.data[0].spriteOptions.Array.data[27]
       value: 
-      objectReference: {fileID: 21300000, guid: 602edf163ccd2364b81a4cf9bbd9862f,
+      objectReference: {fileID: 21300000, guid: 3900c097c0bef5c41ab3e639a31d5510,
+        type: 3}
+    - target: {fileID: 8427216516346150109, guid: caff7daa29ed80547bbcab65c7792ef9,
+        type: 3}
+      propertyPath: characterSprites.Array.data[0].spriteOptions.Array.data[28]
+      value: 
+      objectReference: {fileID: 21300000, guid: 3900c097c0bef5c41ab3e639a31d5510,
+        type: 3}
+    - target: {fileID: 8427216516346150109, guid: caff7daa29ed80547bbcab65c7792ef9,
+        type: 3}
+      propertyPath: characterSprites.Array.data[0].spriteOptions.Array.data[29]
+      value: 
+      objectReference: {fileID: 21300000, guid: 3900c097c0bef5c41ab3e639a31d5510,
+        type: 3}
+    - target: {fileID: 8427216516346150109, guid: caff7daa29ed80547bbcab65c7792ef9,
+        type: 3}
+      propertyPath: characterSprites.Array.data[0].spriteOptions.Array.data[30]
+      value: 
+      objectReference: {fileID: 21300000, guid: 3900c097c0bef5c41ab3e639a31d5510,
+        type: 3}
+    - target: {fileID: 8427216516346150109, guid: caff7daa29ed80547bbcab65c7792ef9,
+        type: 3}
+      propertyPath: characterSprites.Array.data[0].spriteOptions.Array.data[31]
+      value: 
+      objectReference: {fileID: 21300000, guid: 3900c097c0bef5c41ab3e639a31d5510,
+        type: 3}
+    - target: {fileID: 8427216516346150109, guid: caff7daa29ed80547bbcab65c7792ef9,
+        type: 3}
+      propertyPath: characterSprites.Array.data[0].spriteOptions.Array.data[32]
+      value: 
+      objectReference: {fileID: 21300000, guid: 3900c097c0bef5c41ab3e639a31d5510,
+        type: 3}
+    - target: {fileID: 8427216516346150109, guid: caff7daa29ed80547bbcab65c7792ef9,
+        type: 3}
+      propertyPath: characterSprites.Array.data[0].spriteOptions.Array.data[33]
+      value: 
+      objectReference: {fileID: 21300000, guid: 3900c097c0bef5c41ab3e639a31d5510,
+        type: 3}
+    - target: {fileID: 8427216516346150109, guid: caff7daa29ed80547bbcab65c7792ef9,
+        type: 3}
+      propertyPath: characterSprites.Array.data[0].spriteOptions.Array.data[34]
+      value: 
+      objectReference: {fileID: 21300000, guid: 3900c097c0bef5c41ab3e639a31d5510,
+        type: 3}
+    - target: {fileID: 8427216516346150109, guid: caff7daa29ed80547bbcab65c7792ef9,
+        type: 3}
+      propertyPath: characterSprites.Array.data[0].spriteOptions.Array.data[35]
+      value: 
+      objectReference: {fileID: 21300000, guid: 3900c097c0bef5c41ab3e639a31d5510,
         type: 3}
     - target: {fileID: 8427216516346150109, guid: caff7daa29ed80547bbcab65c7792ef9,
         type: 3}
@@ -2312,81 +2385,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &1710154201
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1710154202}
-  - component: {fileID: 1710154204}
-  - component: {fileID: 1710154203}
-  m_Layer: 5
-  m_Name: C0D3-W1Z4RD
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!224 &1710154202
-RectTransform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1710154201}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 1
-  m_Children: []
-  m_Father: {fileID: 725283230}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0.5}
-  m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 840, y: -3.1393}
-  m_SizeDelta: {x: 2160, y: 2160}
-  m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &1710154203
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1710154201}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_Material: {fileID: 0}
-  m_Color: {r: 0.5019608, g: 0.5019608, b: 0.5019608, a: 1}
-  m_RaycastTarget: 1
-  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
-  m_Maskable: 1
-  m_OnCullStateChanged:
-    m_PersistentCalls:
-      m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 79f4cba0f14c0bd46951f09f7bd48970, type: 3}
-  m_Type: 0
-  m_PreserveAspect: 0
-  m_FillCenter: 1
-  m_FillMethod: 4
-  m_FillAmount: 1
-  m_FillClockwise: 1
-  m_FillOrigin: 0
-  m_UseSpriteMesh: 0
-  m_PixelsPerUnitMultiplier: 1
---- !u!222 &1710154204
-CanvasRenderer:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1710154201}
-  m_CullTransparentMesh: 1
 --- !u!1 &1741321906
 GameObject:
   m_ObjectHideFlags: 0
@@ -2444,7 +2442,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 546123abd5df3fb4f85c7cfdda25d81b, type: 3}
+  m_Sprite: {fileID: 21300000, guid: c7a0e15d9ed25b54087e52d3518a9065, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1

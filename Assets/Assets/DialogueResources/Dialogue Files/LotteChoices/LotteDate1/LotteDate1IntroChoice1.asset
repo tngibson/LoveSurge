@@ -1,0 +1,79 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2de807345bdd09646bb1f755bf64c760, type: 3}
+  m_Name: LotteDate1IntroChoice1
+  m_EditorClassIdentifier: 
+  choiceOptions:
+  - Strike a pose.
+  - Don't strike a pose.
+  choicePaths:
+  - afterChoiceDialogLines:
+    - You spin and then hold two fingers in front of your eye, winking as you strike
+      a magical girl pose.
+    - 'Lotte lets out a soft laugh and smiles. '
+    afterChoiceSpeakersPerLine:
+    - 
+    - 
+    afterChoiceSpriteOptions:
+    - spriteOptions:
+      - {fileID: 21300000, guid: 3900c097c0bef5c41ab3e639a31d5510, type: 3}
+      - {fileID: 21300000, guid: 3900c097c0bef5c41ab3e639a31d5510, type: 3}
+    statTag: 
+    statValue: 0
+    celciIntroDialog:
+      lines: []
+      speakers: []
+      spriteOptions:
+      - spriteOptions: []
+    celciDate2Dialog:
+      lines: []
+      speakers: []
+      spriteOptions: []
+    backgrounds: []
+    nestedChoices: []
+  - afterChoiceDialogLines:
+    - "I can\u2019t do her pose justice, but just imagine it!"
+    - Lotte shakes her head as she smiles.
+    afterChoiceSpeakersPerLine:
+    - You
+    - 
+    afterChoiceSpriteOptions:
+    - spriteOptions:
+      - {fileID: 21300000, guid: 3900c097c0bef5c41ab3e639a31d5510, type: 3}
+      - {fileID: 21300000, guid: 3900c097c0bef5c41ab3e639a31d5510, type: 3}
+    statTag: 
+    statValue: 0
+    celciIntroDialog:
+      lines:
+      - "All the windows in the house are open and there are several new fans blowing
+        the hot air around. None of this is really helping. Miguel\u2019s voice rings
+        out from deep within the garage."
+      - SOMEONE PLEASE SAVE US.
+      - Ugh. Oh my god. Sorry.
+      - "Guess we\u2019re just making the whole house miserable today."
+      speakers:
+      - 
+      - Miguel
+      - Celci
+      - Celci
+      spriteOptions:
+      - spriteOptions:
+        - {fileID: 21300000, guid: 1a9896ab5c18242478f77c4b08f279e6, type: 3}
+        - {fileID: 21300000, guid: a3252816a49c415409db0f9ffd8c3b1a, type: 3}
+        - {fileID: 21300000, guid: 1a9896ab5c18242478f77c4b08f279e6, type: 3}
+        - {fileID: 21300000, guid: 1a9896ab5c18242478f77c4b08f279e6, type: 3}
+    celciDate2Dialog:
+      lines: []
+      speakers: []
+      spriteOptions: []
+    backgrounds: []
+    nestedChoices: []
