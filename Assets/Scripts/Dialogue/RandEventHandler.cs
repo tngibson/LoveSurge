@@ -78,7 +78,9 @@ public class RandEventHandler : MonoBehaviour
     [SerializeField] private CelciIntroChoiceData celciIntroDialog; // Shown if house is not hot
     [SerializeField] private CelciDate2ChoiceData celciDate2Dialog; // Shown if player threatens Celci
 
+    [SerializeField] private bool isNokiFinalDeepConvo = false;
     [SerializeField] private bool isCelciFinalDeepConvo = false;
+    [SerializeField] private bool isLotteFinalDeepConvo = false;
 
     void Start()
     {
@@ -103,6 +105,12 @@ public class RandEventHandler : MonoBehaviour
             dialogLines[91] = "Thanks for the other stuff you said too. ";
             speakersPerLine[91] = "Celci";
             dialogLines[97] = "They hold your arm closely to them. You walk home together as the sun peeks up over the horizon.";
+        }
+
+        // If we have finished all Dates, we go to DemoOutro when we finish the Dialog
+        if ((isNokiFinalDeepConvo || isCelciFinalDeepConvo || isLotteFinalDeepConvo ) && (LocationManager.Instance.characterDates[0].allDatesDone && LocationManager.Instance.characterDates[1].allDatesDone && LocationManager.Instance.characterDates[2].allDatesDone))
+        {
+            mapButton.GetComponent<MapScript>().locName = "DemoOutro";
         }
 
         DisplayLine(); // Display the first line
