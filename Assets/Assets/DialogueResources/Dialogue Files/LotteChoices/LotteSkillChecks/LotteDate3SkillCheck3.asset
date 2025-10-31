@@ -1,0 +1,78 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8cbd23a6cba4cdc48b96bcdf5fdcbc9c, type: 3}
+  m_Name: LotteDate3SkillCheck3
+  m_EditorClassIdentifier: 
+  skillName: Courage
+  successDialogLines:
+  - "Lotte, I know you keep saying you\u2019re fine\u2026 but you don\u2019t seem
+    fine. You don\u2019t have to keep pretending with me."
+  - "Pretending\u2026 huh."
+  - Lotte pauses for a moment, then laughs shakily.
+  - "You really don\u2019t pull punches, do you?"
+  - She exhales, finally looking up at you.
+  - "Okay, maybe I\u2019ve been\u2026 off lately. Just... stuff piling up. But it\u2019s
+    kind of nice that you noticed."
+  - You both sit there, quiet, but the silence finally feels safe.
+  - "You don\u2019t have to tell me everything. I\u2019ll just be here, alright?"
+  - "Heh\u2026 you\u2019re way too nice sometimes, you know that?"
+  successSpeakersPerLine:
+  - You
+  - Lotte
+  - 
+  - Lotte
+  - 
+  - Lotte
+  - 
+  - You
+  - Lotte
+  successSpriteOptions:
+  - spriteOptions:
+    - {fileID: 21300000, guid: bbd0bcb58707ea741ac1899b89b7be63, type: 3}
+    - {fileID: 21300000, guid: bbd0bcb58707ea741ac1899b89b7be63, type: 3}
+    - {fileID: 21300000, guid: bbd0bcb58707ea741ac1899b89b7be63, type: 3}
+    - {fileID: 21300000, guid: c673d1b958b99b64c8a42747de073b2f, type: 3}
+    - {fileID: 21300000, guid: c673d1b958b99b64c8a42747de073b2f, type: 3}
+    - {fileID: 21300000, guid: ceba6a5cba9df564bb636b38f3638fed, type: 3}
+    - {fileID: 21300000, guid: ceba6a5cba9df564bb636b38f3638fed, type: 3}
+    - {fileID: 21300000, guid: ceba6a5cba9df564bb636b38f3638fed, type: 3}
+    - {fileID: 21300000, guid: ceba6a5cba9df564bb636b38f3638fed, type: 3}
+  failureDialogLines:
+  - "Hey, uh\u2026 you don\u2019t have to talk about whatever\u2019s on your mind.
+    I mean, it\u2019s late anyway."
+  - "Oh. Right\u2026 yeah. Guess it is."
+  - "You laugh weakly, trying to fill the space that\u2019s now gone quiet."
+  - "Heh, besides, we\u2019ve had enough serious stuff lately, right?"
+  - Lotte looks down again.
+  - "Yeah. Guess that\u2019s easier."
+  - "You can\u2019t tell if she\u2019s agreeing\u2026 or giving up."
+  - "The silence stretches on. You were so close, but you couldn\u2019t bring yourself
+    to cross that line."
+  failureSpeakersPerLine:
+  - You
+  - Lotte
+  - 
+  - You
+  - 
+  - Lotte
+  - 
+  - 
+  failureSpriteOptions:
+  - spriteOptions:
+    - {fileID: 21300000, guid: f87102bd0d1966b4ebda9beb54d52a99, type: 3}
+    - {fileID: 21300000, guid: f87102bd0d1966b4ebda9beb54d52a99, type: 3}
+    - {fileID: 21300000, guid: f87102bd0d1966b4ebda9beb54d52a99, type: 3}
+    - {fileID: 21300000, guid: f87102bd0d1966b4ebda9beb54d52a99, type: 3}
+    - {fileID: 21300000, guid: c673d1b958b99b64c8a42747de073b2f, type: 3}
+    - {fileID: 21300000, guid: c673d1b958b99b64c8a42747de073b2f, type: 3}
+    - {fileID: 21300000, guid: c673d1b958b99b64c8a42747de073b2f, type: 3}
+    - {fileID: 21300000, guid: c673d1b958b99b64c8a42747de073b2f, type: 3}

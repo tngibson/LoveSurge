@@ -428,7 +428,7 @@ GameObject:
   - component: {fileID: 637296341}
   - component: {fileID: 637296340}
   m_Layer: 5
-  m_Name: Celci
+  m_Name: Lotte
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -473,7 +473,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: aa606251ffd050c478a601249716a481, type: 3}
+  m_Sprite: {fileID: 21300000, guid: f87102bd0d1966b4ebda9beb54d52a99, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -971,6 +971,10 @@ MonoBehaviour:
   isDateButton: 0
   xHoverScale: 0
   yHoverScale: 0
+  xRaycastPadding: 0
+  yRaycastPadding: 0
+  zRaycastPadding: 0
+  wRaycastPadding: 0
   isStressReducer: 0
   isStressIncreaser: 0
   nextSceneMusic:
@@ -1158,7 +1162,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 065c7163c9f31c142bb638cd17a7ce2f, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 9ddc96bcc8d198d4e8454c5b90dc18dd, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -1533,7 +1537,7 @@ PrefabInstance:
         type: 3}
       propertyPath: skillCheckPaths
       value: 
-      objectReference: {fileID: 11400000, guid: 5e6edb00ff75e2745b5c35716307bf45,
+      objectReference: {fileID: 11400000, guid: e8b605dcccbabee4c9e6fe9e46f8d9f3,
         type: 2}
     - target: {fileID: 4723009407783645740, guid: 7b1b62c8971446f4eb5258d5553f5336,
         type: 3}
@@ -1558,7 +1562,7 @@ PrefabInstance:
     - target: {fileID: 4723009407783645740, guid: 7b1b62c8971446f4eb5258d5553f5336,
         type: 3}
       propertyPath: currentSkillIndex
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4723009407783645740, guid: 7b1b62c8971446f4eb5258d5553f5336,
         type: 3}
@@ -1578,7 +1582,7 @@ PrefabInstance:
     - target: {fileID: 4723009407783645740, guid: 7b1b62c8971446f4eb5258d5553f5336,
         type: 3}
       propertyPath: dialogLines.Array.size
-      value: 8
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 4723009407783645740, guid: 7b1b62c8971446f4eb5258d5553f5336,
         type: 3}
@@ -1612,32 +1616,37 @@ PrefabInstance:
     - target: {fileID: 4723009407783645740, guid: 7b1b62c8971446f4eb5258d5553f5336,
         type: 3}
       propertyPath: dialogLines.Array.data[0]
-      value: Celci suddenly grabs your arm.
+      value: Lotte is eyeing something high on a shelf of books. There is a bit of
+        awe in her eyes.
       objectReference: {fileID: 0}
     - target: {fileID: 4723009407783645740, guid: 7b1b62c8971446f4eb5258d5553f5336,
         type: 3}
       propertyPath: dialogLines.Array.data[1]
-      value: What?
+      value: Watcha looking at?
       objectReference: {fileID: 0}
     - target: {fileID: 4723009407783645740, guid: 7b1b62c8971446f4eb5258d5553f5336,
         type: 3}
       propertyPath: dialogLines.Array.data[2]
-      value: "That\u2019s an emperor butterfly."
+      value: Oh! Sorry, one of the manga just caught my eye! The one with the pink
+        flower, do you see it?
       objectReference: {fileID: 0}
     - target: {fileID: 4723009407783645740, guid: 7b1b62c8971446f4eb5258d5553f5336,
         type: 3}
       propertyPath: dialogLines.Array.data[3]
-      value: Are they rare?
+      value: She points to the top shelf. Despite the narrowness of the full unit,
+        it's far above both of your heads.
       objectReference: {fileID: 0}
     - target: {fileID: 4723009407783645740, guid: 7b1b62c8971446f4eb5258d5553f5336,
         type: 3}
       propertyPath: dialogLines.Array.data[4]
-      value: Crazy rare! Are you stupid?!
+      value: But you do see, tucked among the manga, a collection of about 7 or 8
+        small books with pink spines and a flower on each one showing its volume
+        number.
       objectReference: {fileID: 0}
     - target: {fileID: 4723009407783645740, guid: 7b1b62c8971446f4eb5258d5553f5336,
         type: 3}
       propertyPath: dialogLines.Array.data[5]
-      value: You carefully raise your bug net.
+      value: SKILLCHECK
       objectReference: {fileID: 0}
     - target: {fileID: 4723009407783645740, guid: 7b1b62c8971446f4eb5258d5553f5336,
         type: 3}
@@ -1708,7 +1717,7 @@ PrefabInstance:
     - target: {fileID: 4723009407783645740, guid: 7b1b62c8971446f4eb5258d5553f5336,
         type: 3}
       propertyPath: speakersPerLine.Array.size
-      value: 8
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 4723009407783645740, guid: 7b1b62c8971446f4eb5258d5553f5336,
         type: 3}
@@ -1728,17 +1737,17 @@ PrefabInstance:
     - target: {fileID: 4723009407783645740, guid: 7b1b62c8971446f4eb5258d5553f5336,
         type: 3}
       propertyPath: speakersPerLine.Array.data[2]
-      value: Celci
+      value: Lotte
       objectReference: {fileID: 0}
     - target: {fileID: 4723009407783645740, guid: 7b1b62c8971446f4eb5258d5553f5336,
         type: 3}
       propertyPath: speakersPerLine.Array.data[3]
-      value: You
+      value: 
       objectReference: {fileID: 0}
     - target: {fileID: 4723009407783645740, guid: 7b1b62c8971446f4eb5258d5553f5336,
         type: 3}
       propertyPath: speakersPerLine.Array.data[4]
-      value: Celci
+      value: 
       objectReference: {fileID: 0}
     - target: {fileID: 4723009407783645740, guid: 7b1b62c8971446f4eb5258d5553f5336,
         type: 3}
@@ -1778,43 +1787,43 @@ PrefabInstance:
     - target: {fileID: 4723009407783645740, guid: 7b1b62c8971446f4eb5258d5553f5336,
         type: 3}
       propertyPath: characterSprites.Array.data[0].spriteOptions.Array.size
-      value: 8
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 4723009407783645740, guid: 7b1b62c8971446f4eb5258d5553f5336,
         type: 3}
       propertyPath: characterSprites.Array.data[0].spriteOptions.Array.data[0]
       value: 
-      objectReference: {fileID: 21300000, guid: e14ed0968c923b4469f785fbf5f274ef,
+      objectReference: {fileID: 21300000, guid: c9079294e79577a46904ecc4dd24a009,
         type: 3}
     - target: {fileID: 4723009407783645740, guid: 7b1b62c8971446f4eb5258d5553f5336,
         type: 3}
       propertyPath: characterSprites.Array.data[0].spriteOptions.Array.data[1]
       value: 
-      objectReference: {fileID: 21300000, guid: e14ed0968c923b4469f785fbf5f274ef,
+      objectReference: {fileID: 21300000, guid: c9079294e79577a46904ecc4dd24a009,
         type: 3}
     - target: {fileID: 4723009407783645740, guid: 7b1b62c8971446f4eb5258d5553f5336,
         type: 3}
       propertyPath: characterSprites.Array.data[0].spriteOptions.Array.data[2]
       value: 
-      objectReference: {fileID: 21300000, guid: 1a9896ab5c18242478f77c4b08f279e6,
+      objectReference: {fileID: 21300000, guid: c9079294e79577a46904ecc4dd24a009,
         type: 3}
     - target: {fileID: 4723009407783645740, guid: 7b1b62c8971446f4eb5258d5553f5336,
         type: 3}
       propertyPath: characterSprites.Array.data[0].spriteOptions.Array.data[3]
       value: 
-      objectReference: {fileID: 21300000, guid: 1a9896ab5c18242478f77c4b08f279e6,
+      objectReference: {fileID: 21300000, guid: c9079294e79577a46904ecc4dd24a009,
         type: 3}
     - target: {fileID: 4723009407783645740, guid: 7b1b62c8971446f4eb5258d5553f5336,
         type: 3}
       propertyPath: characterSprites.Array.data[0].spriteOptions.Array.data[4]
       value: 
-      objectReference: {fileID: 21300000, guid: 1a9896ab5c18242478f77c4b08f279e6,
+      objectReference: {fileID: 21300000, guid: c9079294e79577a46904ecc4dd24a009,
         type: 3}
     - target: {fileID: 4723009407783645740, guid: 7b1b62c8971446f4eb5258d5553f5336,
         type: 3}
       propertyPath: characterSprites.Array.data[0].spriteOptions.Array.data[5]
       value: 
-      objectReference: {fileID: 21300000, guid: 1a9896ab5c18242478f77c4b08f279e6,
+      objectReference: {fileID: 21300000, guid: c9079294e79577a46904ecc4dd24a009,
         type: 3}
     - target: {fileID: 4723009407783645740, guid: 7b1b62c8971446f4eb5258d5553f5336,
         type: 3}
@@ -1865,7 +1874,7 @@ PrefabInstance:
     - target: {fileID: 7105946490831887653, guid: 7b1b62c8971446f4eb5258d5553f5336,
         type: 3}
       propertyPath: locName
-      value: CelciDate2DeepConvo2
+      value: LotteDate2DeepConvo2
       objectReference: {fileID: 0}
     - target: {fileID: 8136084062897854725, guid: 7b1b62c8971446f4eb5258d5553f5336,
         type: 3}

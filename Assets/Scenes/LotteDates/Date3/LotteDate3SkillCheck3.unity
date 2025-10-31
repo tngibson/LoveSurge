@@ -238,7 +238,7 @@ GameObject:
   - component: {fileID: 637296341}
   - component: {fileID: 637296340}
   m_Layer: 5
-  m_Name: Celci
+  m_Name: Lotte
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -283,7 +283,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: aa606251ffd050c478a601249716a481, type: 3}
+  m_Sprite: {fileID: 21300000, guid: f87102bd0d1966b4ebda9beb54d52a99, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -707,6 +707,10 @@ MonoBehaviour:
   isDateButton: 0
   xHoverScale: 0
   yHoverScale: 0
+  xRaycastPadding: 0
+  yRaycastPadding: 0
+  zRaycastPadding: 0
+  wRaycastPadding: 0
   isStressReducer: 0
   isStressIncreaser: 0
   nextSceneMusic:
@@ -1145,7 +1149,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 096d70bbf162fde4599d1b5d8b8cd0c5, type: 3}
+  m_Sprite: {fileID: 21300000, guid: ba86dc7bc44a2b14d8371c0afa4fdf86, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -1538,7 +1542,7 @@ PrefabInstance:
         type: 3}
       propertyPath: skillCheckPaths
       value: 
-      objectReference: {fileID: 11400000, guid: 4795c4a6222579c488ca30db81a56e9e,
+      objectReference: {fileID: 11400000, guid: 554fd5ed95a964946b1e3476c3df7793,
         type: 2}
     - target: {fileID: 4723009407783645740, guid: 7b1b62c8971446f4eb5258d5553f5336,
         type: 3}
@@ -1558,7 +1562,7 @@ PrefabInstance:
     - target: {fileID: 4723009407783645740, guid: 7b1b62c8971446f4eb5258d5553f5336,
         type: 3}
       propertyPath: currentSkillIndex
-      value: 0
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 4723009407783645740, guid: 7b1b62c8971446f4eb5258d5553f5336,
         type: 3}
@@ -1578,7 +1582,7 @@ PrefabInstance:
     - target: {fileID: 4723009407783645740, guid: 7b1b62c8971446f4eb5258d5553f5336,
         type: 3}
       propertyPath: dialogLines.Array.size
-      value: 15
+      value: 7
       objectReference: {fileID: 0}
     - target: {fileID: 4723009407783645740, guid: 7b1b62c8971446f4eb5258d5553f5336,
         type: 3}
@@ -1612,42 +1616,43 @@ PrefabInstance:
     - target: {fileID: 4723009407783645740, guid: 7b1b62c8971446f4eb5258d5553f5336,
         type: 3}
       propertyPath: dialogLines.Array.data[0]
-      value: You and Celci sit silently on the lab room floor, the only thing humming
-        through the dead air is the overhead chime of lights and the clicks of servers.
+      value: "It\u2019s late, too late, probably. The kind of hour when even the
+        hum of electronics sounds louder than it should."
       objectReference: {fileID: 0}
     - target: {fileID: 4723009407783645740, guid: 7b1b62c8971446f4eb5258d5553f5336,
         type: 3}
       propertyPath: dialogLines.Array.data[1]
-      value: "You both shuffle through folder and folder. Endlessly more and more
-        pile up, you\u2019re even finding folders within folders within folders."
+      value: "Lotte\u2019s sitting cross-legged on your bed, fiddling with the corner
+        of your blanket like she\u2019s afraid to look up."
       objectReference: {fileID: 0}
     - target: {fileID: 4723009407783645740, guid: 7b1b62c8971446f4eb5258d5553f5336,
         type: 3}
       propertyPath: dialogLines.Array.data[2]
-      value: "Of course like any good user, none of the folders are organized either\u2026
-        C:/user/important/aslhg.exe, F:/user/dontopen/lkjhjkhkl.fbx, P:/user/runthis/lkhjkjhalih.obj."
+      value: "You know, I didn\u2019t think I\u2019d end up hanging out here this
+        long."
       objectReference: {fileID: 0}
     - target: {fileID: 4723009407783645740, guid: 7b1b62c8971446f4eb5258d5553f5336,
         type: 3}
       propertyPath: dialogLines.Array.data[3]
-      value: "All of the files just have nonsense name tags on top of them\u2026
-        it\u2019ll be impossible to find what Celci\u2019s looking for at this rate.
-        Seems like C0D3-W1Z4RD is very\u2026 unorganized to say the least."
+      value: "Yeah\u2026 me neither. Not that I mind."
       objectReference: {fileID: 0}
     - target: {fileID: 4723009407783645740, guid: 7b1b62c8971446f4eb5258d5553f5336,
         type: 3}
       propertyPath: dialogLines.Array.data[4]
-      value: "Hey um\u2026 Celci? Do you have any idea where this could be?"
+      value: "She smiles faintly but still won\u2019t meet your eyes. You can tell
+        there\u2019s something she wants to say, something she\u2019s been swallowing
+        all evening."
       objectReference: {fileID: 0}
     - target: {fileID: 4723009407783645740, guid: 7b1b62c8971446f4eb5258d5553f5336,
         type: 3}
       propertyPath: dialogLines.Array.data[5]
-      value: "No clue! But I'm pretty sure it\u2019s here."
+      value: You could change the subject and save her from it... or you could take
+        a chance.
       objectReference: {fileID: 0}
     - target: {fileID: 4723009407783645740, guid: 7b1b62c8971446f4eb5258d5553f5336,
         type: 3}
       propertyPath: dialogLines.Array.data[6]
-      value: "Why are you sure it\u2019s here?"
+      value: SKILLCHECK
       objectReference: {fileID: 0}
     - target: {fileID: 4723009407783645740, guid: 7b1b62c8971446f4eb5258d5553f5336,
         type: 3}
@@ -1801,7 +1806,7 @@ PrefabInstance:
     - target: {fileID: 4723009407783645740, guid: 7b1b62c8971446f4eb5258d5553f5336,
         type: 3}
       propertyPath: speakersPerLine.Array.size
-      value: 15
+      value: 7
       objectReference: {fileID: 0}
     - target: {fileID: 4723009407783645740, guid: 7b1b62c8971446f4eb5258d5553f5336,
         type: 3}
@@ -1821,27 +1826,27 @@ PrefabInstance:
     - target: {fileID: 4723009407783645740, guid: 7b1b62c8971446f4eb5258d5553f5336,
         type: 3}
       propertyPath: speakersPerLine.Array.data[2]
-      value: 
+      value: Lotte
       objectReference: {fileID: 0}
     - target: {fileID: 4723009407783645740, guid: 7b1b62c8971446f4eb5258d5553f5336,
         type: 3}
       propertyPath: speakersPerLine.Array.data[3]
-      value: 
+      value: You
       objectReference: {fileID: 0}
     - target: {fileID: 4723009407783645740, guid: 7b1b62c8971446f4eb5258d5553f5336,
         type: 3}
       propertyPath: speakersPerLine.Array.data[4]
-      value: You
+      value: 
       objectReference: {fileID: 0}
     - target: {fileID: 4723009407783645740, guid: 7b1b62c8971446f4eb5258d5553f5336,
         type: 3}
       propertyPath: speakersPerLine.Array.data[5]
-      value: Celci
+      value: 
       objectReference: {fileID: 0}
     - target: {fileID: 4723009407783645740, guid: 7b1b62c8971446f4eb5258d5553f5336,
         type: 3}
       propertyPath: speakersPerLine.Array.data[6]
-      value: You
+      value: 
       objectReference: {fileID: 0}
     - target: {fileID: 4723009407783645740, guid: 7b1b62c8971446f4eb5258d5553f5336,
         type: 3}
@@ -1946,49 +1951,49 @@ PrefabInstance:
     - target: {fileID: 4723009407783645740, guid: 7b1b62c8971446f4eb5258d5553f5336,
         type: 3}
       propertyPath: characterSprites.Array.data[0].spriteOptions.Array.size
-      value: 15
+      value: 7
       objectReference: {fileID: 0}
     - target: {fileID: 4723009407783645740, guid: 7b1b62c8971446f4eb5258d5553f5336,
         type: 3}
       propertyPath: characterSprites.Array.data[0].spriteOptions.Array.data[0]
       value: 
-      objectReference: {fileID: 21300000, guid: aa606251ffd050c478a601249716a481,
+      objectReference: {fileID: 21300000, guid: f87102bd0d1966b4ebda9beb54d52a99,
         type: 3}
     - target: {fileID: 4723009407783645740, guid: 7b1b62c8971446f4eb5258d5553f5336,
         type: 3}
       propertyPath: characterSprites.Array.data[0].spriteOptions.Array.data[1]
       value: 
-      objectReference: {fileID: 21300000, guid: aa606251ffd050c478a601249716a481,
+      objectReference: {fileID: 21300000, guid: f87102bd0d1966b4ebda9beb54d52a99,
         type: 3}
     - target: {fileID: 4723009407783645740, guid: 7b1b62c8971446f4eb5258d5553f5336,
         type: 3}
       propertyPath: characterSprites.Array.data[0].spriteOptions.Array.data[2]
       value: 
-      objectReference: {fileID: 21300000, guid: aa606251ffd050c478a601249716a481,
+      objectReference: {fileID: 21300000, guid: f87102bd0d1966b4ebda9beb54d52a99,
         type: 3}
     - target: {fileID: 4723009407783645740, guid: 7b1b62c8971446f4eb5258d5553f5336,
         type: 3}
       propertyPath: characterSprites.Array.data[0].spriteOptions.Array.data[3]
       value: 
-      objectReference: {fileID: 21300000, guid: aa606251ffd050c478a601249716a481,
+      objectReference: {fileID: 21300000, guid: f87102bd0d1966b4ebda9beb54d52a99,
         type: 3}
     - target: {fileID: 4723009407783645740, guid: 7b1b62c8971446f4eb5258d5553f5336,
         type: 3}
       propertyPath: characterSprites.Array.data[0].spriteOptions.Array.data[4]
       value: 
-      objectReference: {fileID: 21300000, guid: 70e99421608ac5543bf909affcbcbf7c,
+      objectReference: {fileID: 21300000, guid: f87102bd0d1966b4ebda9beb54d52a99,
         type: 3}
     - target: {fileID: 4723009407783645740, guid: 7b1b62c8971446f4eb5258d5553f5336,
         type: 3}
       propertyPath: characterSprites.Array.data[0].spriteOptions.Array.data[5]
       value: 
-      objectReference: {fileID: 21300000, guid: aa606251ffd050c478a601249716a481,
+      objectReference: {fileID: 21300000, guid: f87102bd0d1966b4ebda9beb54d52a99,
         type: 3}
     - target: {fileID: 4723009407783645740, guid: 7b1b62c8971446f4eb5258d5553f5336,
         type: 3}
       propertyPath: characterSprites.Array.data[0].spriteOptions.Array.data[6]
       value: 
-      objectReference: {fileID: 21300000, guid: aa606251ffd050c478a601249716a481,
+      objectReference: {fileID: 21300000, guid: f87102bd0d1966b4ebda9beb54d52a99,
         type: 3}
     - target: {fileID: 4723009407783645740, guid: 7b1b62c8971446f4eb5258d5553f5336,
         type: 3}
@@ -2119,7 +2124,7 @@ PrefabInstance:
     - target: {fileID: 7105946490831887653, guid: 7b1b62c8971446f4eb5258d5553f5336,
         type: 3}
       propertyPath: locName
-      value: CelciDate3DeepConvo3
+      value: LotteDate3DeepConvo3
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

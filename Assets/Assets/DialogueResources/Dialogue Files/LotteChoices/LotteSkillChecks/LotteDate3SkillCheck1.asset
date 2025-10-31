@@ -1,0 +1,82 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8cbd23a6cba4cdc48b96bcdf5fdcbc9c, type: 3}
+  m_Name: LotteDate3SkillCheck1
+  m_EditorClassIdentifier: 
+  skillName: Cleverness
+  successDialogLines:
+  - "Those films weren\u2019t even apart of the original manga series!"
+  - "Non-cannon! What! I\u2026but even you have to admit it's really awesome.."
+  - Lotte is fumbling the argument pretty badly, now might be a good time to let
+    up.
+  - "Pfft\u2026 power scaling arguments like that are stupid."
+  - "Ugh, yeah....I don\u2019t know. I feel like I need something stupid like that\u2026"
+  - "Lotte\u2019s clearly feeling pretty down, and now feels like the perfect time
+    to strike. You might be able to get some answers out of them!"
+  - "Huh? How come? If there\u2019s something up you can tell me."
+  - "Gah! No no, nothing\u2019s up, everything's fine!"
+  - "Looks like it\u2019s not time yet\u2026at least you\u2019ve eased the tension
+    in the room."
+  successSpeakersPerLine:
+  - You
+  - Lotte
+  - 
+  - You
+  - Lotte
+  - 
+  - You
+  - Lotte
+  - 
+  successSpriteOptions:
+  - spriteOptions:
+    - {fileID: 21300000, guid: bbd0bcb58707ea741ac1899b89b7be63, type: 3}
+    - {fileID: 21300000, guid: bbd0bcb58707ea741ac1899b89b7be63, type: 3}
+    - {fileID: 21300000, guid: bbd0bcb58707ea741ac1899b89b7be63, type: 3}
+    - {fileID: 21300000, guid: bbd0bcb58707ea741ac1899b89b7be63, type: 3}
+    - {fileID: 21300000, guid: f87102bd0d1966b4ebda9beb54d52a99, type: 3}
+    - {fileID: 21300000, guid: f87102bd0d1966b4ebda9beb54d52a99, type: 3}
+    - {fileID: 21300000, guid: f87102bd0d1966b4ebda9beb54d52a99, type: 3}
+    - {fileID: 21300000, guid: ceba6a5cba9df564bb636b38f3638fed, type: 3}
+    - {fileID: 21300000, guid: ceba6a5cba9df564bb636b38f3638fed, type: 3}
+  failureDialogLines:
+  - "Gah! THE MOVIE!! Of course it's the civil war movie, why didn\u2019t I think
+    of that one!"
+  - "You\u2019re fumbling."
+  - "But um! What about\u2026uhh\u2026What if- no that wouldn\u2019t make sense.
+    GRAHHH!"
+  - "Ehehe, looks like you\u2019ve been stumped."
+  - "I\u2019m not very good at these kinds of things, I just like watching stuff\u2026but
+    I\u2019m glad you\u2019re having fun."
+  - "Yeah\u2026it was pretty fun! I needed something to take my mind off- I mean\u2026um\u2026
+    It was fun! Thanks for talking it through!"
+  - "Looks like Lotte\u2019s still not giving up the front\u2026you might need to
+    wait a bit longer\u2026"
+  - "Hahah\u2026yeah\u2026anytime\u2026"
+  failureSpeakersPerLine:
+  - You
+  - 
+  - You
+  - Lotte
+  - You
+  - Lotte
+  - 
+  - You
+  failureSpriteOptions:
+  - spriteOptions:
+    - {fileID: 21300000, guid: 3900c097c0bef5c41ab3e639a31d5510, type: 3}
+    - {fileID: 21300000, guid: 3900c097c0bef5c41ab3e639a31d5510, type: 3}
+    - {fileID: 21300000, guid: 3900c097c0bef5c41ab3e639a31d5510, type: 3}
+    - {fileID: 21300000, guid: 3900c097c0bef5c41ab3e639a31d5510, type: 3}
+    - {fileID: 21300000, guid: 3900c097c0bef5c41ab3e639a31d5510, type: 3}
+    - {fileID: 21300000, guid: f87102bd0d1966b4ebda9beb54d52a99, type: 3}
+    - {fileID: 21300000, guid: f87102bd0d1966b4ebda9beb54d52a99, type: 3}
+    - {fileID: 21300000, guid: f87102bd0d1966b4ebda9beb54d52a99, type: 3}
