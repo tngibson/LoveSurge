@@ -1,0 +1,160 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2de807345bdd09646bb1f755bf64c760, type: 3}
+  m_Name: IntroEventChoice9
+  m_EditorClassIdentifier: 
+  choiceOptions:
+  - 'Maybe there was some kind of power surge. '
+  - Maybe there was some kind of LOVE surge.
+  - "Let\u2019s go see if everything\u2019s ok!!"
+  choicePaths:
+  - afterChoiceDialogLines:
+    - '[PlayerName]. If our equipment was fried on the first day of this internship
+      we are dead in the water!'
+    - "Let\u2019s go check on it!!!"
+    afterChoiceSpeakersPerLine:
+    - Miguel
+    - You
+    afterChoiceSpriteOptions:
+    - spriteOptions:
+      - {fileID: 21300000, guid: 602edf163ccd2364b81a4cf9bbd9862f, type: 3}
+      - {fileID: 21300000, guid: 602edf163ccd2364b81a4cf9bbd9862f, type: 3}
+    - spriteOptions:
+      - {fileID: 21300000, guid: a3252816a49c415409db0f9ffd8c3b1a, type: 3}
+      - {fileID: 21300000, guid: a3252816a49c415409db0f9ffd8c3b1a, type: 3}
+    - spriteOptions:
+      - {fileID: 21300000, guid: 602edf163ccd2364b81a4cf9bbd9862f, type: 3}
+      - {fileID: 21300000, guid: 602edf163ccd2364b81a4cf9bbd9862f, type: 3}
+    - spriteOptions:
+      - {fileID: 21300000, guid: 602edf163ccd2364b81a4cf9bbd9862f, type: 3}
+      - {fileID: 21300000, guid: 602edf163ccd2364b81a4cf9bbd9862f, type: 3}
+    - spriteOptions:
+      - {fileID: 21300000, guid: 602edf163ccd2364b81a4cf9bbd9862f, type: 3}
+      - {fileID: 21300000, guid: 602edf163ccd2364b81a4cf9bbd9862f, type: 3}
+    - spriteOptions:
+      - {fileID: 21300000, guid: 602edf163ccd2364b81a4cf9bbd9862f, type: 3}
+      - {fileID: 21300000, guid: 602edf163ccd2364b81a4cf9bbd9862f, type: 3}
+    - spriteOptions:
+      - {fileID: 21300000, guid: 602edf163ccd2364b81a4cf9bbd9862f, type: 3}
+      - {fileID: 21300000, guid: 602edf163ccd2364b81a4cf9bbd9862f, type: 3}
+    statTag: 
+    statValue: 0
+    celciIntroDialog:
+      lines: []
+      speakers: []
+      spriteOptions: []
+    celciDate2Dialog:
+      lines: []
+      speakers: []
+      spriteOptions: []
+    backgrounds: []
+    nestedChoices: []
+  - afterChoiceDialogLines:
+    - What? Why would you say that?
+    - "I don\u2019t know I\u2019m freaking out!"
+    - If our equipment was fried on the first day of this internship we are dead
+      in the water!
+    - "But don\u2019t freak out!!"
+    - "Let\u2019s go check on it!!!"
+    afterChoiceSpeakersPerLine:
+    - Miguel
+    - You
+    - Miguel
+    - Miguel
+    - You
+    afterChoiceSpriteOptions:
+    - spriteOptions:
+      - {fileID: 21300000, guid: 602edf163ccd2364b81a4cf9bbd9862f, type: 3}
+      - {fileID: 21300000, guid: 602edf163ccd2364b81a4cf9bbd9862f, type: 3}
+      - {fileID: 21300000, guid: 602edf163ccd2364b81a4cf9bbd9862f, type: 3}
+      - {fileID: 21300000, guid: 602edf163ccd2364b81a4cf9bbd9862f, type: 3}
+      - {fileID: 21300000, guid: 602edf163ccd2364b81a4cf9bbd9862f, type: 3}
+    - spriteOptions:
+      - {fileID: 21300000, guid: a3252816a49c415409db0f9ffd8c3b1a, type: 3}
+      - {fileID: 21300000, guid: a3252816a49c415409db0f9ffd8c3b1a, type: 3}
+      - {fileID: 21300000, guid: a3252816a49c415409db0f9ffd8c3b1a, type: 3}
+      - {fileID: 21300000, guid: a3252816a49c415409db0f9ffd8c3b1a, type: 3}
+      - {fileID: 21300000, guid: a3252816a49c415409db0f9ffd8c3b1a, type: 3}
+    - spriteOptions:
+      - {fileID: 21300000, guid: 602edf163ccd2364b81a4cf9bbd9862f, type: 3}
+      - {fileID: 21300000, guid: 602edf163ccd2364b81a4cf9bbd9862f, type: 3}
+      - {fileID: 21300000, guid: 602edf163ccd2364b81a4cf9bbd9862f, type: 3}
+      - {fileID: 21300000, guid: 602edf163ccd2364b81a4cf9bbd9862f, type: 3}
+      - {fileID: 21300000, guid: 602edf163ccd2364b81a4cf9bbd9862f, type: 3}
+    - spriteOptions:
+      - {fileID: 21300000, guid: 602edf163ccd2364b81a4cf9bbd9862f, type: 3}
+      - {fileID: 21300000, guid: 602edf163ccd2364b81a4cf9bbd9862f, type: 3}
+      - {fileID: 21300000, guid: 602edf163ccd2364b81a4cf9bbd9862f, type: 3}
+      - {fileID: 21300000, guid: 602edf163ccd2364b81a4cf9bbd9862f, type: 3}
+      - {fileID: 21300000, guid: 602edf163ccd2364b81a4cf9bbd9862f, type: 3}
+    - spriteOptions:
+      - {fileID: 21300000, guid: 602edf163ccd2364b81a4cf9bbd9862f, type: 3}
+      - {fileID: 21300000, guid: 602edf163ccd2364b81a4cf9bbd9862f, type: 3}
+      - {fileID: 21300000, guid: 602edf163ccd2364b81a4cf9bbd9862f, type: 3}
+      - {fileID: 21300000, guid: 602edf163ccd2364b81a4cf9bbd9862f, type: 3}
+      - {fileID: 21300000, guid: 602edf163ccd2364b81a4cf9bbd9862f, type: 3}
+    - spriteOptions:
+      - {fileID: 21300000, guid: 602edf163ccd2364b81a4cf9bbd9862f, type: 3}
+      - {fileID: 21300000, guid: 602edf163ccd2364b81a4cf9bbd9862f, type: 3}
+      - {fileID: 21300000, guid: 602edf163ccd2364b81a4cf9bbd9862f, type: 3}
+      - {fileID: 21300000, guid: 602edf163ccd2364b81a4cf9bbd9862f, type: 3}
+      - {fileID: 21300000, guid: 602edf163ccd2364b81a4cf9bbd9862f, type: 3}
+    - spriteOptions:
+      - {fileID: 21300000, guid: 602edf163ccd2364b81a4cf9bbd9862f, type: 3}
+      - {fileID: 21300000, guid: 602edf163ccd2364b81a4cf9bbd9862f, type: 3}
+      - {fileID: 21300000, guid: 602edf163ccd2364b81a4cf9bbd9862f, type: 3}
+      - {fileID: 21300000, guid: 602edf163ccd2364b81a4cf9bbd9862f, type: 3}
+      - {fileID: 21300000, guid: 602edf163ccd2364b81a4cf9bbd9862f, type: 3}
+    statTag: 
+    statValue: 0
+    celciIntroDialog:
+      lines: []
+      speakers: []
+      spriteOptions: []
+    celciDate2Dialog:
+      lines: []
+      speakers: []
+      spriteOptions: []
+    backgrounds: []
+    nestedChoices: []
+  - afterChoiceDialogLines:
+    - '[PlayerName]. If our equipment was fried on the first day of this internship
+      we are dead in the water!'
+    afterChoiceSpeakersPerLine:
+    - Miguel
+    afterChoiceSpriteOptions:
+    - spriteOptions:
+      - {fileID: 21300000, guid: 602edf163ccd2364b81a4cf9bbd9862f, type: 3}
+    - spriteOptions:
+      - {fileID: 21300000, guid: a3252816a49c415409db0f9ffd8c3b1a, type: 3}
+    - spriteOptions:
+      - {fileID: 21300000, guid: 602edf163ccd2364b81a4cf9bbd9862f, type: 3}
+    - spriteOptions:
+      - {fileID: 21300000, guid: 602edf163ccd2364b81a4cf9bbd9862f, type: 3}
+    - spriteOptions:
+      - {fileID: 21300000, guid: 602edf163ccd2364b81a4cf9bbd9862f, type: 3}
+    - spriteOptions:
+      - {fileID: 21300000, guid: 602edf163ccd2364b81a4cf9bbd9862f, type: 3}
+    - spriteOptions:
+      - {fileID: 21300000, guid: 602edf163ccd2364b81a4cf9bbd9862f, type: 3}
+    statTag: 
+    statValue: 0
+    celciIntroDialog:
+      lines: []
+      speakers: []
+      spriteOptions: []
+    celciDate2Dialog:
+      lines: []
+      speakers: []
+      spriteOptions: []
+    backgrounds: []
+    nestedChoices: []

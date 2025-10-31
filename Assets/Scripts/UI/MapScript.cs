@@ -28,8 +28,8 @@ public class MapScript : MonoBehaviour, IPointerEnterHandler, IPointerExitHandle
     [SerializeField] private bool isDateButton;
 
     // Scale factor and material for hover effect
-    public float xHoverScale;
-    public float yHoverScale;
+    public float xHoverScale = 1;
+    public float yHoverScale = 1;
 
     public float xRaycastPadding;
     public float yRaycastPadding;
@@ -77,7 +77,7 @@ public class MapScript : MonoBehaviour, IPointerEnterHandler, IPointerExitHandle
             // Scale up and apply hover material
             transform.localScale = hoverScale;
 
-            GetComponent<Image>().raycastPadding = raycastPadding;
+            //GetComponent<Image>().raycastPadding = raycastPadding;
 
             if (hasLocationText)
             {

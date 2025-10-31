@@ -82,6 +82,10 @@ public class RandEventHandler : MonoBehaviour
     [SerializeField] private bool isCelciFinalDeepConvo = false;
     [SerializeField] private bool isLotteFinalDeepConvo = false;
 
+    // Stack-based system for nested choices
+    private Stack<DialogState> dialogStateStack = new Stack<DialogState>();
+
+
     void Start()
     {
         // Set the playerManager and get the player's preferred name
@@ -559,46 +563,37 @@ public class RandEventHandler : MonoBehaviour
         isChoiceTime = false;
         choicePanel.SetActive(false);
 
-        // Save the current main dialog state to return to after the nested path
-        originalDialogLines = new List<string>(dialogLines);
-        originalSpeakersPerLine = new List<string>(speakersPerLine);
-        originalSpriteOptions = new List<SpriteOptions>(characterSprites);
-        originalLineIndex = currentLineIndex + 1;
+        // Save the current state so we can return after nested choices
+        dialogStateStack.Push(new DialogState(dialogLines, speakersPerLine, characterSprites, currentLineIndex + 1, choices));
 
         Choices currentChoices = choices[currentLineIndex];
         ChoicePath selectedPath = currentChoices.choicePaths[choiceIndex];
 
-        // Apply stat changes if applicable
+        // Apply stat effects if applicable
         if (!string.IsNullOrEmpty(selectedPath.statTag) && selectedPath.statValue != 0)
             ApplyStatChange(selectedPath.statTag, selectedPath.statValue);
 
-        // Start with the dialog lines for this choice
+        // Jump into the chosen path
         dialogLines = selectedPath.afterChoiceDialogLines;
         speakersPerLine = selectedPath.afterChoiceSpeakersPerLine;
         characterSprites = selectedPath.afterChoiceSpriteOptions;
-
-        // Support background change and Celci intro customization for this choice path
-        if (selectedPath.backgrounds != null && selectedPath.backgrounds.Count > 0)
-            backgrounds = new List<Sprite>(selectedPath.backgrounds);
-
-        if (selectedPath.celciIntroDialog != null)
-            celciIntroDialog = selectedPath.celciIntroDialog;
-
-        if (selectedPath.celciDate2Dialog != null)
-            celciDate2Dialog = selectedPath.celciDate2Dialog;
-
         currentLineIndex = 0;
 
-        // If this choice has its own nested choices, track them
+        // If this path contains nested choices, replace the list
         if (selectedPath.nestedChoices != null && selectedPath.nestedChoices.Count > 0)
         {
-            // Temporarily replace the main choices list with the nested ones
             choices = selectedPath.nestedChoices;
             isChoiceDialog = true;
+        }
+        else
+        {
+            // Keep the current choices if none are nested
+            choices = new List<Choices>();
         }
 
         DisplayLine();
     }
+
 
     private void ApplyStatChange(string statTag, int statValue)
     {
@@ -648,26 +643,30 @@ public class RandEventHandler : MonoBehaviour
 
     private void EndChoicePath()
     {
-        // If we had nested choices, revert to the previous layer
-        if (isChoiceDialog)
+        // If there are previous states saved, pop back to them
+        if (dialogStateStack.Count > 0)
         {
-            dialogLines = originalDialogLines;
-            speakersPerLine = originalSpeakersPerLine;
-            characterSprites = originalSpriteOptions;
-            currentLineIndex = originalLineIndex;
-            isChoiceDialog = false;
+            DialogState previousState = dialogStateStack.Pop();
 
-            // Optional: if you used nested choices, clear them to avoid confusion
-            choices = new List<Choices>(choices);
+            dialogLines = previousState.dialogLines;
+            speakersPerLine = previousState.speakersPerLine;
+            characterSprites = previousState.spriteOptions;
+            currentLineIndex = previousState.lineIndex;
+            choices = previousState.choicesList;
+
+            // If there are still states left, we’re still inside nested dialogue
+            isChoiceDialog = dialogStateStack.Count > 0;
 
             DisplayLine();
         }
         else
         {
-            // No nested choice to return from — just resume normal dialog
+            // Stack is empty then all choices finished, end the event
+            isChoiceDialog = false;
             mapButton.SetActive(true);
         }
     }
+
 
     private IEnumerator PlayVoiceLoop(EventInstance voiceInstance)
     {
@@ -868,4 +867,23 @@ public class CelciDate2ChoiceData
     public List<string> lines = new List<string>();                // Dialog lines for this event
     public List<string> speakers = new List<string>();             // Matching speakers
     public List<SpriteOptions> spriteOptions = new List<SpriteOptions>(); // Matching character sprites
+}
+
+[System.Serializable]
+public class DialogState
+{
+    public List<string> dialogLines;
+    public List<string> speakersPerLine;
+    public List<SpriteOptions> spriteOptions;
+    public int lineIndex;
+    public List<Choices> choicesList;
+
+    public DialogState(List<string> d, List<string> s, List<SpriteOptions> sp, int index, List<Choices> c)
+    {
+        dialogLines = new List<string>(d);
+        speakersPerLine = new List<string>(s);
+        spriteOptions = new List<SpriteOptions>(sp);
+        lineIndex = index;
+        choicesList = new List<Choices>(c);
+    }
 }

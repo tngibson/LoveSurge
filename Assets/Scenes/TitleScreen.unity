@@ -591,6 +591,11 @@ MonoBehaviour:
   statOffsets: []
   cash: 0
   convoTiers: 01000000010000000100000001000000
+  isHouseHot: 1
+  isCelciThreatened: 0
+  nokiRomanticRoute: 0
+  celciRomanticRoute: 0
+  lotteRomanticRoute: 0
 --- !u!4 &832744758
 Transform:
   m_ObjectHideFlags: 0
@@ -765,9 +770,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bbe147c37e01d3847adb6df4c90f7c49, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  locName: DemoIntro
+  locName: LotteDate1Intro
   button: {fileID: 0}
   questionText: {fileID: 0}
+  locationTextPanel: {fileID: 0}
   locationText: {fileID: 0}
   locationTextText: 
   isEnabled: 1
@@ -776,9 +782,14 @@ MonoBehaviour:
   transitionTime: 2
   isDayProgressor: 0
   isDateButton: 0
-  xHoverScale: 0
-  yHoverScale: 0
+  xHoverScale: 1
+  yHoverScale: 1
+  xRaycastPadding: 0
+  yRaycastPadding: 0
+  zRaycastPadding: 0
+  wRaycastPadding: 0
   isStressReducer: 0
+  isStressIncreaser: 0
   nextSceneMusic:
     Guid:
       Data1: 1587278420
@@ -786,6 +797,7 @@ MonoBehaviour:
       Data3: 2125243015
       Data4: 204900698
     Path: event:/Music/titleTheme
+  hasLocationText: 0
 --- !u!1 &942427375
 GameObject:
   m_ObjectHideFlags: 0
@@ -2581,6 +2593,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: SceneTransition - Crossfade
+      objectReference: {fileID: 0}
+    - target: {fileID: 8621706404247894105, guid: 7cab638b40405884db5b42fbdb1c1b5a,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
