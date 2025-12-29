@@ -4,7 +4,7 @@ using TMPro;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-public class CalendarManager : MonoBehaviour
+public class CalendarManager : MonoBehaviour, ISaveable
 {
     public static CalendarManager instance { get; private set; }
     public DayManager currentDate { get; private set; }
@@ -87,5 +87,24 @@ public class CalendarManager : MonoBehaviour
     public void setText()
     {
         dateAndTimeText.text = ToString();
+    }
+
+    [System.Serializable]
+    struct Save { public int d, m, y, phase; }
+
+    public object CaptureState() => new Save
+    {
+        d = currentDate.Day,
+        m = currentDate.Month,
+        y = currentDate.Year,
+        phase = (int)currentPhase
+    };
+
+    public void RestoreState(object state)
+    {
+        var s = JsonUtility.FromJson<Save>(state.ToString());
+        InitializeCalendar(new DayManager(s.d, s.m, s.y));
+        currentPhase = (DayPhase)s.phase;
+        setText();
     }
 }

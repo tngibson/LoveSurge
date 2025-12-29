@@ -3,7 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class StressManager : MonoBehaviour
+public class StressManager : MonoBehaviour, ISaveable
 {
     public static EventHandler stressFilledEvent; // Called when stress meter fills
     public static EventHandler stressUnfilledEvent; // Called when stress is above 1 and then decrements below 1
@@ -96,6 +96,17 @@ public class StressManager : MonoBehaviour
         int stepIndex = (int)(amount * numSteps);
 
         return Math.Min(stepIndex, instance.numStressBars);
+    }
+
+    [System.Serializable] struct Save { public float stress; }
+
+    public object CaptureState() => new Save { stress = currentStressAmt };
+
+    public void RestoreState(object state)
+    {
+        var s = JsonUtility.FromJson<Save>(state.ToString());
+        currentStressAmt = s.stress;
+        StressBar.instance?.UpdateStressBar();
     }
 }
 

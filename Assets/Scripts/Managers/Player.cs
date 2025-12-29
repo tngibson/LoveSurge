@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using Random = UnityEngine.Random;
 
-public class Player : MonoBehaviour
+public class Player : MonoBehaviour, ISaveable
 {
     [SerializeField] private string playerName;
 
@@ -180,6 +180,60 @@ public class Player : MonoBehaviour
                 break;
         }
     }
+
+    public object CaptureState()
+    {
+        var offsetTags = new List<List<string>>();
+        foreach (var offset in statOffsets)
+        {
+            offsetTags.Add(new List<string>(offset.GetTags()));
+        }
+
+        return new PlayerSaveData
+        {
+            playerName = playerName,
+            stats = new List<int>(stats),
+            statOffsetTags = offsetTags,
+            cash = cash,
+            convoTiers = new List<int>(convoTiers),
+
+            isHouseHot = isHouseHot,
+            isCelciThreatened = isCelciThreatened,
+            nokiRomanticRoute = nokiRomanticRoute,
+            celciRomanticRoute = celciRomanticRoute,
+            lotteRomanticRoute = lotteRomanticRoute
+        };
+    }
+
+    public void RestoreState(object state)
+    {
+        var data = state as PlayerSaveData;
+        if (data == null) return;
+
+        playerName = data.playerName;
+        stats = new List<int>(data.stats);
+        cash = data.cash;
+        convoTiers = new List<int>(data.convoTiers);
+
+        isHouseHot = data.isHouseHot;
+        isCelciThreatened = data.isCelciThreatened;
+        nokiRomanticRoute = data.nokiRomanticRoute;
+        celciRomanticRoute = data.celciRomanticRoute;
+        lotteRomanticRoute = data.lotteRomanticRoute;
+
+        statOffsets.Clear();
+        for (int i = 0; i < data.statOffsetTags.Count; i++)
+        {
+            var offset = new StatOffset(0);
+            foreach (var tag in data.statOffsetTags[i])
+            {
+                offset.AddOffsetTag(tag);
+            }
+            statOffsets.Add(offset);
+        }
+
+        OnStatsChanged?.Invoke();
+    }
 }
 
 [Serializable]
@@ -243,4 +297,25 @@ public class StatOffset
         isDirty = false;
         return amount;
     }
+
+    public List<string> GetTags()
+    {
+        return new List<string>(affectingTags);
+    }
+}
+
+[System.Serializable]
+public class PlayerSaveData
+{
+    public string playerName;
+    public List<int> stats;
+    public List<List<string>> statOffsetTags;
+    public int cash;
+    public List<int> convoTiers;
+
+    public bool isHouseHot;
+    public bool isCelciThreatened;
+    public bool nokiRomanticRoute;
+    public bool celciRomanticRoute;
+    public bool lotteRomanticRoute;
 }

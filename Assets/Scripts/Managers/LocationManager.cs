@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-public class LocationManager : MonoBehaviour
+public class LocationManager : MonoBehaviour, ISaveable
 {
     public static LocationManager Instance { get; private set; }
 
@@ -248,5 +248,60 @@ public class LocationManager : MonoBehaviour
         }
     }
 
+    [System.Serializable]
+    class Save
+    {
+        public List<DateSave> dates;
+    }
 
+    [System.Serializable]
+    class DateSave
+    {
+        public string name;
+        public bool isPlayable, dateStarted, isFirstTime, allDone;
+        public int phase, currentDate, d1, d2, d3;
+    }
+
+    public object CaptureState()
+    {
+        var save = new Save { dates = new() };
+
+        foreach (var d in characterDates)
+            save.dates.Add(new DateSave
+            {
+                name = d.name,
+                isPlayable = d.isPlayable,
+                dateStarted = d.dateStarted,
+                isFirstTime = d.isFirstTime,
+                allDone = d.allDatesDone,
+                phase = (int)d.phaseEnteredDate,
+                currentDate = (int)d.currentDate,
+                d1 = (int)d.date1Stage,
+                d2 = (int)d.date2Stage,
+                d3 = (int)d.date3Stage
+            });
+
+        return save;
+    }
+
+    public void RestoreState(object state)
+    {
+        var save = JsonUtility.FromJson<Save>(state.ToString());
+
+        foreach (var s in save.dates)
+        {
+            var d = characterDates.Find(x => x.name == s.name);
+            if (d == null) continue;
+
+            d.isPlayable = s.isPlayable;
+            d.dateStarted = s.dateStarted;
+            d.isFirstTime = s.isFirstTime;
+            d.allDatesDone = s.allDone;
+            d.phaseEnteredDate = (DayPhase)s.phase;
+            d.currentDate = (DateNum)s.currentDate;
+            d.date1Stage = (Date1Stage)s.d1;
+            d.date2Stage = (Date2Stage)s.d2;
+            d.date3Stage = (Date3Stage)s.d3;
+        }
+    }
 }

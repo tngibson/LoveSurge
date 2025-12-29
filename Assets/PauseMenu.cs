@@ -14,6 +14,13 @@ public class PauseMenu : MonoBehaviour
 
     private bool isPaused = false;
     private bool wasAlreadyPaused = false;
+    void Awake()
+    {
+        if (instance == null)
+        {
+            instance = this;
+        }
+    }
 
     void Update()
     {
