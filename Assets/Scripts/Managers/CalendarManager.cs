@@ -90,21 +90,39 @@ public class CalendarManager : MonoBehaviour, ISaveable
     }
 
     [System.Serializable]
-    struct Save { public int d, m, y, phase; }
-
-    public object CaptureState() => new Save
+    private struct CalendarSaveData
     {
-        d = currentDate.Day,
-        m = currentDate.Month,
-        y = currentDate.Year,
-        phase = (int)currentPhase
-    };
+        public int day;
+        public int month;
+        public int year;
+        public int phase;
+    }
+
+    private void OnEnable() => SaveLoadManager.Register(this);
+    private void OnDisable() => SaveLoadManager.Unregister(this);
+
+    public object CaptureState()
+    {
+        return JsonUtility.ToJson(new CalendarSaveData
+        {
+            day = currentDate.Day,
+            month = currentDate.Month,
+            year = currentDate.Year,
+            phase = (int)currentPhase
+        });
+    }
 
     public void RestoreState(object state)
     {
-        var s = JsonUtility.FromJson<Save>(state.ToString());
-        InitializeCalendar(new DayManager(s.d, s.m, s.y));
-        currentPhase = (DayPhase)s.phase;
-        setText();
+        var json = state as string;
+        var data = JsonUtility.FromJson<CalendarSaveData>(json);
+
+        currentDate = new DayManager(data.day, data.month, data.year);
+        currentPhase = (DayPhase)data.phase;
+
+        if (dateAndTimeText != null)
+        {
+            setText();
+        }
     }
 }

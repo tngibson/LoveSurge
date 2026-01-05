@@ -98,14 +98,33 @@ public class StressManager : MonoBehaviour, ISaveable
         return Math.Min(stepIndex, instance.numStressBars);
     }
 
-    [System.Serializable] struct Save { public float stress; }
+    [System.Serializable]
+    private struct StressSaveData
+    {
+        public float stress;
+    }
 
-    public object CaptureState() => new Save { stress = currentStressAmt };
+    private void OnEnable() => SaveLoadManager.Register(this);
+    private void OnDisable() => SaveLoadManager.Unregister(this);
+
+    public object CaptureState()
+    {
+        return JsonUtility.ToJson(new StressSaveData { stress = currentStressAmt });
+    }
 
     public void RestoreState(object state)
     {
-        var s = JsonUtility.FromJson<Save>(state.ToString());
-        currentStressAmt = s.stress;
+        var json = state as string;
+        var data = JsonUtility.FromJson<StressSaveData>(json);
+
+        currentStressAmt = data.stress;
+
+        stressChangedEvent?.Invoke(this, new StressEventArgs
+        {
+            AmountChanged = 0,
+            NewTotal = currentStressAmt
+        });
+
         StressBar.instance?.UpdateStressBar();
     }
 }

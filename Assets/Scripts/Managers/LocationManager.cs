@@ -249,59 +249,75 @@ public class LocationManager : MonoBehaviour, ISaveable
     }
 
     [System.Serializable]
-    class Save
+    private struct LocationSaveData
     {
-        public List<DateSave> dates;
+        public List<CharacterSaveData> characters;
     }
 
     [System.Serializable]
-    class DateSave
+    private struct CharacterSaveData
     {
         public string name;
-        public bool isPlayable, dateStarted, isFirstTime, allDone;
-        public int phase, currentDate, d1, d2, d3;
+        public bool isPlayable;
+        public bool dateStarted;
+        public bool isFirstTime;
+        public bool allDatesDone;
+        public int phaseEnteredDate;
+        public int currentDate;
+        public int date1Stage;
+        public int date2Stage;
+        public int date3Stage;
     }
+
+    private void OnEnable() => SaveLoadManager.Register(this);
+    private void OnDisable() => SaveLoadManager.Unregister(this);
 
     public object CaptureState()
     {
-        var save = new Save { dates = new() };
+        var list = new List<CharacterSaveData>();
 
         foreach (var d in characterDates)
-            save.dates.Add(new DateSave
+        {
+            list.Add(new CharacterSaveData
             {
                 name = d.name,
                 isPlayable = d.isPlayable,
                 dateStarted = d.dateStarted,
                 isFirstTime = d.isFirstTime,
-                allDone = d.allDatesDone,
-                phase = (int)d.phaseEnteredDate,
+                allDatesDone = d.allDatesDone,
+                phaseEnteredDate = (int)d.phaseEnteredDate,
                 currentDate = (int)d.currentDate,
-                d1 = (int)d.date1Stage,
-                d2 = (int)d.date2Stage,
-                d3 = (int)d.date3Stage
+                date1Stage = (int)d.date1Stage,
+                date2Stage = (int)d.date2Stage,
+                date3Stage = (int)d.date3Stage
             });
+        }
 
-        return save;
+        return JsonUtility.ToJson(new LocationSaveData { characters = list });
     }
 
     public void RestoreState(object state)
     {
-        var save = JsonUtility.FromJson<Save>(state.ToString());
+        var json = state as string;
+        var data = JsonUtility.FromJson<LocationSaveData>(json);
 
-        foreach (var s in save.dates)
+        foreach (var saved in data.characters)
         {
-            var d = characterDates.Find(x => x.name == s.name);
+            var d = characterDates.Find(c => c.name == saved.name);
             if (d == null) continue;
 
-            d.isPlayable = s.isPlayable;
-            d.dateStarted = s.dateStarted;
-            d.isFirstTime = s.isFirstTime;
-            d.allDatesDone = s.allDone;
-            d.phaseEnteredDate = (DayPhase)s.phase;
-            d.currentDate = (DateNum)s.currentDate;
-            d.date1Stage = (Date1Stage)s.d1;
-            d.date2Stage = (Date2Stage)s.d2;
-            d.date3Stage = (Date3Stage)s.d3;
+            d.isPlayable = saved.isPlayable;
+            d.dateStarted = saved.dateStarted;
+            d.isFirstTime = saved.isFirstTime;
+            d.allDatesDone = saved.allDatesDone;
+            d.phaseEnteredDate = (DayPhase)saved.phaseEnteredDate;
+            d.currentDate = (DateNum)saved.currentDate;
+            d.date1Stage = (Date1Stage)saved.date1Stage;
+            d.date2Stage = (Date2Stage)saved.date2Stage;
+            d.date3Stage = (Date3Stage)saved.date3Stage;
         }
+
+        if (SceneManager.GetActiveScene().isLoaded)
+            OnSceneLoaded(SceneManager.GetActiveScene(), LoadSceneMode.Single);
     }
 }

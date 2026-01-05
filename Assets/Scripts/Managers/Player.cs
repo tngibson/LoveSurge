@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 using Random = UnityEngine.Random;
 
@@ -181,6 +182,16 @@ public class Player : MonoBehaviour, ISaveable
         }
     }
 
+    private void OnEnable()
+    {
+        SaveLoadManager.Register(this);
+    }
+
+    private void OnDisable()
+    {
+        SaveLoadManager.Unregister(this);
+    }
+
     public object CaptureState()
     {
         var offsetTags = new List<List<string>>();
@@ -189,11 +200,11 @@ public class Player : MonoBehaviour, ISaveable
             offsetTags.Add(new List<string>(offset.GetTags()));
         }
 
-        return new PlayerSaveData
+        return JsonUtility.ToJson(new PlayerSaveData
         {
             playerName = playerName,
             stats = new List<int>(stats),
-            statOffsetTags = offsetTags,
+            statOffsetTags = statOffsets,
             cash = cash,
             convoTiers = new List<int>(convoTiers),
 
@@ -202,16 +213,21 @@ public class Player : MonoBehaviour, ISaveable
             nokiRomanticRoute = nokiRomanticRoute,
             celciRomanticRoute = celciRomanticRoute,
             lotteRomanticRoute = lotteRomanticRoute
-        };
+        });
     }
 
     public void RestoreState(object state)
     {
-        var data = state as PlayerSaveData;
+        Debug.Log("RestoreState called on Player");
+
+        var json = state as string;
+        var data = JsonUtility.FromJson<PlayerSaveData>(json);
+
         if (data == null) return;
 
         playerName = data.playerName;
         stats = new List<int>(data.stats);
+        statOffsets = data.statOffsetTags;
         cash = data.cash;
         convoTiers = new List<int>(data.convoTiers);
 
@@ -220,17 +236,6 @@ public class Player : MonoBehaviour, ISaveable
         nokiRomanticRoute = data.nokiRomanticRoute;
         celciRomanticRoute = data.celciRomanticRoute;
         lotteRomanticRoute = data.lotteRomanticRoute;
-
-        statOffsets.Clear();
-        for (int i = 0; i < data.statOffsetTags.Count; i++)
-        {
-            var offset = new StatOffset(0);
-            foreach (var tag in data.statOffsetTags[i])
-            {
-                offset.AddOffsetTag(tag);
-            }
-            statOffsets.Add(offset);
-        }
 
         OnStatsChanged?.Invoke();
     }
@@ -257,6 +262,12 @@ public class StatOffset
         amount = _amount;
         affectingTags = new List<string>();
         isDirty = false;
+    }
+
+    public void SetTags(List<string> tags)
+    {
+        affectingTags = new List<string>(tags);
+        isDirty = true;
     }
 
     public void AddOffsetTag(string tag)
@@ -309,7 +320,7 @@ public class PlayerSaveData
 {
     public string playerName;
     public List<int> stats;
-    public List<List<string>> statOffsetTags;
+    public List<StatOffset> statOffsetTags;
     public int cash;
     public List<int> convoTiers;
 

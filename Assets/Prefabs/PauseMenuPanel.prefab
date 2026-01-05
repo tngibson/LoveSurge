@@ -2947,9 +2947,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1634669685590790833}
-        m_TargetAssemblyTypeName: SaveLoadManager, Assembly-CSharp
-        m_MethodName: SaveGame
+      - m_Target: {fileID: 5178166365508313031}
+        m_TargetAssemblyTypeName: PauseMenu, Assembly-CSharp
+        m_MethodName: OnSaveClicked
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -3515,9 +3515,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1634669685590790833}
-        m_TargetAssemblyTypeName: SaveLoadManager, Assembly-CSharp
-        m_MethodName: LoadGame
+      - m_Target: {fileID: 5178166365508313031}
+        m_TargetAssemblyTypeName: PauseMenu, Assembly-CSharp
+        m_MethodName: OnLoadClicked
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -4431,7 +4431,6 @@ GameObject:
   m_Component:
   - component: {fileID: 886237949219438904}
   - component: {fileID: 5178166365508313031}
-  - component: {fileID: 1634669685590790833}
   m_Layer: 5
   m_Name: PauseMenuPanel
   m_TagString: Untagged
@@ -4476,18 +4475,6 @@ MonoBehaviour:
   pauseMenuUI: {fileID: 4305124911081360834}
   audioMenuUI: {fileID: 6840248729788183414}
   optionsMenuUI: {fileID: 1271068656840011598}
---- !u!114 &1634669685590790833
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8255682862735811145}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a5e5d9bbdfec5cf4281e5228e1fa8734, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &8645127907742578082
 GameObject:
   m_ObjectHideFlags: 0
