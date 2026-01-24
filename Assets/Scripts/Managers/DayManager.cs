@@ -52,6 +52,7 @@ public class DayManager
         "July", "August", "September", "October", "November", "December"
     };
         string monthName = monthNames[Month - 1]; // Adjust for zero-based index
-        return $"{monthName} {Day:00}, {Year:00XX}";
+        return $"{monthName} {Day:00}";
+        // {Year:00XX}";
     }
 }

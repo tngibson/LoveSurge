@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.18028331, g: 0.2257133, b: 0.30692166, a: 1}
+  m_IndirectSpecularColor: {r: 0.18028378, g: 0.22571412, b: 0.30692285, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -566,7 +566,6 @@ GameObject:
   m_Component:
   - component: {fileID: 832744758}
   - component: {fileID: 832744757}
-  - component: {fileID: 832744759}
   m_Layer: 0
   m_Name: PlayerManager
   m_TagString: Untagged
@@ -591,6 +590,7 @@ MonoBehaviour:
   statOffsets: []
   cash: 0
   convoTiers: 01000000010000000100000001000000
+  collectedCards: []
   isHouseHot: 1
   isCelciThreatened: 0
   nokiRomanticRoute: 0
@@ -611,19 +611,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &832744759
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 832744756}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e0feb13ecec5da14398adf5ad11b4b82, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  dateAndTimeText: {fileID: 0}
 --- !u!1 &935380414
 GameObject:
   m_ObjectHideFlags: 0

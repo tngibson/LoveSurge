@@ -10,7 +10,8 @@ public class CalendarManager : MonoBehaviour
     public DayManager currentDate { get; private set; }
     public DayPhase currentPhase { get; private set; }
     public event System.Action<DayPhase> OnPhaseChanged;
-    [SerializeField] TextMeshProUGUI dateAndTimeText;
+    [SerializeField] TextMeshProUGUI date;
+    [SerializeField] TextMeshProUGUI time;
 
     void Awake()
     {
@@ -39,24 +40,8 @@ public class CalendarManager : MonoBehaviour
     private void OnSceneLoaded(Scene scene, LoadSceneMode mode)
     {
         // Ensure the TextMeshProUGUI component is reassigned or updated
-        TextMeshProUGUI dateAndTime = GameObject.Find("DateAndTime")?.GetComponent<TextMeshProUGUI>();
-        if (dateAndTime != null)
-        {
-            dateAndTimeText = dateAndTime;
-            setText();
-        }
+        setText();
     }
-
-    void Update()
-    {
-  
-        //if (Input.GetKeyDown(KeyCode.Space))
-        //{
-        //    AdvancePhase();
-        //    Debug.Log($"Current Date and Phase: {ToString()}");
-        //}
-    }
-
 
     public void InitializeCalendar(DayManager startDate)
     {
@@ -81,11 +66,12 @@ public class CalendarManager : MonoBehaviour
 
     public override string ToString()
     {
-        return $"{currentDate.ToString()}  | {currentPhase}";
+        return $"{currentDate}  | {currentPhase}";
     }
 
     public void setText()
     {
-        dateAndTimeText.text = ToString();
+        date.text = currentDate.ToString();
+        time.text = currentPhase.ToString();
     }
 }
