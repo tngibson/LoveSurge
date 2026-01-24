@@ -193,7 +193,7 @@ public class Dropzone : MonoBehaviour
 
         // Clear the cards to score
         cardsToScore.Clear();
-        Debug.Log(cardsToScore.Count);
+        //Debug.Log(cardsToScore.Count);
 
         CalculateScore();
     }
@@ -259,7 +259,7 @@ public class Dropzone : MonoBehaviour
         // Clear cardsToScore for a fresh scoring list
         cardsToScore.Clear();
         // Maintain cards in dropzone but reset lastPlacedCard
-        lastPlacedCard = dropzone.TopCard; // Set to the current top card in dropzone
+        lastPlacedCard = dropzone.TopCard;
         lastPlacedCard.isBottomCard = true;
 
         foreach (Card card in dropzone.GetCards())
