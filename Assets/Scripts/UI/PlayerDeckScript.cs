@@ -95,7 +95,9 @@ public class PlayerDeckScript : MonoBehaviour
                 if (Player.GetSafeOffsets()[2].GetAmount(ignoredTags) < 0) card4.Debuffed = true;
             }
         }
+
         AddStressCards();
+        AddCollectedCards();
     }
 
     // Draw a random card from the deck
@@ -177,6 +179,15 @@ public class PlayerDeckScript : MonoBehaviour
             {
                 card.SetVisibility(false);
             }
+        }
+    }
+
+    public void AddCollectedCards()
+    {
+        foreach (Card card in Player.instance.collectedCards)
+        {
+            Card newCard = MakeCard(card, card.Power);
+            newCard.Debuffed = false;
         }
     }
 }

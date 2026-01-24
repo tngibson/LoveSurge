@@ -207,7 +207,7 @@ public class DragDrop : MonoBehaviour
             cardComponent.OnCardPlayed();
             card.isInDropzone = true;
 
-            //Combo Surge --> Courtesy of Brendnen Wood
+            //Combo Surge --> Courtesy of Brenden Wood
             AudioManager.instance.PlayOneShot(FMODEvents.instance.CardPlaced, this.transform.position);
             GameManager.instance.ComboSurge ++;
 
