@@ -136,7 +136,7 @@ public class GameManager : MonoBehaviour
         comboSurge = 0;
     }
 
-    // Retrieve the active character’s date data dynamically
+    // Retrieve the active characterï¿½s date data dynamically
     private DateData GetActiveCharacter()
     {
         return LocationManager.Instance.characterDates[CurrentCharacterIndex];
