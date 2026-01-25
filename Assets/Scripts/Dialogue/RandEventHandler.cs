@@ -10,7 +10,7 @@ using static LocationManager;
 
 public class RandEventHandler : MonoBehaviour
 {
-    [SerializeField] private List<string> dialogLines = new List<string>();  // Holds the main dialog lines
+    [SerializeField] private List<string> dialogLines = new List<string>();     // Holds the main dialog lines
     [SerializeField] private List<string> speakersPerLine = new List<string>(); // Holds the speaker names per line
     [SerializeField] private List<SpriteOptions> characterSprites = new List<SpriteOptions>(); // Holds sprite options for each character
     [SerializeField] private List<Image> characterPortraits = new List<Image>(); // Holds references to character portrait Images
@@ -411,9 +411,9 @@ public class RandEventHandler : MonoBehaviour
 
             dialogLines = new List<string>
         {
-            "Celci: Whoa, it’s freezing in here!",
-            "You: Sorry about that... the heater’s busted again.",
-            "Celci: That’s not great for a guest, [Player]. Let’s fix that later."
+            "Celci: Whoa, itï¿½s freezing in here!",
+            "You: Sorry about that... the heaterï¿½s busted again.",
+            "Celci: Thatï¿½s not great for a guest, [Player]. Letï¿½s fix that later."
         };
 
             speakersPerLine = new List<string> { "Celci", "You", "Celci" };
@@ -457,9 +457,9 @@ public class RandEventHandler : MonoBehaviour
 
             dialogLines = new List<string>
         {
-            "Celci: Whoa, it’s freezing in here!",
-            "You: Sorry about that... the heater’s busted again.",
-            "Celci: That’s not great for a guest, [Player]. Let’s fix that later."
+            "Celci: Whoa, itï¿½s freezing in here!",
+            "You: Sorry about that... the heaterï¿½s busted again.",
+            "Celci: Thatï¿½s not great for a guest, [Player]. Letï¿½s fix that later."
         };
 
             speakersPerLine = new List<string> { "Celci", "You", "Celci" };
@@ -490,7 +490,7 @@ public class RandEventHandler : MonoBehaviour
         tempImage.rectTransform.offsetMin = background.rectTransform.offsetMin;
         tempImage.rectTransform.offsetMax = background.rectTransform.offsetMax;
         tempImage.preserveAspect = true;
-        tempImage.raycastTarget = false; // so it doesn’t block clicks
+        tempImage.raycastTarget = false; // so it doesnï¿½t block clicks
 
         // Put it behind UI but over the real background
         tempImage.transform.SetSiblingIndex(background.transform.GetSiblingIndex());
@@ -654,7 +654,7 @@ public class RandEventHandler : MonoBehaviour
             currentLineIndex = previousState.lineIndex;
             choices = previousState.choicesList;
 
-            // If there are still states left, we’re still inside nested dialogue
+            // If there are still states left, weï¿½re still inside nested dialogue
             isChoiceDialog = dialogStateStack.Count > 0;
 
             DisplayLine();

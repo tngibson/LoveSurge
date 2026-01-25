@@ -12,7 +12,12 @@ public class SoundtrackSetter : MonoBehaviour
     [SerializeField] private string _musicName;
 
     [SerializeField] private string DateCharacter;
-    
+
+    public void Awake()
+    {
+        
+    }
+
     public void PlayMusicByReference(EventReference musicReference)
     {
         try

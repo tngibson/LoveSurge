@@ -98,8 +98,8 @@ public class MusicManager : MonoBehaviour
             return true;
 
        string newMusicPath = GetEventName(newMusic);
-       Debug.Log(newMusicPath);
-       Debug.Log(ActiveMusicName);
+    //    Debug.Log(newMusicPath);
+    //    Debug.Log(ActiveMusicName);
        return !ActiveMusicName.Equals(newMusicPath, StringComparison.OrdinalIgnoreCase);
     }
     public void PlayMusic(EventReference music, bool fadeout = false, float fadeTime = 2f)
@@ -161,7 +161,7 @@ public class MusicManager : MonoBehaviour
         {
             Debug.Log("Setting " + parameter + " to " + value);
             Instance.CurrentMusicInstance.setParameterByName(parameter, value);
-            Debug.Log(Instance.CurrentMusicInstance.getParameterByName(parameter, out float paraValue));
+            //Debug.Log(Instance.CurrentMusicInstance.getParameterByName(parameter, out float paraValue));
         }
         catch (System.Exception)
         {

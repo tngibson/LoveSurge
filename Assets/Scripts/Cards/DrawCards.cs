@@ -4,11 +4,6 @@ using UnityEngine;
 
 public class DrawCards : MonoBehaviour
 {
-    [SerializeField] private GameObject card1;
-    [SerializeField] private GameObject card2;
-    [SerializeField] private GameObject card3;
-    [SerializeField] private GameObject card4;
-    [SerializeField] private GameObject card5;
     [SerializeField] private PlayerDeckScript deckContainer;  // Reference to the deck containing cards
     [SerializeField] private PlayerArea playerArea;           // Reference to the player's area where cards will be added
     [SerializeField] private int handSize = 4;                // Max hand size the player can have
@@ -16,6 +11,7 @@ public class DrawCards : MonoBehaviour
 
     public void Start()
     {
+        Debug.Log(gameObject.name + " is drawing cards.");
         // Draw 5 cards from the deck and add them to the player's area
         for (int i = 0; i < handSize; i++)
         {

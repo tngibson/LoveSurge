@@ -40,16 +40,12 @@ public class PlayerDeckScript : MonoBehaviour
     // Initialize the deck on Awake
     private void Start()
     {
-        //if (deckFilled == false)
-        //{
         ignoredTags = new List<string>() { StatOffset.STRESS_FOUR };
         FillDeck();
 
         initialPosition = transform.position;
 
         deckCountText.text = deck.Count.ToString();
-        //deckFilled = true;
-        //}
     }
 
     // Adds a card to the deck
@@ -59,7 +55,7 @@ public class PlayerDeckScript : MonoBehaviour
     }
 
     // Instantiates a card, assigns its power, and adds it to the deck
-    private Card MakeCard(Card prefab, int power)
+    protected Card MakeCard(Card prefab, int power)
     {
         Card finishedCard = Instantiate(prefab, container.transform);
         finishedCard.SetVisibility(false);
@@ -76,7 +72,7 @@ public class PlayerDeckScript : MonoBehaviour
     }
 
     // Fills the deck with cards of each type and power level
-    private void FillDeck()
+    protected virtual void FillDeck()
     {
         // Loop through the cards and create the deck based on `cardCount` for each power level
         for (int i = 1; i <= maxCardPower; i++) // Powers from 1 to maxCardPower
