@@ -9,6 +9,7 @@ using UnityEngine.Events;
 public class ScriptedTutorial : MonoBehaviour
 {
     [SerializeField] private GameManager gameManager;
+    [SerializeField] private TutorialHighlight tutorialHighlight;
 
     [Header("Dialog UI Components")]
     [SerializeField] private TextMeshProUGUI dialogText;    // UI Text component for displaying dialogue
@@ -44,6 +45,7 @@ public class ScriptedTutorial : MonoBehaviour
         }
 
         InitializeAudio(); // Starts FMOD audio
+        dialogEvent.AddListener(tutorialHighlight.HighlightGroup);
         
         StartCoroutine(PlayDialog(startingDialog));
     }
