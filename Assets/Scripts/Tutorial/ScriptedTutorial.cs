@@ -90,6 +90,7 @@ public class ScriptedTutorial : MonoBehaviour
         string hexColor;
         string eventKey = null;
 
+        // Parse tags at the start of the dialog
         while (dialog.StartsWith("["))
         {
             int closeIndex = dialog.IndexOf(']');
@@ -125,18 +126,17 @@ public class ScriptedTutorial : MonoBehaviour
             }
         }
 
-        dialog = dialog.Trim();
-
-        // Apply delay downstream (example)
-        yield return new WaitForSeconds(delay);
-
         if(!string.IsNullOrEmpty(eventKey))
         {
             dialogEvent.Invoke(eventKey);
             eventKey = null;
             Debug.Log("Dialog event invoked.");
         }
+        
+        dialog = dialog.Trim();
 
+        // Apply delay downstream (example)
+        yield return new WaitForSeconds(delay);
 
         isTypewriting = true;
         skipRequested = false;
