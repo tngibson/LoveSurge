@@ -4,15 +4,24 @@ using UnityEngine;
 using FMOD.Studio;
 using TMPro;
 using UnityEngine.UI;
+using UnityEngine.Events;
 
 public class ScriptedTutorial : MonoBehaviour
 {
     [SerializeField] private GameManager gameManager;
+
+    [Header("Dialog UI Components")]
     [SerializeField] private TextMeshProUGUI dialogText;    // UI Text component for displaying dialogue
-    [SerializeField] private ScrollRect scrollRect; // Reference to the Scroll Rect and Content Transform
+    [SerializeField] private ScrollRect scrollRect;         // Reference to the Scroll Rect and Content Transform
     [SerializeField] private RectTransform textRectTransform;
-    [SerializeField] private List<Sprite> sprites = new();
     [SerializeField] private float typewriterSpeed = 0.025f;
+
+    [Header("Starting Dialog Events")]
+    public UnityEvent<string> dialogEvent;
+
+    [Header("Starting Dialog")]
+    [SerializeField] private List<DialogueLines> startingDialog;
+
     private Player playerManager;
     private string playerName;
     private EventInstance wizardVoice;
@@ -36,7 +45,7 @@ public class ScriptedTutorial : MonoBehaviour
 
         InitializeAudio(); // Starts FMOD audio
         
-        //StartCoroutine(PlayDialog());
+        StartCoroutine(PlayDialog(startingDialog));
     }
 
     private void InitializeAudio()
@@ -52,24 +61,10 @@ public class ScriptedTutorial : MonoBehaviour
 
         if (lineNum >= maxLineNum) yield break; // Ensure we don't go out of bounds
 
-        bool isPCSpeaker = lines[lineNum].speaker == "PC";
-
-        // Read and typewrite the first speaker's line
-        if (isPCSpeaker)
-        {
-            currentSession.ReadPlayerText(); // Call the method for PC speaker
-        }
-        else
-        {
-            currentSession.ReadDateText(sprites[lineNum]); // Call the method for Date speaker
-        }
-        yield return StartCoroutine(TypewriteDialog(lines[lineNum].speaker, lines[lineNum].dialog));
-        lineNum++;
-
         // Check if there is a next line before proceeding
-        if (lineNum < maxLineNum)
+        while (lineNum < maxLineNum)
         {
-            isPCSpeaker = lines[lineNum].speaker == "PC";
+            bool isPCSpeaker = lines[lineNum].speaker == "PC";
 
             if (isPCSpeaker)
             {
@@ -77,17 +72,70 @@ public class ScriptedTutorial : MonoBehaviour
             }
             else
             {
-                currentSession.ReadDateText(sprites[lineNum]);
+                currentSession.ReadDateText(lines[lineNum].characterSprite);
             }
             yield return StartCoroutine(TypewriteDialog(lines[lineNum].speaker, lines[lineNum].dialog));
             lineNum++;
         }
 
+        //dialogEvent.RemoveAllListeners();
         Cursor.lockState = CursorLockMode.None;
     }
 
     private IEnumerator TypewriteDialog(string speaker, string dialog)
     {
+        float  delay = 0f;
+        string hexColor;
+        string eventKey = null;
+
+        while (dialog.StartsWith("["))
+        {
+            int closeIndex = dialog.IndexOf(']');
+            if (closeIndex == -1)
+                break;
+
+            string tag = dialog.Substring(0, closeIndex + 1);
+            dialog = dialog.Substring(closeIndex + 1);
+
+            if (tag.StartsWith("[TOPIC:"))
+            {
+                hexColor = tag.Replace("[TOPIC:", "").Replace("]", "");
+
+                // Safety checks
+                if (!ColorUtility.TryParseHtmlString(hexColor, out _))
+                hexColor = "#FFFFFF";
+
+                // Apply formatting
+                string topicLabel = $"<b><u><align=center><color={hexColor}>{dialog}</color></align></u></b>";
+                dialogText.text += topicLabel;
+                break;
+            }
+            else if (tag.StartsWith("[DELAY:"))
+            {
+                float.TryParse(
+                    tag.Replace("[DELAY:", "").Replace("]", ""),
+                    out delay
+                );
+            }
+            else if (tag.StartsWith("[EVENT:"))
+            {
+                eventKey = tag.Replace("[EVENT:", "").Replace("]", "");
+            }
+        }
+
+        dialog = dialog.Trim();
+
+        // Apply delay downstream (example)
+        yield return new WaitForSeconds(delay);
+
+        if(!string.IsNullOrEmpty(eventKey))
+        {
+            dialogEvent.Invoke(eventKey);
+            eventKey = null;
+            Debug.Log("Dialog event invoked.");
+        }
+
+
         isTypewriting = true;
         skipRequested = false;
         currentSession.isWriting = true;
@@ -110,19 +158,6 @@ public class ScriptedTutorial : MonoBehaviour
 
         // Prepare the speaker's portion in bold (appears immediately)
         string speakerPortion = $"<b>{speaker}:</b> ";
-
-        // Check if it's the first line of the conversation
-        if (lineNum == 0)
-        {
-            //TODO: Create a Topic Header
-            //Color topicColor = selectedConvoTopic.topicColor;  // topic color of the selected convo topic
-            //Color darkenedColor = DarkenColor(topicColor, 0.75f);  // Darken given color
-            //string hexColor = ColorUtility.ToHtmlStringRGB(darkenedColor);  // Convert to the color to a hex string
-
-            // Set the convo topic label for the current topic convo
-            //string topicLabel = $"<b><u><align=center><color=#{hexColor}>{selectedConvoTopic.topicLabelText.text}</color></align></u></b>";
-            //dialogText.text += topicLabel;  // Display the topic label
-        }
 
         // Store the current dialog text to preserve history
         string previousText = dialogText.text;
@@ -182,19 +217,6 @@ public class ScriptedTutorial : MonoBehaviour
         currentSession.dateCharacter.transform.localPosition = originalPosition;
     }
 
-    // Adjust the height of the text box based on the content size
-    private void AdjustTextBoxHeight()
-    {
-        // Force the TextMeshProUGUI to update its layout
-        dialogText.ForceMeshUpdate();
-
-        // Get the preferred height of the text content
-        float newHeight = dialogText.preferredHeight;
-
-        // Apply the new height to the RectTransform
-        textRectTransform.sizeDelta = new Vector2(textRectTransform.sizeDelta.x, newHeight);
-    }
-
     #region Helper Methods
     private Color DarkenColor(Color color, float factor)
     {
@@ -212,15 +234,28 @@ public class ScriptedTutorial : MonoBehaviour
         Canvas.ForceUpdateCanvases();  // Ensure the layout is updated
         scrollRect.verticalNormalizedPosition = 0f;  // Scroll to the bottom
     }
+
+    // Adjust the height of the text box based on the content size
+    private void AdjustTextBoxHeight()
+    {
+        // Force the TextMeshProUGUI to update its layout
+        dialogText.ForceMeshUpdate();
+
+        // Get the preferred height of the text content
+        float newHeight = dialogText.preferredHeight;
+
+        // Apply the new height to the RectTransform
+        textRectTransform.sizeDelta = new Vector2(textRectTransform.sizeDelta.x, newHeight);
+    }
     #endregion
 }
 
 [System.Serializable]
 public class DialogueLines
 {
-    public string speaker;        // speakers corresponding to each line
+    public string speaker;          // speakers corresponding to each line
     [TextArea(3, 10)]
-    public string dialog;       // main dialogue lines
-
+    public string dialog;           // main dialogue lines
+    public Sprite characterSprite;  // character sprite for the dialogue line
 }
 

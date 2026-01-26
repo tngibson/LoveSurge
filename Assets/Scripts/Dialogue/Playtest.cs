@@ -115,11 +115,14 @@ public class Playtest : MonoBehaviour
     // Changes the character pose and plays sounds
     public void ReadDateText(Sprite characterPose)
     {
-        // Change the sprite of the date character
-        dateCharacter.sprite = characterPose;
+        if (characterPose != null)
+        {
+            // Change the sprite of the date character
+            dateCharacter.sprite = characterPose;
+        }
 
         // Play date voice sound
-        AudioManager.instance.PlayOneShot(FMODEvents.instance.DateVoice, this.transform.position);
+        AudioManager.instance.PlayOneShot(FMODEvents.instance.DateVoice, transform.position);
 
         // Start the jump animation coroutine
         StartCoroutine(JumpAnimation());

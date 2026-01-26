@@ -8,12 +8,6 @@ public class PlayerDeckScriptTutorial : PlayerDeckScript
 {
     [Space]
     [SerializeField] private List<ScriptedCards> tutorialCards; // List of tutorial cards to include in the deck
-    // Initialize the deck on Awake
-    private void Start()
-    {
-        FillDeck();
-        Debug.Log("Tutorial Deck Filled with cards.");
-    }
 
     // Fills the deck with cards of each type and power level
     protected override void FillDeck()

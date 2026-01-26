@@ -38,7 +38,7 @@ public class PlayerDeckScript : MonoBehaviour
     private Vector2 initialPosition;
 
     // Initialize the deck on Awake
-    private void Start()
+    protected void Start()
     {
         ignoredTags = new List<string>() { StatOffset.STRESS_FOUR };
         FillDeck();
