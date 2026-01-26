@@ -1482,25 +1482,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   gameManager: {fileID: 2001940042}
+  tutorialHighlight: {fileID: 0}
   dialogText: {fileID: 1251843997}
   scrollRect: {fileID: 202139553}
   textRectTransform: {fileID: 1251843996}
   typewriterSpeed: 0.025
   dialogEvent:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 1991520289}
-        m_TargetAssemblyTypeName: TutorialHighlight, Assembly-CSharp
-        m_MethodName: HighlightGroup
-        m_Mode: 5
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
+      m_Calls: []
   startingDialog:
   - speaker: C0D3-W1Z4RD
     dialog: '[TOPIC: #00FFFF] Tutorial'
@@ -2860,8 +2849,8 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1877364503}
   m_HandleRect: {fileID: 1877364502}
   m_Direction: 2
-  m_Value: 1.0000001
-  m_Size: 0.37836662
+  m_Value: 1
+  m_Size: 0.3783666
   m_NumberOfSteps: 0
   m_OnValueChanged:
     m_PersistentCalls:
