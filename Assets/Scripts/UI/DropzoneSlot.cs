@@ -13,6 +13,7 @@ public class DropzoneSlot : MonoBehaviour
 
     public bool IsEmpty => cardsInSlot.Count == 0; // Check if the slot is empty
     public Card TopCard => cardsInSlot.Count > 0 ? cardsInSlot[cardsInSlot.Count - 1] : null; // Get the top card
+    public List<Card> CardsInSlot => cardsInSlot; // Public getter for cards in slot
 
     [SerializeField] private Dropzone dropzone;
 
