@@ -37,7 +37,6 @@ public class TutorialHighlight : MonoBehaviour
 
     public void HighlightGroup(string groupName)
     {
-        Debug.Log($"Highlighting group: {groupName}");
         //Sanitize group name
         groupName = groupName.Trim().ToLower();
 

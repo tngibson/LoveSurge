@@ -5,14 +5,15 @@ using UnityEngine.UI;
 
 public class ReserveSlot : MonoBehaviour
 {
+    [SerializeField] private ReserveManager reserveManager;
     [SerializeField] private Card[] cardPrefabs; // Array of card prefabs to choose from
-
     [SerializeField] private GameObject reserveSlot;
+    [SerializeField] private bool random = true;
+    [SerializeField] private Card reservedPrefab;
 
     public Image cardImage; // Reference to the card image for UI changes
     public DragDrop cardDragDrop;   // The card currently in this slot
     public Card card;
-    [SerializeField] private ReserveManager reserveManager;
 
 
     // Mapping card types to their respective playable colors
@@ -26,7 +27,14 @@ public class ReserveSlot : MonoBehaviour
 
     private void Awake()
     {
-        GenerateNewCard();
+        if (random)
+        {
+            GenerateNewCard();
+        }
+        else
+        {
+            GenerateNewCard(reservedPrefab);
+        }
     }
 
     public void SetPlayable(bool playable)
@@ -53,6 +61,16 @@ public class ReserveSlot : MonoBehaviour
         cardDragDrop = card.GetComponent<DragDrop>();
         cardImage = card.background;
         card.Power = randomPower;
+
+        card.transform.SetParent(reserveSlot.transform, false); // Parent it to the ReserveSlot
+        card.isReserveCard = true;
+    }
+
+    public void GenerateNewCard(Card newCard)
+    {
+        card = Instantiate(newCard);
+        cardDragDrop = card.GetComponent<DragDrop>();
+        cardImage = card.background;
 
         card.transform.SetParent(reserveSlot.transform, false); // Parent it to the ReserveSlot
         card.isReserveCard = true;

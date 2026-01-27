@@ -65,6 +65,8 @@ public class ScriptedTutorial : MonoBehaviour
 
         Cursor.lockState = CursorLockMode.Locked;
 
+        lineNum = 0;
+        
         maxLineNum = lines.Count;
 
         if (lineNum >= maxLineNum) yield break; // Ensure we don't go out of bounds
@@ -92,19 +94,20 @@ public class ScriptedTutorial : MonoBehaviour
 
     private IEnumerator TypewriteDialog(string speaker, string dialog)
     {
+        Debug.Log($"{dialog}");
+
         float  delay = 0f;
         string hexColor = "#000000";
         string eventKey = null;
 
         // Store the current dialog text to preserve history
         string previousText = dialogText.text;
-        Debug.Log("Previous Text: " + previousText);
+        //Debug.Log("Previous Text: " + previousText);
 
         // Add spacing between previous and new text if there is existing dialog
         if (!string.IsNullOrEmpty(previousText))
         {
-            Debug.Log("Adding spacing between previous and new dialog.");
-            dialogText.text += "\n\n";  // Add space between previous and new lines
+            previousText += "\n\n";  // Add space between previous and new lines
         }
 
         // Parse tags at the start of the dialog
@@ -129,7 +132,13 @@ public class ScriptedTutorial : MonoBehaviour
                 }
 
                 // Apply formatting
-                string topicLabel = $"<b><u><align=center><color={hexColor}>{dialog}</color></align></u></b>\n\n";
+                string topicLabel = $"<b><u><align=center><color={hexColor}>{dialog}</color></align></u></b>";
+                //Padding between previous and new topic label
+                if (!string.IsNullOrEmpty(previousText))
+                {
+                    topicLabel = "\n\n" + topicLabel;  // Add space between previous and new lines
+                }
+
                 dialogText.text += topicLabel;
                 yield break;
             }
@@ -148,7 +157,6 @@ public class ScriptedTutorial : MonoBehaviour
 
         if(!string.IsNullOrEmpty(eventKey))
         {
-            Debug.Log($"Dialog event invoked: {eventKey}");
             dialogEvent.Invoke(eventKey);
         }
         

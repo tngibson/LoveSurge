@@ -788,16 +788,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ba3fc54a3e472844894f8a58faef733d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  reserveManager: {fileID: 420358066}
   cardPrefabs:
   - {fileID: -5963538814804999132, guid: 1e37df9f36f5407498c1e18e05ebc7f9, type: 3}
   - {fileID: 8562863103195938653, guid: 05b5675adef6c844888a1391108fb4d9, type: 3}
   - {fileID: 2326991348489003529, guid: 1796bafd5756dbc41b01a0a95cf61460, type: 3}
   - {fileID: -1454504632352844718, guid: afba97dd884423a4e8264984c925383c, type: 3}
   reserveSlot: {fileID: 66572630}
+  random: 0
+  reservedPrefab: {fileID: 3371482777649278279, guid: 24e5e6c72047ffb4899f9c19a120ff7f,
+    type: 3}
   cardImage: {fileID: 0}
   cardDragDrop: {fileID: 0}
   card: {fileID: 0}
-  reserveManager: {fileID: 420358066}
 --- !u!1 &76309361
 GameObject:
   m_ObjectHideFlags: 0
@@ -2007,16 +2010,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ba3fc54a3e472844894f8a58faef733d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  reserveManager: {fileID: 420358066}
   cardPrefabs:
   - {fileID: -5963538814804999132, guid: 1e37df9f36f5407498c1e18e05ebc7f9, type: 3}
   - {fileID: 8562863103195938653, guid: 05b5675adef6c844888a1391108fb4d9, type: 3}
   - {fileID: 2326991348489003529, guid: 1796bafd5756dbc41b01a0a95cf61460, type: 3}
   - {fileID: -1454504632352844718, guid: afba97dd884423a4e8264984c925383c, type: 3}
   reserveSlot: {fileID: 295771161}
+  random: 0
+  reservedPrefab: {fileID: 3371482777649278279, guid: 24e5e6c72047ffb4899f9c19a120ff7f,
+    type: 3}
   cardImage: {fileID: 0}
   cardDragDrop: {fileID: 0}
   card: {fileID: 0}
-  reserveManager: {fileID: 420358066}
 --- !u!1001 &311569657
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -6702,6 +6708,9 @@ MonoBehaviour:
   - {fileID: 8562863103195938653, guid: 05b5675adef6c844888a1391108fb4d9, type: 3}
   - {fileID: 2326991348489003529, guid: 1796bafd5756dbc41b01a0a95cf61460, type: 3}
   - {fileID: -1454504632352844718, guid: afba97dd884423a4e8264984c925383c, type: 3}
+  startingCardPrefab: {fileID: 3371482777649278279, guid: 24e5e6c72047ffb4899f9c19a120ff7f,
+    type: 3}
+  setStartingCard: 1
   dropzone: {fileID: 2119566656}
 --- !u!1001 &1005606886
 PrefabInstance:
@@ -7156,7 +7165,7 @@ MonoBehaviour:
       a conversation or else you won\u2019t be able to play any cards."
     characterSprite: {fileID: 21300000, guid: 79f4cba0f14c0bd46951f09f7bd48970, type: 3}
   - speaker: C0D3-W1Z4RD
-    dialog: '[TOPIC: #00FFFF] Hand'
+    dialog: '[TOPIC: #00FFFF] Hand and Discard'
     characterSprite: {fileID: 21300000, guid: 79f4cba0f14c0bd46951f09f7bd48970, type: 3}
   - speaker: C0D3-W1Z4RD
     dialog: '[EVENT: Cards] At the bottom of the screen you can see the cards you
@@ -7178,25 +7187,21 @@ MonoBehaviour:
       You will use this card to start a conversation with them.
     characterSprite: {fileID: 21300000, guid: b06df378e24c2594b8616dbb469efb0a, type: 3}
   - speaker: C0D3-W1Z4RD
-    dialog: '[EVENT: Score] In the Score Zone your AI Appliance Companion will provide
-      you a card. You will use this card to start a conversation with them.'
+    dialog: '[EVENT: DropZone] In the Score Zone your AI Appliance Companion will
+      provide you a card. You will use this card to start a conversation with them.'
     characterSprite: {fileID: 21300000, guid: 568418e572b891b499d66849254b674e, type: 3}
   - speaker: C0D3-W1Z4RD
-    dialog: In your hand you have <color=#005500>2 Courage Cards (1, 3)</color>,
-      a <color=#005500> Cleverness Card (3) </color>, and a <color=#005500> Charisma
+    dialog: In your hand you have <color=#EDC7E4>2 Courage Cards (1, 3)</color>,
+      a <color=#B7DCEA> Cleverness Card (3) </color>, and a <color=#F4F1CC> Charisma
       Card (3) </color>.
     characterSprite: {fileID: 21300000, guid: 568418e572b891b499d66849254b674e, type: 3}
   - speaker: C0D3-W1Z4RD
-    dialog: "First, I\u2019ll use a <color=#005500>Courage Card</color>"
+    dialog: "First, I\u2019ll use a <color=#EDC7E4>Courage Card</color>"
     characterSprite: {fileID: 21300000, guid: 79f4cba0f14c0bd46951f09f7bd48970, type: 3}
   - speaker: C0D3-W1Z4RD
     dialog: To play a card in the Score Zone you must match its color (suit) or number.
       It is kind of like another game I have played a lot.
     characterSprite: {fileID: 21300000, guid: 79f4cba0f14c0bd46951f09f7bd48970, type: 3}
-  - speaker: C0D3-W1Z4RD
-    dialog: To play a card in the Score Zone you must match its color (suit) or number.
-      It is kind of like another game I have played a lot.
-    characterSprite: {fileID: 21300000, guid: b06df378e24c2594b8616dbb469efb0a, type: 3}
   - speaker: C0D3-W1Z4RD
     dialog: Try matching the card suits! Place your 1-Courage cards down first.
     characterSprite: {fileID: 21300000, guid: b06df378e24c2594b8616dbb469efb0a, type: 3}
@@ -7896,6 +7901,81 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+--- !u!1 &1245686312
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1245686313}
+  - component: {fileID: 1245686315}
+  - component: {fileID: 1245686314}
+  m_Layer: 5
+  m_Name: RedCross
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &1245686313
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1245686312}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1411976330}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: -57, y: 117}
+  m_SizeDelta: {x: 360, y: 130}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &1245686314
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1245686312}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_RaycastTarget: 1
+  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
+  m_Maskable: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  m_Sprite: {fileID: 21300000, guid: f0b6368d324c522468923c0b941c73f4, type: 3}
+  m_Type: 0
+  m_PreserveAspect: 0
+  m_FillCenter: 1
+  m_FillMethod: 4
+  m_FillAmount: 1
+  m_FillClockwise: 1
+  m_FillOrigin: 0
+  m_UseSpriteMesh: 0
+  m_PixelsPerUnitMultiplier: 1
+--- !u!222 &1245686315
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1245686312}
+  m_CullTransparentMesh: 1
 --- !u!1001 &1251171722
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -8273,6 +8353,81 @@ CanvasRenderer:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1251843995}
+  m_CullTransparentMesh: 1
+--- !u!1 &1262971183
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1262971184}
+  - component: {fileID: 1262971186}
+  - component: {fileID: 1262971185}
+  m_Layer: 5
+  m_Name: RedCross (1)
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &1262971184
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1262971183}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1411976330}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: -57, y: -350}
+  m_SizeDelta: {x: 360, y: 130}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &1262971185
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1262971183}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_RaycastTarget: 1
+  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
+  m_Maskable: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  m_Sprite: {fileID: 21300000, guid: f0b6368d324c522468923c0b941c73f4, type: 3}
+  m_Type: 0
+  m_PreserveAspect: 0
+  m_FillCenter: 1
+  m_FillMethod: 4
+  m_FillAmount: 1
+  m_FillClockwise: 1
+  m_FillOrigin: 0
+  m_UseSpriteMesh: 0
+  m_PixelsPerUnitMultiplier: 1
+--- !u!222 &1262971186
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1262971183}
   m_CullTransparentMesh: 1
 --- !u!1 &1298419915
 GameObject:
@@ -8827,6 +8982,8 @@ RectTransform:
   - {fileID: 1646536586}
   - {fileID: 1497879187}
   - {fileID: 1975168381}
+  - {fileID: 1245686313}
+  - {fileID: 1262971184}
   m_Father: {fileID: 1108671395}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
@@ -10279,16 +10436,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ba3fc54a3e472844894f8a58faef733d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  reserveManager: {fileID: 420358066}
   cardPrefabs:
   - {fileID: -5963538814804999132, guid: 1e37df9f36f5407498c1e18e05ebc7f9, type: 3}
   - {fileID: 8562863103195938653, guid: 05b5675adef6c844888a1391108fb4d9, type: 3}
   - {fileID: 2326991348489003529, guid: 1796bafd5756dbc41b01a0a95cf61460, type: 3}
   - {fileID: -1454504632352844718, guid: afba97dd884423a4e8264984c925383c, type: 3}
   reserveSlot: {fileID: 1649350020}
+  random: 0
+  reservedPrefab: {fileID: 3371482777649278279, guid: 24e5e6c72047ffb4899f9c19a120ff7f,
+    type: 3}
   cardImage: {fileID: 0}
   cardDragDrop: {fileID: 0}
   card: {fileID: 0}
-  reserveManager: {fileID: 420358066}
 --- !u!1 &1661069645
 GameObject:
   m_ObjectHideFlags: 0
@@ -11690,11 +11850,11 @@ RectTransform:
   - {fileID: 783428732}
   - {fileID: 1197163754}
   - {fileID: 907092402}
+  - {fileID: 814681402}
   - {fileID: 2013139779}
   - {fileID: 1522731588}
   - {fileID: 280162390}
   - {fileID: 682132493}
-  - {fileID: 814681402}
   - {fileID: 102032540}
   - {fileID: 542862009}
   m_Father: {fileID: 1108671395}
@@ -11795,9 +11955,12 @@ MonoBehaviour:
     - {fileID: 783428733}
   - groupName: ScoreAndRecycle
     highlightObjects:
-    - {fileID: 682132494}
+    - {fileID: 814681403}
     - {fileID: 2013139780}
-  - groupName: Score
+  - groupName: DropZone
+    highlightObjects:
+    - {fileID: 814681403}
+  - groupName: ScoreBoard
     highlightObjects:
     - {fileID: 682132494}
   highlightReference:
@@ -12613,16 +12776,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ba3fc54a3e472844894f8a58faef733d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  reserveManager: {fileID: 420358066}
   cardPrefabs:
   - {fileID: -5963538814804999132, guid: 1e37df9f36f5407498c1e18e05ebc7f9, type: 3}
   - {fileID: 8562863103195938653, guid: 05b5675adef6c844888a1391108fb4d9, type: 3}
   - {fileID: 2326991348489003529, guid: 1796bafd5756dbc41b01a0a95cf61460, type: 3}
   - {fileID: -1454504632352844718, guid: afba97dd884423a4e8264984c925383c, type: 3}
   reserveSlot: {fileID: 2031511427}
+  random: 0
+  reservedPrefab: {fileID: 3371482777649278279, guid: 24e5e6c72047ffb4899f9c19a120ff7f,
+    type: 3}
   cardImage: {fileID: 0}
   cardDragDrop: {fileID: 0}
   card: {fileID: 0}
-  reserveManager: {fileID: 420358066}
 --- !u!1 &2034964664
 GameObject:
   m_ObjectHideFlags: 0
