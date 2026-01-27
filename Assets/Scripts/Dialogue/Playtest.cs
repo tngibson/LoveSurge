@@ -62,10 +62,6 @@ public class Playtest : MonoBehaviour
     [SerializeField] public List<string> creSpeaker;
     [SerializeField] public List<Sprite> creSprites;
 
-    // Text for conversation output
-    protected string text = " ";
-    protected string playerText = " ";
-
     // Field for the date character so we can change their sprites
     [SerializeField] public Image dateCharacter;
 
@@ -113,24 +109,20 @@ public class Playtest : MonoBehaviour
     // Plays player text sounds
     public void ReadPlayerText()
     {
-        //playerVoice.start();
-        //if (isWriting)
-        //{
-            AudioManager.instance.PlayOneShot(FMODEvents.instance.PlayerVoice, this.transform.position);
-        //}
-        //Debug.Log("AHHHHHHHHHHHHH");
-        //playerVoice.stop(STOP_MODE.IMMEDIATE); 
-        //playerTextSFX.Play();
+        AudioManager.instance.PlayOneShot(FMODEvents.instance.PlayerVoice, this.transform.position);
     }
 
     // Changes the character pose and plays sounds
     public void ReadDateText(Sprite characterPose)
     {
-        // Change the sprite of the date character
-        dateCharacter.sprite = characterPose;
+        if (characterPose != null)
+        {
+            // Change the sprite of the date character
+            dateCharacter.sprite = characterPose;
+        }
 
         // Play date voice sound
-        AudioManager.instance.PlayOneShot(FMODEvents.instance.DateVoice, this.transform.position);
+        AudioManager.instance.PlayOneShot(FMODEvents.instance.DateVoice, transform.position);
 
         // Start the jump animation coroutine
         StartCoroutine(JumpAnimation());

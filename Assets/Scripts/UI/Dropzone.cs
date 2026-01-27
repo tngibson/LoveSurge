@@ -118,7 +118,7 @@ public class Dropzone : MonoBehaviour
             // Update the last placed card
             lastPlacedCard = card;
 
-            Debug.Log($"Card {card.name} placed in DropzoneSlot.");
+            //Debug.Log($"Card {card.name} placed in DropzoneSlot.");
             CalculateScore();
         }
         else
@@ -193,7 +193,7 @@ public class Dropzone : MonoBehaviour
 
         // Clear the cards to score
         cardsToScore.Clear();
-        Debug.Log(cardsToScore.Count);
+        //Debug.Log(cardsToScore.Count);
 
         CalculateScore();
     }
@@ -259,7 +259,7 @@ public class Dropzone : MonoBehaviour
         // Clear cardsToScore for a fresh scoring list
         cardsToScore.Clear();
         // Maintain cards in dropzone but reset lastPlacedCard
-        lastPlacedCard = dropzone.TopCard; // Set to the current top card in dropzone
+        lastPlacedCard = dropzone.TopCard;
         lastPlacedCard.isBottomCard = true;
 
         foreach (Card card in dropzone.GetCards())
@@ -338,71 +338,6 @@ public class Dropzone : MonoBehaviour
         scoreCalculationText.text = calculationBreakdown;
     }
 
-
-    // Coroutine that moves all cards from the dropzones to the discard pile at once.
-    // Currently removed for obsolescence
-    /*
-    private IEnumerator DiscardCards()
-    {
-        List<Coroutine> discardCoroutines = new List<Coroutine>();
-
-        for (int i = 0; i < dropzones.Length; i++)
-        {
-            Card card = dropzones[i].GetCard();
-            if (card != null)
-            {
-                // Start discarding each card without waiting for completion
-                Coroutine discardCoroutine = StartCoroutine(MoveCardToDiscardPile(card));
-                discardCoroutines.Add(discardCoroutine);
-
-                // Clear each dropzone and set playedCards[i] to null instead of removing
-                dropzones[i].ClearCard();
-                playedCards[i] = null;  // Set the corresponding slot in playedCards to null
-                discard.AddToDiscard(card);  // Add card to discard pile
-            }
-        }
-
-        // Wait until all discard coroutines are complete
-        foreach (Coroutine coroutine in discardCoroutines)
-        {
-            yield return coroutine;
-        }
-    }
-    */
-
-    // Modified to support simultaneous movement
-    // Currently removed for obsolescence
-    /*
-    private IEnumerator MoveCardToDiscardPile(Card card)
-    {
-        Vector3 startPosition = card.transform.position;
-        Vector3 discardPosition = discard.transform.position;
-
-        Vector3 startScale = card.transform.localScale;
-        Vector3 targetScale = Vector3.zero;
-
-        float duration = discardDuration;
-        float elapsedTime = 0f;
-
-        while (elapsedTime < duration)
-        {
-            float progress = elapsedTime / duration;
-
-            card.transform.position = Vector3.Lerp(startPosition, discardPosition, Mathf.SmoothStep(0, 1, progress));
-            card.transform.localScale = Vector3.Lerp(startScale, targetScale, progress);
-
-            elapsedTime += Time.deltaTime;
-            yield return null;
-        }
-
-        card.transform.position = discardPosition;
-        card.transform.localScale = targetScale;
-        card.transform.SetParent(discard.transform, true);
-    }
-    */
-
-
-
     // Checks if the appropriate dialogs should be triggered based on the topic's power state.
     private void CheckDialogTriggers()
     {
@@ -459,34 +394,6 @@ public class Dropzone : MonoBehaviour
         // Re-enable topic buttons for the next selection
         topicContainer.EnableButtons();
     }
-
-    // Handles the failure of a conversation topic by moving it to the "failed" list and resetting relevant states for the next round.
-    // Currently removed for obsolescence
-    /*
-    private void FailConvo()
-    {
-        failedConvo = true;
-
-        CheckDialogTriggers();
-
-        // Move the topic to the "failed" list and remove it from active topics
-        topicContainer.failedConvos.Add(selectedConvoTopic);
-        topicContainer.convoTopics.Remove(selectedConvoTopic);
-
-        // Reset the convoText
-        selectedConvoTopic.convoText.text = "Awaiting Topic...";
-
-        // Mark the topic as failed and reset its state
-        selectedConvoTopic.isFailed = true;
-        selectedConvoTopic.isClicked = false;
-
-        // Reset topic selection state
-        gameManager.IsTopicSelected = false;
-
-        // Re-enable topic buttons for the next selection
-        topicContainer.EnableButtons();
-    }
-    */
 
     // Clears all cards from dropzones and resets the current score to 0.
     private void ResetAfterScoring()

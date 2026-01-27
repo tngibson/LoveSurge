@@ -52,7 +52,6 @@ public class StatUpgrade : MonoBehaviour
 
             if (currentLineIndex >= currentDialogLines.Count)
             {
-                ApplyStatChanges(currentDialogLines);
                 mapButton.SetActive(true);
             }
             else
@@ -74,7 +73,7 @@ public class StatUpgrade : MonoBehaviour
     new OfficeJob
     {
         jobTitle = "Nurse at a Veterinary Clinic",
-        sillyLine = "THERE’S BLOOD EVERYWHERE. OH THE POOR PENGUINS"
+        sillyLine = "THEREï¿½S BLOOD EVERYWHERE. OH THE POOR PENGUINS"
     },
     new OfficeJob
     {
@@ -89,7 +88,7 @@ public class StatUpgrade : MonoBehaviour
     new OfficeJob
     {
         jobTitle = "Novice Acupuncturist",
-        sillyLine = "I’ve never done this before, so tell me if it hurts"
+        sillyLine = "Iï¿½ve never done this before, so tell me if it hurts"
     },
     new OfficeJob
     {
@@ -109,7 +108,7 @@ public class StatUpgrade : MonoBehaviour
     new OfficeJob
     {
         jobTitle = "Lifeguard",
-        sillyLine = "No running or I will send you to Davy Jones’ locker"
+        sillyLine = "No running or I will send you to Davy Jonesï¿½ locker"
     },
     new OfficeJob
     {
@@ -119,7 +118,7 @@ public class StatUpgrade : MonoBehaviour
     new OfficeJob
     {
         jobTitle = "Barista",
-        sillyLine = "WE’VE GOT A HORDE OF SOCCER MOMS COMING IN"
+        sillyLine = "WEï¿½VE GOT A HORDE OF SOCCER MOMS COMING IN"
     },
     new OfficeJob
     {
@@ -219,7 +218,7 @@ public class StatUpgrade : MonoBehaviour
 
         baseTextTemplates["Office"] = new()
         {
-            "You visit the OMNITEMP OPPORTUNITIES™ office looking for work.",
+            "You visit the OMNITEMP OPPORTUNITIESï¿½ office looking for work.",
             "John Fishman: Hey there buddy! Ready to get to work!",
             "Today, you work as {article} __jobtitle__.",
             "You shout, \"__silly_line__\"",
@@ -235,7 +234,7 @@ public class StatUpgrade : MonoBehaviour
 
         baseTextTemplates["ArtBuilding"] = new()
         {
-            "You spend time in the Artistic Generation Zone™.",
+            "You spend time in the Artistic Generation Zoneï¿½.",
             "You decide to __creative_action__ __outcome__.",
             "Creativity +2."
         };
@@ -281,6 +280,11 @@ public class StatUpgrade : MonoBehaviour
             {
                 currentDialogLines.Add(ReplacePlaceholders(line));
             }
+        }
+
+        if (currentLineIndex == currentDialogLines.Count - 1)
+        {
+            ApplyStatChanges(currentDialogLines);
         }
 
         if (currentLineIndex < currentDialogLines.Count)

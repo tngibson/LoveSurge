@@ -79,7 +79,7 @@ public class GameManager : MonoBehaviour
         fullHandText.SetActive(false);
         scoreText.text = "Score: 0";
         MusicManager.SetParameterByName("dateProgress", 0);
-        Debug.Log("Start Music");
+        //Debug.Log("Start Music");
     }
 
     public void SetConvoStart()
@@ -136,7 +136,7 @@ public class GameManager : MonoBehaviour
         comboSurge = 0;
     }
 
-    // Retrieve the active character’s date data dynamically
+    // Retrieve the active characterï¿½s date data dynamically
     private DateData GetActiveCharacter()
     {
         return LocationManager.Instance.characterDates[CurrentCharacterIndex];

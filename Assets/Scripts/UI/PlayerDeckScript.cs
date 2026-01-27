@@ -38,18 +38,14 @@ public class PlayerDeckScript : MonoBehaviour
     private Vector2 initialPosition;
 
     // Initialize the deck on Awake
-    private void Start()
+    protected void Start()
     {
-        //if (deckFilled == false)
-        //{
         ignoredTags = new List<string>() { StatOffset.STRESS_FOUR };
         FillDeck();
 
         initialPosition = transform.position;
 
         deckCountText.text = deck.Count.ToString();
-        //deckFilled = true;
-        //}
     }
 
     // Adds a card to the deck
@@ -59,7 +55,7 @@ public class PlayerDeckScript : MonoBehaviour
     }
 
     // Instantiates a card, assigns its power, and adds it to the deck
-    private Card MakeCard(Card prefab, int power)
+    protected Card MakeCard(Card prefab, int power)
     {
         Card finishedCard = Instantiate(prefab, container.transform);
         finishedCard.SetVisibility(false);
@@ -76,7 +72,7 @@ public class PlayerDeckScript : MonoBehaviour
     }
 
     // Fills the deck with cards of each type and power level
-    private void FillDeck()
+    protected virtual void FillDeck()
     {
         // Loop through the cards and create the deck based on `cardCount` for each power level
         for (int i = 1; i <= maxCardPower; i++) // Powers from 1 to maxCardPower
@@ -95,7 +91,9 @@ public class PlayerDeckScript : MonoBehaviour
                 if (Player.GetSafeOffsets()[2].GetAmount(ignoredTags) < 0) card4.Debuffed = true;
             }
         }
+
         AddStressCards();
+        AddCollectedCards();
     }
 
     // Draw a random card from the deck
@@ -177,6 +175,15 @@ public class PlayerDeckScript : MonoBehaviour
             {
                 card.SetVisibility(false);
             }
+        }
+    }
+
+    public void AddCollectedCards()
+    {
+        foreach (Card card in Player.instance.collectedCards)
+        {
+            Card newCard = MakeCard(card, card.Power);
+            newCard.Debuffed = false;
         }
     }
 }

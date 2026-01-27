@@ -12,7 +12,12 @@ public class SoundtrackSetter : MonoBehaviour
     [SerializeField] private string _musicName;
 
     [SerializeField] private string DateCharacter;
-    
+
+    public void Awake()
+    {
+        
+    }
+
     public void PlayMusicByReference(EventReference musicReference)
     {
         try
@@ -28,7 +33,7 @@ public class SoundtrackSetter : MonoBehaviour
 
     public void PlayMusic()
     {
-        Debug.Log(MusicManager.Instance);
+        //Debug.Log(MusicManager.Instance);
         if (_musicReference.IsNull)
         {
             Debug.LogWarning("Music reference is null");
@@ -37,7 +42,7 @@ public class SoundtrackSetter : MonoBehaviour
         _musicName = MusicManager.GetEventName(_musicReference);
         if(!MusicManager.Instance.ActiveMusicName.Equals(_musicReference))
         {
-            Debug.Log("Playing music: " + _musicName );
+            //Debug.Log("Playing music: " + _musicName );
             MusicManager.Instance?.PlayMusic(_musicReference);
         }  
     }

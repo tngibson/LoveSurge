@@ -11,10 +11,10 @@ public class KeyPressManager : MonoBehaviour
     private void Awake()
     {
         // keeps all stress values throughout the scenes
-        DontDestroyOnLoad(this.gameObject);
+        DontDestroyOnLoad(gameObject);
         if (instance != null && instance != this)
         {
-            Destroy(this.gameObject);  // Ensures only one instance of StressManager
+            Destroy(gameObject);  // Ensures only one instance of StressManager
         }
         else
         {
