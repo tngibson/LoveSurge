@@ -352,7 +352,7 @@ public class DragDrop : MonoBehaviour
         {
             isOverReserveSlot = true;
             currentReserve = reserveManager;
-            Debug.Log("Enter Reserve");
+            //Debug.Log("Enter Reserve");
         }
     }
 
@@ -397,7 +397,7 @@ public class DragDrop : MonoBehaviour
         {
             isOverReserveSlot = false;
             currentReserve = null;
-            Debug.Log("Exit Reserve");
+            //Debug.Log("Exit Reserve");
         }
     }
 

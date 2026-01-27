@@ -12,7 +12,7 @@ public class TutorialHighlight : MonoBehaviour
     [SerializeField] private List<HighlightInstruction> highlightInstructions = new();
     [SerializeField] private List<GameObject> highlightReference = new();
     private Dictionary<string, HighlightInstruction> highlightDict = new();
-
+    private string currentGroup = "";
     private Coroutine highlightCoroutine;
     private void Awake()
     {
@@ -37,8 +37,9 @@ public class TutorialHighlight : MonoBehaviour
 
     public void HighlightGroup(string groupName)
     {
+        Debug.Log($"Highlighting group: {groupName}");
         //Sanitize group name
-        groupName = groupName.Replace(" ", "_").ToLower();
+        groupName = groupName.Trim().ToLower();
 
         if(highlightCoroutine != null)
         {
@@ -72,7 +73,6 @@ public class HighlightInstruction
 
     public IEnumerator HighlightCoroutine(AnimationCurve fadeinCurve, AnimationCurve fadeoutCurve)
     {
-        Debug.Log($"Highlighting group: {groupName}");
         screen.raycastTarget = true;
         Color c = screen.color;
 

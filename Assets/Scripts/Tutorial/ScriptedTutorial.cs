@@ -22,6 +22,7 @@ public class ScriptedTutorial : MonoBehaviour
 
     [Header("Starting Dialog")]
     [SerializeField] private List<DialogueLines> startingDialog;
+    [SerializeField] private Playtest currentSession;
 
     private Player playerManager;
     private string playerName;
@@ -29,9 +30,8 @@ public class ScriptedTutorial : MonoBehaviour
     private int lineNum = 0;
     private bool isTypewriting;
     private bool skipRequested;
-    [SerializeField] private Playtest currentSession;
     private int maxLineNum;
-
+    private Coroutine dialogCoroutine;
     void Start()
     {
         if (GameObject.Find("PlayerManager") != null)
@@ -47,7 +47,7 @@ public class ScriptedTutorial : MonoBehaviour
         InitializeAudio(); // Starts FMOD audio
         dialogEvent.AddListener(tutorialHighlight.HighlightGroup);
         
-        StartCoroutine(PlayDialog(startingDialog));
+        dialogCoroutine = StartCoroutine(PlayDialog(startingDialog));
     }
 
     private void InitializeAudio()
@@ -55,8 +55,14 @@ public class ScriptedTutorial : MonoBehaviour
         wizardVoice = AudioManager.instance.CreateInstance(FMODEvents.instance.WizardVoice);
     }
 
-    private IEnumerator PlayDialog(List<DialogueLines> lines)
+    public IEnumerator PlayDialog(List<DialogueLines> lines)
     {
+        //Not the best solution but it works for now
+        if(dialogCoroutine != null)
+        {
+            StopCoroutine(dialogCoroutine);
+        }
+
         Cursor.lockState = CursorLockMode.Locked;
 
         maxLineNum = lines.Count;
@@ -87,8 +93,19 @@ public class ScriptedTutorial : MonoBehaviour
     private IEnumerator TypewriteDialog(string speaker, string dialog)
     {
         float  delay = 0f;
-        string hexColor;
+        string hexColor = "#000000";
         string eventKey = null;
+
+        // Store the current dialog text to preserve history
+        string previousText = dialogText.text;
+        Debug.Log("Previous Text: " + previousText);
+
+        // Add spacing between previous and new text if there is existing dialog
+        if (!string.IsNullOrEmpty(previousText))
+        {
+            Debug.Log("Adding spacing between previous and new dialog.");
+            dialogText.text += "\n\n";  // Add space between previous and new lines
+        }
 
         // Parse tags at the start of the dialog
         while (dialog.StartsWith("["))
@@ -102,35 +119,37 @@ public class ScriptedTutorial : MonoBehaviour
 
             if (tag.StartsWith("[TOPIC:"))
             {
-                hexColor = tag.Replace("[TOPIC:", "").Replace("]", "");
+                hexColor = tag.Replace("[TOPIC:", "").Replace("]", "").Trim();
 
-                // Safety checks
-                if (!ColorUtility.TryParseHtmlString(hexColor, out _))
-                hexColor = "#FFFFFF";
+                // Safety check for valid color
+                if (!ColorUtility.TryParseHtmlString(hexColor, out Color _))
+                {
+                    Debug.LogWarning("Invalid topic color format: " + hexColor);
+                    hexColor = "#000000"; // Default to black if invalid
+                }
 
                 // Apply formatting
-                string topicLabel = $"<b><u><align=center><color={hexColor}>{dialog}</color></align></u></b>";
+                string topicLabel = $"<b><u><align=center><color={hexColor}>{dialog}</color></align></u></b>\n\n";
                 dialogText.text += topicLabel;
-                break;
+                yield break;
             }
             else if (tag.StartsWith("[DELAY:"))
             {
                 float.TryParse(
-                    tag.Replace("[DELAY:", "").Replace("]", ""),
+                    tag.Replace("[DELAY:", "").Replace("]", "").Trim(),
                     out delay
                 );
             }
             else if (tag.StartsWith("[EVENT:"))
             {
-                eventKey = tag.Replace("[EVENT:", "").Replace("]", "");
+                eventKey = tag.Replace("[EVENT:", "").Replace("]", "").Trim();
             }
         }
 
         if(!string.IsNullOrEmpty(eventKey))
         {
+            Debug.Log($"Dialog event invoked: {eventKey}");
             dialogEvent.Invoke(eventKey);
-            eventKey = null;
-            Debug.Log("Dialog event invoked.");
         }
         
         dialog = dialog.Trim();
@@ -160,15 +179,6 @@ public class ScriptedTutorial : MonoBehaviour
 
         // Prepare the speaker's portion in bold (appears immediately)
         string speakerPortion = $"<b>{speaker}:</b> ";
-
-        // Store the current dialog text to preserve history
-        string previousText = dialogText.text;
-
-        // Add spacing between previous and new text if there is existing dialog
-        if (!string.IsNullOrEmpty(previousText))
-        {
-            previousText += "\n\n";  // Add space between previous and new lines
-        }
 
         // Set the initial text with the speaker's portion
         string initialText = $"{previousText}{speakerPortion}";
@@ -201,8 +211,8 @@ public class ScriptedTutorial : MonoBehaviour
 
         // Finalize the message and ensure layout updates
         dialogText.text = initialText + currentMessage;
-        AdjustTextBoxHeight();  // Ensure the text box is fully adjusted
-        ScrollToBottom();  // Keep the scroll at the bottom
+        AdjustTextBoxHeight();      // Ensure the text box is fully adjusted
+        ScrollToBottom();           // Keep the scroll at the bottom
 
         // Add a new line after the conversation ends to distinguish it from the next one
         if (lineNum >= maxLineNum - 1)

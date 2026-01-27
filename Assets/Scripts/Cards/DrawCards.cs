@@ -11,7 +11,7 @@ public class DrawCards : MonoBehaviour
 
     public void Start()
     {
-        Debug.Log(gameObject.name + " is drawing cards.");
+        //Debug.Log(gameObject.name + " is drawing cards.");
         // Draw 5 cards from the deck and add them to the player's area
         for (int i = 0; i < handSize; i++)
         {

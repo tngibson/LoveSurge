@@ -1482,7 +1482,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   gameManager: {fileID: 2001940042}
-  tutorialHighlight: {fileID: 0}
+  tutorialHighlight: {fileID: 1991520289}
   dialogText: {fileID: 1251843997}
   scrollRect: {fileID: 202139553}
   textRectTransform: {fileID: 1251843996}
@@ -1495,16 +1495,21 @@ MonoBehaviour:
     dialog: '[TOPIC: #00FFFF] Tutorial'
     characterSprite: {fileID: 21300000, guid: 568418e572b891b499d66849254b674e, type: 3}
   - speaker: C0D3-W1Z4RD
-    dialog: '[Event:CARDS ] [DELAY: 3] When talking with an AI Appliance Companion,
-      you will use these cards to have conversations.'
+    dialog: '[EVENT: Cards] When talking with an AI Appliance Companion, you will
+      use these cards to have conversations.
+
+'
     characterSprite: {fileID: 0}
   - speaker: C0D3-W1Z4RD
     dialog: '[TOPIC: #00FFFF] Topic Button'
     characterSprite: {fileID: 0}
   - speaker: C0D3-W1Z4RD
-    dialog: '[EVENT: ConvoTopic] Ughhhh ok! To start a conversation, click on one
+    dialog: '[EVENT: ConvoTopics] Ughhhh ok! To start a conversation, click on one
       of the Conversation Topics on the right side of the screen.'
     characterSprite: {fileID: 0}
+  - speaker: C0D3-W1Z4RD
+    dialog: '[EVENT: Courage] For now, I guess, click the Courage topic.'
+    characterSprite: {fileID: 21300000, guid: 568418e572b891b499d66849254b674e, type: 3}
   currentSession: {fileID: 293364313}
 --- !u!1 &280162389
 GameObject:
@@ -2850,7 +2855,7 @@ MonoBehaviour:
   m_HandleRect: {fileID: 1877364502}
   m_Direction: 2
   m_Value: 1
-  m_Size: 0.3783666
+  m_Size: 0.37836662
   m_NumberOfSteps: 0
   m_OnValueChanged:
     m_PersistentCalls:
@@ -6949,6 +6954,7 @@ GameObject:
   - component: {fileID: 1042258430}
   - component: {fileID: 1042258429}
   - component: {fileID: 1042258432}
+  - component: {fileID: 1042258433}
   m_Layer: 5
   m_Name: ConvoTopic1
   m_TagString: Untagged
@@ -7037,6 +7043,18 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 1042258433}
+        m_TargetAssemblyTypeName: PlayTutorialDialog, Assembly-CSharp
+        m_MethodName: PlayDialog
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1042258430
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -7116,6 +7134,73 @@ MonoBehaviour:
   isCompleted: 0
   buttonTransform: {fileID: 1042258428}
   pressAmount: 5
+--- !u!114 &1042258433
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1042258427}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 253c20f0ad1f08b4aae2e9987e7df13f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Dialog:
+  - speaker: C0D3-W1Z4RD
+    dialog: "Nice. Looks like you\u2019re quickly understanding things, [PlayerName].
+      These topics show the amount of points that are needed to complete a conversation."
+    characterSprite: {fileID: 21300000, guid: 79f4cba0f14c0bd46951f09f7bd48970, type: 3}
+  - speaker: C0D3-W1Z4RD
+    dialog: "Always make sure to click on a new Conversation Topic whenever you finish
+      a conversation or else you won\u2019t be able to play any cards."
+    characterSprite: {fileID: 21300000, guid: 79f4cba0f14c0bd46951f09f7bd48970, type: 3}
+  - speaker: C0D3-W1Z4RD
+    dialog: '[TOPIC: #00FFFF] Hand'
+    characterSprite: {fileID: 21300000, guid: 79f4cba0f14c0bd46951f09f7bd48970, type: 3}
+  - speaker: C0D3-W1Z4RD
+    dialog: '[EVENT: Cards] At the bottom of the screen you can see the cards you
+      drew for your hand this turn.'
+    characterSprite: {fileID: 21300000, guid: 79f4cba0f14c0bd46951f09f7bd48970, type: 3}
+  - speaker: C0D3-W1Z4RD
+    dialog: Each card has a suit tied to a stat, and it has a number that provides
+      the point value.
+    characterSprite: {fileID: 21300000, guid: b06df378e24c2594b8616dbb469efb0a, type: 3}
+  - speaker: C0D3-W1Z4RD
+    dialog: '[EVENT: ScoreAndRecycle] You can drag cards from your hand into either
+      the Score Zone to score points or into the Recycling Bin to discard your cards.'
+    characterSprite: {fileID: 21300000, guid: b06df378e24c2594b8616dbb469efb0a, type: 3}
+  - speaker: C0D3-W1Z4RD
+    dialog: '[TOPIC: #00FFFF] Score Zone / Scoring / Combo Surge'
+    characterSprite: {fileID: 21300000, guid: b06df378e24c2594b8616dbb469efb0a, type: 3}
+  - speaker: C0D3-W1Z4RD
+    dialog: In the Score Zone your AI Appliance Companion will provide you a card.
+      You will use this card to start a conversation with them.
+    characterSprite: {fileID: 21300000, guid: b06df378e24c2594b8616dbb469efb0a, type: 3}
+  - speaker: C0D3-W1Z4RD
+    dialog: '[EVENT: Score] In the Score Zone your AI Appliance Companion will provide
+      you a card. You will use this card to start a conversation with them.'
+    characterSprite: {fileID: 21300000, guid: 568418e572b891b499d66849254b674e, type: 3}
+  - speaker: C0D3-W1Z4RD
+    dialog: In your hand you have <color=#005500>2 Courage Cards (1, 3)</color>,
+      a <color=#005500> Cleverness Card (3) </color>, and a <color=#005500> Charisma
+      Card (3) </color>.
+    characterSprite: {fileID: 21300000, guid: 568418e572b891b499d66849254b674e, type: 3}
+  - speaker: C0D3-W1Z4RD
+    dialog: "First, I\u2019ll use a <color=#005500>Courage Card</color>"
+    characterSprite: {fileID: 21300000, guid: 79f4cba0f14c0bd46951f09f7bd48970, type: 3}
+  - speaker: C0D3-W1Z4RD
+    dialog: To play a card in the Score Zone you must match its color (suit) or number.
+      It is kind of like another game I have played a lot.
+    characterSprite: {fileID: 21300000, guid: 79f4cba0f14c0bd46951f09f7bd48970, type: 3}
+  - speaker: C0D3-W1Z4RD
+    dialog: To play a card in the Score Zone you must match its color (suit) or number.
+      It is kind of like another game I have played a lot.
+    characterSprite: {fileID: 21300000, guid: b06df378e24c2594b8616dbb469efb0a, type: 3}
+  - speaker: C0D3-W1Z4RD
+    dialog: Try matching the card suits! Place your 1-Courage cards down first.
+    characterSprite: {fileID: 21300000, guid: b06df378e24c2594b8616dbb469efb0a, type: 3}
+  scriptedTutorial: {fileID: 229746376}
 --- !u!1 &1048441083
 GameObject:
   m_ObjectHideFlags: 0
@@ -8845,6 +8930,81 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
+--- !u!1 &1477486293
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1477486294}
+  - component: {fileID: 1477486296}
+  - component: {fileID: 1477486295}
+  m_Layer: 5
+  m_Name: Convotopics
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &1477486294
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1477486293}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1991520288}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: -1550.93, y: 111.843}
+  m_SizeDelta: {x: 738.14, y: 1442.315}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &1477486295
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1477486293}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 2100000, guid: 00673267ac4363b45a92017820b070f0, type: 2}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_RaycastTarget: 0
+  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
+  m_Maskable: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  m_Sprite: {fileID: 10907, guid: 0000000000000000f000000000000000, type: 0}
+  m_Type: 1
+  m_PreserveAspect: 0
+  m_FillCenter: 1
+  m_FillMethod: 4
+  m_FillAmount: 1
+  m_FillClockwise: 1
+  m_FillOrigin: 0
+  m_UseSpriteMesh: 0
+  m_PixelsPerUnitMultiplier: 1
+--- !u!222 &1477486296
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1477486293}
+  m_CullTransparentMesh: 1
 --- !u!1 &1497879186
 GameObject:
   m_ObjectHideFlags: 0
@@ -11526,6 +11686,7 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
+  - {fileID: 1477486294}
   - {fileID: 783428732}
   - {fileID: 1197163754}
   - {fileID: 907092402}
@@ -11626,7 +11787,21 @@ MonoBehaviour:
   - groupName: Cards
     highlightObjects:
     - {fileID: 907092403}
+  - groupName: Convotopics
+    highlightObjects:
+    - {fileID: 1477486295}
+  - groupName: Courage
+    highlightObjects:
+    - {fileID: 783428733}
+  - groupName: ScoreAndRecycle
+    highlightObjects:
+    - {fileID: 682132494}
+    - {fileID: 2013139780}
+  - groupName: Score
+    highlightObjects:
+    - {fileID: 682132494}
   highlightReference:
+  - {fileID: 1477486293}
   - {fileID: 783428731}
   - {fileID: 1197163753}
   - {fileID: 907092401}

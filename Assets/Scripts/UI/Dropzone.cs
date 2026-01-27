@@ -118,7 +118,7 @@ public class Dropzone : MonoBehaviour
             // Update the last placed card
             lastPlacedCard = card;
 
-            Debug.Log($"Card {card.name} placed in DropzoneSlot.");
+            //Debug.Log($"Card {card.name} placed in DropzoneSlot.");
             CalculateScore();
         }
         else

@@ -134,12 +134,7 @@ public class MusicManager : MonoBehaviour
         {
             StartCoroutine(FadeMusicInOut(fadeTime, music));
         }
-
-        #if UNITY_EDITOR
-        //Instance.ActiveMusicName = GetMusicName(music);
-        #endif
-        print("MusicManager - Played Music: " + Instance.ActiveMusicName);
-        
+        //print("MusicManager - Played Music: " + Instance.ActiveMusicName);
     }
 
     public void StopMusic()
@@ -159,7 +154,7 @@ public class MusicManager : MonoBehaviour
     {
         try
         {
-            Debug.Log("Setting " + parameter + " to " + value);
+            //Debug.Log("Setting " + parameter + " to " + value);
             Instance.CurrentMusicInstance.setParameterByName(parameter, value);
             //Debug.Log(Instance.CurrentMusicInstance.getParameterByName(parameter, out float paraValue));
         }

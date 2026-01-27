@@ -79,7 +79,7 @@ public class GameManager : MonoBehaviour
         fullHandText.SetActive(false);
         scoreText.text = "Score: 0";
         MusicManager.SetParameterByName("dateProgress", 0);
-        Debug.Log("Start Music");
+        //Debug.Log("Start Music");
     }
 
     public void SetConvoStart()
