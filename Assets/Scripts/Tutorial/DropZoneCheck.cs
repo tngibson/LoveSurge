@@ -23,4 +23,26 @@ public class DropZoneCheck : MonoBehaviour
             dropzoneSlot.RemoveTopCard();
         }
     }
+
+
+    // public void ReturnCard(Card card)
+    // {
+    //     if (card != null)
+    //     {
+    //         // Remove the top card from the dropzone and add it back to the player's hand (if not a reserve card)
+    //         if (!card.isReserveCard)
+    //         {
+    //             playerArea.AddCards(card);
+    //         }
+    //         cardsToScore.Remove(card);
+    //         dropzone.RemoveTopCard();
+
+    //         // Update the last placed card to the new top card
+    //         lastPlacedCard = dropzone.TopCard;
+    //         GameManager.instance.ComboSurge --;
+
+    //         // Reset UI or other visual elements if necessary
+    //         CalculateScore();
+    //     }
+    // }
 }
