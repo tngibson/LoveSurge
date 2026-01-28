@@ -94,8 +94,6 @@ public class ScriptedTutorial : MonoBehaviour
 
     private IEnumerator TypewriteDialog(string speaker, string dialog)
     {
-        Debug.Log($"{dialog}");
-
         float  delay = 0f;
         string hexColor = "#000000";
         string eventKey = null;
@@ -222,13 +220,13 @@ public class ScriptedTutorial : MonoBehaviour
         AdjustTextBoxHeight();      // Ensure the text box is fully adjusted
         ScrollToBottom();           // Keep the scroll at the bottom
 
-        // Add a new line after the conversation ends to distinguish it from the next one
-        if (lineNum >= maxLineNum - 1)
-        {
-            dialogText.text += "\n\n";  // Add spacing to separate conversations
-            AdjustTextBoxHeight();
-            ScrollToBottom();
-        }
+        // // Add a new line after the conversation ends to distinguish it from the next one
+        // if (lineNum >= maxLineNum - 1)
+        // {
+        //     dialogText.text += "\n\n";  // Add spacing to separate conversations
+        //     AdjustTextBoxHeight();
+        //     ScrollToBottom();
+        // }
 
         // Reset typewriter and writing state
         isTypewriting = false;

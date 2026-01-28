@@ -1508,10 +1508,11 @@ MonoBehaviour:
     characterSprite: {fileID: 0}
   - speaker: C0D3-W1Z4RD
     dialog: '[EVENT: ConvoTopics] Ughhhh ok! To start a conversation, click on one
-      of the Conversation Topics on the right side of the screen.'
+      of the <b>Conversation Topics</b> on the right side of the screen.'
     characterSprite: {fileID: 0}
   - speaker: C0D3-W1Z4RD
-    dialog: '[EVENT: Courage] For now, I guess, click the Courage topic.'
+    dialog: '[EVENT: Courage] For now, I guess, click the <color=#EDC7E4> Courage
+      topic </color>.'
     characterSprite: {fileID: 21300000, guid: 568418e572b891b499d66849254b674e, type: 3}
   currentSession: {fileID: 293364313}
 --- !u!1 &280162389
@@ -7203,8 +7204,10 @@ MonoBehaviour:
       It is kind of like another game I have played a lot.
     characterSprite: {fileID: 21300000, guid: 79f4cba0f14c0bd46951f09f7bd48970, type: 3}
   - speaker: C0D3-W1Z4RD
-    dialog: Try matching the card suits! Place your 1-Courage cards down first.
+    dialog: Try matching the card suits! Place your <color=#EDC7E4>1-Courage</color>
+      cards down first.
     characterSprite: {fileID: 21300000, guid: b06df378e24c2594b8616dbb469efb0a, type: 3}
+  oneTime: 1
   scriptedTutorial: {fileID: 229746376}
 --- !u!1 &1048441083
 GameObject:
@@ -13308,6 +13311,12 @@ GameObject:
   - component: {fileID: 2119566659}
   - component: {fileID: 2119566658}
   - component: {fileID: 2119566656}
+  - component: {fileID: 2119566662}
+  - component: {fileID: 2119566661}
+  - component: {fileID: 2119566660}
+  - component: {fileID: 2119566665}
+  - component: {fileID: 2119566664}
+  - component: {fileID: 2119566663}
   m_Layer: 5
   m_Name: CardSlotsPanel
   m_TagString: Untagged
@@ -13376,6 +13385,127 @@ RectTransform:
   m_AnchoredPosition: {x: -167, y: -291}
   m_SizeDelta: {x: 367, y: 375.3165}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &2119566660
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2119566655}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 253c20f0ad1f08b4aae2e9987e7df13f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Dialog:
+  - speaker: C0D3-W1Z4RD
+    dialog: That's not a <color=#EDC7E4> 1-Courage card</color>.
+    characterSprite: {fileID: 21300000, guid: b06df378e24c2594b8616dbb469efb0a, type: 3}
+  oneTime: 1
+  scriptedTutorial: {fileID: 229746376}
+--- !u!114 &2119566661
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2119566655}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 253c20f0ad1f08b4aae2e9987e7df13f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Dialog:
+  - speaker: C0D3-W1Z4RD
+    dialog: "Sick. By stacking multiple numbers and colors together, you\u2019ve
+      created a <b>Combo Surge</b>."
+    characterSprite: {fileID: 21300000, guid: 79f4cba0f14c0bd46951f09f7bd48970, type: 3}
+  - speaker: C0D3-W1Z4RD
+    dialog: Great, now match the card numbers.
+    characterSprite: {fileID: 21300000, guid: 79f4cba0f14c0bd46951f09f7bd48970, type: 3}
+  - speaker: C0D3-W1Z4RD
+    dialog: "Use a <b>Combo Surge</b> whenever you can to complete <b>Conversation
+      Topics</b> even faster. Plus, it\u2019s pretty cool and it\u2019ll impress
+      your appliances"
+    characterSprite: {fileID: 21300000, guid: 568418e572b891b499d66849254b674e, type: 3}
+  - speaker: C0D3-W1Z4RD
+    dialog: '[EVENT: ScoreBoard] You can also see your score and its calculation
+      in the top right of the screen.'
+    characterSprite: {fileID: 0}
+  - speaker: C0D3-W1Z4RD
+    dialog: '[EVENT: EndTurn]  Finally to play your cards, press the <b>End Turn</b>
+      button in the bottom right corner of the screen.'
+    characterSprite: {fileID: 0}
+  oneTime: 1
+  scriptedTutorial: {fileID: 229746376}
+--- !u!114 &2119566662
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2119566655}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4b80920f22225f04194cb8c3a5816372, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  dropzoneSlot: {fileID: 966042202}
+  playTutorialDialogSuccess: {fileID: 2119566661}
+  playTutorialDialogFailure: {fileID: 2119566660}
+--- !u!114 &2119566663
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2119566655}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 253c20f0ad1f08b4aae2e9987e7df13f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Dialog:
+  - speaker: 
+    dialog: 
+    characterSprite: {fileID: 0}
+  oneTime: 1
+  scriptedTutorial: {fileID: 229746376}
+--- !u!114 &2119566664
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2119566655}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 253c20f0ad1f08b4aae2e9987e7df13f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Dialog:
+  - speaker: 
+    dialog: 
+    characterSprite: {fileID: 0}
+  oneTime: 1
+  scriptedTutorial: {fileID: 229746376}
+--- !u!114 &2119566665
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2119566655}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3e3372e1295ad844a9946666cef88ef5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  dropzoneSlot: {fileID: 966042202}
+  playerArea: {fileID: 1251171728}
+  requiredCardCount: 4
+  playTutorialDialogSuccess: {fileID: 0}
+  playTutorialDialogFailure: {fileID: 0}
 --- !u!1 &2120616861
 GameObject:
   m_ObjectHideFlags: 0

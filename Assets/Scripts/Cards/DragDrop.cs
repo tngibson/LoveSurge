@@ -271,7 +271,7 @@ public class DragDrop : MonoBehaviour
         }
     }
 
-    private void DiscardCard()
+    public void DiscardCard()
     {
         if(GetComponent<StressCard>() == null)
         {
