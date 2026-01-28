@@ -796,7 +796,7 @@ MonoBehaviour:
   - {fileID: -1454504632352844718, guid: afba97dd884423a4e8264984c925383c, type: 3}
   reserveSlot: {fileID: 66572630}
   random: 0
-  reservedPrefab: {fileID: 3371482777649278279, guid: 24e5e6c72047ffb4899f9c19a120ff7f,
+  reservedPrefab: {fileID: 218642519637535715, guid: 318b1643319c7a3438f0f9ef09d4a813,
     type: 3}
   cardImage: {fileID: 0}
   cardDragDrop: {fileID: 0}
@@ -1236,6 +1236,81 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 169405524}
   m_CullTransparentMesh: 1
+--- !u!1 &177072228
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 177072229}
+  - component: {fileID: 177072231}
+  - component: {fileID: 177072230}
+  m_Layer: 5
+  m_Name: Clever3
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &177072229
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 177072228}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1991520288}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: -943, y: 610}
+  m_SizeDelta: {x: 310, y: 428}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &177072230
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 177072228}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 2100000, guid: 00673267ac4363b45a92017820b070f0, type: 2}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_RaycastTarget: 0
+  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
+  m_Maskable: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  m_Sprite: {fileID: 10907, guid: 0000000000000000f000000000000000, type: 0}
+  m_Type: 1
+  m_PreserveAspect: 0
+  m_FillCenter: 1
+  m_FillMethod: 4
+  m_FillAmount: 1
+  m_FillClockwise: 1
+  m_FillOrigin: 0
+  m_UseSpriteMesh: 0
+  m_PixelsPerUnitMultiplier: 1
+--- !u!222 &177072231
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 177072228}
+  m_CullTransparentMesh: 1
 --- !u!1 &202139551
 GameObject:
   m_ObjectHideFlags: 0
@@ -1440,6 +1515,97 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ec3ecb435f8fc39499cde3355a4d25df, type: 3}
+--- !u!1 &223381119
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 223381120}
+  - component: {fileID: 223381121}
+  - component: {fileID: 223381122}
+  m_Layer: 5
+  m_Name: EndTurn2Dialogue
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &223381120
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 223381119}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 2117575010}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 100, y: 100}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &223381121
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 223381119}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 253c20f0ad1f08b4aae2e9987e7df13f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Dialog:
+  - speaker: C0D3-W1Z4RD
+    dialog: '[TOPIC: #00FFFF] Reserve Cards'
+    characterSprite: {fileID: 21300000, guid: 79f4cba0f14c0bd46951f09f7bd48970, type: 3}
+  - speaker: C0D3-W1Z4RD
+    dialog: Oh! You still have no options!
+    characterSprite: {fileID: 21300000, guid: b06df378e24c2594b8616dbb469efb0a, type: 3}
+  - speaker: C0D3-W1Z4RD
+    dialog: W-wait! This is a teachable moment!
+    characterSprite: {fileID: 21300000, guid: 4d979a213356e704cad7ee7096864023, type: 3}
+  - speaker: C0D3-W1Z4RD
+    dialog: '[EVENT: Reserve] Appliances will also provide cards in their Reserve.'
+    characterSprite: {fileID: 21300000, guid: 79f4cba0f14c0bd46951f09f7bd48970, type: 3}
+  - speaker: C0D3-W1Z4RD
+    dialog: '[EVENT: Clever3] Above me I have a <color = #B7DCEA> 3-Cleverness Card
+      </color> that can be played.'
+    characterSprite: {fileID: 21300000, guid: 79f4cba0f14c0bd46951f09f7bd48970, type: 3}
+  - speaker: C0D3-W1Z4RD
+    dialog: You can use <b> Reserve Cards </b> to increase your points and create
+      a <b> Combo Surge </b>.
+    characterSprite: {fileID: 21300000, guid: 79f4cba0f14c0bd46951f09f7bd48970, type: 3}
+  - speaker: C0D3-W1Z4RD
+    dialog: <color = red>Drag the <color = #B7DCEA> 3-Cleverness Card </color to
+      the Score Zone and start your Combo. Press End Turn once you are done.
+    characterSprite: {fileID: 21300000, guid: 79f4cba0f14c0bd46951f09f7bd48970, type: 3}
+  oneTime: 1
+  scriptedTutorial: {fileID: 229746376}
+--- !u!114 &223381122
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 223381119}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 253c20f0ad1f08b4aae2e9987e7df13f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Dialog: []
+  oneTime: 1
+  scriptedTutorial: {fileID: 229746376}
 --- !u!1 &229746374
 GameObject:
   m_ObjectHideFlags: 0
@@ -1511,10 +1677,76 @@ MonoBehaviour:
       of the <b>Conversation Topics</b> on the right side of the screen.'
     characterSprite: {fileID: 0}
   - speaker: C0D3-W1Z4RD
-    dialog: '[EVENT: Courage] For now, I guess, click the <color=#EDC7E4> Courage
-      topic </color>.'
+    dialog: '[EVENT: Courage] <color=red> For now, I guess, click the </color><color=#EDC7E4>
+      Courage topic </color>.'
     characterSprite: {fileID: 21300000, guid: 568418e572b891b499d66849254b674e, type: 3}
   currentSession: {fileID: 293364313}
+--- !u!1 &278874790
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 278874791}
+  - component: {fileID: 278874792}
+  m_Layer: 5
+  m_Name: EndTurn1Dialogue
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &278874791
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 278874790}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 2117575010}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 100, y: 100}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &278874792
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 278874790}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 253c20f0ad1f08b4aae2e9987e7df13f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Dialog:
+  - speaker: 
+    dialog: '[TOPIC: #00FFFF] Discard'
+    characterSprite: {fileID: 21300000, guid: 568418e572b891b499d66849254b674e, type: 3}
+  - speaker: C0D3-W1Z4RD
+    dialog: "Hm\u2026it looks like your cards can\u2019t be played in the <b>Score
+      Zone</b>\u2026"
+    characterSprite: {fileID: 21300000, guid: 568418e572b891b499d66849254b674e, type: 3}
+  - speaker: C0D3-W1Z4RD
+    dialog: '[EVENT: Recycle]If you have cards in your hand that you do not want,
+      you can drag and drop them into the <b>Recycling Bin</b>.'
+    characterSprite: {fileID: 21300000, guid: 568418e572b891b499d66849254b674e, type: 3}
+  - speaker: C0D3-W1Z4RD
+    dialog: <color = red>Try dragging your entire hand there now to discard your
+      cards. <b>Press End Turn</b> once you are done to draw new cards.
+    characterSprite: {fileID: 21300000, guid: 568418e572b891b499d66849254b674e, type: 3}
+  oneTime: 1
+  scriptedTutorial: {fileID: 229746376}
 --- !u!1 &280162389
 GameObject:
   m_ObjectHideFlags: 0
@@ -1549,8 +1781,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 1057.4147, y: -246.07}
-  m_SizeDelta: {x: 1418.893, y: 492.14}
+  m_AnchoredPosition: {x: 1044.7499, y: -246.07}
+  m_SizeDelta: {x: 1444.223, y: 492.14}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &280162391
 MonoBehaviour:
@@ -2019,7 +2251,7 @@ MonoBehaviour:
   - {fileID: -1454504632352844718, guid: afba97dd884423a4e8264984c925383c, type: 3}
   reserveSlot: {fileID: 295771161}
   random: 0
-  reservedPrefab: {fileID: 3371482777649278279, guid: 24e5e6c72047ffb4899f9c19a120ff7f,
+  reservedPrefab: {fileID: 4463688810326121897, guid: 87c64defb6a791846986d4ffff3bc198,
     type: 3}
   cardImage: {fileID: 0}
   cardDragDrop: {fileID: 0}
@@ -2862,7 +3094,7 @@ MonoBehaviour:
   m_HandleRect: {fileID: 1877364502}
   m_Direction: 2
   m_Value: 1
-  m_Size: 0.37836662
+  m_Size: 0.3783666
   m_NumberOfSteps: 0
   m_OnValueChanged:
     m_PersistentCalls:
@@ -5090,6 +5322,60 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 682132492}
   m_CullTransparentMesh: 1
+--- !u!1 &729891647
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 729891648}
+  - component: {fileID: 729891649}
+  m_Layer: 5
+  m_Name: FailTurn2Dialogue
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &729891648
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 729891647}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 2117575010}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 100, y: 100}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &729891649
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 729891647}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 253c20f0ad1f08b4aae2e9987e7df13f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Dialog:
+  - speaker: 
+    dialog: '[TOPIC: #00FFFF] Discard'
+    characterSprite: {fileID: 21300000, guid: 568418e572b891b499d66849254b674e, type: 3}
+  oneTime: 1
+  scriptedTutorial: {fileID: 229746376}
 --- !u!1 &743144015
 GameObject:
   m_ObjectHideFlags: 0
@@ -7184,10 +7470,6 @@ MonoBehaviour:
     dialog: '[TOPIC: #00FFFF] Score Zone / Scoring / Combo Surge'
     characterSprite: {fileID: 21300000, guid: b06df378e24c2594b8616dbb469efb0a, type: 3}
   - speaker: C0D3-W1Z4RD
-    dialog: In the Score Zone your AI Appliance Companion will provide you a card.
-      You will use this card to start a conversation with them.
-    characterSprite: {fileID: 21300000, guid: b06df378e24c2594b8616dbb469efb0a, type: 3}
-  - speaker: C0D3-W1Z4RD
     dialog: '[EVENT: DropZone] In the Score Zone your AI Appliance Companion will
       provide you a card. You will use this card to start a conversation with them.'
     characterSprite: {fileID: 21300000, guid: 568418e572b891b499d66849254b674e, type: 3}
@@ -7204,8 +7486,8 @@ MonoBehaviour:
       It is kind of like another game I have played a lot.
     characterSprite: {fileID: 21300000, guid: 79f4cba0f14c0bd46951f09f7bd48970, type: 3}
   - speaker: C0D3-W1Z4RD
-    dialog: Try matching the card suits! Place your <color=#EDC7E4>1-Courage</color>
-      cards down first.
+    dialog: <color=red>Try matching the card suits! Place your <color=#EDC7E4>1-Courage</color>
+      cards down first.</color>
     characterSprite: {fileID: 21300000, guid: b06df378e24c2594b8616dbb469efb0a, type: 3}
   oneTime: 1
   scriptedTutorial: {fileID: 229746376}
@@ -7783,6 +8065,7 @@ GameObject:
   - component: {fileID: 1210874667}
   - component: {fileID: 1210874666}
   - component: {fileID: 1210874668}
+  - component: {fileID: 1210874669}
   m_Layer: 5
   m_Name: DeckCountPanel
   m_TagString: Untagged
@@ -7904,6 +8187,44 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 0}
+        m_TargetAssemblyTypeName: PlayerDeckScript, Assembly-CSharp
+        m_MethodName: 
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: 
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+--- !u!114 &1210874669
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1210874664}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 253c20f0ad1f08b4aae2e9987e7df13f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Dialog:
+  - speaker: C0D3-W1Z4RD
+    dialog: "Good, you\u2019re getting the hang of it."
+    characterSprite: {fileID: 21300000, guid: 79f4cba0f14c0bd46951f09f7bd48970, type: 3}
+  - speaker: C0D3-W1Z4RD
+    dialog: <color = red>If you ever need to undo a move, drag a card back to your
+      <b>Hand</b> or the <b>Reserve</b>.
+    characterSprite: {fileID: 21300000, guid: 568418e572b891b499d66849254b674e, type: 3}
+  - speaker: C0D3-W1Z4RD
+    dialog: <color = red>Try selecting the <color = #C5E6D1>Creativity Topic</color>
+      now.
+    characterSprite: {fileID: 21300000, guid: 79f4cba0f14c0bd46951f09f7bd48970, type: 3}
+  oneTime: 1
+  scriptedTutorial: {fileID: 229746376}
 --- !u!1 &1245686312
 GameObject:
   m_ObjectHideFlags: 0
@@ -7938,7 +8259,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -57, y: 117}
+  m_AnchoredPosition: {x: -57, y: -117}
   m_SizeDelta: {x: 360, y: 130}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1245686314
@@ -8567,6 +8888,81 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1298419915}
   m_CullTransparentMesh: 1
+--- !u!1 &1306326772
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1306326773}
+  - component: {fileID: 1306326775}
+  - component: {fileID: 1306326774}
+  m_Layer: 5
+  m_Name: Stress
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &1306326773
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1306326772}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1991520288}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: -152, y: -870.16}
+  m_SizeDelta: {x: 1000, y: 420}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &1306326774
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1306326772}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 2100000, guid: 00673267ac4363b45a92017820b070f0, type: 2}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_RaycastTarget: 0
+  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
+  m_Maskable: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  m_Sprite: {fileID: 10907, guid: 0000000000000000f000000000000000, type: 0}
+  m_Type: 1
+  m_PreserveAspect: 0
+  m_FillCenter: 1
+  m_FillMethod: 4
+  m_FillAmount: 1
+  m_FillClockwise: 1
+  m_FillOrigin: 0
+  m_UseSpriteMesh: 0
+  m_PixelsPerUnitMultiplier: 1
+--- !u!222 &1306326775
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1306326772}
+  m_CullTransparentMesh: 1
 --- !u!1 &1363842149
 GameObject:
   m_ObjectHideFlags: 0
@@ -8789,6 +9185,7 @@ GameObject:
   - component: {fileID: 1396999333}
   - component: {fileID: 1396999332}
   - component: {fileID: 1396999331}
+  - component: {fileID: 1396999334}
   m_Layer: 5
   m_Name: EndTurnButton
   m_TagString: Untagged
@@ -8872,6 +9269,18 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 1396999334}
+        m_TargetAssemblyTypeName: EndTurnDialogueManager, Assembly-CSharp
+        m_MethodName: AdvanceTurn
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1396999332
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -8910,6 +9319,23 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1396999329}
   m_CullTransparentMesh: 1
+--- !u!114 &1396999334
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1396999329}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 94f8b3d5b8b4b964096d8bdc34940149, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  firstTurnDialog: {fileID: 278874792}
+  firstTurnFailureDialog: {fileID: 1607573856}
+  secondTurnDialog: {fileID: 223381121}
+  secondTurnFailureDialog: {fileID: 729891649}
+  thirdTurnDialog: {fileID: 1800110598}
 --- !u!1 &1411976327
 GameObject:
   m_ObjectHideFlags: 0
@@ -9996,6 +10422,60 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1547657962}
   m_CullTransparentMesh: 1
+--- !u!1 &1607573853
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1607573854}
+  - component: {fileID: 1607573856}
+  m_Layer: 5
+  m_Name: FailTurn1Dialogue
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &1607573854
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1607573853}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 2117575010}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 100, y: 100}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &1607573856
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1607573853}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 253c20f0ad1f08b4aae2e9987e7df13f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Dialog:
+  - speaker: 
+    dialog: '[TOPIC: #00FFFF] Discard'
+    characterSprite: {fileID: 21300000, guid: 568418e572b891b499d66849254b674e, type: 3}
+  oneTime: 1
+  scriptedTutorial: {fileID: 229746376}
 --- !u!1 &1646536585
 GameObject:
   m_ObjectHideFlags: 0
@@ -10009,6 +10489,7 @@ GameObject:
   - component: {fileID: 1646536588}
   - component: {fileID: 1646536587}
   - component: {fileID: 1646536590}
+  - component: {fileID: 1646536591}
   m_Layer: 5
   m_Name: ConvoTopic2
   m_TagString: Untagged
@@ -10097,6 +10578,18 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 0}
+        m_TargetAssemblyTypeName: ConvoTopic, Assembly-CSharp
+        m_MethodName: 
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: 
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1646536588
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -10176,6 +10669,29 @@ MonoBehaviour:
   isCompleted: 0
   buttonTransform: {fileID: 1646536586}
   pressAmount: 5
+--- !u!114 &1646536591
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1646536585}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 253c20f0ad1f08b4aae2e9987e7df13f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Dialog:
+  - speaker: C0D3-W1Z4RD
+    dialog: "Wait\u2026I just noticed something. Has practicing with me been stressing
+      you out?"
+    characterSprite: {fileID: 21300000, guid: 568418e572b891b499d66849254b674e, type: 3}
+  - speaker: C0D3-W1Z4RD
+    dialog: '[EVENT: StressCard]Your Deck will reflect your daily stress in the form
+      of colorless Stress Cards.'
+    characterSprite: {fileID: 21300000, guid: 568418e572b891b499d66849254b674e, type: 3}
+  oneTime: 1
+  scriptedTutorial: {fileID: 229746376}
 --- !u!1001 &1649350018
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -11023,6 +11539,61 @@ MonoBehaviour:
     power: 0
   - card: {fileID: 197109645831250398, guid: 01c879dcac3a90640a8fc1808bf209b5, type: 3}
     power: 0
+--- !u!1 &1800110596
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1800110597}
+  - component: {fileID: 1800110598}
+  m_Layer: 5
+  m_Name: EndTurn3Dialogue
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &1800110597
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1800110596}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 2117575010}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 100, y: 100}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &1800110598
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1800110596}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 253c20f0ad1f08b4aae2e9987e7df13f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Dialog:
+  - speaker: C0D3-W1Z4RD
+    dialog: '[EVENT: Deck] If you ever need to check how many cards are left in your
+      deck, just click on the Deck Button. Try pressing it now.'
+    characterSprite: {fileID: 21300000, guid: 79f4cba0f14c0bd46951f09f7bd48970, type: 3}
+  oneTime: 1
+  scriptedTutorial: {fileID: 229746376}
 --- !u!1 &1820997958
 GameObject:
   m_ObjectHideFlags: 0
@@ -11853,7 +12424,9 @@ RectTransform:
   - {fileID: 783428732}
   - {fileID: 1197163754}
   - {fileID: 907092402}
+  - {fileID: 1306326773}
   - {fileID: 814681402}
+  - {fileID: 177072229}
   - {fileID: 2013139779}
   - {fileID: 1522731588}
   - {fileID: 280162390}
@@ -11966,6 +12539,21 @@ MonoBehaviour:
   - groupName: ScoreBoard
     highlightObjects:
     - {fileID: 682132494}
+  - groupName: EndTurn
+    highlightObjects:
+    - {fileID: 1522731589}
+  - groupName: Recycle
+    highlightObjects:
+    - {fileID: 848889917}
+  - groupName: Clever3
+    highlightObjects:
+    - {fileID: 177072230}
+  - groupName: Creativity
+    highlightObjects:
+    - {fileID: 1197163755}
+  - groupName: StressCard
+    highlightObjects:
+    - {fileID: 1306326774}
   highlightReference:
   - {fileID: 1477486293}
   - {fileID: 783428731}
@@ -12787,7 +13375,7 @@ MonoBehaviour:
   - {fileID: -1454504632352844718, guid: afba97dd884423a4e8264984c925383c, type: 3}
   reserveSlot: {fileID: 2031511427}
   random: 0
-  reservedPrefab: {fileID: 3371482777649278279, guid: 24e5e6c72047ffb4899f9c19a120ff7f,
+  reservedPrefab: {fileID: 3403332936004419745, guid: d598d3a0ee6bd2644b8ad9e9cfd2a561,
     type: 3}
   cardImage: {fileID: 0}
   cardDragDrop: {fileID: 0}
@@ -13255,6 +13843,11 @@ RectTransform:
   - {fileID: 848889914}
   - {fileID: 1396999330}
   - {fileID: 602046415}
+  - {fileID: 278874791}
+  - {fileID: 1607573854}
+  - {fileID: 223381120}
+  - {fileID: 729891648}
+  - {fileID: 1800110597}
   m_Father: {fileID: 1108671395}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
@@ -13401,7 +13994,7 @@ MonoBehaviour:
   - speaker: C0D3-W1Z4RD
     dialog: That's not a <color=#EDC7E4> 1-Courage card</color>.
     characterSprite: {fileID: 21300000, guid: b06df378e24c2594b8616dbb469efb0a, type: 3}
-  oneTime: 1
+  oneTime: 0
   scriptedTutorial: {fileID: 229746376}
 --- !u!114 &2119566661
 MonoBehaviour:
@@ -13421,7 +14014,7 @@ MonoBehaviour:
       created a <b>Combo Surge</b>."
     characterSprite: {fileID: 21300000, guid: 79f4cba0f14c0bd46951f09f7bd48970, type: 3}
   - speaker: C0D3-W1Z4RD
-    dialog: Great, now match the card numbers.
+    dialog: <color = red> Great, now match the card numbers.
     characterSprite: {fileID: 21300000, guid: 79f4cba0f14c0bd46951f09f7bd48970, type: 3}
   - speaker: C0D3-W1Z4RD
     dialog: "Use a <b>Combo Surge</b> whenever you can to complete <b>Conversation
@@ -13433,8 +14026,8 @@ MonoBehaviour:
       in the top right of the screen.'
     characterSprite: {fileID: 0}
   - speaker: C0D3-W1Z4RD
-    dialog: '[EVENT: EndTurn]  Finally to play your cards, press the <b>End Turn</b>
-      button in the bottom right corner of the screen.'
+    dialog: '[EVENT: EndTurn]  <color = red> Finally to play your cards, press the
+      <b>End Turn</b> button in the bottom right corner of the screen.'
     characterSprite: {fileID: 0}
   oneTime: 1
   scriptedTutorial: {fileID: 229746376}
@@ -13450,7 +14043,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4b80920f22225f04194cb8c3a5816372, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  dropzoneSlot: {fileID: 966042202}
+  dropzone: {fileID: 2119566656}
   playTutorialDialogSuccess: {fileID: 2119566661}
   playTutorialDialogFailure: {fileID: 2119566660}
 --- !u!114 &2119566663
@@ -13501,11 +14094,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3e3372e1295ad844a9946666cef88ef5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  dropzoneSlot: {fileID: 966042202}
+  dropzoneSlot: {fileID: 2119566656}
   playerArea: {fileID: 1251171728}
-  requiredCardCount: 4
-  playTutorialDialogSuccess: {fileID: 0}
-  playTutorialDialogFailure: {fileID: 0}
+  requiredCardCount: 0
+  playTutorialDialogSuccess: {fileID: 2119566664}
+  playTutorialDialogFailure: {fileID: 2119566663}
 --- !u!1 &2120616861
 GameObject:
   m_ObjectHideFlags: 0

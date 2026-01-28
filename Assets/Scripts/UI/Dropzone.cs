@@ -57,6 +57,7 @@ public class Dropzone : MonoBehaviour
 
     // Public getters for various properties
     public List<Card> GetPlayedCards() => playedCards;
+    public List<Card> GetCardsToScore() => cardsToScore;
     public int GetMaxCards() => maxCards;
 
     [SerializeField] private ScrollRect scrollRect; // Reference to the Scroll Rect and Content Transform
@@ -144,6 +145,7 @@ public class Dropzone : MonoBehaviour
             if (!topCard.isReserveCard)
             {
                 playerArea.AddCards(topCard);
+                topCard.transform.SetParent(playerArea.transform, false); // Reset card hierarchy visually
             }
             cardsToScore.Remove(topCard);
             dropzone.RemoveTopCard();

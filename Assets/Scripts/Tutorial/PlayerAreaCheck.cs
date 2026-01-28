@@ -2,17 +2,17 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class DropZoneCheckCount : MonoBehaviour
+public class PlayerAreaCheck : MonoBehaviour
 {
-    [SerializeField] private DropzoneSlot dropzoneSlot;
+    [SerializeField] private Dropzone  dropzoneSlot;
     [SerializeField] private PlayerArea playerArea;
-    [SerializeField] private int requiredCardCount = 4;
+    [SerializeField] private int requiredCardCount = 0;
     [SerializeField] private PlayTutorialDialog playTutorialDialogSuccess;
     [SerializeField] private PlayTutorialDialog playTutorialDialogFailure;
 
     void Update()
     {
-        if (dropzoneSlot.GetCards().Count == requiredCardCount)
+        if (playerArea.CardsInHand.Count == requiredCardCount)
         {
             playTutorialDialogSuccess.PlayDialog();
             enabled = false;
@@ -21,14 +21,13 @@ public class DropZoneCheckCount : MonoBehaviour
 
     public void PlayFailureDialog()
     {
-        if (dropzoneSlot.GetCards().Count != requiredCardCount)
+        if (playerArea.CardsInHand.Count != requiredCardCount)
         {
             playTutorialDialogFailure.PlayDialog();
             for(int i = 0; i < playerArea.CardsInHand.Count; i++)
             {
                 playerArea.CardsInHand[i].GetComponent<DragDrop>().DiscardCard();
             }
-            
         }
     }   
 }
