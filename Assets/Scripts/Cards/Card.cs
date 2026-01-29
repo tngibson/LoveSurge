@@ -183,23 +183,6 @@ public abstract class Card : MonoBehaviour
     public void Boost(string operation)
     {
         Dropzone dropzone = FindAnyObjectByType<Dropzone>();
-        switch (operation)
-        {
-            case "+":
-                dropzone.addboost[Type] = Math.Clamp(dropzone.addboost[Type] + power,0,999);
-                break;
-            case "x":
-                dropzone.multipyboost[Type] = Math.Clamp(dropzone.multipyboost[Type] * power,1,999);
-                break;
-            case "-":
-                dropzone.addboost[Type] = Math.Clamp(dropzone.addboost[Type] - power,0,999);
-                break;
-            case "/":
-                dropzone.multipyboost[Type] = Math.Clamp(dropzone.multipyboost[Type] / power,1,999);
-                break;
-            default:
-                Debug.LogWarning("Invalid operation for Boost.");
-                break;
-        }
+        dropzone.ApplyBonus(Type, power, operation);
     }
 }

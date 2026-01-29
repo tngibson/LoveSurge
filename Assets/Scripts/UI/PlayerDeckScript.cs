@@ -124,6 +124,26 @@ public class PlayerDeckScript : MonoBehaviour
         }
     }
 
+    public void DrawCards(int amount)
+    {
+        for (int i = 0; i < amount; i++)
+        {
+            Card card = Draw();
+            if (card == null)
+            {
+                Debug.LogWarning("No more cards to draw.");
+                break; // Exit the loop if no more cards are available
+            }
+
+            RemoveCard(card);  // Remove the drawn card from the deck
+
+            PlayerArea playerArea = FindObjectOfType<PlayerArea>();
+            card.transform.SetParent(playerArea.transform);  // Set the parent of the card to the player's area
+            playerArea.AddCards(card);  // Add the card to the player's area
+        }
+        AudioManager.instance.PlayOneShot(FMODEvents.instance.CardShuffle, this.transform.position);
+    }
+
     private void AddStressCards()
     {
         // Checks if player has stress

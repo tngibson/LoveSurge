@@ -327,8 +327,8 @@ public class Dropzone : MonoBehaviour
                     HandleStressCard();
                     continue;
                 }
-                int boostedPower = (card.Power + addboost.GetValueOrDefault(card.Type, 0)) * 
-                                    multipyboost.GetValueOrDefault(card.Type, 1);
+                int boostedPower = (card.Power + addboost[card.Type]) * 
+                                    multipyboost[card.Type];
 
                 totalPower += boostedPower;
                 if (boostedPower > highestPower)
@@ -710,6 +710,29 @@ public class Dropzone : MonoBehaviour
         }
 
         return index;
+    }
+
+    public void ApplyBonus(string type, int value, string operation)
+    {
+        switch(operation)
+        {
+            case "+":
+                addboost[type] = Math.Clamp(addboost[type] + value, 0, 999);
+                break;
+            case "x":
+                multipyboost[type] = Math.Clamp(multipyboost[type] * value, 1, 999);
+                break;
+            case "-":
+                addboost[type] = Math.Clamp(addboost[type] - value, 0, 999);
+                break;
+            case "/":
+                multipyboost[type] = Math.Clamp(multipyboost[type] / value, 1, 999);
+                break;
+            default:
+                Debug.LogWarning("Unknown operation: " + operation);
+                break;
+        }
+        CalculateScore();
     }
 
     // Checks if all dropzones are empty.
