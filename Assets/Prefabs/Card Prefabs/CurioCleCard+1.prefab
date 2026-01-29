@@ -124,7 +124,6 @@ GameObject:
   - component: {fileID: 4806337947447268546}
   - component: {fileID: 7699606165242821138}
   - component: {fileID: 4985498896407992256}
-  - component: {fileID: 7989405659055077361}
   - component: {fileID: 5073705174308397477}
   m_Layer: 6
   m_Name: CurioCleCard+1
@@ -308,32 +307,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 454507cdd27512f4b8b18b93cc169e93, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &7989405659055077361
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7031538401068597177}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4cf1e9fcb9f928e4cb59c1dabe035bf2, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  cost: 0
-  numText: {fileID: 4285579409252316582}
-  container: {fileID: 5617056330672744667}
-  background: {fileID: 2848309381987551616}
-  cardHover: {fileID: 0}
-  isWildPlacer: 0
-  isWildReceiver: 0
-  isBottomCard: 0
-  isReserveCard: 0
-  isInDropzone: 0
-  isPlayed: 0
-  defaultTextColor: {r: 0.17254902, g: 0.40392157, b: 0.4627451, a: 0}
-  power: 1
-  operation: +
 --- !u!114 &5073705174308397477
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -357,7 +330,37 @@ MonoBehaviour:
   isReserveCard: 0
   isInDropzone: 0
   isPlayed: 0
-  defaultTextColor: {r: 0, g: 0, b: 0, a: 0}
+  OnPlay:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 5073705174308397477}
+        m_TargetAssemblyTypeName: Card, Assembly-CSharp
+        m_MethodName: Boost
+        m_Mode: 5
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: +
+          m_BoolArgument: 0
+        m_CallState: 2
+  OnRemove:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 5073705174308397477}
+        m_TargetAssemblyTypeName: Card, Assembly-CSharp
+        m_MethodName: Boost
+        m_Mode: 5
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: '-'
+          m_BoolArgument: 0
+        m_CallState: 2
+  defaultTextColor: {r: 0.17254902, g: 0.40392157, b: 0.4627451, a: 1}
   power: 1
   operation: +
 --- !u!1 &7384845155347099581

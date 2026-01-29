@@ -228,7 +228,8 @@ public class DragDrop : MonoBehaviour
     private void ReturnToPlayerArea()
     {
         Card cardComponent = GetComponent<Card>();
-
+        cardComponent.OnCardRemoved();
+        
         // Check if the card is already in the dropzone
         if (playerArea.CardsInHand.Contains(cardComponent))
         {

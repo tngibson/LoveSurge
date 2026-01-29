@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
+using UnityEngine.Events;
 using UnityEngine.UI;
 
 public abstract class Card : MonoBehaviour
@@ -21,6 +22,10 @@ public abstract class Card : MonoBehaviour
     public bool isReserveCard = false;
     public bool isInDropzone = false;
     public bool isPlayed = false;
+
+    [Header("Events")]
+    public UnityEvent OnPlay;
+    public UnityEvent OnRemove;
 
     public Color defaultTextColor;
 
@@ -165,6 +170,36 @@ public abstract class Card : MonoBehaviour
         if (isReserveCard)
         {
             reserveManager.CardPlayed(); // Notify the manager that the card was used
+        }
+
+        OnPlay?.Invoke();
+    }
+
+    public void OnCardRemoved()
+    {
+        OnRemove?.Invoke();
+    }
+
+    public void Boost(string operation)
+    {
+        Dropzone dropzone = FindAnyObjectByType<Dropzone>();
+        switch (operation)
+        {
+            case "+":
+                dropzone.addboost[Type] = Math.Clamp(dropzone.addboost[Type] + power,0,999);
+                break;
+            case "x":
+                dropzone.multipyboost[Type] = Math.Clamp(dropzone.multipyboost[Type] * power,1,999);
+                break;
+            case "-":
+                dropzone.addboost[Type] = Math.Clamp(dropzone.addboost[Type] - power,0,999);
+                break;
+            case "/":
+                dropzone.multipyboost[Type] = Math.Clamp(dropzone.multipyboost[Type] / power,1,999);
+                break;
+            default:
+                Debug.LogWarning("Invalid operation for Boost.");
+                break;
         }
     }
 }

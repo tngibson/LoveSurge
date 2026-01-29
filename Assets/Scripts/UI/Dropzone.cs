@@ -28,6 +28,21 @@ public class Dropzone : MonoBehaviour
     // Array to hold the dropzone
     [SerializeField] private DropzoneSlot dropzone; 
 
+    public Dictionary<string, int> multipyboost = new()
+    {
+        {"Cha", 1},
+        {"Cou", 1},
+        {"Cle", 1},
+        {"Cre", 1}
+    };
+    public Dictionary<string, int> addboost = new()
+    {
+        {"Cha", 0},
+        {"Cou", 0},
+        {"Cle", 0},
+        {"Cre", 0}
+    };
+
     private int score = 0;
     private int lineNum = 0;
     private int maxLineNum;
@@ -312,11 +327,13 @@ public class Dropzone : MonoBehaviour
                     HandleStressCard();
                     continue;
                 }
+                int boostedPower = (card.Power + addboost.GetValueOrDefault(card.Type, 0)) * 
+                                    multipyboost.GetValueOrDefault(card.Type, 1);
 
-                totalPower += card.Power;
-                if (card.Power > highestPower)
+                totalPower += boostedPower;
+                if (boostedPower > highestPower)
                 {
-                    highestPower = card.Power;
+                    highestPower = boostedPower;
                 }
             }
 
