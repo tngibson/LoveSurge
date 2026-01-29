@@ -84,6 +84,14 @@ public class Dropzone : MonoBehaviour
     private bool addExtraLine;
 
     private bool halfwayPointDone = false;
+    private int addCha;
+    private int addCou;
+    private int addCle;
+    private int addCre;
+    private int multCha;
+    private int multCou;
+    private int multCle;
+    private int multCre;
 
     // Start is called before the first frame update
     void Start()
@@ -107,6 +115,16 @@ public class Dropzone : MonoBehaviour
         {
             skipRequested = true;
         }
+
+        addCha = addboost["Cha"];
+        addCou = addboost["Cou"];
+        addCle = addboost["Cle"];
+        addCre = addboost["Cre"];
+
+        multCha = multipyboost["Cha"];
+        multCou = multipyboost["Cou"];
+        multCle = multipyboost["Cle"];
+        multCre = multipyboost["Cre"];
     }
 
     // Adds a card to the played cards list and removes it from the player's area

@@ -19,7 +19,10 @@ public class GameItem : MonoBehaviour
         Discard(discardAmount);
 
         PlayerDeckScript deck = Player.instance.GetComponent<PlayerDeckScript>();
-        if(deck != null) deck.DrawCards(drawAmount);
+        if(deck != null) {
+            deck.DrawCards(drawAmount);
+            Debug.Log("Drew " + drawAmount + " cards from deck.");
+        }
 
         Dropzone dropzone = FindObjectOfType<Dropzone>();
         if(dropzone != null) dropzone.ApplyBonus(type, scoreboost, operation);

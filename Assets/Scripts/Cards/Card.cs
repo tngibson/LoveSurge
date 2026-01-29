@@ -177,6 +177,7 @@ public abstract class Card : MonoBehaviour
 
     public void OnCardRemoved()
     {
+        Debug.Log("Card Removed Invoked");
         OnRemove?.Invoke();
     }
 
