@@ -25,18 +25,20 @@ public class EndTurnDialogueManager : MonoBehaviour
         turnCount++;
         if (turnCount == 1)
         {
-            if (playerArea.CardsInHand.Count != 0)
+            if (playerArea.CardsInHand.Count > 0)
             {
+                DiscardHand();
                 firstTurnFailureDialog.PlayDialog();
                 return;
             }
 
-            firstTurnFailureDialog.PlayDialog();
+            firstTurnDialog.PlayDialog();
         }
         else if (turnCount == 2)
         {
-            if (playerArea.CardsInHand.Count != 0)
+            if (playerArea.CardsInHand.Count > 0)
             {
+                DiscardHand();
                 secondTurnFailureDialog.PlayDialog();
                 return;
             }
@@ -46,6 +48,17 @@ public class EndTurnDialogueManager : MonoBehaviour
         else if (turnCount == 3)
         {
             thirdTurnDialog.PlayDialog();
+        }
+    }
+
+    private void DiscardHand()
+    {
+        PlayerArea playerArea = FindObjectOfType<PlayerArea>();
+        DiscardPile discardPile = FindObjectOfType<DiscardPile>();
+        for(int i = 0; i < playerArea.CardsInHand.Count; i++)
+        {
+            playerArea.CardsInHand[i].GetComponent<DragDrop>().CurrentDiscardPile = discardPile;
+            playerArea.CardsInHand[i].GetComponent<DragDrop>().DiscardCard();
         }
     }
 }

@@ -12,7 +12,11 @@ public class Debugger : MonoBehaviour
     [SerializeField] private string nextScene;
 
     public void Update()
-    {
+    {if (Input.GetKeyDown(KeyCode.Alpha0) && Input.GetKey(KeyCode.LeftShift))
+        {
+            Time.timeScale = 0f;
+            return;
+        }
         if (Input.GetKeyDown(KeyCode.Alpha1) && Input.GetKey(KeyCode.LeftShift))
         {
             Time.timeScale = 1f;
