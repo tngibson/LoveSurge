@@ -26,6 +26,7 @@ public class GameManager : MonoBehaviour
     [SerializeField] private GameObject creCard;
 
     // Gameplay elements
+    [SerializeField] private GameObject itemCanvasPrefab;
     [SerializeField] private PlayerArea playerArea;
     [SerializeField] public ConvoTopic currentConvoTopic;
     [SerializeField] private TopicContainer topicContainer;
@@ -49,6 +50,7 @@ public class GameManager : MonoBehaviour
 
     [SerializeField] private int handSize = 4;
     private bool isHandPlayable = false;
+    private GameObject itemCanvasInstance;
 
     [SerializeField] private MapScript mapButtonScript;
 
@@ -76,6 +78,10 @@ public class GameManager : MonoBehaviour
 
     private void Start()
     {
+        if(itemCanvasInstance == null)
+        {
+            itemCanvasInstance = Instantiate(itemCanvasPrefab);
+        }
         fullHandText.SetActive(false);
         scoreText.text = "Score: 0";
         MusicManager.SetParameterByName("dateProgress", 0);

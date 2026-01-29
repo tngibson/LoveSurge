@@ -14,10 +14,8 @@ public class Player : MonoBehaviour
     // Use a list to store stat values
     public List<int> stats = new List<int>();
     public List<StatOffset> statOffsets = new List<StatOffset>();
-
     public static Player instance;
     public int cash = 0;
-
     private List<string> ignoredTags;
 
     public List<int> convoTiers = new List<int> { 1, 1, 1, 1 }; // Index 0 = Courage, 1 = Creativity, 2 = Cleverness, 3 = Charisma
