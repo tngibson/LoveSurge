@@ -34,9 +34,12 @@ public class ShopButton : MonoBehaviour, IPointerClickHandler, IPointerEnterHand
             itemInstance.transform.SetAsFirstSibling();
             itemInstance.TryGetComponent(out EventTrigger trigger);
             itemInstance.TryGetComponent(out DragDrop dragDrop);
+            itemInstance.TryGetComponent(out GameItem gameItem);
 
             if (dragDrop != null) dragDrop.enabled = false;
             if (trigger != null) trigger.enabled = false;
+            if (gameItem != null) itemInstance.GetComponentInChildren<Button>().enabled = false;
+
 
             itemInstance.transform.localScale = new Vector3(0.5f, 0.5f, 1);
             itemInstance.transform.localPosition = Vector3.zero + itemOffset;
@@ -53,6 +56,11 @@ public class ShopButton : MonoBehaviour, IPointerClickHandler, IPointerEnterHand
     public void OnPointerClick(PointerEventData eventData)
     {
         if(!(Player.instance.cash - shopItem.cost >= 0) || isSoldOut) return;
+        if(itemInstance.TryGetComponent(out GameItem gameItem) && Player.instance.collectedItems.Count >= 4)
+        {
+            Debug.Log("Cannot purchase more items, inventory full.");
+            return;
+        }
 
         Debug.Log("Purchased Item: " + shopItem.itemPrefab.name);
         Player.instance.cash -= shopItem.cost;
@@ -64,15 +72,15 @@ public class ShopButton : MonoBehaviour, IPointerClickHandler, IPointerEnterHand
 
         if(itemInstance.TryGetComponent(out Card card))
         {
-            Card cardInstance = Instantiate(card);
+            Card cardInstance = Instantiate(shopItem.itemPrefab.GetComponent<Card>());
             cardInstance.gameObject.SetActive(false);
-            Player.instance.collectedCards.Add(cardInstance);
+            Player.instance.CollectCard(cardInstance);
         }
-        else if(itemInstance.TryGetComponent(out GameItem gameItem))
+        else if(gameItem != null)
         {
             if(Player.instance.collectedItems.Count > 4) return;
-            Player.instance.collectedItems.Add(gameItem);
-            
+            GameItem gameItemInstance = Instantiate(shopItem.itemPrefab.GetComponent<GameItem>());
+            Player.instance.CollectItem(gameItemInstance);
         }
     }
 

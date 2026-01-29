@@ -180,6 +180,50 @@ public class Player : MonoBehaviour
                 break;
         }
     }
+
+    public void CollectItem(GameItem item)
+    {
+        if (collectedItems.Count > 4)
+        {
+            Debug.LogWarning("Cannot collect more than 5 items!");
+            return;
+        }
+        item.transform.SetParent(this.transform);
+        collectedItems.Add(item);
+    }
+
+    public void CollectCard(Card card)
+    {
+        card.transform.SetParent(this.transform);
+        collectedCards.Add(card);
+    }
+
+    public void DeleteItem(GameItem item)
+    {
+        if (collectedItems.Contains(item))
+        {
+            collectedItems.Remove(item);
+            Destroy(item.gameObject);
+        }
+    }
+
+    public void DeleteCard(Card card)
+    {
+        if (collectedCards.Contains(card))
+        {
+            collectedCards.Remove(card);
+            Destroy(card.gameObject);
+        }
+    }
+
+    public void ReturnItem()
+    {
+        for(int i = 0; i < collectedItems.Count; i++)
+        {
+            collectedItems[i].transform.SetParent(this.transform);
+            collectedItems[i].gameObject.SetActive(false);
+        }
+    }
 }
 
 [Serializable]

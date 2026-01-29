@@ -13,9 +13,11 @@ public class Socket : MonoBehaviour
             Debug.LogWarning("No more socket points available!");
             return;
         }
-        
+
         obj.transform.position = socketPoints[currentIndex].position;
         obj.transform.SetParent(socketPoints[currentIndex]);
+        obj.transform.localScale = new Vector3(.4f, .4f, 1f);
+        obj.SetActive(true);
 
         currentIndex++;
     }

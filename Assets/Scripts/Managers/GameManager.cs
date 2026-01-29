@@ -82,7 +82,7 @@ public class GameManager : MonoBehaviour
         {
             itemCanvasInstance = Instantiate(itemCanvasPrefab, transform.parent);
             itemCanvasInstance.name = "ItemCanvas";
-            itemCanvasInstance.transform.SetAsLastSibling();
+            itemCanvasInstance.transform.SetSiblingIndex(itemCanvasInstance.transform.parent.childCount - 2);
             RefreshUsableItem();
         }
         fullHandText.SetActive(false);
@@ -172,6 +172,7 @@ public class GameManager : MonoBehaviour
         }
 
         ShowMapButton($"{data.name} wants to talk more closely with you...", 1);
+        Player.instance.ReturnItem();
     }
 
     public void EndGameFullWin()
@@ -198,6 +199,7 @@ public class GameManager : MonoBehaviour
 
         // Update the location so LocationManager can advance to the next date
         LocationManager.Instance.TryBindMapScript(mapButtonScript);
+        Player.instance.ReturnItem();
     }
 
     public void EndGameLoss()
@@ -214,6 +216,7 @@ public class GameManager : MonoBehaviour
 
         data.isPlayable = false;
         LocationManager.Instance.TryBindMapScript(mapButtonScript);
+        Player.instance.ReturnItem();
     }
 
     public void ShowMapButton(string message, int musicProgress)
