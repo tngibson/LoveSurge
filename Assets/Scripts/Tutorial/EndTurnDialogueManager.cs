@@ -11,6 +11,7 @@ public class EndTurnDialogueManager : MonoBehaviour
     [SerializeField] private PlayTutorialDialog secondTurnDialog;
     [SerializeField] private PlayTutorialDialog secondTurnFailureDialog;
     [SerializeField] private PlayTutorialDialog thirdTurnDialog;
+    [SerializeField] private Card StressCardPrefab;
     
     private void Start()
     {
@@ -47,7 +48,14 @@ public class EndTurnDialogueManager : MonoBehaviour
         }
         else if (turnCount == 3)
         {
+            DiscardHand();
             thirdTurnDialog.PlayDialog();
+            PlayerDeckScriptTutorial playerDeck = FindObjectOfType<PlayerDeckScriptTutorial>();
+            for (int i = 0; i < 2; i++)
+            {
+                Card stresscard = playerDeck.MakeCard(StressCardPrefab,0);
+                playerDeck.Deck.Insert(0, stresscard);
+            }
         }
     }
 

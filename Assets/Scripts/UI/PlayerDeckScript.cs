@@ -55,7 +55,7 @@ public class PlayerDeckScript : MonoBehaviour
     }
 
     // Instantiates a card, assigns its power, and adds it to the deck
-    protected Card MakeCard(Card prefab, int power)
+    public Card MakeCard(Card prefab, int power)
     {
         Card finishedCard = Instantiate(prefab, container.transform);
         finishedCard.SetVisibility(false);

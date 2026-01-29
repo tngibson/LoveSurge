@@ -270,6 +270,7 @@ GameObject:
   - component: {fileID: 44367658}
   - component: {fileID: 44367657}
   - component: {fileID: 44367656}
+  - component: {fileID: 44367659}
   m_Layer: 5
   m_Name: PlayerDeckExit
   m_TagString: Untagged
@@ -340,9 +341,21 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 1771563201}
         m_TargetAssemblyTypeName: PlayerDeckScript, Assembly-CSharp
         m_MethodName: ShowDeck
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 44367659}
+        m_TargetAssemblyTypeName: PlayTutorialDialog, Assembly-CSharp
+        m_MethodName: PlayDialog
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -390,6 +403,32 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 44367654}
   m_CullTransparentMesh: 1
+--- !u!114 &44367659
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 44367654}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 253c20f0ad1f08b4aae2e9987e7df13f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Dialog:
+  - speaker: C0D3-W1Z4RD
+    dialog: "Good, you\u2019re getting the hang of it."
+    characterSprite: {fileID: 21300000, guid: 79f4cba0f14c0bd46951f09f7bd48970, type: 3}
+  - speaker: C0D3-W1Z4RD
+    dialog: If you ever need to undo a move, drag a card back to your <b>Hand</b>
+      or the <b>Reserve</b>.
+    characterSprite: {fileID: 21300000, guid: 568418e572b891b499d66849254b674e, type: 3}
+  - speaker: C0D3-W1Z4RD
+    dialog: '[EVENT: Creativity] ++ Try selecting the <color=#C5E6D1>Creativity Topic</color>
+      now. ++'
+    characterSprite: {fileID: 21300000, guid: 79f4cba0f14c0bd46951f09f7bd48970, type: 3}
+  oneTime: 1
+  scriptedTutorial: {fileID: 229746376}
 --- !u!1 &60042736
 GameObject:
   m_ObjectHideFlags: 0
@@ -1578,7 +1617,7 @@ MonoBehaviour:
     dialog: '[EVENT: Reserve] Appliances will also provide cards in their Reserve.'
     characterSprite: {fileID: 21300000, guid: 79f4cba0f14c0bd46951f09f7bd48970, type: 3}
   - speaker: C0D3-W1Z4RD
-    dialog: '[EVENT: Clever3] Above me I have a <color = #B7DCEA> 3-Cleverness Card
+    dialog: '[EVENT: Clever3] Above me I have a <colo =#B7DCEA> 3-Cleverness Card
       </color> that can be played.'
     characterSprite: {fileID: 21300000, guid: 79f4cba0f14c0bd46951f09f7bd48970, type: 3}
   - speaker: C0D3-W1Z4RD
@@ -1586,8 +1625,8 @@ MonoBehaviour:
       a <b> Combo Surge </b>.
     characterSprite: {fileID: 21300000, guid: 79f4cba0f14c0bd46951f09f7bd48970, type: 3}
   - speaker: C0D3-W1Z4RD
-    dialog: <color=red>Drag the <color = #B7DCEA> 3-Cleverness Card </color to the
-      Score Zone and start your Combo. Press End Turn once you are done.</color>
+    dialog: ++ Drag the <color=#B7DCEA> 3-Cleverness Card </color> to the Score Zone
+      and start your Combo. Press End Turn once you are done. ++
     characterSprite: {fileID: 21300000, guid: 79f4cba0f14c0bd46951f09f7bd48970, type: 3}
   oneTime: 1
   scriptedTutorial: {fileID: 229746376}
@@ -1677,8 +1716,8 @@ MonoBehaviour:
       of the <b>Conversation Topics</b> on the right side of the screen.'
     characterSprite: {fileID: 0}
   - speaker: C0D3-W1Z4RD
-    dialog: '[EVENT: Courage] <color=red> For now, I guess, click the </color><color=#EDC7E4>
-      Courage topic </color>.'
+    dialog: '[EVENT: Courage] ++For now, I guess, click the <color=#EDC7E4> Courage
+      topic </color>++'
     characterSprite: {fileID: 21300000, guid: 568418e572b891b499d66849254b674e, type: 3}
   currentSession: {fileID: 293364313}
 --- !u!1 &278874790
@@ -1742,8 +1781,8 @@ MonoBehaviour:
       you can drag and drop them into the <b>Recycling Bin</b>.'
     characterSprite: {fileID: 21300000, guid: 568418e572b891b499d66849254b674e, type: 3}
   - speaker: C0D3-W1Z4RD
-    dialog: <color=red>Try dragging your entire hand there now to discard your cards.
-      <b>Press End Turn</b> once you are done to draw new cards.</color>
+    dialog: ++ Try dragging your entire hand there now to discard your cards. <b>Press
+      End Turn</b> once you are done to draw new cards. ++
     characterSprite: {fileID: 21300000, guid: 568418e572b891b499d66849254b674e, type: 3}
   oneTime: 1
   scriptedTutorial: {fileID: 229746376}
@@ -3094,7 +3133,7 @@ MonoBehaviour:
   m_HandleRect: {fileID: 1877364502}
   m_Direction: 2
   m_Value: 1
-  m_Size: 0.3783666
+  m_Size: 0.37836662
   m_NumberOfSteps: 0
   m_OnValueChanged:
     m_PersistentCalls:
@@ -4158,6 +4197,81 @@ CanvasRenderer:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 542862008}
+  m_CullTransparentMesh: 1
+--- !u!1 &549365794
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 549365795}
+  - component: {fileID: 549365797}
+  - component: {fileID: 549365796}
+  m_Layer: 5
+  m_Name: Deck
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &549365795
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 549365794}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1991520288}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: -939, y: -800}
+  m_SizeDelta: {x: 430, y: 524}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &549365796
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 549365794}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 2100000, guid: 00673267ac4363b45a92017820b070f0, type: 2}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_RaycastTarget: 0
+  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
+  m_Maskable: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  m_Sprite: {fileID: 10907, guid: 0000000000000000f000000000000000, type: 0}
+  m_Type: 1
+  m_PreserveAspect: 0
+  m_FillCenter: 1
+  m_FillMethod: 4
+  m_FillAmount: 1
+  m_FillClockwise: 1
+  m_FillOrigin: 0
+  m_UseSpriteMesh: 0
+  m_PixelsPerUnitMultiplier: 1
+--- !u!222 &549365797
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 549365794}
   m_CullTransparentMesh: 1
 --- !u!1 &602046414
 GameObject:
@@ -5387,7 +5501,7 @@ MonoBehaviour:
     dialog: '[EVENT: Reserve] Appliances will also provide cards in their Reserve.'
     characterSprite: {fileID: 21300000, guid: 79f4cba0f14c0bd46951f09f7bd48970, type: 3}
   - speaker: C0D3-W1Z4RD
-    dialog: '[EVENT: Clever3] Above me I have a <color = #B7DCEA> 3-Cleverness Card
+    dialog: '[EVENT: Clever3] Above me I have a <color=#B7DCEA> 3-Cleverness Card
       </color> that can be played.'
     characterSprite: {fileID: 21300000, guid: 79f4cba0f14c0bd46951f09f7bd48970, type: 3}
   - speaker: C0D3-W1Z4RD
@@ -5395,8 +5509,8 @@ MonoBehaviour:
       a <b> Combo Surge </b>.
     characterSprite: {fileID: 21300000, guid: 79f4cba0f14c0bd46951f09f7bd48970, type: 3}
   - speaker: C0D3-W1Z4RD
-    dialog: <color=red>Drag the <color = #B7DCEA> 3-Cleverness Card </color to the
-      Score Zone and start your Combo. Press End Turn once you are done.</color>
+    dialog: ++ Drag the <color=#B7DCEA> 3-Cleverness Card </color> to the Score Zone
+      and start your Combo. Press End Turn once you are done. ++
     characterSprite: {fileID: 21300000, guid: 79f4cba0f14c0bd46951f09f7bd48970, type: 3}
   oneTime: 1
   scriptedTutorial: {fileID: 229746376}
@@ -5687,141 +5801,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 783428731}
   m_CullTransparentMesh: 1
---- !u!1 &793976996
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 793976997}
-  - component: {fileID: 793976999}
-  - component: {fileID: 793976998}
-  m_Layer: 5
-  m_Name: CurrentScoreText
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!224 &793976997
-RectTransform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 793976996}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 1933562338}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0.5}
-  m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -2.505371, y: 87.79028}
-  m_SizeDelta: {x: 319.71, y: 109.02}
-  m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &793976998
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 793976996}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_RaycastTarget: 1
-  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
-  m_Maskable: 1
-  m_OnCullStateChanged:
-    m_PersistentCalls:
-      m_Calls: []
-  m_text: 'Current Score: 0'
-  m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: df7cadaad356fc945a444aceb9b4e11e, type: 2}
-  m_sharedMaterial: {fileID: 4935103395473980988, guid: df7cadaad356fc945a444aceb9b4e11e,
-    type: 2}
-  m_fontSharedMaterials: []
-  m_fontMaterial: {fileID: 0}
-  m_fontMaterials: []
-  m_fontColor32:
-    serializedVersion: 2
-    rgba: 4282532418
-  m_fontColor: {r: 0.2603773, g: 0.2603773, b: 0.2603773, a: 1}
-  m_enableVertexGradient: 0
-  m_colorMode: 3
-  m_fontColorGradient:
-    topLeft: {r: 1, g: 1, b: 1, a: 1}
-    topRight: {r: 1, g: 1, b: 1, a: 1}
-    bottomLeft: {r: 1, g: 1, b: 1, a: 1}
-    bottomRight: {r: 1, g: 1, b: 1, a: 1}
-  m_fontColorGradientPreset: {fileID: 0}
-  m_spriteAsset: {fileID: 0}
-  m_tintAllSprites: 0
-  m_StyleSheet: {fileID: 0}
-  m_TextStyleHashCode: -1183493901
-  m_overrideHtmlColors: 0
-  m_faceColor:
-    serializedVersion: 2
-    rgba: 4294967295
-  m_fontSize: 36
-  m_fontSizeBase: 36
-  m_fontWeight: 400
-  m_enableAutoSizing: 0
-  m_fontSizeMin: 18
-  m_fontSizeMax: 72
-  m_fontStyle: 0
-  m_HorizontalAlignment: 2
-  m_VerticalAlignment: 256
-  m_textAlignment: 65535
-  m_characterSpacing: 0
-  m_wordSpacing: 0
-  m_lineSpacing: 0
-  m_lineSpacingMax: 0
-  m_paragraphSpacing: 0
-  m_charWidthMaxAdj: 0
-  m_enableWordWrapping: 1
-  m_wordWrappingRatios: 0.4
-  m_overflowMode: 0
-  m_linkedTextComponent: {fileID: 0}
-  parentLinkedComponent: {fileID: 0}
-  m_enableKerning: 1
-  m_enableExtraPadding: 0
-  checkPaddingRequired: 0
-  m_isRichText: 1
-  m_parseCtrlCharacters: 1
-  m_isOrthographic: 1
-  m_isCullingEnabled: 0
-  m_horizontalMapping: 0
-  m_verticalMapping: 0
-  m_uvLineOffset: 0
-  m_geometrySortingOrder: 0
-  m_IsTextObjectScaleStatic: 0
-  m_VertexBufferAutoSizeReduction: 0
-  m_useMaxVisibleDescender: 1
-  m_pageToDisplay: 1
-  m_margin: {x: 0, y: 0, z: 0, w: 0}
-  m_isUsingLegacyAnimationComponent: 0
-  m_isVolumetricText: 0
-  m_hasFontAssetChanged: 0
-  m_baseMaterial: {fileID: 0}
-  m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
---- !u!222 &793976999
-CanvasRenderer:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 793976996}
-  m_CullTransparentMesh: 1
 --- !u!1 &799427222
 GameObject:
   m_ObjectHideFlags: 0
@@ -5956,141 +5935,6 @@ CanvasRenderer:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 799427222}
-  m_CullTransparentMesh: 1
---- !u!1 &805220699
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 805220700}
-  - component: {fileID: 805220702}
-  - component: {fileID: 805220701}
-  m_Layer: 5
-  m_Name: ScoreCalculationText
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!224 &805220700
-RectTransform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 805220699}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 1933562338}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0.5}
-  m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0.000003874302, y: 0}
-  m_SizeDelta: {x: 288.3776, y: 109.02}
-  m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &805220701
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 805220699}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_RaycastTarget: 1
-  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
-  m_Maskable: 1
-  m_OnCullStateChanged:
-    m_PersistentCalls:
-      m_Calls: []
-  m_text: 'Score: 0'
-  m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: df7cadaad356fc945a444aceb9b4e11e, type: 2}
-  m_sharedMaterial: {fileID: 4935103395473980988, guid: df7cadaad356fc945a444aceb9b4e11e,
-    type: 2}
-  m_fontSharedMaterials: []
-  m_fontMaterial: {fileID: 0}
-  m_fontMaterials: []
-  m_fontColor32:
-    serializedVersion: 2
-    rgba: 4282532418
-  m_fontColor: {r: 0.25882354, g: 0.25882354, b: 0.25882354, a: 1}
-  m_enableVertexGradient: 0
-  m_colorMode: 3
-  m_fontColorGradient:
-    topLeft: {r: 1, g: 1, b: 1, a: 1}
-    topRight: {r: 1, g: 1, b: 1, a: 1}
-    bottomLeft: {r: 1, g: 1, b: 1, a: 1}
-    bottomRight: {r: 1, g: 1, b: 1, a: 1}
-  m_fontColorGradientPreset: {fileID: 0}
-  m_spriteAsset: {fileID: 0}
-  m_tintAllSprites: 0
-  m_StyleSheet: {fileID: 0}
-  m_TextStyleHashCode: -1183493901
-  m_overrideHtmlColors: 0
-  m_faceColor:
-    serializedVersion: 2
-    rgba: 4294967295
-  m_fontSize: 36
-  m_fontSizeBase: 36
-  m_fontWeight: 400
-  m_enableAutoSizing: 0
-  m_fontSizeMin: 18
-  m_fontSizeMax: 72
-  m_fontStyle: 0
-  m_HorizontalAlignment: 2
-  m_VerticalAlignment: 256
-  m_textAlignment: 65535
-  m_characterSpacing: 0
-  m_wordSpacing: 0
-  m_lineSpacing: 0
-  m_lineSpacingMax: 0
-  m_paragraphSpacing: 0
-  m_charWidthMaxAdj: 0
-  m_enableWordWrapping: 1
-  m_wordWrappingRatios: 0.4
-  m_overflowMode: 0
-  m_linkedTextComponent: {fileID: 0}
-  parentLinkedComponent: {fileID: 0}
-  m_enableKerning: 1
-  m_enableExtraPadding: 0
-  checkPaddingRequired: 0
-  m_isRichText: 1
-  m_parseCtrlCharacters: 1
-  m_isOrthographic: 1
-  m_isCullingEnabled: 0
-  m_horizontalMapping: 0
-  m_verticalMapping: 0
-  m_uvLineOffset: 0
-  m_geometrySortingOrder: 0
-  m_IsTextObjectScaleStatic: 0
-  m_VertexBufferAutoSizeReduction: 0
-  m_useMaxVisibleDescender: 1
-  m_pageToDisplay: 1
-  m_margin: {x: 0, y: 0, z: 0, w: 0}
-  m_isUsingLegacyAnimationComponent: 0
-  m_isVolumetricText: 0
-  m_hasFontAssetChanged: 0
-  m_baseMaterial: {fileID: 0}
-  m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
---- !u!222 &805220702
-CanvasRenderer:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 805220699}
   m_CullTransparentMesh: 1
 --- !u!1 &806919272
 GameObject:
@@ -7429,7 +7273,7 @@ MonoBehaviour:
   convoAttribute: 
   currentTier: 1
   tierPower: 0
-  tierPowers: 640000003200000000000000
+  tierPowers: 320000001900000000000000
   attributeText: {fileID: 358839903}
   numText: {fileID: 1513417707}
   topicLabelText: {fileID: 628715680}
@@ -7511,8 +7355,8 @@ MonoBehaviour:
       It is kind of like another game I have played a lot.
     characterSprite: {fileID: 21300000, guid: 79f4cba0f14c0bd46951f09f7bd48970, type: 3}
   - speaker: C0D3-W1Z4RD
-    dialog: <color=red>Try matching the card suits! Place your <color=#EDC7E4>1-Courage</color>
-      cards down first.</color>
+    dialog: ++ Try matching the card suits! Place your <color=#EDC7E4>1-Courage</color>
+      cards down first. ++
     characterSprite: {fileID: 21300000, guid: b06df378e24c2594b8616dbb469efb0a, type: 3}
   oneTime: 1
   scriptedTutorial: {fileID: 229746376}
@@ -8049,7 +7893,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -1625, y: -64}
+  m_AnchoredPosition: {x: -1623, y: 259}
   m_SizeDelta: {x: 500, y: 164}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1197163755
@@ -8102,7 +7946,6 @@ GameObject:
   - component: {fileID: 1210874667}
   - component: {fileID: 1210874666}
   - component: {fileID: 1210874668}
-  - component: {fileID: 1210874669}
   m_Layer: 5
   m_Name: DeckCountPanel
   m_TagString: Untagged
@@ -8224,44 +8067,6 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-      - m_Target: {fileID: 1210874669}
-        m_TargetAssemblyTypeName: PlayTutorialDialog, Assembly-CSharp
-        m_MethodName: PlayDialog
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
---- !u!114 &1210874669
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1210874664}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 253c20f0ad1f08b4aae2e9987e7df13f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  Dialog:
-  - speaker: C0D3-W1Z4RD
-    dialog: "Good, you\u2019re getting the hang of it."
-    characterSprite: {fileID: 21300000, guid: 79f4cba0f14c0bd46951f09f7bd48970, type: 3}
-  - speaker: C0D3-W1Z4RD
-    dialog: <color = red>If you ever need to undo a move, drag a card back to your
-      <b>Hand</b> or the <b>Reserve</b>.
-    characterSprite: {fileID: 21300000, guid: 568418e572b891b499d66849254b674e, type: 3}
-  - speaker: C0D3-W1Z4RD
-    dialog: '[EVENT: Creativity]<color=red>Try selecting the <color = #C5E6D1>Creativity
-      Topic</color> now.</color>'
-    characterSprite: {fileID: 21300000, guid: 79f4cba0f14c0bd46951f09f7bd48970, type: 3}
-  oneTime: 1
-  scriptedTutorial: {fileID: 229746376}
 --- !u!1 &1245686312
 GameObject:
   m_ObjectHideFlags: 0
@@ -8925,81 +8730,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1298419915}
   m_CullTransparentMesh: 1
---- !u!1 &1306326772
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1306326773}
-  - component: {fileID: 1306326775}
-  - component: {fileID: 1306326774}
-  m_Layer: 5
-  m_Name: Stress
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!224 &1306326773
-RectTransform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1306326772}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 1991520288}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0.5}
-  m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -152, y: -870.16}
-  m_SizeDelta: {x: 1000, y: 420}
-  m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &1306326774
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1306326772}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_Material: {fileID: 2100000, guid: 00673267ac4363b45a92017820b070f0, type: 2}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_RaycastTarget: 0
-  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
-  m_Maskable: 1
-  m_OnCullStateChanged:
-    m_PersistentCalls:
-      m_Calls: []
-  m_Sprite: {fileID: 10907, guid: 0000000000000000f000000000000000, type: 0}
-  m_Type: 1
-  m_PreserveAspect: 0
-  m_FillCenter: 1
-  m_FillMethod: 4
-  m_FillAmount: 1
-  m_FillClockwise: 1
-  m_FillOrigin: 0
-  m_UseSpriteMesh: 0
-  m_PixelsPerUnitMultiplier: 1
---- !u!222 &1306326775
-CanvasRenderer:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1306326772}
-  m_CullTransparentMesh: 1
 --- !u!1 &1363842149
 GameObject:
   m_ObjectHideFlags: 0
@@ -9373,6 +9103,8 @@ MonoBehaviour:
   secondTurnDialog: {fileID: 223381121}
   secondTurnFailureDialog: {fileID: 729891649}
   thirdTurnDialog: {fileID: 1800110598}
+  StressCardPrefab: {fileID: 197109645831250398, guid: 01c879dcac3a90640a8fc1808bf209b5,
+    type: 3}
 --- !u!1 &1411976327
 GameObject:
   m_ObjectHideFlags: 0
@@ -9507,7 +9239,6 @@ RectTransform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 2034964665}
-  - {fileID: 1933562338}
   m_Father: {fileID: 1108671395}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
@@ -9782,7 +9513,7 @@ MonoBehaviour:
   convoAttribute: 
   currentTier: 1
   tierPower: 0
-  tierPowers: 640000003200000000000000
+  tierPowers: 320000001900000000000000
   attributeText: {fileID: 799427224}
   numText: {fileID: 512021105}
   topicLabelText: {fileID: 1018990248}
@@ -10324,141 +10055,6 @@ RectTransform:
   m_AnchoredPosition: {x: -0.054000854, y: 0.13900757}
   m_SizeDelta: {x: -0.6266, y: -0.1935}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!1 &1547657962
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1547657963}
-  - component: {fileID: 1547657965}
-  - component: {fileID: 1547657964}
-  m_Layer: 5
-  m_Name: Text (TMP)
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!224 &1547657963
-RectTransform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1547657962}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 1933562338}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0.5}
-  m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -2.5054, y: 87.79}
-  m_SizeDelta: {x: 319.71, y: 50}
-  m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &1547657964
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1547657962}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_RaycastTarget: 1
-  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
-  m_Maskable: 1
-  m_OnCullStateChanged:
-    m_PersistentCalls:
-      m_Calls: []
-  m_text: _________________
-  m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: df7cadaad356fc945a444aceb9b4e11e, type: 2}
-  m_sharedMaterial: {fileID: 4935103395473980988, guid: df7cadaad356fc945a444aceb9b4e11e,
-    type: 2}
-  m_fontSharedMaterials: []
-  m_fontMaterial: {fileID: 0}
-  m_fontMaterials: []
-  m_fontColor32:
-    serializedVersion: 2
-    rgba: 4282532418
-  m_fontColor: {r: 0.25882354, g: 0.25882354, b: 0.25882354, a: 1}
-  m_enableVertexGradient: 0
-  m_colorMode: 3
-  m_fontColorGradient:
-    topLeft: {r: 1, g: 1, b: 1, a: 1}
-    topRight: {r: 1, g: 1, b: 1, a: 1}
-    bottomLeft: {r: 1, g: 1, b: 1, a: 1}
-    bottomRight: {r: 1, g: 1, b: 1, a: 1}
-  m_fontColorGradientPreset: {fileID: 0}
-  m_spriteAsset: {fileID: 0}
-  m_tintAllSprites: 0
-  m_StyleSheet: {fileID: 0}
-  m_TextStyleHashCode: -1183493901
-  m_overrideHtmlColors: 0
-  m_faceColor:
-    serializedVersion: 2
-    rgba: 4294967295
-  m_fontSize: 36
-  m_fontSizeBase: 36
-  m_fontWeight: 400
-  m_enableAutoSizing: 0
-  m_fontSizeMin: 18
-  m_fontSizeMax: 72
-  m_fontStyle: 0
-  m_HorizontalAlignment: 2
-  m_VerticalAlignment: 256
-  m_textAlignment: 65535
-  m_characterSpacing: 0
-  m_wordSpacing: 0
-  m_lineSpacing: 0
-  m_lineSpacingMax: 0
-  m_paragraphSpacing: 0
-  m_charWidthMaxAdj: 0
-  m_enableWordWrapping: 1
-  m_wordWrappingRatios: 0.4
-  m_overflowMode: 0
-  m_linkedTextComponent: {fileID: 0}
-  parentLinkedComponent: {fileID: 0}
-  m_enableKerning: 1
-  m_enableExtraPadding: 0
-  checkPaddingRequired: 0
-  m_isRichText: 1
-  m_parseCtrlCharacters: 1
-  m_isOrthographic: 1
-  m_isCullingEnabled: 0
-  m_horizontalMapping: 0
-  m_verticalMapping: 0
-  m_uvLineOffset: 0
-  m_geometrySortingOrder: 0
-  m_IsTextObjectScaleStatic: 0
-  m_VertexBufferAutoSizeReduction: 0
-  m_useMaxVisibleDescender: 1
-  m_pageToDisplay: 1
-  m_margin: {x: 0, y: 0, z: 0, w: 0}
-  m_isUsingLegacyAnimationComponent: 0
-  m_isVolumetricText: 0
-  m_hasFontAssetChanged: 0
-  m_baseMaterial: {fileID: 0}
-  m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
---- !u!222 &1547657965
-CanvasRenderer:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1547657962}
-  m_CullTransparentMesh: 1
 --- !u!1 &1607573853
 GameObject:
   m_ObjectHideFlags: 0
@@ -10520,8 +10116,8 @@ MonoBehaviour:
       you can drag and drop them into the <b>Recycling Bin</b>.'
     characterSprite: {fileID: 21300000, guid: 568418e572b891b499d66849254b674e, type: 3}
   - speaker: C0D3-W1Z4RD
-    dialog: <color=red>Try dragging your entire hand there now to discard your cards.
-      <b>Press End Turn</b> once you are done to draw new cards.</color>
+    dialog: ++ Try dragging your entire hand there now to discard your cards. <b>Press
+      End Turn</b> once you are done to draw new cards. ++
     characterSprite: {fileID: 21300000, guid: 568418e572b891b499d66849254b674e, type: 3}
   oneTime: 1
   scriptedTutorial: {fileID: 229746376}
@@ -10627,13 +10223,13 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-      - m_Target: {fileID: 0}
-        m_TargetAssemblyTypeName: ConvoTopic, Assembly-CSharp
-        m_MethodName: 
+      - m_Target: {fileID: 1646536591}
+        m_TargetAssemblyTypeName: PlayTutorialDialog, Assembly-CSharp
+        m_MethodName: PlayDialog
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: 
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
@@ -10736,8 +10332,8 @@ MonoBehaviour:
       you out?"
     characterSprite: {fileID: 21300000, guid: 568418e572b891b499d66849254b674e, type: 3}
   - speaker: C0D3-W1Z4RD
-    dialog: '[EVENT: StressCard]Your Deck will reflect your daily stress in the form
-      of colorless Stress Cards.'
+    dialog: '[EVENT: Cards]Your Deck will reflect your daily stress in the form of
+      colorless Stress Cards.'
     characterSprite: {fileID: 21300000, guid: 568418e572b891b499d66849254b674e, type: 3}
   oneTime: 1
   scriptedTutorial: {fileID: 229746376}
@@ -11583,11 +11179,27 @@ MonoBehaviour:
   - card: {fileID: 8562863103195938653, guid: 05b5675adef6c844888a1391108fb4d9, type: 3}
     power: 4
   - card: {fileID: 8562863103195938653, guid: 05b5675adef6c844888a1391108fb4d9, type: 3}
-    power: 5
-  - card: {fileID: 197109645831250398, guid: 01c879dcac3a90640a8fc1808bf209b5, type: 3}
-    power: 0
-  - card: {fileID: 197109645831250398, guid: 01c879dcac3a90640a8fc1808bf209b5, type: 3}
-    power: 0
+    power: 4
+  - card: {fileID: -5963538814804999132, guid: 1e37df9f36f5407498c1e18e05ebc7f9, type: 3}
+    power: 1
+  - card: {fileID: 8562863103195938653, guid: 05b5675adef6c844888a1391108fb4d9, type: 3}
+    power: 2
+  - card: {fileID: 8562863103195938653, guid: 05b5675adef6c844888a1391108fb4d9, type: 3}
+    power: 3
+  - card: {fileID: 8562863103195938653, guid: 05b5675adef6c844888a1391108fb4d9, type: 3}
+    power: 4
+  - card: {fileID: 2326991348489003529, guid: 1796bafd5756dbc41b01a0a95cf61460, type: 3}
+    power: 4
+  - card: {fileID: 2326991348489003529, guid: 1796bafd5756dbc41b01a0a95cf61460, type: 3}
+    power: 4
+  - card: {fileID: 2326991348489003529, guid: 1796bafd5756dbc41b01a0a95cf61460, type: 3}
+    power: 4
+  - card: {fileID: -5963538814804999132, guid: 1e37df9f36f5407498c1e18e05ebc7f9, type: 3}
+    power: 3
+  - card: {fileID: -5963538814804999132, guid: 1e37df9f36f5407498c1e18e05ebc7f9, type: 3}
+    power: 2
+  - card: {fileID: -5963538814804999132, guid: 1e37df9f36f5407498c1e18e05ebc7f9, type: 3}
+    power: 1
 --- !u!1 &1800110596
 GameObject:
   m_ObjectHideFlags: 0
@@ -11638,8 +11250,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Dialog:
   - speaker: C0D3-W1Z4RD
-    dialog: '[EVENT: Deck] <color=red>If you ever need to check how many cards are
-      left in your deck, just click on the Deck Button. Try pressing it now.</color>'
+    dialog: '[EVENT: Deck] If you ever need to check how many cards are left in your
+      deck, just click on the Deck Button. ++ Try pressing it now. ++'
     characterSprite: {fileID: 21300000, guid: 79f4cba0f14c0bd46951f09f7bd48970, type: 3}
   oneTime: 1
   scriptedTutorial: {fileID: 229746376}
@@ -11911,84 +11523,6 @@ CanvasRenderer:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1877364501}
-  m_CullTransparentMesh: 1
---- !u!1 &1933562337
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1933562338}
-  - component: {fileID: 1933562340}
-  - component: {fileID: 1933562339}
-  m_Layer: 5
-  m_Name: ScoreCalculationBG (1)
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!224 &1933562338
-RectTransform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1933562337}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children:
-  - {fileID: 805220700}
-  - {fileID: 793976997}
-  - {fileID: 1547657963}
-  m_Father: {fileID: 1438024206}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0.5}
-  m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 2.7009277, y: -0.71875}
-  m_SizeDelta: {x: 358.34, y: 320.2}
-  m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &1933562339
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1933562337}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_RaycastTarget: 1
-  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
-  m_Maskable: 1
-  m_OnCullStateChanged:
-    m_PersistentCalls:
-      m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 19a57b1cae59b044e8a81ac2fe90b4f1, type: 3}
-  m_Type: 0
-  m_PreserveAspect: 0
-  m_FillCenter: 1
-  m_FillMethod: 4
-  m_FillAmount: 1
-  m_FillClockwise: 1
-  m_FillOrigin: 0
-  m_UseSpriteMesh: 0
-  m_PixelsPerUnitMultiplier: 1
---- !u!222 &1933562340
-CanvasRenderer:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1933562337}
   m_CullTransparentMesh: 1
 --- !u!1 &1942823550
 GameObject:
@@ -12414,7 +11948,7 @@ MonoBehaviour:
   convoAttribute: 
   currentTier: 1
   tierPower: 0
-  tierPowers: 640000003200000000000000
+  tierPowers: 320000001900000000000000
   attributeText: {fileID: 2143843332}
   numText: {fileID: 35175124}
   topicLabelText: {fileID: 1363842151}
@@ -12473,8 +12007,8 @@ RectTransform:
   - {fileID: 783428732}
   - {fileID: 1197163754}
   - {fileID: 907092402}
-  - {fileID: 1306326773}
   - {fileID: 814681402}
+  - {fileID: 549365795}
   - {fileID: 177072229}
   - {fileID: 2013139779}
   - {fileID: 1522731588}
@@ -12600,9 +12134,12 @@ MonoBehaviour:
   - groupName: Creativity
     highlightObjects:
     - {fileID: 1197163755}
-  - groupName: StressCard
+  - groupName: Creativity
     highlightObjects:
-    - {fileID: 1306326774}
+    - {fileID: 1197163755}
+  - groupName: Deck
+    highlightObjects:
+    - {fileID: 549365796}
   highlightReference:
   - {fileID: 1477486293}
   - {fileID: 783428731}
@@ -12613,8 +12150,8 @@ MonoBehaviour:
   - {fileID: 682132492}
   - {fileID: 814681401}
   - {fileID: 102032539}
-  - {fileID: 1306326772}
   - {fileID: 177072228}
+  - {fileID: 549365794}
 --- !u!1001 &2001767991
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -14058,7 +13595,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Dialog:
   - speaker: C0D3-W1Z4RD
-    dialog: <color=red> Great, now match the card numbers.</color>
+    dialog: '[EVENT: Cards]++ Great, now match the card numbers. ++'
     characterSprite: {fileID: 21300000, guid: 79f4cba0f14c0bd46951f09f7bd48970, type: 3}
   - speaker: C0D3-W1Z4RD
     dialog: "By stacking multiple numbers and colors together, you\u2019ve created
@@ -14074,8 +13611,8 @@ MonoBehaviour:
       in the top right of the screen.'
     characterSprite: {fileID: 0}
   - speaker: C0D3-W1Z4RD
-    dialog: '[EVENT: EndTurn]  <color=red> Finally to play your cards, press the
-      <b>End Turn</b> button in the bottom right corner of the screen. </color>'
+    dialog: '[EVENT: EndTurn]++ Finally to play your cards, press the <b>End Turn</b>
+      button in the bottom right corner of the screen. ++'
     characterSprite: {fileID: 0}
   oneTime: 1
   scriptedTutorial: {fileID: 229746376}

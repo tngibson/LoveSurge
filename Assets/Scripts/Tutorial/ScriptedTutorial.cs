@@ -57,7 +57,6 @@ public class ScriptedTutorial : MonoBehaviour
 
     public IEnumerator PlayDialog(List<DialogueLines> lines)
     {
-        Debug.Log($"Starting Dialog: {lines[0].dialog}");
         //Not the best solution but it works for now
         if(dialogCoroutine != null)
         {
