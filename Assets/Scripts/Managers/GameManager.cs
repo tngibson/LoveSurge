@@ -142,6 +142,7 @@ public class GameManager : MonoBehaviour
             EndGameLoss();
         }
 
+        dropzone.ResetBoosts();
         comboSurge = 0;
     }
 

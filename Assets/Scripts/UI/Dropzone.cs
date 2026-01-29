@@ -812,4 +812,23 @@ public class Dropzone : MonoBehaviour
     {
         ConnectionManager.instance.increaseConnection(index, 1);
     }
+
+    internal void ResetBoosts()
+    {
+        addboost = new()
+        {
+            {"Cha", 0},
+            {"Cou", 0},
+            {"Cle", 0},
+            {"Cre", 0}
+        };
+
+        multipyboost = new()
+        {
+            {"Cha", 1},
+            {"Cou", 1},
+            {"Cle", 1},
+            {"Cre", 1}
+        };
+    }
 }
