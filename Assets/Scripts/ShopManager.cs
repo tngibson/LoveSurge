@@ -5,7 +5,7 @@ using UnityEngine;
 public class ShopManager : MonoBehaviour
 {
     [SerializeField] private ShopButton[] shopButtons;
-    [SerializeField] private CardShopPool cardShopPool;
+    [SerializeField] private ItemShopPool cardShopPool;
     [SerializeField] private ItemShopPool itemShopPool;
     private List<string> currentShopItems = new List<string>();
 
@@ -37,18 +37,6 @@ public class ShopManager : MonoBehaviour
         currentShopItems.Add(selectedItem.itemPrefab.name);
         return selectedItem;
     }
-}
-
-[CreateAssetMenu(fileName = "CardShopPool", menuName = "CardShopPool")]
-public class CardShopPool:ScriptableObject
-{
-    public List<Item> shopItems;
-}
-
-[CreateAssetMenu(fileName = "ItemShopPool", menuName = "ItemShopPool")]
-public class ItemShopPool:ScriptableObject
-{
-    public List<Item> shopItems;
 }
 
 [System.Serializable]

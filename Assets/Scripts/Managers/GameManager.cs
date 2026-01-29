@@ -80,7 +80,10 @@ public class GameManager : MonoBehaviour
     {
         if(itemCanvasInstance == null)
         {
-            itemCanvasInstance = Instantiate(itemCanvasPrefab);
+            itemCanvasInstance = Instantiate(itemCanvasPrefab, transform.parent);
+            itemCanvasInstance.name = "ItemCanvas";
+            itemCanvasInstance.transform.SetAsLastSibling();
+            RefreshUsableItem();
         }
         fullHandText.SetActive(false);
         scoreText.text = "Score: 0";
@@ -257,5 +260,21 @@ public class GameManager : MonoBehaviour
             isHandPlayable = true;
 
         return isHandPlayable;
+    }
+
+    public void RefreshUsableItem()
+    {
+        if(itemCanvasInstance == null)
+        {
+            Debug.LogError("Item Canvas is null and may not be in the scene!");
+            return;
+        }
+
+        itemCanvasInstance.TryGetComponent(out Socket socket);
+        for(int i = 0; i < Player.instance.collectedItems.Count; i++)
+        {
+            GameItem item = Player.instance.collectedItems[i];
+            socket.AddToSocket(item.gameObject);
+        }
     }
 }

@@ -1966,6 +1966,7 @@ RectTransform:
   m_ConstrainProportionsScale: 1
   m_Children:
   - {fileID: 505803151}
+  - {fileID: 1032587752}
   m_Father: {fileID: 1108671395}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
@@ -7105,6 +7106,41 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1018990246}
   m_CullTransparentMesh: 1
+--- !u!1 &1032587751
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1032587752}
+  m_Layer: 0
+  m_Name: GameObject
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &1032587752
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1032587751}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 293364312}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 100, y: 100}
+  m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &1042258427
 GameObject:
   m_ObjectHideFlags: 0
@@ -11444,6 +11480,7 @@ MonoBehaviour:
   cash: 1000
   convoTiers: 01000000010000000100000001000000
   collectedCards: []
+  collectedItems: []
   isHouseHot: 1
   isCelciThreatened: 0
   nokiRomanticRoute: 0
@@ -12452,6 +12489,8 @@ MonoBehaviour:
   couCard: {fileID: 8545693278635080263, guid: 1796bafd5756dbc41b01a0a95cf61460, type: 3}
   cleCard: {fileID: 2815518541516747621, guid: 05b5675adef6c844888a1391108fb4d9, type: 3}
   creCard: {fileID: 73816925136746911, guid: afba97dd884423a4e8264984c925383c, type: 3}
+  itemCanvasPrefab: {fileID: 1814655656365199755, guid: 2311413138ed56d4c9afeecaf2f54fb0,
+    type: 3}
   playerArea: {fileID: 1251171728}
   currentConvoTopic: {fileID: 0}
   topicContainer: {fileID: 1411976331}

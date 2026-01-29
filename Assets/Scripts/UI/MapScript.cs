@@ -123,12 +123,12 @@ public class MapScript : MonoBehaviour, IPointerEnterHandler, IPointerExitHandle
 
         if (StressManager.instance != null && isStressReducer)
         {
-            Debug.Log("Reducing Stress!");
+            //Debug.Log("Reducing Stress!");
             StressManager.instance.RemoveFromCurrentStress(0.1f);
         }
         if (StressManager.instance != null && isStressIncreaser)
         {
-            Debug.Log("Adding Stress!");
+            //Debug.Log("Adding Stress!");
             StressManager.instance.AddToCurrentStress();
         }
 

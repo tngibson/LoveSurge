@@ -788,16 +788,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ba3fc54a3e472844894f8a58faef733d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  reserveManager: {fileID: 420358066}
   cardPrefabs:
   - {fileID: -5963538814804999132, guid: 1e37df9f36f5407498c1e18e05ebc7f9, type: 3}
   - {fileID: 8562863103195938653, guid: 05b5675adef6c844888a1391108fb4d9, type: 3}
   - {fileID: 2326991348489003529, guid: 1796bafd5756dbc41b01a0a95cf61460, type: 3}
   - {fileID: -1454504632352844718, guid: afba97dd884423a4e8264984c925383c, type: 3}
   reserveSlot: {fileID: 66572630}
+  random: 1
+  reservedPrefab: {fileID: 0}
   cardImage: {fileID: 0}
   cardDragDrop: {fileID: 0}
   card: {fileID: 0}
-  reserveManager: {fileID: 420358066}
 --- !u!1 &76309361
 GameObject:
   m_ObjectHideFlags: 0
@@ -1875,16 +1877,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ba3fc54a3e472844894f8a58faef733d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  reserveManager: {fileID: 420358066}
   cardPrefabs:
   - {fileID: -5963538814804999132, guid: 1e37df9f36f5407498c1e18e05ebc7f9, type: 3}
   - {fileID: 8562863103195938653, guid: 05b5675adef6c844888a1391108fb4d9, type: 3}
   - {fileID: 2326991348489003529, guid: 1796bafd5756dbc41b01a0a95cf61460, type: 3}
   - {fileID: -1454504632352844718, guid: afba97dd884423a4e8264984c925383c, type: 3}
   reserveSlot: {fileID: 295771161}
+  random: 1
+  reservedPrefab: {fileID: 0}
   cardImage: {fileID: 0}
   cardDragDrop: {fileID: 0}
   card: {fileID: 0}
-  reserveManager: {fileID: 420358066}
 --- !u!1001 &311569657
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2722,8 +2726,8 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1877364503}
   m_HandleRect: {fileID: 1877364502}
   m_Direction: 2
-  m_Value: 0.9999999
-  m_Size: 0.37836656
+  m_Value: 1
+  m_Size: 0.37836662
   m_NumberOfSteps: 0
   m_OnValueChanged:
     m_PersistentCalls:
@@ -5925,6 +5929,8 @@ MonoBehaviour:
   - {fileID: 8562863103195938653, guid: 05b5675adef6c844888a1391108fb4d9, type: 3}
   - {fileID: 2326991348489003529, guid: 1796bafd5756dbc41b01a0a95cf61460, type: 3}
   - {fileID: -1454504632352844718, guid: afba97dd884423a4e8264984c925383c, type: 3}
+  startingCardPrefab: {fileID: 0}
+  setStartingCard: 0
   dropzone: {fileID: 2119566656}
 --- !u!1001 &1005606886
 PrefabInstance:
@@ -6628,11 +6634,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 02331e15e1677f4409af04e11892e0c3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  card1: {fileID: 2722319676426828343, guid: 1e37df9f36f5407498c1e18e05ebc7f9, type: 3}
-  card2: {fileID: 2815518541516747621, guid: 05b5675adef6c844888a1391108fb4d9, type: 3}
-  card3: {fileID: 8545693278635080263, guid: 1796bafd5756dbc41b01a0a95cf61460, type: 3}
-  card4: {fileID: 73816925136746911, guid: afba97dd884423a4e8264984c925383c, type: 3}
-  card5: {fileID: 0}
   deckContainer: {fileID: 1771563199}
   playerArea: {fileID: 1251171728}
   handSize: 4
@@ -9375,16 +9376,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ba3fc54a3e472844894f8a58faef733d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  reserveManager: {fileID: 420358066}
   cardPrefabs:
   - {fileID: -5963538814804999132, guid: 1e37df9f36f5407498c1e18e05ebc7f9, type: 3}
   - {fileID: 8562863103195938653, guid: 05b5675adef6c844888a1391108fb4d9, type: 3}
   - {fileID: 2326991348489003529, guid: 1796bafd5756dbc41b01a0a95cf61460, type: 3}
   - {fileID: -1454504632352844718, guid: afba97dd884423a4e8264984c925383c, type: 3}
   reserveSlot: {fileID: 1649350020}
+  random: 1
+  reservedPrefab: {fileID: 0}
   cardImage: {fileID: 0}
   cardDragDrop: {fileID: 0}
   card: {fileID: 0}
-  reserveManager: {fileID: 420358066}
 --- !u!1 &1661069645
 GameObject:
   m_ObjectHideFlags: 0
@@ -10115,6 +10118,8 @@ MonoBehaviour:
   - affectingTags: []
   cash: 1000
   convoTiers: 01000000010000000100000001000000
+  collectedCards: []
+  collectedItems: []
   isHouseHot: 1
   isCelciThreatened: 0
   nokiRomanticRoute: 0
@@ -10945,6 +10950,8 @@ MonoBehaviour:
   couCard: {fileID: 8545693278635080263, guid: 1796bafd5756dbc41b01a0a95cf61460, type: 3}
   cleCard: {fileID: 2815518541516747621, guid: 05b5675adef6c844888a1391108fb4d9, type: 3}
   creCard: {fileID: 73816925136746911, guid: afba97dd884423a4e8264984c925383c, type: 3}
+  itemCanvasPrefab: {fileID: 1814655656365199755, guid: 2311413138ed56d4c9afeecaf2f54fb0,
+    type: 3}
   playerArea: {fileID: 1251171728}
   currentConvoTopic: {fileID: 0}
   topicContainer: {fileID: 1411976331}
@@ -11373,16 +11380,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ba3fc54a3e472844894f8a58faef733d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  reserveManager: {fileID: 420358066}
   cardPrefabs:
   - {fileID: -5963538814804999132, guid: 1e37df9f36f5407498c1e18e05ebc7f9, type: 3}
   - {fileID: 8562863103195938653, guid: 05b5675adef6c844888a1391108fb4d9, type: 3}
   - {fileID: 2326991348489003529, guid: 1796bafd5756dbc41b01a0a95cf61460, type: 3}
   - {fileID: -1454504632352844718, guid: afba97dd884423a4e8264984c925383c, type: 3}
   reserveSlot: {fileID: 2031511427}
+  random: 1
+  reservedPrefab: {fileID: 0}
   cardImage: {fileID: 0}
   cardDragDrop: {fileID: 0}
   card: {fileID: 0}
-  reserveManager: {fileID: 420358066}
 --- !u!1 &2034964664
 GameObject:
   m_ObjectHideFlags: 0
