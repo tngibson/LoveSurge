@@ -173,7 +173,7 @@ public class MapScript : MonoBehaviour, IPointerEnterHandler, IPointerExitHandle
             if (MusicManager.Instance != null && MusicManager.Instance.WillChangeTo(nextSceneMusic))
                 {
                     MusicManager.Instance.StopMusic();
-                    Debug.Log("Stopping music before loading new scene.");
+                    //Debug.Log("Stopping music before loading new scene.");
                 }
             yield return new WaitForSeconds(transitionTime);
         }
@@ -181,7 +181,7 @@ public class MapScript : MonoBehaviour, IPointerEnterHandler, IPointerExitHandle
         if (MusicManager.Instance != null && MusicManager.Instance.WillChangeTo(nextSceneMusic))
                 {
                     MusicManager.Instance.StopMusic();
-                    Debug.Log("Stopping music before loading new scene.");
+                    //Debug.Log("Stopping music before loading new scene.");
                 }
 
         yield return null; // wait one frame so the UI event finishes

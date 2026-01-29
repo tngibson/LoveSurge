@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using TMPro;
@@ -100,11 +101,19 @@ public abstract class Card : MonoBehaviour
     }
 
     // Updates the UI text to display the current power
-    private void UpdatePowerDisplay()
+    protected virtual void UpdatePowerDisplay()
     {
         if (numText != null)
         {
             numText.text = Power.ToString();
+            numText.color = Debuffed ? Color.red : defaultTextColor;
+        }
+    }
+    protected virtual void UpdateCurioPowerDisplay(string operation)
+    {
+        if (numText != null)
+        {
+            numText.text = $"{operation} {Power}";
             numText.color = Debuffed ? Color.red : defaultTextColor;
         }
     }

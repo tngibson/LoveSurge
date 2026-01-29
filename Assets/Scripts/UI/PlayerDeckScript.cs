@@ -182,7 +182,10 @@ public class PlayerDeckScript : MonoBehaviour
     {
         foreach (Card card in Player.instance.collectedCards)
         {
+            Debug.Log("Adding collected card to deck: " + card.name);
             Card newCard = MakeCard(card, card.Power);
+            newCard.gameObject.SetActive(true);
+            newCard.transform.localScale = Vector3.one;
             newCard.Debuffed = false;
         }
     }
