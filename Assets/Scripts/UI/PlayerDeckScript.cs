@@ -134,10 +134,13 @@ public class PlayerDeckScript : MonoBehaviour
                 Debug.LogWarning("No more cards to draw.");
                 break; // Exit the loop if no more cards are available
             }
-
+            //Debug.Log($"{card.name} drawn from deck.");
             PlayerArea playerArea = GameManager.instance?.PlayerArea;
             card.transform.SetParent(playerArea.transform);  // Set the parent of the card to the player's area
+            card.transform.localScale = Vector3.one;
             playerArea.AddCards(card);  // Add the card to the player's area
+
+            FindAnyObjectByType<CardHandLayout>().UpdateCardListAndLayout();
         }
     }
 

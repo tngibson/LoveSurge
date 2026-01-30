@@ -148,6 +148,8 @@ public class GameManager : MonoBehaviour
         }
 
         dropzone.ResetBoosts();
+
+        FindAnyObjectByType<CardHandLayout>().UpdateCardListAndLayout();
         comboSurge = 0;
     }
 
@@ -283,7 +285,7 @@ public class GameManager : MonoBehaviour
         Debug.Log($"Refreshing Usable Items: {Player.instance.collectedItems.Count} items found.");
         for(int i = 0; i < Player.instance.collectedItems.Count; i++)
         {
-            Debug.Log($"Adding item {Player.instance.collectedItems[i]} to socket{i}.");
+            // Debug.Log($"Adding item {Player.instance.collectedItems[i]} to socket{i}.");
             GameItem item = Player.instance.collectedItems[i];
             socket.AddToSocket(item.gameObject, i);
         }
