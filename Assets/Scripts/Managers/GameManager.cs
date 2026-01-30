@@ -60,6 +60,11 @@ public class GameManager : MonoBehaviour
         get => comboSurge;
         set { comboSurge = math.clamp(value, 0, 4); }
     }
+    public DiscardPile DiscardPile => discard;
+    public Dropzone Dropzone => dropzone;
+    public PlayerArea PlayerArea => playerArea;
+    public PlayerDeckScript DeckContainer => deckContainer;
+    public GameObject ItemCanvasInstance => itemCanvasInstance;
 
     private void Awake()
     {
@@ -275,10 +280,12 @@ public class GameManager : MonoBehaviour
         }
 
         itemCanvasInstance.TryGetComponent(out Socket socket);
+        Debug.Log($"Refreshing Usable Items: {Player.instance.collectedItems.Count} items found.");
         for(int i = 0; i < Player.instance.collectedItems.Count; i++)
         {
+            Debug.Log($"Adding item {Player.instance.collectedItems[i]} to socket{i}.");
             GameItem item = Player.instance.collectedItems[i];
-            socket.AddToSocket(item.gameObject);
+            socket.AddToSocket(item.gameObject, i);
         }
     }
 }

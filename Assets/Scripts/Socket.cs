@@ -1,24 +1,41 @@
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
+using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.UI;
 public class Socket : MonoBehaviour
 {
     [SerializeField] private Transform[] socketPoints;
-    private int currentIndex = 0;
-    
-    public void AddToSocket(GameObject obj)
+    [SerializeField] private TextMeshProUGUI[] socketLabel;
+
+    public void AddToSocket(GameObject obj, int index)
     {
-        if (currentIndex >= socketPoints.Length)
+        if(index >= socketPoints.Length)
         {
-            Debug.LogWarning("No more socket points available!");
+            Debug.LogWarning("No available socket point for index: " + index);
             return;
         }
 
-        obj.transform.position = socketPoints[currentIndex].position;
-        obj.transform.SetParent(socketPoints[currentIndex]);
+        obj.transform.position = socketPoints[index].position;
+        obj.transform.SetParent(socketPoints[index]);
         obj.transform.localScale = new Vector3(.4f, .4f, 1f);
         obj.SetActive(true);
 
-        currentIndex++;
+        if(obj.TryGetComponent(out GameItem item))
+        {
+            socketLabel[index].text = item.Description;
+        }
+    }
+
+    public void ClearSocket(int index)
+    {
+        if(index >= socketPoints.Length)
+        {
+            Debug.LogWarning("No available socket point for index: " + index);
+            return;
+        }
+
+        socketLabel[index].text = "";
     }
 }

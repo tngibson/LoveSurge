@@ -746,9 +746,9 @@ public class Dropzone : MonoBehaviour
             case "/":
                 multipyboost[type] = Math.Clamp(multipyboost[type] / value, 1, 999);
                 break;
-            default:
-                Debug.LogWarning("Unknown operation: " + operation);
-                break;
+            // default:
+            //     Debug.LogWarning("Unknown operation: " + operation);
+            //     break;
         }
         CalculateScore();
     }

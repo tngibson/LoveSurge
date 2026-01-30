@@ -11,6 +11,10 @@ public class GameItem : MonoBehaviour
     [SerializeField] private string operation;
     [SerializeField] private int scoreboost;
 
+    private int socketIndex;
+    public string Description => description;
+    public int SocketIndex { get { return socketIndex; } set { socketIndex = value; } }
+
     // Add properties and methods relevant to game items here
     public virtual void UseItem()
     {
@@ -18,23 +22,27 @@ public class GameItem : MonoBehaviour
         if (redrawHand) RedrawHand();
         Discard(discardAmount);
 
-        PlayerDeckScript deck = Player.instance.GetComponent<PlayerDeckScript>();
+        PlayerDeckScript deck = GameManager.instance?.DeckContainer;
         if(deck != null) {
             deck.DrawCards(drawAmount);
             Debug.Log("Drew " + drawAmount + " cards from deck.");
         }
 
-        Dropzone dropzone = FindObjectOfType<Dropzone>();
+        Dropzone dropzone = GameManager.instance?.Dropzone;
         if(dropzone != null) dropzone.ApplyBonus(type, scoreboost, operation);
+        
+        GameManager.instance.ItemCanvasInstance.TryGetComponent(out Socket socket);
+        socket.ClearSocket(socketIndex);
     }
 
     public void Discard(int amount)
     {
-        PlayerArea playerArea = FindObjectOfType<PlayerArea>();
-        DiscardPile discardPile = FindObjectOfType<DiscardPile>();
+        PlayerArea playerArea = GameManager.instance?.PlayerArea;
+        DiscardPile discardPile = GameManager.instance?.DiscardPile;
+        
         for(int i = amount; i > 0; i--)
         {
-            if(i >= playerArea.CardsInHand.Count) break;
+            if(i > playerArea.CardsInHand.Count) break;
             playerArea.CardsInHand[i].GetComponent<DragDrop>().CurrentDiscardPile = discardPile;
             playerArea.CardsInHand[i].GetComponent<DragDrop>().DiscardCard();
         }
@@ -42,8 +50,9 @@ public class GameItem : MonoBehaviour
 
     public void RedrawHand()
     {
-        PlayerArea playerArea = FindObjectOfType<PlayerArea>();
-        DiscardPile discardPile = FindObjectOfType<DiscardPile>();
+        PlayerArea playerArea = GameManager.instance?.PlayerArea;
+        DiscardPile discardPile = GameManager.instance?.DiscardPile;
+
         for(int i = 0; i < playerArea.CardsInHand.Count; i++)
         {
             playerArea.CardsInHand[i].GetComponent<DragDrop>().CurrentDiscardPile = discardPile;
@@ -51,6 +60,6 @@ public class GameItem : MonoBehaviour
         }
 
         PlayerDeckScript deck = Player.instance.GetComponent<PlayerDeckScript>();
-        if(deck != null) deck.DrawCards(playerArea.CardsInHand.Count);
+        if(deck != null) deck.DrawCards(4);
     } 
 }

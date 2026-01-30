@@ -135,13 +135,10 @@ public class PlayerDeckScript : MonoBehaviour
                 break; // Exit the loop if no more cards are available
             }
 
-            RemoveCard(card);  // Remove the drawn card from the deck
-
-            PlayerArea playerArea = FindObjectOfType<PlayerArea>();
+            PlayerArea playerArea = GameManager.instance?.PlayerArea;
             card.transform.SetParent(playerArea.transform);  // Set the parent of the card to the player's area
             playerArea.AddCards(card);  // Add the card to the player's area
         }
-        AudioManager.instance.PlayOneShot(FMODEvents.instance.CardShuffle, this.transform.position);
     }
 
     private void AddStressCards()

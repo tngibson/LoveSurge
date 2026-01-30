@@ -58,11 +58,11 @@ public class ShopButton : MonoBehaviour, IPointerClickHandler, IPointerEnterHand
         if(!(Player.instance.cash - shopItem.cost >= 0) || isSoldOut) return;
         if(itemInstance.TryGetComponent(out GameItem gameItem) && Player.instance.collectedItems.Count >= 4)
         {
-            Debug.Log("Cannot purchase more items, inventory full.");
+            //Debug.Log("Cannot purchase more items, inventory full.");
             return;
         }
 
-        Debug.Log("Purchased Item: " + shopItem.itemPrefab.name);
+        //Debug.Log("Purchased Item: " + shopItem.itemPrefab.name);
         Player.instance.cash -= shopItem.cost;
         isSoldOut = true;
         buttonImage.sprite = soldOut;

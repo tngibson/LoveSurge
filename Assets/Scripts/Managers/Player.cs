@@ -189,6 +189,7 @@ public class Player : MonoBehaviour
             return;
         }
         item.transform.SetParent(this.transform);
+        item.SocketIndex = collectedItems.Count;
         collectedItems.Add(item);
     }
 
