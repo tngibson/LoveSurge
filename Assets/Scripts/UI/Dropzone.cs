@@ -530,7 +530,7 @@ public class Dropzone : MonoBehaviour
 
         // Store the original position of the dateCharacter
         Vector3 originalPosition = currentSession.dateCharacter.transform.localPosition;
-
+        Debug.Log($"{speaker}: {message}");
         // If the speaker is player, we will set their name to playerName. If for whatever reason the playerName variable is empty or null, we won't set it
         if (speaker == "PC")
         {
@@ -570,8 +570,8 @@ public class Dropzone : MonoBehaviour
 
         // Set the initial text with the speaker's portion
         string initialText = $"{previousText}{speakerPortion}";
-        dialogText.text = initialText;  // Display the speaker portion immediately
-        AdjustTextBoxHeight();  // Ensure the text box resizes
+        dialogText.text = initialText;      // Display the speaker portion immediately
+        AdjustTextBoxHeight();              // Ensure the text box resizes
 
         // Track the message as it is being typed
         string currentMessage = "";
@@ -599,6 +599,7 @@ public class Dropzone : MonoBehaviour
 
         // Finalize the message and ensure layout updates
         dialogText.text = initialText + currentMessage;
+        Debug.Log($"Finished line: {dialogText.text}");
         AdjustTextBoxHeight();  // Ensure the text box is fully adjusted
         ScrollToBottom();  // Keep the scroll at the bottom
 

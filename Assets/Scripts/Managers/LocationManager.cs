@@ -204,7 +204,7 @@ public class LocationManager : MonoBehaviour
             if (map.name.Contains(data.name + "Date"))
             {
                 data.mapScript = map;
-                Debug.Log($"Bound {data.name} map button.");
+                //Debug.Log($"Bound {data.name} map button.");
                 UpdateMapLocation(data);
 
                 if (data.allDatesDone)
