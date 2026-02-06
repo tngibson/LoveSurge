@@ -36,6 +36,7 @@ public class DragDrop : MonoBehaviour
     private EventInstance comboSurge;
     // Public method to check if the card is being dragged
     public bool IsDragging() => isDragging;
+    public DiscardPile CurrentDiscardPile {get => currentDiscard; set => currentDiscard = value;}
 
     private void Awake()
     {
@@ -227,7 +228,8 @@ public class DragDrop : MonoBehaviour
     private void ReturnToPlayerArea()
     {
         Card cardComponent = GetComponent<Card>();
-
+        cardComponent.OnCardRemoved();
+        
         // Check if the card is already in the dropzone
         if (playerArea.CardsInHand.Contains(cardComponent))
         {

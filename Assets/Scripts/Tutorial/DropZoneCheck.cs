@@ -4,45 +4,23 @@ using UnityEngine;
 
 public class DropZoneCheck : MonoBehaviour
 {
-    [SerializeField] private DropzoneSlot dropzoneSlot;
+    [SerializeField] private Dropzone dropzone;
     [SerializeField] private PlayTutorialDialog playTutorialDialogSuccess;
     [SerializeField] private PlayTutorialDialog playTutorialDialogFailure;
 
     void Update()
     {
-        if (dropzoneSlot.CardsInSlot.Count == 2 && 
-            dropzoneSlot.CardsInSlot[1].Power == 1 && 
-            dropzoneSlot.CardsInSlot[1].Type.Equals("Cou"))
+        if (dropzone.GetCardsToScore().Count == 1 && 
+            dropzone.GetCardsToScore()[0].Power == 1 && 
+            dropzone.GetCardsToScore()[0].Type.Equals("Cou"))
         {
             playTutorialDialogSuccess.PlayDialog();
             enabled = false;
         }
-        else if (dropzoneSlot.CardsInSlot.Count == 2)
+        else if (dropzone.GetCardsToScore().Count == 1)
         {
             playTutorialDialogFailure.PlayDialog();
-            dropzoneSlot.RemoveTopCard();
+            dropzone.RemoveCardFromDropzone();
         }
     }
-
-
-    // public void ReturnCard(Card card)
-    // {
-    //     if (card != null)
-    //     {
-    //         // Remove the top card from the dropzone and add it back to the player's hand (if not a reserve card)
-    //         if (!card.isReserveCard)
-    //         {
-    //             playerArea.AddCards(card);
-    //         }
-    //         cardsToScore.Remove(card);
-    //         dropzone.RemoveTopCard();
-
-    //         // Update the last placed card to the new top card
-    //         lastPlacedCard = dropzone.TopCard;
-    //         GameManager.instance.ComboSurge --;
-
-    //         // Reset UI or other visual elements if necessary
-    //         CalculateScore();
-    //     }
-    // }
 }

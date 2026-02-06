@@ -28,6 +28,21 @@ public class Dropzone : MonoBehaviour
     // Array to hold the dropzone
     [SerializeField] private DropzoneSlot dropzone; 
 
+    public Dictionary<string, int> multipyboost = new()
+    {
+        {"Cha", 1},
+        {"Cou", 1},
+        {"Cle", 1},
+        {"Cre", 1}
+    };
+    public Dictionary<string, int> addboost = new()
+    {
+        {"Cha", 0},
+        {"Cou", 0},
+        {"Cle", 0},
+        {"Cre", 0}
+    };
+
     private int score = 0;
     private int lineNum = 0;
     private int maxLineNum;
@@ -57,6 +72,7 @@ public class Dropzone : MonoBehaviour
 
     // Public getters for various properties
     public List<Card> GetPlayedCards() => playedCards;
+    public List<Card> GetCardsToScore() => cardsToScore;
     public int GetMaxCards() => maxCards;
 
     [SerializeField] private ScrollRect scrollRect; // Reference to the Scroll Rect and Content Transform
@@ -68,6 +84,14 @@ public class Dropzone : MonoBehaviour
     private bool addExtraLine;
 
     private bool halfwayPointDone = false;
+    private int addCha;
+    private int addCou;
+    private int addCle;
+    private int addCre;
+    private int multCha;
+    private int multCou;
+    private int multCle;
+    private int multCre;
 
     // Start is called before the first frame update
     void Start()
@@ -91,6 +115,16 @@ public class Dropzone : MonoBehaviour
         {
             skipRequested = true;
         }
+
+        addCha = addboost["Cha"];
+        addCou = addboost["Cou"];
+        addCle = addboost["Cle"];
+        addCre = addboost["Cre"];
+
+        multCha = multipyboost["Cha"];
+        multCou = multipyboost["Cou"];
+        multCle = multipyboost["Cle"];
+        multCre = multipyboost["Cre"];
     }
 
     // Adds a card to the played cards list and removes it from the player's area
@@ -130,7 +164,6 @@ public class Dropzone : MonoBehaviour
     // Method to handle special "Str" type cards separately for modularity
     private void HandleStressCard()
     {
-        Debug.Log("Removing stress");
         StressManager.instance?.RemoveFromCurrentStress(0.1f);
     }
 
@@ -144,6 +177,7 @@ public class Dropzone : MonoBehaviour
             if (!topCard.isReserveCard)
             {
                 playerArea.AddCards(topCard);
+                topCard.transform.SetParent(playerArea.transform, false); // Reset card hierarchy visually
             }
             cardsToScore.Remove(topCard);
             dropzone.RemoveTopCard();
@@ -310,11 +344,13 @@ public class Dropzone : MonoBehaviour
                     HandleStressCard();
                     continue;
                 }
+                int boostedPower = (card.Power + addboost[card.Type]) * 
+                                    multipyboost[card.Type];
 
-                totalPower += card.Power;
-                if (card.Power > highestPower)
+                totalPower += boostedPower;
+                if (boostedPower > highestPower)
                 {
-                    highestPower = card.Power;
+                    highestPower = boostedPower;
                 }
             }
 
@@ -493,7 +529,6 @@ public class Dropzone : MonoBehaviour
 
         // Store the original position of the dateCharacter
         Vector3 originalPosition = currentSession.dateCharacter.transform.localPosition;
-
         // If the speaker is player, we will set their name to playerName. If for whatever reason the playerName variable is empty or null, we won't set it
         if (speaker == "PC")
         {
@@ -533,8 +568,8 @@ public class Dropzone : MonoBehaviour
 
         // Set the initial text with the speaker's portion
         string initialText = $"{previousText}{speakerPortion}";
-        dialogText.text = initialText;  // Display the speaker portion immediately
-        AdjustTextBoxHeight();  // Ensure the text box resizes
+        dialogText.text = initialText;      // Display the speaker portion immediately
+        AdjustTextBoxHeight();              // Ensure the text box resizes
 
         // Track the message as it is being typed
         string currentMessage = "";
@@ -693,6 +728,29 @@ public class Dropzone : MonoBehaviour
         return index;
     }
 
+    public void ApplyBonus(string type, int value, string operation)
+    {
+        switch(operation)
+        {
+            case "+":
+                addboost[type] = Math.Clamp(addboost[type] + value, 0, 999);
+                break;
+            case "x":
+                multipyboost[type] = Math.Clamp(multipyboost[type] * value, 1, 999);
+                break;
+            case "-":
+                addboost[type] = Math.Clamp(addboost[type] - value, 0, 999);
+                break;
+            case "/":
+                multipyboost[type] = Math.Clamp(multipyboost[type] / value, 1, 999);
+                break;
+            // default:
+            //     Debug.LogWarning("Unknown operation: " + operation);
+            //     break;
+        }
+        CalculateScore();
+    }
+
     // Checks if all dropzones are empty.
     // Currently removed for obsolescence
     /*
@@ -751,5 +809,24 @@ public class Dropzone : MonoBehaviour
     public void increaseConnection(int index)
     {
         ConnectionManager.instance.increaseConnection(index, 1);
+    }
+
+    internal void ResetBoosts()
+    {
+        addboost = new()
+        {
+            {"Cha", 0},
+            {"Cou", 0},
+            {"Cle", 0},
+            {"Cre", 0}
+        };
+
+        multipyboost = new()
+        {
+            {"Cha", 1},
+            {"Cou", 1},
+            {"Cle", 1},
+            {"Cre", 1}
+        };
     }
 }

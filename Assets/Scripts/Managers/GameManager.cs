@@ -26,6 +26,7 @@ public class GameManager : MonoBehaviour
     [SerializeField] private GameObject creCard;
 
     // Gameplay elements
+    [SerializeField] private GameObject itemCanvasPrefab;
     [SerializeField] private PlayerArea playerArea;
     [SerializeField] public ConvoTopic currentConvoTopic;
     [SerializeField] private TopicContainer topicContainer;
@@ -49,6 +50,7 @@ public class GameManager : MonoBehaviour
 
     [SerializeField] private int handSize = 4;
     private bool isHandPlayable = false;
+    private GameObject itemCanvasInstance;
 
     [SerializeField] private MapScript mapButtonScript;
 
@@ -58,6 +60,11 @@ public class GameManager : MonoBehaviour
         get => comboSurge;
         set { comboSurge = math.clamp(value, 0, 4); }
     }
+    public DiscardPile DiscardPile => discard;
+    public Dropzone Dropzone => dropzone;
+    public PlayerArea PlayerArea => playerArea;
+    public PlayerDeckScript DeckContainer => deckContainer;
+    public GameObject ItemCanvasInstance => itemCanvasInstance;
 
     private void Awake()
     {
@@ -76,6 +83,13 @@ public class GameManager : MonoBehaviour
 
     private void Start()
     {
+        if(itemCanvasInstance == null)
+        {
+            itemCanvasInstance = Instantiate(itemCanvasPrefab, transform.parent);
+            itemCanvasInstance.name = "ItemCanvas";
+            itemCanvasInstance.transform.SetSiblingIndex(itemCanvasInstance.transform.parent.childCount - 2);
+            RefreshUsableItem();
+        }
         fullHandText.SetActive(false);
         scoreText.text = "Score: 0";
         MusicManager.SetParameterByName("dateProgress", 0);
@@ -133,6 +147,9 @@ public class GameManager : MonoBehaviour
             EndGameLoss();
         }
 
+        dropzone.ResetBoosts();
+
+        FindAnyObjectByType<CardHandLayout>().UpdateCardListAndLayout();
         comboSurge = 0;
     }
 
@@ -163,6 +180,7 @@ public class GameManager : MonoBehaviour
         }
 
         ShowMapButton($"{data.name} wants to talk more closely with you...", 1);
+        Player.instance.ReturnItem();
     }
 
     public void EndGameFullWin()
@@ -189,6 +207,7 @@ public class GameManager : MonoBehaviour
 
         // Update the location so LocationManager can advance to the next date
         LocationManager.Instance.TryBindMapScript(mapButtonScript);
+        Player.instance.ReturnItem();
     }
 
     public void EndGameLoss()
@@ -205,6 +224,7 @@ public class GameManager : MonoBehaviour
 
         data.isPlayable = false;
         LocationManager.Instance.TryBindMapScript(mapButtonScript);
+        Player.instance.ReturnItem();
     }
 
     public void ShowMapButton(string message, int musicProgress)
@@ -251,5 +271,23 @@ public class GameManager : MonoBehaviour
             isHandPlayable = true;
 
         return isHandPlayable;
+    }
+
+    public void RefreshUsableItem()
+    {
+        if(itemCanvasInstance == null)
+        {
+            Debug.LogError("Item Canvas is null and may not be in the scene!");
+            return;
+        }
+
+        itemCanvasInstance.TryGetComponent(out Socket socket);
+        Debug.Log($"Refreshing Usable Items: {Player.instance.collectedItems.Count} items found.");
+        for(int i = 0; i < Player.instance.collectedItems.Count; i++)
+        {
+            // Debug.Log($"Adding item {Player.instance.collectedItems[i]} to socket{i}.");
+            GameItem item = Player.instance.collectedItems[i];
+            socket.AddToSocket(item.gameObject, i);
+        }
     }
 }

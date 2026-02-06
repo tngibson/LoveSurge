@@ -133,7 +133,6 @@ public class SkillCheck : MonoBehaviour
             {
                 mapButton.SetActive(true);
                 MusicManager.SetParameterByName("dateProgress", 2);
-                Debug.Log("Good End");
                 return;
             }
         }

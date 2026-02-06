@@ -14,14 +14,13 @@ public class Player : MonoBehaviour
     // Use a list to store stat values
     public List<int> stats = new List<int>();
     public List<StatOffset> statOffsets = new List<StatOffset>();
-
     public static Player instance;
     public int cash = 0;
-
     private List<string> ignoredTags;
 
     public List<int> convoTiers = new List<int> { 1, 1, 1, 1 }; // Index 0 = Courage, 1 = Creativity, 2 = Cleverness, 3 = Charisma
-    public List<Card> collectedCards = new List<Card>();
+    public List<Card> collectedCards = new();
+    public List<GameItem> collectedItems = new();
 
     public event Action OnStatsChanged;
 
@@ -179,6 +178,51 @@ public class Player : MonoBehaviour
             default:
                 Debug.LogWarning("Unknown convoAttribute: " + convoAttribute);
                 break;
+        }
+    }
+
+    public void CollectItem(GameItem item)
+    {
+        if (collectedItems.Count > 4)
+        {
+            Debug.LogWarning("Cannot collect more than 5 items!");
+            return;
+        }
+        item.transform.SetParent(this.transform);
+        item.SocketIndex = collectedItems.Count;
+        collectedItems.Add(item);
+    }
+
+    public void CollectCard(Card card)
+    {
+        card.transform.SetParent(this.transform);
+        collectedCards.Add(card);
+    }
+
+    public void DeleteItem(GameItem item)
+    {
+        if (collectedItems.Contains(item))
+        {
+            collectedItems.Remove(item);
+            Destroy(item.gameObject);
+        }
+    }
+
+    public void DeleteCard(Card card)
+    {
+        if (collectedCards.Contains(card))
+        {
+            collectedCards.Remove(card);
+            Destroy(card.gameObject);
+        }
+    }
+
+    public void ReturnItem()
+    {
+        for(int i = 0; i < collectedItems.Count; i++)
+        {
+            collectedItems[i].transform.SetParent(this.transform);
+            collectedItems[i].gameObject.SetActive(false);
         }
     }
 }

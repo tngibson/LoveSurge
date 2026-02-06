@@ -71,7 +71,17 @@ public class CalendarManager : MonoBehaviour
 
     public void setText()
     {
-        date.text = currentDate.ToString();
-        time.text = currentPhase.ToString();
+        try
+        {
+            date = GameObject.Find("Date").GetComponent<TextMeshProUGUI>();
+            time = GameObject.Find("Time").GetComponent<TextMeshProUGUI>();
+        }
+        catch
+        {
+            //ignore
+        }
+        
+        if (date != null) date.text = currentDate.ToString();
+        if (time != null) time.text = currentPhase.ToString();
     }
 }

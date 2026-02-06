@@ -48,7 +48,7 @@ public class StressManager : MonoBehaviour
         if (currentStressAmt >= 1f) return currentStressAmt;
 
         currentStressAmt += amount;
-        print(currentStressAmt);
+        //print(currentStressAmt);
         stressChangedEvent?.Invoke(this, new StressEventArgs()
         {
             AmountChanged = amount,

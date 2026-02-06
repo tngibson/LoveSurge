@@ -108,7 +108,7 @@ public class MusicManager : MonoBehaviour
 
         if (CurrentMusicInstance.isValid() && ActiveMusicName.Equals(newMusicPath, StringComparison.OrdinalIgnoreCase))
         {
-            Debug.Log($"MusicManager:" + newMusicPath + "is already playing, not starting again.");
+            //Debug.Log($"MusicManager:" + newMusicPath + "is already playing, not starting again.");
             return;
         }
 

@@ -1,7 +1,9 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
+using UnityEngine.Events;
 using UnityEngine.UI;
 
 public abstract class Card : MonoBehaviour
@@ -20,6 +22,10 @@ public abstract class Card : MonoBehaviour
     public bool isReserveCard = false;
     public bool isInDropzone = false;
     public bool isPlayed = false;
+
+    [Header("Events")]
+    public UnityEvent OnPlay;
+    public UnityEvent OnRemove;
 
     public Color defaultTextColor;
 
@@ -100,11 +106,19 @@ public abstract class Card : MonoBehaviour
     }
 
     // Updates the UI text to display the current power
-    private void UpdatePowerDisplay()
+    protected virtual void UpdatePowerDisplay()
     {
         if (numText != null)
         {
             numText.text = Power.ToString();
+            numText.color = Debuffed ? Color.red : defaultTextColor;
+        }
+    }
+    protected virtual void UpdateCurioPowerDisplay(string operation)
+    {
+        if (numText != null)
+        {
+            numText.text = $"{operation} {Power}";
             numText.color = Debuffed ? Color.red : defaultTextColor;
         }
     }
@@ -157,5 +171,19 @@ public abstract class Card : MonoBehaviour
         {
             reserveManager.CardPlayed(); // Notify the manager that the card was used
         }
+
+        OnPlay?.Invoke();
+    }
+
+    public void OnCardRemoved()
+    {
+        Debug.Log("Card Removed Invoked");
+        OnRemove?.Invoke();
+    }
+
+    public void Boost(string operation)
+    {
+        Dropzone dropzone = FindAnyObjectByType<Dropzone>();
+        dropzone.ApplyBonus(Type, power, operation);
     }
 }

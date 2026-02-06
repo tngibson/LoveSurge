@@ -55,7 +55,7 @@ public class PlayerDeckScript : MonoBehaviour
     }
 
     // Instantiates a card, assigns its power, and adds it to the deck
-    protected Card MakeCard(Card prefab, int power)
+    public Card MakeCard(Card prefab, int power)
     {
         Card finishedCard = Instantiate(prefab, container.transform);
         finishedCard.SetVisibility(false);
@@ -124,6 +124,26 @@ public class PlayerDeckScript : MonoBehaviour
         }
     }
 
+    public void DrawCards(int amount)
+    {
+        for (int i = 0; i < amount; i++)
+        {
+            Card card = Draw();
+            if (card == null)
+            {
+                Debug.LogWarning("No more cards to draw.");
+                break; // Exit the loop if no more cards are available
+            }
+            //Debug.Log($"{card.name} drawn from deck.");
+            PlayerArea playerArea = GameManager.instance?.PlayerArea;
+            card.transform.SetParent(playerArea.transform);  // Set the parent of the card to the player's area
+            card.transform.localScale = Vector3.one;
+            playerArea.AddCards(card);  // Add the card to the player's area
+
+            FindAnyObjectByType<CardHandLayout>().UpdateCardListAndLayout();
+        }
+    }
+
     private void AddStressCards()
     {
         // Checks if player has stress
@@ -182,7 +202,10 @@ public class PlayerDeckScript : MonoBehaviour
     {
         foreach (Card card in Player.instance.collectedCards)
         {
+            Debug.Log("Adding collected card to deck: " + card.name);
             Card newCard = MakeCard(card, card.Power);
+            newCard.gameObject.SetActive(true);
+            newCard.transform.localScale = Vector3.one;
             newCard.Debuffed = false;
         }
     }
