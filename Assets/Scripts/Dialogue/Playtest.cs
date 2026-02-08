@@ -133,6 +133,7 @@ public class Playtest : MonoBehaviour
     {
         // Store the original position of the dateCharacter
         Vector3 originalPosition = dateCharacter.transform.localPosition;
+        Debug.Log("Original Position: " + originalPosition);
 
         // Define the jump height and speed
         float jumpHeight = 50f;
@@ -168,5 +169,6 @@ public class Playtest : MonoBehaviour
 
         // Ensure the position is set exactly to the original
         dateCharacter.transform.localPosition = originalPosition;
+        Debug.Log("Returned to Original Position: " + dateCharacter.transform.localPosition);
     }
 }
