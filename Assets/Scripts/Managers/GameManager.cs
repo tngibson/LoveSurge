@@ -156,12 +156,25 @@ public class GameManager : MonoBehaviour
     // Retrieve the active character�s date data dynamically
     private DateData GetActiveCharacter()
     {
+        if(CurrentCharacterIndex < 0 || CurrentCharacterIndex >= LocationManager.Instance?.characterDates.Count)
+        {
+            //Debug.LogError("CurrentCharacterIndex is out of bounds! Check LocationManager's characterDates list.");
+            return null;
+        }
+
         return LocationManager.Instance.characterDates[CurrentCharacterIndex];
     }
 
     public void EndGameHalfWin()
     {
+
         var data = GetActiveCharacter();
+        
+        if (data == null)
+        {
+            ShowMapButton($"You Win, Congratulations!", 1);
+            return;
+        }
 
         switch (data.currentDate)
         {
@@ -178,7 +191,6 @@ public class GameManager : MonoBehaviour
                 mapButtonScript.locName = $"{data.name}Date3SkillCheck1";
                 break;
         }
-
         ShowMapButton($"{data.name} wants to talk more closely with you...", 1);
         Player.instance.ReturnItem();
     }

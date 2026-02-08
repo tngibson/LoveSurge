@@ -820,7 +820,8 @@ public class Dropzone : MonoBehaviour
             {"Cha", 0},
             {"Cou", 0},
             {"Cle", 0},
-            {"Cre", 0}
+            {"Cre", 0},
+            {"Str", 0}
         };
 
         multipyboost = new()
@@ -828,7 +829,8 @@ public class Dropzone : MonoBehaviour
             {"Cha", 1},
             {"Cou", 1},
             {"Cle", 1},
-            {"Cre", 1}
+            {"Cre", 1},
+            {"Str", 1}
         };
     }
 }
