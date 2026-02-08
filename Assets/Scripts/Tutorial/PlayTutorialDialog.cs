@@ -10,17 +10,28 @@ public class PlayTutorialDialog : MonoBehaviour
     [SerializeField] private List<DialogueLines> Dialog;
     [SerializeField] private bool oneTime = true;
     [SerializeField] private ScriptedTutorial scriptedTutorial;
+    [SerializeField] private UnityEvent onDialogStart;
+    [SerializeField] private UnityEvent onDialogComplete;
     private bool triggered = false;
 
     public void PlayDialog()
     {
+        StartCoroutine(PlayDialogCoroutine());
+    }
+
+    private IEnumerator PlayDialogCoroutine()
+    {
+        onDialogStart?.Invoke();
+        
         if (!triggered)
         {
-            scriptedTutorial.StartCoroutine(scriptedTutorial.PlayDialog(Dialog));
+            yield return scriptedTutorial.StartCoroutine(scriptedTutorial.PlayDialog(Dialog));
         }
         if (oneTime)
         {
             triggered = true;
         }
+
+        onDialogComplete?.Invoke();
     }
 }

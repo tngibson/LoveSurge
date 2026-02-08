@@ -10,6 +10,7 @@ public class ScriptedTutorial : MonoBehaviour
 {
     [SerializeField] private GameManager gameManager;
     [SerializeField] private TutorialHighlight tutorialHighlight;
+    [SerializeField] private float typepauseDuration = 1f; // Duration of the pause between lines
 
     [Header("Dialog UI Components")]
     [SerializeField] private TextMeshProUGUI dialogText;    // UI Text component for displaying dialogue
@@ -220,19 +221,12 @@ public class ScriptedTutorial : MonoBehaviour
         AdjustTextBoxHeight();      // Ensure the text box is fully adjusted
         ScrollToBottom();           // Keep the scroll at the bottom
 
-        // // Add a new line after the conversation ends to distinguish it from the next one
-        // if (lineNum >= maxLineNum - 1)
-        // {
-        //     dialogText.text += "\n\n";  // Add spacing to separate conversations
-        //     AdjustTextBoxHeight();
-        //     ScrollToBottom();
-        // }
-
         // Reset typewriter and writing state
         isTypewriting = false;
         currentSession.isWriting = false;
         gameManager.UpdateEndTurnButton(true); // Enable end turn button
         currentSession.dateCharacter.transform.localPosition = originalPosition;
+        yield return new WaitForSeconds(typepauseDuration); // Small delay after dialogue ends
     }
 
     #region Helper Methods

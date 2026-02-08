@@ -341,9 +341,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1771563201}
-        m_TargetAssemblyTypeName: PlayerDeckScript, Assembly-CSharp
-        m_MethodName: ShowDeck
+      - m_Target: {fileID: 44367659}
+        m_TargetAssemblyTypeName: PlayTutorialDialog, Assembly-CSharp
+        m_MethodName: PlayDialog
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -353,9 +353,9 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-      - m_Target: {fileID: 44367659}
-        m_TargetAssemblyTypeName: PlayTutorialDialog, Assembly-CSharp
-        m_MethodName: PlayDialog
+      - m_Target: {fileID: 1771563201}
+        m_TargetAssemblyTypeName: PlayerDeckScript, Assembly-CSharp
+        m_MethodName: ShowDeck
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -429,6 +429,12 @@ MonoBehaviour:
     characterSprite: {fileID: 21300000, guid: 79f4cba0f14c0bd46951f09f7bd48970, type: 3}
   oneTime: 1
   scriptedTutorial: {fileID: 229746376}
+  onDialogStart:
+    m_PersistentCalls:
+      m_Calls: []
+  onDialogComplete:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!1 &60042736
 GameObject:
   m_ObjectHideFlags: 0
@@ -1564,7 +1570,6 @@ GameObject:
   m_Component:
   - component: {fileID: 223381120}
   - component: {fileID: 223381121}
-  - component: {fileID: 223381122}
   m_Layer: 5
   m_Name: EndTurn2Dialogue
   m_TagString: Untagged
@@ -1617,7 +1622,7 @@ MonoBehaviour:
     dialog: '[EVENT: Reserve] Appliances will also provide cards in their Reserve.'
     characterSprite: {fileID: 21300000, guid: 79f4cba0f14c0bd46951f09f7bd48970, type: 3}
   - speaker: C0D3-W1Z4RD
-    dialog: '[EVENT: Clever3] Above me I have a <colo =#B7DCEA> 3-Cleverness Card
+    dialog: '[EVENT: Clever3] Above me I have a <color =#B7DCEA> 3-Cleverness Card
       </color> that can be played.'
     characterSprite: {fileID: 21300000, guid: 79f4cba0f14c0bd46951f09f7bd48970, type: 3}
   - speaker: C0D3-W1Z4RD
@@ -1630,21 +1635,24 @@ MonoBehaviour:
     characterSprite: {fileID: 21300000, guid: 79f4cba0f14c0bd46951f09f7bd48970, type: 3}
   oneTime: 1
   scriptedTutorial: {fileID: 229746376}
---- !u!114 &223381122
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 223381119}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 253c20f0ad1f08b4aae2e9987e7df13f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  Dialog: []
-  oneTime: 1
-  scriptedTutorial: {fileID: 229746376}
+  onDialogStart:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 1184505926}
+        m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
+        m_MethodName: SetActive
+        m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  onDialogComplete:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!1 &229746374
 GameObject:
   m_ObjectHideFlags: 0
@@ -1691,6 +1699,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   gameManager: {fileID: 2001940042}
   tutorialHighlight: {fileID: 1991520289}
+  typepauseDuration: 1
   dialogText: {fileID: 1251843997}
   scrollRect: {fileID: 202139553}
   textRectTransform: {fileID: 1251843996}
@@ -1786,6 +1795,12 @@ MonoBehaviour:
     characterSprite: {fileID: 21300000, guid: 568418e572b891b499d66849254b674e, type: 3}
   oneTime: 1
   scriptedTutorial: {fileID: 229746376}
+  onDialogStart:
+    m_PersistentCalls:
+      m_Calls: []
+  onDialogComplete:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!1 &280162389
 GameObject:
   m_ObjectHideFlags: 0
@@ -3133,8 +3148,8 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1877364503}
   m_HandleRect: {fileID: 1877364502}
   m_Direction: 2
-  m_Value: 1
-  m_Size: 0.37836662
+  m_Value: 0.9999999
+  m_Size: 0.37836656
   m_NumberOfSteps: 0
   m_OnValueChanged:
     m_PersistentCalls:
@@ -3221,6 +3236,7 @@ RectTransform:
   - {fileID: 295771160}
   - {fileID: 2031511426}
   - {fileID: 1649350019}
+  - {fileID: 1184505927}
   m_Father: {fileID: 1108671395}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
@@ -5515,6 +5531,24 @@ MonoBehaviour:
     characterSprite: {fileID: 21300000, guid: 79f4cba0f14c0bd46951f09f7bd48970, type: 3}
   oneTime: 1
   scriptedTutorial: {fileID: 229746376}
+  onDialogStart:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 1184505926}
+        m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
+        m_MethodName: SetActive
+        m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  onDialogComplete:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!1 &743144015
 GameObject:
   m_ObjectHideFlags: 0
@@ -7396,6 +7430,12 @@ MonoBehaviour:
     characterSprite: {fileID: 21300000, guid: b06df378e24c2594b8616dbb469efb0a, type: 3}
   oneTime: 1
   scriptedTutorial: {fileID: 229746376}
+  onDialogStart:
+    m_PersistentCalls:
+      m_Calls: []
+  onDialogComplete:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!114 &1042258434
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -7668,11 +7708,11 @@ RectTransform:
   - {fileID: 1251171723}
   - {fileID: 468733689}
   - {fileID: 1196808314}
-  - {fileID: 311569658}
   - {fileID: 2001767992}
   - {fileID: 773201689}
   - {fileID: 1771563198}
   - {fileID: 1991520288}
+  - {fileID: 311569658}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
@@ -7819,6 +7859,134 @@ RectTransform:
     type: 3}
   m_PrefabInstance: {fileID: 1159307219}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &1184505926
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1184505927}
+  - component: {fileID: 1184505929}
+  - component: {fileID: 1184505928}
+  - component: {fileID: 1184505931}
+  - component: {fileID: 1184505930}
+  m_Layer: 5
+  m_Name: Lock Reserve
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &1184505927
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1184505926}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 420358065}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 527.4801, y: 246.81763}
+  m_SizeDelta: {x: 1055, y: 356.4944}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &1184505928
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1184505926}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 0, g: 0, b: 0, a: 0.60784316}
+  m_RaycastTarget: 1
+  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
+  m_Maskable: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  m_Sprite: {fileID: 21300000, guid: b1d384d73f87a594f9ff3a9e909130d2, type: 3}
+  m_Type: 0
+  m_PreserveAspect: 0
+  m_FillCenter: 1
+  m_FillMethod: 4
+  m_FillAmount: 1
+  m_FillClockwise: 1
+  m_FillOrigin: 0
+  m_UseSpriteMesh: 0
+  m_PixelsPerUnitMultiplier: 1
+--- !u!222 &1184505929
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1184505926}
+  m_CullTransparentMesh: 1
+--- !u!114 &1184505930
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1184505926}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a8b06a5224543e347a2b3671044c8053, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  OnClickEvent:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 1184505931}
+        m_TargetAssemblyTypeName: PlayTutorialDialog, Assembly-CSharp
+        m_MethodName: PlayDialog
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+--- !u!114 &1184505931
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1184505926}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 253c20f0ad1f08b4aae2e9987e7df13f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Dialog:
+  - speaker: C0D3-W1Z4RD
+    dialog: That too advance for you right now, follow along the tutorial
+    characterSprite: {fileID: 21300000, guid: b06df378e24c2594b8616dbb469efb0a, type: 3}
+  oneTime: 0
+  scriptedTutorial: {fileID: 229746376}
+  onDialogStart:
+    m_PersistentCalls:
+      m_Calls: []
+  onDialogComplete:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!1 &1196808311
 GameObject:
   m_ObjectHideFlags: 0
@@ -10157,6 +10325,12 @@ MonoBehaviour:
     characterSprite: {fileID: 21300000, guid: 568418e572b891b499d66849254b674e, type: 3}
   oneTime: 1
   scriptedTutorial: {fileID: 229746376}
+  onDialogStart:
+    m_PersistentCalls:
+      m_Calls: []
+  onDialogComplete:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!1 &1646536585
 GameObject:
   m_ObjectHideFlags: 0
@@ -10373,6 +10547,12 @@ MonoBehaviour:
     characterSprite: {fileID: 21300000, guid: 568418e572b891b499d66849254b674e, type: 3}
   oneTime: 1
   scriptedTutorial: {fileID: 229746376}
+  onDialogStart:
+    m_PersistentCalls:
+      m_Calls: []
+  onDialogComplete:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!1001 &1649350018
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -11291,6 +11471,12 @@ MonoBehaviour:
     characterSprite: {fileID: 21300000, guid: 79f4cba0f14c0bd46951f09f7bd48970, type: 3}
   oneTime: 1
   scriptedTutorial: {fileID: 229746376}
+  onDialogStart:
+    m_PersistentCalls:
+      m_Calls: []
+  onDialogComplete:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!1 &1820997958
 GameObject:
   m_ObjectHideFlags: 0
@@ -13620,6 +13806,12 @@ MonoBehaviour:
     characterSprite: {fileID: 21300000, guid: b06df378e24c2594b8616dbb469efb0a, type: 3}
   oneTime: 0
   scriptedTutorial: {fileID: 229746376}
+  onDialogStart:
+    m_PersistentCalls:
+      m_Calls: []
+  onDialogComplete:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!114 &2119566661
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -13655,6 +13847,12 @@ MonoBehaviour:
     characterSprite: {fileID: 0}
   oneTime: 1
   scriptedTutorial: {fileID: 229746376}
+  onDialogStart:
+    m_PersistentCalls:
+      m_Calls: []
+  onDialogComplete:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!114 &2119566662
 MonoBehaviour:
   m_ObjectHideFlags: 0
