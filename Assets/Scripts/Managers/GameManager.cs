@@ -289,12 +289,12 @@ public class GameManager : MonoBehaviour
     {
         if(itemCanvasInstance == null)
         {
-            Debug.LogError("Item Canvas is null and may not be in the scene!");
+            //Debug.LogError("Item Canvas is null and may not be in the scene!");
             return;
         }
 
         itemCanvasInstance.TryGetComponent(out Socket socket);
-        Debug.Log($"Refreshing Usable Items: {Player.instance.collectedItems.Count} items found.");
+        //Debug.Log($"Refreshing Usable Items: {Player.instance.collectedItems.Count} items found.");
         for(int i = 0; i < Player.instance.collectedItems.Count; i++)
         {
             // Debug.Log($"Adding item {Player.instance.collectedItems[i]} to socket{i}.");
