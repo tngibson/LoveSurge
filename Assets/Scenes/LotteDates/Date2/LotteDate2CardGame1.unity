@@ -1282,7 +1282,7 @@ PrefabInstance:
     - target: {fileID: 5504610424280721779, guid: ec3ecb435f8fc39499cde3355a4d25df,
         type: 3}
       propertyPath: DateCharacter
-      value: Noki
+      value: Lotte
       objectReference: {fileID: 0}
     - target: {fileID: 5504610424280721779, guid: ec3ecb435f8fc39499cde3355a4d25df,
         type: 3}
@@ -10956,9 +10956,11 @@ MonoBehaviour:
   endTurnButton: {fileID: 1396999329}
   mapButton: {fileID: 602046414}
   CurrentCharacterIndex: 2
+  connectionBar: {fileID: 0}
   handSize: 4
   mapButtonScript: {fileID: 602046419}
   comboSurge: 0
+  isTutorial: 0
 --- !u!4 &2001940043
 Transform:
   m_ObjectHideFlags: 0
@@ -11936,12 +11938,16 @@ MonoBehaviour:
   selectedConvoTopic: {fileID: 0}
   gameManager: {fileID: 2001940042}
   reserveManager: {fileID: 420358066}
+  instance: {fileID: 0}
   dropzone: {fileID: 966042202}
   isTypewriting: 0
   isCountingDown: 0
   discardDuration: 1
   scrollRect: {fileID: 202139553}
   textRectTransform: {fileID: 1251843996}
+  startingHandSize: 4
+  endingHandSize: 0
+  cardsPlayedThisTurn: -1
 --- !u!222 &2119566658
 CanvasRenderer:
   m_ObjectHideFlags: 0

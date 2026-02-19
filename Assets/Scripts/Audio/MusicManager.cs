@@ -27,7 +27,8 @@ public class MusicManager : MonoBehaviour
         randomEventTheme,
         quietTheme,
         loveTheme,
-        dateMusic;
+        dateMusic,
+        creepyTheme;
 
     [SerializeField] private bool canSetParameter = false;
         
@@ -53,6 +54,7 @@ public class MusicManager : MonoBehaviour
     public EventReference QuietTheme { get => quietTheme; }
     public EventReference DateMusic { get => dateMusic; }
     public EventReference LoveTheme { get => loveTheme; }
+    public EventReference CreepyTheme { get => creepyTheme; }
     public Coroutine TransitionCoroutine { get; private set; }
     #endregion
    
