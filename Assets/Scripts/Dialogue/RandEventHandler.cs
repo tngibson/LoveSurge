@@ -635,6 +635,14 @@ public class RandEventHandler : MonoBehaviour
         {
             Player.instance.lotteRomanticRoute = true;
         }
+        else if (statTag == "MainEvent1.5Branch1")
+        {
+            Player.instance.MainEvent1dot5Branch1 = true;
+        }
+        else if (statTag == "MainEvent1.5Branch2")
+        {
+            Player.instance.MainEvent1dot5Branch2 = true;
+        }
         else
         {
             Debug.LogWarning($"Invalid stat tag: {statTag}");
