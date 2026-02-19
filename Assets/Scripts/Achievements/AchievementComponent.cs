@@ -7,6 +7,8 @@ using UnityEngine;
 public class AchievementComponent : MonoBehaviour
 {
     public static IAchievementSystem AchievementSystem;
+
+
     public void OnEnable()
     {
         // We really only need one of these

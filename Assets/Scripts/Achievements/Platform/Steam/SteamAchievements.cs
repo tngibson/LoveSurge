@@ -10,7 +10,7 @@ public class SteamAchievements : IAchievementSystem
 	protected Callback<UserStatsStored_t> m_UserStatsStored;
 	protected Callback<UserAchievementStored_t> m_UserAchievementStored;
     
-	private CGameID m_GameID = new CGameID(480);
+	private CGameID m_GameID = new CGameID(3612670);
 	
 	private bool m_bShouldRequestStats;
 	private bool m_bStatsValid;
