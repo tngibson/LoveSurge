@@ -43,6 +43,8 @@ public class GameManager : MonoBehaviour
     [SerializeField] private GameObject mapButton;
 
     [SerializeField] private int CurrentCharacterIndex; // which character date this belongs to | 0 - Noki, 1 - Celci, 2 - Lotte
+    [SerializeField] private ConnectionBar connectionBar;
+
     private int currentScore = -1;
     private bool isTopicSelected;
 
@@ -65,6 +67,8 @@ public class GameManager : MonoBehaviour
     public PlayerArea PlayerArea => playerArea;
     public PlayerDeckScript DeckContainer => deckContainer;
     public GameObject ItemCanvasInstance => itemCanvasInstance;
+
+    public bool isTutorial = false;
 
     private void Awake()
     {
@@ -90,6 +94,7 @@ public class GameManager : MonoBehaviour
             itemCanvasInstance.transform.SetSiblingIndex(itemCanvasInstance.transform.parent.childCount - 2);
             RefreshUsableItem();
         }
+        connectionBar.SetCharacterIndex(CurrentCharacterIndex);
         fullHandText.SetActive(false);
         scoreText.text = "Score: 0";
         MusicManager.SetParameterByName("dateProgress", 0);
@@ -104,6 +109,8 @@ public class GameManager : MonoBehaviour
 
     public void OnEndTurn()
     {
+        dropzone.endingHandSize = playerArea.CardsInHand.Count;
+        
         if (playerArea.CardsInHand.Count < handSize && deckContainer.Deck.Count > 0)
         {
             int missingCards = handSize - playerArea.CardsInHand.Count;
@@ -121,6 +128,18 @@ public class GameManager : MonoBehaviour
             }
 
             deckCountText.text = deckContainer.Deck.Count.ToString();
+
+            if (isTutorial)
+                return;
+
+            UnlockAchievement(AchievementID.NEW_ACHIEVEMENT_1_4); // Unlocks Achivement: Take That!
+        }
+        else if (playerArea.CardsInHand.Count < handSize) // This is just in case you somehow use your first card when you have no cards left in your deck
+        {
+            if (isTutorial)
+                return;
+
+            UnlockAchievement(AchievementID.NEW_ACHIEVEMENT_1_4); // Unlocks Achivement: Take That!
         }
         else if (deckContainer.Deck.Count <= 0)
         {
@@ -150,7 +169,12 @@ public class GameManager : MonoBehaviour
         dropzone.ResetBoosts();
 
         FindAnyObjectByType<CardHandLayout>().UpdateCardListAndLayout();
+
         comboSurge = 0;
+
+        //discard.ResetTurnDiscardCount();
+        dropzone.startingHandSize = playerArea.CardsInHand.Count;
+        dropzone.cardsPlayedThisTurn = 0;
     }
 
     // Retrieve the active character�s date data dynamically
@@ -301,5 +325,13 @@ public class GameManager : MonoBehaviour
             GameItem item = Player.instance.collectedItems[i];
             socket.AddToSocket(item.gameObject, i);
         }
+    }
+
+    private void UnlockAchievement(AchievementID id)
+    {
+        if (AchievementComponent.AchievementSystem == null)
+            return;
+
+        AchievementComponent.AchievementSystem.UnlockAchievement(id);
     }
 }

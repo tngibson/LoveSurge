@@ -30,6 +30,8 @@ public class GameItem : MonoBehaviour
 
         GameManager.instance.ItemCanvasInstance.TryGetComponent(out Socket socket);
         socket.ClearSocket(socketIndex);
+
+        UnlockAchievement(AchievementID.NEW_ACHIEVEMENT_1_5);
     }
 
     public void Discard(int amount)
@@ -53,5 +55,13 @@ public class GameItem : MonoBehaviour
 
         PlayerDeckScript deck = GameManager.instance?.DeckContainer;
         deck?.DrawCards(4);
-    } 
+    }
+
+    private void UnlockAchievement(AchievementID id)
+    {
+        if (AchievementComponent.AchievementSystem == null)
+            return;
+
+        AchievementComponent.AchievementSystem.UnlockAchievement(id);
+    }
 }

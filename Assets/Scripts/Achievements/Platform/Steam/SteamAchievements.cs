@@ -68,23 +68,26 @@ public class SteamAchievements : IAchievementSystem
 		m_bFetchAfterStoring = false;
 	}
 
-	public void UnlockAchievement(AchievementID achievementID)
-	{
-		Debug.AssertFormat(Achievement_t.sm_Achievements.ContainsKey(achievementID), 
-			"Could not find the achievement ID {0} in the achievement table!", achievementID);
-		Achievement_t achievement = Achievement_t.sm_Achievements[achievementID];
-		
-		achievement.m_bAchieved = true;
+    public void UnlockAchievement(AchievementID achievementID)
+    {
+        if (!m_bStatsValid)
+            return;
 
-		// mark it down
-		SteamUserStats.SetAchievement(achievement.m_eAchievementID.ToString());
-		Debug.LogFormat("Granting achievement - {0}", achievement.m_strName);
+        if (IsAchievementUnlocked(achievementID))
+            return;
 
-		// Store stats end of frame
-		m_bStoreStats = true;
-	}
+        Achievement_t achievement = Achievement_t.sm_Achievements[achievementID];
 
-	public Achievement_t GetAchievementInfo(AchievementID achievementID)
+        achievement.m_bAchieved = true;
+
+        SteamUserStats.SetAchievement(achievementID.ToString());
+
+        Debug.LogFormat("Granting achievement - {0}", achievementID);
+
+        m_bStoreStats = true;
+    }
+
+    public Achievement_t GetAchievementInfo(AchievementID achievementID)
 	{
 		Debug.AssertFormat(Achievement_t.sm_Achievements.ContainsKey(achievementID), 
 			"Could not find the achievement ID {0} in the achievement table!", achievementID);

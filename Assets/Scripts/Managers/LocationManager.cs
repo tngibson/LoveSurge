@@ -126,6 +126,9 @@ public class LocationManager : MonoBehaviour
                         data.mapScript.locName = $"{data.name}Date1CardGame1";
                         break;
                     case Date1Stage.Done:
+                        UnlockFirstDateCharacterAchievement(data);
+                        UnlockDateAchievement(data, DateNum.Date1);
+
                         data.currentDate = DateNum.Date2;
                         data.date2Stage = Date2Stage.Intro;
                         UpdateMapLocation(data);
@@ -145,6 +148,8 @@ public class LocationManager : MonoBehaviour
                         data.mapScript.locName = $"{data.name}Date2CardGame1";
                         break;
                     case Date2Stage.Done:
+                        UnlockDateAchievement(data, DateNum.Date2);
+
                         data.currentDate = DateNum.Date3;
                         data.date3Stage = Date3Stage.Intro;
                         UpdateMapLocation(data);
@@ -164,6 +169,8 @@ public class LocationManager : MonoBehaviour
                         data.mapScript.locName = $"{data.name}Date3CardGame1";
                         break;
                     case Date3Stage.Done:
+                        UnlockDateAchievement(data, DateNum.Date3);
+
                         Debug.Log($"All {data.name} dates completed.");
                         data.allDatesDone = true;
 
@@ -248,5 +255,61 @@ public class LocationManager : MonoBehaviour
         }
     }
 
+    private void UnlockFirstDateCharacterAchievement(DateData data)
+    {
+        if (AchievementComponent.AchievementSystem == null)
+            return;
 
+        AchievementID id;
+
+        switch (data.name)
+        {
+            case "Celci":
+                id = AchievementID.NEW_ACHIEVEMENT_1_1;
+                break;
+
+            case "Lotte":
+                id = AchievementID.NEW_ACHIEVEMENT_1_2;
+                break;
+
+            case "Noki":
+                id = AchievementID.NEW_ACHIEVEMENT_1_3;
+                break;
+
+            default:
+                return;
+        }
+
+        AchievementComponent.AchievementSystem.UnlockAchievement(id);
+    }
+
+    private void UnlockDateAchievement(DateData data, DateNum completedDate)
+    {
+        if (AchievementComponent.AchievementSystem == null)
+            return;
+
+        int baseIndex = 0;
+
+        switch (data.name)
+        {
+            case "Noki":
+                baseIndex = 9;
+                break;
+            case "Celci":
+                baseIndex = 12;
+                break;
+            case "Lotte":
+                baseIndex = 15;
+                break;
+            default:
+                return;
+        }
+
+        int dateOffset = (int)completedDate; // Date1=0, Date2=1, Date3=2
+        int achievementIndex = baseIndex + dateOffset;
+
+        AchievementID id = (AchievementID)achievementIndex;
+
+        AchievementComponent.AchievementSystem.UnlockAchievement(id);
+    }
 }

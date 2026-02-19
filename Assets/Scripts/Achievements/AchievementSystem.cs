@@ -1,4 +1,3 @@
-using Steamworks;
 using System;
 using System.Collections;
 using System.Collections.Generic;
@@ -94,27 +93,10 @@ public interface IAchievementSystem
     
     // Update the currently stored achievement data with the latest from the platform's servers
     public void FetchAchievementData();
-
+    
     // Do you really need me to explain what this does?
-    public void UnlockAchievement(AchievementID achievementID)
-    {
-        if (!m_bStatsValid)
-            return;
-
-        if (IsAchievementUnlocked(achievementID))
-            return;
-
-        Achievement_t achievement = Achievement_t.sm_Achievements[achievementID];
-
-        achievement.m_bAchieved = true;
-
-        SteamUserStats.SetAchievement(achievementID.ToString());
-
-        Debug.LogFormat("Granting achievement - {0}", achievementID);
-
-        m_bStoreStats = true;
-    }
-
+    public void UnlockAchievement(AchievementID achievementID);
+    
     // These just returns whatever achievement data is currently stored,
     // so you should call FetchAchievementData to get the latest data
     // from the platform service

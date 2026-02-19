@@ -25,6 +25,8 @@ public class Dropzone : MonoBehaviour
     [SerializeField] private GameManager gameManager;
     [SerializeField] ReserveManager reserveManager;
 
+    public Dropzone instance;
+
     // Array to hold the dropzone
     [SerializeField] private DropzoneSlot dropzone; 
 
@@ -95,6 +97,10 @@ public class Dropzone : MonoBehaviour
     private int multCle;
     private int multCre;
 
+    public int startingHandSize = 4;
+    public int endingHandSize = 0;
+    public int cardsPlayedThisTurn = -1;     // to Dropzone
+
     // Start is called before the first frame update
     void Start()
     {
@@ -108,6 +114,8 @@ public class Dropzone : MonoBehaviour
         {
             Debug.LogWarning("Player Manager was null!");
         }
+
+        instance = this;
     }
 
     private void Update()
@@ -154,6 +162,8 @@ public class Dropzone : MonoBehaviour
             // Update the last placed card
             lastPlacedCard = card;
 
+            cardsPlayedThisTurn++;
+
             //Debug.Log($"Card {card.name} placed in DropzoneSlot.");
             CalculateScore();
         }
@@ -187,6 +197,8 @@ public class Dropzone : MonoBehaviour
             // Update the last placed card to the new top card
             lastPlacedCard = dropzone.TopCard;
             GameManager.instance.ComboSurge --;
+
+            cardsPlayedThisTurn--;
 
             // Reset UI or other visual elements if necessary
             CalculateScore();
@@ -229,6 +241,9 @@ public class Dropzone : MonoBehaviour
 
         // Clear the cards to score
         cardsToScore.Clear();
+
+        cardsPlayedThisTurn = 0;
+
         //Debug.Log(cardsToScore.Count);
 
         CalculateScore();
@@ -278,6 +293,20 @@ public class Dropzone : MonoBehaviour
         {
             // Check if dialog triggers are needed based on the new power state
             CheckDialogTriggers();
+        }
+
+        if (startingHandSize >= 4 &&
+        cardsPlayedThisTurn >= 4 && 
+        startingHandSize == cardsPlayedThisTurn &&
+        endingHandSize == 0)
+        {
+            UnlockAchievement(AchievementID.NEW_ACHIEVEMENT_1_7); // Unlocks Achvievement: With all my power!
+        }
+        else if (startingHandSize >= 4 &&
+            cardsPlayedThisTurn == 0 &&
+            endingHandSize == 0)
+        {
+            UnlockAchievement(AchievementID.NEW_ACHIEVEMENT_1_6); // Unlocks Achvievement: Mill’er, I hardly knew ‘er!
         }
 
         // Reset the state of the dropzones after scoring
@@ -358,6 +387,11 @@ public class Dropzone : MonoBehaviour
 
             // Apply scoring formula: (sum of powers) * (highest power value)
             score = totalPower * highestPower;
+
+            if (highestPower >= 10)
+            {
+                AchievementComponent.AchievementSystem.UnlockAchievement(AchievementID.NEW_ACHIEVEMENT_1_8);
+            }
 
             // Update the current score text field with the recalculated score
             currentScoreText.text = "Current Score: " + score.ToString();
@@ -832,5 +866,13 @@ public class Dropzone : MonoBehaviour
             {"Cre", 1},
             {"Str", 1}
         };
+    }
+
+    private void UnlockAchievement(AchievementID id)
+    {
+        if (AchievementComponent.AchievementSystem == null)
+            return;
+
+        AchievementComponent.AchievementSystem.UnlockAchievement(id);
     }
 }
