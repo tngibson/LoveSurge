@@ -31,6 +31,8 @@ public class Player : MonoBehaviour
     public bool nokiRomanticRoute = false;
     public bool celciRomanticRoute = false;
     public bool lotteRomanticRoute = false;
+    public bool MainEvent1dot5Branch1 = false;
+    public bool MainEvent1dot5Branch2 = false;
 
     void Awake()
     {
