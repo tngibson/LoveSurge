@@ -171,6 +171,24 @@ public class LocationManager : MonoBehaviour
                     case Date3Stage.Done:
                         UnlockDateAchievement(data, DateNum.Date3);
 
+                        switch (data.name)
+                        {
+                            case "Celci":
+                                Player.instance.lastCharacterCompleted = 1;
+                                break;
+
+                            case "Lotte":
+                                Player.instance.lastCharacterCompleted = 2;
+                                break;
+
+                            case "Noki":
+                                Player.instance.lastCharacterCompleted = 0;
+                                break;
+
+                            default:
+                                return;
+                        }
+
                         Debug.Log($"All {data.name} dates completed.");
                         data.allDatesDone = true;
 

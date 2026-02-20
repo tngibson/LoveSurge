@@ -15,6 +15,9 @@ public class RandEventHandler : MonoBehaviour
     [SerializeField] private float portraitSpacingPadding = 50f; // Extra spacing between portraits
     [SerializeField] private float additionalCenterSpread = 350f;
 
+    [SerializeField] private Image fadeOverlay;
+    [SerializeField] private float fadeDuration = 0.5f;
+
     [SerializeField] private List<string> dialogLines = new List<string>();     // Holds the main dialog lines
     [SerializeField] private List<string> speakersPerLine = new List<string>(); // Holds the speaker names per line
     [SerializeField] private List<SpriteOptions> characterSprites = new List<SpriteOptions>(); // Holds sprite options for each character
@@ -91,6 +94,11 @@ public class RandEventHandler : MonoBehaviour
     [SerializeField] private MainEvent1dot5BranchPt3Data mainEvent1dot5BranchPt3_Branch1True;
     [SerializeField] private MainEvent1dot5BranchPt3Data mainEvent1dot5BranchPt3_Branch1False;
 
+    [Header("Main Event 3 Current Route Options")]
+    [SerializeField] private MainStory3CurrentRouteData mainStory3_Noki;
+    [SerializeField] private MainStory3CurrentRouteData mainStory3_Celci;
+    [SerializeField] private MainStory3CurrentRouteData mainStory3_Lotte;
+
     [SerializeField] private bool isNokiFinalDeepConvo = false;
     [SerializeField] private bool isCelciFinalDeepConvo = false;
     [SerializeField] private bool isLotteFinalDeepConvo = false;
@@ -101,6 +109,8 @@ public class RandEventHandler : MonoBehaviour
     [SerializeField] private Sprite transparentSprite;
 
     [SerializeField] private GameObject bigNoki;
+
+    private bool isFading = false;
 
     void Start()
     {
@@ -138,6 +148,8 @@ public class RandEventHandler : MonoBehaviour
 
     void Update()
     {
+        if (isFading) return;
+
         // If we're in CG waiting mode, only handle that
         if (isWaitingForCGClick && Input.GetButtonDown("Skip"))
         {
@@ -246,6 +258,12 @@ public class RandEventHandler : MonoBehaviour
             return;
         }
 
+        if (dialogLines[currentLineIndex] == "MAINSTORY3CURRENTROUTE")
+        {
+            HandleMainStory3CurrentRoute();
+            return;
+        }
+
         if (currentLineIndex < dialogLines.Count)
         {
             if (dialogLines[currentLineIndex] == "PLAYCREEPYSTART")
@@ -263,6 +281,34 @@ public class RandEventHandler : MonoBehaviour
         if (currentLineIndex < dialogLines.Count)
         {
             if (dialogLines[currentLineIndex] == "PLAYCREEPYEND")
+            {
+                if (MusicManager.Instance != null)
+                {
+                    MusicManager.Instance.StopMusic();
+                    MusicManager.Instance.PlayMusic(MusicManager.Instance.DeepConversation);
+                }
+                NextLine();
+                return;
+            }
+        }
+
+        if (currentLineIndex < dialogLines.Count)
+        {
+            if (dialogLines[currentLineIndex] == "PLAYFUTURISTICSTART")
+            {
+                if (MusicManager.Instance != null)
+                {
+                    MusicManager.Instance.StopMusic();
+                    //MusicManager.Instance.PlayMusic(MusicManager.Instance.FuturisticMystery);
+                }
+                NextLine();
+                return;
+            }
+        }
+
+        if (currentLineIndex < dialogLines.Count)
+        {
+            if (dialogLines[currentLineIndex] == "PLAYFUTURISTICEND")
             {
                 if (MusicManager.Instance != null)
                 {
@@ -295,7 +341,17 @@ public class RandEventHandler : MonoBehaviour
             return;
         }
 
+        if (dialogLines[currentLineIndex] == "FADETOBLACK")
+        {
+            StartCoroutine(FadeToBlack());
+            return;
+        }
 
+        if (dialogLines[currentLineIndex] == "FADEBACKNORMAL")
+        {
+            StartCoroutine(FadeBackToNormal());
+            return;
+        }
 
         // Set the speaker name based on the current line's speaker
         string currentSpeaker = speakersPerLine[currentLineIndex];
@@ -1107,6 +1163,121 @@ public class RandEventHandler : MonoBehaviour
         DisplayLine();
     }
 
+    private void HandleMainStory3CurrentRoute()
+    {
+        // Backup current dialog state
+        originalDialogLines = new List<string>(dialogLines);
+        originalSpeakersPerLine = new List<string>(speakersPerLine);
+        originalSpriteOptions = new List<SpriteOptions>(characterSprites);
+        originalLineIndex = currentLineIndex + 1;
+        isChoiceDialog = true;
+
+        MainStory3CurrentRouteData selectedData = null;
+
+        switch (Player.instance.lastCharacterCompleted)
+        {
+            case 0:
+                selectedData = mainStory3_Noki;
+                break;
+
+            case 1:
+                selectedData = mainStory3_Celci;
+                break;
+
+            case 2:
+                selectedData = mainStory3_Lotte;
+                break;
+
+            default:
+                selectedData = mainStory3_Noki;
+                break;
+        }
+
+        // Validate data before swapping
+        if (selectedData == null ||
+            selectedData.lines == null ||
+            selectedData.lines.Count == 0 ||
+            selectedData.speakers == null ||
+            selectedData.speakers.Count != selectedData.lines.Count)
+        {
+            Debug.LogWarning("MAINSTORY3CURRENTROUTE data missing or invalid.");
+            currentLineIndex++;
+            DisplayLine();
+            return;
+        }
+
+        // Swap dialog
+        dialogLines = new List<string>(selectedData.lines);
+        speakersPerLine = new List<string>(selectedData.speakers);
+        characterSprites = new List<SpriteOptions>(selectedData.spriteOptions);
+
+        currentLineIndex = 0;
+        DisplayLine();
+    }
+
+    private IEnumerator FadeToBlack()
+    {
+        if (fadeOverlay == null)
+        {
+            Debug.LogWarning("Fade overlay not assigned.");
+            currentLineIndex++;
+            DisplayLine();
+            yield break;
+        }
+
+        isFading = true;
+
+        float timer = 0f;
+        Color color = fadeOverlay.color;
+
+        while (timer < fadeDuration)
+        {
+            timer += Time.deltaTime;
+            float alpha = Mathf.Lerp(0f, 1f, timer / fadeDuration);
+            fadeOverlay.color = new Color(color.r, color.g, color.b, alpha);
+            yield return null;
+        }
+
+        fadeOverlay.color = new Color(color.r, color.g, color.b, 1f);
+
+        isFading = false;
+
+        currentLineIndex++;
+        DisplayLine();
+    }
+
+
+    private IEnumerator FadeBackToNormal()
+    {
+        if (fadeOverlay == null)
+        {
+            Debug.LogWarning("Fade overlay not assigned.");
+            currentLineIndex++;
+            DisplayLine();
+            yield break;
+        }
+
+        isFading = true;
+
+        float timer = 0f;
+        Color color = fadeOverlay.color;
+
+        while (timer < fadeDuration)
+        {
+            timer += Time.deltaTime;
+            float alpha = Mathf.Lerp(1f, 0f, timer / fadeDuration);
+            fadeOverlay.color = new Color(color.r, color.g, color.b, alpha);
+            yield return null;
+        }
+
+        fadeOverlay.color = new Color(color.r, color.g, color.b, 0f);
+
+        isFading = false;
+
+        currentLineIndex++;
+        DisplayLine();
+    }
+
     private void RecenterPortraits()
     {
         List<Image> visiblePortraits = new List<Image>();
@@ -1216,6 +1387,14 @@ public class MainEvent1dot5BranchPt2Data
 
 [System.Serializable]
 public class MainEvent1dot5BranchPt3Data
+{
+    public List<string> lines = new List<string>();
+    public List<string> speakers = new List<string>();
+    public List<SpriteOptions> spriteOptions = new List<SpriteOptions>();
+}
+
+[System.Serializable]
+public class MainStory3CurrentRouteData
 {
     public List<string> lines = new List<string>();
     public List<string> speakers = new List<string>();

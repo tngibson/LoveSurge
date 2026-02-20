@@ -24,6 +24,7 @@ public class Player : MonoBehaviour
 
     public event Action OnStatsChanged;
 
+    public int lastCharacterCompleted;
 
     [Header("Choice Booleans")]
     public bool isHouseHot = true;
