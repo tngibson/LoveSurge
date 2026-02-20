@@ -85,6 +85,9 @@ public class RandEventHandler : MonoBehaviour
     // Stack-based system for nested choices
     private Stack<DialogState> dialogStateStack = new Stack<DialogState>();
 
+    [SerializeField] private Sprite transparentSprite;
+
+    [SerializeField] private GameObject bigNoki;
 
     void Start()
     {
@@ -216,6 +219,29 @@ public class RandEventHandler : MonoBehaviour
                 ChangeBackground();
                 return;
             }
+        }
+
+        if (currentLineIndex < dialogLines.Count)
+        {
+            if (dialogLines[currentLineIndex] == "MAINEVENT1.5BRANCHPT1")
+            {
+                HandleMainEvent1dot5BranchPt1();
+                return;
+            }
+        }
+
+        if (dialogLines[currentLineIndex] == "BIGNOKISTART")
+        {
+            bigNoki.SetActive(true);
+            NextLine();
+            return;
+        }
+
+        if (dialogLines[currentLineIndex] == "BIGNOKIEND")
+        {
+            bigNoki.SetActive(false);
+            NextLine();
+            return;
         }
 
         // Set the speaker name based on the current line's speaker
@@ -851,6 +877,107 @@ public class RandEventHandler : MonoBehaviour
             typewriterCoroutine = null;
         }
         currentLineIndex++;
+        DisplayLine();
+    }
+
+    private void HandleMainEvent1dot5BranchPt1()
+    {
+        // Save current state so we return after the branch finishes
+        dialogStateStack.Push(new DialogState(
+            dialogLines,
+            speakersPerLine,
+            characterSprites,
+            currentLineIndex + 1, // Resume AFTER the marker
+            choices
+        ));
+
+        isChoiceDialog = true;
+
+        List<string> branchLines = new List<string>();
+        List<string> branchSpeakers = new List<string>();
+        List<SpriteOptions> branchSprites = new List<SpriteOptions>();
+
+        // Branch 1
+        if (Player.instance.MainEvent1dot5Branch1)
+        {
+            branchLines = new List<string>
+        {
+            "Hello [PlayerName],",
+            "It is I, Steven Stoveton (call me Steve).",
+            "I am reaching out in regards to the email you sent our support line a while back.",
+            "Thank you for your diligence and transparency!",
+            "I, Steven Stoveton (Steven Stoveton was my father so please feel free to call me steve), would like you and your companions to come to my office next Monday.",
+            "I have some questions about your experience.",
+            "Thank you for being the SPARK! in OMNISPARK!",
+            "Your Boss, Steve"
+        };
+
+            branchSpeakers = new List<string>
+        {
+            "Steve",
+            "Steve",
+            "Steve",
+            "Steve",
+            "Steve",
+            "Steve",
+            "Steve",
+            "Steve",
+        };
+        }
+        // Branch 2 (assumed true if Branch1 is false)
+        else
+        {
+            branchLines = new List<string>
+        {
+            "Hello [PlayerName],",
+            "It is I, Steven Stoveton (call me Steve).",
+            "You are a valued and important intern for this company.",
+            "Because of your great successes in our program you have been selected to report to me personally.",
+            "I, Steven Stoveton (Steven Stoveton was my father so please feel free to call me steve), would like you and your companions to come to my office next Monday.",
+            "I have some questions about your experience.",
+            "Thank you for being the SPARK! in OMNISPARK!",
+            "Your Boss, Steve"
+        };
+
+            branchSpeakers = new List<string>
+        {
+            "Steve",
+            "Steve",
+            "Steve",
+            "Steve",
+            "Steve",
+            "Steve",
+            "Steve",
+            "Steve",
+        };
+        }
+
+        // Build empty sprite options matching speaker count
+        int spriteOptionCount = characterPortraits.Count;
+
+        // Ensure we have enough sprite entries for the longest possible branch
+        int spriteEntriesPerOption = Mathf.Max(branchLines.Count, 1);
+
+        for (int i = 0; i < spriteOptionCount; i++)
+        {
+            SpriteOptions option = new SpriteOptions();
+
+            for (int j = 0; j < spriteEntriesPerOption; j++)
+            {
+                option.spriteOptions.Add(transparentSprite);
+            }
+
+            branchSprites.Add(option);
+        }
+
+        // Replace current dialog with branch dialog
+        dialogLines = branchLines;
+        speakersPerLine = branchSpeakers;
+        characterSprites = branchSprites;
+        choices = new List<Choices>();
+
+        currentLineIndex = 0;
+
         DisplayLine();
     }
 }
