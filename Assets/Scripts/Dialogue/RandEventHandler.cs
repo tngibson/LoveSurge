@@ -13,7 +13,7 @@ public class RandEventHandler : MonoBehaviour
     [Header("Portrait Layout")]
     [SerializeField] private float screenPadding = 150f; // Distance from left/right edge
     [SerializeField] private float portraitSpacingPadding = 50f; // Extra spacing between portraits
-    [SerializeField] private float additionalCenterSpread = 600f;
+    [SerializeField] private float additionalCenterSpread = 350f;
 
     [SerializeField] private List<string> dialogLines = new List<string>();     // Holds the main dialog lines
     [SerializeField] private List<string> speakersPerLine = new List<string>(); // Holds the speaker names per line
@@ -83,6 +83,14 @@ public class RandEventHandler : MonoBehaviour
     [SerializeField] private CelciIntroChoiceData celciIntroDialog; // Shown if house is not hot
     [SerializeField] private CelciDate2ChoiceData celciDate2Dialog; // Shown if player threatens Celci
 
+    [Header("Main Event 1.5 Branch Options")]
+    // PT2
+    [SerializeField] private MainEvent1dot5BranchPt2Data mainEvent1dot5BranchPt2_Branch1True;
+    [SerializeField] private MainEvent1dot5BranchPt2Data mainEvent1dot5BranchPt2_Branch1False;
+    // PT3
+    [SerializeField] private MainEvent1dot5BranchPt3Data mainEvent1dot5BranchPt3_Branch1True;
+    [SerializeField] private MainEvent1dot5BranchPt3Data mainEvent1dot5BranchPt3_Branch1False;
+
     [SerializeField] private bool isNokiFinalDeepConvo = false;
     [SerializeField] private bool isCelciFinalDeepConvo = false;
     [SerializeField] private bool isLotteFinalDeepConvo = false;
@@ -120,7 +128,7 @@ public class RandEventHandler : MonoBehaviour
         }
 
         // If we have finished all Dates, we go to DemoOutro when we finish the Dialog
-        if ((isNokiFinalDeepConvo || isCelciFinalDeepConvo || isLotteFinalDeepConvo ) && (LocationManager.Instance.characterDates[0].allDatesDone && LocationManager.Instance.characterDates[1].allDatesDone && LocationManager.Instance.characterDates[2].allDatesDone))
+        if ((isNokiFinalDeepConvo || isCelciFinalDeepConvo || isLotteFinalDeepConvo) && (LocationManager.Instance.characterDates[0].allDatesDone && LocationManager.Instance.characterDates[1].allDatesDone && LocationManager.Instance.characterDates[2].allDatesDone))
         {
             mapButton.GetComponent<MapScript>().locName = "DemoOutro";
         }
@@ -226,11 +234,42 @@ public class RandEventHandler : MonoBehaviour
             }
         }
 
+        if (dialogLines[currentLineIndex] == "MAINEVENT1.5BRANCHPT2")
+        {
+            HandleMainEvent1dot5BranchPt2();
+            return;
+        }
+
+        if (dialogLines[currentLineIndex] == "MAINEVENT1.5BRANCHPT3")
+        {
+            HandleMainEvent1dot5BranchPt3();
+            return;
+        }
+
         if (currentLineIndex < dialogLines.Count)
         {
-            if (dialogLines[currentLineIndex] == "MAINEVENT1.5BRANCHPT1")
+            if (dialogLines[currentLineIndex] == "PLAYCREEPYSTART")
             {
-                HandleMainEvent1dot5BranchPt1();
+                if (MusicManager.Instance != null)
+                {
+                    MusicManager.Instance.StopMusic();
+                    MusicManager.Instance.PlayMusic(MusicManager.Instance.CreepyTheme);
+                }
+                NextLine();
+                return;
+            }
+        }
+
+        if (currentLineIndex < dialogLines.Count)
+        {
+            if (dialogLines[currentLineIndex] == "PLAYCREEPYEND")
+            {
+                if (MusicManager.Instance != null)
+                {
+                    MusicManager.Instance.StopMusic();
+                    MusicManager.Instance.PlayMusic(MusicManager.Instance.DeepConversation);
+                }
+                NextLine();
                 return;
             }
         }
@@ -242,12 +281,21 @@ public class RandEventHandler : MonoBehaviour
             return;
         }
 
+        if (dialogLines[currentLineIndex] == "PLAYCHIME")
+        {
+            AudioManager.instance.PlayOneShot(FMODEvents.instance.OmniverseJingle, this.transform.position);
+            NextLine();
+            return;
+        }
+
         if (dialogLines[currentLineIndex] == "BIGNOKIEND")
         {
             bigNoki.SetActive(false);
             NextLine();
             return;
         }
+
+
 
         // Set the speaker name based on the current line's speaker
         string currentSpeaker = speakersPerLine[currentLineIndex];
@@ -357,7 +405,7 @@ public class RandEventHandler : MonoBehaviour
         continueIndicator.SetActive(true);
 
         // Safely invoke animation stop
-        for (int i = 0; i <characterPortraits.Count; i++)
+        for (int i = 0; i < characterPortraits.Count; i++)
         {
             if (CharacterAnimator.HasAnimator(characterPortraits[i]))
             {
@@ -738,7 +786,7 @@ public class RandEventHandler : MonoBehaviour
     private void UpdateVoice(string speaker)
     {
         EventInstance voiceInstance = noVoice; // Default to player voice
-        
+
         // Determine the correct voice instance
         if (speaker == "You" || speaker == playerName)
         {
@@ -988,6 +1036,77 @@ public class RandEventHandler : MonoBehaviour
         DisplayLine();
     }
 
+    private void HandleMainEvent1dot5BranchPt2()
+    {
+        // Backup
+        originalDialogLines = new List<string>(dialogLines);
+        originalSpeakersPerLine = new List<string>(speakersPerLine);
+        originalSpriteOptions = new List<SpriteOptions>(characterSprites);
+        originalLineIndex = currentLineIndex + 1;
+        isChoiceDialog = true;
+
+        MainEvent1dot5BranchPt2Data selectedData;
+
+        if (Player.instance.MainEvent1dot5Branch1)
+            selectedData = mainEvent1dot5BranchPt2_Branch1True;
+        else
+            selectedData = mainEvent1dot5BranchPt2_Branch1False;
+
+        if (selectedData == null ||
+            selectedData.lines == null ||
+            selectedData.lines.Count == 0 ||
+            selectedData.speakers == null ||
+            selectedData.speakers.Count != selectedData.lines.Count)
+        {
+            Debug.LogWarning("MainEvent1dot5BranchPt2 data invalid or incomplete.");
+            currentLineIndex++;
+            DisplayLine();
+            return;
+        }
+
+        dialogLines = new List<string>(selectedData.lines);
+        speakersPerLine = new List<string>(selectedData.speakers);
+        characterSprites = new List<SpriteOptions>(selectedData.spriteOptions);
+
+        currentLineIndex = 0;
+        DisplayLine();
+    }
+
+    private void HandleMainEvent1dot5BranchPt3()
+    {
+        originalDialogLines = new List<string>(dialogLines);
+        originalSpeakersPerLine = new List<string>(speakersPerLine);
+        originalSpriteOptions = new List<SpriteOptions>(characterSprites);
+        originalLineIndex = currentLineIndex + 1;
+        isChoiceDialog = true;
+
+        MainEvent1dot5BranchPt3Data selectedData;
+
+        if (Player.instance.MainEvent1dot5Branch1)
+            selectedData = mainEvent1dot5BranchPt3_Branch1True;
+        else
+            selectedData = mainEvent1dot5BranchPt3_Branch1False;
+
+        if (selectedData == null ||
+            selectedData.lines == null ||
+            selectedData.lines.Count == 0 ||
+            selectedData.speakers == null ||
+            selectedData.speakers.Count != selectedData.lines.Count)
+        {
+            Debug.LogWarning("MainEvent1dot5BranchPt3 data invalid or incomplete.");
+            currentLineIndex++;
+            DisplayLine();
+            return;
+        }
+
+        dialogLines = new List<string>(selectedData.lines);
+        speakersPerLine = new List<string>(selectedData.speakers);
+        characterSprites = new List<SpriteOptions>(selectedData.spriteOptions);
+
+        currentLineIndex = 0;
+        DisplayLine();
+    }
+
     private void RecenterPortraits()
     {
         List<Image> visiblePortraits = new List<Image>();
@@ -1085,6 +1204,22 @@ public class CelciDate2ChoiceData
     public List<string> lines = new List<string>();                // Dialog lines for this event
     public List<string> speakers = new List<string>();             // Matching speakers
     public List<SpriteOptions> spriteOptions = new List<SpriteOptions>(); // Matching character sprites
+}
+
+[System.Serializable]
+public class MainEvent1dot5BranchPt2Data
+{
+    public List<string> lines = new List<string>();
+    public List<string> speakers = new List<string>();
+    public List<SpriteOptions> spriteOptions = new List<SpriteOptions>();
+}
+
+[System.Serializable]
+public class MainEvent1dot5BranchPt3Data
+{
+    public List<string> lines = new List<string>();
+    public List<string> speakers = new List<string>();
+    public List<SpriteOptions> spriteOptions = new List<SpriteOptions>();
 }
 
 [System.Serializable]
