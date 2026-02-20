@@ -380,6 +380,13 @@ public class LocationManager : MonoBehaviour, ISaveable
 
         AchievementComponent.AchievementSystem.UnlockAchievement(id);
     }
+
+    [System.Serializable]
+    private struct LocationSaveData
+    {
+        public List<CharacterSaveData> characters;
+    }
+
     [System.Serializable]
     private struct CharacterSaveData
     {
