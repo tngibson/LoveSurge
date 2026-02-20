@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<objects serializationModel="Studio.02.02.00">
+<objects serializationModel="Studio.02.03.00">
 	<object class="Event" id="{d06d1ddb-fbce-437c-93f8-874ac9907b50}">
 		<property name="name">
 			<value>nokiEmotionParams</value>
@@ -70,12 +70,12 @@
 	</object>
 	<object class="GroupTrack" id="{eb27f82b-dd5c-4141-8eb9-5e28ef92a7d4}">
 		<relationship name="modules">
-			<destination>{47f31c50-f036-4fa2-b9c6-c03a06280833}</destination>
-			<destination>{429a1082-7ad3-4709-8d65-8aa7f8ae5eff}</destination>
-			<destination>{4f19a3f2-f691-4f74-b546-d7fa49d4a64b}</destination>
 			<destination>{5145561f-d62a-40ab-9e76-4c7a86c48abd}</destination>
+			<destination>{47f31c50-f036-4fa2-b9c6-c03a06280833}</destination>
+			<destination>{4f19a3f2-f691-4f74-b546-d7fa49d4a64b}</destination>
 			<destination>{046088ab-b8e3-42f1-a566-5b390304cfce}</destination>
 			<destination>{0c36ccde-8927-4749-938d-7bad696b02dc}</destination>
+			<destination>{429a1082-7ad3-4709-8d65-8aa7f8ae5eff}</destination>
 		</relationship>
 		<relationship name="mixerGroup">
 			<destination>{3d9c3804-6bed-4820-85b2-98df0894b326}</destination>
@@ -89,12 +89,12 @@
 	</object>
 	<object class="ParameterProxy" id="{70ad07e0-f602-4c39-b86f-54adf7ef9445}">
 		<relationship name="modules">
-			<destination>{47f31c50-f036-4fa2-b9c6-c03a06280833}</destination>
-			<destination>{429a1082-7ad3-4709-8d65-8aa7f8ae5eff}</destination>
-			<destination>{4f19a3f2-f691-4f74-b546-d7fa49d4a64b}</destination>
 			<destination>{5145561f-d62a-40ab-9e76-4c7a86c48abd}</destination>
+			<destination>{47f31c50-f036-4fa2-b9c6-c03a06280833}</destination>
+			<destination>{4f19a3f2-f691-4f74-b546-d7fa49d4a64b}</destination>
 			<destination>{046088ab-b8e3-42f1-a566-5b390304cfce}</destination>
 			<destination>{0c36ccde-8927-4749-938d-7bad696b02dc}</destination>
+			<destination>{429a1082-7ad3-4709-8d65-8aa7f8ae5eff}</destination>
 		</relationship>
 		<relationship name="preset">
 			<destination>{a0c4bde2-1f6c-44c3-a208-da4246d71b46}</destination>
@@ -134,6 +134,14 @@
 			<destination>{952eef64-0847-48f8-9e71-ffe8612b5eef}</destination>
 		</relationship>
 	</object>
+	<object class="SingleSound" id="{5145561f-d62a-40ab-9e76-4c7a86c48abd}">
+		<property name="start">
+			<value>4</value>
+		</property>
+		<relationship name="audioFile">
+			<destination>{049eeeea-1b5c-4698-bf12-b686c57b8931}</destination>
+		</relationship>
+	</object>
 	<object class="SingleSound" id="{47f31c50-f036-4fa2-b9c6-c03a06280833}">
 		<property name="start">
 			<value>1</value>
@@ -142,28 +150,12 @@
 			<destination>{26e0c1fc-dace-459f-9582-744303e77eac}</destination>
 		</relationship>
 	</object>
-	<object class="SingleSound" id="{429a1082-7ad3-4709-8d65-8aa7f8ae5eff}">
-		<property name="start">
-			<value>2</value>
-		</property>
-		<relationship name="audioFile">
-			<destination>{f77eae19-e69a-4689-8ed8-1cab1bf74181}</destination>
-		</relationship>
-	</object>
 	<object class="SingleSound" id="{4f19a3f2-f691-4f74-b546-d7fa49d4a64b}">
 		<property name="start">
 			<value>3</value>
 		</property>
 		<relationship name="audioFile">
 			<destination>{6410bc50-64ed-4095-990d-fdc38032e9cf}</destination>
-		</relationship>
-	</object>
-	<object class="SingleSound" id="{5145561f-d62a-40ab-9e76-4c7a86c48abd}">
-		<property name="start">
-			<value>4</value>
-		</property>
-		<relationship name="audioFile">
-			<destination>{049eeeea-1b5c-4698-bf12-b686c57b8931}</destination>
 		</relationship>
 	</object>
 	<object class="SingleSound" id="{046088ab-b8e3-42f1-a566-5b390304cfce}">
@@ -180,6 +172,14 @@
 		</property>
 		<relationship name="audioFile">
 			<destination>{2a5c2c28-b204-4c04-b552-6b11b0153995}</destination>
+		</relationship>
+	</object>
+	<object class="SingleSound" id="{429a1082-7ad3-4709-8d65-8aa7f8ae5eff}">
+		<property name="start">
+			<value>2</value>
+		</property>
+		<relationship name="audioFile">
+			<destination>{f77eae19-e69a-4689-8ed8-1cab1bf74181}</destination>
 		</relationship>
 	</object>
 	<object class="EventMixerGroup" id="{3d9c3804-6bed-4820-85b2-98df0894b326}">

@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   choiceOptions:
   - Call the police!
-  - CHALLENGE HIM INTO A STREET FIGHT!
+  - CHALLENGE HIM TO A STREET FIGHT!
   - Take him on a date.
   - Give him a majestic unkempt wig to wear.
   choicePaths:
@@ -26,6 +26,16 @@ MonoBehaviour:
     - spriteOptions: []
     statTag: Cleverness
     statValue: 2
+    celciIntroDialog:
+      lines: []
+      speakers: []
+      spriteOptions: []
+    celciDate2Dialog:
+      lines: []
+      speakers: []
+      spriteOptions: []
+    backgrounds: []
+    nestedChoices: []
   - afterChoiceDialogLines:
     - Your Courage has increased by 2!
     afterChoiceSpeakersPerLine:
@@ -34,6 +44,16 @@ MonoBehaviour:
     - spriteOptions: []
     statTag: Courage
     statValue: 2
+    celciIntroDialog:
+      lines: []
+      speakers: []
+      spriteOptions: []
+    celciDate2Dialog:
+      lines: []
+      speakers: []
+      spriteOptions: []
+    backgrounds: []
+    nestedChoices: []
   - afterChoiceDialogLines:
     - Your Charisma has increased by 2!
     afterChoiceSpeakersPerLine:
@@ -42,6 +62,16 @@ MonoBehaviour:
     - spriteOptions: []
     statTag: Charisma
     statValue: 2
+    celciIntroDialog:
+      lines: []
+      speakers: []
+      spriteOptions: []
+    celciDate2Dialog:
+      lines: []
+      speakers: []
+      spriteOptions: []
+    backgrounds: []
+    nestedChoices: []
   - afterChoiceDialogLines:
     - Your Creativity has increased by 2!
     afterChoiceSpeakersPerLine:
@@ -50,3 +80,13 @@ MonoBehaviour:
     - spriteOptions: []
     statTag: Creativity
     statValue: 2
+    celciIntroDialog:
+      lines: []
+      speakers: []
+      spriteOptions: []
+    celciDate2Dialog:
+      lines: []
+      speakers: []
+      spriteOptions: []
+    backgrounds: []
+    nestedChoices: []

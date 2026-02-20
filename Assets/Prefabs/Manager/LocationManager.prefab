@@ -1,0 +1,80 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &8326077784524354730
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 5010645427622590973}
+  - component: {fileID: 1919318921919496377}
+  m_Layer: 0
+  m_Name: LocationManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &5010645427622590973
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8326077784524354730}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 2854.7466, y: 1831.4609, z: -1.8719242}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1919318921919496377
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8326077784524354730}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d7a9f8fabc5563144b4f716cf73e3074, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  characterDates:
+  - name: Noki
+    mapScript: {fileID: 0}
+    isPlayable: 1
+    dateStarted: 0
+    isFirstTime: 1
+    allDatesDone: 0
+    phaseEnteredDate: 3
+    currentDate: 0
+    date1Stage: 0
+    date2Stage: 0
+    date3Stage: 0
+  - name: Celci
+    mapScript: {fileID: 0}
+    isPlayable: 1
+    dateStarted: 0
+    isFirstTime: 1
+    allDatesDone: 0
+    phaseEnteredDate: 3
+    currentDate: 0
+    date1Stage: 0
+    date2Stage: 0
+    date3Stage: 0
+  - name: Lotte
+    mapScript: {fileID: 0}
+    isPlayable: 1
+    dateStarted: 0
+    isFirstTime: 1
+    allDatesDone: 0
+    phaseEnteredDate: 3
+    currentDate: 0
+    date1Stage: 0
+    date2Stage: 0
+    date3Stage: 0

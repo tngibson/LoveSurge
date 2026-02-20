@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.18028331, g: 0.2257133, b: 0.30692166, a: 1}
+  m_IndirectSpecularColor: {r: 0.18028378, g: 0.22571412, b: 0.30692285, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -566,7 +566,6 @@ GameObject:
   m_Component:
   - component: {fileID: 832744758}
   - component: {fileID: 832744757}
-  - component: {fileID: 832744759}
   m_Layer: 0
   m_Name: PlayerManager
   m_TagString: Untagged
@@ -591,11 +590,16 @@ MonoBehaviour:
   statOffsets: []
   cash: 0
   convoTiers: 01000000010000000100000001000000
+  collectedCards: []
+  collectedItems: []
+  lastCharacterCompleted: 0
   isHouseHot: 1
   isCelciThreatened: 0
   nokiRomanticRoute: 0
   celciRomanticRoute: 0
   lotteRomanticRoute: 0
+  MainEvent1dot5Branch1: 0
+  MainEvent1dot5Branch2: 0
 --- !u!4 &832744758
 Transform:
   m_ObjectHideFlags: 0
@@ -611,19 +615,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &832744759
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 832744756}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e0feb13ecec5da14398adf5ad11b4b82, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  dateAndTimeText: {fileID: 0}
 --- !u!1 &935380414
 GameObject:
   m_ObjectHideFlags: 0
@@ -770,7 +761,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bbe147c37e01d3847adb6df4c90f7c49, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  locName: DemoIntro
+  locName: MainStory1
   button: {fileID: 0}
   questionText: {fileID: 0}
   locationTextPanel: {fileID: 0}
@@ -1269,6 +1260,7 @@ RectTransform:
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0, y: 0}
 --- !u!1 &1340490100
+--- !u!1 &1484993150
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -1280,12 +1272,17 @@ GameObject:
   - component: {fileID: 1340490102}
   m_Layer: 0
   m_Name: SaveLoadManager
+  - component: {fileID: 1484993151}
+  - component: {fileID: 1484993152}
+  m_Layer: 0
+  m_Name: SteamManager
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
 --- !u!4 &1340490101
+--- !u!4 &1484993151
 Transform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -1295,12 +1292,17 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 2088.5745, y: 790.8016, z: -16.023594}
+  m_GameObject: {fileID: 1484993150}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 432.3558, y: 215.87483, z: 109.3443}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1340490102
+--- !u!114 &1484993152
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -1310,6 +1312,10 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: a5e5d9bbdfec5cf4281e5228e1fa8734, type: 3}
+  m_GameObject: {fileID: 1484993150}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ef4bffeda13d7a748973ff9204401c07, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1 &1488610019
@@ -1399,6 +1405,50 @@ MonoBehaviour:
     y: 0
     width: 1
     height: 1
+--- !u!1 &1548752230
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1548752231}
+  - component: {fileID: 1548752232}
+  m_Layer: 0
+  m_Name: AchievementManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1548752231
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1548752230}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 432.3558, y: 215.87483, z: 109.3443}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1548752232
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1548752230}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e9363a22da0357c45a36337d037dd322, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1554661418
 GameObject:
   m_ObjectHideFlags: 0
@@ -1946,8 +1996,8 @@ Camera:
   m_GameObject: {fileID: 2091183588}
   m_Enabled: 1
   serializedVersion: 2
-  m_ClearFlags: 1
-  m_BackGroundColor: {r: 0.19215687, g: 0.3019608, b: 0.4745098, a: 0}
+  m_ClearFlags: 2
+  m_BackGroundColor: {r: 0, g: 0, b: 0, a: 0}
   m_projectionMatrixMode: 1
   m_GateFitMode: 2
   m_FOVAxisMode: 0
@@ -2137,6 +2187,27 @@ MonoBehaviour:
       Data3: 1458965673
       Data4: -2046846014
     Path: event:/Music/dateTheme
+  deepConversation:
+    Guid:
+      Data1: -415721628
+      Data2: 1318390846
+      Data3: 960163739
+      Data4: -981010115
+    Path: event:/Music/deepConversation
+  futuristicMystery:
+    Guid:
+      Data1: 0
+      Data2: 0
+      Data3: 0
+      Data4: 0
+    Path: 
+  creepyTheme:
+    Guid:
+      Data1: 0
+      Data2: 0
+      Data3: 0
+      Data4: 0
+    Path: 
   canSetParameter: 0
   dateCharacter: 0
   dateProgress: 0
@@ -2875,6 +2946,13 @@ MonoBehaviour:
       Data3: 81959817
       Data4: -666999416
     Path: event:/SFX/UI/windowClose
+  <OmniverseJingle>k__BackingField:
+    Guid:
+      Data1: -444048998
+      Data2: 1138030171
+      Data3: -1519804757
+      Data4: 666562806
+    Path: event:/Locations/omniverseJingle
   <DiceRoll>k__BackingField:
     Guid:
       Data1: 225879873
@@ -2913,3 +2991,5 @@ SceneRoots:
   - {fileID: 2141404841}
   - {fileID: 534273365}
   - {fileID: 1340490101}
+  - {fileID: 1484993151}
+  - {fileID: 1548752231}

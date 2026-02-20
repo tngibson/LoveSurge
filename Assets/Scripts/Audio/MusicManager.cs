@@ -27,7 +27,9 @@ public class MusicManager : MonoBehaviour
         randomEventTheme,
         quietTheme,
         loveTheme,
-        dateMusic;
+        dateMusic,
+        deepConversation,
+        creepyTheme;
 
     [SerializeField] private bool canSetParameter = false;
         
@@ -53,6 +55,8 @@ public class MusicManager : MonoBehaviour
     public EventReference QuietTheme { get => quietTheme; }
     public EventReference DateMusic { get => dateMusic; }
     public EventReference LoveTheme { get => loveTheme; }
+    public EventReference CreepyTheme { get => creepyTheme; }
+    public EventReference DeepConversation { get => deepConversation; }
     public Coroutine TransitionCoroutine { get; private set; }
     #endregion
    
@@ -98,8 +102,8 @@ public class MusicManager : MonoBehaviour
             return true;
 
        string newMusicPath = GetEventName(newMusic);
-       Debug.Log(newMusicPath);
-       Debug.Log(ActiveMusicName);
+    //    Debug.Log(newMusicPath);
+    //    Debug.Log(ActiveMusicName);
        return !ActiveMusicName.Equals(newMusicPath, StringComparison.OrdinalIgnoreCase);
     }
     public void PlayMusic(EventReference music, bool fadeout = false, float fadeTime = 2f)
@@ -108,7 +112,7 @@ public class MusicManager : MonoBehaviour
 
         if (CurrentMusicInstance.isValid() && ActiveMusicName.Equals(newMusicPath, StringComparison.OrdinalIgnoreCase))
         {
-            Debug.Log($"MusicManager:" + newMusicPath + "is already playing, not starting again.");
+            //Debug.Log($"MusicManager:" + newMusicPath + "is already playing, not starting again.");
             return;
         }
 
@@ -134,12 +138,7 @@ public class MusicManager : MonoBehaviour
         {
             StartCoroutine(FadeMusicInOut(fadeTime, music));
         }
-
-        #if UNITY_EDITOR
-        //Instance.ActiveMusicName = GetMusicName(music);
-        #endif
-        print("MusicManager - Played Music: " + Instance.ActiveMusicName);
-        
+        //print("MusicManager - Played Music: " + Instance.ActiveMusicName);
     }
 
     public void StopMusic()
@@ -159,9 +158,9 @@ public class MusicManager : MonoBehaviour
     {
         try
         {
-            Debug.Log("Setting " + parameter + " to " + value);
+            //Debug.Log("Setting " + parameter + " to " + value);
             Instance.CurrentMusicInstance.setParameterByName(parameter, value);
-            Debug.Log(Instance.CurrentMusicInstance.getParameterByName(parameter, out float paraValue));
+            //Debug.Log(Instance.CurrentMusicInstance.getParameterByName(parameter, out float paraValue));
         }
         catch (System.Exception)
         {

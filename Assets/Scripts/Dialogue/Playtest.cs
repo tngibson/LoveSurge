@@ -62,12 +62,11 @@ public class Playtest : MonoBehaviour
     [SerializeField] public List<string> creSpeaker;
     [SerializeField] public List<Sprite> creSprites;
 
-    // Text for conversation output
-    protected string text = " ";
-    protected string playerText = " ";
-
     // Field for the date character so we can change their sprites
     [SerializeField] public Image dateCharacter;
+
+    private Vector3 originalPosition;
+    private Coroutine jumpCoroutine;
 
     //[SerializeField] private AudioSource dateTextSFX;
     //[SerializeField] private AudioSource playerTextSFX;
@@ -77,6 +76,7 @@ public class Playtest : MonoBehaviour
         //InitializeFileSources();
         ShowTopics();
         SetUIColor();
+        originalPosition = dateCharacter.transform.localPosition;
     }
 
     // Sets the conversation topics with power and topic names
@@ -113,41 +113,46 @@ public class Playtest : MonoBehaviour
     // Plays player text sounds
     public void ReadPlayerText()
     {
-        //playerVoice.start();
-        //if (isWriting)
-        //{
-            AudioManager.instance.PlayOneShot(FMODEvents.instance.PlayerVoice, this.transform.position);
-        //}
-        //Debug.Log("AHHHHHHHHHHHHH");
-        //playerVoice.stop(STOP_MODE.IMMEDIATE); 
-        //playerTextSFX.Play();
+        AudioManager.instance.PlayOneShot(FMODEvents.instance.PlayerVoice, this.transform.position);
     }
 
     // Changes the character pose and plays sounds
     public void ReadDateText(Sprite characterPose)
     {
-        // Change the sprite of the date character
-        dateCharacter.sprite = characterPose;
+        if (characterPose != null)
+        {
+            // Change the sprite of the date character
+            dateCharacter.sprite = characterPose;
+        }
 
         // Play date voice sound
-        AudioManager.instance.PlayOneShot(FMODEvents.instance.DateVoice, this.transform.position);
+        AudioManager.instance.PlayOneShot(FMODEvents.instance.DateVoice, transform.position);
 
         // Start the jump animation coroutine
-        StartCoroutine(JumpAnimation());
+        if (jumpCoroutine != null)
+        {
+            StopCoroutine(jumpCoroutine);
+            dateCharacter.transform.localPosition = originalPosition;
+            jumpCoroutine = StartCoroutine(JumpAnimation());
+        }
+        else
+        {
+            jumpCoroutine = StartCoroutine(JumpAnimation());
+        }
     }
 
     // Coroutine to handle the jump animation
     private IEnumerator JumpAnimation()
     {
-        // Store the original position of the dateCharacter
-        Vector3 originalPosition = dateCharacter.transform.localPosition;
-
         // Define the jump height and speed
         float jumpHeight = 50f;
         float jumpSpeed = 0.15f;
 
+        Debug.Log("Original Position: " + originalPosition);
+        
         // Move the character up
         Vector3 targetPosition = originalPosition + new Vector3(0, jumpHeight, 0);
+        Debug.Log("Target Position: " + targetPosition);
         float elapsedTime = 0f;
 
         // Animate the upward movement
@@ -175,6 +180,8 @@ public class Playtest : MonoBehaviour
         }
 
         // Ensure the position is set exactly to the original
+        Debug.Log("Setting to Original Position: " + originalPosition);
         dateCharacter.transform.localPosition = originalPosition;
+        Debug.Log("Returned to Original Position: " + dateCharacter.transform.localPosition);
     }
 }

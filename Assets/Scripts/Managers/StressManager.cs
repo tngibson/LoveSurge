@@ -45,17 +45,25 @@ public class StressManager : MonoBehaviour, ISaveable
     public float AddToCurrentStress(float amount = 0.1f)
     {
         // Necessary so that adding stress over 1 doesn't call the stress filled event multiple times
-        if (currentStressAmt >= 1f) return currentStressAmt;
+        if (currentStressAmt >= 1f)
+        {
+            AchievementComponent.AchievementSystem.UnlockAchievement(AchievementID.NEW_ACHIEVEMENT_1_4); // Unlocks the Achievement: Under Pressure
+            return currentStressAmt;
+        }
 
         currentStressAmt += amount;
-        print(currentStressAmt);
+        //print(currentStressAmt);
         stressChangedEvent?.Invoke(this, new StressEventArgs()
         {
             AmountChanged = amount,
             NewTotal = currentStressAmt
         });
 
-        if (currentStressAmt >= 1f) stressFilledEvent?.Invoke(this, EventArgs.Empty);
+        if (currentStressAmt >= 1f)
+        {
+            AchievementComponent.AchievementSystem.UnlockAchievement(AchievementID.NEW_ACHIEVEMENT_1_4); // Unlocks the Achievement: Under Pressure
+            stressFilledEvent?.Invoke(this, EventArgs.Empty);
+        }
         StressBar.instance?.UpdateStressBar();
         return currentStressAmt;
     }

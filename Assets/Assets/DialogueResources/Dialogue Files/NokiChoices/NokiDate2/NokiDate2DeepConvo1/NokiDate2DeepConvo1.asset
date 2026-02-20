@@ -13,24 +13,32 @@ MonoBehaviour:
   m_Name: NokiDate2DeepConvo1
   m_EditorClassIdentifier: 
   choiceOptions:
-  - "Tell me or I\u2019ll have to report your behavior to the company."
-  - "You don\u2019t have to tell me, but I am your friend."
+  - Reach out to her.
+  - Let her be.
   choicePaths:
   - afterChoiceDialogLines:
-    - "That\u2019s actually really horrible. If I believed you\u2019d have the spine
-      to do that I might actually be scared."
-    - "Ok, yeah, that\u2019s fair."
-    - "Just ask nicely next time. Don\u2019t be a jerk about it."
+    - You reach out for her, gently grabbing her hand.
+    - Noki? You alright?
+    - Noki jumps as she is startled, broken out of her trance. She glances over to
+      you, flashing you a smile.
+    - Her voice starts to grow softer, turning into a subtle whisper. She sounded
+      distant as she said this, but she quickly put a smile on her lips.
+    - "Of course, I\u2019m fine. No need to worry. Just glad I can be the..face of
+      the brand."
     afterChoiceSpeakersPerLine:
-    - Celci
     - 
-    - Celci
+    - You
+    - 
+    - 
+    - Noki
     afterChoiceSpriteOptions:
     - spriteOptions:
-      - {fileID: 21300000, guid: aa606251ffd050c478a601249716a481, type: 3}
-      - {fileID: 21300000, guid: aa606251ffd050c478a601249716a481, type: 3}
-      - {fileID: 21300000, guid: 70e99421608ac5543bf909affcbcbf7c, type: 3}
-    statTag: CelciDate2Choice1
+      - {fileID: 21300000, guid: 18e1c1d22c2cbaa47914600a13de0859, type: 3}
+      - {fileID: 21300000, guid: 18e1c1d22c2cbaa47914600a13de0859, type: 3}
+      - {fileID: 21300000, guid: 0e60cde7e0933604cb178e0903b3e4ba, type: 3}
+      - {fileID: 21300000, guid: 0e60cde7e0933604cb178e0903b3e4ba, type: 3}
+      - {fileID: 21300000, guid: 18e1c1d22c2cbaa47914600a13de0859, type: 3}
+    statTag: 
     statValue: 0
     celciIntroDialog:
       lines: []
@@ -43,31 +51,22 @@ MonoBehaviour:
     backgrounds: []
     nestedChoices: []
   - afterChoiceDialogLines:
-    - Celci huffs and stares off into the woods.
-    - "Are we friends? I don\u2019t remember saying anything about that."
-    - I really hope so.
-    - "Quickly whipping their head back to you, Celci stares at you like they\u2019re
-      trying to read your mind. To see if you\u2019re telling the truth, maybe."
-    - "Ok, I\u2019ll tell you..."
-    - Retreating into their collared shirt a little, Celci speaks again.
-    - "Please don\u2019t be mad."
+    - "Maybe she might need some time to herself? You decide to wait right up until
+      you hear a soft sigh escape Noki\u2019s lips..."
+    - "I wonder what it would be like not to be so\u2026perfect."
+    - Huh? What do you mean by that?
+    - "Don\u2019t worry about it."
     afterChoiceSpeakersPerLine:
     - 
-    - Celci
+    - Noki
     - You
-    - 
-    - Celci
-    - 
-    - Celci
+    - Noki
     afterChoiceSpriteOptions:
     - spriteOptions:
-      - {fileID: 21300000, guid: 1a9896ab5c18242478f77c4b08f279e6, type: 3}
-      - {fileID: 21300000, guid: 1a9896ab5c18242478f77c4b08f279e6, type: 3}
-      - {fileID: 21300000, guid: 1a9896ab5c18242478f77c4b08f279e6, type: 3}
-      - {fileID: 21300000, guid: 1a9896ab5c18242478f77c4b08f279e6, type: 3}
-      - {fileID: 21300000, guid: 1a9896ab5c18242478f77c4b08f279e6, type: 3}
-      - {fileID: 21300000, guid: 1a9896ab5c18242478f77c4b08f279e6, type: 3}
-      - {fileID: 21300000, guid: 1a9896ab5c18242478f77c4b08f279e6, type: 3}
+      - {fileID: 21300000, guid: 18e1c1d22c2cbaa47914600a13de0859, type: 3}
+      - {fileID: 21300000, guid: 1efff82e0a469464987b91e1e6ff298e, type: 3}
+      - {fileID: 21300000, guid: 1efff82e0a469464987b91e1e6ff298e, type: 3}
+      - {fileID: 21300000, guid: 18e1c1d22c2cbaa47914600a13de0859, type: 3}
     statTag: 
     statValue: 0
     celciIntroDialog:

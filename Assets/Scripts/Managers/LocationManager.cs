@@ -37,6 +37,8 @@ public class LocationManager : MonoBehaviour, ISaveable
         new DateData { name = "Lotte" }
     };
 
+    private bool mainEvent17Triggered = false;
+
     void Awake()
     {
         if (Instance == null)
@@ -126,6 +128,11 @@ public class LocationManager : MonoBehaviour, ISaveable
                         data.mapScript.locName = $"{data.name}Date1CardGame1";
                         break;
                     case Date1Stage.Done:
+                        UnlockFirstDateCharacterAchievement(data);
+                        UnlockDateAchievement(data, DateNum.Date1);
+                        
+                        CheckForMainEvent17();
+
                         data.currentDate = DateNum.Date2;
                         data.date2Stage = Date2Stage.Intro;
                         UpdateMapLocation(data);
@@ -145,6 +152,10 @@ public class LocationManager : MonoBehaviour, ISaveable
                         data.mapScript.locName = $"{data.name}Date2CardGame1";
                         break;
                     case Date2Stage.Done:
+                        UnlockDateAchievement(data, DateNum.Date2);
+
+                        CheckForMainEvent17();
+
                         data.currentDate = DateNum.Date3;
                         data.date3Stage = Date3Stage.Intro;
                         UpdateMapLocation(data);
@@ -164,6 +175,26 @@ public class LocationManager : MonoBehaviour, ISaveable
                         data.mapScript.locName = $"{data.name}Date3CardGame1";
                         break;
                     case Date3Stage.Done:
+                        UnlockDateAchievement(data, DateNum.Date3);
+
+                        switch (data.name)
+                        {
+                            case "Celci":
+                                Player.instance.lastCharacterCompleted = 1;
+                                break;
+
+                            case "Lotte":
+                                Player.instance.lastCharacterCompleted = 2;
+                                break;
+
+                            case "Noki":
+                                Player.instance.lastCharacterCompleted = 0;
+                                break;
+
+                            default:
+                                return;
+                        }
+
                         Debug.Log($"All {data.name} dates completed.");
                         data.allDatesDone = true;
 
@@ -204,7 +235,7 @@ public class LocationManager : MonoBehaviour, ISaveable
             if (map.name.Contains(data.name + "Date"))
             {
                 data.mapScript = map;
-                Debug.Log($"Bound {data.name} map button.");
+                //Debug.Log($"Bound {data.name} map button.");
                 UpdateMapLocation(data);
 
                 if (data.allDatesDone)
@@ -248,12 +279,107 @@ public class LocationManager : MonoBehaviour, ISaveable
         }
     }
 
-    [System.Serializable]
-    private struct LocationSaveData
+    private void CheckForMainEvent17()
     {
-        public List<CharacterSaveData> characters;
+        if (mainEvent17Triggered)
+            return;
+
+        bool allDate1Complete = true;
+        bool atLeastOneDate2Complete = false;
+
+        foreach (var data in characterDates)
+        {
+            // Date1 complete if we have progressed beyond it
+            if (data.currentDate == DateNum.Date1)
+                allDate1Complete = false;
+
+            // Date2 complete if we have progressed beyond it
+            if (data.currentDate == DateNum.Date3 ||
+               (data.currentDate == DateNum.Date2 && data.date2Stage == Date2Stage.Done))
+            {
+                atLeastOneDate2Complete = true;
+            }
+        }
+
+        if (allDate1Complete && atLeastOneDate2Complete)
+        {
+            mainEvent17Triggered = true;
+            CalendarManager.instance.NotifyMainEvent17Completed();
+            SceneManager.LoadScene("MainEvent1.7");
+        }
     }
 
+    public bool HasAtLeastOneDate2Completed()
+    {
+        foreach (var data in characterDates)
+        {
+            if (data.currentDate == DateNum.Date3 ||
+               (data.currentDate == DateNum.Date2 && data.date2Stage == Date2Stage.Done))
+            {
+                return true;
+            }
+        }
+
+        return false;
+    }
+
+    private void UnlockFirstDateCharacterAchievement(DateData data)
+    {
+        if (AchievementComponent.AchievementSystem == null)
+            return;
+
+        AchievementID id;
+
+        switch (data.name)
+        {
+            case "Celci":
+                id = AchievementID.NEW_ACHIEVEMENT_1_1;
+                break;
+
+            case "Lotte":
+                id = AchievementID.NEW_ACHIEVEMENT_1_2;
+                break;
+
+            case "Noki":
+                id = AchievementID.NEW_ACHIEVEMENT_1_3;
+                break;
+
+            default:
+                return;
+        }
+
+        AchievementComponent.AchievementSystem.UnlockAchievement(id);
+    }
+
+    private void UnlockDateAchievement(DateData data, DateNum completedDate)
+    {
+        if (AchievementComponent.AchievementSystem == null)
+            return;
+
+        int baseIndex = 0;
+
+        switch (data.name)
+        {
+            case "Noki":
+                baseIndex = 9;
+                break;
+            case "Celci":
+                baseIndex = 12;
+                break;
+            case "Lotte":
+                baseIndex = 15;
+                break;
+            default:
+                return;
+        }
+
+        int dateOffset = (int)completedDate; // Date1=0, Date2=1, Date3=2
+        int achievementIndex = baseIndex + dateOffset;
+
+        AchievementID id = (AchievementID)achievementIndex;
+
+        AchievementComponent.AchievementSystem.UnlockAchievement(id);
+    }
     [System.Serializable]
     private struct CharacterSaveData
     {

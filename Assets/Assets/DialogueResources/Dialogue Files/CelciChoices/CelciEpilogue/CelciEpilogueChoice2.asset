@@ -1,0 +1,89 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2de807345bdd09646bb1f755bf64c760, type: 3}
+  m_Name: CelciEpilogueChoice2
+  m_EditorClassIdentifier: 
+  choiceOptions:
+  - A deep, dark hole. Probably full of worms.
+  - "This could be it? I suppose I wouldn\u2019t know?"
+  choicePaths:
+  - afterChoiceDialogLines:
+    - Mmm. Sounds cozy.
+    - Celci jabs you lightly in the shoulder. They're smiling. It seems like their
+      shoulders loosen slightly.
+    - No thanks. The only worm I can tolerate is you.
+    - "I\u2019m not nearly wiggly enough to be a worm."
+    afterChoiceSpeakersPerLine:
+    - Celci
+    - Celci
+    - Celci
+    - You
+    afterChoiceSpriteOptions:
+    - spriteOptions:
+      - {fileID: 21300000, guid: c40c192f3a2bf9e4d8d5a166fd087309, type: 3}
+      - {fileID: 21300000, guid: c40c192f3a2bf9e4d8d5a166fd087309, type: 3}
+      - {fileID: 21300000, guid: c40c192f3a2bf9e4d8d5a166fd087309, type: 3}
+      - {fileID: 21300000, guid: aa606251ffd050c478a601249716a481, type: 3}
+    - spriteOptions:
+      - {fileID: 21300000, guid: 602edf163ccd2364b81a4cf9bbd9862f, type: 3}
+      - {fileID: 21300000, guid: 602edf163ccd2364b81a4cf9bbd9862f, type: 3}
+      - {fileID: 21300000, guid: 602edf163ccd2364b81a4cf9bbd9862f, type: 3}
+      - {fileID: 21300000, guid: 602edf163ccd2364b81a4cf9bbd9862f, type: 3}
+    - spriteOptions:
+      - {fileID: 21300000, guid: 602edf163ccd2364b81a4cf9bbd9862f, type: 3}
+      - {fileID: 21300000, guid: 602edf163ccd2364b81a4cf9bbd9862f, type: 3}
+      - {fileID: 21300000, guid: 602edf163ccd2364b81a4cf9bbd9862f, type: 3}
+      - {fileID: 21300000, guid: 602edf163ccd2364b81a4cf9bbd9862f, type: 3}
+    - spriteOptions:
+      - {fileID: 21300000, guid: 602edf163ccd2364b81a4cf9bbd9862f, type: 3}
+      - {fileID: 21300000, guid: 602edf163ccd2364b81a4cf9bbd9862f, type: 3}
+      - {fileID: 21300000, guid: 602edf163ccd2364b81a4cf9bbd9862f, type: 3}
+      - {fileID: 21300000, guid: 602edf163ccd2364b81a4cf9bbd9862f, type: 3}
+    statTag: 
+    statValue: 0
+    celciIntroDialog:
+      lines: []
+      speakers: []
+      spriteOptions: []
+    celciDate2Dialog:
+      lines: []
+      speakers: []
+      spriteOptions: []
+    backgrounds: []
+    nestedChoices: []
+  - afterChoiceDialogLines:
+    - "Yeah... I guess it\u2019s a little different than what I\u2019m used to."
+    afterChoiceSpeakersPerLine:
+    - Celci
+    afterChoiceSpriteOptions:
+    - spriteOptions:
+      - {fileID: 21300000, guid: aa606251ffd050c478a601249716a481, type: 3}
+    - spriteOptions:
+      - {fileID: 21300000, guid: 602edf163ccd2364b81a4cf9bbd9862f, type: 3}
+    - spriteOptions:
+      - {fileID: 21300000, guid: 602edf163ccd2364b81a4cf9bbd9862f, type: 3}
+    - spriteOptions:
+      - {fileID: 21300000, guid: 602edf163ccd2364b81a4cf9bbd9862f, type: 3}
+    - spriteOptions:
+      - {fileID: 21300000, guid: 602edf163ccd2364b81a4cf9bbd9862f, type: 3}
+    statTag: 
+    statValue: 0
+    celciIntroDialog:
+      lines: []
+      speakers: []
+      spriteOptions: []
+    celciDate2Dialog:
+      lines: []
+      speakers: []
+      spriteOptions: []
+    backgrounds: []
+    nestedChoices: []

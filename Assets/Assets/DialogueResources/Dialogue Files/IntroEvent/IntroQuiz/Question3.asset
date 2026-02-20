@@ -14,8 +14,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   choiceOptions:
   - A cat in a box.
-  - "A latte art of the foam it\u2019s made in."
-  - A bear holding a chainsaw that is chasing people!
+  - A second latte (with art).
+  - Two bears high fiving!
   - A very detailed map of The United States.
   choicePaths:
   - afterChoiceDialogLines:
@@ -26,6 +26,16 @@ MonoBehaviour:
     - spriteOptions: []
     statTag: Charisma
     statValue: 2
+    celciIntroDialog:
+      lines: []
+      speakers: []
+      spriteOptions: []
+    celciDate2Dialog:
+      lines: []
+      speakers: []
+      spriteOptions: []
+    backgrounds: []
+    nestedChoices: []
   - afterChoiceDialogLines:
     - Your Cleverness has increased by 2!
     afterChoiceSpeakersPerLine:
@@ -34,6 +44,16 @@ MonoBehaviour:
     - spriteOptions: []
     statTag: Cleverness
     statValue: 2
+    celciIntroDialog:
+      lines: []
+      speakers: []
+      spriteOptions: []
+    celciDate2Dialog:
+      lines: []
+      speakers: []
+      spriteOptions: []
+    backgrounds: []
+    nestedChoices: []
   - afterChoiceDialogLines:
     - Your Courage has increased by 2!
     afterChoiceSpeakersPerLine:
@@ -42,6 +62,16 @@ MonoBehaviour:
     - spriteOptions: []
     statTag: Courage
     statValue: 2
+    celciIntroDialog:
+      lines: []
+      speakers: []
+      spriteOptions: []
+    celciDate2Dialog:
+      lines: []
+      speakers: []
+      spriteOptions: []
+    backgrounds: []
+    nestedChoices: []
   - afterChoiceDialogLines:
     - Your Creativity has increased by 2!
     afterChoiceSpeakersPerLine:
@@ -50,3 +80,13 @@ MonoBehaviour:
     - spriteOptions: []
     statTag: Creativity
     statValue: 2
+    celciIntroDialog:
+      lines: []
+      speakers: []
+      spriteOptions: []
+    celciDate2Dialog:
+      lines: []
+      speakers: []
+      spriteOptions: []
+    backgrounds: []
+    nestedChoices: []

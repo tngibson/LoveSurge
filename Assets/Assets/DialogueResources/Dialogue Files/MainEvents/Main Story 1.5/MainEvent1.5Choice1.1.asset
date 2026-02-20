@@ -1,0 +1,104 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2de807345bdd09646bb1f755bf64c760, type: 3}
+  m_Name: MainEvent1.5Choice1.1
+  m_EditorClassIdentifier: 
+  choiceOptions:
+  - Lie to your best friend.
+  - Be honest.
+  choicePaths:
+  - afterChoiceDialogLines:
+    - Y-yeah man! And I noted that on my test results. Must have lucked out!
+    - "Miguel\u2019s eyes burrow into your skull. You feel a bead of sweat drip down
+      your back."
+    - Oh really?
+    - "If they were feeling things, I didn\u2019t notice! "
+    - "B-but even if I didn\u2019t! There would be nothing to report because they\u2019re
+      just normal..."
+    - Device...assistant...guys.
+    - 'This is rough, even being the liar of the conversation. This is why you could
+      never work as a spy. '
+    - "We\u2019re in this together. C\u2019mon."
+    - Just be honest.
+    - You could call it sentience, I guess.
+    - Hm...Just like I was worried about.
+    afterChoiceSpeakersPerLine:
+    - You
+    - 
+    - Miguel
+    - You
+    - You
+    - You
+    - 
+    - Miguel
+    - Miguel
+    - You
+    - Miguel
+    afterChoiceSpriteOptions:
+    - spriteOptions:
+      - {fileID: 21300000, guid: 4b7681c045f002e48b28145e94315c75, type: 3}
+      - {fileID: 21300000, guid: a3252816a49c415409db0f9ffd8c3b1a, type: 3}
+      - {fileID: 21300000, guid: a3252816a49c415409db0f9ffd8c3b1a, type: 3}
+      - {fileID: 21300000, guid: a3252816a49c415409db0f9ffd8c3b1a, type: 3}
+      - {fileID: 21300000, guid: a3252816a49c415409db0f9ffd8c3b1a, type: 3}
+      - {fileID: 21300000, guid: a3252816a49c415409db0f9ffd8c3b1a, type: 3}
+      - {fileID: 21300000, guid: a3252816a49c415409db0f9ffd8c3b1a, type: 3}
+      - {fileID: 21300000, guid: 1b7388566562afb4fb8f5a7739ec75a1, type: 3}
+      - {fileID: 21300000, guid: 1b7388566562afb4fb8f5a7739ec75a1, type: 3}
+      - {fileID: 21300000, guid: 1b7388566562afb4fb8f5a7739ec75a1, type: 3}
+      - {fileID: 21300000, guid: 1b7388566562afb4fb8f5a7739ec75a1, type: 3}
+    statTag: 
+    statValue: 0
+    celciIntroDialog:
+      lines: []
+      speakers: []
+      spriteOptions: []
+    celciDate2Dialog:
+      lines: []
+      speakers: []
+      spriteOptions: []
+    backgrounds: []
+    nestedChoices: []
+  - afterChoiceDialogLines:
+    - Nah, sorry I was just messing with you.
+    - Miguel gives you...the squint....
+    - 'You know the one. '
+    - Not the time to joke right now dude!
+    - You could call it sentience, I guess.
+    - Hm...Just like I was worried about.
+    afterChoiceSpeakersPerLine:
+    - You
+    - 
+    - 
+    - Miguel
+    - You
+    - Miguel
+    afterChoiceSpriteOptions:
+    - spriteOptions:
+      - {fileID: 21300000, guid: c11f813b5a0a46449a198d75c5a29153, type: 3}
+      - {fileID: 21300000, guid: a3252816a49c415409db0f9ffd8c3b1a, type: 3}
+      - {fileID: 21300000, guid: a3252816a49c415409db0f9ffd8c3b1a, type: 3}
+      - {fileID: 21300000, guid: 1b7388566562afb4fb8f5a7739ec75a1, type: 3}
+      - {fileID: 21300000, guid: 1b7388566562afb4fb8f5a7739ec75a1, type: 3}
+      - {fileID: 21300000, guid: 1b7388566562afb4fb8f5a7739ec75a1, type: 3}
+    statTag: 
+    statValue: 0
+    celciIntroDialog:
+      lines: []
+      speakers: []
+      spriteOptions: []
+    celciDate2Dialog:
+      lines: []
+      speakers: []
+      spriteOptions: []
+    backgrounds: []
+    nestedChoices: []

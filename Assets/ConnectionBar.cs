@@ -7,7 +7,7 @@ public class ConnectionBar : MonoBehaviour
     public static ConnectionBar instance;
 
     [Header("Connection Settings")]
-    private int currentCharacterIndex = 0;
+    private int currentCharacterIndex = 0; // which character date this belongs to | 0 - Noki, 1 - Celci, 2 - Lotte
     public float currentConnectionAmt;
 
     [Header("Bar Segments")]
@@ -34,6 +34,16 @@ public class ConnectionBar : MonoBehaviour
         // Initialize connection amount from manager
         currentConnectionAmt = ConnectionManager.instance.connectionList[currentCharacterIndex];
         UpdateConnectionBar();
+    }
+
+    public void SetCharacterIndex(int characterIndex)
+    {
+        currentCharacterIndex = characterIndex;
+    }
+
+    public int GetCharacterIndex()
+    {
+        return currentCharacterIndex;
     }
 
     public void UpdateCurrentConnectionAmt()
@@ -64,6 +74,10 @@ public class ConnectionBar : MonoBehaviour
         if (currentConnectionAmt >= 3)
             middleRightBar.SetActive(true);
         if (currentConnectionAmt >= 4)
+        {
+            
+            
             rightBar.SetActive(true);
+        }
     }
 }

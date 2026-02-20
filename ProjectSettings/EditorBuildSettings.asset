@@ -12,11 +12,14 @@ EditorBuildSettings:
     path: Assets/Scenes/TitleScreen.unity
     guid: a4ff8230c4c4e67409bc0180a2044afd
   - enabled: 1
-    path: Assets/Scenes/DemoIntro.unity
+    path: Assets/Scenes/Events/MainEvents/MainStory1.unity
     guid: ba0ebc107d16785419b96959b0df53c7
   - enabled: 0
-    path: Assets/Scenes/IntroQuiz.unity
+    path: Assets/Scenes/UnusedScenes/IntroQuiz.unity
     guid: e0206553fc12f184a8fc5ece4eceed73
+  - enabled: 1
+    path: Assets/Scenes/TutorialCardGame.unity
+    guid: 71f87612dcd5a9e4e8923a4025ed493f
   - enabled: 1
     path: Assets/Scenes/Map.unity
     guid: f8b5e09c84aa2ed499b0acc70e7cfebd
@@ -78,6 +81,12 @@ EditorBuildSettings:
     path: Assets/Scenes/NokiDates/Date3/NokiDate3DeepConvo3.unity
     guid: 3aac21c6576829a4987e9ea9890620bb
   - enabled: 1
+    path: Assets/Scenes/Epilogues/Noki/NokiEpiloguePlatonic.unity
+    guid: 5547c809637df4f4492db6967f89ee8d
+  - enabled: 1
+    path: Assets/Scenes/Epilogues/Noki/NokiEpilogueRomantic.unity
+    guid: c452b7d26e604804090bc771c9df4b2d
+  - enabled: 1
     path: Assets/Scenes/CelciDates/Date1/CelciDate1CardGame1.unity
     guid: 3f3e4baeac883d2489e8b4cfaac4b3f4
   - enabled: 1
@@ -131,6 +140,12 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/CelciDates/Date3/CelciDate3SkillCheck3.unity
     guid: 95201032a5305d84ea00f723ae3de126
+  - enabled: 1
+    path: Assets/Scenes/Epilogues/Celci/CelciEpiloguePlatonic.unity
+    guid: 11df1b67998ee954e902c17e2b3754a4
+  - enabled: 1
+    path: Assets/Scenes/Epilogues/Celci/CelciEpilogueRomantic.unity
+    guid: 0799a66136b915c40bd7de60ab2b6c9c
   - enabled: 1
     path: Assets/Scenes/LotteDates/Date1/LotteDate1CardGame1.unity
     guid: 447ea50824a7ba34b80d2f84c2794a9a
@@ -189,6 +204,12 @@ EditorBuildSettings:
     path: Assets/Scenes/Events/LotteEvents/BeforeDate3/LotteDate2Outro.unity
     guid: 5b82811de7e80834e85e64d32b3829b0
   - enabled: 1
+    path: Assets/Scenes/Epilogues/Lotte/LotteEpiloguePlatonic.unity
+    guid: 5a196a66b9dcbab488983b73a25c71af
+  - enabled: 1
+    path: Assets/Scenes/Epilogues/Lotte/LotteEpilogueRomantic.unity
+    guid: 824283a2a28f7ee4c92c76cea0dcfc94
+  - enabled: 1
     path: Assets/Scenes/LocationScenes/ArtBuilding.unity
     guid: 3e016be014a08c84a96f9dd13714d897
   - enabled: 1
@@ -208,10 +229,43 @@ EditorBuildSettings:
     guid: 71dcab10b2082d24cafce207a77fc9d2
   - enabled: 1
     path: Assets/Scenes/LocationScenes/Shop.unity
-    guid: 71d200ec3344c504ca6267dd2eba0f98
+    guid: fb4323bb682b79d4491e9943de50f2b9
   - enabled: 1
     path: Assets/Scenes/DemoOutro.unity
     guid: 0b9dbe76a9c74494c9ec852fcac36a93
+  - enabled: 1
+    path: Assets/Scenes/TutorialCardGame.unity
+    guid: 71f87612dcd5a9e4e8923a4025ed493f
+  - enabled: 1
+    path: Assets/Scenes/NokiDate1CardGame-Curio.unity
+    guid: ac66f8aacb09aaf42bc3c59f85fdce6b
+  - enabled: 1
+    path: Assets/Scenes/Events/MainEvents/MainStory1.3.unity
+    guid: 963407cfae9f15c418e87716afb8c020
+  - enabled: 1
+    path: Assets/Scenes/Events/MainEvents/MainStory1.5.unity
+    guid: 60f5aee1220b92f44b651ce208e09b85
+  - enabled: 1
+    path: Assets/Scenes/Events/MainEvents/MainStory1.7.unity
+    guid: a030803d96576d54e8b8288f4bb660a0
+  - enabled: 1
+    path: Assets/Scenes/Events/MainEvents/MainStory2.unity
+    guid: 9e57e6dd8a115dd4eb018a1d0f994ce4
+  - enabled: 1
+    path: Assets/Scenes/Events/MainEvents/MainStory2.1.unity
+    guid: 16b5197a276d8ba4397e716cd8cfd752
+  - enabled: 1
+    path: Assets/Scenes/Events/MainEvents/MainStory2.3.unity
+    guid: 38b38708ea97d8c479b7a8ce8bbbecea
+  - enabled: 1
+    path: Assets/Scenes/Events/MainEvents/MainStory2.7.unity
+    guid: 029a997c11218c94f8b966d4041ef4d5
+  - enabled: 1
+    path: Assets/Scenes/Events/MainEvents/MainStory2.9.unity
+    guid: 86d281196a6561f40882e6f2957f7429
+  - enabled: 1
+    path: Assets/Scenes/Events/MainEvents/MainStory3.unity
+    guid: 93fd72527702e624595163ca821b1a33
   m_configObjects:
     com.unity.input.settings: {fileID: 11400000, guid: 0cf46c1cd5946b641b42779a5e5d815f,
       type: 2}

@@ -1984,6 +1984,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7e75707f22957634d99193ed7906f313, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  screenPadding: 150
+  portraitSpacingPadding: 50
+  additionalCenterSpread: 350
   dialogLines:
   - Lotte is doing the dishes in the kitchen, bags under her eyes as she lets out
     a soft yawn. Her movements are sluggish as she sets another plate down on the
@@ -2156,11 +2159,27 @@ MonoBehaviour:
   - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}
+  backgrounds: []
+  background: {fileID: 0}
+  backgroundFadeDuration: 1
   continueIndicator: {fileID: 5020257146438548585}
   cgImage: {fileID: 0}
   uiContainer: {fileID: 0}
   uiCanvasGroup: {fileID: 0}
   cgFadeDuration: 0.5
+  celciIntroDialog:
+    lines: []
+    speakers: []
+    spriteOptions: []
+  celciDate2Dialog:
+    lines: []
+    speakers: []
+    spriteOptions: []
+  isNokiFinalDeepConvo: 0
+  isCelciFinalDeepConvo: 0
+  isLotteFinalDeepConvo: 0
+  transparentSprite: {fileID: 21300000, guid: 602edf163ccd2364b81a4cf9bbd9862f, type: 3}
+  bigNoki: {fileID: 0}
 --- !u!225 &3147556016222178123
 CanvasGroup:
   m_ObjectHideFlags: 0

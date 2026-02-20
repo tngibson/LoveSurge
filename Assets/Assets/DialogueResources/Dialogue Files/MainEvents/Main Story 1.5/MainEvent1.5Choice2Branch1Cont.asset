@@ -1,0 +1,143 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2de807345bdd09646bb1f755bf64c760, type: 3}
+  m_Name: MainEvent1.5Choice2Branch1Cont
+  m_EditorClassIdentifier: 
+  choiceOptions:
+  - "On second thought...let\u2019s not."
+  - I would like to keep my job!
+  choicePaths:
+  - afterChoiceDialogLines:
+    - "It\u2019s the right thing to do."
+    - I know...I know...
+    - "A realization flashes across Miguel\u2019s face.  "
+    - "Back then...used the P word, too. That\u2019s heavy."
+    - 'What P word. '
+    - People. You called them People...Sentient People.
+    - 'Well... yeah. I guess I did. '
+    - They act like thinking, feeling...well...people.
+    - 'The two of you chat for a bit longer. You tell Miguel how nice of a time you
+      had getting to know everyone since the program started. By the end you both
+      feel a little better. '
+    - "There\u2019s still a nagging feeling like something could go wrong...and maybe
+      it will. "
+    - "You hope you\u2019ll be ready if it happens. "
+    afterChoiceSpeakersPerLine:
+    - You
+    - Miguel
+    - 
+    - Miguel
+    - You
+    - Miguel
+    - You
+    - You
+    - 
+    - 
+    - 
+    afterChoiceSpriteOptions:
+    - spriteOptions:
+      - {fileID: 21300000, guid: 1b7388566562afb4fb8f5a7739ec75a1, type: 3}
+      - {fileID: 21300000, guid: 1b7388566562afb4fb8f5a7739ec75a1, type: 3}
+      - {fileID: 21300000, guid: 1b7388566562afb4fb8f5a7739ec75a1, type: 3}
+      - {fileID: 21300000, guid: 1b7388566562afb4fb8f5a7739ec75a1, type: 3}
+      - {fileID: 21300000, guid: 1b7388566562afb4fb8f5a7739ec75a1, type: 3}
+      - {fileID: 21300000, guid: a3252816a49c415409db0f9ffd8c3b1a, type: 3}
+      - {fileID: 21300000, guid: a3252816a49c415409db0f9ffd8c3b1a, type: 3}
+      - {fileID: 21300000, guid: a3252816a49c415409db0f9ffd8c3b1a, type: 3}
+      - {fileID: 21300000, guid: a3252816a49c415409db0f9ffd8c3b1a, type: 3}
+      - {fileID: 21300000, guid: a3252816a49c415409db0f9ffd8c3b1a, type: 3}
+      - {fileID: 21300000, guid: a3252816a49c415409db0f9ffd8c3b1a, type: 3}
+    statTag: MainEvent1.5Branch2
+    statValue: 0
+    celciIntroDialog:
+      lines: []
+      speakers: []
+      spriteOptions: []
+    celciDate2Dialog:
+      lines: []
+      speakers: []
+      spriteOptions: []
+    backgrounds: []
+    nestedChoices: []
+  - afterChoiceDialogLines:
+    - Grahh! Me too! Just considering the possibilities!
+    - "Let\u2019s just...send them an email I guess."
+    - "Yeah...let\u2019s do it."
+    - Your new friends will probably be fine. This is what you were hired to monitor.
+      If anything it might lead to some technical breakthroughs!
+    - Yeah! For sure!
+    - CHOICE
+    - The two of you spend an hour or so writing and rewriting your email, trying
+      to recount the event in a way that could be taken seriously.
+    - "It\u2019s tough. A lightning strike, indoors, hitting all three of your newly
+      acquired devices at the same time, on a day with no rain."
+    - How impossible of a coincidence.
+    - "After sending it to their 24-hour intern support email, you expect an email
+      back pretty quickly...but they don\u2019t get back to you tonight. "
+    - Waiting sucks.
+    - 'You decide to keep chatting and getting to know these new...beings that live
+      with you, at least until the company tells you to stop. '
+    - "They\u2019re nice! You like them!"
+    afterChoiceSpeakersPerLine:
+    - Miguel
+    - Miguel
+    - You
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    afterChoiceSpriteOptions:
+    - spriteOptions:
+      - {fileID: 21300000, guid: a3252816a49c415409db0f9ffd8c3b1a, type: 3}
+      - {fileID: 21300000, guid: 1b7388566562afb4fb8f5a7739ec75a1, type: 3}
+      - {fileID: 21300000, guid: 1b7388566562afb4fb8f5a7739ec75a1, type: 3}
+      - {fileID: 21300000, guid: 1b7388566562afb4fb8f5a7739ec75a1, type: 3}
+      - {fileID: 21300000, guid: 1b7388566562afb4fb8f5a7739ec75a1, type: 3}
+      - {fileID: 21300000, guid: 1b7388566562afb4fb8f5a7739ec75a1, type: 3}
+      - {fileID: 21300000, guid: 1b7388566562afb4fb8f5a7739ec75a1, type: 3}
+      - {fileID: 21300000, guid: 1b7388566562afb4fb8f5a7739ec75a1, type: 3}
+      - {fileID: 21300000, guid: 1b7388566562afb4fb8f5a7739ec75a1, type: 3}
+      - {fileID: 21300000, guid: 1b7388566562afb4fb8f5a7739ec75a1, type: 3}
+      - {fileID: 21300000, guid: 1b7388566562afb4fb8f5a7739ec75a1, type: 3}
+      - {fileID: 21300000, guid: 1b7388566562afb4fb8f5a7739ec75a1, type: 3}
+      - {fileID: 21300000, guid: 1b7388566562afb4fb8f5a7739ec75a1, type: 3}
+    statTag: MainEvent1.5Branch1
+    statValue: 0
+    celciIntroDialog:
+      lines: []
+      speakers: []
+      spriteOptions: []
+    celciDate2Dialog:
+      lines: []
+      speakers: []
+      spriteOptions: []
+    backgrounds: []
+    nestedChoices:
+    - {fileID: 0}
+    - {fileID: 0}
+    - {fileID: 0}
+    - {fileID: 0}
+    - {fileID: 0}
+    - {fileID: 11400000, guid: 0d2cf6808b6607a4db4a32c19dac1e24, type: 2}
+    - {fileID: 0}
+    - {fileID: 0}
+    - {fileID: 0}
+    - {fileID: 0}
+    - {fileID: 0}
+    - {fileID: 0}
+    - {fileID: 0}

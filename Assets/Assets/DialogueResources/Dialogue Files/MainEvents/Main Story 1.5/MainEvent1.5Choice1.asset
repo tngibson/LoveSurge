@@ -1,0 +1,107 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2de807345bdd09646bb1f755bf64c760, type: 3}
+  m_Name: MainEvent1.5Choice1
+  m_EditorClassIdentifier: 
+  choiceOptions:
+  - Acting normally. Totally. (lie)
+  - "They\u2019re definitely not normal programs anymore."
+  - I feel myself becoming attracted to them.
+  choicePaths:
+  - afterChoiceDialogLines:
+    - ...
+    - Really?
+    - CHOICE
+    afterChoiceSpeakersPerLine:
+    - Miguel
+    - Miguel
+    - 
+    afterChoiceSpriteOptions:
+    - spriteOptions:
+      - {fileID: 21300000, guid: 4b7681c045f002e48b28145e94315c75, type: 3}
+      - {fileID: 21300000, guid: c11f813b5a0a46449a198d75c5a29153, type: 3}
+      - {fileID: 21300000, guid: c11f813b5a0a46449a198d75c5a29153, type: 3}
+    statTag: 
+    statValue: 0
+    celciIntroDialog:
+      lines: []
+      speakers: []
+      spriteOptions: []
+    celciDate2Dialog:
+      lines: []
+      speakers: []
+      spriteOptions: []
+    backgrounds: []
+    nestedChoices:
+    - {fileID: 0}
+    - {fileID: 0}
+    - {fileID: 11400000, guid: a3aba8a6d26d1c546a17e1e0409636f2, type: 2}
+  - afterChoiceDialogLines:
+    - You could call it sentience, I guess.
+    - Hm...Just like I was worried about.
+    afterChoiceSpeakersPerLine:
+    - You
+    - Miguel
+    afterChoiceSpriteOptions:
+    - spriteOptions:
+      - {fileID: 21300000, guid: 4b7681c045f002e48b28145e94315c75, type: 3}
+      - {fileID: 21300000, guid: 1b7388566562afb4fb8f5a7739ec75a1, type: 3}
+    statTag: 
+    statValue: 0
+    celciIntroDialog:
+      lines: []
+      speakers: []
+      spriteOptions: []
+    celciDate2Dialog:
+      lines: []
+      speakers: []
+      spriteOptions: []
+    backgrounds: []
+    nestedChoices: []
+  - afterChoiceDialogLines:
+    - W-what?!
+    - Miguel buries his face in his hands, exhausted with you. He quietly reconsiders
+      your decade-long friendship.
+    - "God, you\u2019re hopeless. I hope you know that."
+    - Also, not what I asked.
+    - "Not my fault! They\u2019re basically people at this point!"
+    - 'Ok, so you have noticed a level of abnormal sentience then? '
+    - If you forced me to put a label on it.
+    afterChoiceSpeakersPerLine:
+    - Miguel
+    - Miguel
+    - Miguel
+    - Miguel
+    - You
+    - Miguel
+    - You
+    afterChoiceSpriteOptions:
+    - spriteOptions:
+      - {fileID: 21300000, guid: 1b7388566562afb4fb8f5a7739ec75a1, type: 3}
+      - {fileID: 21300000, guid: a3252816a49c415409db0f9ffd8c3b1a, type: 3}
+      - {fileID: 21300000, guid: 1b7388566562afb4fb8f5a7739ec75a1, type: 3}
+      - {fileID: 21300000, guid: 1b7388566562afb4fb8f5a7739ec75a1, type: 3}
+      - {fileID: 21300000, guid: 1b7388566562afb4fb8f5a7739ec75a1, type: 3}
+      - {fileID: 21300000, guid: 4b7681c045f002e48b28145e94315c75, type: 3}
+      - {fileID: 21300000, guid: 4b7681c045f002e48b28145e94315c75, type: 3}
+    statTag: 
+    statValue: 0
+    celciIntroDialog:
+      lines: []
+      speakers: []
+      spriteOptions: []
+    celciDate2Dialog:
+      lines: []
+      speakers: []
+      spriteOptions: []
+    backgrounds: []
+    nestedChoices: []

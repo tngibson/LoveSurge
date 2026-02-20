@@ -33,13 +33,16 @@ public class DragDrop : MonoBehaviour
 
     [SerializeField] public bool isDraggable = true;
 
+    private EventInstance comboSurge;
     // Public method to check if the card is being dragged
     public bool IsDragging() => isDragging;
+    public DiscardPile CurrentDiscardPile {get => currentDiscard; set => currentDiscard = value;}
 
     private void Awake()
     {
         gameManager = FindAnyObjectByType<GameManager>();  // Find GameManager in the scene
         cardHandLayout = FindAnyObjectByType<CardHandLayout>();
+        comboSurge =  AudioManager.instance.CreateInstance(FMODEvents.instance.ComboSurge);
     }
 
     void Start()
@@ -118,13 +121,6 @@ public class DragDrop : MonoBehaviour
         else if (isOverDropZone && gameManager.IsTopicSelected)  // Place in dropzone if applicable
         {
             PlaceInDropzone();
-            AudioManager.instance.PlayOneShot(FMODEvents.instance.CardPlaced, this.transform.position);
-            GameManager.instance.ComboSurge ++;
-            EventInstance comboSurge =  AudioManager.instance.CreateInstance(FMODEvents.instance.ComboSurge);
-            comboSurge.setParameterByName("comboSurge", GameManager.instance.ComboSurge);
-            comboSurge.start();
-            comboSurge.release();
-
         }
         else if (isOverPlayerArea && !card.isReserveCard)  // Return the card to the player area
         {
@@ -211,6 +207,14 @@ public class DragDrop : MonoBehaviour
             RemoveHoverListeners();
             cardComponent.OnCardPlayed();
             card.isInDropzone = true;
+
+            //Combo Surge --> Courtesy of Brenden Wood
+            AudioManager.instance.PlayOneShot(FMODEvents.instance.CardPlaced, this.transform.position);
+            GameManager.instance.ComboSurge ++;
+
+            comboSurge.setParameterByName("comboSurge", GameManager.instance.ComboSurge);
+            comboSurge.start();
+            //comboSurge.release();
         }
         else
         {
@@ -224,7 +228,8 @@ public class DragDrop : MonoBehaviour
     private void ReturnToPlayerArea()
     {
         Card cardComponent = GetComponent<Card>();
-
+        cardComponent.OnCardRemoved();
+        
         // Check if the card is already in the dropzone
         if (playerArea.CardsInHand.Contains(cardComponent))
         {
@@ -268,7 +273,7 @@ public class DragDrop : MonoBehaviour
         }
     }
 
-    private void DiscardCard()
+    public void DiscardCard()
     {
         if(GetComponent<StressCard>() == null)
         {
@@ -349,7 +354,7 @@ public class DragDrop : MonoBehaviour
         {
             isOverReserveSlot = true;
             currentReserve = reserveManager;
-            Debug.Log("Enter Reserve");
+            //Debug.Log("Enter Reserve");
         }
     }
 
@@ -394,7 +399,7 @@ public class DragDrop : MonoBehaviour
         {
             isOverReserveSlot = false;
             currentReserve = null;
-            Debug.Log("Exit Reserve");
+            //Debug.Log("Exit Reserve");
         }
     }
 

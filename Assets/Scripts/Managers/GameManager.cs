@@ -26,6 +26,7 @@ public class GameManager : MonoBehaviour
     [SerializeField] private GameObject creCard;
 
     // Gameplay elements
+    [SerializeField] private GameObject itemCanvasPrefab;
     [SerializeField] private PlayerArea playerArea;
     [SerializeField] public ConvoTopic currentConvoTopic;
     [SerializeField] private TopicContainer topicContainer;
@@ -42,6 +43,8 @@ public class GameManager : MonoBehaviour
     [SerializeField] private GameObject mapButton;
 
     [SerializeField] private int CurrentCharacterIndex; // which character date this belongs to | 0 - Noki, 1 - Celci, 2 - Lotte
+    [SerializeField] private ConnectionBar connectionBar;
+
     private int currentScore = -1;
     private bool isTopicSelected;
 
@@ -49,6 +52,7 @@ public class GameManager : MonoBehaviour
 
     [SerializeField] private int handSize = 4;
     private bool isHandPlayable = false;
+    private GameObject itemCanvasInstance;
 
     [SerializeField] private MapScript mapButtonScript;
 
@@ -58,6 +62,13 @@ public class GameManager : MonoBehaviour
         get => comboSurge;
         set { comboSurge = math.clamp(value, 0, 4); }
     }
+    public DiscardPile DiscardPile => discard;
+    public Dropzone Dropzone => dropzone;
+    public PlayerArea PlayerArea => playerArea;
+    public PlayerDeckScript DeckContainer => deckContainer;
+    public GameObject ItemCanvasInstance => itemCanvasInstance;
+
+    public bool isTutorial = false;
 
     private void Awake()
     {
@@ -76,10 +87,18 @@ public class GameManager : MonoBehaviour
 
     private void Start()
     {
+        if(itemCanvasInstance == null)
+        {
+            itemCanvasInstance = Instantiate(itemCanvasPrefab, transform.parent);
+            itemCanvasInstance.name = "ItemCanvas";
+            itemCanvasInstance.transform.SetSiblingIndex(itemCanvasInstance.transform.parent.childCount - 2);
+            RefreshUsableItem();
+        }
+        connectionBar.SetCharacterIndex(CurrentCharacterIndex);
         fullHandText.SetActive(false);
         scoreText.text = "Score: 0";
         MusicManager.SetParameterByName("dateProgress", 0);
-        Debug.Log("Start Music");
+        //Debug.Log("Start Music");
     }
 
     public void SetConvoStart()
@@ -90,6 +109,8 @@ public class GameManager : MonoBehaviour
 
     public void OnEndTurn()
     {
+        dropzone.endingHandSize = playerArea.CardsInHand.Count;
+        
         if (playerArea.CardsInHand.Count < handSize && deckContainer.Deck.Count > 0)
         {
             int missingCards = handSize - playerArea.CardsInHand.Count;
@@ -107,6 +128,18 @@ public class GameManager : MonoBehaviour
             }
 
             deckCountText.text = deckContainer.Deck.Count.ToString();
+
+            if (isTutorial)
+                return;
+
+            UnlockAchievement(AchievementID.NEW_ACHIEVEMENT_1_4); // Unlocks Achivement: Take That!
+        }
+        else if (playerArea.CardsInHand.Count < handSize) // This is just in case you somehow use your first card when you have no cards left in your deck
+        {
+            if (isTutorial)
+                return;
+
+            UnlockAchievement(AchievementID.NEW_ACHIEVEMENT_1_4); // Unlocks Achivement: Take That!
         }
         else if (deckContainer.Deck.Count <= 0)
         {
@@ -133,18 +166,39 @@ public class GameManager : MonoBehaviour
             EndGameLoss();
         }
 
+        dropzone.ResetBoosts();
+
+        FindAnyObjectByType<CardHandLayout>().UpdateCardListAndLayout();
+
         comboSurge = 0;
+
+        //discard.ResetTurnDiscardCount();
+        dropzone.startingHandSize = playerArea.CardsInHand.Count;
+        dropzone.cardsPlayedThisTurn = 0;
     }
 
-    // Retrieve the active character’s date data dynamically
+    // Retrieve the active characterï¿½s date data dynamically
     private DateData GetActiveCharacter()
     {
+        if(CurrentCharacterIndex < 0 || CurrentCharacterIndex >= LocationManager.Instance?.characterDates.Count)
+        {
+            //Debug.LogError("CurrentCharacterIndex is out of bounds! Check LocationManager's characterDates list.");
+            return null;
+        }
+
         return LocationManager.Instance.characterDates[CurrentCharacterIndex];
     }
 
     public void EndGameHalfWin()
     {
+
         var data = GetActiveCharacter();
+        
+        if (data == null)
+        {
+            ShowMapButton($"You Win, Congratulations!", 1);
+            return;
+        }
 
         switch (data.currentDate)
         {
@@ -161,8 +215,8 @@ public class GameManager : MonoBehaviour
                 mapButtonScript.locName = $"{data.name}Date3SkillCheck1";
                 break;
         }
-
         ShowMapButton($"{data.name} wants to talk more closely with you...", 1);
+        Player.instance.ReturnItem();
     }
 
     public void EndGameFullWin()
@@ -189,6 +243,7 @@ public class GameManager : MonoBehaviour
 
         // Update the location so LocationManager can advance to the next date
         LocationManager.Instance.TryBindMapScript(mapButtonScript);
+        Player.instance.ReturnItem();
     }
 
     public void EndGameLoss()
@@ -205,6 +260,7 @@ public class GameManager : MonoBehaviour
 
         data.isPlayable = false;
         LocationManager.Instance.TryBindMapScript(mapButtonScript);
+        Player.instance.ReturnItem();
     }
 
     public void ShowMapButton(string message, int musicProgress)
@@ -251,5 +307,31 @@ public class GameManager : MonoBehaviour
             isHandPlayable = true;
 
         return isHandPlayable;
+    }
+
+    public void RefreshUsableItem()
+    {
+        if(itemCanvasInstance == null)
+        {
+            //Debug.LogError("Item Canvas is null and may not be in the scene!");
+            return;
+        }
+
+        itemCanvasInstance.TryGetComponent(out Socket socket);
+        //Debug.Log($"Refreshing Usable Items: {Player.instance.collectedItems.Count} items found.");
+        for(int i = 0; i < Player.instance.collectedItems.Count; i++)
+        {
+            // Debug.Log($"Adding item {Player.instance.collectedItems[i]} to socket{i}.");
+            GameItem item = Player.instance.collectedItems[i];
+            socket.AddToSocket(item.gameObject, i);
+        }
+    }
+
+    private void UnlockAchievement(AchievementID id)
+    {
+        if (AchievementComponent.AchievementSystem == null)
+            return;
+
+        AchievementComponent.AchievementSystem.UnlockAchievement(id);
     }
 }

@@ -123,12 +123,12 @@ public class MapScript : MonoBehaviour, IPointerEnterHandler, IPointerExitHandle
 
         if (StressManager.instance != null && isStressReducer)
         {
-            Debug.Log("Reducing Stress!");
+            //Debug.Log("Reducing Stress!");
             StressManager.instance.RemoveFromCurrentStress(0.1f);
         }
         if (StressManager.instance != null && isStressIncreaser)
         {
-            Debug.Log("Adding Stress!");
+            //Debug.Log("Adding Stress!");
             StressManager.instance.AddToCurrentStress();
         }
 
@@ -173,7 +173,7 @@ public class MapScript : MonoBehaviour, IPointerEnterHandler, IPointerExitHandle
             if (MusicManager.Instance != null && MusicManager.Instance.WillChangeTo(nextSceneMusic))
                 {
                     MusicManager.Instance.StopMusic();
-                    Debug.Log("Stopping music before loading new scene.");
+                    //Debug.Log("Stopping music before loading new scene.");
                 }
             yield return new WaitForSeconds(transitionTime);
         }
@@ -181,7 +181,7 @@ public class MapScript : MonoBehaviour, IPointerEnterHandler, IPointerExitHandle
         if (MusicManager.Instance != null && MusicManager.Instance.WillChangeTo(nextSceneMusic))
                 {
                     MusicManager.Instance.StopMusic();
-                    Debug.Log("Stopping music before loading new scene.");
+                    //Debug.Log("Stopping music before loading new scene.");
                 }
 
         yield return null; // wait one frame so the UI event finishes
@@ -235,5 +235,10 @@ public class MapScript : MonoBehaviour, IPointerEnterHandler, IPointerExitHandle
     {
         locationTextText = newText;
         locationText.GetComponent<TextMeshProUGUI>().text = locationTextText;
+    }
+
+    public void LoadNextEpilogue()
+    {
+        EpilogueManager.Instance.LoadNextEpilogue();
     }
 }

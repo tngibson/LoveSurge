@@ -25,8 +25,27 @@ public class Dropzone : MonoBehaviour
     [SerializeField] private GameManager gameManager;
     [SerializeField] ReserveManager reserveManager;
 
+    public Dropzone instance;
+
     // Array to hold the dropzone
     [SerializeField] private DropzoneSlot dropzone; 
+
+    public Dictionary<string, int> multipyboost = new()
+    {
+        {"Cha", 1},
+        {"Cou", 1},
+        {"Cle", 1},
+        {"Cre", 1},
+        {"Str", 1}
+    };
+    public Dictionary<string, int> addboost = new()
+    {
+        {"Cha", 0},
+        {"Cou", 0},
+        {"Cle", 0},
+        {"Cre", 0},
+        {"Str", 0}
+    };
 
     private int score = 0;
     private int lineNum = 0;
@@ -57,6 +76,7 @@ public class Dropzone : MonoBehaviour
 
     // Public getters for various properties
     public List<Card> GetPlayedCards() => playedCards;
+    public List<Card> GetCardsToScore() => cardsToScore;
     public int GetMaxCards() => maxCards;
 
     [SerializeField] private ScrollRect scrollRect; // Reference to the Scroll Rect and Content Transform
@@ -68,6 +88,18 @@ public class Dropzone : MonoBehaviour
     private bool addExtraLine;
 
     private bool halfwayPointDone = false;
+    private int addCha;
+    private int addCou;
+    private int addCle;
+    private int addCre;
+    private int multCha;
+    private int multCou;
+    private int multCle;
+    private int multCre;
+
+    public int startingHandSize = 4;
+    public int endingHandSize = 0;
+    public int cardsPlayedThisTurn = -1;     // to Dropzone
 
     // Start is called before the first frame update
     void Start()
@@ -82,6 +114,8 @@ public class Dropzone : MonoBehaviour
         {
             Debug.LogWarning("Player Manager was null!");
         }
+
+        instance = this;
     }
 
     private void Update()
@@ -91,6 +125,16 @@ public class Dropzone : MonoBehaviour
         {
             skipRequested = true;
         }
+
+        addCha = addboost["Cha"];
+        addCou = addboost["Cou"];
+        addCle = addboost["Cle"];
+        addCre = addboost["Cre"];
+
+        multCha = multipyboost["Cha"];
+        multCou = multipyboost["Cou"];
+        multCle = multipyboost["Cle"];
+        multCre = multipyboost["Cre"];
     }
 
     // Adds a card to the played cards list and removes it from the player's area
@@ -118,7 +162,9 @@ public class Dropzone : MonoBehaviour
             // Update the last placed card
             lastPlacedCard = card;
 
-            Debug.Log($"Card {card.name} placed in DropzoneSlot.");
+            cardsPlayedThisTurn++;
+
+            //Debug.Log($"Card {card.name} placed in DropzoneSlot.");
             CalculateScore();
         }
         else
@@ -130,7 +176,6 @@ public class Dropzone : MonoBehaviour
     // Method to handle special "Str" type cards separately for modularity
     private void HandleStressCard()
     {
-        Debug.Log("Removing stress");
         StressManager.instance?.RemoveFromCurrentStress(0.1f);
     }
 
@@ -144,6 +189,7 @@ public class Dropzone : MonoBehaviour
             if (!topCard.isReserveCard)
             {
                 playerArea.AddCards(topCard);
+                topCard.transform.SetParent(playerArea.transform, false); // Reset card hierarchy visually
             }
             cardsToScore.Remove(topCard);
             dropzone.RemoveTopCard();
@@ -151,6 +197,8 @@ public class Dropzone : MonoBehaviour
             // Update the last placed card to the new top card
             lastPlacedCard = dropzone.TopCard;
             GameManager.instance.ComboSurge --;
+
+            cardsPlayedThisTurn--;
 
             // Reset UI or other visual elements if necessary
             CalculateScore();
@@ -193,7 +241,10 @@ public class Dropzone : MonoBehaviour
 
         // Clear the cards to score
         cardsToScore.Clear();
-        Debug.Log(cardsToScore.Count);
+
+        cardsPlayedThisTurn = 0;
+
+        //Debug.Log(cardsToScore.Count);
 
         CalculateScore();
     }
@@ -244,6 +295,20 @@ public class Dropzone : MonoBehaviour
             CheckDialogTriggers();
         }
 
+        if (startingHandSize >= 4 &&
+        cardsPlayedThisTurn >= 4 && 
+        startingHandSize == cardsPlayedThisTurn &&
+        endingHandSize == 0)
+        {
+            UnlockAchievement(AchievementID.NEW_ACHIEVEMENT_1_7); // Unlocks Achvievement: With all my power!
+        }
+        else if (startingHandSize >= 4 &&
+            cardsPlayedThisTurn == 0 &&
+            endingHandSize == 0)
+        {
+            UnlockAchievement(AchievementID.NEW_ACHIEVEMENT_1_6); // Unlocks Achvievement: Mill’er, I hardly knew ‘er!
+        }
+
         // Reset the state of the dropzones after scoring
         ResetAfterScoring();
     }
@@ -259,7 +324,7 @@ public class Dropzone : MonoBehaviour
         // Clear cardsToScore for a fresh scoring list
         cardsToScore.Clear();
         // Maintain cards in dropzone but reset lastPlacedCard
-        lastPlacedCard = dropzone.TopCard; // Set to the current top card in dropzone
+        lastPlacedCard = dropzone.TopCard;
         lastPlacedCard.isBottomCard = true;
 
         foreach (Card card in dropzone.GetCards())
@@ -310,16 +375,23 @@ public class Dropzone : MonoBehaviour
                     HandleStressCard();
                     continue;
                 }
+                int boostedPower = (card.Power + addboost[card.Type]) * 
+                                    multipyboost[card.Type];
 
-                totalPower += card.Power;
-                if (card.Power > highestPower)
+                totalPower += boostedPower;
+                if (boostedPower > highestPower)
                 {
-                    highestPower = card.Power;
+                    highestPower = boostedPower;
                 }
             }
 
             // Apply scoring formula: (sum of powers) * (highest power value)
             score = totalPower * highestPower;
+
+            if (highestPower >= 10)
+            {
+                AchievementComponent.AchievementSystem.UnlockAchievement(AchievementID.NEW_ACHIEVEMENT_1_8);
+            }
 
             // Update the current score text field with the recalculated score
             currentScoreText.text = "Current Score: " + score.ToString();
@@ -337,71 +409,6 @@ public class Dropzone : MonoBehaviour
         // Update the TextMeshProUGUI object with the calculation breakdown
         scoreCalculationText.text = calculationBreakdown;
     }
-
-
-    // Coroutine that moves all cards from the dropzones to the discard pile at once.
-    // Currently removed for obsolescence
-    /*
-    private IEnumerator DiscardCards()
-    {
-        List<Coroutine> discardCoroutines = new List<Coroutine>();
-
-        for (int i = 0; i < dropzones.Length; i++)
-        {
-            Card card = dropzones[i].GetCard();
-            if (card != null)
-            {
-                // Start discarding each card without waiting for completion
-                Coroutine discardCoroutine = StartCoroutine(MoveCardToDiscardPile(card));
-                discardCoroutines.Add(discardCoroutine);
-
-                // Clear each dropzone and set playedCards[i] to null instead of removing
-                dropzones[i].ClearCard();
-                playedCards[i] = null;  // Set the corresponding slot in playedCards to null
-                discard.AddToDiscard(card);  // Add card to discard pile
-            }
-        }
-
-        // Wait until all discard coroutines are complete
-        foreach (Coroutine coroutine in discardCoroutines)
-        {
-            yield return coroutine;
-        }
-    }
-    */
-
-    // Modified to support simultaneous movement
-    // Currently removed for obsolescence
-    /*
-    private IEnumerator MoveCardToDiscardPile(Card card)
-    {
-        Vector3 startPosition = card.transform.position;
-        Vector3 discardPosition = discard.transform.position;
-
-        Vector3 startScale = card.transform.localScale;
-        Vector3 targetScale = Vector3.zero;
-
-        float duration = discardDuration;
-        float elapsedTime = 0f;
-
-        while (elapsedTime < duration)
-        {
-            float progress = elapsedTime / duration;
-
-            card.transform.position = Vector3.Lerp(startPosition, discardPosition, Mathf.SmoothStep(0, 1, progress));
-            card.transform.localScale = Vector3.Lerp(startScale, targetScale, progress);
-
-            elapsedTime += Time.deltaTime;
-            yield return null;
-        }
-
-        card.transform.position = discardPosition;
-        card.transform.localScale = targetScale;
-        card.transform.SetParent(discard.transform, true);
-    }
-    */
-
-
 
     // Checks if the appropriate dialogs should be triggered based on the topic's power state.
     private void CheckDialogTriggers()
@@ -459,34 +466,6 @@ public class Dropzone : MonoBehaviour
         // Re-enable topic buttons for the next selection
         topicContainer.EnableButtons();
     }
-
-    // Handles the failure of a conversation topic by moving it to the "failed" list and resetting relevant states for the next round.
-    // Currently removed for obsolescence
-    /*
-    private void FailConvo()
-    {
-        failedConvo = true;
-
-        CheckDialogTriggers();
-
-        // Move the topic to the "failed" list and remove it from active topics
-        topicContainer.failedConvos.Add(selectedConvoTopic);
-        topicContainer.convoTopics.Remove(selectedConvoTopic);
-
-        // Reset the convoText
-        selectedConvoTopic.convoText.text = "Awaiting Topic...";
-
-        // Mark the topic as failed and reset its state
-        selectedConvoTopic.isFailed = true;
-        selectedConvoTopic.isClicked = false;
-
-        // Reset topic selection state
-        gameManager.IsTopicSelected = false;
-
-        // Re-enable topic buttons for the next selection
-        topicContainer.EnableButtons();
-    }
-    */
 
     // Clears all cards from dropzones and resets the current score to 0.
     private void ResetAfterScoring()
@@ -586,7 +565,6 @@ public class Dropzone : MonoBehaviour
 
         // Store the original position of the dateCharacter
         Vector3 originalPosition = currentSession.dateCharacter.transform.localPosition;
-
         // If the speaker is player, we will set their name to playerName. If for whatever reason the playerName variable is empty or null, we won't set it
         if (speaker == "PC")
         {
@@ -626,8 +604,8 @@ public class Dropzone : MonoBehaviour
 
         // Set the initial text with the speaker's portion
         string initialText = $"{previousText}{speakerPortion}";
-        dialogText.text = initialText;  // Display the speaker portion immediately
-        AdjustTextBoxHeight();  // Ensure the text box resizes
+        dialogText.text = initialText;      // Display the speaker portion immediately
+        AdjustTextBoxHeight();              // Ensure the text box resizes
 
         // Track the message as it is being typed
         string currentMessage = "";
@@ -786,6 +764,29 @@ public class Dropzone : MonoBehaviour
         return index;
     }
 
+    public void ApplyBonus(string type, int value, string operation)
+    {
+        switch(operation)
+        {
+            case "+":
+                addboost[type] = Math.Clamp(addboost[type] + value, 0, 999);
+                break;
+            case "x":
+                multipyboost[type] = Math.Clamp(multipyboost[type] * value, 1, 999);
+                break;
+            case "-":
+                addboost[type] = Math.Clamp(addboost[type] - value, 0, 999);
+                break;
+            case "/":
+                multipyboost[type] = Math.Clamp(multipyboost[type] / value, 1, 999);
+                break;
+            // default:
+            //     Debug.LogWarning("Unknown operation: " + operation);
+            //     break;
+        }
+        CalculateScore();
+    }
+
     // Checks if all dropzones are empty.
     // Currently removed for obsolescence
     /*
@@ -844,5 +845,34 @@ public class Dropzone : MonoBehaviour
     public void increaseConnection(int index)
     {
         ConnectionManager.instance.increaseConnection(index, 1);
+    }
+
+    internal void ResetBoosts()
+    {
+        addboost = new()
+        {
+            {"Cha", 0},
+            {"Cou", 0},
+            {"Cle", 0},
+            {"Cre", 0},
+            {"Str", 0}
+        };
+
+        multipyboost = new()
+        {
+            {"Cha", 1},
+            {"Cou", 1},
+            {"Cle", 1},
+            {"Cre", 1},
+            {"Str", 1}
+        };
+    }
+
+    private void UnlockAchievement(AchievementID id)
+    {
+        if (AchievementComponent.AchievementSystem == null)
+            return;
+
+        AchievementComponent.AchievementSystem.UnlockAchievement(id);
     }
 }

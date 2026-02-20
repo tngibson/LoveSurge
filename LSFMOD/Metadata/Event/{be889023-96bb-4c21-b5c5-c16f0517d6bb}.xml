@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<objects serializationModel="Studio.02.02.00">
+<objects serializationModel="Studio.02.03.00">
 	<object class="Event" id="{be889023-96bb-4c21-b5c5-c16f0517d6bb}">
 		<property name="name">
 			<value>deliahVoice</value>
@@ -84,13 +84,13 @@
 		</relationship>
 		<relationship name="markers">
 			<destination>{b1475823-b2ea-449e-9e76-bd7182e7c7c0}</destination>
+			<destination>{c02db5ed-5eef-4c1c-acdf-f2367c2c634f}</destination>
+			<destination>{32a2fec6-e676-41c5-9d92-220d58909841}</destination>
 			<destination>{4a6eab70-a06f-4183-ae0b-bef13e03bba1}</destination>
 			<destination>{231d09a7-c102-48ce-ab5e-36a4a880bab4}</destination>
-			<destination>{c02db5ed-5eef-4c1c-acdf-f2367c2c634f}</destination>
 			<destination>{cd4db31f-8af1-4d6e-ba95-6be2531d0619}</destination>
 			<destination>{41834361-10c7-4926-bb92-b33df94d8707}</destination>
 			<destination>{69606103-425e-489d-971f-a47126deb5a1}</destination>
-			<destination>{32a2fec6-e676-41c5-9d92-220d58909841}</destination>
 			<destination>{689387ba-a5ae-422c-9ffe-d1af390f6a38}</destination>
 			<destination>{4fb6c6b9-786d-4ff9-a534-5f31dd2cabe4}</destination>
 		</relationship>
@@ -192,6 +192,40 @@
 			<destination>{4fb6c6b9-786d-4ff9-a534-5f31dd2cabe4}</destination>
 		</relationship>
 	</object>
+	<object class="TransitionMarker" id="{c02db5ed-5eef-4c1c-acdf-f2367c2c634f}">
+		<property name="position">
+			<value>0</value>
+		</property>
+		<property name="triggerProbabilityEnabled">
+			<value>true</value>
+		</property>
+		<property name="triggerProbability">
+			<value>79.5</value>
+		</property>
+		<relationship name="timeline">
+			<destination>{77cdf24f-8282-46dd-8b88-fc3f96911e2e}</destination>
+		</relationship>
+		<relationship name="markerTrack">
+			<destination>{104b59f1-3557-4fff-bd33-434ded9eb3ed}</destination>
+		</relationship>
+		<relationship name="destination">
+			<destination>{69606103-425e-489d-971f-a47126deb5a1}</destination>
+		</relationship>
+	</object>
+	<object class="NamedMarker" id="{32a2fec6-e676-41c5-9d92-220d58909841}">
+		<property name="position">
+			<value>0.059999999999999998</value>
+		</property>
+		<property name="name">
+			<value>Marker C</value>
+		</property>
+		<relationship name="timeline">
+			<destination>{77cdf24f-8282-46dd-8b88-fc3f96911e2e}</destination>
+		</relationship>
+		<relationship name="markerTrack">
+			<destination>{e741b917-2252-4795-b829-93f4739ba4a7}</destination>
+		</relationship>
+	</object>
 	<object class="TransitionMarker" id="{4a6eab70-a06f-4183-ae0b-bef13e03bba1}">
 		<property name="position">
 			<value>0</value>
@@ -232,26 +266,6 @@
 			<destination>{32a2fec6-e676-41c5-9d92-220d58909841}</destination>
 		</relationship>
 	</object>
-	<object class="TransitionMarker" id="{c02db5ed-5eef-4c1c-acdf-f2367c2c634f}">
-		<property name="position">
-			<value>0</value>
-		</property>
-		<property name="triggerProbabilityEnabled">
-			<value>true</value>
-		</property>
-		<property name="triggerProbability">
-			<value>79.5</value>
-		</property>
-		<relationship name="timeline">
-			<destination>{77cdf24f-8282-46dd-8b88-fc3f96911e2e}</destination>
-		</relationship>
-		<relationship name="markerTrack">
-			<destination>{104b59f1-3557-4fff-bd33-434ded9eb3ed}</destination>
-		</relationship>
-		<relationship name="destination">
-			<destination>{69606103-425e-489d-971f-a47126deb5a1}</destination>
-		</relationship>
-	</object>
 	<object class="TransitionMarker" id="{cd4db31f-8af1-4d6e-ba95-6be2531d0619}">
 		<property name="position">
 			<value>0</value>
@@ -289,20 +303,6 @@
 		</property>
 		<property name="name">
 			<value>Marker B</value>
-		</property>
-		<relationship name="timeline">
-			<destination>{77cdf24f-8282-46dd-8b88-fc3f96911e2e}</destination>
-		</relationship>
-		<relationship name="markerTrack">
-			<destination>{e741b917-2252-4795-b829-93f4739ba4a7}</destination>
-		</relationship>
-	</object>
-	<object class="NamedMarker" id="{32a2fec6-e676-41c5-9d92-220d58909841}">
-		<property name="position">
-			<value>0.059999999999999998</value>
-		</property>
-		<property name="name">
-			<value>Marker C</value>
 		</property>
 		<relationship name="timeline">
 			<destination>{77cdf24f-8282-46dd-8b88-fc3f96911e2e}</destination>

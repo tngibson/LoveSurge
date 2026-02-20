@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.18028331, g: 0.2257133, b: 0.30692166, a: 1}
+  m_IndirectSpecularColor: {r: 0.18028378, g: 0.22571412, b: 0.30692285, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -477,8 +477,8 @@ Camera:
   m_GameObject: {fileID: 579954884}
   m_Enabled: 1
   serializedVersion: 2
-  m_ClearFlags: 1
-  m_BackGroundColor: {r: 0.19215687, g: 0.3019608, b: 0.4745098, a: 0}
+  m_ClearFlags: 2
+  m_BackGroundColor: {r: 0, g: 0, b: 0, a: 0}
   m_projectionMatrixMode: 1
   m_GateFitMode: 2
   m_FOVAxisMode: 0
@@ -762,11 +762,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _musicReference:
     Guid:
-      Data1: 1300156995
-      Data2: 1165030288
-      Data3: 1209920696
-      Data4: -127509072
-    Path: event:/Music/samTheme
+      Data1: 1227708362
+      Data2: 1292140664
+      Data3: -916368208
+      Data4: 1774876713
+    Path: event:/Music/celciTheme
   _musicName: 
   DateCharacter: 
 --- !u!1 &725283226
@@ -1453,10 +1453,10 @@ RectTransform:
   m_Children: []
   m_Father: {fileID: 725283230}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 1, y: 1}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 0, y: 0}
+  m_SizeDelta: {x: 3840, y: 2160}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1741321908
 MonoBehaviour:

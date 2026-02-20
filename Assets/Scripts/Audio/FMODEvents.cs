@@ -48,6 +48,7 @@ public class FMODEvents : MonoBehaviour
     [field: SerializeField] public EventReference ConnectionBarDown { get; private set; }
     [field: SerializeField] public EventReference WindowOpen { get; private set; }
     [field: SerializeField] public EventReference WindowClose { get; private set; }
+    [field: SerializeField] public EventReference OmniverseJingle { get; private set; }
 
 
     //[field: SerializeField] public EventReference dateTierII { get; private set; }

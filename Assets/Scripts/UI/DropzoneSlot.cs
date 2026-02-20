@@ -5,15 +5,29 @@ using UnityEngine;
 public class DropzoneSlot : MonoBehaviour
 {
     [SerializeField] private List<Card> cardsInSlot = new List<Card>(); // List to hold multiple cards
-    [SerializeField] private Card[] cardPrefabs; // Array of card prefabs to choose from
+    [SerializeField] private Card[] cardPrefabs;    // Array of card prefabs to choose from
+    [SerializeField, Tooltip("Prefab for starting card")] 
+    private Card startingCardPrefab;
+    [SerializeField,Tooltip("Toggle to set a starting card in this slot")] 
+    private bool setStartingCard;
 
     public bool IsEmpty => cardsInSlot.Count == 0; // Check if the slot is empty
     public Card TopCard => cardsInSlot.Count > 0 ? cardsInSlot[cardsInSlot.Count - 1] : null; // Get the top card
+    public List<Card> CardsInSlot => cardsInSlot; // Public getter for cards in slot
 
     [SerializeField] private Dropzone dropzone;
 
     private void Awake()
     {
+        if(setStartingCard)
+        {
+            Card card = Instantiate(startingCardPrefab);
+            Destroy(card.GetComponent<DragDrop>());
+            dropzone.AddCardToDropzone(card);
+            dropzone.cardsToScore.Remove(card);
+            card.isBottomCard = true;
+            return;
+        }
         // Add the starting card to the dropzone slot
         int randomAttribute = Random.Range(0, cardPrefabs.Length);
         int randomPower = Random.Range(1, 6);

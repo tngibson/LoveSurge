@@ -1,7 +1,9 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
+using UnityEngine.Events;
 using UnityEngine.UI;
 
 public abstract class Card : MonoBehaviour
@@ -13,13 +15,17 @@ public abstract class Card : MonoBehaviour
     [SerializeField] public Image background;
     [SerializeField] private AudioSource cardHover; // Reference to the Card Hover Sound effect
     [Tooltip("Means this card can be played on any other card")]
-    public bool isWildPlacer = false; // Means this card can be played on any other card
+    public bool isWildPlacer = false;       // Means this card can be played on any other card
     [Tooltip("Means any card can be played on this card")]
-    public bool isWildReceiver = false; // Means any card can be played on this card
+    public bool isWildReceiver = false;     // Means any card can be played on this card
     public bool isBottomCard = false;
     public bool isReserveCard = false;
     public bool isInDropzone = false;
     public bool isPlayed = false;
+
+    [Header("Events")]
+    public UnityEvent OnPlay;
+    public UnityEvent OnRemove;
 
     public Color defaultTextColor;
 
@@ -100,11 +106,19 @@ public abstract class Card : MonoBehaviour
     }
 
     // Updates the UI text to display the current power
-    private void UpdatePowerDisplay()
+    protected virtual void UpdatePowerDisplay()
     {
         if (numText != null)
         {
             numText.text = Power.ToString();
+            numText.color = Debuffed ? Color.red : defaultTextColor;
+        }
+    }
+    protected virtual void UpdateCurioPowerDisplay(string operation)
+    {
+        if (numText != null)
+        {
+            numText.text = $"{operation} {Power}";
             numText.color = Debuffed ? Color.red : defaultTextColor;
         }
     }
@@ -134,8 +148,7 @@ public abstract class Card : MonoBehaviour
         container.SetActive(visibility);
     }
 
-    // If you aren't using the Equals operator for anything, you could override that and
-    // move this over there to simplify your syntax a little
+    //Checks if two cards are the same type or power
     public bool CompareCards(Card otherCard)
     {
         return this.Type == otherCard.Type || this.Power == otherCard.Power;
@@ -143,8 +156,12 @@ public abstract class Card : MonoBehaviour
 
     public virtual bool CanPlaceOnCard(Card otherCard)
     {
-        // See the variable definitions for explanations of what wildPlacer and wildReceiver mean
+        //isWildPlacer   - Means this card is a wild card can be played on any other card
+        //isWildReceiver - Means the current card in the drop zone is a wild card
         if (isWildPlacer || (otherCard != null && otherCard.isWildReceiver)) return true;
+
+        //If the drop zone card is null -> then we can place ontop of it
+        //Compare the two cards otherwise
         else return otherCard == null || CompareCards(otherCard);
     }
 
@@ -154,5 +171,19 @@ public abstract class Card : MonoBehaviour
         {
             reserveManager.CardPlayed(); // Notify the manager that the card was used
         }
+
+        OnPlay?.Invoke();
+    }
+
+    public void OnCardRemoved()
+    {
+        Debug.Log("Card Removed Invoked");
+        OnRemove?.Invoke();
+    }
+
+    public void Boost(string operation)
+    {
+        Dropzone dropzone = FindAnyObjectByType<Dropzone>();
+        dropzone.ApplyBonus(Type, power, operation);
     }
 }
