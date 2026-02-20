@@ -236,4 +236,9 @@ public class MapScript : MonoBehaviour, IPointerEnterHandler, IPointerExitHandle
         locationTextText = newText;
         locationText.GetComponent<TextMeshProUGUI>().text = locationTextText;
     }
+
+    public void LoadNextEpilogue()
+    {
+        EpilogueManager.Instance.LoadNextEpilogue();
+    }
 }

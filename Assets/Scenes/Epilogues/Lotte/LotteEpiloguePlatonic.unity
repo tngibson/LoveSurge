@@ -1126,6 +1126,11 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 725283230}
     m_Modifications:
+    - target: {fileID: 1146173216322772198, guid: caff7daa29ed80547bbcab65c7792ef9,
+        type: 3}
+      propertyPath: m_text
+      value: Continue
+      objectReference: {fileID: 0}
     - target: {fileID: 1715403562571543631, guid: caff7daa29ed80547bbcab65c7792ef9,
         type: 3}
       propertyPath: m_SizeDelta.x
@@ -1256,6 +1261,11 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.x
       value: 78.075
       objectReference: {fileID: 0}
+    - target: {fileID: 6940135994936192850, guid: caff7daa29ed80547bbcab65c7792ef9,
+        type: 3}
+      propertyPath: m_Name
+      value: Continue
+      objectReference: {fileID: 0}
     - target: {fileID: 7239220871883381080, guid: caff7daa29ed80547bbcab65c7792ef9,
         type: 3}
       propertyPath: m_Name
@@ -1268,13 +1278,18 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7790266744647393451, guid: caff7daa29ed80547bbcab65c7792ef9,
         type: 3}
+      propertyPath: m_TargetGraphic
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 7790266744647393451, guid: caff7daa29ed80547bbcab65c7792ef9,
+        type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 5353494745443344019}
     - target: {fileID: 7790266744647393451, guid: caff7daa29ed80547bbcab65c7792ef9,
         type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: OnSelect
+      value: LoadNextEpilogue
       objectReference: {fileID: 0}
     - target: {fileID: 7790266744647393451, guid: caff7daa29ed80547bbcab65c7792ef9,
         type: 3}
