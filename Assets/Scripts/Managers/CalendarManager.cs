@@ -5,7 +5,7 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 using static LocationManager;
 
-public class CalendarManager : MonoBehaviour
+public class CalendarManager : MonoBehaviour, ISaveable
 {
     public static CalendarManager instance { get; private set; }
     public DayManager currentDate { get; private set; }
@@ -240,5 +240,42 @@ public class CalendarManager : MonoBehaviour
     {
         mainEvent17Completed = true;
         dayIndexWhen17Completed = totalDaysElapsed;
+    }
+
+    [System.Serializable]
+    private struct CalendarSaveData
+    {
+        public int day;
+        public int month;
+        public int year;
+        public int phase;
+    }
+
+    private void OnEnable() => SaveLoadManager.Register(this);
+    private void OnDisable() => SaveLoadManager.Unregister(this);
+
+    public object CaptureState()
+    {
+        return JsonUtility.ToJson(new CalendarSaveData
+        {
+            day = currentDate.Day,
+            month = currentDate.Month,
+            year = currentDate.Year,
+            phase = (int)currentPhase
+        });
+    }
+
+    public void RestoreState(object state)
+    {
+        var json = state as string;
+        var data = JsonUtility.FromJson<CalendarSaveData>(json);
+
+        currentDate = new DayManager(data.day, data.month, data.year);
+        currentPhase = (DayPhase)data.phase;
+
+        if (dateAndTimeText != null)
+        {
+            setText();
+        }
     }
 }

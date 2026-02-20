@@ -1,10 +1,11 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 using Random = UnityEngine.Random;
 
-public class Player : MonoBehaviour
+public class Player : MonoBehaviour, ISaveable
 {
     [SerializeField] private string playerName;
 
@@ -184,6 +185,64 @@ public class Player : MonoBehaviour
         }
     }
 
+    private void OnEnable()
+    {
+        SaveLoadManager.Register(this);
+    }
+
+    private void OnDisable()
+    {
+        SaveLoadManager.Unregister(this);
+    }
+
+    public object CaptureState()
+    {
+        var offsetTags = new List<List<string>>();
+        foreach (var offset in statOffsets)
+        {
+            offsetTags.Add(new List<string>(offset.GetTags()));
+        }
+
+        return JsonUtility.ToJson(new PlayerSaveData
+        {
+            playerName = playerName,
+            stats = new List<int>(stats),
+            statOffsetTags = statOffsets,
+            cash = cash,
+            convoTiers = new List<int>(convoTiers),
+
+            isHouseHot = isHouseHot,
+            isCelciThreatened = isCelciThreatened,
+            nokiRomanticRoute = nokiRomanticRoute,
+            celciRomanticRoute = celciRomanticRoute,
+            lotteRomanticRoute = lotteRomanticRoute
+        });
+    }
+
+    public void RestoreState(object state)
+    {
+        Debug.Log("RestoreState called on Player");
+
+        var json = state as string;
+        var data = JsonUtility.FromJson<PlayerSaveData>(json);
+
+        if (data == null) return;
+
+        playerName = data.playerName;
+        stats = new List<int>(data.stats);
+        statOffsets = data.statOffsetTags;
+        cash = data.cash;
+        convoTiers = new List<int>(data.convoTiers);
+
+        isHouseHot = data.isHouseHot;
+        isCelciThreatened = data.isCelciThreatened;
+        nokiRomanticRoute = data.nokiRomanticRoute;
+        celciRomanticRoute = data.celciRomanticRoute;
+        lotteRomanticRoute = data.lotteRomanticRoute;
+
+        OnStatsChanged?.Invoke();
+    }
+
     public void CollectItem(GameItem item)
     {
         if (collectedItems.Count > 4)
@@ -253,6 +312,12 @@ public class StatOffset
         isDirty = false;
     }
 
+    public void SetTags(List<string> tags)
+    {
+        affectingTags = new List<string>(tags);
+        isDirty = true;
+    }
+
     public void AddOffsetTag(string tag)
     {
         affectingTags.Add(tag);
@@ -291,4 +356,25 @@ public class StatOffset
         isDirty = false;
         return amount;
     }
+
+    public List<string> GetTags()
+    {
+        return new List<string>(affectingTags);
+    }
+}
+
+[System.Serializable]
+public class PlayerSaveData
+{
+    public string playerName;
+    public List<int> stats;
+    public List<StatOffset> statOffsetTags;
+    public int cash;
+    public List<int> convoTiers;
+
+    public bool isHouseHot;
+    public bool isCelciThreatened;
+    public bool nokiRomanticRoute;
+    public bool celciRomanticRoute;
+    public bool lotteRomanticRoute;
 }

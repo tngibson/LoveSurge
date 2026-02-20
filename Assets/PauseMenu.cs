@@ -11,9 +11,23 @@ public class PauseMenu : MonoBehaviour
     [SerializeField] private GameObject audioMenuUI;
     [SerializeField] private GameObject optionsMenuUI;
     public static PauseMenu instance;
+    private SaveLoadManager saveManager;
 
     private bool isPaused = false;
     private bool wasAlreadyPaused = false;
+    void Awake()
+    {
+        if (instance == null)
+        {
+            instance = this;
+            saveManager = SaveLoadManager.Instance;
+
+            if (saveManager == null)
+            {
+                Debug.LogError("SaveGameManager not found in scene.");
+            }
+        }
+    }
 
     void Update()
     {
@@ -71,6 +85,16 @@ public class PauseMenu : MonoBehaviour
         optionsMenuUI.SetActive(false);
         audioMenuUI.SetActive(false);
         pauseMenuUI.SetActive(true);
+    }
+
+    public void OnSaveClicked()
+    {
+        saveManager?.Save();
+    }
+
+    public void OnLoadClicked()
+    {
+        saveManager?.Load();
     }
 
     // Quit the game

@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-public class LocationManager : MonoBehaviour
+public class LocationManager : MonoBehaviour, ISaveable
 {
     public static LocationManager Instance { get; private set; }
 
@@ -379,5 +379,78 @@ public class LocationManager : MonoBehaviour
         AchievementID id = (AchievementID)achievementIndex;
 
         AchievementComponent.AchievementSystem.UnlockAchievement(id);
+    }
+
+    [System.Serializable]
+    private struct LocationSaveData
+    {
+        public List<CharacterSaveData> characters;
+    }
+
+    [System.Serializable]
+    private struct CharacterSaveData
+    {
+        public string name;
+        public bool isPlayable;
+        public bool dateStarted;
+        public bool isFirstTime;
+        public bool allDatesDone;
+        public int phaseEnteredDate;
+        public int currentDate;
+        public int date1Stage;
+        public int date2Stage;
+        public int date3Stage;
+    }
+
+    private void OnEnable() => SaveLoadManager.Register(this);
+    private void OnDisable() => SaveLoadManager.Unregister(this);
+
+    public object CaptureState()
+    {
+        var list = new List<CharacterSaveData>();
+
+        foreach (var d in characterDates)
+        {
+            list.Add(new CharacterSaveData
+            {
+                name = d.name,
+                isPlayable = d.isPlayable,
+                dateStarted = d.dateStarted,
+                isFirstTime = d.isFirstTime,
+                allDatesDone = d.allDatesDone,
+                phaseEnteredDate = (int)d.phaseEnteredDate,
+                currentDate = (int)d.currentDate,
+                date1Stage = (int)d.date1Stage,
+                date2Stage = (int)d.date2Stage,
+                date3Stage = (int)d.date3Stage
+            });
+        }
+
+        return JsonUtility.ToJson(new LocationSaveData { characters = list });
+    }
+
+    public void RestoreState(object state)
+    {
+        var json = state as string;
+        var data = JsonUtility.FromJson<LocationSaveData>(json);
+
+        foreach (var saved in data.characters)
+        {
+            var d = characterDates.Find(c => c.name == saved.name);
+            if (d == null) continue;
+
+            d.isPlayable = saved.isPlayable;
+            d.dateStarted = saved.dateStarted;
+            d.isFirstTime = saved.isFirstTime;
+            d.allDatesDone = saved.allDatesDone;
+            d.phaseEnteredDate = (DayPhase)saved.phaseEnteredDate;
+            d.currentDate = (DateNum)saved.currentDate;
+            d.date1Stage = (Date1Stage)saved.date1Stage;
+            d.date2Stage = (Date2Stage)saved.date2Stage;
+            d.date3Stage = (Date3Stage)saved.date3Stage;
+        }
+
+        if (SceneManager.GetActiveScene().isLoaded)
+            OnSceneLoaded(SceneManager.GetActiveScene(), LoadSceneMode.Single);
     }
 }
