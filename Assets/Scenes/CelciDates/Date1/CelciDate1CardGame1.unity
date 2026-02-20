@@ -3669,8 +3669,8 @@ MonoBehaviour:
   locationTextText: 
   isEnabled: 0
   mapAnimator: {fileID: 0}
-  transition: {fileID: 0}
-  transitionTime: 0
+  transition: {fileID: 862852901}
+  transitionTime: 2
   isDayProgressor: 1
   isDateButton: 0
   xHoverScale: 0
@@ -5337,6 +5337,85 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 851600784}
   m_CullTransparentMesh: 1
+--- !u!1001 &862852900
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 8557909430258490260, guid: 7cab638b40405884db5b42fbdb1c1b5a,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8557909430258490260, guid: 7cab638b40405884db5b42fbdb1c1b5a,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8557909430258490260, guid: 7cab638b40405884db5b42fbdb1c1b5a,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8557909430258490260, guid: 7cab638b40405884db5b42fbdb1c1b5a,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8557909430258490260, guid: 7cab638b40405884db5b42fbdb1c1b5a,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8557909430258490260, guid: 7cab638b40405884db5b42fbdb1c1b5a,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8557909430258490260, guid: 7cab638b40405884db5b42fbdb1c1b5a,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8557909430258490260, guid: 7cab638b40405884db5b42fbdb1c1b5a,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8557909430258490260, guid: 7cab638b40405884db5b42fbdb1c1b5a,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8557909430258490260, guid: 7cab638b40405884db5b42fbdb1c1b5a,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8621706404247894105, guid: 7cab638b40405884db5b42fbdb1c1b5a,
+        type: 3}
+      propertyPath: m_Name
+      value: SceneTransition - Crossfade
+      objectReference: {fileID: 0}
+    - target: {fileID: 8621706404247894105, guid: 7cab638b40405884db5b42fbdb1c1b5a,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 7cab638b40405884db5b42fbdb1c1b5a, type: 3}
+--- !u!95 &862852901 stripped
+Animator:
+  m_CorrespondingSourceObject: {fileID: 8746581277282455830, guid: 7cab638b40405884db5b42fbdb1c1b5a,
+    type: 3}
+  m_PrefabInstance: {fileID: 862852900}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &871239976
 GameObject:
   m_ObjectHideFlags: 0
@@ -10269,11 +10348,14 @@ MonoBehaviour:
   convoTiers: 01000000010000000100000001000000
   collectedCards: []
   collectedItems: []
+  lastCharacterCompleted: 0
   isHouseHot: 1
   isCelciThreatened: 0
   nokiRomanticRoute: 0
   celciRomanticRoute: 0
   lotteRomanticRoute: 0
+  MainEvent1dot5Branch1: 0
+  MainEvent1dot5Branch2: 0
 --- !u!1 &1942823550
 GameObject:
   m_ObjectHideFlags: 0
@@ -12267,6 +12349,7 @@ SceneRoots:
   m_ObjectHideFlags: 0
   m_Roots:
   - {fileID: 519420032}
+  - {fileID: 862852900}
   - {fileID: 1108671395}
   - {fileID: 379998687}
   - {fileID: 1005606886}

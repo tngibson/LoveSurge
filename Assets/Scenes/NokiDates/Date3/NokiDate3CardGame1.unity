@@ -1624,6 +1624,85 @@ MonoBehaviour:
   - {fileID: 21300000, guid: e6c3300e761b41e478bb010bf347ae9d, type: 3}
   - {fileID: 21300000, guid: 1efff82e0a469464987b91e1e6ff298e, type: 3}
   dateCharacter: {fileID: 1661069647}
+--- !u!1001 &295163043
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 8557909430258490260, guid: 7cab638b40405884db5b42fbdb1c1b5a,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8557909430258490260, guid: 7cab638b40405884db5b42fbdb1c1b5a,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8557909430258490260, guid: 7cab638b40405884db5b42fbdb1c1b5a,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8557909430258490260, guid: 7cab638b40405884db5b42fbdb1c1b5a,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8557909430258490260, guid: 7cab638b40405884db5b42fbdb1c1b5a,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8557909430258490260, guid: 7cab638b40405884db5b42fbdb1c1b5a,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8557909430258490260, guid: 7cab638b40405884db5b42fbdb1c1b5a,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8557909430258490260, guid: 7cab638b40405884db5b42fbdb1c1b5a,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8557909430258490260, guid: 7cab638b40405884db5b42fbdb1c1b5a,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8557909430258490260, guid: 7cab638b40405884db5b42fbdb1c1b5a,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8621706404247894105, guid: 7cab638b40405884db5b42fbdb1c1b5a,
+        type: 3}
+      propertyPath: m_Name
+      value: SceneTransition - Crossfade
+      objectReference: {fileID: 0}
+    - target: {fileID: 8621706404247894105, guid: 7cab638b40405884db5b42fbdb1c1b5a,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 7cab638b40405884db5b42fbdb1c1b5a, type: 3}
+--- !u!95 &295163044 stripped
+Animator:
+  m_CorrespondingSourceObject: {fileID: 8746581277282455830, guid: 7cab638b40405884db5b42fbdb1c1b5a,
+    type: 3}
+  m_PrefabInstance: {fileID: 295163043}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &295771159
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -3881,8 +3960,8 @@ MonoBehaviour:
   locationTextText: 
   isEnabled: 0
   mapAnimator: {fileID: 0}
-  transition: {fileID: 0}
-  transitionTime: 0
+  transition: {fileID: 295163044}
+  transitionTime: 2
   isDayProgressor: 1
   isDateButton: 0
   xHoverScale: 0
@@ -10130,11 +10209,14 @@ MonoBehaviour:
   convoTiers: 01000000010000000100000001000000
   collectedCards: []
   collectedItems: []
+  lastCharacterCompleted: 0
   isHouseHot: 1
   isCelciThreatened: 0
   nokiRomanticRoute: 0
   celciRomanticRoute: 0
   lotteRomanticRoute: 0
+  MainEvent1dot5Branch1: 0
+  MainEvent1dot5Branch2: 0
 --- !u!1 &1877364501
 GameObject:
   m_ObjectHideFlags: 0
@@ -10974,9 +11056,11 @@ MonoBehaviour:
   endTurnButton: {fileID: 1396999329}
   mapButton: {fileID: 602046414}
   CurrentCharacterIndex: 0
+  connectionBar: {fileID: 0}
   handSize: 4
   mapButtonScript: {fileID: 602046419}
   comboSurge: 0
+  isTutorial: 0
 --- !u!4 &2001940043
 Transform:
   m_ObjectHideFlags: 0
@@ -11954,12 +12038,16 @@ MonoBehaviour:
   selectedConvoTopic: {fileID: 0}
   gameManager: {fileID: 2001940042}
   reserveManager: {fileID: 420358066}
+  instance: {fileID: 0}
   dropzone: {fileID: 966042202}
   isTypewriting: 0
   isCountingDown: 0
   discardDuration: 1
   scrollRect: {fileID: 202139553}
   textRectTransform: {fileID: 1251843996}
+  startingHandSize: 4
+  endingHandSize: 0
+  cardsPlayedThisTurn: -1
 --- !u!222 &2119566658
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -12339,6 +12427,7 @@ SceneRoots:
   m_ObjectHideFlags: 0
   m_Roots:
   - {fileID: 519420032}
+  - {fileID: 295163043}
   - {fileID: 1108671395}
   - {fileID: 619394802}
   - {fileID: 379998687}

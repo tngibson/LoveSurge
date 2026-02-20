@@ -1386,6 +1386,85 @@ RectTransform:
     type: 3}
   m_PrefabInstance: {fileID: 5353494745443344013}
   m_PrefabAsset: {fileID: 0}
+--- !u!1001 &1879415305
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 8557909430258490260, guid: 7cab638b40405884db5b42fbdb1c1b5a,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8557909430258490260, guid: 7cab638b40405884db5b42fbdb1c1b5a,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8557909430258490260, guid: 7cab638b40405884db5b42fbdb1c1b5a,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8557909430258490260, guid: 7cab638b40405884db5b42fbdb1c1b5a,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8557909430258490260, guid: 7cab638b40405884db5b42fbdb1c1b5a,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8557909430258490260, guid: 7cab638b40405884db5b42fbdb1c1b5a,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8557909430258490260, guid: 7cab638b40405884db5b42fbdb1c1b5a,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8557909430258490260, guid: 7cab638b40405884db5b42fbdb1c1b5a,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8557909430258490260, guid: 7cab638b40405884db5b42fbdb1c1b5a,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8557909430258490260, guid: 7cab638b40405884db5b42fbdb1c1b5a,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8621706404247894105, guid: 7cab638b40405884db5b42fbdb1c1b5a,
+        type: 3}
+      propertyPath: m_Name
+      value: SceneTransition - Crossfade
+      objectReference: {fileID: 0}
+    - target: {fileID: 8621706404247894105, guid: 7cab638b40405884db5b42fbdb1c1b5a,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 7cab638b40405884db5b42fbdb1c1b5a, type: 3}
+--- !u!95 &1879415306 stripped
+Animator:
+  m_CorrespondingSourceObject: {fileID: 8746581277282455830, guid: 7cab638b40405884db5b42fbdb1c1b5a,
+    type: 3}
+  m_PrefabInstance: {fileID: 1879415305}
+  m_PrefabAsset: {fileID: 0}
 --- !u!224 &1905208452 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 5721076167557769490, guid: caff7daa29ed80547bbcab65c7792ef9,
@@ -2442,9 +2521,9 @@ MonoBehaviour:
   locationTextText: 
   isEnabled: 0
   mapAnimator: {fileID: 0}
-  transition: {fileID: 0}
-  transitionTime: 0
-  isDayProgressor: 0
+  transition: {fileID: 1879415306}
+  transitionTime: 2
+  isDayProgressor: 1
   isDateButton: 0
   xHoverScale: 0
   yHoverScale: 0
@@ -2468,6 +2547,7 @@ SceneRoots:
   m_Roots:
   - {fileID: 579954887}
   - {fileID: 703482447}
+  - {fileID: 1879415305}
   - {fileID: 725283230}
   - {fileID: 1297213536}
   - {fileID: 1115827566}

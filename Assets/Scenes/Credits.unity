@@ -270,21 +270,21 @@ MonoBehaviour:
   m_text: "Creative Lead, Producer\r\nAbbey Gorny\r\n\r\n\r\n\r\nProgrammers\r\n\r\nLead
     Programmer\r\nGregory O'Keefe\r\n\r\n\r\nProgrammers\r\nEdison Li\r\n\r\nJake
     Morgenstern\r\n\r\nBrenden Wood\r\n\r\n\r\n\r\nAudio Designers\r\n\r\nSound Lead\r\nBrenden
-    Wood\r\n\r\n\r\n\r\nArtists\r\n\r\nBackground Art\r\nAbbey Gorney\r\n\r\nMatthew
-    Miller\r\n\r\n\r\nUI and Card Art\r\nDarrion Desilva\r\nAbbey Gorney\r\n\r\n\r\nCharacter
-    and Other Art\r\nAbbey Gorney\r\n\r\nJoshua Mom\r\n\r\nAtlas Clawthorne\r\n\r\nSkye
-    Murrel\r\n\r\nMeghan Disko\r\n\r\nMax Moreno\r\n\r\n\r\n\r\nDesigners\r\n\r\nLead
-    Designer, UI Artist, Card Artist\r\nDarrion Desilva\r\n\r\n\r\n\r\nLead Narrative
-    Designers/Writers\r\nElayne Mason\r\n\r\nMax Moreno\r\n\r\n\r\nNoki Route Writers
-    \r\n\r\nRoute Director\r\nElayne Mason\r\n \r\n\r\nWriters\r\nElayne Mason\r\n\r\nSkye
-    Murrel\r\n\r\nTyler Fields\r\n\r\nMax Moreno\r\n\r\n\r\nEditors\r\n\r\nElayne
-    Mason\r\n\r\nBrenden Wood\r\n\r\nMichael Betar IV\r\n\r\nMax Moreno\r\n\r\nCelci
-    Route Writers\r\n\r\nRoute Director\r\nMax Moreno\r\n\r\n\r\nWriters \r\n\r\nMax
-    Moreno \r\n\r\nSkye Murrel\r\n\r\nTyler Fields\r\n\r\n\r\nEditors\r\nMax Moreno\r\n\r\nElayne
-    Mason \r\n\r\nAbbey Gorny\r\n\r\n\r\nLotte Route Writers\r\n\r\nRoute Director\r\nElayne
-    Mason\r\n\r\n\r\nWriters\r\n\r\nAtlas Clawthorne \r\n\r\nElayne Mason \r\n\r\nShawn
-    Eanes\r\n\r\nSkye Murrel \r\n\r\nTyler Fields\r\n\r\n\r\nEditors\r\nBrenden Wood\r\n\r\nMichael
-    Betar IV\r\n\r\nElayne Mason\r\n\r\nMax Moreno\r\n\r\n\r\nMain Story Event Writers\r\nWriters\r\nMax
+    Wood\r\n\r\n\r\n\r\nArtists\r\n\r\nBackground Art\r\nAbbey Gorny\r\n\r\nMatthew
+    Miller\r\n\nJoshua Mom\r\n\nMeghan Disko\n\r\n\r\nUI and Card Art\r\nDarrion
+    Desilva\r\nAbbey Gorny\r\n\r\n\r\nCharacter and Other Art\r\nAbbey Gorny\r\n\r\nJoshua
+    Mom\r\r\n\r\nMax Moreno\r\n\r\n\n\r\nDesigners\r\n\r\nLead Designer, UI Artist,
+    Card Artist\r\nDarrion Desilva\r\n\r\n\r\n\r\nLead Narrative Designers/Writers\r\nElayne
+    Mason\r\n\r\nMax Moreno\r\n\r\n\r\nNoki Route Writers \r\n\r\nRoute Director\r\nElayne
+    Mason\r\n \r\n\r\nWriters\r\nElayne Mason\r\n\r\nSkye Murrel\r\n\r\nTyler Fields\r\n\r\nMax
+    Moreno\r\n\r\n\r\nEditors\r\n\r\nElayne Mason\r\n\r\nBrenden Wood\r\n\r\nMichael
+    Betar IV\r\n\r\nMax Moreno\r\n\r\nCelci Route Writers\r\n\r\nRoute Director\r\nMax
+    Moreno\r\n\r\n\r\nWriters \r\n\r\nMax Moreno \r\n\r\nSkye Murrel\r\n\r\nTyler
+    Fields\r\n\r\n\r\nEditors\r\nMax Moreno\r\n\r\nElayne Mason \r\n\r\nAbbey Gorny\r\n\r\n\r\nLotte
+    Route Writers\r\n\r\nRoute Director\r\nElayne Mason\r\n\r\n\r\nWriters\r\n\r\nAtlas
+    Clawthorne \r\n\r\nElayne Mason \r\n\r\nShawn Eanes\r\n\r\nSkye Murrel \r\n\r\nTyler
+    Fields\r\n\r\n\r\nEditors\r\nBrenden Wood\r\n\r\nMichael Betar IV\r\n\r\nElayne
+    Mason\r\n\r\nMax Moreno\r\n\r\n\r\nMain Story Event Writers\r\nWriters\r\nMax
     Moreno\r\n\r\n\r\nEditors\r\nMax Moreno\r\n\r\nAbbey Gorny\r\n\r\n\r\n\r\n\r\n\r\n\r\nAnd
     a special thanks to every lovely person who decided to play our game to the very
     end! Thank you so much!"
@@ -1316,8 +1316,8 @@ MonoBehaviour:
   locationTextText: 
   isEnabled: 0
   mapAnimator: {fileID: 0}
-  transition: {fileID: 0}
-  transitionTime: 0
+  transition: {fileID: 1899883991}
+  transitionTime: 2
   isDayProgressor: 0
   isDateButton: 0
   xHoverScale: 0
@@ -1492,6 +1492,85 @@ CanvasGroup:
   m_Interactable: 1
   m_BlocksRaycasts: 1
   m_IgnoreParentGroups: 0
+--- !u!1001 &1899883990
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 8557909430258490260, guid: 7cab638b40405884db5b42fbdb1c1b5a,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8557909430258490260, guid: 7cab638b40405884db5b42fbdb1c1b5a,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8557909430258490260, guid: 7cab638b40405884db5b42fbdb1c1b5a,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8557909430258490260, guid: 7cab638b40405884db5b42fbdb1c1b5a,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8557909430258490260, guid: 7cab638b40405884db5b42fbdb1c1b5a,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8557909430258490260, guid: 7cab638b40405884db5b42fbdb1c1b5a,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8557909430258490260, guid: 7cab638b40405884db5b42fbdb1c1b5a,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8557909430258490260, guid: 7cab638b40405884db5b42fbdb1c1b5a,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8557909430258490260, guid: 7cab638b40405884db5b42fbdb1c1b5a,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8557909430258490260, guid: 7cab638b40405884db5b42fbdb1c1b5a,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8621706404247894105, guid: 7cab638b40405884db5b42fbdb1c1b5a,
+        type: 3}
+      propertyPath: m_Name
+      value: SceneTransition - Crossfade
+      objectReference: {fileID: 0}
+    - target: {fileID: 8621706404247894105, guid: 7cab638b40405884db5b42fbdb1c1b5a,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 7cab638b40405884db5b42fbdb1c1b5a, type: 3}
+--- !u!95 &1899883991 stripped
+Animator:
+  m_CorrespondingSourceObject: {fileID: 8746581277282455830, guid: 7cab638b40405884db5b42fbdb1c1b5a,
+    type: 3}
+  m_PrefabInstance: {fileID: 1899883990}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &2091183588
 GameObject:
   m_ObjectHideFlags: 0
@@ -1595,6 +1674,7 @@ SceneRoots:
   m_Roots:
   - {fileID: 2091183591}
   - {fileID: 942427377}
+  - {fileID: 1899883990}
   - {fileID: 1231755590}
   - {fileID: 1227112913}
   - {fileID: 1830877704}
