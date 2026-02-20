@@ -33,6 +33,9 @@ public abstract class Card : MonoBehaviour
 
     ReserveManager reserveManager;
 
+    [SerializeField] private string cardID;
+    public string CardID => cardID;
+
     // Private backing fields with public properties for type and power
     private string type;
     public string Type

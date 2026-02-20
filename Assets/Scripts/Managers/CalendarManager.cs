@@ -5,14 +5,14 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 using static LocationManager;
 
-public class CalendarManager : MonoBehaviour
+public class CalendarManager : MonoBehaviour, ISaveable
 {
     public static CalendarManager instance { get; private set; }
     public DayManager currentDate { get; private set; }
     public DayPhase currentPhase { get; private set; }
     public event System.Action<DayPhase> OnPhaseChanged;
-    [SerializeField] TextMeshProUGUI date;
-    [SerializeField] TextMeshProUGUI time;
+
+    [SerializeField] TextMeshProUGUI dateAndTimeText;
 
     private int daysPassed = 0;
 
@@ -38,6 +38,8 @@ public class CalendarManager : MonoBehaviour
     private bool mainEvent23Triggered = false;
     private bool mainEvent27Triggered = false;
     private bool mainEvent29Triggered = false;
+
+    public string SaveID => "CalendarManager";
 
     void Awake()
     {
@@ -66,7 +68,12 @@ public class CalendarManager : MonoBehaviour
     private void OnSceneLoaded(Scene scene, LoadSceneMode mode)
     {
         // Ensure the TextMeshProUGUI component is reassigned or updated
-        setText();
+        TextMeshProUGUI dateAndTime = GameObject.Find("DateAndTime")?.GetComponent<TextMeshProUGUI>();
+        if (dateAndTime != null)
+        {
+            dateAndTimeText = dateAndTime;
+            setText();
+        }
     }
 
     public void InitializeCalendar(DayManager startDate)
@@ -210,23 +217,12 @@ public class CalendarManager : MonoBehaviour
 
     public override string ToString()
     {
-        return $"{currentDate}  | {currentPhase}";
+        return $"{currentDate.ToString()}  | {currentPhase}";
     }
 
     public void setText()
     {
-        try
-        {
-            date = GameObject.Find("Date").GetComponent<TextMeshProUGUI>();
-            time = GameObject.Find("Time").GetComponent<TextMeshProUGUI>();
-        }
-        catch
-        {
-            //ignore
-        }
-        
-        if (date != null) date.text = currentDate.ToString();
-        if (time != null) time.text = currentPhase.ToString();
+        dateAndTimeText.text = ToString();
     }
 
     private bool DatesMatch(DayManager a, DayManager b)
@@ -240,5 +236,128 @@ public class CalendarManager : MonoBehaviour
     {
         mainEvent17Completed = true;
         dayIndexWhen17Completed = totalDaysElapsed;
+    }
+
+    [System.Serializable]
+    class SaveData
+    {
+        public int year;
+        public int month;
+        public int day;
+        public int phase;
+
+        public int daysPassed;
+        public int totalDaysElapsed;
+
+        public bool mainEvent13Triggered;
+        public bool mainEvent15Triggered;
+        public bool mainEvent17Completed;
+        public bool mainEvent2Triggered;
+        public bool mainEvent21Triggered;
+        public bool mainEvent23Triggered;
+        public bool mainEvent27Triggered;
+        public bool mainEvent29Triggered;
+
+        public int dayIndexWhen17Completed;
+        public int dayIndexWhenEvent2Occurred;
+        public int dayIndexWhenEvent23Occurred;
+        public int dayIndexWhenEvent27Occurred;
+
+        public DateSnapshot mainEventDay;
+        public DateSnapshot mainEvent2Day;
+    }
+
+    [System.Serializable]
+    class DateSnapshot
+    {
+        public int year;
+        public int month;
+        public int day;
+    }
+
+    public string CaptureState()
+    {
+        SaveData data = new SaveData
+        {
+            year = currentDate.Year,
+            month = currentDate.Month,
+            day = currentDate.Day,
+            phase = (int)currentPhase,
+
+            daysPassed = daysPassed,
+            totalDaysElapsed = totalDaysElapsed,
+
+            mainEvent13Triggered = mainEvent13Triggered,
+            mainEvent15Triggered = mainEvent15Triggered,
+            mainEvent17Completed = mainEvent17Completed,
+            mainEvent2Triggered = mainEvent2Triggered,
+            mainEvent21Triggered = mainEvent21Triggered,
+            mainEvent23Triggered = mainEvent23Triggered,
+            mainEvent27Triggered = mainEvent27Triggered,
+            mainEvent29Triggered = mainEvent29Triggered,
+
+            dayIndexWhen17Completed = dayIndexWhen17Completed,
+            dayIndexWhenEvent2Occurred = dayIndexWhenEvent2Occurred,
+            dayIndexWhenEvent23Occurred = dayIndexWhenEvent23Occurred,
+            dayIndexWhenEvent27Occurred = dayIndexWhenEvent27Occurred
+        };
+
+        if (mainEventDay != null)
+            data.mainEventDay = new DateSnapshot
+            {
+                year = mainEventDay.Year,
+                month = mainEventDay.Month,
+                day = mainEventDay.Day
+            };
+
+        if (mainEvent2Day != null)
+            data.mainEvent2Day = new DateSnapshot
+            {
+                year = mainEvent2Day.Year,
+                month = mainEvent2Day.Month,
+                day = mainEvent2Day.Day
+            };
+
+        return JsonUtility.ToJson(data);
+    }
+
+    public void RestoreState(string json)
+    {
+        SaveData data = JsonUtility.FromJson<SaveData>(json);
+
+        currentDate = new DayManager(data.year, data.month, data.day);
+        currentPhase = (DayPhase)data.phase;
+
+        daysPassed = data.daysPassed;
+        totalDaysElapsed = data.totalDaysElapsed;
+
+        mainEvent13Triggered = data.mainEvent13Triggered;
+        mainEvent15Triggered = data.mainEvent15Triggered;
+        mainEvent17Completed = data.mainEvent17Completed;
+        mainEvent2Triggered = data.mainEvent2Triggered;
+        mainEvent21Triggered = data.mainEvent21Triggered;
+        mainEvent23Triggered = data.mainEvent23Triggered;
+        mainEvent27Triggered = data.mainEvent27Triggered;
+        mainEvent29Triggered = data.mainEvent29Triggered;
+
+        dayIndexWhen17Completed = data.dayIndexWhen17Completed;
+        dayIndexWhenEvent2Occurred = data.dayIndexWhenEvent2Occurred;
+        dayIndexWhenEvent23Occurred = data.dayIndexWhenEvent23Occurred;
+        dayIndexWhenEvent27Occurred = data.dayIndexWhenEvent27Occurred;
+
+        if (data.mainEventDay != null)
+            mainEventDay = new DayManager(
+                data.mainEventDay.year,
+                data.mainEventDay.month,
+                data.mainEventDay.day);
+
+        if (data.mainEvent2Day != null)
+            mainEvent2Day = new DayManager(
+                data.mainEvent2Day.year,
+                data.mainEvent2Day.month,
+                data.mainEvent2Day.day);
+
+        setText();
+        OnPhaseChanged?.Invoke(currentPhase);
     }
 }

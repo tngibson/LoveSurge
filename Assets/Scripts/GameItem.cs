@@ -15,6 +15,10 @@ public class GameItem : MonoBehaviour
     public string Description => description;
     public int SocketIndex { get { return socketIndex; } set { socketIndex = value; } }
 
+    [SerializeField] public string itemID;
+
+    public string ItemID => itemID;
+
     // Add properties and methods relevant to game items here
     public virtual void UseItem()
     {

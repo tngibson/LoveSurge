@@ -5,6 +5,8 @@ using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.InputSystem;
 
+using UnityEngine.SceneManagement;
+
 public class PauseMenu : MonoBehaviour
 {
     [SerializeField] private GameObject pauseMenuUI;
@@ -15,19 +17,44 @@ public class PauseMenu : MonoBehaviour
     private bool isPaused = false;
     private bool wasAlreadyPaused = false;
 
+    [SerializeField] private string titleSceneName = "TitleScreen";
+
+    void Start()
+    {
+        if (Time.timeScale == 0f)
+        {
+            Time.timeScale = 1f;
+            isPaused = false;
+            AudioManager.instance?.SetPaused(false);
+        }
+    }
+
+    void Awake()
+    {
+        if (instance == null)
+        {
+            instance = this;
+        }
+    }
+
     void Update()
     {
+        if (!CanPause())
+            return;
+
         if (Input.GetKeyDown(KeyCode.Escape))
         {
             if (isPaused)
-            {
                 ResumeGame();
-            }
             else
-            {
                 StartCoroutine(PauseGame());
-            }
         }
+    }
+
+    bool CanPause()
+    {
+        string currentScene = SceneManager.GetActiveScene().name;
+        return currentScene != titleSceneName;
     }
 
     // Pauses the game and shows the pause menu
@@ -71,6 +98,16 @@ public class PauseMenu : MonoBehaviour
         optionsMenuUI.SetActive(false);
         audioMenuUI.SetActive(false);
         pauseMenuUI.SetActive(true);
+    }
+
+    public void ForceResumeAfterLoad()
+    {
+        pauseMenuUI.SetActive(false);
+        audioMenuUI.SetActive(false);
+        optionsMenuUI.SetActive(false);
+
+        isPaused = false;
+        AudioManager.instance?.SetPaused(false);
     }
 
     // Quit the game

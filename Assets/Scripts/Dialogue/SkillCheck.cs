@@ -6,7 +6,7 @@ using UnityEngine.UI;
 using FMODUnity;
 using FMOD.Studio;
 
-public class SkillCheck : MonoBehaviour
+public class SkillCheck : MonoBehaviour, ISaveable
 {
     [SerializeField] private List<string> dialogLines = new List<string>();  // Main dialog lines
     [SerializeField] private List<string> speakersPerLine = new List<string>();  // Speakers per line
@@ -73,6 +73,8 @@ public class SkillCheck : MonoBehaviour
     [SerializeField] private GameObject modifierText;
     [SerializeField] private TextMeshProUGUI totalText;
     [SerializeField] private TextMeshProUGUI skillCheckText;
+
+    public string SaveID => "SkillCheck";
 
     void Start()
     {
@@ -479,5 +481,80 @@ public class SkillCheck : MonoBehaviour
         deliahVoice = AudioManager.instance.CreateInstance(FMODEvents.instance.DeliahVoice);
         nokiVoice = AudioManager.instance.CreateInstance(FMODEvents.instance.noVoice);
         diceShake = AudioManager.instance.CreateInstance(FMODEvents.instance.DiceShake);
+    }
+
+    public string CaptureState()
+    {
+        SaveData data = new SaveData
+        {
+            currentLineIndex = currentLineIndex,
+            isSkillCheckTime = isSkillCheckTime,
+            isSkillCheckDialog = isSkillCheckDialog,
+            skillCheckPassed = skillCheckPassed,
+            skillCheckStage = skillCheckStage,
+            modifier = modifier,
+            skillShake = skillShake,
+            diceRoll1 = diceRoll1,
+            diceRoll2 = diceRoll2,
+            originalLineIndex = originalLineIndex
+        };
+
+        return JsonUtility.ToJson(data);
+    }
+
+    public void RestoreState(string json)
+    {
+        SaveData data = JsonUtility.FromJson<SaveData>(json);
+
+        currentLineIndex = data.currentLineIndex;
+        isSkillCheckTime = data.isSkillCheckTime;
+        isSkillCheckDialog = data.isSkillCheckDialog;
+        skillCheckPassed = data.skillCheckPassed;
+        skillCheckStage = data.skillCheckStage;
+        modifier = data.modifier;
+        skillShake = data.skillShake;
+        diceRoll1 = data.diceRoll1;
+        diceRoll2 = data.diceRoll2;
+        originalLineIndex = data.originalLineIndex;
+
+        // Reconstruct state safely
+
+        if (isSkillCheckTime)
+        {
+            skillCheckScreen.SetActive(true);
+            skillCheckArea.SetActive(true);
+
+            // If we were mid-stage 1 (rolling animation),
+            // force it to stage 2 so we don’t resume coroutine.
+            if (skillCheckStage == 1)
+                skillCheckStage = 2;
+        }
+
+        if (isSkillCheckDialog)
+        {
+            // Reapply success/failure path
+            LoadSkillCheckPath(skillCheckPassed);
+        }
+
+        DisplayLine();
+    }
+
+    [System.Serializable]
+    private class SaveData
+    {
+        public int currentLineIndex;
+
+        public bool isSkillCheckTime;
+        public bool isSkillCheckDialog;
+        public bool skillCheckPassed;
+
+        public int skillCheckStage;
+
+        public int modifier;
+        public int skillShake;
+        public int diceRoll1;
+        public int diceRoll2;
+
+        public int originalLineIndex;
     }
 }

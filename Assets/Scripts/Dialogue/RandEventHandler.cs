@@ -8,7 +8,7 @@ using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 using static LocationManager;
 
-public class RandEventHandler : MonoBehaviour
+public class RandEventHandler : MonoBehaviour, ISaveable
 {
     [Header("Portrait Layout")]
     [SerializeField] private float screenPadding = 150f; // Distance from left/right edge
@@ -112,6 +112,8 @@ public class RandEventHandler : MonoBehaviour
 
     private bool isFading = false;
 
+    public string SaveID => "RandEventHandler";
+
     void Start()
     {
         // Set the playerManager and get the player's preferred name
@@ -128,6 +130,12 @@ public class RandEventHandler : MonoBehaviour
         choicePanel.SetActive(false); // Hide choice panel at start
         mapButton.SetActive(false);   // Hide the map button at start
         InitializeAudio(); // Starts FMOD audio
+
+        Debug.Log("Start running, line index: " + currentLineIndex);
+        if (SaveLoadManager.Instance != null &&
+        SaveLoadManager.Instance.IsLoading)
+            return;
+        Debug.Log("Start running, line index: " + currentLineIndex);
 
         if (Player.instance.celciRomanticRoute && isCelciFinalDeepConvo)
         {
@@ -268,6 +276,8 @@ public class RandEventHandler : MonoBehaviour
         {
             if (dialogLines[currentLineIndex] == "PLAYCREEPYSTART")
             {
+                NextLine();
+                return;
                 if (MusicManager.Instance != null)
                 {
                     MusicManager.Instance.StopMusic();
@@ -282,6 +292,8 @@ public class RandEventHandler : MonoBehaviour
         {
             if (dialogLines[currentLineIndex] == "PLAYCREEPYEND")
             {
+                NextLine();
+                return;
                 if (MusicManager.Instance != null)
                 {
                     MusicManager.Instance.StopMusic();
@@ -296,6 +308,8 @@ public class RandEventHandler : MonoBehaviour
         {
             if (dialogLines[currentLineIndex] == "PLAYFUTURISTICSTART")
             {
+                NextLine();
+                return;
                 if (MusicManager.Instance != null)
                 {
                     MusicManager.Instance.StopMusic();
@@ -310,6 +324,8 @@ public class RandEventHandler : MonoBehaviour
         {
             if (dialogLines[currentLineIndex] == "PLAYFUTURISTICEND")
             {
+                NextLine();
+                return;
                 if (MusicManager.Instance != null)
                 {
                     MusicManager.Instance.StopMusic();
@@ -1352,6 +1368,84 @@ public class RandEventHandler : MonoBehaviour
                 rect.anchoredPosition = pos;
             }
         }
+    }
+
+    public string CaptureState()
+    {
+        SaveData data = new SaveData
+        {
+            currentLineIndex = currentLineIndex,
+            isChoiceDialog = isChoiceDialog,
+            isChoiceTime = isChoiceTime,
+            isCGActive = isCGActive,
+            isWaitingForCGClick = isWaitingForCGClick,
+            activeDialogLines = new List<string>(dialogLines),
+            activeSpeakers = new List<string>(speakersPerLine),
+            dialogStackLineIndices = new List<int>()
+        };
+
+        foreach (var state in dialogStateStack)
+            data.dialogStackLineIndices.Add(state.lineIndex);
+
+        return JsonUtility.ToJson(data);
+    }
+
+    public void RestoreState(string json)
+    {
+        SaveData data = JsonUtility.FromJson<SaveData>(json);
+
+        currentLineIndex = data.currentLineIndex;
+        isChoiceDialog = data.isChoiceDialog;
+        isChoiceTime = data.isChoiceTime;
+        isCGActive = data.isCGActive;
+        isWaitingForCGClick = data.isWaitingForCGClick;
+
+        if (data.activeDialogLines != null)
+            dialogLines = new List<string>(data.activeDialogLines);
+
+        if (data.activeSpeakers != null)
+            speakersPerLine = new List<string>(data.activeSpeakers);
+
+        dialogStateStack.Clear();
+
+        if (data.dialogStackLineIndices != null)
+        {
+            foreach (var index in data.dialogStackLineIndices)
+            {
+                dialogStateStack.Push(
+                    new DialogState(
+                        dialogLines,
+                        speakersPerLine,
+                        characterSprites,
+                        index,
+                        choices
+                    )
+                );
+            }
+        }
+
+        DisplayLine();
+    }
+
+    [System.Serializable]
+    private class SaveData
+    {
+        public int currentLineIndex;
+        public bool isChoiceDialog;
+        public bool isChoiceTime;
+        public bool isCGActive;
+        public bool isWaitingForCGClick;
+
+        public List<string> activeDialogLines;
+        public List<string> activeSpeakers;
+
+        public List<int> dialogStackLineIndices;
+    }
+
+    [System.Serializable]
+    private class DialogStateSave
+    {
+        public int lineIndex;
     }
 }
 

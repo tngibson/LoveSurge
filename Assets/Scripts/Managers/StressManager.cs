@@ -3,7 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class StressManager : MonoBehaviour
+public class StressManager : MonoBehaviour, ISaveable
 {
     public static EventHandler stressFilledEvent; // Called when stress meter fills
     public static EventHandler stressUnfilledEvent; // Called when stress is above 1 and then decrements below 1
@@ -13,6 +13,8 @@ public class StressManager : MonoBehaviour
     public static StressManager instance;
     public float currentStressAmt = .1f;
     public int numStressBars = 4;
+
+    public string SaveID => "StressManager";
 
     private void Awake()
     {
@@ -104,6 +106,44 @@ public class StressManager : MonoBehaviour
         int stepIndex = (int)(amount * numSteps);
 
         return Math.Min(stepIndex, instance.numStressBars);
+    }
+
+    [System.Serializable]
+    class SaveData
+    {
+        public float currentStressAmt;
+    }
+
+    public string CaptureState()
+    {
+        SaveData data = new SaveData
+        {
+            currentStressAmt = currentStressAmt
+        };
+
+        return JsonUtility.ToJson(data);
+    }
+
+    public void RestoreState(string json)
+    {
+        SaveData data = JsonUtility.FromJson<SaveData>(json);
+        if (data == null) return;
+
+        float previous = currentStressAmt;
+        currentStressAmt = data.currentStressAmt;
+
+        // Fire stress changed event so dependent systems update correctly
+        stressChangedEvent?.Invoke(this, new StressEventArgs()
+        {
+            AmountChanged = currentStressAmt - previous,
+            NewTotal = currentStressAmt
+        });
+
+        // Re-evaluate filled state
+        if (currentStressAmt >= 1f)
+            stressFilledEvent?.Invoke(this, EventArgs.Empty);
+
+        StressBar.instance?.UpdateStressBar();
     }
 }
 

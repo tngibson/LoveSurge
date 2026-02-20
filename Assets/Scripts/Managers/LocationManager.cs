@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-public class LocationManager : MonoBehaviour
+public class LocationManager : MonoBehaviour, ISaveable
 {
     public static LocationManager Instance { get; private set; }
 
@@ -28,6 +28,8 @@ public class LocationManager : MonoBehaviour
     public enum Date1Stage { Intro, CardGame, Done }
     public enum Date2Stage { Intro, CardGame, Done }
     public enum Date3Stage { Intro, CardGame, Done }
+
+    public string SaveID => "LocationManager";
 
     [Header("Character Date Data")]
     public List<DateData> characterDates = new List<DateData>
@@ -379,5 +381,74 @@ public class LocationManager : MonoBehaviour
         AchievementID id = (AchievementID)achievementIndex;
 
         AchievementComponent.AchievementSystem.UnlockAchievement(id);
+    }
+
+    public string CaptureState()
+    {
+        SaveData data = new SaveData
+        {
+            dates = new List<CharacterDateSave>()
+        };
+
+        foreach (var d in characterDates)
+        {
+            data.dates.Add(new CharacterDateSave
+            {
+                name = d.name,
+                isPlayable = d.isPlayable,
+                dateStarted = d.dateStarted,
+                isFirstTime = d.isFirstTime,
+                allDatesDone = d.allDatesDone,
+                phase = (int)d.phaseEnteredDate,
+                currentDate = (int)d.currentDate,
+                d1 = (int)d.date1Stage,
+                d2 = (int)d.date2Stage,
+                d3 = (int)d.date3Stage
+            });
+        }
+
+        return JsonUtility.ToJson(data);
+    }
+
+    public void RestoreState(string json)
+    {
+        SaveData data = JsonUtility.FromJson<SaveData>(json);
+
+        foreach (var s in data.dates)
+        {
+            var d = characterDates.Find(x => x.name == s.name);
+            if (d == null) continue;
+
+            d.isPlayable = s.isPlayable;
+            d.dateStarted = s.dateStarted;
+            d.isFirstTime = s.isFirstTime;
+            d.allDatesDone = s.allDatesDone;
+            d.phaseEnteredDate = (DayPhase)s.phase;
+            d.currentDate = (DateNum)s.currentDate;
+            d.date1Stage = (Date1Stage)s.d1;
+            d.date2Stage = (Date2Stage)s.d2;
+            d.date3Stage = (Date3Stage)s.d3;
+        }
+    }
+
+    [System.Serializable]
+    class SaveData
+    {
+        public List<CharacterDateSave> dates;
+    }
+
+    [System.Serializable]
+    class CharacterDateSave
+    {
+        public string name;
+        public bool isPlayable;
+        public bool dateStarted;
+        public bool isFirstTime;
+        public bool allDatesDone;
+        public int phase;
+        public int currentDate;
+        public int d1;
+        public int d2;
+        public int d3;
     }
 }
