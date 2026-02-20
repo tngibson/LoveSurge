@@ -37,6 +37,8 @@ public class LocationManager : MonoBehaviour
         new DateData { name = "Lotte" }
     };
 
+    private bool mainEvent17Triggered = false;
+
     void Awake()
     {
         if (Instance == null)
@@ -128,6 +130,8 @@ public class LocationManager : MonoBehaviour
                     case Date1Stage.Done:
                         UnlockFirstDateCharacterAchievement(data);
                         UnlockDateAchievement(data, DateNum.Date1);
+                        
+                        CheckForMainEvent17();
 
                         data.currentDate = DateNum.Date2;
                         data.date2Stage = Date2Stage.Intro;
@@ -149,6 +153,8 @@ public class LocationManager : MonoBehaviour
                         break;
                     case Date2Stage.Done:
                         UnlockDateAchievement(data, DateNum.Date2);
+
+                        CheckForMainEvent17();
 
                         data.currentDate = DateNum.Date3;
                         data.date3Stage = Date3Stage.Intro;
@@ -271,6 +277,50 @@ public class LocationManager : MonoBehaviour
         {
             data.phaseEnteredDate = phase;
         }
+    }
+
+    private void CheckForMainEvent17()
+    {
+        if (mainEvent17Triggered)
+            return;
+
+        bool allDate1Complete = true;
+        bool atLeastOneDate2Complete = false;
+
+        foreach (var data in characterDates)
+        {
+            // Date1 complete if we have progressed beyond it
+            if (data.currentDate == DateNum.Date1)
+                allDate1Complete = false;
+
+            // Date2 complete if we have progressed beyond it
+            if (data.currentDate == DateNum.Date3 ||
+               (data.currentDate == DateNum.Date2 && data.date2Stage == Date2Stage.Done))
+            {
+                atLeastOneDate2Complete = true;
+            }
+        }
+
+        if (allDate1Complete && atLeastOneDate2Complete)
+        {
+            mainEvent17Triggered = true;
+            CalendarManager.instance.NotifyMainEvent17Completed();
+            SceneManager.LoadScene("MainEvent1.7");
+        }
+    }
+
+    public bool HasAtLeastOneDate2Completed()
+    {
+        foreach (var data in characterDates)
+        {
+            if (data.currentDate == DateNum.Date3 ||
+               (data.currentDate == DateNum.Date2 && data.date2Stage == Date2Stage.Done))
+            {
+                return true;
+            }
+        }
+
+        return false;
     }
 
     private void UnlockFirstDateCharacterAchievement(DateData data)
