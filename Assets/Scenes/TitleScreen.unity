@@ -588,7 +588,7 @@ MonoBehaviour:
   playerName: 
   stats: 
   statOffsets: []
-  cash: 11111
+  cash: 0
   convoTiers: 01000000010000000100000001000000
   collectedCards: []
   collectedItems: []
@@ -597,6 +597,8 @@ MonoBehaviour:
   nokiRomanticRoute: 0
   celciRomanticRoute: 0
   lotteRomanticRoute: 0
+  MainEvent1dot5Branch1: 0
+  MainEvent1dot5Branch2: 0
 --- !u!4 &832744758
 Transform:
   m_ObjectHideFlags: 0
@@ -2169,6 +2171,13 @@ MonoBehaviour:
       Data3: 1458965673
       Data4: -2046846014
     Path: event:/Music/dateTheme
+  creepyTheme:
+    Guid:
+      Data1: 0
+      Data2: 0
+      Data3: 0
+      Data4: 0
+    Path: 
   canSetParameter: 0
   dateCharacter: 0
   dateProgress: 0

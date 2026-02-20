@@ -10,6 +10,11 @@ using static LocationManager;
 
 public class RandEventHandler : MonoBehaviour
 {
+    [Header("Portrait Layout")]
+    [SerializeField] private float screenPadding = 150f; // Distance from left/right edge
+    [SerializeField] private float portraitSpacingPadding = 50f; // Extra spacing between portraits
+    [SerializeField] private float additionalCenterSpread = 600f;
+
     [SerializeField] private List<string> dialogLines = new List<string>();     // Holds the main dialog lines
     [SerializeField] private List<string> speakersPerLine = new List<string>(); // Holds the speaker names per line
     [SerializeField] private List<SpriteOptions> characterSprites = new List<SpriteOptions>(); // Holds sprite options for each character
@@ -324,6 +329,8 @@ public class RandEventHandler : MonoBehaviour
                 }
             }
         }
+
+        RecenterPortraits();
     }
 
     private IEnumerator TypewriteText(string line, string speaker)
@@ -979,6 +986,82 @@ public class RandEventHandler : MonoBehaviour
         currentLineIndex = 0;
 
         DisplayLine();
+    }
+
+    private void RecenterPortraits()
+    {
+        List<Image> visiblePortraits = new List<Image>();
+
+        foreach (var portrait in characterPortraits)
+        {
+            if (portrait.sprite != null && portrait.sprite != transparentSprite)
+            {
+                portrait.gameObject.SetActive(true);
+                visiblePortraits.Add(portrait);
+            }
+            else
+            {
+                portrait.gameObject.SetActive(false);
+            }
+        }
+
+        int count = visiblePortraits.Count;
+        if (count == 0)
+            return;
+
+        RectTransform canvasRect = background.canvas.GetComponent<RectTransform>();
+        float screenWidth = canvasRect.rect.width;
+
+        float safeHalfWidth = (screenWidth / 2f) - screenPadding;
+
+        // Estimated visual width of character body
+        float estimatedVisualWidth = 500f;
+
+        // Base spacing between portraits (tweakable)
+        float baseSpacing = estimatedVisualWidth + portraitSpacingPadding;
+
+        float spacing = baseSpacing + additionalCenterSpread;
+
+        // If layout would spill off screen, compress spacing
+        float halfTotalWidth = ((count - 1) * spacing) / 2f;
+
+        if (halfTotalWidth + estimatedVisualWidth / 2f > safeHalfWidth)
+        {
+            spacing = ((safeHalfWidth - estimatedVisualWidth / 2f) * 2f) / (count - 1);
+        }
+
+        // --- CENTER OUTWARD DISTRIBUTION ---
+
+        if (count % 2 == 1)
+        {
+            // Odd count → true center portrait
+            int centerIndex = count / 2;
+
+            for (int i = 0; i < count; i++)
+            {
+                float offset = (i - centerIndex) * spacing;
+
+                RectTransform rect = visiblePortraits[i].GetComponent<RectTransform>();
+                Vector2 pos = rect.anchoredPosition;
+                pos.x = offset;
+                rect.anchoredPosition = pos;
+            }
+        }
+        else
+        {
+            // Even count → no exact center, split around 0
+            float halfSpacing = spacing / 2f;
+
+            for (int i = 0; i < count; i++)
+            {
+                float offset = (i - (count / 2f - 0.5f)) * spacing;
+
+                RectTransform rect = visiblePortraits[i].GetComponent<RectTransform>();
+                Vector2 pos = rect.anchoredPosition;
+                pos.x = offset;
+                rect.anchoredPosition = pos;
+            }
+        }
     }
 }
 
