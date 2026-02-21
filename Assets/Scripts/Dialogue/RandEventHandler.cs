@@ -112,6 +112,12 @@ public class RandEventHandler : MonoBehaviour
 
     private bool isFading = false;
 
+    [Header("Non-FMOD Music")]
+    [SerializeField] private AudioClip creepyTrack;
+    [SerializeField] private AudioClip futuristicTrack;
+
+    private AudioSource altMusicSource;
+
     public string SaveID => "RandEventHandler";
 
     void Start()
@@ -126,6 +132,10 @@ public class RandEventHandler : MonoBehaviour
         {
             Debug.LogWarning("Player Manager was null!");
         }
+
+        altMusicSource = gameObject.AddComponent<AudioSource>();
+        altMusicSource.loop = true;
+        altMusicSource.playOnAwake = false;
 
         choicePanel.SetActive(false); // Hide choice panel at start
         mapButton.SetActive(false);   // Hide the map button at start
@@ -276,13 +286,7 @@ public class RandEventHandler : MonoBehaviour
         {
             if (dialogLines[currentLineIndex] == "PLAYCREEPYSTART")
             {
-                NextLine();
-                return;
-                if (MusicManager.Instance != null)
-                {
-                    MusicManager.Instance.StopMusic();
-                    MusicManager.Instance.PlayMusic(MusicManager.Instance.CreepyTheme);
-                }
+                MusicManager.Instance?.PlayCreepyAlt();
                 NextLine();
                 return;
             }
@@ -292,13 +296,7 @@ public class RandEventHandler : MonoBehaviour
         {
             if (dialogLines[currentLineIndex] == "PLAYCREEPYEND")
             {
-                NextLine();
-                return;
-                if (MusicManager.Instance != null)
-                {
-                    MusicManager.Instance.StopMusic();
-                    MusicManager.Instance.PlayMusic(MusicManager.Instance.DeepConversation);
-                }
+                MusicManager.Instance?.ResumeDeepConversationMusic();
                 NextLine();
                 return;
             }
@@ -308,13 +306,7 @@ public class RandEventHandler : MonoBehaviour
         {
             if (dialogLines[currentLineIndex] == "PLAYFUTURISTICSTART")
             {
-                NextLine();
-                return;
-                if (MusicManager.Instance != null)
-                {
-                    MusicManager.Instance.StopMusic();
-                    //MusicManager.Instance.PlayMusic(MusicManager.Instance.FuturisticMystery);
-                }
+                MusicManager.Instance?.PlayFuturisticAlt();
                 NextLine();
                 return;
             }
@@ -324,13 +316,7 @@ public class RandEventHandler : MonoBehaviour
         {
             if (dialogLines[currentLineIndex] == "PLAYFUTURISTICEND")
             {
-                NextLine();
-                return;
-                if (MusicManager.Instance != null)
-                {
-                    MusicManager.Instance.StopMusic();
-                    MusicManager.Instance.PlayMusic(MusicManager.Instance.DeepConversation);
-                }
+                MusicManager.Instance?.ResumeDeepConversationMusic();
                 NextLine();
                 return;
             }
@@ -536,11 +522,14 @@ public class RandEventHandler : MonoBehaviour
 
     private void HandleCelciIntroChoice()
     {
-        // Backup the current dialog to return to later
-        originalDialogLines = new List<string>(dialogLines);
-        originalSpeakersPerLine = new List<string>(speakersPerLine);
-        originalSpriteOptions = new List<SpriteOptions>(characterSprites);
-        originalLineIndex = currentLineIndex + 1; // Resume after this marker
+        dialogStateStack.Push(new DialogState(
+            dialogLines,
+            speakersPerLine,
+            characterSprites,
+            currentLineIndex + 1,
+            choices
+        ));
+
         isChoiceDialog = true;
 
         // If the house is not hot, skip this block
@@ -564,9 +553,9 @@ public class RandEventHandler : MonoBehaviour
 
             dialogLines = new List<string>
         {
-            "Celci: Whoa, it�s freezing in here!",
-            "You: Sorry about that... the heater�s busted again.",
-            "Celci: That�s not great for a guest, [Player]. Let�s fix that later."
+            "Celci: Whoa, it's freezing in here!",
+            "You: Sorry about that... the heater's busted again.",
+            "Celci: That's not great for a guest, [Player]. Let�s fix that later."
         };
 
             speakersPerLine = new List<string> { "Celci", "You", "Celci" };
@@ -582,11 +571,14 @@ public class RandEventHandler : MonoBehaviour
 
     private void HandleCelciDate2Choice()
     {
-        // Backup the current dialog to return to later
-        originalDialogLines = new List<string>(dialogLines);
-        originalSpeakersPerLine = new List<string>(speakersPerLine);
-        originalSpriteOptions = new List<SpriteOptions>(characterSprites);
-        originalLineIndex = currentLineIndex + 1; // Resume after this marker
+        dialogStateStack.Push(new DialogState(
+            dialogLines,
+            speakersPerLine,
+            characterSprites,
+            currentLineIndex + 1,
+            choices
+        ));
+
         isChoiceDialog = true;
 
         // If Celci is not threatened, skip this block
@@ -633,37 +625,46 @@ public class RandEventHandler : MonoBehaviour
 
     private IEnumerator FadeBackground(Sprite newSprite, float duration)
     {
-        // Create a temporary overlay Image (same parent/layer as the main background)
         GameObject tempObj = new GameObject("TempBackground");
         Image tempImage = tempObj.AddComponent<Image>();
-        tempImage.sprite = background.sprite; // start with the current sprite
-        tempImage.rectTransform.SetParent(background.transform.parent, false);
-        tempImage.rectTransform.anchorMin = background.rectTransform.anchorMin;
-        tempImage.rectTransform.anchorMax = background.rectTransform.anchorMax;
-        tempImage.rectTransform.offsetMin = background.rectTransform.offsetMin;
-        tempImage.rectTransform.offsetMax = background.rectTransform.offsetMax;
-        tempImage.preserveAspect = true;
-        tempImage.raycastTarget = false; // so it doesn�t block clicks
 
-        // Put it behind UI but over the real background
-        tempImage.transform.SetSiblingIndex(background.transform.GetSiblingIndex());
+        RectTransform src = background.rectTransform;
+        RectTransform dst = tempImage.rectTransform;
 
-        // Set the new background sprite (invisible for now)
+        tempImage.sprite = background.sprite;
+
+        dst.SetParent(src.parent, false);
+
+        // Copy the entire rect transform layout
+        dst.anchorMin = src.anchorMin;
+        dst.anchorMax = src.anchorMax;
+        dst.pivot = src.pivot;
+        dst.sizeDelta = src.sizeDelta;
+        dst.anchoredPosition = src.anchoredPosition;
+        dst.localScale = src.localScale;
+        dst.localRotation = src.localRotation;
+
+        tempImage.preserveAspect = background.preserveAspect;
+        tempImage.raycastTarget = false;
+
+        dst.SetSiblingIndex(background.transform.GetSiblingIndex());
+
         background.sprite = newSprite;
         background.color = new Color(1, 1, 1, 0f);
 
-        // Fade
         float elapsed = 0f;
+
         while (elapsed < duration)
         {
             float t = elapsed / duration;
+
             background.color = new Color(1, 1, 1, t);
             tempImage.color = new Color(1, 1, 1, 1 - t);
+
             elapsed += Time.deltaTime;
             yield return null;
         }
 
-        // Ensure fully transitioned
         background.color = Color.white;
         Destroy(tempObj);
     }
@@ -1110,11 +1111,14 @@ public class RandEventHandler : MonoBehaviour
 
     private void HandleMainEvent1dot5BranchPt2()
     {
-        // Backup
-        originalDialogLines = new List<string>(dialogLines);
-        originalSpeakersPerLine = new List<string>(speakersPerLine);
-        originalSpriteOptions = new List<SpriteOptions>(characterSprites);
-        originalLineIndex = currentLineIndex + 1;
+        dialogStateStack.Push(new DialogState(
+            dialogLines,
+            speakersPerLine,
+            characterSprites,
+            currentLineIndex + 1,
+            choices
+        ));
+
         isChoiceDialog = true;
 
         MainEvent1dot5BranchPt2Data selectedData;
@@ -1181,11 +1185,14 @@ public class RandEventHandler : MonoBehaviour
 
     private void HandleMainStory3CurrentRoute()
     {
-        // Backup current dialog state
-        originalDialogLines = new List<string>(dialogLines);
-        originalSpeakersPerLine = new List<string>(speakersPerLine);
-        originalSpriteOptions = new List<SpriteOptions>(characterSprites);
-        originalLineIndex = currentLineIndex + 1;
+        dialogStateStack.Push(new DialogState(
+            dialogLines,
+            speakersPerLine,
+            characterSprites,
+            currentLineIndex + 1,
+            choices
+        ));
+
         isChoiceDialog = true;
 
         MainStory3CurrentRouteData selectedData = null;
@@ -1368,6 +1375,21 @@ public class RandEventHandler : MonoBehaviour
                 rect.anchoredPosition = pos;
             }
         }
+    }
+
+    private void PlayAltTrack(AudioClip clip)
+    {
+        if (clip == null) return;
+
+        altMusicSource.Stop();
+        altMusicSource.clip = clip;
+        altMusicSource.Play();
+    }
+
+    private void StopAltTrack()
+    {
+        if (altMusicSource.isPlaying)
+            altMusicSource.Stop();
     }
 }
 
