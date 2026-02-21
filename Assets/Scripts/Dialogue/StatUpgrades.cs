@@ -5,7 +5,7 @@ using UnityEngine.SceneManagement;
 using TMPro;
 using System.Text.RegularExpressions;
 
-public class StatUpgrade : MonoBehaviour, ISaveable
+public class StatUpgrade : MonoBehaviour
 {
     [SerializeField] private TextMeshProUGUI dialogText; // Where the narrative outcome will display
     [SerializeField] private TextMeshProUGUI speakerNameText;  // Speaker name output
@@ -415,59 +415,6 @@ public class StatUpgrade : MonoBehaviour, ISaveable
 
         UpdateSpeakerAndDialog(currentDialogLines[currentLineIndex]);
         yield return StartCoroutine(TypewriteDialog(dialogText.text));
-    }
-
-    public string CaptureState()
-    {
-        SaveData data = new SaveData
-        {
-            currentLineIndex = currentLineIndex,
-            currentDialogLines = currentDialogLines,
-            statChangesApplied = statChangesApplied
-        };
-
-        if (selectedOfficeJob.HasValue)
-        {
-            data.hasSelectedOfficeJob = true;
-            data.jobTitle = selectedOfficeJob.Value.jobTitle;
-            data.sillyLine = selectedOfficeJob.Value.sillyLine;
-        }
-
-        return JsonUtility.ToJson(data);
-    }
-
-    public void RestoreState(string json)
-    {
-        SaveData data = JsonUtility.FromJson<SaveData>(json);
-
-        currentLineIndex = data.currentLineIndex;
-        currentDialogLines = data.currentDialogLines;
-        statChangesApplied = data.statChangesApplied;
-
-        if (data.hasSelectedOfficeJob)
-        {
-            selectedOfficeJob = new OfficeJob
-            {
-                jobTitle = data.jobTitle,
-                sillyLine = data.sillyLine
-            };
-        }
-
-        StopAllCoroutines();
-        StartCoroutine(ResumeDialogAfterLoad());
-    }
-
-    [System.Serializable]
-    private class SaveData
-    {
-        public int currentLineIndex;
-        public List<string> currentDialogLines;
-
-        public bool hasSelectedOfficeJob;
-        public string jobTitle;
-        public string sillyLine;
-
-        public bool statChangesApplied;
     }
 
     [System.Serializable]
