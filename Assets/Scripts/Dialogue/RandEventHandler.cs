@@ -671,43 +671,38 @@ public class RandEventHandler : MonoBehaviour
 
     private void UpdateChoiceButtonLayout()
     {
-        int activeChoices = 0;
+        List<Button> activeButtons = new List<Button>();
 
-        // Count the number of active choice buttons
         foreach (var button in choiceButtons)
         {
             if (button.gameObject.activeSelf)
-            {
-                activeChoices++;
-            }
+                activeButtons.Add(button);
         }
 
-        // Ensure we only ever have two layers with two buttons max per layer
         int maxButtonsPerLayer = 2;
-        float horizontalSpacing = 650f; // Space between buttons horizontally
-        float verticalSpacing = 265f;   // Space between layers vertically
+        float horizontalSpacing = 650f;
+        float verticalSpacing = 265f;
 
-        int index = 0;
-        foreach (var button in choiceButtons)
+        int total = activeButtons.Count;
+
+        for (int i = 0; i < total; i++)
         {
-            if (button.gameObject.activeSelf)
-            {
-                RectTransform buttonRect = button.GetComponent<RectTransform>();
+            RectTransform rect = activeButtons[i].GetComponent<RectTransform>();
 
-                // Determine layer (0 or 1) and horizontal index (0 or 1)
-                int layer = index / maxButtonsPerLayer;
-                int horizontalIndex = index % maxButtonsPerLayer;
+            int layer = i / maxButtonsPerLayer;
 
-                // Calculate horizontal position to center the two buttons
-                float xPos = -((maxButtonsPerLayer - 1) * horizontalSpacing) / 2 + (horizontalIndex * horizontalSpacing);
+            // How many buttons exist in this row
+            int remaining = total - (layer * maxButtonsPerLayer);
+            int buttonsInRow = Mathf.Min(maxButtonsPerLayer, remaining);
 
-                // Calculate vertical position to create two layers
-                float yPos = -((layer * verticalSpacing));
+            int indexInRow = i % maxButtonsPerLayer;
 
-                // Apply the position
-                buttonRect.anchoredPosition = new Vector2(xPos, yPos + 200);
-                index++;
-            }
+            float rowWidth = (buttonsInRow - 1) * horizontalSpacing;
+
+            float xPos = -rowWidth / 2f + indexInRow * horizontalSpacing;
+            float yPos = -(layer * verticalSpacing);
+
+            rect.anchoredPosition = new Vector2(xPos, yPos + 200);
         }
     }
 
