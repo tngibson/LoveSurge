@@ -49,7 +49,7 @@ public class StressManager : MonoBehaviour, ISaveable
         // Necessary so that adding stress over 1 doesn't call the stress filled event multiple times
         if (currentStressAmt >= 1f)
         {
-            AchievementComponent.AchievementSystem.UnlockAchievement(AchievementID.NEW_ACHIEVEMENT_1_4); // Unlocks the Achievement: Under Pressure
+            AchievementComponent.AchievementSystem.UnlockAchievement(AchievementID.NEW_ACHIEVEMENT_1_3); // Unlocks the Achievement: Under Pressure
             return currentStressAmt;
         }
 
@@ -63,7 +63,7 @@ public class StressManager : MonoBehaviour, ISaveable
 
         if (currentStressAmt >= 1f)
         {
-            AchievementComponent.AchievementSystem.UnlockAchievement(AchievementID.NEW_ACHIEVEMENT_1_4); // Unlocks the Achievement: Under Pressure
+            AchievementComponent.AchievementSystem.UnlockAchievement(AchievementID.NEW_ACHIEVEMENT_1_3); // Unlocks the Achievement: Under Pressure
             stressFilledEvent?.Invoke(this, EventArgs.Empty);
         }
         StressBar.instance?.UpdateStressBar();

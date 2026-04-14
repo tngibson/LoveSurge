@@ -132,14 +132,14 @@ public class GameManager : MonoBehaviour
             if (isTutorial)
                 return;
 
-            UnlockAchievement(AchievementID.NEW_ACHIEVEMENT_1_4); // Unlocks Achivement: Take That!
+            UnlockAchievement(AchievementID.NEW_ACHIEVEMENT_1_5); // Unlocks Achivement: It Begins...
         }
         else if (playerArea.CardsInHand.Count < handSize) // This is just in case you somehow use your first card when you have no cards left in your deck
         {
             if (isTutorial)
                 return;
 
-            UnlockAchievement(AchievementID.NEW_ACHIEVEMENT_1_4); // Unlocks Achivement: Take That!
+            UnlockAchievement(AchievementID.NEW_ACHIEVEMENT_1_5); // Unlocks Achivement: It Begins...
         }
         else if (deckContainer.Deck.Count <= 0)
         {

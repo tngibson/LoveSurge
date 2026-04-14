@@ -35,7 +35,7 @@ public class GameItem : MonoBehaviour
         GameManager.instance.ItemCanvasInstance.TryGetComponent(out Socket socket);
         socket.ClearSocket(socketIndex);
 
-        UnlockAchievement(AchievementID.NEW_ACHIEVEMENT_1_5);
+        UnlockAchievement(AchievementID.NEW_ACHIEVEMENT_1_4);
     }
 
     public void Discard(int amount)

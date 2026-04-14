@@ -390,7 +390,7 @@ public class Dropzone : MonoBehaviour
 
             if (highestPower >= 10)
             {
-                AchievementComponent.AchievementSystem.UnlockAchievement(AchievementID.NEW_ACHIEVEMENT_1_8);
+                AchievementComponent.AchievementSystem.UnlockAchievement(AchievementID.NEW_ACHIEVEMENT_1_8); // Unlocks Achvievement: Further Beyond!
             }
 
             // Update the current score text field with the recalculated score

@@ -335,15 +335,15 @@ public class LocationManager : MonoBehaviour, ISaveable
         switch (data.name)
         {
             case "Celci":
-                id = AchievementID.NEW_ACHIEVEMENT_1_1;
+                id = AchievementID.NEW_ACHIEVEMENT_1_0;
                 break;
 
             case "Lotte":
-                id = AchievementID.NEW_ACHIEVEMENT_1_2;
+                id = AchievementID.NEW_ACHIEVEMENT_1_1;
                 break;
 
             case "Noki":
-                id = AchievementID.NEW_ACHIEVEMENT_1_3;
+                id = AchievementID.NEW_ACHIEVEMENT_1_2;
                 break;
 
             default:
