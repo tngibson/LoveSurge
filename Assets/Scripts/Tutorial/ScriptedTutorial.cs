@@ -192,32 +192,48 @@ public class ScriptedTutorial : MonoBehaviour
         dialogText.text = initialText;  // Display the speaker portion immediately
         AdjustTextBoxHeight();  // Ensure the text box resizes
 
-        // Track the message as it is being typed
-        string currentMessage = "";
+        string fullText = initialText + dialog;
 
-        // Typewriter effect: Display the message one letter at a time
-        foreach (char letter in dialog.ToCharArray())
+        dialogText.text = fullText;
+        dialogText.ForceMeshUpdate();
+
+        // Total visible characters (no tags counted)
+        int totalVisibleCharacters = dialogText.textInfo.characterCount;
+
+        // Get how many visible characters are in just the speaker portion
+        dialogText.maxVisibleCharacters = 0;
+        dialogText.ForceMeshUpdate();
+
+        dialogText.text = initialText;
+        dialogText.ForceMeshUpdate();
+
+        int speakerVisibleCount = dialogText.textInfo.characterCount;
+
+        // Restore full text
+        dialogText.text = fullText;
+        dialogText.ForceMeshUpdate();
+
+        // Start from speaker already visible
+        dialogText.maxVisibleCharacters = speakerVisibleCount;
+
+        for (int i = speakerVisibleCount; i <= totalVisibleCharacters; i++)
         {
-            gameManager.UpdateEndTurnButton(false); // Disable end turn button
+            gameManager.UpdateEndTurnButton(false);
 
             if (skipRequested)
             {
-                // If skip is requested, instantly complete the message
-                currentMessage = dialog;
+                dialogText.maxVisibleCharacters = totalVisibleCharacters;
                 break;
             }
 
-            currentMessage += letter;
-            dialogText.text = initialText + currentMessage;  // Update dialog with each letter
+            dialogText.maxVisibleCharacters = i;
 
-            AdjustTextBoxHeight();  // Adjust the text box height with each letter
-            ScrollToBottom();  // Keep the scroll at the bottom
+            AdjustTextBoxHeight();
+            ScrollToBottom();
 
-            yield return new WaitForSeconds(typewriterSpeed);  // Control typing speed
+            yield return new WaitForSeconds(typewriterSpeed);
         }
 
-        // Finalize the message and ensure layout updates
-        dialogText.text = initialText + currentMessage;
         AdjustTextBoxHeight();      // Ensure the text box is fully adjusted
         ScrollToBottom();           // Keep the scroll at the bottom
 
