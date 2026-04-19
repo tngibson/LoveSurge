@@ -94,15 +94,14 @@ public class ResolutionManager : MonoBehaviour
     // -------------------------
     public void ApplySettings()
     {
-        if (revertCoroutine != null)
-        {
-            StopCoroutine(revertCoroutine);
-            revertCoroutine = null;
-        }
-
         ApplyResolution(pendingResolutionIndex, pendingScreenModeIndex);
 
+        // Show confirmation UI
         confirmPanel.SetActive(true);
+
+        if (revertCoroutine != null)
+            StopCoroutine(revertCoroutine);
+
         revertCoroutine = StartCoroutine(RevertCountdown());
     }
 
@@ -179,25 +178,22 @@ public class ResolutionManager : MonoBehaviour
     // -------------------------
     void LoadSettings()
     {
-        int savedWidth = PlayerPrefs.GetInt("ResolutionWidth", Screen.width);
-        int savedHeight = PlayerPrefs.GetInt("ResolutionHeight", Screen.height);
-        int savedScreenMode = PlayerPrefs.GetInt("ScreenMode", 1);
+        appliedResolutionIndex = PlayerPrefs.GetInt("ResolutionIndex", 0);
+        appliedScreenModeIndex = PlayerPrefs.GetInt("ScreenMode", 1);
 
-        pendingResolutionIndex = GetClosestResolutionIndex(savedWidth, savedHeight);
-        pendingScreenModeIndex = Mathf.Clamp(savedScreenMode, 0, 2);
+        appliedResolutionIndex = Mathf.Clamp(appliedResolutionIndex, 0, filteredResolutions.Count - 1);
+        appliedScreenModeIndex = Mathf.Clamp(appliedScreenModeIndex, 0, 2);
 
-        // Apply once at startup
-        ApplyResolution(pendingResolutionIndex, pendingScreenModeIndex);
-
-        // Sync applied state AFTER applying
-        appliedResolutionIndex = pendingResolutionIndex;
-        appliedScreenModeIndex = pendingScreenModeIndex;
+        pendingResolutionIndex = appliedResolutionIndex;
+        pendingScreenModeIndex = appliedScreenModeIndex;
 
         resolutionDropdown.value = appliedResolutionIndex;
         screenModeDropdown.value = appliedScreenModeIndex;
 
         resolutionDropdown.RefreshShownValue();
         screenModeDropdown.RefreshShownValue();
+
+        ApplyResolution(appliedResolutionIndex, appliedScreenModeIndex);
     }
 
     void SaveSettings()
