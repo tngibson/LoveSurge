@@ -101,6 +101,8 @@ public class Dropzone : MonoBehaviour
     public int endingHandSize = 0;
     public int cardsPlayedThisTurn = -1;     // to Dropzone
 
+    public bool isTutorial = false;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -873,6 +875,22 @@ public class Dropzone : MonoBehaviour
             {"Cre", 1},
             {"Str", 1}
         };
+    }
+
+    public void SetTutorialScore()
+    {
+        if (!isTutorial)
+        {
+            return;
+        }
+        else
+        {
+            if (score < 50)
+            {
+                score = 50;
+            }
+        }
+
     }
 
     private void UnlockAchievement(AchievementID id)
