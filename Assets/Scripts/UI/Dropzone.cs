@@ -14,7 +14,7 @@ public class Dropzone : MonoBehaviour
 
     [SerializeField] private List<Card> playedCards;
     [SerializeField] private int maxCards = 4;
-    [SerializeField] public List<Card> cardsToScore = new List<Card>(); // Cards to be scored this turn
+    [SerializeField, HideInInspector] public List<Card> cardsToScore = new List<Card>(); // Cards to be scored this turn
     [SerializeField] private Card lastPlacedCard; // Most recently placed card
 
     [SerializeField] private DiscardPile discard;
@@ -252,7 +252,7 @@ public class Dropzone : MonoBehaviour
     // Scores the played cards, moves them to the discard pile, and updates the UI
     public void ScoreCards()
     {
-        gameManager.UpdateEndTurnButton(false); // Disables end turn button
+        gameManager.LockEndTurn(); // Disables end turn button
         if (failedConvo)
         {
             dialogText.text += "\n\n";
@@ -654,7 +654,7 @@ public class Dropzone : MonoBehaviour
         // Reset typewriter and writing state
         isTypewriting = false;
         currentSession.isWriting = false;
-        gameManager.UpdateEndTurnButton(true); // Enable end turn button
+        gameManager.UnlockEndTurn(); // Enable end turn button
         currentSession.dateCharacter.transform.localPosition = originalPosition;
     }
 
@@ -701,7 +701,7 @@ public class Dropzone : MonoBehaviour
         skipRequested = false;
         while (startValue > endValue)
         {
-            gameManager.UpdateEndTurnButton(false); // Disable end turn button
+            gameManager.LockEndTurn(); // Disable end turn button
             if (skipRequested)
             {
                 startValue = endValue; // Instantly set to final value
@@ -732,7 +732,7 @@ public class Dropzone : MonoBehaviour
         }
 
         isCountingDown = false;
-        gameManager.UpdateEndTurnButton(true); // Enable end turn button
+        gameManager.UnlockEndTurn(); // Enable end turn button
 
         if (!isTypewriting)
         {

@@ -16,6 +16,7 @@ public class PlayTutorialDialog : MonoBehaviour
 
     public void PlayDialog()
     {
+        Debug.Log(gameObject.name);
         StartCoroutine(PlayDialogCoroutine());
     }
 

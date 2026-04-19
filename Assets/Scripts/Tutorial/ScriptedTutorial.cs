@@ -33,6 +33,22 @@ public class ScriptedTutorial : MonoBehaviour
     private bool skipRequested;
     private int maxLineNum;
     private Coroutine dialogCoroutine;
+
+    public enum TutorialStep
+    {
+        FirstTopic,
+        SecondTopic,
+        Done
+    }
+
+    private TutorialStep currentStep = TutorialStep.FirstTopic;
+
+    [SerializeField] private Button firstTopicButton;
+    [SerializeField] private Button secondTopicButton;
+
+    [SerializeField] private ConvoTopic firstTopic;
+    [SerializeField] private ConvoTopic secondTopic;
+
     void Start()
     {
         if (GameObject.Find("PlayerManager") != null)
@@ -45,10 +61,31 @@ public class ScriptedTutorial : MonoBehaviour
             Debug.LogWarning("Player Manager was null!");
         }
 
+        currentStep = TutorialStep.FirstTopic;
+        UpdateTutorialButtons();
+
         InitializeAudio(); // Starts FMOD audio
         dialogEvent.AddListener(tutorialHighlight.HighlightGroup);
         
         dialogCoroutine = StartCoroutine(PlayDialog(startingDialog));
+    }
+
+    private void UpdateTutorialButtons()
+    {
+        firstTopicButton.interactable = (currentStep == TutorialStep.FirstTopic);
+        secondTopicButton.interactable = (currentStep == TutorialStep.SecondTopic);
+    }
+
+    public void OnFirstTopicCompleted()
+    {
+        currentStep = TutorialStep.SecondTopic;
+        UpdateTutorialButtons();
+    }
+
+    public void OnSecondTopicCompleted()
+    {
+        currentStep = TutorialStep.Done;
+        UpdateTutorialButtons();
     }
 
     private void InitializeAudio()
@@ -58,8 +95,10 @@ public class ScriptedTutorial : MonoBehaviour
 
     public IEnumerator PlayDialog(List<DialogueLines> lines)
     {
+        Debug.Log(lines.GetType().Name);
+
         //Not the best solution but it works for now
-        if(dialogCoroutine != null)
+        if (dialogCoroutine != null)
         {
             StopCoroutine(dialogCoroutine);
         }
@@ -218,7 +257,7 @@ public class ScriptedTutorial : MonoBehaviour
 
         for (int i = speakerVisibleCount; i <= totalVisibleCharacters; i++)
         {
-            gameManager.UpdateEndTurnButton(false);
+            gameManager.LockEndTurn();
 
             if (skipRequested)
             {

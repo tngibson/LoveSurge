@@ -424,8 +424,8 @@ MonoBehaviour:
       or the <b>Reserve</b>.
     characterSprite: {fileID: 21300000, guid: 568418e572b891b499d66849254b674e, type: 3}
   - speaker: C0D3-W1Z4RD
-    dialog: '[EVENT: Creativity] ++ Try selecting the <color=#C5E6D1>Creativity Topic</color>
-      now. ++'
+    dialog: '[EVENT: Creativity] ++ Press the End Turn button, then try selecting
+      the <color=#C5E6D1>Creativity Topic</color>. ++'
     characterSprite: {fileID: 21300000, guid: 79f4cba0f14c0bd46951f09f7bd48970, type: 3}
   oneTime: 1
   scriptedTutorial: {fileID: 229746376}
@@ -1729,6 +1729,10 @@ MonoBehaviour:
       topic </color>++'
     characterSprite: {fileID: 21300000, guid: 568418e572b891b499d66849254b674e, type: 3}
   currentSession: {fileID: 293364313}
+  firstTopicButton: {fileID: 1042258429}
+  secondTopicButton: {fileID: 1646536587}
+  firstTopic: {fileID: 1042258432}
+  secondTopic: {fileID: 1646536590}
 --- !u!1 &278874790
 GameObject:
   m_ObjectHideFlags: 0
@@ -5527,7 +5531,8 @@ MonoBehaviour:
     characterSprite: {fileID: 21300000, guid: 79f4cba0f14c0bd46951f09f7bd48970, type: 3}
   - speaker: C0D3-W1Z4RD
     dialog: ++ Drag the <color=#B7DCEA> 3-Cleverness Card </color> to the Score Zone
-      and start your Combo. Press End Turn once you are done. ++
+      and start your Combo. If the card does not match for whatever reason, go ahead
+      and play a different one. Press End Turn once you are done. ++
     characterSprite: {fileID: 21300000, guid: 79f4cba0f14c0bd46951f09f7bd48970, type: 3}
   oneTime: 1
   scriptedTutorial: {fileID: 229746376}
@@ -7435,7 +7440,19 @@ MonoBehaviour:
       m_Calls: []
   onDialogComplete:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 229746376}
+        m_TargetAssemblyTypeName: ScriptedTutorial, Assembly-CSharp
+        m_MethodName: OnFirstTopicCompleted
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1042258434
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -7859,6 +7876,18 @@ RectTransform:
     type: 3}
   m_PrefabInstance: {fileID: 1159307219}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &1159307221 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 5160553695094783301, guid: 856c630ef5f4c6e4399f2b93206a064e,
+    type: 3}
+  m_PrefabInstance: {fileID: 1159307219}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6107dfb375b29b64eba2c88079a15e41, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1184505926
 GameObject:
   m_ObjectHideFlags: 0
@@ -10552,7 +10581,19 @@ MonoBehaviour:
       m_Calls: []
   onDialogComplete:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 229746376}
+        m_TargetAssemblyTypeName: ScriptedTutorial, Assembly-CSharp
+        m_MethodName: OnSecondTopicCompleted
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1001 &1649350018
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -12771,7 +12812,7 @@ MonoBehaviour:
   endTurnButton: {fileID: 1396999329}
   mapButton: {fileID: 602046414}
   CurrentCharacterIndex: -1
-  connectionBar: {fileID: 0}
+  connectionBar: {fileID: 1159307221}
   handSize: 4
   mapButtonScript: {fileID: 602046419}
   comboSurge: 0

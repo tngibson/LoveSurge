@@ -70,6 +70,8 @@ public class GameManager : MonoBehaviour
 
     public bool isTutorial = false;
 
+    private int endTurnLockCount = 0;
+
     private void Awake()
     {
         if (instance != null && instance != this)
@@ -325,6 +327,24 @@ public class GameManager : MonoBehaviour
             GameItem item = Player.instance.collectedItems[i];
             socket.AddToSocket(item.gameObject, i);
         }
+    }
+
+    public void LockEndTurn()
+    {
+        endTurnLockCount++;
+        UpdateEndTurnButtonState();
+    }
+
+    public void UnlockEndTurn()
+    {
+        endTurnLockCount = Mathf.Max(0, endTurnLockCount - 1);
+        UpdateEndTurnButtonState();
+    }
+
+    private void UpdateEndTurnButtonState()
+    {
+        bool enabled = endTurnLockCount == 0;
+        endTurnButton.GetComponent<Button>().interactable = enabled;
     }
 
     private void UnlockAchievement(AchievementID id)
