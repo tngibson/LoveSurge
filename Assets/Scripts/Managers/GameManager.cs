@@ -71,6 +71,7 @@ public class GameManager : MonoBehaviour
     public bool isTutorial = false;
 
     private int endTurnLockCount = 0;
+    private bool gameEnded = false;
 
     private void Awake()
     {
@@ -89,19 +90,45 @@ public class GameManager : MonoBehaviour
 
     private void Start()
     {
-        if(itemCanvasInstance == null)
+        if (itemCanvasInstance == null)
         {
             itemCanvasInstance = Instantiate(itemCanvasPrefab, transform.parent);
             itemCanvasInstance.name = "ItemCanvas";
             itemCanvasInstance.transform.SetSiblingIndex(itemCanvasInstance.transform.parent.childCount - 2);
             RefreshUsableItem();
         }
+
         connectionBar.SetCharacterIndex(CurrentCharacterIndex);
         fullHandText.SetActive(false);
         scoreText.text = "Score: 0";
         MusicManager.SetParameterByName("dateProgress", 0);
-        //Debug.Log("Start Music");
+
+        if (deckContainer.Deck.Count == 0)
+        {
+            Debug.LogError("Deck initialized empty!");
+        }
     }
+
+    private void Update()
+    {
+        if (gameEnded || endGameText.activeSelf) return;
+
+        if (deckContainer.Deck.Count == 0 &&
+            playerArea.CardsInHand.Count > 0 &&
+            !checkHandPlayable())
+        {
+            Debug.Log("Dead state detected — forcing end");
+            EndGameLoss();
+        }
+
+        if (deckContainer.Deck.Count == 0 &&
+            playerArea.CardsInHand.Count == 0)
+        {
+            Debug.Log("No cards left — forcing end");
+            EndGameLoss();
+        }
+    }
+
 
     public void SetConvoStart()
     {
@@ -111,8 +138,10 @@ public class GameManager : MonoBehaviour
 
     public void OnEndTurn()
     {
+        if (gameEnded) return;
+
         dropzone.endingHandSize = playerArea.CardsInHand.Count;
-        
+
         if (playerArea.CardsInHand.Count < handSize && deckContainer.Deck.Count > 0)
         {
             int missingCards = handSize - playerArea.CardsInHand.Count;
@@ -159,14 +188,7 @@ public class GameManager : MonoBehaviour
 
         dropzone.ResetForNewTurn();
 
-        if (topicContainer.convoTopics.Count <= 0)
-        {
-            EndGameFullWin();
-        }
-        else if (deckContainer.Deck.Count <= 0 && (playerArea.CardsInHand.Count == 0 || checkHandPlayable() == false))
-        {
-            EndGameLoss();
-        }
+        CheckEndConditions();
 
         dropzone.ResetBoosts();
 
@@ -174,31 +196,39 @@ public class GameManager : MonoBehaviour
 
         comboSurge = 0;
 
-        //discard.ResetTurnDiscardCount();
         dropzone.startingHandSize = playerArea.CardsInHand.Count;
         dropzone.cardsPlayedThisTurn = 0;
     }
 
-    // Retrieve the active character�s date data dynamically
+
+    // Retrieve the active character's date data dynamically
     private DateData GetActiveCharacter()
     {
-        if(CurrentCharacterIndex < 0 || CurrentCharacterIndex >= LocationManager.Instance?.characterDates.Count)
+        if (LocationManager.Instance != null)
         {
-            //Debug.LogError("CurrentCharacterIndex is out of bounds! Check LocationManager's characterDates list.");
+            if (CurrentCharacterIndex < 0 || CurrentCharacterIndex >= LocationManager.Instance?.characterDates.Count)
+            {
+                return null;
+            }
+
+            return LocationManager.Instance.characterDates[CurrentCharacterIndex];
+        }
+        else
+        {
             return null;
         }
-
-        return LocationManager.Instance.characterDates[CurrentCharacterIndex];
     }
 
     public void EndGameHalfWin()
     {
+        if (gameEnded) return;
+        gameEnded = true;
 
         var data = GetActiveCharacter();
-        
+
         if (data == null)
         {
-            ShowMapButton($"You Win, Congratulations!", 1);
+            ShowMapButton("You Win, Congratulations!", 1);
             return;
         }
 
@@ -217,12 +247,16 @@ public class GameManager : MonoBehaviour
                 mapButtonScript.locName = $"{data.name}Date3SkillCheck1";
                 break;
         }
+
         ShowMapButton($"{data.name} wants to talk more closely with you...", 1);
         Player.instance.ReturnItem();
     }
 
     public void EndGameFullWin()
     {
+        if (gameEnded) return;
+        gameEnded = true;
+
         var data = GetActiveCharacter();
 
         switch (data.currentDate)
@@ -242,14 +276,15 @@ public class GameManager : MonoBehaviour
         }
 
         ShowMapButton("You Win, Congratulations!", 1);
-
-        // Update the location so LocationManager can advance to the next date
         LocationManager.Instance.TryBindMapScript(mapButtonScript);
         Player.instance.ReturnItem();
     }
 
     public void EndGameLoss()
     {
+        if (gameEnded) return;
+        gameEnded = true;
+
         var data = GetActiveCharacter();
 
         ShowMapButton("It's getting late, you should be heading back...", 3);
@@ -313,17 +348,15 @@ public class GameManager : MonoBehaviour
 
     public void RefreshUsableItem()
     {
-        if(itemCanvasInstance == null)
+        if (itemCanvasInstance == null)
         {
-            //Debug.LogError("Item Canvas is null and may not be in the scene!");
             return;
         }
 
         itemCanvasInstance.TryGetComponent(out Socket socket);
-        //Debug.Log($"Refreshing Usable Items: {Player.instance.collectedItems.Count} items found.");
-        for(int i = 0; i < Player.instance.collectedItems.Count; i++)
+
+        for (int i = 0; i < Player.instance.collectedItems.Count; i++)
         {
-            // Debug.Log($"Adding item {Player.instance.collectedItems[i]} to socket{i}.");
             GameItem item = Player.instance.collectedItems[i];
             socket.AddToSocket(item.gameObject, i);
         }
@@ -341,6 +374,28 @@ public class GameManager : MonoBehaviour
         UpdateEndTurnButtonState();
     }
 
+    private void CheckEndConditions()
+    {
+        if (gameEnded) return;
+
+        if (topicContainer.convoTopics.Count <= 0)
+        {
+            EndGameFullWin();
+            return;
+        }
+
+        if (deckContainer.Deck.Count <= 0 &&
+            (playerArea.CardsInHand.Count == 0 || !checkHandPlayable()))
+        {
+            EndGameLoss();
+            return;
+        }
+
+        // safety unlock
+        endTurnLockCount = 0;
+        UpdateEndTurnButtonState();
+    }
+
     private void UpdateEndTurnButtonState()
     {
         bool enabled = endTurnLockCount == 0;
@@ -355,3 +410,4 @@ public class GameManager : MonoBehaviour
         AchievementComponent.AchievementSystem.UnlockAchievement(id);
     }
 }
+

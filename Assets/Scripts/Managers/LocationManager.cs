@@ -22,6 +22,9 @@ public class LocationManager : MonoBehaviour, ISaveable
         public Date1Stage date1Stage = Date1Stage.Intro;
         public Date2Stage date2Stage = Date2Stage.Intro;
         public Date3Stage date3Stage = Date3Stage.Intro;
+
+        // NEW: prevents re-processing transitions
+        public bool progressionResolved = false;
     }
 
     public enum DateNum { Date1, Date2, Date3 }
@@ -62,45 +65,117 @@ public class LocationManager : MonoBehaviour, ISaveable
             data.mapScript = GameObject.Find(data.name + "Date")?.GetComponent<MapScript>();
             if (data.mapScript == null) continue;
 
+            // NEW: resolve progression safely
+            ResolveProgression(data);
+
             if (data.allDatesDone)
             {
-                // Hide or disable the button entirely if all dates are done
                 data.mapScript.UpdateLocationText($"{data.name}'s story is complete!");
                 data.mapScript.SetEnabled(false);
                 data.mapScript.gameObject.SetActive(false);
                 continue;
             }
 
-            UpdateMapLocation(data);
-
-            if (data.isPlayable && data.isFirstTime)
-            {
-                data.mapScript.UpdateLocationText($"Go on a date with {data.name}!");
-                data.mapScript.SetEnabled(true);
-                data.phaseEnteredDate = CalendarManager.instance.currentPhase;
-                data.isFirstTime = false;
-            }
-            else if (data.isPlayable && !data.isFirstTime)
-            {
-                data.mapScript.UpdateLocationText($"Continue your date with {data.name}!");
-                data.mapScript.SetEnabled(true);
-                data.phaseEnteredDate = CalendarManager.instance.currentPhase;
-            }
-            else if (data.phaseEnteredDate != DayPhase.None &&
-                     data.phaseEnteredDate == CalendarManager.instance.currentPhase)
-            {
-                data.mapScript.UpdateLocationText($"Continue your date with {data.name}!");
-                data.mapScript.SetEnabled(true);
-                data.isPlayable = true;
-                data.phaseEnteredDate = DayPhase.None;
-            }
-            else
-            {
-                data.mapScript.UpdateLocationText("You must wait a full day to continue your date!");
-                data.mapScript.SetEnabled(false);
-            }
+            UpdateMapUI(data);
         }
     }
+
+    // NEW: handles progression ONLY
+    private void ResolveProgression(DateData data)
+    {
+        if (data.progressionResolved) return;
+
+        switch (data.currentDate)
+        {
+            case DateNum.Date1:
+                if (data.date1Stage == Date1Stage.Done)
+                {
+                    data.progressionResolved = true;
+                    UnlockFirstDateCharacterAchievement(data);
+                    UnlockDateAchievement(data, DateNum.Date1);
+                    CheckForMainEvent17();
+                    AdvanceToNextDate(data);
+                }
+                break;
+
+            case DateNum.Date2:
+                if (data.date2Stage == Date2Stage.Done)
+                {
+                    data.progressionResolved = true;
+                    UnlockDateAchievement(data, DateNum.Date2);
+                    CheckForMainEvent17();
+                }
+                break;
+        }
+    }
+
+    // NEW: handles ONLY UI + locName
+    private void UpdateMapUI(DateData data)
+    {
+        if (data.mapScript == null) return;
+
+        switch (data.currentDate)
+        {
+            case DateNum.Date1:
+                data.mapScript.locName = data.date1Stage == Date1Stage.CardGame
+                    ? $"{data.name}Date1CardGame1"
+                    : $"{data.name}Date1Intro";
+                break;
+
+            case DateNum.Date2:
+                data.mapScript.locName = data.date2Stage == Date2Stage.CardGame
+                    ? $"{data.name}Date2CardGame1"
+                    : $"{data.name}Date2Intro";
+                break;
+
+            case DateNum.Date3:
+                data.mapScript.locName = data.date3Stage == Date3Stage.CardGame
+                    ? $"{data.name}Date3CardGame1"
+                    : $"{data.name}Date3Intro";
+                break;
+        }
+
+        if (data.isPlayable && data.isFirstTime)
+        {
+            data.mapScript.UpdateLocationText($"Go on a date with {data.name}!");
+            data.mapScript.SetEnabled(true);
+            data.phaseEnteredDate = CalendarManager.instance.currentPhase;
+            data.isFirstTime = false;
+        }
+        else if (data.isPlayable)
+        {
+            data.mapScript.UpdateLocationText($"Continue your date with {data.name}!");
+            data.mapScript.SetEnabled(true);
+            data.phaseEnteredDate = CalendarManager.instance.currentPhase;
+        }
+        else
+        {
+            data.mapScript.UpdateLocationText("You must wait a full day to continue your date!");
+            data.mapScript.SetEnabled(false);
+        }
+    }
+
+    // NEW: clean transition
+    private void AdvanceToNextDate(DateData data)
+    {
+        data.progressionResolved = false;
+
+        if (data.currentDate == DateNum.Date1)
+        {
+            data.currentDate = DateNum.Date2;
+            data.date2Stage = Date2Stage.Intro;
+        }
+        else if (data.currentDate == DateNum.Date2)
+        {
+            data.currentDate = DateNum.Date3;
+            data.date3Stage = Date3Stage.Intro;
+        }
+
+        ResetPlayerConvo();
+        ConnectionManager.instance.setConnection(0, 0);
+    }
+
+
 
     public void SetDateState(string charName, bool started)
     {
@@ -108,10 +183,6 @@ public class LocationManager : MonoBehaviour, ISaveable
         if (data == null) return;
 
         data.dateStarted = started;
-        if (started)
-        {
-            UpdateMapLocation(data);
-        }
     }
 
     private void UpdateMapLocation(DateData data)
@@ -327,27 +398,16 @@ public class LocationManager : MonoBehaviour, ISaveable
 
     private void UnlockFirstDateCharacterAchievement(DateData data)
     {
-        if (AchievementComponent.AchievementSystem == null)
-            return;
+        if (AchievementComponent.AchievementSystem == null) return;
 
         AchievementID id;
 
         switch (data.name)
         {
-            case "Celci":
-                id = AchievementID.NEW_ACHIEVEMENT_1_0;
-                break;
-
-            case "Lotte":
-                id = AchievementID.NEW_ACHIEVEMENT_1_1;
-                break;
-
-            case "Noki":
-                id = AchievementID.NEW_ACHIEVEMENT_1_2;
-                break;
-
-            default:
-                return;
+            case "Celci": id = AchievementID.NEW_ACHIEVEMENT_1_0; break;
+            case "Lotte": id = AchievementID.NEW_ACHIEVEMENT_1_1; break;
+            case "Noki": id = AchievementID.NEW_ACHIEVEMENT_1_2; break;
+            default: return;
         }
 
         AchievementComponent.AchievementSystem.UnlockAchievement(id);
@@ -355,29 +415,19 @@ public class LocationManager : MonoBehaviour, ISaveable
 
     private void UnlockDateAchievement(DateData data, DateNum completedDate)
     {
-        if (AchievementComponent.AchievementSystem == null)
-            return;
+        if (AchievementComponent.AchievementSystem == null) return;
 
         int baseIndex = 0;
 
         switch (data.name)
         {
-            case "Noki":
-                baseIndex = 9;
-                break;
-            case "Celci":
-                baseIndex = 12;
-                break;
-            case "Lotte":
-                baseIndex = 15;
-                break;
-            default:
-                return;
+            case "Noki": baseIndex = 9; break;
+            case "Celci": baseIndex = 12; break;
+            case "Lotte": baseIndex = 15; break;
+            default: return;
         }
 
-        int dateOffset = (int)completedDate; // Date1=0, Date2=1, Date3=2
-        int achievementIndex = baseIndex + dateOffset;
-
+        int achievementIndex = baseIndex + (int)completedDate;
         AchievementID id = (AchievementID)achievementIndex;
 
         AchievementComponent.AchievementSystem.UnlockAchievement(id);
@@ -385,10 +435,7 @@ public class LocationManager : MonoBehaviour, ISaveable
 
     public string CaptureState()
     {
-        SaveData data = new SaveData
-        {
-            dates = new List<CharacterDateSave>()
-        };
+        SaveData data = new SaveData { dates = new List<CharacterDateSave>() };
 
         foreach (var d in characterDates)
         {
@@ -428,6 +475,8 @@ public class LocationManager : MonoBehaviour, ISaveable
             d.date1Stage = (Date1Stage)s.d1;
             d.date2Stage = (Date2Stage)s.d2;
             d.date3Stage = (Date3Stage)s.d3;
+
+            d.progressionResolved = false; // ensure safe re-evaluation
         }
     }
 

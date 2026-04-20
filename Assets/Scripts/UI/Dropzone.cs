@@ -103,6 +103,8 @@ public class Dropzone : MonoBehaviour
 
     public bool isTutorial = false;
 
+    private bool isPlayingDialogQueue = false;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -254,32 +256,37 @@ public class Dropzone : MonoBehaviour
     // Scores the played cards, moves them to the discard pile, and updates the UI
     public void ScoreCards()
     {
+        if (selectedConvoTopic == null) return;
+
         gameManager.LockEndTurn(); // Disables end turn button
+
+        // Ensure failsafe unlock (prevents permanent lock)
+        StartCoroutine(EnsureUnlockFailsafe());
+
         if (failedConvo)
         {
             dialogText.text += "\n\n";
         }
 
+        // Reset state if needed
         if (completedConvo || failedConvo || !dialogPlayedAtFullPower)
         {
             completedConvo = false;
             failedConvo = false;
             ResetDialogFlags();
             lineNum = 0;
-            initialPower = selectedConvoTopic.TierPower;   // Store the initial power of the topic
+
+            initialPower = selectedConvoTopic.TierPower;  // Store the initial power of the topic
             selectedConvoTopic.isLocked = true;           // Lock the topic to prevent changes during scoring
         }
 
         // Recalculate the current score based on cards in dropzones
         CalculateScore(true);
 
-        // Move all cards to the discard pile asynchronously
-        //Currently removed for obsolescence
-        // StartCoroutine(DiscardCards());
-
         // Calculate the new power level after subtracting the score
         int startPowerNum = selectedConvoTopic.TierPower;
         int targetPowerNum = selectedConvoTopic.TierPower - score;
+
         selectedConvoTopic.tierPower = targetPowerNum;  // Update the power level of the topic
 
         // Start the countdown of the power value (smooth UI animation)
@@ -313,6 +320,18 @@ public class Dropzone : MonoBehaviour
 
         // Reset the state of the dropzones after scoring
         ResetAfterScoring();
+
+        gameManager?.SendMessage("CheckEndConditions", SendMessageOptions.DontRequireReceiver);
+    }
+
+    private IEnumerator EnsureUnlockFailsafe()
+    {
+        yield return new WaitForSeconds(2f); // wait for dialogs/animations
+
+        if (gameManager != null)
+        {
+            gameManager.UnlockEndTurn();
+        }
     }
 
     public void ResetForNewTurn()
@@ -441,7 +460,7 @@ public class Dropzone : MonoBehaviour
         }
 
         // Play all queued dialogs sequentially
-        if (dialogQueue.Count > 0)
+        if (dialogQueue.Count > 0 && !isPlayingDialogQueue)
         {
             StartCoroutine(PlayQueuedDialogs());
         }
@@ -523,7 +542,11 @@ public class Dropzone : MonoBehaviour
 
         maxLineNum = lines.Count;
 
-        if (lineNum >= maxLineNum) yield break; // Ensure we don't go out of bounds
+        if (lineNum >= maxLineNum)
+        {
+            gameManager.UnlockEndTurn();
+            yield break;
+        } // Ensure we don't go out of bounds
 
         bool isPCSpeaker = speakers[lineNum] == "PC";
 
@@ -694,6 +717,8 @@ public class Dropzone : MonoBehaviour
     // Coroutine to count down PowerNum smoothly
     private IEnumerator CountDownPower(int startValue, int endValue)
     {
+        gameManager.LockEndTurn(); // Disable end turn button
+
         if (!isTypewriting)
         {
             Cursor.lockState = CursorLockMode.Locked;
@@ -701,48 +726,61 @@ public class Dropzone : MonoBehaviour
         
         isCountingDown = true;
         skipRequested = false;
-        while (startValue > endValue)
+
+        try
         {
-            gameManager.LockEndTurn(); // Disable end turn button
-            if (skipRequested)
+            while (startValue > endValue)
             {
-                startValue = endValue; // Instantly set to final value
-                break;
+                if (skipRequested)
+                {
+                    startValue = endValue; // Instantly set to final value
+                    break;
+                }
+
+                startValue--;  // Decrement the power by 1
+                selectedConvoTopic.numText.text = startValue.ToString();  // Update the UI
+                yield return new WaitForSeconds(0.05f);  // Small delay for the countdown effect
             }
 
-            startValue--;  // Decrement the power by 1
-            selectedConvoTopic.numText.text = startValue.ToString();  // Update the UI
-            yield return new WaitForSeconds(0.05f);  // Small delay for the countdown effect
-        }
+            // Ensure the final value is set correctly
+            selectedConvoTopic.tierPower = endValue;
+            selectedConvoTopic.numText.text = endValue.ToString();
 
-        // Ensure the final value is set correctly
-        selectedConvoTopic.tierPower = endValue;
-        selectedConvoTopic.numText.text = endValue.ToString();
-
-        if (selectedConvoTopic.TierPower <= 0)
-        {
-            selectedConvoTopic.numText.text = ""; // Hide the num text
-            selectedConvoTopic.finishedText.SetActive(true); // Show the finished text
-            selectedConvoTopic.background.color = new Color(0.68f, 0.85f, 0.90f, 1); // Pastel blue
-            selectedConvoTopic.isLocked = false;
-            selectedConvoTopic.ToggleClick(true);
-            gameManager.ResetConvoTopic();
-            if (topicContainer.doneConvos.Count == 2 && !halfwayPointDone)
+            if (selectedConvoTopic.TierPower <= 0)
             {
-                gameManager.EndGameHalfWin();
+                selectedConvoTopic.numText.text = ""; // Hide the num text
+                selectedConvoTopic.finishedText.SetActive(true); // Show the finished text
+                selectedConvoTopic.background.color = new Color(0.68f, 0.85f, 0.90f, 1); // Pastel blue
+                selectedConvoTopic.isLocked = false;
+                selectedConvoTopic.ToggleClick(true);
+                gameManager.ResetConvoTopic();
+                if (topicContainer.doneConvos.Count == 2 && !halfwayPointDone)
+                {
+                    gameManager.EndGameHalfWin();
+                }
+            }
+
+            isCountingDown = false;
+
+            if (!isTypewriting)
+            {
+                Cursor.lockState = CursorLockMode.None;
+            }
+
+            currentScoreText.text = "Current Score: " + 0;
+            scoreCalculationText.text = "No cards played or no topic selected.\nScore: 0";
+        }
+        finally
+        {
+            // ALWAYS unlock, no matter what happens above
+            isCountingDown = false;
+            gameManager.UnlockEndTurn();
+
+            if (!isTypewriting)
+            {
+                Cursor.lockState = CursorLockMode.None;
             }
         }
-
-        isCountingDown = false;
-        gameManager.UnlockEndTurn(); // Enable end turn button
-
-        if (!isTypewriting)
-        {
-            Cursor.lockState = CursorLockMode.None;
-        }
-
-        currentScoreText.text = "Current Score: " + 0;
-        scoreCalculationText.text = "No cards played or no topic selected.\nScore: 0";
     }
 
     // Swaps two cards in the played cards list by index
@@ -812,6 +850,8 @@ public class Dropzone : MonoBehaviour
     // Coroutine to play all dialogs in the queue sequentially
     private IEnumerator PlayQueuedDialogs()
     {
+        isPlayingDialogQueue = true;
+
         while (dialogQueue.Count > 0)
         {
             yield return StartCoroutine(dialogQueue.Dequeue());
@@ -819,6 +859,7 @@ public class Dropzone : MonoBehaviour
 
         // Clears the queue for the dialog
         dialogQueue.Clear();
+        isPlayingDialogQueue = false;
     }
 
     // Clears the dialog queue and resets all dialog flags
