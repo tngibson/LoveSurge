@@ -178,8 +178,21 @@ public class ResolutionManager : MonoBehaviour
     // -------------------------
     void LoadSettings()
     {
-        appliedResolutionIndex = PlayerPrefs.GetInt("ResolutionIndex", 0);
-        appliedScreenModeIndex = PlayerPrefs.GetInt("ScreenMode", 1);
+        bool hasSaved = PlayerPrefs.HasKey("ResolutionIndex");
+
+        if (hasSaved)
+        {
+            appliedResolutionIndex = PlayerPrefs.GetInt("ResolutionIndex", 0);
+            appliedScreenModeIndex = PlayerPrefs.GetInt("ScreenMode", 1);
+        }
+        else
+        {
+            // Detect native resolution
+            Resolution native = Screen.currentResolution;
+
+            appliedResolutionIndex = FindMatchingResolutionIndex(native);
+            appliedScreenModeIndex = 1; // Default to Bordered Fullscreen
+        }
 
         appliedResolutionIndex = Mathf.Clamp(appliedResolutionIndex, 0, filteredResolutions.Count - 1);
         appliedScreenModeIndex = Mathf.Clamp(appliedScreenModeIndex, 0, 2);
@@ -194,6 +207,21 @@ public class ResolutionManager : MonoBehaviour
         screenModeDropdown.RefreshShownValue();
 
         ApplyResolution(appliedResolutionIndex, appliedScreenModeIndex);
+    }
+
+    int FindMatchingResolutionIndex(Resolution target)
+    {
+        for (int i = 0; i < filteredResolutions.Count; i++)
+        {
+            if (filteredResolutions[i].width == target.width &&
+                filteredResolutions[i].height == target.height)
+            {
+                return i;
+            }
+        }
+
+        // Fallback if exact match not found
+        return filteredResolutions.Count - 1;
     }
 
     void SaveSettings()
