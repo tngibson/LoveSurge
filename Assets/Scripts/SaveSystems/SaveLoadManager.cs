@@ -14,16 +14,6 @@ public class SaveLoadManager : MonoBehaviour
 
     private SaveFile _pendingLoadFile;
 
-    void Awake()
-    {
-        if (Instance == null)
-        {
-            Instance = this;
-            DontDestroyOnLoad(gameObject);
-        }
-        else Destroy(gameObject);
-    }
-
     public bool HasSaveFile()
     {
         return File.Exists(SavePath);

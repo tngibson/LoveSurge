@@ -5991,7 +5991,7 @@ MonoBehaviour:
   mapAnimator: {fileID: 0}
   transition: {fileID: 229961756}
   transitionTime: 0
-  isDayProgressor: 1
+  isDayProgressor: 0
   isDateButton: 1
   xHoverScale: 1
   yHoverScale: 1
@@ -6203,7 +6203,7 @@ MonoBehaviour:
   mapAnimator: {fileID: 0}
   transition: {fileID: 229961756}
   transitionTime: 0
-  isDayProgressor: 1
+  isDayProgressor: 0
   isDateButton: 1
   xHoverScale: 1
   yHoverScale: 1
@@ -8098,6 +8098,7 @@ MonoBehaviour:
     date1Stage: 0
     date2Stage: 0
     date3Stage: 0
+    progressionResolved: 0
   - name: Celci
     mapScript: {fileID: 0}
     isPlayable: 1
@@ -8109,6 +8110,7 @@ MonoBehaviour:
     date1Stage: 0
     date2Stage: 0
     date3Stage: 0
+    progressionResolved: 0
   - name: Lotte
     mapScript: {fileID: 0}
     isPlayable: 1
@@ -8120,6 +8122,7 @@ MonoBehaviour:
     date1Stage: 0
     date2Stage: 0
     date3Stage: 0
+    progressionResolved: 0
 --- !u!1 &1591945778
 GameObject:
   m_ObjectHideFlags: 0
@@ -8642,7 +8645,7 @@ MonoBehaviour:
   mapAnimator: {fileID: 0}
   transition: {fileID: 229961756}
   transitionTime: 0
-  isDayProgressor: 1
+  isDayProgressor: 0
   isDateButton: 1
   xHoverScale: 1
   yHoverScale: 1
@@ -11163,6 +11166,16 @@ PrefabInstance:
     - target: {fileID: 1145598443366753537, guid: a2ff83030ff17764492022053ec099a0,
         type: 3}
       propertyPath: time
+      value: 
+      objectReference: {fileID: 2074956331}
+    - target: {fileID: 1145598443366753537, guid: a2ff83030ff17764492022053ec099a0,
+        type: 3}
+      propertyPath: dateText
+      value: 
+      objectReference: {fileID: 168460680}
+    - target: {fileID: 1145598443366753537, guid: a2ff83030ff17764492022053ec099a0,
+        type: 3}
+      propertyPath: timeText
       value: 
       objectReference: {fileID: 2074956331}
     - target: {fileID: 8207529182541107331, guid: a2ff83030ff17764492022053ec099a0,

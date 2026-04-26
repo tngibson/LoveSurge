@@ -48,6 +48,8 @@ public class MapScript : MonoBehaviour, IPointerEnterHandler, IPointerExitHandle
 
     [SerializeField] public bool hasLocationText;
 
+    private bool isProcessingSelection = false;
+
     private void Awake()
     {
         // Save original scale and material
@@ -113,12 +115,37 @@ public class MapScript : MonoBehaviour, IPointerEnterHandler, IPointerExitHandle
 
     public void OnSelect()
     {
-        //Debug.Log(isStressReducer);
-        
+        if (isProcessingSelection) return; // Prevent re-entry
+        isProcessingSelection = true;
+
+        // Optional but recommended: immediately disable the button
+        if (button != null) button.interactable = false;
+
         if (locName == "Quit")
         {
             RestartApplication();
             return;
+        }
+
+        if (isDateButton)
+        {
+            string charName = locName.StartsWith("Noki") ? "Noki" :
+                              locName.StartsWith("Celci") ? "Celci" :
+                              locName.StartsWith("Lotte") ? "Lotte" : "";
+
+            if (LocationManager.Instance != null)
+            {
+                if (!LocationManager.Instance.TryStartDate(charName))
+                    return; // Block switching
+            }
+
+            if (!string.IsNullOrEmpty(charName))
+            {
+                if (LocationManager.Instance != null && CalendarManager.instance != null)
+                {
+                    LocationManager.Instance.SetPhaseEnteredDate(charName, CalendarManager.instance.currentPhase);
+                }
+            }
         }
 
         if (StressManager.instance != null && isStressReducer)
@@ -136,22 +163,6 @@ public class MapScript : MonoBehaviour, IPointerEnterHandler, IPointerExitHandle
         {
             StressBar.instance.UpdateStressBar();
         }
-
-        if (isDateButton)
-        {
-            string charName = locName.StartsWith("Noki") ? "Noki" :
-                              locName.StartsWith("Celci") ? "Celci" :
-                              locName.StartsWith("Lotte") ? "Lotte" : "";
-
-            if (!string.IsNullOrEmpty(charName))
-            {
-                if (LocationManager.Instance != null && CalendarManager.instance != null)
-                {
-                    LocationManager.Instance.SetPhaseEnteredDate(charName, CalendarManager.instance.currentPhase);
-                }
-            }
-        }
-
 
         StartCoroutine(LoadScene(locName));
 

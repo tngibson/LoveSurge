@@ -6862,6 +6862,18 @@ RectTransform:
     type: 3}
   m_PrefabInstance: {fileID: 1159307219}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &1159307221 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 5160553695094783301, guid: 856c630ef5f4c6e4399f2b93206a064e,
+    type: 3}
+  m_PrefabInstance: {fileID: 1159307219}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6107dfb375b29b64eba2c88079a15e41, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1196808311
 GameObject:
   m_ObjectHideFlags: 0
@@ -11068,7 +11080,7 @@ MonoBehaviour:
   endTurnButton: {fileID: 1396999329}
   mapButton: {fileID: 602046414}
   CurrentCharacterIndex: 2
-  connectionBar: {fileID: 0}
+  connectionBar: {fileID: 1159307221}
   handSize: 4
   mapButtonScript: {fileID: 602046419}
   comboSurge: 0
@@ -12060,6 +12072,7 @@ MonoBehaviour:
   startingHandSize: 4
   endingHandSize: 0
   cardsPlayedThisTurn: -1
+  isTutorial: 0
 --- !u!222 &2119566658
 CanvasRenderer:
   m_ObjectHideFlags: 0

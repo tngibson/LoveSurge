@@ -44,6 +44,10 @@ public class LocationManager : MonoBehaviour, ISaveable
 
     private bool mainEvent17Triggered = false;
 
+    private bool tutorialEnded = false;
+
+    private string activeDateCharacter = null;
+
     void Awake()
     {
         if (Instance == null)
@@ -60,6 +64,12 @@ public class LocationManager : MonoBehaviour, ISaveable
 
     private void OnSceneLoaded(Scene scene, LoadSceneMode mode)
     {
+        if (scene.name == "Map" && tutorialEnded == false)
+        {
+            tutorialEnded = true;
+            ResetPlayerConvo();
+        }
+
         foreach (var data in characterDates)
         {
             data.mapScript = GameObject.Find(data.name + "Date")?.GetComponent<MapScript>();
@@ -394,6 +404,25 @@ public class LocationManager : MonoBehaviour, ISaveable
         }
 
         return false;
+    }
+
+    public bool TryStartDate(string charName)
+    {
+        // If no active date, lock it in
+        if (string.IsNullOrEmpty(activeDateCharacter))
+        {
+            activeDateCharacter = charName;
+            return true;
+        }
+
+        // If trying to switch mid-date -> reject
+        if (activeDateCharacter != charName)
+        {
+            Debug.Log("Cannot switch dates mid-progress.");
+            return false;
+        }
+
+        return true;
     }
 
     private void UnlockFirstDateCharacterAchievement(DateData data)

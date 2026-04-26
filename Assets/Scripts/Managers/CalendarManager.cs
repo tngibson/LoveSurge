@@ -12,9 +12,10 @@ public class CalendarManager : MonoBehaviour, ISaveable
     public DayPhase currentPhase { get; private set; }
     public event System.Action<DayPhase> OnPhaseChanged;
 
-    [SerializeField] TextMeshProUGUI dateAndTimeText;
+    [SerializeField] TextMeshProUGUI dateText;
+    [SerializeField] TextMeshProUGUI timeText;
 
-    private int daysPassed = 0;
+    [SerializeField] private int daysPassed = 0;
 
     private bool mainEvent13Triggered = false;
     private bool mainEvent15Triggered = false;
@@ -68,10 +69,16 @@ public class CalendarManager : MonoBehaviour, ISaveable
     private void OnSceneLoaded(Scene scene, LoadSceneMode mode)
     {
         // Ensure the TextMeshProUGUI component is reassigned or updated
-        TextMeshProUGUI dateAndTime = GameObject.Find("DateAndTime")?.GetComponent<TextMeshProUGUI>();
-        if (dateAndTime != null)
+        TextMeshProUGUI date = GameObject.Find("Date")?.GetComponent<TextMeshProUGUI>();
+        if (date != null)
         {
-            dateAndTimeText = dateAndTime;
+            dateText = date;
+        }
+
+        TextMeshProUGUI time = GameObject.Find("Time")?.GetComponent<TextMeshProUGUI>();
+        if (time != null)
+        {
+            timeText = time;
             setText();
         }
     }
@@ -105,7 +112,8 @@ public class CalendarManager : MonoBehaviour, ISaveable
                     currentDate.Day
                 );
 
-                SceneManager.LoadScene("MainEvent1.3");
+                Debug.Log("Hi! I'm loading Main Event 1.3!");
+                SceneManager.LoadScene("MainStory1.3");
                 return;
             }
 
@@ -128,7 +136,7 @@ public class CalendarManager : MonoBehaviour, ISaveable
 
                     dayIndexWhenEvent2Occurred = totalDaysElapsed;
 
-                    SceneManager.LoadScene("MainEvent2");
+                    SceneManager.LoadScene("MainStory2");
                     return;
                 }
             }
@@ -149,7 +157,7 @@ public class CalendarManager : MonoBehaviour, ISaveable
                 {
                     mainEvent23Triggered = true;
                     dayIndexWhenEvent23Occurred = totalDaysElapsed;
-                    SceneManager.LoadScene("MainEvent2.3");
+                    SceneManager.LoadScene("MainStory2.3");
                     return;
                 }
             }
@@ -166,7 +174,7 @@ public class CalendarManager : MonoBehaviour, ISaveable
                 {
                     mainEvent27Triggered = true;
                     dayIndexWhenEvent27Occurred = totalDaysElapsed;
-                    SceneManager.LoadScene("MainEvent2.7");
+                    SceneManager.LoadScene("MainStory2.7");
                     return;
                 }
             }
@@ -183,7 +191,7 @@ public class CalendarManager : MonoBehaviour, ISaveable
                 {
                     mainEvent29Triggered = true;
                     StoryProgressFlags.mainEvent29Completed = true;
-                    SceneManager.LoadScene("MainEvent2.9");
+                    SceneManager.LoadScene("MainStory2.9");
                     return;
                 }
             }
@@ -195,7 +203,7 @@ public class CalendarManager : MonoBehaviour, ISaveable
                 DatesMatch(currentDate, mainEvent2Day))
             {
                 mainEvent21Triggered = true;
-                SceneManager.LoadScene("MainEvent2.1");
+                SceneManager.LoadScene("MainStory2.1");
                 return;
             }
 
@@ -206,7 +214,7 @@ public class CalendarManager : MonoBehaviour, ISaveable
                 DatesMatch(currentDate, mainEventDay))
             {
                 mainEvent15Triggered = true;
-                SceneManager.LoadScene("MainEvent1.5");
+                SceneManager.LoadScene("MainStory1.5");
                 return;
             }
         }
@@ -220,9 +228,45 @@ public class CalendarManager : MonoBehaviour, ISaveable
         return $"{currentDate.ToString()}  | {currentPhase}";
     }
 
-    public void setText()
+    void setText()
     {
-        dateAndTimeText.text = ToString();
+        if (dateText != null)
+            dateText.text = FormatDate();
+
+        if (timeText != null)
+            timeText.text = FormatTime();
+    }
+
+    string FormatDate()
+    {
+        // Example: June 20, Year 1
+        return $"{GetMonthName(currentDate.Month)} {currentDate.Day}, Year {currentDate.Year}";
+    }
+
+    string FormatTime()
+    {
+        // Example: Morning / Afternoon / Evening / Night
+        return currentPhase.ToString();
+    }
+
+    string GetMonthName(int month)
+    {
+        switch (month)
+        {
+            case 1: return "January";
+            case 2: return "February";
+            case 3: return "March";
+            case 4: return "April";
+            case 5: return "May";
+            case 6: return "June";
+            case 7: return "July";
+            case 8: return "August";
+            case 9: return "September";
+            case 10: return "October";
+            case 11: return "November";
+            case 12: return "December";
+            default: return "Unknown";
+        }
     }
 
     private bool DatesMatch(DayManager a, DayManager b)
